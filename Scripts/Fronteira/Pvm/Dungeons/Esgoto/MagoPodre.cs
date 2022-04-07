@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Server.Engines.Craft;
 using Server.Items;
 using Server.Ziden.Dungeons.Esgoto;
@@ -169,11 +170,18 @@ namespace Server.Mobiles
         public override bool OnBeforeDeath()
         {
             var manolos = this.GetLootingRights();
+            Shard.Debug("Morrendo mago podre looters: "+ string.Join("," ,this.GetLootingRights().Select(a => a.m_Mobile.Name)));
+            
             foreach(var r in manolos)
             {
-                if(r.m_HasRight && r.m_Mobile != null && r.m_Mobile is PlayerMobile)
+                if (Shard.DebugEnabled)
+                    Shard.Debug("Vendo looter " + r.m_Mobile.Name + " dano " + r.m_Damage + " Direitos ? " + r.m_HasRight);
+
+                if(r.m_Mobile != null && r.m_Mobile is PlayerMobile)
                 {
                     var p = (PlayerMobile)r.m_Mobile;
+                    if (Shard.DebugEnabled)
+                        Shard.Debug("Manolo " + p.Name);
                     bool daItem = true;
                     foreach(var i in p.Backpack.Items)
                     {
@@ -209,6 +217,7 @@ namespace Server.Mobiles
 
                     if (p.Wisp != null)
                     {
+                        Shard.Debug("Tem Wisp");
                         p.Wisp.MataMago();
                         if(p.Young)
                         {

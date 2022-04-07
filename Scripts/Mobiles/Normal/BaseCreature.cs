@@ -7294,9 +7294,18 @@ namespace Server.Mobiles
         public List<DamageStore> GetLootingRights()
         {
             if (LootingRights != null)
+            {
+                if(Shard.DebugEnabled)
+                    Shard.Debug("Retornando looters cacheados ct="+ LootingRights.Count, this);
+               
                 return LootingRights;
+            }
 
+            Shard.Debug("Calculando looters", this);
             List<DamageEntry> damageEntries = DamageEntries;
+
+         
+
             int hitsMax = HitsMax;
 
             List<DamageStore> rights = new List<DamageStore>();
@@ -7307,12 +7316,20 @@ namespace Server.Mobiles
                 {
                     continue;
                 }
-
                 DamageEntry de = damageEntries[i];
+
+                if (Shard.DebugEnabled)
+                {
+                    Shard.Debug("Damage entry: " + de.Damager.Name + " bateu " + de.DamageGiven);
+                }
+
+               
 
                 if (de.HasExpired)
                 {
                     damageEntries.RemoveAt(i);
+                    if (Shard.DebugEnabled)
+                        Shard.Debug("Expirado");
                     continue;
                 }
 
@@ -7329,6 +7346,7 @@ namespace Server.Mobiles
 
                         if (master == null || master.Deleted || !master.Player)
                         {
+                          
                             continue;
                         }
 
@@ -7358,11 +7376,15 @@ namespace Server.Mobiles
 
                 if (m == null || m.Deleted || !m.Player)
                 {
+                    if (Shard.DebugEnabled)
+                        Shard.Debug("N eh play");
                     continue;
                 }
 
                 if (damage <= 0)
                 {
+                    if (Shard.DebugEnabled)
+                        Shard.Debug("dano < 0");
                     continue;
                 }
 
