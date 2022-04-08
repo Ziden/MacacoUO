@@ -41,6 +41,135 @@ namespace Server.Multis.Deeds
         }
     }
 
+    public class RobinsNestDeed : HouseDeed
+    {
+        [Constructable]
+        public RobinsNestDeed()
+            : base(0x1484, new Point3D(0, 11, 0))
+        {
+        }
+
+        public RobinsNestDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return RobinsNest.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new RobinsNest(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    } 
+
+    public class CasaMogaDeed : HouseDeed
+    {
+        [Constructable]
+        public CasaMogaDeed()
+            : base(0x1489, new Point3D(0, 11, 0))
+        {
+        }
+
+        public CasaMogaDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return CasaMoga.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new CasaMoga(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    } // Adicionado 
+
+    public class TrinsicKeepDeed : HouseDeed
+    {
+        [Constructable]
+        public TrinsicKeepDeed()
+            : base(0x147E, new Point3D(0, 11, 0))
+        {
+        }
+
+        public TrinsicKeepDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return TrinsicKeep.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new TrinsicKeep(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    } // Adicionado 
+
     public abstract class HouseDeed : Item
     {
         private int m_MultiID;
