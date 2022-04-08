@@ -66,29 +66,29 @@ namespace Server.Multis
         public Mobile GalleonPilot { get { return m_GalleonPilot; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public SecurityEntry SecurityEntry 
-        { 
-            get 
+        public SecurityEntry SecurityEntry
+        {
+            get
             {
                 if (m_SecurityEntry == null)
                     m_SecurityEntry = new SecurityEntry(this);
-                return m_SecurityEntry; 
+                return m_SecurityEntry;
             }
-            set 
-            { 
-                m_SecurityEntry = value; 
-                m_SecurityEntry.Galleon = this; 
-            } 
+            set
+            {
+                m_SecurityEntry = value;
+                m_SecurityEntry.Galleon = this;
+            }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public DamageLevel DamageTaken
-        { 
+        {
             get { return m_DamageTaken; }
-            set 
+            set
             {
                 DamageLevel oldDamage = m_DamageTaken;
-                
+
                 m_DamageTaken = value;
 
                 if (m_DamageTaken != oldDamage)
@@ -103,7 +103,7 @@ namespace Server.Multis
                             m_GalleonPilot.Say(1116687); //Arr, we be scuttled!
                     }
                 }
-            } 
+            }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -147,14 +147,14 @@ namespace Server.Multis
                     case DamageLevel.Pristine:
                     case DamageLevel.Slightly: return 0;
                     case DamageLevel.Moderately:
-                    case DamageLevel.Heavily: return  1;
+                    case DamageLevel.Heavily: return 1;
                     case DamageLevel.Severely: return 2;
                 }
             }
         }
 
         public virtual int MaxCannons { get { return 0; } }
-        public virtual int WheelDistance { get { return 0;} }
+        public virtual int WheelDistance { get { return 0; } }
         public virtual int CaptiveOffset { get { return 0; } }
         public virtual double CannonDamageMod { get { return 1.0; } }
         public virtual int MaxHits { get { return 100; } }
@@ -303,7 +303,7 @@ namespace Server.Multis
 
         public override bool IsExcludedTile(StaticTile[] tiles)
         {
-            foreach(StaticTile tile in tiles)
+            foreach (StaticTile tile in tiles)
             {
                 if (!IsMastTile(tile))
                     return false;
@@ -442,23 +442,16 @@ namespace Server.Multis
 
         public void DistributeRune(Item rune, bool bankbox)
         {
-            ShipRune packRune = new ShipRune();
-            ShipRune bankRune = new ShipRune();
-
-            packRune.LootType = LootType.Blessed;
-            bankRune.LootType = LootType.Blessed;
-
-            BankBox box = Owner.BankBox;                          
-        
+            rune.LootType = LootType.Blessed;
 
             if (Owner != null)
             {
                 if (bankbox)
                 {
-                    
-                    if (!Owner.BankBox.TryDropItem(Owner, bankRune, false))
+
+                    if (!Owner.BankBox.TryDropItem(Owner, rune, false))
                     {
-                        GalleonHold.DropItem(bankRune);
+                        GalleonHold.DropItem(rune);
                         Owner.SendLocalizedMessage(1149579); //A rune to your ship could not be created in your bank box. It has been placed in the ship's cargo hold instead.
                     }
                     else
@@ -468,20 +461,22 @@ namespace Server.Multis
                 }
                 else
                 {
-                    if (Owner.Backpack == null || !Owner.Backpack.TryDropItem(Owner, packRune, false))
+
+                    if (Owner.Backpack == null || !Owner.Backpack.TryDropItem(Owner, rune, false))
                     {
-                        GalleonHold.DropItem(packRune);
+                        GalleonHold.DropItem(rune);
                         Owner.SendLocalizedMessage(1149577); //A recall rune for your new ship could not be created in your backpack. It has been placed in the ship hold instead.
                     }
                     else
                     {
                         Owner.SendLocalizedMessage(1149581); //A recall rune for your new ship has been placed in your bank box.
                     }
+
                 }
             }
             else
                 rune.Delete();
-        }
+        }    
 
         public SecurityLevel GetSecurityLevel(Mobile from)
         {
