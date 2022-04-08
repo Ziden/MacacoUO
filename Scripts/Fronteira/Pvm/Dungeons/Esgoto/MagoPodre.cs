@@ -169,9 +169,8 @@ namespace Server.Mobiles
 
         public override bool OnBeforeDeath()
         {
-            var manolos = this.GetLootingRights();
-            Shard.Debug("Morrendo mago podre looters: "+ string.Join("," ,this.GetLootingRights().Select(a => a.m_Mobile.Name)));
-            
+            var manolos = GetLootingRights();
+
             foreach(var r in manolos)
             {
                 if (Shard.DebugEnabled)

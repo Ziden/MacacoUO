@@ -331,7 +331,7 @@ namespace Server.Misc
                         return Notoriety.Enemy;
                 }
 
-                if (ViceVsVirtueSystem.Enabled && ViceVsVirtueSystem.IsEnemy(source, cretOwner) && (ViceVsVirtueSystem.EnhancedRules || source.Map == Faction.Facet))
+                if (ViceVsVirtueSystem.Enabled && ViceVsVirtueSystem.IsEnemy(source, cretOwner))
                     return Notoriety.Enemy;
 
                 if (CheckHouseFlag(source, cretOwner, target.Location, target.Map))

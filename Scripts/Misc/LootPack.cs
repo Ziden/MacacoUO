@@ -92,7 +92,7 @@ namespace Server
                 return;
             }
 
-            if(Shard.DebugEnabled)
+            if (Shard.DebugEnabled)
             {
                 Shard.Debug($"Dropando loot de {m.Name} no container {c.GetType().Name}");
             }
@@ -113,7 +113,7 @@ namespace Server
                     if (!c.TryDropItem(m, i, false))
                         c.DropItem(i);
                 }
-     
+
             }
         }
 
@@ -151,24 +151,25 @@ namespace Server
                 if (item != null)
                 {
 
-                    if(Shard.DebugEnabled)
+                    if (Shard.DebugEnabled)
                     {
                         Shard.Debug($"Gerando item {item.GetType()} em {from.Name}");
                     }
 
-                    var bc = from as BaseCreature;
-                    if (bc != null && bc.GetLootingRights().Count > 1 && (item is BasePedraPreciosa || item.HueRaridade != 0))
-                        bc.SorteiaItem(item);
-                    else
+                    if (!spawning)
                     {
-                        if (!item.Stackable || !cont.TryDropItem(from, item, false))
+                        var bc = from as BaseCreature;
+                        if (bc != null && bc.GetLootingRights().Count > 1 && (item is BasePedraPreciosa || item.HueRaridade != 0))
+                            bc.SorteiaItem(item);
+                        else
                         {
-                            cont.DropItem(item);
+                            if (!item.Stackable || !cont.TryDropItem(from, item, false))
+                            {
+                                cont.DropItem(item);
+                            }
+
                         }
-
                     }
-
-                  
                 }
             }
         }

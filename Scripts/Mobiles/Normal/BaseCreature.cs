@@ -492,6 +492,9 @@ namespace Server.Mobiles
 
         public void SorteiaItem(Item i)
         {
+            if (Shard.DebugEnabled)
+                Shard.Debug("Sorteando item " + i.Name);
+
             Sorteado.Add(i);
             var disputando = GetLootingRights(); //.Where(l => l.m_Mobile.Alive).ToList();
 
@@ -2898,7 +2901,13 @@ namespace Server.Mobiles
                     }
                 } else
                 {
-                    damage = 1; // pets pvp batem 1
+                    if (!to.Criminal && !to.Murderer && to.Region is DungeonRegion)
+                        damage = 1; // pets pvp batem 1
+                    else
+                        damage /= 3;
+
+                    if (damage < 1)
+                        damage = 1;
                 }
             }
 
@@ -7053,6 +7062,12 @@ namespace Server.Mobiles
 
         public override bool OnBeforeDeath()
         {
+            List<DamageStore> rights = GetLootingRights();
+            if (Shard.DebugEnabled)
+            {
+                Shard.Debug("onBeforeDeath com looters " + (rights == null ? "null" : "qtd "+ rights.Count));
+            }
+
             // Qnd um bixo morrer, se eh de player e foi morto por monstros, os monstros viram no dono do bixo q morreu
             var master = this.GetMaster();
             if (master is PlayerMobile)
@@ -7079,7 +7094,7 @@ namespace Server.Mobiles
 
 
             int treasureLevel = TreasureMapLevel;
-            List<DamageStore> rights = GetLootingRights();
+           
             DropScrollsGarantidos();
             if (this.Region != null && this.Region is DungeonRegion)
             {
@@ -7268,7 +7283,12 @@ namespace Server.Mobiles
             }
         }
 
-        public List<DamageStore> LootingRights { get; set; }
+        List<DamageStore> _lootingRights = null;
+        public List<DamageStore> LootingRights { get => _lootingRights; set {
+                _lootingRights = value;
+                if (Shard.DebugEnabled)
+                    Shard.Debug("Looting rights setado " + (_lootingRights == null ? "null" : "qtd "+_lootingRights.Count));
+         } }
 
         public bool HasLootingRights(Mobile m)
         {

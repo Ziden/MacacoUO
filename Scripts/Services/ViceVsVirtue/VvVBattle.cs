@@ -236,11 +236,12 @@ namespace Server.Engines.VvV
         {
             System = sys;
         }
-
+        
 
         public void Begin(VvVCity cidade = VvVCity.NIUMA)
         {
             OnGoing = true;
+            PisouDentro.Clear();
             NextCombatHeatCycle = DateTime.UtcNow;
             VvVCity newCity = City;
             List<VvVCity> cities = new List<VvVCity>();
@@ -507,11 +508,13 @@ namespace Server.Engines.VvV
             return true;
         }
 
+        public List<Mobile> PisouDentro = new List<Mobile>();
+
         public void EndBattle()
         {
             OnGoing = false;
             EndTimer();
-
+            
             if (Region is GuardedRegion)
             {
                 ((GuardedRegion)Region).Disabled = false;
@@ -590,6 +593,11 @@ namespace Server.Engines.VvV
             NextAltarActivate = DateTime.MinValue;
             ManaSpikeEndEffects = DateTime.MinValue;
             NextManaSpike = DateTime.MinValue;
+
+            foreach (PlayerMobile pm in Region.GetEnumeratedMobiles().OfType<PlayerMobile>())
+            {
+                pm.Delta(MobileDelta.Noto);
+            }
 
             TimerRestart();
         }

@@ -472,6 +472,9 @@ namespace Server.Engines.VvV
             if (m.IsYoung() || m.Guild == null)
                 return false;
 
+            if (m.IsCooldown("gi"))
+                return true;
+
             VvVPlayerEntry entry = Instance.GetPlayerEntry<VvVPlayerEntry>(m as PlayerMobile);
 
             var cidade = ViceVsVirtueSystem.Instance.Battle.City.ToString();
@@ -493,9 +496,6 @@ namespace Server.Engines.VvV
                 }
             }
             */
-
-           
-
             if (entry == null || !inRegion)
                 return false;
 
@@ -518,14 +518,22 @@ namespace Server.Engines.VvV
                 if (oldVVV && !newVVV)
                 {
                     pl.Delta(MobileDelta.Noto);
+                    if(ViceVsVirtueSystem.Instance.Battle.OnGoing)
+                        pl.SetCooldown("gi", TimeSpan.FromMinutes(10));
                     pl.SendMessage("Voce saiu da regiao da guerra infinita");
+                    if(Shard.DebugEnabled)
+                        Shard.Debug("Temp ?" + (GetTemporario(pl) != null)+" VVV ? "+IsVvV(pl));
+
                     foreach (var p in pl.FindPlayersInRange(pl.Map, 20))
                         p.Delta(MobileDelta.Noto);
                 }
                 else if (!oldVVV && newVVV)
                 {
+                    if (ViceVsVirtueSystem.Instance.Battle.OnGoing)
+                        pl.SetCooldown("gi", TimeSpan.FromMinutes(10));
                     pl.Delta(MobileDelta.Noto);
-                    pl.SendMessage("Voce entrou na regiao da guerra infinita");
+                    pl.SendMessage("Voce entrou na regiao da guerra infinita ");
+                    Shard.Debug("Temp ?" + (GetTemporario(pl) != null) + " VVV ? " + IsVvV(pl));
                     foreach (var p in pl.FindPlayersInRange(pl.Map, 20))
                         p.Delta(MobileDelta.Noto);
                 }
@@ -545,6 +553,8 @@ namespace Server.Engines.VvV
                 if (((BaseCreature)m).GetMaster() is PlayerMobile)
                     m = ((BaseCreature)m).GetMaster();
             }
+
+       
 
             entry = Instance.GetPlayerEntry<VvVPlayerEntry>(m as PlayerMobile);
 
