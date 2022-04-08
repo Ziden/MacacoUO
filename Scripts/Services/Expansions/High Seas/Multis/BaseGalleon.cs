@@ -10,6 +10,7 @@ using Server.ContextMenus;
 using Server.Gumps;
 using System.Linq;
 
+
 namespace Server.Multis
 {
     public enum DamageLevel
@@ -441,13 +442,23 @@ namespace Server.Multis
 
         public void DistributeRune(Item rune, bool bankbox)
         {
+            ShipRune packRune = new ShipRune();
+            ShipRune bankRune = new ShipRune();
+
+            packRune.LootType = LootType.Blessed;
+            bankRune.LootType = LootType.Blessed;
+
+            BankBox box = Owner.BankBox;                          
+        
+
             if (Owner != null)
             {
                 if (bankbox)
                 {
-                    if (!Owner.BankBox.TryDropItem(Owner, rune, false))
+                    
+                    if (!Owner.BankBox.TryDropItem(Owner, bankRune, false))
                     {
-                        GalleonHold.DropItem(rune);
+                        GalleonHold.DropItem(bankRune);
                         Owner.SendLocalizedMessage(1149579); //A rune to your ship could not be created in your bank box. It has been placed in the ship's cargo hold instead.
                     }
                     else
@@ -457,9 +468,9 @@ namespace Server.Multis
                 }
                 else
                 {
-                    if (Owner.Backpack == null || !Owner.Backpack.TryDropItem(Owner, rune, false))
+                    if (Owner.Backpack == null || !Owner.Backpack.TryDropItem(Owner, packRune, false))
                     {
-                        GalleonHold.DropItem(rune);
+                        GalleonHold.DropItem(packRune);
                         Owner.SendLocalizedMessage(1149577); //A recall rune for your new ship could not be created in your backpack. It has been placed in the ship hold instead.
                     }
                     else
