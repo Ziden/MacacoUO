@@ -97,7 +97,7 @@ namespace Server.Engines.UOStore
 
             Register<DoubleExpDeed>("PowerHour 2x Exp", "Ativa double exp para o shard todo por 1h.</ br > Todos vao te amar um pouco mais.", 0x14F0, 0, 256, 500, cat);
             Register<DoubleGoldDeed>("Power Hour 2x Gold", "Ativa double gold para o shard todo por 1h.</br>Todos vao te amar um pouco mais.", 0x14F0, 0, 54, 500, cat);
-
+            
             cat = StoreCategory.Misc;
             Register<PergaminhoSagradoSupremo>("Pergaminho de Item Pessoal (Newbie)", "Torna uma roupa um percence pessoal (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 2500, cat);
             Register<TintaPreta>("Tinta Preta", "Balde de tinta preta.<br>Ma-ra-vi-lhosa com roupas sombrias.", 0xFAB, 0, TintaPreta.COR, 500, cat);
@@ -107,10 +107,13 @@ namespace Server.Engines.UOStore
             Register<KeepDeed>("Keep", "Deed de Keep.<br>Moradia chique para lords.", 0x14F0, 0, 0, 7500, cat);
             Register<TowerDeed>("Torre", "Deed de Torre.<br>Moradia chique para lords.", 0x14F0, 0, 0, 5000, cat);
             Register<LargeMarbleDeed>("Marble", "Deed de Marble.<br>Moradia chique para lords.", 0x14F0, 0, 0, 5000, cat);
+            Register<TrinsicKeepDeed>("Keep Trinsic", "Deed de Moradia Keep 3 andares .<br>Moradia chique para lords.", 0x14F0, 0, 0, 40000, cat);
+            Register<CasaMogaDeed>("Casa Moga", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 50000, cat);
+            Register<RobinsNestDeed>("Casa The robin’s", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 40000, cat);
 
             Register<Sobrado11x11>("Sobrado Custom 7x7", "Sobrado Custom 7x7.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 10000, cat);
             Register<Sobrado11x11>("Sobrado Custom 11x11", "Sobrado Custom 11x11.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 30000, cat);
-            Register<TorreMansao>("Torre Custom 18x18", "Torre Custom 18x18.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 50000, cat);
+            Register<TorreMansao>("Torre Custom 18x18", "Torre Custom 18x18.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 40000, cat);
 
             Register<DoubleExpDeed>("PowerHour 2x Exp", "Ativa double exp para o shard todo por 1h.</ br > Todos vao te amar um pouco mais.", 0x14F0, 0, 256, 500, cat);
             Register<DoubleGoldDeed>("Power Hour 2x Gold", "Ativa double gold para o shard todo por 1h.</br>Todos vao te amar um pouco mais.", 0x14F0, 0, 54, 500, cat);
@@ -138,7 +141,13 @@ namespace Server.Engines.UOStore
             cat = StoreCategory.Equipment;
             Register<SmugglersLantern>(new TextDefinition("Lanterna Magica"), "Percente Pessoal<br>Permite usar magias com a lanterna na mao.<br>Vem em cores sortidas.", 0xA25, 0, 0, 2000, cat);
             Register<Kasa>(new TextDefinition("Chapeu Oriental"), "Percence Pessoal. <br>Apenas cosmetico. <br> Pode ser pintado.", 0x2798, 0, 0, 1000, cat, ConstructNewbie);
-
+            //Register<MythicCharacterToken>(new TextDefinition[] { 1156614, 1156615 }, 1156679, 0x2AAA, 0, 0, 2500, cat); // Colocar 5 skills até 90
+            Register<DeerMask> (new TextDefinition("Máscara de Viado Sacrificado"), "Percence Pessoal.", 0x1547, 0, 0, 3000, cat, ConstructNewbie);
+            Register< LeatherNinjaHood> (new TextDefinition("Capuz de Ninja"), "Percence Pessoal.", 0x27DA, 0, 0, 2000, cat, ConstructNewbie);
+            //Register<Tekagi>(new TextDefinition("Tekagi"), "Percence Pessoal.", 0x27AB, 0, 0, 1000, cat, ConstructNewbie);//trocar valor
+            //Register<Daisho>(new TextDefinition("Daisho"), "Percence Pessoal.", 0x27A9, 0, 0, 1000, cat, ConstructNewbie);//trocar valor
+            Register<Tessen>(new TextDefinition("Tessen"), "Percence Pessoal.", 0x27A3, 0, 0, 2000, cat, ConstructNewbie);
+                  
             // decorations
             cat = StoreCategory.Decorations;
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
@@ -170,7 +179,9 @@ namespace Server.Engines.UOStore
             Register<TapestryOfSosaria>(1062917, 1156961, 0x234E, 0, 0, 500, cat);
             Register<RoseOfTrinsic>(1062913, 1156960, 0x234D, 0, 0, 500, cat);
             Register<HearthOfHomeFireDeed>(1062919, 1156958, 0, 0x9C97, 0, 500, cat);
-
+            Register<GreenGoblinStatuette>(1125133, 1158015, 0xA095, 0, 0, 1500, cat);
+            Register<WelcomeMat> (new TextDefinition("Tapete de boas vindas"), "Decoração.", 0x47DA, 0, 0, 2000, cat);
+           
             Register<HitchingPost>("Poste de Estabulo", "Permite estabular e retirar animais em casa. </br>Tem 30 cargas mas pode ser recarregado com cordas de estabulo.", 0x14E7, 0, 0, 5000, cat, ConstructHitchingPost);
             Register<HitchingRope>("Corda de Estabulo", "Recarrega o poste de estabulo", 0x14F8, 0, 0, 100, cat, ConstructHitchingPost);
 
@@ -1186,6 +1197,14 @@ namespace Server.Engines.UOStore
             }
         }
         #endregion
+    }
+
+    internal class ninjashirt
+    {
+    }
+
+    internal class AljavaNew
+    {
     }
 
     [DeleteConfirm("This is the Ultima Store item display container. You should not delete this.")]
