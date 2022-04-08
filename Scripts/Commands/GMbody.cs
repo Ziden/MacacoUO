@@ -120,7 +120,6 @@ namespace Server.Commands
                             PackItem(new NecromancerSpellbook((ulong)0xffff));
                             PackItem(new BookOfChivalry());
                             //PackItem(new BookOfBushido());
-                            PackItem(new Spellbook((ulong)0xffff));
 
                             from.RawStr = 100;
                             from.RawDex = 100;
