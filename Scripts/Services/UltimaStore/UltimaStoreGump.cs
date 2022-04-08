@@ -637,13 +637,13 @@ namespace Server.Engines.UOStore
             AddECHandleInput();
 
             AddButton(45, 150, 0x9C53, 0x9C5D, 195, GumpButtonType.Reply, 0);
-            AddHtml(45, 153, 126, 25, "Okay", 0x7FFF, false, false); // Okay
+            AddHtml(45, 153, 126, 25, "<CENTER>Okay</CENTER>", 0x7FFF, false, false); // Okay
 
             AddECHandleInput();
             AddECHandleInput();
 
             AddButton(240, 150, 0x9C53, 0x9C5D, 0, GumpButtonType.Reply, 0);
-            AddHtml(240, 153, 126, 25, "Cancelar", 0x7FFF, false, false); // Cancel
+            AddHtml(240, 153, 126, 25, "<CENTER>Cancelar</CENTER>", 0x7FFF, false, false); // Cancel
 
             AddECHandleInput();
         }
@@ -768,7 +768,7 @@ namespace Server.Engines.UOStore
             AddECHandleInput();
 
             AddButton(240, 150, 0x9C53, 0x9C5D, 0, GumpButtonType.Reply, 0);
-            AddHtml(240, 153, 126, 25, "Cancelar", 0x7FFF, false, false); // Cancel
+            AddHtml(240, 153, 126, 25, "<CENTER>Cancelar</CENTER>", 0x7FFF, false, false); // Cancel
 
             AddECHandleInput();
         }
