@@ -172,8 +172,12 @@ namespace Server.Misc
             var map = attacker.Map;
 
             var bc = attacker as BaseCreature;
+            var bcTarget = damageable as BaseCreature;
             var targPlayer = damageable as PlayerMobile;
             var attackerPlayer = attacker as PlayerMobile;
+
+            if (bcTarget != null && bcTarget.GetMaster() is PlayerMobile)
+                targPlayer = bcTarget.GetMaster() as PlayerMobile;
 
 
             if (attacker != null && !attacker.Player && !(bc != null && bc.GetMaster() != null && bc.GetMaster().IsPlayer()))
@@ -205,6 +209,9 @@ namespace Server.Misc
 
                 if (attackerPlayer.Young)
                 {
+                    attackerPlayer.SendMessage("Voce nao pode atacar outros jogadores ou pets deles por ser novato");
+                    return false;
+                    /*
                     attackerPlayer.Young = false;
                     attackerPlayer.SendMessage(38, "Voce perdeu seu status de novato por atacar outro jogador");
                     if (attackerPlayer.Wisp != null)
@@ -212,6 +219,7 @@ namespace Server.Misc
                         attackerPlayer.Wisp.Delete();
                         attackerPlayer.Wisp = null;
                     }
+                    */
                 }
             }
 
