@@ -493,6 +493,8 @@ namespace Server.Multis
 
     public class RobinsNest : BaseContestHouse
     {
+        public static Rectangle2D[] AreaArray { get; internal set; }
+
         public RobinsNest(Mobile owner)
             : base(ContestHouseType.Keep, 0x1484, owner, 2113, 18)
         {
@@ -701,6 +703,8 @@ namespace Server.Multis
 
     public class CasaMoga : BaseContestHouse
     {
+        public static Rectangle2D[] AreaArray { get; internal set; }
+
         public CasaMoga(Mobile owner)
             : base(ContestHouseType.Keep, 0x1489, owner, 2113, 18)
         {

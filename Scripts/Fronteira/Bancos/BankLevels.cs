@@ -47,8 +47,8 @@ namespace Server.Misc.Custom
             _Nivels.Add(new BankLevel(5000, 120, 1000));
 
             // CAROS FODAS
-            _Nivels.Add(new BankLevel(15000, 200, 10000));
-            _Nivels.Add(new BankLevel(25000, 250, 20000));
+            _Nivels.Add(new BankLevel(15000, 200, 5000));
+            _Nivels.Add(new BankLevel(25000, 250, 10000));
             _Nivels.Add(new BankLevel(45000, 350, 50000));
             _Nivels.Add(new BankLevel(80000, 500, 100000));
             _Nivels.Add(new BankLevel(550000, 5000, 100000));

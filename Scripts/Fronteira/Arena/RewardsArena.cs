@@ -27,6 +27,7 @@ namespace Server.Ziden.RecompensaLogin
 
             Rewards.Add(new CollectionItem(typeof(BagOfArrows), 0xE76, "100 Flechas", 0, 2));
             Rewards.Add(new CollectionItem(typeof(BagOfBolts), 0xE76, "100 Dardos", 0, 2));
+
             Rewards.Add(new CollectionItem(typeof(FragmentosAntigos), 0x1053, "Fragmentos Antigos", 1152, 10));
             Rewards.Add(new CollectionItem(typeof(CristalDoPoder), 0x1053, "Cristal do Poder", 1151, 1));
             Rewards.Add(new CollectionItem(typeof(BagOfSending), 0xE76, "Sacola de Envio para Banco", 55, 100));

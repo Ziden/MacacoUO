@@ -7047,7 +7047,7 @@ namespace Server.Mobiles
                         {
                             PackItem(new ParalyzeScroll());
                         }
-                        else if (this.Skills.Magery.Value >= 90 && r.m_Mobile.Skills.Magery.Value > 90 && !book.HasSpell(RESS) && !r.m_Mobile.Backpack.HasItem<ResurrectionScroll>())
+                        else if (r.m_Mobile.Skills.Magery.Value > 65 && r.m_Mobile.Skills.Magery.Value > 80 && !book.HasSpell(RESS) && !r.m_Mobile.Backpack.HasItem<ResurrectionScroll>())
                         {
                             PackItem(new ResurrectionScroll());
                         }

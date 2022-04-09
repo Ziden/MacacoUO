@@ -19,7 +19,7 @@ namespace Server.SkillHandlers
             //m.Target = target;
             //m.SendLocalizedMessage("Selecione um livr); // Target the book you wish to copy.
             //target.BeginTimeout(m, TimeSpan.FromMinutes(1.0));
-            m.SendMessage("Voce pode comprar uma pena e pergaminhos para escrever em escribas talvez");
+            m.SendMessage("Voce pode comprar uma pena e pergaminhos para escrever em escribas");
             return TimeSpan.FromSeconds(1.0);
         }
 

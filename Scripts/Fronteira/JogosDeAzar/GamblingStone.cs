@@ -85,6 +85,7 @@ namespace Server.Items
                     Banker.Deposit(from, m_GamblePot, true);
 
                     m_GamblePot = 2500;
+
                 }
                 else if (roll <= 20) // Chance for a regbag
                 {

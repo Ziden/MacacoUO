@@ -133,7 +133,14 @@ namespace Server.Mobiles
             if(winner != null)
                 GiveArtifact(winner, CreateArtifact(UniqueList));
 
-            if(Utility.RandomBool())
+            var itemFoda = new Robe();
+            itemFoda.Hue = 2076;
+            itemFoda.Attributes.WeaponDamage = 7;
+            itemFoda.Attributes.SpellDamage = 7;
+            itemFoda.Name = "Manto de Corgul";
+            SorteiaItem(itemFoda);
+
+            if (Utility.RandomBool())
             {
                 SorteiaItem(new BoatPaint(Loot.RandomRareDye()));
             } else
@@ -141,7 +148,7 @@ namespace Server.Mobiles
                 SorteiaItem(new BoatPaint(Utility.RandomBirdHue()));
             }
 
-            for (var i = 0; X < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
                 if (Utility.RandomBool())
                     SorteiaItem(Carnage.GetRandomPS(115));

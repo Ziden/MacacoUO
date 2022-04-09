@@ -19,14 +19,14 @@ namespace Server.Items
         {
             get
             {
-                return 4;
+                return 5;
             }
         }
         public override int MaxDamage
         {
             get
             {
-                return 8;
+                return 7;
             }
         }
         public override int LabelNumber

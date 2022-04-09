@@ -1135,7 +1135,18 @@ namespace Server.Mobiles
             var delay = false;
             if(item != null && item.Parent != null)
             {
-                delay = item.Parent is Corpse;
+                if(item.Parent is Corpse)
+                {
+                    var corpse = (Corpse)item.Parent;
+                    if(corpse.Owner is BaseCreature)
+                    {
+                        if (((BaseCreature)corpse.Owner).GetLootingRights().Count > 1)
+                            delay = true;
+                    } else if(corpse.Owner is PlayerMobile)
+                    {
+                        delay = true;
+                    }
+                }
             }
             base.Lift(item, amount, out rejected, out reject);
             if (delay)

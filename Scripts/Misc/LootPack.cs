@@ -156,19 +156,16 @@ namespace Server
                         Shard.Debug($"Gerando item {item.GetType()} em {from.Name}");
                     }
 
-                    if (!spawning)
+                    var bc = from as BaseCreature;
+                    if (!spawning && bc != null && bc.GetLootingRights().Count > 1 && (item is BasePedraPreciosa || item.HueRaridade != 0))
+                        bc.SorteiaItem(item);
+                    else
                     {
-                        var bc = from as BaseCreature;
-                        if (bc != null && bc.GetLootingRights().Count > 1 && (item is BasePedraPreciosa || item.HueRaridade != 0))
-                            bc.SorteiaItem(item);
-                        else
+                        if (!item.Stackable || !cont.TryDropItem(from, item, false))
                         {
-                            if (!item.Stackable || !cont.TryDropItem(from, item, false))
-                            {
-                                cont.DropItem(item);
-                            }
-
+                            cont.DropItem(item);
                         }
+
                     }
                 }
             }
@@ -659,12 +656,22 @@ namespace Server
         public static LootPack LV7 { get { return Core.SE ? SeSuperBoss : Core.AOS ? AosSuperBoss : OldSuperBoss; } }
         #endregion
 
-        public static readonly LootPack LowScrolls = new LootPack(new[] { new LootPackEntry(false, LowScrollItems, 100.00, 1) });
+        public static readonly LootPack LowScrolls = new LootPack(new[] {
+            new LootPackEntry(false, LowScrollItems, 100.00, 1),
+            new LootPackEntry(false, MedScrollItems, 5, 1),
+        });
 
-        public static readonly LootPack MedScrolls = new LootPack(new[] { new LootPackEntry(false, MedScrollItems, 100.00, 1) });
+        public static readonly LootPack MedScrolls = new LootPack(new[] {
+            new LootPackEntry(false, MedScrollItems, 100.00, 1),
+            new LootPackEntry(false, MedScrollItems, 10, 1),
+        });
 
         public static readonly LootPack HighScrolls =
-            new LootPack(new[] { new LootPackEntry(false, HighScrollItems, 100.00, 1) });
+            new LootPack(new[] {
+                new LootPackEntry(false, MedScrollItems, 100.00, 1),
+                new LootPackEntry(false, MedScrollItems, 20, 1),
+                new LootPackEntry(false, HighScrollItems, 100, 1)
+            });
 
         public static readonly LootPack LowNecroScrolls = new LootPack(new[] { new LootPackEntry(false, LowNecroScrollItems, 100.00, 1) });
 
@@ -1288,7 +1295,7 @@ namespace Server
                 }
                 else if (m_Type == typeof(ArchCureScroll)) // med scroll
                 {
-                    item = RandomScroll(2, 6);
+                    item = RandomScroll(4, 7);
                 }
                 else if (m_Type == typeof(SummonAirElementalScroll)) // high scroll
                 {

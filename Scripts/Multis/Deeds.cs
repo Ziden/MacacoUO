@@ -127,6 +127,7 @@ namespace Server.Multis.Deeds
         }
     } // Adicionado 
 
+
     public class TrinsicKeepDeed : HouseDeed
     {
         [Constructable]

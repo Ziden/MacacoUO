@@ -111,35 +111,37 @@ namespace Server.Items
             base.OnDoubleClick(from);
             from.SendMessage("Este bracelete ajuda com bonus nas habilidades das armas em PvM.");
             from.SendMessage("Para aprender sobre as habilidades das armas, veja nossa wiki.");
-            if(Bonus > 5)
+
+            Shard.Debug("Abrindo gump");
+            from.SendGump(new ConfirmaGump(from as PlayerMobile, "Derreter Bracelete ?", "Voce gostaria de derreter este bracelete e recuperar parte do material ?", () =>
             {
-                Shard.Debug("Abrindo gump");
-                from.SendGump(new ConfirmaGump(from as PlayerMobile, "Derreter Bracelete ?", "Voce gostaria de derreter este bracelete e recuperar parte do material ?", () =>
+                var a = false;
+                var f = false;
+                DefBlacksmithy.CheckAnvilAndForge(from, 3, out a, out f);
+                if (!a || !f)
                 {
-                    var a = false;
-                    var f = false;
-                    DefBlacksmithy.CheckAnvilAndForge(from, 3, out a, out f);
-                    if(!a || !f)
-                    {
-                        from.SendMessage("Voce precisa estar proximo a uma bigorna e uma forja para isto");
-                        return;
-                    }
-                    this.Consume();
-                    from.PlayAttackAnimation();
-                    from.PlaySound(0x042);
-                    from.OverheadMessage("* derreteu *");
-                    var item = new CristalDoPoder();
+                    from.SendMessage("Voce precisa estar proximo a uma bigorna e uma forja para isto");
+                    return;
+                }
+                this.Consume();
+                from.PlayAttackAnimation();
+                from.PlaySound(0x042);
+                from.OverheadMessage("* derreteu *");
+                var item = new CristalDoPoder();
+                if(Bonus <= 5)
+                    item.Amount = 1 + Utility.Random(5);
+                else
                     item.Amount = 20 + Utility.Random(10);
-                    from.AddToBackpack(item);
-                    from.SendMessage("Voce recuperou parte do material");
-                }));
-            }
+                from.AddToBackpack(item);
+                from.SendMessage("Voce recuperou parte do material");
+            }));
+
         }
 
         public override void AddNameProperties(ObjectPropertyList list)
         {
             base.AddNameProperties(list);
-            if(Tipo==TipoJoias.Arma)
+            if (Tipo == TipoJoias.Arma)
                 list.Add($"Bonus Dano Hab. Armas Fisicas PvM");
             else if (Tipo == TipoJoias.Arco)
                 list.Add($"Bonus Dano Hab. Arcos PvM");
@@ -208,7 +210,7 @@ namespace Server.Items
             : base(0x1086)
         {
             Name = "Bracelete Elegante";
-            switch(Utility.Random(3))
+            switch (Utility.Random(3))
             {
                 case 0: this.Attributes.BonusStr = 1; break;
                 case 1: this.Attributes.BonusDex = 1; break;
