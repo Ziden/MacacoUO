@@ -10,6 +10,7 @@ using Server.ContextMenus;
 using Server.Gumps;
 using System.Linq;
 
+
 namespace Server.Multis
 {
     public enum DamageLevel
@@ -65,29 +66,29 @@ namespace Server.Multis
         public Mobile GalleonPilot { get { return m_GalleonPilot; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public SecurityEntry SecurityEntry 
-        { 
-            get 
+        public SecurityEntry SecurityEntry
+        {
+            get
             {
                 if (m_SecurityEntry == null)
                     m_SecurityEntry = new SecurityEntry(this);
-                return m_SecurityEntry; 
+                return m_SecurityEntry;
             }
-            set 
-            { 
-                m_SecurityEntry = value; 
-                m_SecurityEntry.Galleon = this; 
-            } 
+            set
+            {
+                m_SecurityEntry = value;
+                m_SecurityEntry.Galleon = this;
+            }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public DamageLevel DamageTaken
-        { 
+        {
             get { return m_DamageTaken; }
-            set 
+            set
             {
                 DamageLevel oldDamage = m_DamageTaken;
-                
+
                 m_DamageTaken = value;
 
                 if (m_DamageTaken != oldDamage)
@@ -102,7 +103,7 @@ namespace Server.Multis
                             m_GalleonPilot.Say(1116687); //Arr, we be scuttled!
                     }
                 }
-            } 
+            }
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -146,14 +147,14 @@ namespace Server.Multis
                     case DamageLevel.Pristine:
                     case DamageLevel.Slightly: return 0;
                     case DamageLevel.Moderately:
-                    case DamageLevel.Heavily: return  1;
+                    case DamageLevel.Heavily: return 1;
                     case DamageLevel.Severely: return 2;
                 }
             }
         }
 
         public virtual int MaxCannons { get { return 0; } }
-        public virtual int WheelDistance { get { return 0;} }
+        public virtual int WheelDistance { get { return 0; } }
         public virtual int CaptiveOffset { get { return 0; } }
         public virtual double CannonDamageMod { get { return 1.0; } }
         public virtual int MaxHits { get { return 100; } }
@@ -302,7 +303,7 @@ namespace Server.Multis
 
         public override bool IsExcludedTile(StaticTile[] tiles)
         {
-            foreach(StaticTile tile in tiles)
+            foreach (StaticTile tile in tiles)
             {
                 if (!IsMastTile(tile))
                     return false;
@@ -441,10 +442,13 @@ namespace Server.Multis
 
         public void DistributeRune(Item rune, bool bankbox)
         {
+            rune.LootType = LootType.Blessed;
+
             if (Owner != null)
             {
                 if (bankbox)
                 {
+
                     if (!Owner.BankBox.TryDropItem(Owner, rune, false))
                     {
                         GalleonHold.DropItem(rune);
@@ -457,6 +461,7 @@ namespace Server.Multis
                 }
                 else
                 {
+
                     if (Owner.Backpack == null || !Owner.Backpack.TryDropItem(Owner, rune, false))
                     {
                         GalleonHold.DropItem(rune);
@@ -466,11 +471,12 @@ namespace Server.Multis
                     {
                         Owner.SendLocalizedMessage(1149581); //A recall rune for your new ship has been placed in your bank box.
                     }
+
                 }
             }
             else
                 rune.Delete();
-        }
+        }    
 
         public SecurityLevel GetSecurityLevel(Mobile from)
         {

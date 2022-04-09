@@ -23,7 +23,7 @@ namespace Server.Items
             } 
         }
 
-        public override int LabelNumber { get { return 1149570; } } //A Ship Rune
+        // public override int LabelNumber { get { return 1149570; } } //A Ship Rune
 
         [Constructable]
         public ShipRune() : this(null)
@@ -35,6 +35,7 @@ namespace Server.Items
         {
             m_Galleon = galleon;
             Hue = 0x47F;
+            this.Name = "Runa Recall Barco";
         }
 
         public override void GetProperties(ObjectPropertyList list)
