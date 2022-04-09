@@ -26,28 +26,28 @@ namespace Server.Engines.NewMagincia
         {
             Mobile from = e.Mobile;
 
-            from.SendMessage("Generating New Magincia Bazaar System...");
+            from.SendMessage("Gerando Novo Sistema Magincia Bazaar...");
 
             if (MaginciaBazaar.Instance == null)
             {
                 MaginciaBazaar.Instance = new MaginciaBazaar();
                 MaginciaBazaar.Instance.MoveToWorld(new Point3D(3729, 2058, 5), Map.Trammel);
-                Console.WriteLine("Generated {0} New Magincia Bazaar Stalls.", MaginciaBazaar.Plots.Count);
+                Console.WriteLine("Gerado {0} New Magincia Barracas do Bazar.", MaginciaBazaar.Plots.Count);
             }
             else
-                Console.WriteLine("Magincia Bazaar System already exists!");
+                Console.WriteLine("O Sistema Magincia Bazaar já existe!");
 
-            Console.WriteLine("Generating New Magincia Housing Lotty System..");
+            Console.WriteLine("Gerando Novo Sistema de Lotty de Habitação Magincia..");
 
             if (MaginciaLottoSystem.Instance == null)
             {
                 MaginciaLottoSystem.Instance = new MaginciaLottoSystem();
                 MaginciaLottoSystem.Instance.MoveToWorld(new Point3D(3718, 2049, 5), Map.Trammel);
 
-                Console.WriteLine("Generated {0} New Magincia Housing Plots.", MaginciaLottoSystem.Plots.Count);
+                Console.WriteLine("Gerado {0} Novos Lotes de Habitação Magincia.", MaginciaLottoSystem.Plots.Count);
             }
             else
-                Console.WriteLine("Magincia Housing Lotto System already exists!");
+                Console.WriteLine("O Sistema de Loteria de Habitação Magincia já existe!");
         }
 
         public static void ViewLottos_OnCommand(CommandEventArgs e)
