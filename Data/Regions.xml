@@ -433,7 +433,7 @@
         <logoutDelay active="false" />
       </region>
     </region>
-    <region type="TownRegion" priority="50" name="Vesper">
+    <region type="NoGuardCity" priority="50" name="Vesper">
       <rect x="2893" y="598" width="121" height="50" />
       <rect x="2816" y="648" width="249" height="365" />
       <rect x="2734" y="944" width="82" height="4" />
@@ -450,7 +450,7 @@
         <logoutDelay active="false" />
       </region>
     </region>
-    <region type="TownRegion" priority="50" name="Yew">
+    <region type="NoGuardCity" priority="50" name="Yew">
       <rect x="92" y="656" width="349" height="225" />
       <rect x="441" y="746" width="216" height="135" />
       <rect x="258" y="881" width="399" height="380" />
@@ -1508,7 +1508,7 @@
         <logoutDelay active="false" />
       </region>
     </region>
-    <region type="TownRegion" priority="50" name="Vesper">
+    <region type="NoGuardCity" priority="50" name="Vesper">
       <rect x="2893" y="598" width="121" height="50" />
       <rect x="2816" y="648" width="249" height="365" />
       <rect x="2734" y="944" width="82" height="4" />
@@ -1525,7 +1525,7 @@
         <logoutDelay active="false" />
       </region>
     </region>
-    <region type="TownRegion" priority="50" name="Yew">
+    <region type="NoGuardCity" priority="50" name="Yew">
       <rect x="92" y="656" width="349" height="225" />
       <rect x="441" y="746" width="216" height="135" />
       <rect x="258" y="881" width="399" height="380" />

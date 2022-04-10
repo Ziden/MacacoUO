@@ -10,7 +10,7 @@ namespace Server.Items
         [Constructable]
         public Equivocation()
         {
-            Attributes.BalancedWeapon = 1;
+            Attributes.WeaponSkillDamage = 1;
             Slayer2 = BaseRunicTool.GetRandomSlayer();
             Attributes.AttackChance = 10;
             Attributes.RegenHits = 6;
@@ -56,7 +56,7 @@ namespace Server.Items
         [Constructable]
         public GargishEquivocation()
         {
-            Attributes.BalancedWeapon = 1;
+            Attributes.WeaponSkillDamage = 1;
             Slayer2 = BaseRunicTool.GetRandomSlayer();
             Attributes.AttackChance = 10;
             Attributes.RegenHits = 6;

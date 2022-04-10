@@ -30,13 +30,13 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public bool Balanced
         {
-            get { return Attributes.BalancedWeapon > 0; }
+            get { return Attributes.WeaponSkillDamage > 0; }
             set
             {
                 if (value)
-                    Attributes.BalancedWeapon = 1;
+                    Attributes.WeaponSkillDamage = 1;
                 else
-                    Attributes.BalancedWeapon = 0;
+                    Attributes.WeaponSkillDamage = 0;
             }
         }
 
@@ -262,7 +262,7 @@ namespace Server.Items
                 case 3:
                     {
                         if (version == 3 && reader.ReadBool())
-                            Attributes.BalancedWeapon = 1;
+                            Attributes.WeaponSkillDamage = 1;
 
                         m_Velocity = reader.ReadInt();
 

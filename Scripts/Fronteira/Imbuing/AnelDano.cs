@@ -48,14 +48,14 @@ namespace Server.Items
             if(version == 0)
             {
                 var Nivel = reader.ReadInt();
-                var Tipo = (TipoJoias)reader.ReadInt();
-                if(Tipo == TipoJoias.Arma)
+                var Tipo = reader.ReadInt();
+                if(Tipo == 1)
                 {
                     this.Attributes.WeaponDamage = Nivel;
-                } else if(Tipo == TipoJoias.Escudo)
+                } else if(Tipo == 2)
                 {
                     this.Attributes.DefendChance = Nivel;
-                } else if(Tipo == TipoJoias.Magia)
+                } else if(Tipo == 3)
                 {
                     this.Attributes.SpellDamage = Nivel;
                 }

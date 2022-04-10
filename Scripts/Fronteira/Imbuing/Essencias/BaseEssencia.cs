@@ -41,6 +41,12 @@ namespace Server.Items
                 from.SendMessage("Voce precisa de 70 tinkering e 70 imbuing para isto");
                 return;
             }
+
+            CraftArmas(from);
+        }
+
+        public void CraftArmas(Mobile from)
+        {
             var ferramentas = from.FindItemsByType(typeof(TinkerTools));
             TinkerTools tem = null;
             foreach (var ferramenta in ferramentas)
@@ -59,11 +65,9 @@ namespace Server.Items
             this.Consume(100);
             var brace = new BraceleteDoPoder();
             if (Utility.RandomBool())
-                brace.Bonus = 5 + Utility.Random(96);
+                brace.Attributes.WeaponSkillDamage = 5 + Utility.Random(96);
             else
-                brace.Bonus = 5 + Utility.Random(41);
-            if (Utility.RandomDouble() < 0.1)
-                brace.Tipo = TipoJoias.Arco;
+                brace.Attributes.WeaponSkillDamage = 5 + Utility.Random(41);
             from._PlaceInBackpack(brace);
             brace.Crafter = from;
             tem.UsesRemaining -= 30;
@@ -74,7 +78,7 @@ namespace Server.Items
             }
             from.Animate(AnimationType.Attack, 3);
             from.PlaySound(0x2A);
-            from.SendMessage($"Voce criou um bracelete do poder. A forca do bracelete foi sorteada pelos deuses. [{brace.Bonus}% Max 100%]");
+            from.SendMessage($"Voce criou um bracelete do poder. A forca do bracelete foi sorteada pelos deuses. [{brace.Attributes.WeaponSkillDamage}% Max 100%]");
         }
 
         public override void Serialize(GenericWriter writer)

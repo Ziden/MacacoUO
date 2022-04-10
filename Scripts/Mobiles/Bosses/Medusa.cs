@@ -555,9 +555,6 @@ namespace Server.Mobiles
 
             //SorteiaItem(new TemplateDeed());
             DistribuiPs(105);
-            var b = new BraceleteDoPoder();
-            b.Bonus = 5;
-            SorteiaItem(b);
             DistribuiItem(new CristalDoPoder() { Amount = 5 });
             DistribuiItem(new FragmentosAntigos());
             SorteiaItem(Decos.RandomDeco(this));

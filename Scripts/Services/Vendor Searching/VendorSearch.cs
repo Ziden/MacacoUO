@@ -577,7 +577,7 @@ namespace Server.Engines.VendorSearching
 
                     combat.Register(new object[] { AosAttribute.WeaponDamage, AosAttribute.DefendChance, AosAttribute.AttackChance, AosAttribute.WeaponSpeed, AosArmorAttribute.SoulCharge, 
                                                        AosWeaponAttribute.UseBestSkill, AosWeaponAttribute.ReactiveParalyze, /*TODO: Assassin Honed*/"SearingWeapon", AosWeaponAttribute.BloodDrinker, AosWeaponAttribute.BattleLust, 
-                                                       AosAttribute.BalancedWeapon, SAAbsorptionAttribute.CastingFocus, SAAbsorptionAttribute.EaterFire, SAAbsorptionAttribute.EaterCold,
+                                                       AosAttribute.WeaponSkillDamage, SAAbsorptionAttribute.CastingFocus, SAAbsorptionAttribute.EaterFire, SAAbsorptionAttribute.EaterCold,
                                                        SAAbsorptionAttribute.EaterPoison, SAAbsorptionAttribute.EaterEnergy, SAAbsorptionAttribute.EaterDamage });
 
                     casting.Register(new object[] { SAAbsorptionAttribute.ResonanceFire, SAAbsorptionAttribute.ResonanceCold, SAAbsorptionAttribute.ResonancePoison, SAAbsorptionAttribute.ResonanceEnergy,

@@ -134,7 +134,7 @@ namespace Server.Items
             {
                 BaseWeapon wep = (BaseWeapon)handTwo;
 
-                if (wep.Attributes.BalancedWeapon > 0)
+                if (wep.Attributes.WeaponSkillDamage > 0)
                     return true;
             }
 

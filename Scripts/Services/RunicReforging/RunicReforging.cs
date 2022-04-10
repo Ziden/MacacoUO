@@ -436,7 +436,7 @@ namespace Server.Items
                         if (!(item is BaseWeapon && item is BaseShield) && item.Layer != Layer.TwoHanded)
                             list.Remove(col);
                     }
-                    else if (col.Attribute is AosAttribute && (AosAttribute)col.Attribute == AosAttribute.BalancedWeapon && (!(item is BaseWeapon) || item.Layer != Layer.TwoHanded))
+                    else if (col.Attribute is AosAttribute && (AosAttribute)col.Attribute == AosAttribute.WeaponSkillDamage && (!(item is BaseWeapon) || item.Layer != Layer.TwoHanded))
                     {
                         list.Remove(col);
                     }
@@ -570,7 +570,7 @@ namespace Server.Items
                 int value = CalculateValue(attribute, min, max, percLow, percHigh, ref budget, luckchance, playerMade);
                 AosAttributes attrs = GetAosAttributes(item);
 
-                if ((AosAttribute)attribute == AosAttribute.BalancedWeapon && (!(item is BaseWeapon) || item.Layer != Layer.TwoHanded))
+                if ((AosAttribute)attribute == AosAttribute.WeaponSkillDamage && (!(item is BaseWeapon) || item.Layer != Layer.TwoHanded))
                 {
                     return false;
                 }
@@ -1175,7 +1175,7 @@ namespace Server.Items
                         new NamedInfoCol("Slayer", 1), //
                         new NamedInfoCol(AosWeaponAttribute.MageWeapon, MageWeaponTable), // 
                         new NamedInfoCol(AosAttribute.SpellChanneling, 1), //
-                        new NamedInfoCol(AosAttribute.BalancedWeapon, 1), //
+                        new NamedInfoCol(AosAttribute.WeaponSkillDamage, 1), //
                         new NamedInfoCol("WeaponVelocity", WeaponVelocityTable), // 
                         new NamedInfoCol("ElementalDamage", ElementalDamageTable), //
                     },
@@ -1308,7 +1308,7 @@ namespace Server.Items
                     new NamedInfoCol[] // Weapon
                     {
                         new NamedInfoCol(AosAttribute.EnhancePotions, WeaponEnhancePots),
-                        new NamedInfoCol(AosAttribute.BalancedWeapon, 1),
+                        new NamedInfoCol(AosAttribute.WeaponSkillDamage, 1),
                     },
                     new NamedInfoCol[] // armor
                     {
@@ -2959,7 +2959,7 @@ namespace Server.Items
 
         private static object[] m_RangedStandard = new object[]
         {
-            AosAttribute.BalancedWeapon,
+            AosAttribute.WeaponSkillDamage,
             "WeaponVelocity"
         };
 

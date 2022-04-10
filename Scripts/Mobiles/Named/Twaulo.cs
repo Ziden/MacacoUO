@@ -166,7 +166,6 @@ namespace Server.Mobiles
             SorteiaItem(new EnhancedBandage(10));
             DistribuiItem(new CristalDoPoder() { Amount = 1 });
             var b = new BraceleteDoPoder();
-            b.Bonus = 10;
             SorteiaItem(b);
             var a = new CarpenterApron();
             a.Bonus = Utility.Random(1, 1);

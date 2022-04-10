@@ -313,6 +313,9 @@ namespace Server
                     Fix(ref nrgy);
                     Fix(ref chaos);
                     Fix(ref direct);
+
+                    var ratio = 1;
+
                     if (!ignoreArmor)
                     {
                         int totalDamage = 0;
@@ -737,7 +740,7 @@ namespace Server
         IncreasedKarmaLoss = 0x00800000,
         Brittle = 0x01000000,
         LowerAmmoCost = 0x02000000,
-        BalancedWeapon = 0x04000000
+        WeaponSkillDamage = 0x04000000
     }
 
     public sealed class AosAttributes : BaseAttributes
@@ -1539,15 +1542,15 @@ namespace Server
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int BalancedWeapon
+        public int WeaponSkillDamage
         {
             get
             {
-                return this[AosAttribute.BalancedWeapon];
+                return this[AosAttribute.WeaponSkillDamage];
             }
             set
             {
-                this[AosAttribute.BalancedWeapon] = value;
+                this[AosAttribute.WeaponSkillDamage] = value;
             }
         }
     }

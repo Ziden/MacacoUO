@@ -76,29 +76,16 @@ namespace Server.Items
         }
     }
 
-
-    public enum TipoJoias
-    {
-        Arma, Arco, Magia, Escudo
-    }
-
     public class BraceleteDoPoder : BaseBracelet
     {
-        [CommandProperty(AccessLevel.Administrator)]
-        public int Bonus { get; set; }
-
-        [CommandProperty(AccessLevel.Administrator)]
-        public TipoJoias Tipo { get; set; }
-
         [Constructable]
         public BraceleteDoPoder()
             : base(0x1086)
         {
             //Weight = 0.1;
             Name = "Bracelete do Poder";
-            Bonus = 10;
+            Attributes.WeaponSkillDamage = 10;
             Hue = 1151;
-            Tipo = TipoJoias.Arma;
         }
 
         public BraceleteDoPoder(Serial serial)
@@ -128,8 +115,8 @@ namespace Server.Items
                 from.PlaySound(0x042);
                 from.OverheadMessage("* derreteu *");
                 var item = new CristalDoPoder();
-                if(Bonus <= 5)
-                    item.Amount = 1 + Utility.Random(5);
+                if(Attributes.WeaponSkillDamage <= 5)
+                    item.Amount = 1 + Utility.Random(3);
                 else
                     item.Amount = 20 + Utility.Random(10);
                 from.AddToBackpack(item);
@@ -138,28 +125,11 @@ namespace Server.Items
 
         }
 
-        public override void AddNameProperties(ObjectPropertyList list)
-        {
-            base.AddNameProperties(list);
-            if (Tipo == TipoJoias.Arma)
-                list.Add($"Bonus Dano Hab. Armas Fisicas PvM");
-            else if (Tipo == TipoJoias.Arco)
-                list.Add($"Bonus Dano Hab. Arcos PvM");
-            else if (Tipo == TipoJoias.Magia)
-                list.Add($"Bonus Dano Hab. Magias PvM");
-            else if (Tipo == TipoJoias.Escudo)
-                list.Add($"Bonus Parry PvM");
-            list.Add($"+{Bonus}%");
-            list.Add("Apenas funciona com habilidades ativas de armas");
-        }
-
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
 
-            writer.Write((int)0); // version
-            writer.Write(Bonus);
-            writer.Write((int)Tipo);
+            writer.Write((int)1); // version
         }
 
         public override void Deserialize(GenericReader reader)
@@ -167,8 +137,11 @@ namespace Server.Items
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-            Bonus = reader.ReadInt();
-            Tipo = (TipoJoias)reader.ReadInt();
+            if(version == 0)
+            {
+                Attributes.WeaponSkillDamage = reader.ReadInt();
+                reader.ReadInt();
+            }
         }
     }
 

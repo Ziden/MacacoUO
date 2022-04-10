@@ -11,7 +11,7 @@ namespace Server.Items
         public Pincer()
         {
             Hue = 2500;
-            Attributes.BalancedWeapon = 1;
+            Attributes.WeaponSkillDamage = 1;
             Slayer2 = BaseRunicTool.GetRandomSlayer();
             SetSkillBonuses.SetValues(0, SkillName.Lumberjacking, 10);
             WeaponAttributes.HitLeechHits = 87;
@@ -55,7 +55,7 @@ namespace Server.Items
         public GargishPincer()
         {
             Hue = 2500;
-            Attributes.BalancedWeapon = 1;
+            Attributes.WeaponSkillDamage = 1;
             Slayer2 = BaseRunicTool.GetRandomSlayer();
             SetSkillBonuses.SetValues(0, SkillName.Lumberjacking, 10);
             WeaponAttributes.HitLeechHits = 87;

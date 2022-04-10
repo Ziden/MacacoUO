@@ -1802,7 +1802,7 @@ namespace Server.SkillHandlers
             m_Table[55] = new ImbuingDefinition(AosElementAttribute.Energy, 1061162, 100, typeof(MagicalResidue), typeof(Amethyst), typeof(BouraPelt), 15, 1, 1112008, true, true, true, false, true);
 
             m_Table[60] = new ImbuingDefinition("WeaponVelocity", 1080416, 130, typeof(RelicFragment), typeof(Tourmaline), typeof(EssenciaLuz), 50, 2, 1112048, false, true, false, false, false);
-            m_Table[61] = new ImbuingDefinition(AosAttribute.BalancedWeapon, 1072792, 150, typeof(RelicFragment), typeof(Amber), typeof(EssenciaFogo), 1, 0, 1112047, false, true, false, false, false);
+            m_Table[61] = new ImbuingDefinition(AosAttribute.WeaponSkillDamage, 1072792, 150, typeof(RelicFragment), typeof(Amber), typeof(EssenciaFogo), 1, 0, 1112047, false, true, false, false, false);
             m_Table[62] = new ImbuingDefinition("SearingWeapon", 1151183, 150, null, null, null, 1, 0, -1, true, false, false, false, false);
 
             m_Table[101] = new ImbuingDefinition(SlayerName.Orcs, 1079741, 100, typeof(MagicalResidue), typeof(Emerald), typeof(WhitePearl), 1, 0, 1111977, true, true);

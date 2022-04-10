@@ -70,17 +70,6 @@ namespace Server.Mobiles
         {
             base.OnDeath(c);
 
-            if(Utility.RandomDouble() < 0.2)
-            {
-                var b5 = new BraceleteDoPoder();
-                b5.Bonus = 5;
-                if(Utility.RandomDouble() < 0.2)
-                {
-                    b5.Tipo = TipoJoias.Arco;
-                }
-                AddItem(b5);
-            }
-
             if (0.2 > Utility.RandomDouble() && Region.Find(c.Location, c.Map).IsPartOf("Shame"))
                 SorteiaItem(new CristalElemental());
         }

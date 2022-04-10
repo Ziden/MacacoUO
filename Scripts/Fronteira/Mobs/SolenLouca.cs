@@ -82,7 +82,6 @@ namespace Server.Mobiles
             SorteiaItem(bola);
             DistribuiItem(Decos.RandomDeco(this));
             var b = new BraceleteDoPoder();
-            b.Bonus = 10;
             SorteiaItem(b);
             var arco = Loot.RandomWeapon();
             arco.Resource = CraftResource.Bronze;

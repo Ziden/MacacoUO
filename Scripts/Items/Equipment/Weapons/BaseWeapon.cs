@@ -1985,10 +1985,10 @@ namespace Server.Items
                         chance += defender.Skills.Wrestling.Value / 100 * 0.30; // 30%
                     }
 
-                    chance += parry * 0.25; // +25%
-                    var brace = defender.FindItemOnLayer(Layer.Bracelet) as BraceleteDoPoder;
-                    if (brace != null && brace.Tipo == TipoJoias.Escudo)
-                        chance += brace.Bonus / 400;
+                   // chance += parry * 0.25; // +25%
+                  //  var brace = defender.FindItemOnLayer(Layer.Bracelet) as BraceleteDoPoder;
+                   // if (brace != null && brace.Tipo == TipoJoias.Escudo)
+                   //     chance += brace.Bonus / 400;
                 }
 
                 if (shield is WoodenShield || shield is WoodenKiteShield)
@@ -2047,7 +2047,7 @@ namespace Server.Items
             {
                 BaseWeapon weapon = defender.Weapon as BaseWeapon;
 
-                if (Core.HS && weapon.Attributes.BalancedWeapon > 0)
+                if (Core.HS && weapon.Attributes.WeaponSkillDamage > 0)
                 {
                     return false;
                 }
@@ -2915,14 +2915,8 @@ namespace Server.Items
                 var bonus = defender.Player ? a.DamageScalar : (a.DamageScalar * 1.3);
                 if(!defender.Player)
                 {
-                    var bracelete = attacker.FindItemOnLayer(Layer.Bracelet) as BraceleteDoPoder;
-                    if (bracelete != null)
-                    {
-                        if(bracelete.Tipo == TipoJoias.Arma && attacker.Weapon is BaseMeleeWeapon)
-                            bonus += bracelete.Bonus / 100d;
-                        if (bracelete.Tipo == TipoJoias.Arco && attacker.Weapon is BaseRanged)
-                            bonus += bracelete.Bonus / 100d;
-                    }
+                    var skillDmg = AosAttributes.GetValue(attacker, AosAttribute.WeaponSkillDamage, true) / 100d;
+                    bonus += skillDmg;
                         
                 }
                 percentageBonus += (int)(bonus * 100) - 100;
@@ -6586,7 +6580,7 @@ namespace Server.Items
                 list.Add(1060438, (30 - prop).ToString()); // mage weapon -~1_val~ skill
             }
 
-            if (Core.ML && m_AosAttributes.BalancedWeapon > 0 && Layer == Layer.TwoHanded)
+            if (Core.ML && m_AosAttributes.WeaponSkillDamage > 0 && Layer == Layer.TwoHanded)
             {
                 list.Add(1072792); // Balanced
             }
@@ -6968,11 +6962,6 @@ namespace Server.Items
             }
 
             CraftResource thisResource = CraftResources.GetFromType(typeRes);
-            if(thisResource != CraftResource.None)
-            {
-                this.Hue = CraftResources.GetHue(thisResource);
-            }
-     
 
             var power = 0;
 
@@ -7019,6 +7008,36 @@ namespace Server.Items
                 }
             }
 
+            if(tool is IResource) // so pra cajados por hora
+            {
+                var resTool = ((IResource)tool).Resource;
+                if(resTool == thisResource)
+                {
+                    chancefoda += 5;
+                    switch (this.Resource)
+                    {
+                        case CraftResource.Cobre:
+                        case CraftResource.Bronze:
+                        case CraftResource.Carvalho:
+                            power += 4; break;
+                        case CraftResource.Niobio:
+                        case CraftResource.Dourado:
+                        case CraftResource.Vibranium:
+                        case CraftResource.Pinho:
+                            power += 5; break;
+                        case CraftResource.Lazurita:
+                        case CraftResource.Eucalipto:
+                        case CraftResource.Quartzo:
+                            power += 6; break;
+                        case CraftResource.Mogno:
+                        case CraftResource.Berilo:
+                            power += 7; break;
+                        case CraftResource.Adamantium:
+                        case CraftResource.Gelo:
+                            power += 10; break;
+                    }
+                }
+            }
 
             var props = 0;
 
@@ -7026,36 +7045,23 @@ namespace Server.Items
             {
                 chancefoda += 0.5;
                 power = 1;
-
-                switch (this.Resource)
-                {
-                    case CraftResource.Cobre:
-                    case CraftResource.Bronze:
-                    case CraftResource.Carvalho:
-                        power += 1; break;
-                    case CraftResource.Niobio:
-                    case CraftResource.Dourado:
-                    case CraftResource.Vibranium:
-                    case CraftResource.Pinho:
-                        power += 3; break;
-                    case CraftResource.Lazurita:
-                    case CraftResource.Eucalipto:
-                    case CraftResource.Quartzo:
-                        power += 4; break;
-                    case CraftResource.Mogno:
-                    case CraftResource.Berilo:
-                        power += 7; break;
-                    case CraftResource.Adamantium:
-                    case CraftResource.Gelo:
-                        power += 10; break;
-                }
             }
+
+            if (Shard.DebugEnabled)
+                Shard.Debug("Chance craft obra prima: " + chancefoda);
 
             if (chancefoda > 0 && Utility.Random(100) <= chancefoda)
             {
-                from.SendMessage("Voce craftou uma obra prima. Use ferramentas color para aumentar suas chances de craftar obras primas !");
+                from.SendMessage(55, "Voce craftou uma obra prima. Use ferramentas color da mesma cor do minerio do item para aumentar suas chances de craftar obras primas e tambem craftar obras primas melhores !");
                 Quality = ItemQuality.ObraPrima;
-                var propChance = 0.35;
+                quality = (int)quality;
+
+                from.FixedParticles(0x376A, 10, 30, 5052, TintaBranca.COR, 1, EffectLayer.LeftFoot);
+                Effects.SendLocationParticles(EffectItem.Create(from.Location, from.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
+                Effects.PlaySound(from.Location, from.Map, 0x243);
+                from.OverheadMessage("* obra prima *");
+                this.Identified = true;
+                var propChance = 0.55;
                 if (this is BaseStaff)
                 {
                     Attributes.SpellDamage = power;
@@ -7065,14 +7071,41 @@ namespace Server.Items
                         Attributes.SpellDamage = power + Utility.Random(power * 4);
                     if (Utility.RandomDouble() < propChance / 2)
                         Slayer = BaseRunicTool.GetRandomSlayer();
+                } else
+                {
+                    Attributes.WeaponDamage = power/2 + Utility.Random(power/2);
+                    if (Utility.RandomDouble() < 0.35)
+                        Attributes.WeaponSpeed = power / 2 + Utility.Random(power/2);
+                    if (Utility.RandomDouble() < 0.2)
+                        Slayer = BaseRunicTool.GetRandomSlayer();
                 }
                 this.HueRaridade = 1161;
-                tool.UsesRemaining -= 10;
+                tool.UsesRemaining -= 30;
                 if (tool.UsesRemaining <= 0)
                 {
                     tool.Delete();
                     from.SendMessage("Sua ferramenta quebrou");
                 }
+            }
+
+            if (craftItem != null && !craftItem.ForceNonExceptional)
+            {
+                CraftResourceInfo resInfo = CraftResources.GetInfo(m_Resource);
+                Resource = thisResource;
+
+                if (resInfo == null)
+                {
+                    return quality;
+                }
+
+                CraftAttributeInfo attrInfo = resInfo.AttributeInfo;
+
+                if (attrInfo == null)
+                {
+                    return quality;
+                }
+
+                //DistributeMaterialBonus(attrInfo);
             }
 
             return quality;

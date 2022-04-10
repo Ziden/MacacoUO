@@ -108,8 +108,7 @@ namespace Server.Mobiles
                                 loot.Owner = p;
                                 AddItem(loot);
                                 var b = new BraceleteDoPoder();
-                                b.Bonus = 3;
-                                b.Tipo = TipoJoias.Arco;
+                                b.Attributes.WeaponDamage = 3;
                                 AddItem(b);
                                 break;
                             case 3:// StarterKits.BARD:
@@ -123,7 +122,7 @@ namespace Server.Mobiles
                                 spear.Owner = p;
                                 AddItem(spear);
                                 var b2 = new BraceleteDoPoder();
-                                b2.Bonus = 3;
+                                b2.Attributes.WeaponSkillDamage = 4;
                                 AddItem(b2);
                                 break;
                             case 2://  StarterKits.BS:
@@ -136,7 +135,7 @@ namespace Server.Mobiles
                                 marreta.Owner = p;
                                 AddItem(marreta);
                                 var b3 = new BraceleteDoPoder();
-                                b3.Bonus = 3;
+                                b3.Attributes.WeaponSkillDamage = 4;
                                 AddItem(b3);
                                 break;
                             case 6:// StarterKits.MAGE
@@ -150,7 +149,7 @@ namespace Server.Mobiles
                                 AddItem(cajado);
                                 AddItem(new BagOfReagents());
                                 var b4 = new BraceleteDoPoder();
-                                b4.Bonus = 3;
+                                b4.Attributes.WeaponSkillDamage = 4;
                                 AddItem(b4);
                                 if (p.Young)
                                 {
@@ -167,7 +166,7 @@ namespace Server.Mobiles
                                 AddItem(espada);
                                 AddItem(new BagOfReagents());
                                 var b5 = new BraceleteDoPoder();
-                                b5.Bonus = 3;
+                                b5.Attributes.WeaponSkillDamage = 4;
                                 AddItem(b5);
                                 break;
                         }

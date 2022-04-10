@@ -585,7 +585,6 @@ namespace Server.Spells
             if (target == null)
                 return scalar;
 
-
             double casterEI = m_Caster.Skills[DamageSkill].Value;
             double targetRS = target.Skills[SkillName.MagicResist].Value;
 
@@ -688,11 +687,6 @@ namespace Server.Spells
 
             if (!target.Player)
             {
-                var bracer = m_Caster.FindItemOnLayer(Layer.Bracelet) as BraceleteDoPoder;
-                if (bracer != null && bracer.Tipo == TipoJoias.Magia)
-                {
-                    scalar += bracer.Bonus / 100;
-                }
                 if (elementoMagia != ElementoPvM.None)
                 {
                     var bonus = (m_Caster.GetBonusElemento(elementoMagia) * 2);
@@ -721,9 +715,21 @@ namespace Server.Spells
         public virtual double GetSlayerDamageScalar(Mobile defender)
         {
             Spellbook atkBook = Spellbook.FindEquippedSpellbook(m_Caster);
-
             double scalar = 1.0;
-            if (atkBook != null)
+            var staff = m_Caster.Weapon as BaseStaff;
+            if (staff != null && staff.Slayer != SlayerName.None)
+            {
+                SlayerEntry atkSlayer = SlayerGroup.GetEntryByName(staff.Slayer);
+                if(atkSlayer != null && atkSlayer.Slays(defender))
+                {
+                    defender.FixedEffect(0x37B9, 10, 5);
+                    if (atkSlayer != null && atkSlayer == atkSlayer.Group.Super)
+                        scalar = 2;
+                    else
+                        scalar = 3;
+                }
+
+            } else if (atkBook != null)
             {
                 SlayerEntry atkSlayer = SlayerGroup.GetEntryByName(atkBook.Slayer);
                 SlayerEntry atkSlayer2 = SlayerGroup.GetEntryByName(atkBook.Slayer2);
@@ -760,6 +766,7 @@ namespace Server.Spells
                     return scalar;
                 }
             }
+
 
             ISlayer defISlayer = Spellbook.FindEquippedSpellbook(defender);
 

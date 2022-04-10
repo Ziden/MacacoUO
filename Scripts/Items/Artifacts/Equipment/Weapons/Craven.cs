@@ -15,7 +15,7 @@ namespace Server.Items
             Attributes.WeaponSpeed = 26;
             Attributes.WeaponDamage = 35;
             Attributes.LowerManaCost = 8;
-            Attributes.BalancedWeapon = 1;
+            Attributes.WeaponSkillDamage = 1;
             Hue = 1365;
         }
 
