@@ -358,4 +358,83 @@ namespace Server.Mobiles
             int version = reader.ReadInt();
         }
     }
+
+    public class CoelhoDaPascoa : BaseCreature
+    {
+        public override int BonusExp => 500;
+
+        [Constructable]
+        public CoelhoDaPascoa()
+            : base(AIType.AI_Runner, FightMode.Closest, 10, 1, 0.05, 0.05)
+        {
+            Name = "coelho da pascoa";
+            Body = 205;
+            Hue = 3 + (Utility.Random(20) * 5);
+
+            SetStr(297, 297);
+            SetDex(80, 80);
+            SetInt(118, 118);
+
+            SetHits(200, 300);
+            SetStam(80, 80);
+            SetMana(118, 118);
+
+            SetDamage(1, 3);
+
+            SetDamageType(ResistanceType.Physical, 100);
+
+            SetResistance(ResistanceType.Physical, 1, 1);
+            SetResistance(ResistanceType.Fire, 1, 1);
+            SetResistance(ResistanceType.Cold, 1, 1);
+            SetResistance(ResistanceType.Poison, 1, 1);
+            SetResistance(ResistanceType.Energy, 1, 1);
+
+            SetSkill(SkillName.MagicResist, 30.6, 40);
+            SetSkill(SkillName.Tactics, 80.0, 82.8);
+            SetSkill(SkillName.Anatomy, 82.0, 84.8);
+            SetSkill(SkillName.Wrestling, 99.2, 100.7);
+
+            Fame = 1500;
+            Karma = -1500;
+
+            VirtualArmor = 28;
+            Tamable = false;
+
+            PackItem(new Gold(1000));
+        }
+
+        public override void OnDeath(Container c)
+        {
+            base.OnDeath(c);
+            DistribuiItem(new EasterEggs());
+        }
+
+        public CoelhoDaPascoa(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int GetAngerSound() { return 0x600; }
+        public override int GetIdleSound() { return 0x600; }
+        public override int GetAttackSound() { return 0x5FD; }
+        public override int GetHurtSound() { return 0x5FF; }
+        public override int GetDeathSound() { return 0x5FE; }
+
+        public override void GenerateLoot()
+        {
+            this.AddLoot(LootPack.Gems);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((int)0);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            int version = reader.ReadInt();
+        }
+    }
 }

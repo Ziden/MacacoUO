@@ -12,6 +12,8 @@ namespace Server.Mobiles
             Name = "coelho";
             Body = 205;
 
+            
+
             if (0.5 >= Utility.RandomDouble())
                 Hue = Utility.RandomAnimalHue();
 

@@ -616,7 +616,7 @@ namespace Server.Items
             {
                 delta = min;
                 min = max;
-                max = delta;
+                max = delta; 
             }
 
             if (!playerMade && RandomItemGenerator.Enabled)

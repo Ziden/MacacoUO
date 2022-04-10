@@ -1739,6 +1739,9 @@ namespace Server.Items
                 int budget = Utility.RandomMinMax(minBudget, maxBudget);
                 GenerateRandomItem(item, null, budget, luck, ReforgedPrefix.None, ReforgedSuffix.None);
                 return true;
+            } else if(item is BaseJewel)
+            {
+
             }
             return false;
         }

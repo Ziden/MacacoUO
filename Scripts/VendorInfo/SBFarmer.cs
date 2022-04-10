@@ -72,7 +72,6 @@ namespace Server.Mobiles
                 Add(typeof(Peach), 1);
                 Add(typeof(Pear), 1);
                 Add(typeof(SheafOfHay), 1);
-
                 Add(typeof(GarlicSeeds), 9);
                 Add(typeof(MandrakeSeeds), 9);
                 Add(typeof(CottonSeeds), 9);

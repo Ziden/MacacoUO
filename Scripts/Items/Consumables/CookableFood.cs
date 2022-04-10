@@ -1,6 +1,8 @@
 using System;
 using Server.Targeting;
 using Server.Engines.Craft;
+using System.Collections.Generic;
+using Server.Accounting;
 
 namespace Server.Items
 {
@@ -78,7 +80,7 @@ namespace Server.Items
 
             int version = reader.ReadInt();
 
-            switch ( version )
+            switch (version)
             {
                 case 2:
                     {
@@ -93,7 +95,7 @@ namespace Server.Items
             }
         }
 
-        #if false
+#if false
 		public override void OnDoubleClick( Mobile from )
 		{
 			if ( !Movable )
@@ -101,7 +103,7 @@ namespace Server.Items
 
 			from.Target = new InternalTarget( this );
 		}
-        #endif
+#endif
 
         public static bool IsHeatSource(object targeted)
         {
@@ -171,7 +173,7 @@ namespace Server.Items
                 private readonly IPoint3D m_Point;
                 private readonly Map m_Map;
                 private readonly CookableFood m_CookableFood;
-			
+
                 public InternalTimer(Mobile from, IPoint3D p, Map map, CookableFood cookableFood)
                     : base(TimeSpan.FromSeconds(5.0))
                 {
@@ -682,7 +684,7 @@ namespace Server.Items
         }
     }
 
-    #if false
+#if false
 	// ********** UncookedPizza **********
 	public class UncookedPizza : CookableFood
 	{
@@ -721,7 +723,7 @@ namespace Server.Items
 			return new Pizza();
 		}
 	}
-    #endif
+#endif
 
     // ********** UnbakedQuiche **********
     public class UnbakedQuiche : CookableFood
@@ -876,6 +878,7 @@ namespace Server.Items
         public EasterEggs()
             : base(0x9B5, 15)
         {
+            Name = "Ovos de Pascoa";
             Weight = 0.5;
             Hue = 3 + (Utility.Random(20) * 5);
         }
@@ -883,6 +886,42 @@ namespace Server.Items
         public EasterEggs(Serial serial)
             : base(serial)
         {
+        }
+
+        public HashSet<string> Ganhou = new HashSet<string>();
+
+        public static Type[] PremiosPascoa = new Type[] { typeof(eastereggAddonDeed), typeof(easteregg1AddonDeed) };
+        public static int[] PremiosMenores = new int[] { 0x47E6, 0x4CEE, 0x99A3, 0x9CA8, 0x9CA9, 0x9F13, 0x9F14, 0x9F15, 0x9F16, 0x9F17, 0x9F18, 0x9E1D, 0xA738 };
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            from.SendMessage("Voce abriu o ovo de pascoa");
+            Item item = null;
+            if (!Ganhou.Contains(from.NetState.Address.ToString()) &&  Utility.RandomDouble() < 0.05)
+            {
+                var c = new FloppyHat();
+                c.Name = "Chapeu da Pascoa [Raro][2022]";
+                c.Hue = 2733;
+                if (Utility.RandomBool())
+                    c.Attributes.SpellDamage = 10;
+                else
+                    c.Attributes.WeaponDamage = 10;
+                item = c;
+                Ganhou.Add(from.NetState.Address.ToString());
+            }
+            else if (Utility.RandomDouble() < 0.1)
+            {
+                item = (Item)Activator.CreateInstance(PremiosPascoa[Utility.Random(PremiosPascoa.Length)]);
+            }
+            else
+            {
+                item = new Item(PremiosMenores[Utility.Random(PremiosMenores.Length)]);
+            }
+            from.PlaySound(0x57);
+            item.Name = "Premio de Pascoa";
+            from.AddToBackpack(item);
+            from.SendMessage("Um premio foi colocado em sua mochila");
+            this.Consume(1);
         }
 
         public override void Serialize(GenericWriter writer)

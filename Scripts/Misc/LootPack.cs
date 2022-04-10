@@ -872,6 +872,7 @@ namespace Server
 
                 if (item is BaseWeapon || item is BaseArmor || item is BaseJewel || item is BaseHat || item is TintaMagica || item is Spellbook)
                 {
+                    /*
                     if (Core.AOS)
                     {
                         // Try to generate a new random item based on the creature killed
@@ -918,86 +919,87 @@ namespace Server
                     }
                     else // not aos
                     {
-                        if (item is Spellbook)
-                        {
-                            ((Spellbook)item).Slayer = SlayerGroup.GetLootSlayerType(from.GetType());
-                            item.HueRaridade = 10;
-                        }
-                        if (item is TintaMagica)
-                        {
-                            if (Utility.RandomBool())
-                            {
-                                item.Delete();
-                                return null;
-                            }
-                            ((TintaMagica)item).Slayer = SlayerGroup.GetLootSlayerType(from.GetType());
-                            item.InvalidateProperties();
-                            item.HueRaridade = 10;
-                        }
-                        else if (item is BaseWeapon)
-                        {
-                            BaseWeapon weapon = (BaseWeapon)item;
-
-                            if (80 > Utility.Random(100))
-                            {
-                                weapon.DurabilityLevel = (WeaponDurabilityLevel)GetRandomOldBonus();
-
-                            }
-
-                            if (60 > Utility.Random(100))
-                            {
-                                weapon.AccuracyLevel = (WeaponAccuracyLevel)GetRandomOldBonus();
-                            }
-
-                            if (40 > Utility.Random(100))
-                            {
-                                weapon.DamageLevel = (WeaponDamageLevel)GetRandomOldBonus();
-                            }
-
-                            if (5 > Utility.Random(100))
-                            {
-                                weapon.Slayer = SlayerName.Undeads;
-                            }
-
-                            if (from != null && weapon.AccuracyLevel == 0 && weapon.DamageLevel == 0 && weapon.DurabilityLevel == 0 &&
-                                weapon.Slayer == SlayerName.None && 5 > Utility.Random(100))
-                            {
-                                weapon.Slayer = SlayerGroup.GetLootSlayerType(from.GetType());
-                            }
-
-                            item.HueRaridade = 70;
-                            var soma = (int)weapon.AccuracyLevel + (int)weapon.DamageLevel + (int)weapon.DurabilityLevel;
-                            if (soma >= 10)
-                                item.HueRaridade = 10;
-                            else if (soma >= 5)
-                                item.HueRaridade = 100;
-                            item.ReleaseWorldPackets();
-                            item.Delta(ItemDelta.Update);
-
-                        }
-                        else if (item is BaseArmor)
-                        {
-                            BaseArmor armor = (BaseArmor)item;
-
-                            if (80 > Utility.Random(100))
-                            {
-                                armor.ProtectionLevel = (ArmorProtectionLevel)GetRandomOldBonus();
-                            }
-
-                            if (40 > Utility.Random(100))
-                            {
-                                armor.Durability = (ArmorDurabilityLevel)GetRandomOldBonus();
-                            }
-
-                            var soma = (int)armor.Durability + (int)armor.ProtectionLevel;
-                            if (soma >= 7)
-                                item.HueRaridade = 10;
-                            else if (soma >= 3)
-                                item.HueRaridade = 100;
-                            item.ReleaseWorldPackets();
-                            item.Delta(ItemDelta.Update);
-                        }
+                    */
+                    if (item is Spellbook)
+                    {
+                        ((Spellbook)item).Slayer = SlayerGroup.GetLootSlayerType(from.GetType());
+                        item.HueRaridade = 10;
                     }
+                    else if (item is TintaMagica)
+                    {
+                        if (Utility.RandomBool())
+                        {
+                            item.Delete();
+                            return null;
+                        }
+                        ((TintaMagica)item).Slayer = SlayerGroup.GetLootSlayerType(from.GetType());
+                        item.InvalidateProperties();
+                        item.HueRaridade = 10;
+                    }
+                    else if (item is BaseWeapon)
+                    {
+                        BaseWeapon weapon = (BaseWeapon)item;
+
+                        if (80 > Utility.Random(100))
+                        {
+                            weapon.DurabilityLevel = (WeaponDurabilityLevel)GetRandomOldBonus();
+
+                        }
+
+                        if (60 > Utility.Random(100))
+                        {
+                            weapon.AccuracyLevel = (WeaponAccuracyLevel)GetRandomOldBonus();
+                        }
+
+                        if (40 > Utility.Random(100))
+                        {
+                            weapon.DamageLevel = (WeaponDamageLevel)GetRandomOldBonus();
+                        }
+
+                        if (5 > Utility.Random(100))
+                        {
+                            weapon.Slayer = SlayerName.Undeads;
+                        }
+
+                        if (from != null && weapon.AccuracyLevel == 0 && weapon.DamageLevel == 0 && weapon.DurabilityLevel == 0 &&
+                            weapon.Slayer == SlayerName.None && 5 > Utility.Random(100))
+                        {
+                            weapon.Slayer = SlayerGroup.GetLootSlayerType(from.GetType());
+                        }
+
+                        item.HueRaridade = 70;
+                        var soma = (int)weapon.AccuracyLevel + (int)weapon.DamageLevel + (int)weapon.DurabilityLevel;
+                        if (soma >= 10)
+                            item.HueRaridade = 10;
+                        else if (soma >= 5)
+                            item.HueRaridade = 100;
+                        item.ReleaseWorldPackets();
+                        item.Delta(ItemDelta.Update);
+
+                    }
+                    else if (item is BaseArmor)
+                    {
+                        BaseArmor armor = (BaseArmor)item;
+
+                        if (80 > Utility.Random(100))
+                        {
+                            armor.ProtectionLevel = (ArmorProtectionLevel)GetRandomOldBonus();
+                        }
+
+                        if (40 > Utility.Random(100))
+                        {
+                            armor.Durability = (ArmorDurabilityLevel)GetRandomOldBonus();
+                        }
+
+                        var soma = (int)armor.Durability + (int)armor.ProtectionLevel;
+                        if (soma >= 7)
+                            item.HueRaridade = 10;
+                        else if (soma >= 3)
+                            item.HueRaridade = 100;
+                        item.ReleaseWorldPackets();
+                        item.Delta(ItemDelta.Update);
+                    }
+                    //}
                 }
                 else if (item is BaseInstrument)
                 {
@@ -1023,6 +1025,18 @@ namespace Server
                     instr.Quality = ItemQuality.Normal;
                     instr.Slayer = slayer;
                     instr.HueRaridade = 100;
+                } else if(item is BaseJewel)
+                {
+                    var jc = (BaseJewel)item;
+                    var bonus = 1 + Utility.Random(5);
+                    switch(Utility.Random(5))
+                    {
+                        case 0:  jc.Attributes.LowerManaCost = bonus; break;
+                        case 1: jc.Attributes.WeaponSkillDamage = bonus; break;
+                        case 2: jc.Attributes.WeaponDamage = bonus; break;
+                        case 3: jc.Attributes.SpellDamage = bonus; break;
+                        case 4: jc.Attributes.DefendChance = bonus; break;
+                    }
                 }
 
                 if (item.Stackable)

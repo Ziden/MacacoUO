@@ -13,6 +13,8 @@ namespace Server
         public static bool GUIA { get { return Config.Get("General.Guia", false); } }
         public static bool WHITELIST { get { return Config.Get("General.Whitelist", false); } }
 
+        public static bool PASCOA = true;
+
         public static string BotID { get { return Config.Get("General.BotID", ""); } }
         public static string BotKey { get { return Config.Get("General.BotKey", ""); } }
 

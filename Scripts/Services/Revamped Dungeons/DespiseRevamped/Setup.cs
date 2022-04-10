@@ -67,10 +67,10 @@ namespace Server.Engines.Despise
                 }
                 eable.Free();
 
-                e.Mobile.SendMessage("Despise setup complete");
+                //e.Mobile.SendMessage("Despise setup complete");
             }
             else
-                e.Mobile.SendMessage("Despise appears to already be setup");
+                //e.Mobile.SendMessage("Despise appears to already be setup");
 
             DespiseController.Instance.CheckSpawnersVersion3();
         }

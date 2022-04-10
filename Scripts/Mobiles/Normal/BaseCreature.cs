@@ -3313,6 +3313,15 @@ namespace Server.Mobiles
                     }
                 });
             Shard.Debug("Criado", this);
+
+            if(Shard.PASCOA && Utility.RandomDouble() < 0.02)
+            {
+                Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
+                {
+                    var c = new CoelhoDaPascoa();
+                    c.MoveToWorld(this.Location, this.Map);
+                });
+            }
         }
 
         public BaseCreature(Serial serial)

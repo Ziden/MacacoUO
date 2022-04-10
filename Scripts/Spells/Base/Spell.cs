@@ -591,6 +591,9 @@ namespace Server.Spells
             if (!target.Player && casterEI < 100)
                 casterEI = 100;
 
+            if (!target.Player)
+                targetRS = 0;
+
             if (!target.Player && m_Caster.Player)
             {
                 var bonus = targetRS * Caster.GetBonusElemento(ElementoPvM.Escuridao);
