@@ -45,7 +45,7 @@ namespace Server.Items
                     if (fruit == null)
                         return;
 
-                    if (!from.PlaceInBackpack(fruit))
+                    if (!from._PlaceInBackpack(fruit))
                     {
                         fruit.Delete();
                         from.SendLocalizedMessage(501015); // There is no room in your backpack for the fruit.					

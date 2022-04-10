@@ -154,7 +154,7 @@ namespace Server.Items
                 {
                     HolidayPottedPlant plant = new HolidayPottedPlant(0x11C8 + index);
 
-                    if (!from.PlaceInBackpack(plant))
+                    if (!from._PlaceInBackpack(plant))
                     {
                         plant.Delete();
                         from.SendLocalizedMessage(1078837); // Your backpack is full! Please make room and try again.

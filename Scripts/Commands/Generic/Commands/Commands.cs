@@ -135,7 +135,7 @@ namespace Server.Commands.Generic
 
 			if (item != null)
 			{
-				if (e.Mobile.PlaceInBackpack(item))
+				if (e.Mobile._PlaceInBackpack(item))
 					AddResponse("The item has been placed in your backpack.");
 				else
 					AddResponse("Your backpack could not hold the item.");

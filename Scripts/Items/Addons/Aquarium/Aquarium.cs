@@ -723,7 +723,7 @@ namespace Server.Items
             if (item == null)
                 return;
 
-            if (!to.PlaceInBackpack(item))
+            if (!to._PlaceInBackpack(item))
             {
                 item.Delete();
                 to.SendLocalizedMessage(1074361); // The reward could not be given.  Make sure you have room in your pack.
@@ -799,7 +799,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    if (!from.PlaceInBackpack(fish))
+                    if (!from._PlaceInBackpack(fish))
                     {
                         from.SendLocalizedMessage(1074514); // You have no place to put it.
                         return false;
@@ -815,7 +815,7 @@ namespace Server.Items
             }
             else
             {
-                if (!from.PlaceInBackpack(item))
+                if (!from._PlaceInBackpack(item))
                 {
                     from.SendLocalizedMessage(1074514); // You have no place to put it.
                     return false;

@@ -139,7 +139,7 @@ namespace Server.Engines.Quests.Haven
                                     }
                                 }
 
-                                if (!player.PlaceInBackpack(cont))
+                                if (!player._PlaceInBackpack(cont))
                                 {
                                     cont.Delete();
                                     player.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.
@@ -245,7 +245,7 @@ namespace Server.Engines.Quests.Haven
                             cont.DropItem(new Shovel());
                             cont.DropItem(new UzeraanTurmoilHorn());
 
-                            if (!player.PlaceInBackpack(cont))
+                            if (!player._PlaceInBackpack(cont))
                             {
                                 cont.Delete();
                                 player.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.
@@ -290,7 +290,7 @@ namespace Server.Engines.Quests.Haven
                                     cont.DropItem(new LesserHealPotion());
                             }
 
-                            if (!player.PlaceInBackpack(cont))
+                            if (!player._PlaceInBackpack(cont))
                             {
                                 cont.Delete();
                                 player.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.
@@ -362,7 +362,7 @@ namespace Server.Engines.Quests.Haven
                                 reward = weapon;
                             }
 
-                            if (!player.PlaceInBackpack(reward))
+                            if (!player._PlaceInBackpack(reward))
                             {
                                 reward.Delete();
                                 player.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.
@@ -395,7 +395,7 @@ namespace Server.Engines.Quests.Haven
 
                             cont.DropItem(new EnchantedSextant());
 
-                            if (!player.PlaceInBackpack(cont))
+                            if (!player._PlaceInBackpack(cont))
                             {
                                 cont.Delete();
                                 player.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.

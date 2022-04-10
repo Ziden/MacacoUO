@@ -300,7 +300,7 @@ namespace Server.Items
 						wax = new RawBeeswax(m_pot.RawBeeswax);
 					}
 
-					if ( !from.PlaceInBackpack( wax ) )
+					if ( !from._PlaceInBackpack( wax ) )
 					{
 						wax.Delete();
 						from.PrivateOverheadMessage( 0, 1154, false,  "Nao tem espaco em sua mochila!", from.NetState );
@@ -357,7 +357,7 @@ namespace Server.Items
 					{//give slumgum
 						Item gum = new Slumgum( Math.Max( 1, waste ) );
 
-						if ( !from.PlaceInBackpack( gum ) )
+						if ( !from._PlaceInBackpack( gum ) )
 							gum.Delete();
 					}
 

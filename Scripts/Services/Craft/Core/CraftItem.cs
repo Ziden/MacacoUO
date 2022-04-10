@@ -2052,7 +2052,7 @@ namespace Server.Engines.Craft
 
                             if (hammer.UsesRemaining < 1)
                             {
-                                from.PlaceInBackpack(hammer);
+                                from._PlaceInBackpack(hammer);
                             }
                         }
                         else

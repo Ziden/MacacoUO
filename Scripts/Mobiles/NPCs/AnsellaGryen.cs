@@ -93,7 +93,7 @@ namespace Server.Engines.Quests.Zento
                             }
                         }
 
-                        if (player.PlaceInBackpack(cont))
+                        if (player._PlaceInBackpack(cont))
                         {
                             obj.Complete();
                         }

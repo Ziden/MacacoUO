@@ -375,7 +375,7 @@ namespace VitaNex.Modules.TrashCollection
 
 				var waste = new SepticWaste(Products);
 
-				if (m.PlaceInBackpack(waste))
+				if (m._PlaceInBackpack(waste))
 				{
 					m.SendMessage(0x55, "You gather the decomposed waste and place it in your backpack.");
 				}

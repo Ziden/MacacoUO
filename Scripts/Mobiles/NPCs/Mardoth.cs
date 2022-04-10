@@ -172,7 +172,7 @@ namespace Server.Engines.Quests.Necro
 
                                 cont.DropItem(new EnchantedSextant());
 
-                                if (!player.PlaceInBackpack(cont))
+                                if (!player._PlaceInBackpack(cont))
                                 {
                                     cont.Delete();
                                     player.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.

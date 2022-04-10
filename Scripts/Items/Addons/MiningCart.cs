@@ -256,7 +256,7 @@ namespace Server.Items
                             int amount = Math.Min(10, m_Ore);
                             ingots.Amount = amount;
 
-                            if (!from.PlaceInBackpack(ingots))
+                            if (!from._PlaceInBackpack(ingots))
                             {
                                 ingots.Delete();
                                 from.SendLocalizedMessage(1078837); // Your backpack is full! Please make room and try again.
@@ -330,7 +330,7 @@ namespace Server.Items
                             int amount = Math.Min(5, m_Gems);
                             gems.Amount = amount;
 
-                            if (!from.PlaceInBackpack(gems))
+                            if (!from._PlaceInBackpack(gems))
                             {
                                 gems.Delete();
                                 from.SendLocalizedMessage(1078837); // Your backpack is full! Please make room and try again.

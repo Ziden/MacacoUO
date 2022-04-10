@@ -127,7 +127,7 @@ namespace Server.Items
                     int amount = Math.Min(10, m_Logs);
                     logs.Amount = amount;
 
-                    if (!from.PlaceInBackpack(logs))
+                    if (!from._PlaceInBackpack(logs))
                     {
                         logs.Delete();
                         from.SendLocalizedMessage(1078837); // Your backpack is full! Please make room and try again.

@@ -570,7 +570,7 @@ namespace Server.Engines.Quests
                     amount = 1;
                 }
 						
-                if (!Quest.Owner.PlaceInBackpack(item))
+                if (!Quest.Owner._PlaceInBackpack(item))
                 {
                     Quest.Owner.SendLocalizedMessage(503200); // You do not have room in your backpack for 
                     Quest.Owner.SendLocalizedMessage(1075574); // Could not create all the necessary items. Your quest has not advanced.

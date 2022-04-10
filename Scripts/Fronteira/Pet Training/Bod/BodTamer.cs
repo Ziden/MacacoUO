@@ -176,7 +176,7 @@ namespace Server.Engines.BulkOrders
                     vendor.SayTo(from, true, "Achei que teria trabalho mas me enganei, me desculpe");
                     return;
                 }
-                if(!from.PlaceInBackpack(bod))
+                if(!from._PlaceInBackpack(bod))
                     from.BankBox.AddItem(bod);
                 vendor.SayTo(from, true, "Complete esta ordem de trabalho domando animais que lhe ensinarei mais sobre a arte de domar animais.");
             }

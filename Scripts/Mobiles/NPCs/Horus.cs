@@ -102,7 +102,7 @@ namespace Server.Engines.Quests.Necro
                                 BaseRunicTool.ApplyAttributesTo(jewel, 3, 20, 40);
                             cont.DropItem(jewel);
 
-                            if (!pm.PlaceInBackpack(cont))
+                            if (!pm._PlaceInBackpack(cont))
                             {
                                 cont.Delete();
                                 pm.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.

@@ -146,7 +146,7 @@ namespace Server.Engines.Quests.Matriarch
         {
             Gold gold = new Gold(Utility.RandomMinMax(250, 350));
 
-            if (player.PlaceInBackpack(gold))
+            if (player._PlaceInBackpack(gold))
             {
                 player.SendLocalizedMessage(1054076); // You have been given some gold.
                 return true;

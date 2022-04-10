@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using Server.Items;
+using Server.Multis.Deeds;
 
 namespace Server.Multis
 {
@@ -249,6 +250,11 @@ namespace Server.Multis
             }
         }
 
+        public override HouseDeed GetDeed()
+        {
+            return new TrinsicKeepDeed();
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
@@ -271,6 +277,7 @@ namespace Server.Multis
             new Rectangle2D(-2, 16, 6, 1),
             new Rectangle2D(5, 16, 11, 1) 
         };
+
 
         public GothicRoseCastle(Mobile owner)
             : base(ContestHouseType.Castle, 0x147F, owner, 3281, 28)
@@ -495,6 +502,11 @@ namespace Server.Multis
     {
         public static Rectangle2D[] AreaArray { get; internal set; }
 
+        public override HouseDeed GetDeed()
+        {
+            return new RobinsNestDeed();
+        }
+
         public RobinsNest(Mobile owner)
             : base(ContestHouseType.Keep, 0x1484, owner, 2113, 18)
         {
@@ -704,6 +716,12 @@ namespace Server.Multis
     public class CasaMoga : BaseContestHouse
     {
         public static Rectangle2D[] AreaArray { get; internal set; }
+
+
+        public override HouseDeed GetDeed()
+        {
+            return new CasaMogaDeed();
+        }
 
         public CasaMoga(Mobile owner)
             : base(ContestHouseType.Keep, 0x1489, owner, 2113, 18)

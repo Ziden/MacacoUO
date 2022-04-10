@@ -115,25 +115,28 @@ Tem certeza que deseja continuar?", 32512, false, true);
 
 						if (m_House.IsAosRules)
 						{
-							if (m_House.Price > 0)
-							{
-								toGive = new BankCheck(m_House.Price);
-							}
-							else
-							{
-								toGive = m_House.GetDeed();
-							}
+                            var deed = m_House.GetDeed();
+                            if(deed != null)
+                            {
+                                toGive = deed;
+                            } else
+                            {
+                                toGive = new BankCheck(m_House.Price);
+                            }
+                           
 						}
 						else
 						{
-                            if(m_House.Price > 0)
+                            var deed = m_House.GetDeed();
+                            if (deed != null)
+                            {
+                                toGive = deed;
+                            }
+                            else
                             {
                                 toGive = new BankCheck(m_House.Price);
-                            } else
-                            {
-                                toGive = m_House.GetDeed();
                             }
-						}
+                        }
 
 						if (AccountGold.Enabled && toGive is BankCheck)
 						{

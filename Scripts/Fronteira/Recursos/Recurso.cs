@@ -305,7 +305,7 @@ namespace Server.Fronteira.Recursos
 
         public virtual bool Give(Mobile m, Item item, bool placeAtFeet)
         {
-            if (m.PlaceInBackpack(item))
+            if (m._PlaceInBackpack(item))
                 return true;
 
             if (!placeAtFeet)

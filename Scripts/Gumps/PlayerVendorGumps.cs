@@ -72,7 +72,7 @@ namespace Server.Gumps
                 {
                     m_Vendor.SayTo(from, "Voce nao tem dinheiro suficiente"); // You cannot afford this item.
                 }
-                else if (!from.PlaceInBackpack(m_VI.Item))
+                else if (!from._PlaceInBackpack(m_VI.Item))
                 {
                     m_Vendor.SayTo(from, "Voce nao tem espaco na mochila"); // You do not have room in your backpack for 
                 }

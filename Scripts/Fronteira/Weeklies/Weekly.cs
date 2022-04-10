@@ -50,61 +50,60 @@ namespace Server.Fronteira.Weeklies
             }
         }
 
-
         public KillCombo[][] Possiveis = new KillCombo[][]
         {
             // Ice
             new KillCombo [] {
-                 new KillCombo("Aranha do Gelo", typeof(FrostSpider), 400),
-                 new KillCombo("Elemental da Neve", typeof(SnowElemental), 400),
+                 new KillCombo("Aranha do Gelo", typeof(FrostSpider), 200),
+                 new KillCombo("Elemental da Neve", typeof(SnowElemental), 200),
             },
 
             // Fire
             new KillCombo [] {
-                 new KillCombo("Aranha do Gelo", typeof(LavaLizard), 400),
-                 new KillCombo("Elemental da Neve", typeof(LavaSerpent), 400),
+                 new KillCombo("Aranha do Gelo", typeof(LavaLizard), 200),
+                 new KillCombo("Elemental da Neve", typeof(LavaSerpent), 200),
             },
 
             // Shame
             new KillCombo [] {
-                 new KillCombo("Grande Elemental da Terra", typeof(GreaterEarthElemental), 400),
-                 new KillCombo("Magolho Anciao", typeof(ElderGazer), 200),
+                 new KillCombo("Grande Elemental da Terra", typeof(GreaterEarthElemental), 200),
+                 new KillCombo("Magolho Anciao", typeof(ElderGazer), 100),
             },
 
             // Destard
             new KillCombo [] {
-                 new KillCombo("Dragao", typeof(Dragon), 150),
-                 new KillCombo("Drake", typeof(Drake), 300),
+                 new KillCombo("Dragao", typeof(Dragon), 100),
+                 new KillCombo("Drake", typeof(Drake), 200),
             },
 
             // Hythloth
             new KillCombo [] {
-                 new KillCombo("Capeta", typeof(CrystalDaemon), 100),
-                 new KillCombo("Demonio", typeof(Daemon), 500),
+                 new KillCombo("Capeta", typeof(CrystalDaemon), 60),
+                 new KillCombo("Demonio", typeof(Daemon), 200),
             },
 
             // Wrong
             new KillCombo [] {
-                 new KillCombo("Lagarto Defensor", typeof(LizardmanDefender), 400),
-                 new KillCombo("Lagarto Agressivo", typeof(LizardmanSquatter), 400),
+                 new KillCombo("Lagarto Defensor", typeof(LizardmanDefender), 200),
+                 new KillCombo("Lagarto Agressivo", typeof(LizardmanSquatter), 200),
             },
 
             // Despise
             new KillCombo [] {
-                 new KillCombo("Rotting Corpse", typeof(RottingCorpse), 300),
-                 new KillCombo("Elfo Anarquista", typeof(ElfBrigand), 300),
+                 new KillCombo("Rotting Corpse", typeof(RottingCorpse), 100),
+                 new KillCombo("Elfo Anarquista", typeof(ElfBrigand), 100),
             },
 
             // Orc Cave
             new KillCombo [] {
-                 new KillCombo("Orc", typeof(Orc), 600),
+                 new KillCombo("Orc", typeof(Orc), 200),
                  new KillCombo("Orc Mago", typeof(OrcishMage), 200),
             },
 
             // Goblins
             new KillCombo [] {
-                 new KillCombo("Goblin Alquimista", typeof(GreenGoblinAlchemist), 400),
-                 new KillCombo("Goblin Mago", typeof(GreenGoblinMage), 400),
+                 new KillCombo("Goblin Alquimista", typeof(GreenGoblinAlchemist), 100),
+                 new KillCombo("Goblin Mago", typeof(GreenGoblinMage), 100),
             }
         };
 

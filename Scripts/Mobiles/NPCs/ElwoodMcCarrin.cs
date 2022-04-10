@@ -215,7 +215,7 @@ namespace Server.Engines.Quests.Collector
 
             bag.DropItem(new Obsidian());
 
-            if (to.PlaceInBackpack(bag))
+            if (to._PlaceInBackpack(bag))
             {
                 return true;
             }

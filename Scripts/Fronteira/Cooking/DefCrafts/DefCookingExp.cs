@@ -718,7 +718,6 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(DriedHerbs), "Ervas Secas", 10, "Voce precisa de ervas secas");
             AddRes(index, typeof(Carrot), "Cenoura", 10, "Voce precisa cenouras");
             AddRes(index, typeof(Sausage), "Salsicha", 5, "Voce precisa de salsichas suinas");
-            AddRecipe(index, (int)CookRecipesExp.VenisonRoast);
             SetNeedHeat(index, true);
 
             index = AddCraft(typeof(GreenTea), 1044496, 1030315, 80.0, 120.0, typeof(GreenTeaBasket), 1030316, 1, 1044253);

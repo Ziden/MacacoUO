@@ -269,7 +269,7 @@ namespace Server.Items
                 if (statue == null)
                     return;
 
-                if (!from.PlaceInBackpack(statue))
+                if (!from._PlaceInBackpack(statue))
                 {
                     statue.Delete();
                     from.SendLocalizedMessage(1078837); // Your backpack is full! Please make room and try again.

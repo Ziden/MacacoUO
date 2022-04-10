@@ -9,7 +9,7 @@ namespace Server.Mobiles
 		[Constructable]
 		public SentinelSpider() : base( AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4 )
 		{
-			Name = "a Sentinel spider";
+			Name = "aranha sentinela";
 			Body = 0x9d;
             Hue = 1141;
 			BaseSoundID = 0x388;

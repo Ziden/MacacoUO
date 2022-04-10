@@ -191,7 +191,7 @@ namespace Server.Misc
 					killer.PlaySound(0x5B4);
                     pm.SendLocalizedMessage(1062317); // For your valor in combating the fallen beast, a special artifact has been bestowed on you.
 					
-                    if (!pm.PlaceInBackpack(i))
+                    if (!pm._PlaceInBackpack(i))
                     {
                         if (pm.BankBox != null && pm.BankBox.TryDropItem(killer, i, false))
                             pm.SendLocalizedMessage(1079730); // The item has been placed into your bank box.

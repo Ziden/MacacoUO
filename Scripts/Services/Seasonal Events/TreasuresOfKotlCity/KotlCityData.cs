@@ -71,7 +71,7 @@ namespace Server.Engines.Points
                         damager.PlaySound(0x5B4);
                         damager.SendLocalizedMessage(1062317); // For your valor in combating the fallen beast, a special artifact has been bestowed on you.
 
-                        if (!damager.PlaceInBackpack(i))
+                        if (!damager._PlaceInBackpack(i))
                         {
                             if (damager.BankBox != null && damager.BankBox.TryDropItem(damager, i, false))
                                 damager.SendLocalizedMessage(1079730); // The item has been placed into your bank box.

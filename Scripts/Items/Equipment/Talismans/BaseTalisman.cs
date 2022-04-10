@@ -699,7 +699,7 @@ namespace Server.Items
 
                         for (int i = 0; i < count; i++)
                         {
-                            from.PlaceInBackpack(item);
+                            from._PlaceInBackpack(item);
 
                             if (i + 1 < count)
                                 item = Activator.CreateInstance(type) as Item;

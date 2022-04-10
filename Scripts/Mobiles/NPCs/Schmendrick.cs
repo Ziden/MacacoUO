@@ -99,7 +99,7 @@ namespace Server.Engines.Quests.Haven
 
                 Item scroll = new SchmendrickScrollOfPower();
 
-                if (!from.PlaceInBackpack(scroll))
+                if (!from._PlaceInBackpack(scroll))
                 {
                     scroll.Delete();
                     from.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.

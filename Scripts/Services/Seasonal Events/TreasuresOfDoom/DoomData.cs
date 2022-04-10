@@ -64,7 +64,7 @@ namespace Server.Engines.Points
                         damager.PlaySound(0x5B4);
                         damager.SendLocalizedMessage(1155588); // You notice the crest of Doom on your fallen foe's equipment and decide it may be of some value...
 
-                        if (!damager.PlaceInBackpack(i))
+                        if (!damager._PlaceInBackpack(i))
                         {
                             if (damager.BankBox != null && damager.BankBox.TryDropItem(damager, i, false))
                                 damager.SendLocalizedMessage(1079730); // The item has been placed into your bank box.

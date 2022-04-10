@@ -62,9 +62,9 @@ namespace Server.Engines.Quests
         {
             PointsSystem.Exp.AwardPoints(this.Owner, 500);
             this.Owner.PlaySound(this.CompleteSound);
-            this.Owner.PlaceInBackpack(new CombatSkillBook());
-            this.Owner.PlaceInBackpack(new CombatSkillBook());
-            this.Owner.PlaceInBackpack(new CombatSkillBook());
+            this.Owner._PlaceInBackpack(new CombatSkillBook());
+            this.Owner._PlaceInBackpack(new CombatSkillBook());
+            this.Owner._PlaceInBackpack(new CombatSkillBook());
         }
 
         public override void OnAccept()

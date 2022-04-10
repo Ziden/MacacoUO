@@ -71,7 +71,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    if (from.PlaceInBackpack(fish))
+                    if (from._PlaceInBackpack(fish))
                     {
                         from.PlaySound(0x5A2);
                         from.SendLocalizedMessage(1074490); // A live creature flops around in your pack before running out of air.
@@ -92,7 +92,7 @@ namespace Server.Items
             this.InUse = false;
             this.Movable = true;
 
-            if (!from.PlaceInBackpack(this))
+            if (!from._PlaceInBackpack(this))
             {
                 if (from.Map == null || from.Map == Map.Internal)
                     this.Delete();
@@ -190,7 +190,7 @@ namespace Server.Items
 
             Item replacement = this.CreateReplacement();
 
-            if (!from.PlaceInBackpack(replacement))
+            if (!from._PlaceInBackpack(replacement))
             {
                 replacement.Delete();
                 from.SendLocalizedMessage(500720); // You don't have enough room in your backpack!

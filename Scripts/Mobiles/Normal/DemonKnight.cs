@@ -188,10 +188,10 @@ namespace Server.Mobiles
             if (Utility.RandomDouble() < 0.2)
             {
                 pm.PlaySound(0x5B4);
-                pm.PlaceInBackpack(new ValeDecoracaoRara());
+                pm._PlaceInBackpack(new ValeDecoracaoRara());
             }
 
-            pm.PlaceInBackpack(new CombatSkillBook());
+            pm._PlaceInBackpack(new CombatSkillBook());
 
             if (!Core.AOS)
                 return;
@@ -243,7 +243,7 @@ namespace Server.Mobiles
 
                     pm.PlaySound(0x5B4);
 
-                    if (!pm.PlaceInBackpack(i))
+                    if (!pm._PlaceInBackpack(i))
                     {
                         if (pm.BankBox != null && pm.BankBox.TryDropItem(killer, i, false))
                             pm.SendLocalizedMessage(1079730); // The item has been placed into your bank box.

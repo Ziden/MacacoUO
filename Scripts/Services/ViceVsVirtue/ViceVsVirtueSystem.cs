@@ -472,7 +472,7 @@ namespace Server.Engines.VvV
             if (m.IsYoung() || m.Guild == null)
                 return false;
 
-            if (m.IsCooldown("gi"))
+            if (m.IsCooldown("gi") && !(m.Region is GuardedRegion))
                 return true;
 
             VvVPlayerEntry entry = Instance.GetPlayerEntry<VvVPlayerEntry>(m as PlayerMobile);

@@ -236,7 +236,7 @@ namespace Server.Fronteira.Armory
                 {
                     var dupe = Mobile.LiftItemDupe(item, i.qtd);
                 } 
-                from.PlaceInBackpack(item);
+                from._PlaceInBackpack(item);
                 if (item.Layer != Layer.Invalid && from is PlayerMobile)
                 {
                     ((PlayerMobile)from).SmoothForceEquip(item);

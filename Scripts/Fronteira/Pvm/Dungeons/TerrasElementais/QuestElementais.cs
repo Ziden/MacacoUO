@@ -31,7 +31,7 @@ namespace Server.Engines.Quests
 <br> - O homem levanta a mao vazia. Ao desviar o olhar para a face do homem e a para a mao dele novamente, existem agora algumas moedas na mao do homem.
 <br> Preciso de... carvao, para o fogo, uma pedra de potassio para o gosto, po preto para a cor e o toque final, salpiro !
 <br> Me traga 50 de...... ";
-            
+
             }
         }
         public override object Refuse
@@ -60,22 +60,32 @@ namespace Server.Engines.Quests
         public QuestElementais()
             : base()
         {
-            switch (Utility.Random(4))
-            {
-                case 0: this.AddObjective(new ObtainObjective(typeof(Saltpeter), "Salpiro", 50)); break;
-                case 1: this.AddObjective(new ObtainObjective(typeof(Potash), "Potassa", 50)); break;
-                case 2: this.AddObjective(new ObtainObjective(typeof(Charcoal), "Carvao", 50)); break;
-                case 3: this.AddObjective(new ObtainObjective(typeof(BlackPowder), "Po Preto", 50)); break;
-            }
-            this.AddReward(new BaseReward(typeof(Gold), 5000, "5000 Moedas de Ouro"));
+            this.AddObjective(new ObtainObjective(typeof(Saltpeter), "Salpiro", 10));
+            this.AddObjective(new ObtainObjective(typeof(Potash), "Potassa", 10));
+            this.AddObjective(new ObtainObjective(typeof(Charcoal), "Carvao", 10));
+            this.AddObjective(new ObtainObjective(typeof(BlackPowder), "Po Preto", 10));
+
+            this.AddReward(new BaseReward(typeof(Gold), 2000, "5000 Moedas de Ouro"));
             this.AddReward(new BaseReward(typeof(CaixaDeGold), 1, "Caixa Totalmente Convencional"));
-            this.AddReward(new BaseReward(typeof(SkillBook), 1, "Livro Cientifico"));
-            this.AddReward(new BaseReward(typeof(LivroAntigo), 1, "Livro Antigo"));
+            this.AddReward(new BaseReward(typeof(CombatSkillBook), 1, "Livro de Combate"));
+            this.AddReward(new BaseReward(typeof(LivroAntigo), 1, "Arma Aleatoria"));
         }
 
         public override void OnCompleted()
         {
-            PointsSystem.Exp.AwardPoints(this.Owner, 300);
+            BaseWeapon arma = null;
+            if (Owner.Skills.Swords.Value > 50)
+                arma = new Katana();
+            else if (Owner.Skills.Fencing.Value > 50)
+                arma = new Spear();
+            else if (Owner.Skills.Macing.Value > 50)
+                arma = new WarHammer();
+            else
+                arma = Loot.RandomWeapon();
+            arma.Resource = CraftResource.Lazurita;
+            arma.Quality = ItemQuality.Exceptional;
+            Owner.AddToBackpack(arma);
+            PointsSystem.Exp.AwardPoints(this.Owner, 500);
             this.Owner.PlaySound(this.CompleteSound);
         }
 

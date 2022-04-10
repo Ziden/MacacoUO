@@ -69,7 +69,7 @@ namespace Server.Engines.Quests.Ninja
                 {
                     Item note = new NoteForZoel();
 
-                    if (player.PlaceInBackpack(note))
+                    if (player._PlaceInBackpack(note))
                     {
                         qs.AddConversation(new LostNoteConversation());
                     }
@@ -99,7 +99,7 @@ namespace Server.Engines.Quests.Ninja
                         {
                             Item note = new NoteForZoel();
 
-                            if (player.PlaceInBackpack(note))
+                            if (player._PlaceInBackpack(note))
                             {
                                 obj.Complete();
 
@@ -126,7 +126,7 @@ namespace Server.Engines.Quests.Ninja
                                 cont.DropItem(new LeatherNinjaHood());
                                 cont.DropItem(new LeatherNinjaJacket());
 
-                                if (player.PlaceInBackpack(cont))
+                                if (player._PlaceInBackpack(cont))
                                 {
                                     obj.Complete();
                                 }
@@ -168,7 +168,7 @@ namespace Server.Engines.Quests.Ninja
                                             else
                                                 BaseRunicTool.ApplyAttributesTo(kama, 1, 10, 30);
 
-                                            if (player.PlaceInBackpack(kama))
+                                            if (player._PlaceInBackpack(kama))
                                             {
                                                 katana.Delete();
                                                 obj.Complete();

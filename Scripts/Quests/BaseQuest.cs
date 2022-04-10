@@ -456,7 +456,7 @@ namespace Server.Engines.Quests
 
                     for (int j = 0; j < m_Rewards[i].Amount; j ++)
                     {
-                        if (!m_Owner.PlaceInBackpack(reward))
+                        if (!m_Owner._PlaceInBackpack(reward))
                         {
                             reward.MoveToWorld(m_Owner.Location, m_Owner.Map);
                         }

@@ -184,7 +184,7 @@ namespace Server.Items
 
                 flour.ItemID = (Utility.RandomBool() ? 4153 : 4165);
 
-                if (from.PlaceInBackpack(flour))
+                if (from._PlaceInBackpack(flour))
                 {
                     this.m_Flour = 0;
                 }

@@ -11495,7 +11495,7 @@ namespace Server
             }
         }
 
-        public bool PlaceInBackpack(Item item)
+        public bool _PlaceInBackpack(Item item)
         {
             if (item == null || item.Deleted)
             {
@@ -11514,7 +11514,7 @@ namespace Server
                 return false;
             }
 
-            if (!PlaceInBackpack(item))
+            if (!_PlaceInBackpack(item))
             {
                 Point3D loc = m_Location;
                 Map map = m_Map;

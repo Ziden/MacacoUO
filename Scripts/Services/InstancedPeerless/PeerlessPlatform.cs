@@ -118,7 +118,7 @@ namespace Server.Engines.InstancedPeerless
 				if ( returnKeys )
 				{
 					key.Movable = true;
-					m_Summoner.PlaceInBackpack( key );
+					m_Summoner._PlaceInBackpack( key );
 				}
 				else
 					key.Delete();

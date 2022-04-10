@@ -220,7 +220,7 @@ namespace Server.Mobiles
                         p.Wisp.MataMago();
                         if(p.Young)
                         {
-                            p.PlaceInBackpack(new ParalyzeScroll());
+                            p._PlaceInBackpack(new ParalyzeScroll());
                         }
                     }
                 }

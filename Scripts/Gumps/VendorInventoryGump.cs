@@ -86,7 +86,7 @@ namespace Server.Gumps
 
                 totalItems += 1 + item.TotalItems;
 
-                if (from.PlaceInBackpack(item))
+                if (from._PlaceInBackpack(item))
                 {
                     inventory.Items.RemoveAt(i);
                     givenToBackpack += 1 + item.TotalItems;

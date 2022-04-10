@@ -164,7 +164,7 @@ namespace Server.Engines.Quests.Hag
                                 if (player.BAC > 0)
                                     cont.DropItem(new HangoverCure());
 
-                                if (player.PlaceInBackpack(cont))
+                                if (player._PlaceInBackpack(cont))
                                 {
                                     bool gainedPath = false;
 

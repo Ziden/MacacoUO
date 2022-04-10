@@ -73,7 +73,7 @@ namespace Server.Engines.SorcerersDungeon
                         damager.PlaySound(0x5B4);
                         damager.SendLocalizedMessage(1157613); // You notice some of your fallen foes' equipment to be of enchanted origin and decide it may be of some value...
 
-                        if (!damager.PlaceInBackpack(i))
+                        if (!damager._PlaceInBackpack(i))
                         {
                             if (damager.BankBox != null && damager.BankBox.TryDropItem(damager, i, false))
                                 damager.SendLocalizedMessage(1079730); // The item has been placed into your bank box.

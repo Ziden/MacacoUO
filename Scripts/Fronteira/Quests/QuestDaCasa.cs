@@ -90,7 +90,7 @@ namespace Server.Engines.Quests
             {
                 pegaram.Add(Owner.NetState.Address.ToString());
                 conta.Casa = true;
-                this.Owner.PlaceInBackpack(new StonePlasterHouseDeed());
+                this.Owner._PlaceInBackpack(new StonePlasterHouseDeed());
                 this.Owner.SendMessage("Voce ganhou uma escritura para uma casa !");
                 var npc = Quester as BaseVendor;
                 if (npc != null)

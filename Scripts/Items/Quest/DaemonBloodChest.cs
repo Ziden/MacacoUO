@@ -33,7 +33,7 @@ namespace Server.Engines.Quests.Haven
                     {
                         Item vial = new QuestDaemonBlood();
 
-                        if (player.PlaceInBackpack(vial))
+                        if (player._PlaceInBackpack(vial))
                         {
                             player.SendLocalizedMessage(1049331, "", 0x22); // You take a vial of blood from the chest and put it in your pack.
 

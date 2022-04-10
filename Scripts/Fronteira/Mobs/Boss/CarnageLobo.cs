@@ -10,6 +10,8 @@ namespace Server.Mobiles
     [CorpseName("a dragon wolf corpse")]
     public class CarnageLobo : BaseCreature
     {
+        public override bool CanBeParagon => false;
+
         [Constructable]
         public CarnageLobo()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.05, 0.5)

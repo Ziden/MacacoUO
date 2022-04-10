@@ -162,7 +162,7 @@ namespace Server.Mobiles
             Item item = m.FindItemOnLayer(layer);
 
             if (item != null && item.Movable)
-                m.PlaceInBackpack(item);
+                m._PlaceInBackpack(item);
         }
 
         #endregion

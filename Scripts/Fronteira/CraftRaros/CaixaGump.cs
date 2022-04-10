@@ -60,7 +60,7 @@ namespace Server.Gumps
                 var local = caixa.Location;
                 caixa.Consume();
                 var item = Decos.SuperRandomDeco();
-                from.PlaceInBackpack(item);
+                from._PlaceInBackpack(item);
                 item.Location = local;
                 from.SendMessage("Voce abriu a caixa misteriosa");
                 item.PrivateOverheadMessage(MessageType.Regular, 0, true, "* abriu *", from.NetState);
@@ -113,7 +113,7 @@ namespace Server.Gumps
                 var local = caixa.Location;
                 caixa.Consume();
                 var item = Decos._RandomDecoComum();
-                from.PlaceInBackpack(item);
+                from._PlaceInBackpack(item);
                 item.Location = local;
                 from.SendMessage("Voce abriu a caixa misteriosa");
                 item.PrivateOverheadMessage(MessageType.Regular, 0, true, "* abriu *", from.NetState);

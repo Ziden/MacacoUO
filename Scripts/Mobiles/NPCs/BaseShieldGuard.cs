@@ -139,7 +139,7 @@ namespace Server.Mobiles
                         this.Say(1007110); // Why dost thou ask about virtue guards when thou art one?
                         shield.Delete();
                     }
-                    else if (from.PlaceInBackpack(shield))
+                    else if (from._PlaceInBackpack(shield))
                     {
                         this.Say(Utility.Random(1007101, 5));
                         this.Say(1007139); // I see you are in need of our shield, Here you go.

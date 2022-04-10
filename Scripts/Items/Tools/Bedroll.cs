@@ -112,7 +112,7 @@ namespace Server.Items
                 if (info.ButtonID == 1 && this.m_Entry.Safe && this.m_Bedroll.Parent == null && this.m_Bedroll.IsAccessibleTo(pm) &&
                     this.m_Bedroll.VerifyMove(pm) && this.m_Bedroll.Map == pm.Map && pm.InRange(this.m_Bedroll, 2))
                 {
-                    pm.PlaceInBackpack(this.m_Bedroll);
+                    pm._PlaceInBackpack(this.m_Bedroll);
 
                     pm.BedrollLogout = true;
                     sender.Dispose();

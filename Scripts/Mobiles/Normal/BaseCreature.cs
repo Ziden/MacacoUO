@@ -3129,7 +3129,7 @@ namespace Server.Mobiles
                         foreach (Item s in list)
                         {
                             //corpse.AddCarvedItem(s, from);
-                            if (!from.PlaceInBackpack(s))
+                            if (!from._PlaceInBackpack(s))
                             {
                                 corpse.AddCarvedItem(s, from);
                                 allPack = false;

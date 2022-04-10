@@ -41,7 +41,7 @@ namespace Server.Engines.Quests.Necro
                     {
                         Item scroll = new KronusScroll();
 
-                        if (pm.PlaceInBackpack(scroll))
+                        if (pm._PlaceInBackpack(scroll))
                         {
                             pm.SendLocalizedMessage(1060120, "", 0x41); // You rummage through the scrolls until you find the Scroll of Calling.  You quickly put it in your pack.
 

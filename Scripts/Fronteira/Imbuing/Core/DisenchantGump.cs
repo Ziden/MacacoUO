@@ -100,7 +100,7 @@ namespace Server.Gumps
                         item.Delete();
                         var essencia = new EssenciaMagica();
                         essencia.Amount = cristais;
-                        from.PlaceInBackpack(essencia);
+                        from._PlaceInBackpack(essencia);
 
                         break;
                     }

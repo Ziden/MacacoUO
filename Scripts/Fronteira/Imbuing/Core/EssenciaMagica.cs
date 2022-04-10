@@ -104,7 +104,7 @@ namespace Server.Ziden
             Effects.SendTargetParticles(from, 0x375A, 35, 90, 0x00, 0x00, 9502, (EffectLayer)255, 0x100);
 
             this.Consume(custo);
-            from.PlaceInBackpack(new PedraMagica());
+            from._PlaceInBackpack(new PedraMagica());
             from.SendMessage("Voce transformou as essencias em um po magico e guardou em uma garrafa");
             //from.CheckSkillMult(SkillName.TasteID, 0, 80);
             from.PlayAttackAnimation();

@@ -445,7 +445,7 @@ namespace VitaNex.Modules.EquipmentSets
 		{
 			foreach (var p in GenerateParts(setType))
 			{
-				if (!owner.EquipItem(p) && (!owner.Player || !owner.PlaceInBackpack(p)))
+				if (!owner.EquipItem(p) && (!owner.Player || !owner._PlaceInBackpack(p)))
 				{
 					p.Delete();
 					continue;

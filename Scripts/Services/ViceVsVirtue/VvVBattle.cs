@@ -254,6 +254,7 @@ namespace Server.Engines.VvV
             Warned = new List<Mobile>();
             Turrets = new List<CannonTurret>();
 
+            /*
             for (int i = 0; i < 7; i++)
             {
                 if (!System.ExemptCities.Contains((VvVCity)i) && (VvVCity)i != newCity)
@@ -269,6 +270,8 @@ namespace Server.Engines.VvV
                 System.SendVvVMessage("As cidades estao vazias.");
                 return;
             }
+            */
+            newCity = VvVCity.Trinsic;
 
             ColUtility.Free(cities);
             City = newCity;

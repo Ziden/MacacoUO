@@ -65,7 +65,7 @@ namespace Server.Engines.Quests.Collector
                 {
                     Item paints = new EnchantedPaints();
 
-                    if (!player.PlaceInBackpack(paints))
+                    if (!player._PlaceInBackpack(paints))
                     {
                         paints.Delete();
                         player.SendLocalizedMessage(1046260); // You need to clear some space in your inventory to continue with the quest.  Come back here when you have more space in your inventory.

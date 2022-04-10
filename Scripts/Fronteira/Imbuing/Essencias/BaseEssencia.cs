@@ -64,7 +64,7 @@ namespace Server.Items
                 brace.Bonus = 5 + Utility.Random(41);
             if (Utility.RandomDouble() < 0.1)
                 brace.Tipo = TipoJoias.Arco;
-            from.PlaceInBackpack(brace);
+            from._PlaceInBackpack(brace);
             brace.Crafter = from;
             tem.UsesRemaining -= 30;
             if (tem.UsesRemaining <= 0)
@@ -195,7 +195,7 @@ namespace Server.Items
             }
             this.Consume(QTD);
             var colar = new ColarElemental(this.Elemento);
-            from.PlaceInBackpack(colar);
+            from._PlaceInBackpack(colar);
             colar.Crafter = from;
             from.SendMessage("Voce criou um colar elemental elemental");
             SkillCheck.Gain(from, from.Skills.Imbuing, 5);

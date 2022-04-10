@@ -31,7 +31,6 @@ namespace Server.Ziden.Achievements
         }
     }
 
-
     public class VitoriaFFA : Bag
     {
         [Constructable]

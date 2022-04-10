@@ -155,7 +155,7 @@ namespace Server.Engines.Plants
                         {
                             Item resource = resInfo.CreateResource();
 
-                            if (from.PlaceInBackpack(resource))
+                            if (from._PlaceInBackpack(resource))
                             {
                                 system.AvailableResources--;
                                 m_Plant.LabelTo(from, 1053059); // You gather resources from the plant.
@@ -189,7 +189,7 @@ namespace Server.Engines.Plants
                         {
                             Item Rseed = new SeedOfRenewal();
  
-                            if (from.PlaceInBackpack(Rseed))
+                            if (from._PlaceInBackpack(Rseed))
                             {
                                 system.AvailableSeeds--;
                                 m_Plant.LabelTo(from, 1053063); // You gather seeds from the plant.
@@ -204,7 +204,7 @@ namespace Server.Engines.Plants
                         {
                             Seed seed = new Seed(system.SeedType, system.SeedHue, true);
  
-                            if (from.PlaceInBackpack(seed))
+                            if (from._PlaceInBackpack(seed))
                             {
                                 system.AvailableSeeds--;
                                 m_Plant.LabelTo(from, 1053063); // You gather seeds from the plant.

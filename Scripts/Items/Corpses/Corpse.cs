@@ -1448,7 +1448,7 @@ namespace Server.Items
                         {
                             Item bone = new QuestDaemonBone();
 
-                            if (player.PlaceInBackpack(bone))
+                            if (player._PlaceInBackpack(bone))
                             {
                                 obj.CorpseWithBone = null;
                                 player.SendLocalizedMessage(1049341, "", 0x22);
@@ -1477,7 +1477,7 @@ namespace Server.Items
                         {
                             GoldenSkull sk = new GoldenSkull();
 
-                            if (player.PlaceInBackpack(sk))
+                            if (player._PlaceInBackpack(sk))
                             {
                                 obj.CorpseWithSkull = null;
                                 player.SendLocalizedMessage(1050022);

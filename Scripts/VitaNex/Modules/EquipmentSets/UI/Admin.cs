@@ -84,7 +84,7 @@ namespace VitaNex.Modules.EquipmentSets
 
 							entry.GenerateParts().ForEach(bag.DropItem);
 
-							if (!User.PlaceInBackpack(bag))
+							if (!User._PlaceInBackpack(bag))
 							{
 								bag.Delete();
 							}

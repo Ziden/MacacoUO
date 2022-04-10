@@ -74,7 +74,7 @@ namespace Server.Engines.Quests.Haven
                     {
                         Item scroll = new SchmendrickScrollOfPower();
 
-                        if (player.PlaceInBackpack(scroll))
+                        if (player._PlaceInBackpack(scroll))
                         {
                             player.SendLocalizedMessage(1049147, "", 0x22); // You find the scroll and put it in your pack.
                             obj.Complete();

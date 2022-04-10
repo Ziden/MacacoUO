@@ -67,7 +67,7 @@ namespace Server.Gumps
             {
                 pl.SendMessage(2, from.Name + " acaba de destravar o potencial dos elementos PvM");
             }
-            from.PlaceInBackpack(new Amber());
+            from._PlaceInBackpack(new Amber());
 
             var elemento = DecideElementoGratiz(from);
 

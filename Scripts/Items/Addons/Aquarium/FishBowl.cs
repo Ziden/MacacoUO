@@ -173,7 +173,7 @@ namespace Server.Items
                     {
                         this.Owner.From.SendLocalizedMessage(1010449); // You may not use this object while it is locked down.
                     }
-                    else if (!this.Owner.From.PlaceInBackpack(fish))
+                    else if (!this.Owner.From._PlaceInBackpack(fish))
                     {
                         this.Owner.From.SendLocalizedMessage(1074496); // There is no room in your pack for the creature.
                     }

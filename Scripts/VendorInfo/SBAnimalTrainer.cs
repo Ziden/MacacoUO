@@ -32,10 +32,10 @@ namespace Server.Mobiles
         {
             public InternalBuyInfo()
             {
-                Add(new AnimalBuyInfo(1, typeof(Horse), 2000, 10, 204, 0));
-                Add(new AnimalBuyInfo(1, typeof(PackHorse), 2000, 10, 291, 0));
-                Add(new AnimalBuyInfo(1, typeof(Llama), 5000, 10, 0xDC, 0));
-                Add(new AnimalBuyInfo(1, typeof(ForestOstard), 10000, 10, 0xDB, 0));
+                Add(new AnimalBuyInfo(1, typeof(Horse), 600, 10, 204, 0));
+                Add(new AnimalBuyInfo(1, typeof(PackHorse), 600, 10, 291, 0));
+                Add(new AnimalBuyInfo(1, typeof(Llama), 2000, 10, 0xDC, 0));
+                Add(new AnimalBuyInfo(1, typeof(ForestOstard), 5000, 10, 0xDB, 0));
                 Add(new AnimalBuyInfo(1, typeof(Eagle), 402, 10, 5, 0));
                 Add(new AnimalBuyInfo(1, typeof(BrownBear), 855, 10, 167, 0));
                 Add(new AnimalBuyInfo(1, typeof(GrizzlyBear), 1767, 10, 212, 0));

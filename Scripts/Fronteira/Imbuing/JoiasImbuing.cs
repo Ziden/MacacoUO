@@ -206,7 +206,7 @@ namespace Server.Items
                     var colar = new AnelDano();
                     colar.Attributes.WeaponDamage = 1;
                     colar.Crafter = from;
-                    from.PlaceInBackpack(colar);
+                    from._PlaceInBackpack(colar);
                     from.SendMessage("Voce criou um anel de dano !");
 
                 } else if(n == 1)
@@ -215,7 +215,7 @@ namespace Server.Items
                     var colar = new AnelDano();
                     colar.Attributes.DefendChance = 1;
                     colar.Crafter = from;
-                    from.PlaceInBackpack(colar);
+                    from._PlaceInBackpack(colar);
                     from.SendMessage("Voce criou um anel de parry !");
                 }
                 else if (n == 2)
@@ -224,7 +224,7 @@ namespace Server.Items
                     var colar = new AnelDano();
                     colar.Attributes.SpellDamage = 1;
                     colar.Crafter = from;
-                    from.PlaceInBackpack(colar);
+                    from._PlaceInBackpack(colar);
                     from.SendMessage("Voce o anel !");
                 }
 
@@ -268,7 +268,7 @@ namespace Server.Items
             this.Consume(10);
             var colar = new AnelDano();
             colar.Crafter = from;
-            from.PlaceInBackpack(colar);
+            from._PlaceInBackpack(colar);
             from.SendMessage("Voce criou um anel  !");
         }
 

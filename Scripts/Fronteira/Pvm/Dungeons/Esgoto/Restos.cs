@@ -154,7 +154,7 @@ namespace Server.Mobiles
                                 AddItem(b4);
                                 if (p.Young)
                                 {
-                                    p.PlaceInBackpack(new EnergyBoltScroll());
+                                    p._PlaceInBackpack(new EnergyBoltScroll());
                                 }
                                 break;
                             default:

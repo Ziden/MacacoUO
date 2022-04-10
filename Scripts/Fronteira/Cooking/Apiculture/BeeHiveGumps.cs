@@ -379,10 +379,10 @@ namespace Server.Engines.Apiculture
 					{
 						JarHoney honey = new JarHoney();
 
-						if ( !from.PlaceInBackpack( honey ) )
+						if ( !from._PlaceInBackpack( honey ) )
 						{
 							honey.Delete();
-							from.PlaceInBackpack( new Bottle() ); //add the consumed bottle
+							from._PlaceInBackpack( new Bottle() ); //add the consumed bottle
 							m_hive.LabelTo( from, "Nao tem lugar na mochila pro mel!" );
 							from.SendGump( new apiBeeHiveProductionGump( from, m_hive ) );
 							break;
@@ -421,7 +421,7 @@ namespace Server.Engines.Apiculture
 						wax = new RawBeeswax(m_hive.Wax);
 					}
 
-					if ( !from.PlaceInBackpack( wax ) )
+					if ( !from._PlaceInBackpack( wax ) )
 					{
 						wax.Delete();
 
@@ -515,7 +515,7 @@ namespace Server.Engines.Apiculture
 				{
 					apiBeeHiveDeed deed = new apiBeeHiveDeed();
 
-					if ( !from.PlaceInBackpack( deed ) )
+					if ( !from._PlaceInBackpack( deed ) )
 					{
 						deed.Delete();
 

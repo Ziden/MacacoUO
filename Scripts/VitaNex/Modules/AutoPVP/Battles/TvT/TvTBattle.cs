@@ -80,7 +80,7 @@ namespace VitaNex.Modules.AutoPvP.Battles
             };
             trofeu.Name = "[OURO] Trofeu de Arena PvP";
             trofeu.Hue = Paragon.Hue;
-            pm.PlaceInBackpack(trofeu);
+            pm._PlaceInBackpack(trofeu);
         }
 
         public TvTBattle(GenericReader reader)

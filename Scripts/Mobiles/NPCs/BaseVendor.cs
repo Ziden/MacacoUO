@@ -1302,32 +1302,32 @@ namespace Server.Mobiles
                 if (from.Skills[SkillName.AnimalTaming].Value < 65)
                 {
                     SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 10);
-                    from.PlaceInBackpack(new Gold(Utility.RandomMinMax(100, 300)));
+                    from._PlaceInBackpack(new Gold(Utility.RandomMinMax(100, 300)));
                 }
                 else if (from.Skills[SkillName.AnimalTaming].Value < 70)
                 {
                     SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 5);
-                    from.PlaceInBackpack(new Gold(Utility.RandomMinMax(150, 350)));
+                    from._PlaceInBackpack(new Gold(Utility.RandomMinMax(150, 350)));
                 }
                 else if (from.Skills[SkillName.AnimalTaming].Value < 80)
                 {
                     SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 4);
-                    from.PlaceInBackpack(new Gold(Utility.RandomMinMax(200, 400)));
+                    from._PlaceInBackpack(new Gold(Utility.RandomMinMax(200, 400)));
                 }
                 else if (from.Skills[SkillName.AnimalTaming].Value < 90)
                 {
                     SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 3);
-                    from.PlaceInBackpack(new Gold(Utility.RandomMinMax(250, 450)));
+                    from._PlaceInBackpack(new Gold(Utility.RandomMinMax(250, 450)));
                 }
                 else if (from.Skills[SkillName.AnimalTaming].Value < 95)
                 {
                     SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 2);
-                    from.PlaceInBackpack(new Gold(Utility.RandomMinMax(300, 500)));
+                    from._PlaceInBackpack(new Gold(Utility.RandomMinMax(300, 500)));
                 }
                 else
                 {
                     SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 1);
-                    from.PlaceInBackpack(new Gold(Utility.RandomMinMax(350, 550)));
+                    from._PlaceInBackpack(new Gold(Utility.RandomMinMax(350, 550)));
                 }
                 from.PlaySound(0x5B5);
                 return false;

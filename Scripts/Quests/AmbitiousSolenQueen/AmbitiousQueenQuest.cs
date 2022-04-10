@@ -113,7 +113,7 @@ namespace Server.Engines.Quests.Ambitious
             {
                 Item reward = new BagOfSending();
 
-                if (player.PlaceInBackpack(reward))
+                if (player._PlaceInBackpack(reward))
                 {
                     player.SendLocalizedMessage(1054074, "", 0x59); // You have been given a bag of sending.
                     bagOfSending = false;
@@ -128,7 +128,7 @@ namespace Server.Engines.Quests.Ambitious
             {
                 Item reward = new PowderOfTranslocation(Utility.RandomMinMax(10, 12));
 
-                if (player.PlaceInBackpack(reward))
+                if (player._PlaceInBackpack(reward))
                 {
                     player.SendLocalizedMessage(1054075, "", 0x59); // You have been given some powder of translocation.
                     powderOfTranslocation = false;
@@ -143,7 +143,7 @@ namespace Server.Engines.Quests.Ambitious
             {
                 Item reward = new Gold(Utility.RandomMinMax(250, 350));
 
-                if (player.PlaceInBackpack(reward))
+                if (player._PlaceInBackpack(reward))
                 {
                     player.SendLocalizedMessage(1054076, "", 0x59); // You have been given some gold.
                     gold = false;

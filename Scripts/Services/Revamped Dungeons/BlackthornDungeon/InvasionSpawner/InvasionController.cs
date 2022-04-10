@@ -384,7 +384,7 @@ namespace Server.Engines.Blackthorn
                             damager.PlaySound(0x5B4);
                             damager.SendLocalizedMessage(1154554); // You recover an artifact bearing the crest of Minax from the rubble.
 
-                            if (!damager.PlaceInBackpack(i))
+                            if (!damager._PlaceInBackpack(i))
                             {
                                 if (damager.BankBox != null && damager.BankBox.TryDropItem(damager, i, false))
                                     damager.SendLocalizedMessage(1079730); // The item has been placed into your bank box.

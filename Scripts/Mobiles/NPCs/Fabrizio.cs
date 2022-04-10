@@ -74,7 +74,7 @@ namespace Server.Engines.Quests
             this.dagger.QuestItem = true;
             this.dagger.WeaponAttributes.UseBestSkill = 1;
 			
-            if (this.Owner.PlaceInBackpack(this.dagger))
+            if (this.Owner._PlaceInBackpack(this.dagger))
                 base.OnAccept();
             else
             {

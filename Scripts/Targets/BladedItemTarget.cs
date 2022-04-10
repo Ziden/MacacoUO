@@ -142,7 +142,7 @@ namespace Server.Targets
 
                         Item item = new Kindling();
 
-                        if (from.PlaceInBackpack(item))
+                        if (from._PlaceInBackpack(item))
                         {
                             from.SendLocalizedMessage(500491); // You put some kindling into your backpack.
                             from.SendLocalizedMessage(500492); // An axe would probably get you more wood.

@@ -12,6 +12,7 @@ namespace Server.Mobiles
         public override bool ReduceSpeedWithDamage => false;
         public override bool IsSmart => true;
         public override bool UseSmartAI => true;
+        public override bool CanBeParagon => false;
 
         public Carnage()
             : base(AIType.AI_Ninja, FightMode.Closest, 10, 1, 0.05, 0.2)

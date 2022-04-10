@@ -58,7 +58,7 @@ namespace Server.Mobiles
                     from.SendMessage("Mais de 200 moedas em peixe... voce fica espantado com o pescador comprando tanto peixe.");
                 }
                 from.PlaySound(0x5B5);
-                from.PlaceInBackpack(new Gold(valor));
+                from._PlaceInBackpack(new Gold(valor));
                 return;
             } else
             {

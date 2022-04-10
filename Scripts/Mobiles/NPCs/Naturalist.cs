@@ -155,7 +155,7 @@ namespace Server.Engines.Quests.Naturalist
                                 reward = new Seed(type, hue, false);
                             }
 
-                            if (player.PlaceInBackpack(reward))
+                            if (player._PlaceInBackpack(reward))
                             {
                                 obj.Complete();
 

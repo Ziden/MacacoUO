@@ -133,7 +133,7 @@ namespace Server.Spells.Mysticism
                     if (m_Skill >= (entry.Rank * 40))
                     {
                         from.PlaySound(0x659);
-                        from.PlaceInBackpack(new SpellStone(entry));
+                        from._PlaceInBackpack(new SpellStone(entry));
 
                         from.SendLocalizedMessage(1080165); // A Spell Stone appears in your backpack
                     }

@@ -252,7 +252,7 @@ namespace Server.Items
                     RewardBrazier brazier = new RewardBrazier(info.ButtonID);
                     brazier.IsRewardItem = this.m_Brazier.IsRewardItem;
 
-                    if (!m.PlaceInBackpack(brazier))
+                    if (!m._PlaceInBackpack(brazier))
                     {
                         brazier.Delete();
                         m.SendLocalizedMessage(1078837); // Your backpack is full! Please make room and try again.

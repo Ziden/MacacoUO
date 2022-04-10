@@ -206,7 +206,7 @@ namespace VitaNex.Modules.AutoPvP
                     cmd = String.Format("Use {0}{1} para se inscrever!", CommandSystem.Prefix, cmd);
                 }
 
-                WorldBroadcast("{0} vai abrir em {1}! {2}", Name, msg, cmd);
+                //WorldBroadcast("{0} vai abrir em {1}! {2}", Name, msg, cmd);
             }
         }
 

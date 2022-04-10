@@ -13,7 +13,7 @@ namespace Server.Mobiles
         {
             Body = 1294;
             BaseSoundID = 362;
-            Name = "a dragon turtle hatchling";
+            Name = "filhote de tartaruga dragao";
 
             SetStr(550, 650);
             SetDex(55, 65);

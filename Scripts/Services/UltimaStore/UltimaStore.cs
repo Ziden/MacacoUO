@@ -119,7 +119,7 @@ namespace Server.Engines.UOStore
             Register<DoubleGoldDeed>("Power Hour 2x Gold", "Ativa double gold para o shard todo por 1h.</br>Todos vao te amar um pouco mais.", 0x14F0, 0, 54, 500, cat);
 
             cat = StoreCategory.Character;
-            Register<CombatSkillBook>("Livro +300 Exp", "Livro que garante instantaneamente 300 EXP.</br>Nao funciona para elementos.", 0xEFA, 0, 0xA33, 100, cat);
+            Register<CombatSkillBook>("Livro +5000 Exp", "Livro que garante instantaneamente 5000 EXP.</br>Nao funciona para elementos.", 0xEFA, 0, 0xA33, 1000, cat, ConstructLivro);
             Register<StableSlotIncreaseToken>("+1 Slot Estabulo", "Aumenta um slot para deixar animais no estabulo", 0x2AAA, 0, 0, 2000, cat);
             Register<AbyssalHairDye>("Tinta para Cabelos", "Vermelho Abissal", 0, 0x9C7A, 0, 1000, cat);
             Register<SpecialHairDye>(new TextDefinition("Tinta para Cabelos"), "Verde Limao", 0, 0x9C78, 0, 1000, cat, ConstructHairDye); // Lemon Lime
@@ -622,6 +622,13 @@ namespace Server.Engines.UOStore
         {
             var shroud = new Spellbook();
             shroud.Content = ulong.MaxValue;
+            return shroud;
+        }
+
+        public static Item ConstructLivro(Mobile m, StoreEntry entry)
+        {
+            var shroud = new CombatSkillBook();
+            shroud.Exp = 5000;
             return shroud;
         }
 

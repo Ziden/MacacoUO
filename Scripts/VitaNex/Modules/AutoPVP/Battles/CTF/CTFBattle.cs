@@ -96,7 +96,7 @@ namespace VitaNex.Modules.AutoPvP.Battles
             };
             trofeu.Name = "[OURO] Trofeu de {Name}";
             trofeu.Hue = Paragon.Hue;
-            pm.PlaceInBackpack(trofeu);
+            pm._PlaceInBackpack(trofeu);
         }
 
         public CTFBattle(GenericReader reader)

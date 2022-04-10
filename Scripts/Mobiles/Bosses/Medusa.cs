@@ -306,7 +306,7 @@ namespace Server.Mobiles
 
                     Item scales = new MedusaLightScales(amount);
 
-                    if (from.PlaceInBackpack(scales))
+                    if (from._PlaceInBackpack(scales))
                     {
                         // You harvest magical resources from the creature and place it in your bag.
                         from.SendLocalizedMessage(1112676);

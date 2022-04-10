@@ -10,6 +10,9 @@ namespace Server.Items
     public class CombatSkillBook : Item
     {
 
+        [CommandProperty(AccessLevel.Administrator)]
+        public int Exp { get; set; } = 300;
+
         private class SkillRecord
         {
             public String name;
@@ -42,7 +45,8 @@ namespace Server.Items
         )
         {
             base.Serialize(writer);
-            writer.Write(1);
+            writer.Write(2);
+            writer.Write(Exp);
         }
         public override void Deserialize(
             GenericReader reader
@@ -50,15 +54,19 @@ namespace Server.Items
         {
             base.Deserialize(reader);
             int version = reader.ReadInt();
+            if(version > 1)
+            {
+                Exp = reader.ReadInt();
+            }
         }
 
         public override void AddNameProperties(ObjectPropertyList list)
         {
             base.AddNameProperties(list);
             if(Shard.EXP)
-                list.Add("Receba +300 Exp");
+                list.Add($"Receba +{Exp} Exp");
             else
-                list.Add("Escolha uma skill de combate para ganhar 0.5%");
+                list.Add($"Escolha uma skill de combate para ganhar 0.5%");
         }
 
         public override void AddNameProperty(ObjectPropertyList list)
@@ -81,13 +89,13 @@ namespace Server.Items
                 if(Shard.EXP)
                 {
                     var pontos = PointsSystem.Exp.GetPoints(from);
-                    if(pontos + 300 > PointsSystem.Exp.MaxPoints)
+                    if(pontos + Exp > PointsSystem.Exp.MaxPoints)
                     {
                         from.SendMessage("Voce ultrapassaria os " + PointsSystem.Exp.MaxPoints + " pontos de XP");
                         from.SendMessage("Por favor use seus pontos antes de usar um livro de XP novamente");
                         return;
                     }
-                    PointsSystem.Exp.AwardPoints(from, 300);
+                    PointsSystem.Exp.AwardPoints(from, Exp);
                     from.FixedParticles(0x375A, 9, 20, 5016, EffectLayer.Waist);
                     from.PlaySound(0x1FD);
                     Consume();

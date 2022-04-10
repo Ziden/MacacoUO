@@ -121,7 +121,7 @@ namespace Server.Items
                 if (info.ButtonID == 1 && this.m_Entry.Safe && this.m_BlanketOfDarkness.Parent == null && this.m_BlanketOfDarkness.IsAccessibleTo(pm) &&
                     this.m_BlanketOfDarkness.VerifyMove(pm) && this.m_BlanketOfDarkness.Map == pm.Map && pm.InRange(this.m_BlanketOfDarkness, 2))
                 {
-                    pm.PlaceInBackpack(this.m_BlanketOfDarkness);
+                    pm._PlaceInBackpack(this.m_BlanketOfDarkness);
 
                     pm.BlanketOfDarknessLogout = true;
                     sender.Dispose();

@@ -1006,7 +1006,7 @@ namespace Server.Mobiles
                                 name = String.Format("#{0}", ammo.LabelNumber);
                             }
 
-                            PlaceInBackpack(ammo);
+                            _PlaceInBackpack(ammo);
                             SendLocalizedMessage(1073504, String.Format("{0}\t{1}", ammo.Amount, name)); // You recover ~1_NUM~ ~2_AMMO~.
                         }
                     }
@@ -4943,9 +4943,9 @@ namespace Server.Mobiles
                 {
                     if (((BaseCreature)m).IsBoss)
                     {
-                        DiscordBot.SendMessage($":skull_crossbones: [BOSS] {Name} foi obliterado pelo boss {m.Name} !");
+                        DiscordBot.SendMessage($":skull_crossbones: [BOSS] {Name} foi obliterado pelo boss {m.Name} !", 30);
                     }
-                    DiscordBot.SendMessage($":skull_crossbones: {Name} foi morto por um(a) {m.Name}");
+                    DiscordBot.SendMessage($":skull_crossbones: {Name} foi morto por um(a) {m.Name}", 30);
                 }
             }
             PlayerMobile killer = m as PlayerMobile;

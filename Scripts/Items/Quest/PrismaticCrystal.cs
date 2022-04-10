@@ -33,7 +33,7 @@ namespace Server.Items
             {
                 if (from.Backpack.FindItemByType(typeof(PrismaticAmber), true) == null)
                 {
-                    if (from.PlaceInBackpack(new PrismaticAmber()))
+                    if (from._PlaceInBackpack(new PrismaticAmber()))
                         this.Delete();
                     else
                         from.SendLocalizedMessage(1077971); // Make room in your backpack first!

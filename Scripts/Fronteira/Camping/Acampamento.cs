@@ -76,7 +76,7 @@ namespace Server.Multis
                     k.EngravedText = "Campista: " + m.Name;
                     k.Owner = m;
                     k.BoundTo = m.RawName;
-                    m.PlaceInBackpack(k);
+                    m._PlaceInBackpack(k);
                     m.SendMessage("Voce ganhou um chapeu do campista lendario");
                 }
             } else

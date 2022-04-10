@@ -274,7 +274,7 @@ namespace Server.Mobiles
         {
             CharacterStatueDeed deed = new CharacterStatueDeed(null);
 
-            if (by.PlaceInBackpack(deed))
+            if (by._PlaceInBackpack(deed))
             {
                 this.Delete();
 

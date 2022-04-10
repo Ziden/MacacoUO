@@ -70,7 +70,7 @@ namespace Server.Engines.Plants
 					{
 						PlantItem fullBowl = new PlantItem( true );
 
-						if ( from.PlaceInBackpack( fullBowl ) )
+						if ( from._PlaceInBackpack( fullBowl ) )
 						{
 							dirt.Consume( _dirtNeeded );
 							m_PlantBowl.Delete();
@@ -89,7 +89,7 @@ namespace Server.Engines.Plants
 				{
 					PlantItem fullBowl = new PlantItem( false );
 
-					if ( from.PlaceInBackpack( fullBowl ) )
+					if ( from._PlaceInBackpack( fullBowl ) )
 					{
 						m_PlantBowl.Delete();
 

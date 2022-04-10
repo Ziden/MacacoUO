@@ -84,7 +84,7 @@ namespace Server.Misc
                     killer.PlaySound(0x5B4);
                     pm.SendLocalizedMessage("Voce encontrou uma peca rara das virtudes"); // For your valor in combating the fallen beast, a special artifact has been bestowed on you.
 
-                    if (!pm.PlaceInBackpack(i))
+                    if (!pm._PlaceInBackpack(i))
                     {
                         if (pm.BankBox != null && pm.BankBox.TryDropItem(killer, i, false))
                             pm.SendLocalizedMessage("O item foi colocado em seu banco"); // The item has been placed into your bank box.

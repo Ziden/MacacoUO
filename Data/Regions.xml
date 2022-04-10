@@ -414,7 +414,7 @@
         <logoutDelay active="false" />
       </region>
     </region>
-    <region type="TownRegion" priority="50" name="Trinsic">
+    <region type="NoGuardCity" priority="50" name="Trinsic">
       <rect x="1856" y="2636" width="75" height="28" />
       <rect x="1816" y="2664" width="283" height="231" />
       <rect x="2099" y="2782" width="18" height="25" />
@@ -1489,7 +1489,7 @@
         </region>
       </region>
     </region>
-    <region type="TownRegion" priority="50" name="Trinsic">
+    <region type="NoGuardCity" priority="50" name="Trinsic">
       <rect x="1856" y="2636" width="75" height="28" />
       <rect x="1816" y="2664" width="283" height="231" />
       <rect x="2099" y="2782" width="18" height="25" />

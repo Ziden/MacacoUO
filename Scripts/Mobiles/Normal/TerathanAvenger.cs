@@ -6,6 +6,8 @@ namespace Server.Mobiles
     [CorpseName("a terathan avenger corpse")]
     public class TerathanAvenger : BaseCreature
     {
+        public override int BonusExp => 100;
+
         [Constructable]
         public TerathanAvenger()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)

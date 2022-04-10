@@ -467,12 +467,12 @@ namespace Server
 
 		public static TimerPriority ComputePriority(TimeSpan ts)
 		{
-			if (ts.TotalMinutes >= 10.0)
+			if (ts.TotalMinutes >= 1)
 			{
 				return TimerPriority.OneMinute;
 			}
 
-			if (ts.TotalMinutes >= 1.0)
+			if (ts.TotalSeconds >= 30)
 			{
 				return TimerPriority.FiveSeconds;
 			}

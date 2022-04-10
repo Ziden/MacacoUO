@@ -126,7 +126,7 @@ namespace Server.Mobiles
             if (item is OrcishKinMask)
             {
                 AOS.Damage(aggressor, 50, 0, 100, 0, 0, 0);
-                aggressor.PlaceInBackpack(item);
+                aggressor._PlaceInBackpack(item);
                 aggressor.FixedParticles(0x36BD, 20, 10, 5044, EffectLayer.Head);
                 aggressor.PlaySound(0x307);
             }

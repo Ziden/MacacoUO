@@ -196,7 +196,7 @@ namespace Server.Items
                     RewardPottedCactus cactus = new RewardPottedCactus(info.ButtonID);
                     cactus.IsRewardItem = this.m_Cactus.IsRewardItem;
 
-                    if (!m.PlaceInBackpack(cactus))
+                    if (!m._PlaceInBackpack(cactus))
                     {
                         cactus.Delete();
                         m.SendLocalizedMessage(1078837); // Your backpack is full! Please make room and try again.

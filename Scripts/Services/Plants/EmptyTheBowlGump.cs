@@ -70,7 +70,7 @@ namespace Server.Engines.Plants
                         {
                             bowl = new PlantBowl();
 
-                            if (!from.PlaceInBackpack(bowl))
+                            if (!from._PlaceInBackpack(bowl))
                             {
                                 bowl.Delete();
 
@@ -85,7 +85,7 @@ namespace Server.Engines.Plants
                         {
                             Seed seed = new Seed(m_Plant.PlantType, m_Plant.PlantHue, m_Plant.ShowType);
 
-                            if (!from.PlaceInBackpack(seed))
+                            if (!from._PlaceInBackpack(seed))
                             {
                                 if (bowl != null)
                                 {

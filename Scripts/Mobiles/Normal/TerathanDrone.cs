@@ -6,6 +6,8 @@ namespace Server.Mobiles
     [CorpseName("a terathan drone corpse")]
     public class TerathanDrone : BaseCreature
     {
+        public override int BonusExp => 30;
+
         [Constructable]
         public TerathanDrone()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)

@@ -171,7 +171,7 @@ namespace Server.Spells.Spellweaving
             if (focus == null)
             {
                 ArcaneFocus f = new ArcaneFocus(duration, strengthBonus);
-                if (to.PlaceInBackpack(f))
+                if (to._PlaceInBackpack(f))
                 {
                     to.AddStatMod(new StatMod(StatType.Str, "[ArcaneFocus]", strengthBonus, duration));
 
