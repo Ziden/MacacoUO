@@ -32,6 +32,8 @@ namespace Server.Spells
     {
         public static int RANGE = Shard.POL_STYLE ? 17 : 10;
 
+        public Mobile ManaToCaster;
+
         public Mobile m_Caster;
         private readonly Item m_Scroll;
         private readonly SpellInfo m_Info;
@@ -596,7 +598,7 @@ namespace Server.Spells
                 if (bonus > targetRS) bonus = targetRS;
                 targetRS -= bonus;
 
-                scalar += AosAttributes.GetValue(Caster, AosAttribute.SpellDamage) / 100;
+                scalar += AosAttributes.GetValue(Caster, AosAttribute.SpellDamage, true) / 100;
 
                 if (elementoMagia == ElementoPvM.Escuridao)
                 {
@@ -708,7 +710,7 @@ namespace Server.Spells
                 Spellbook atkBook = Spellbook.FindEquippedSpellbook(m_Caster);
                 if (atkBook != null && atkBook.SpellCount == 64)
                 {
-                    scalar += 0.1;
+                    scalar += 0.2;
                 }
             }
 

@@ -102,7 +102,7 @@ namespace Server.Mobiles
         {
         }
 
-        public override Poison PoisonImmune { get { return Poison.Lethal; } }
+        public override Poison PoisonImmune { get { if(ControlMaster==null) return Poison.Lethal; return null; } }
 
         public override bool ReacquireOnMovement
         {

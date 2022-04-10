@@ -497,7 +497,10 @@ namespace Server.Items
                         ar += 18;
                         break;
                 }
-                ar += -4 + (4 * (int)m_Quality);
+                var q = (int)m_Quality;
+                if (q > 2)
+                    q = 2;
+                ar += -4 + (4 * q);
                 return ScaleArmorByDurability(ar);
             }
         }
@@ -2849,6 +2852,8 @@ namespace Server.Items
                 var nome = Name;
                 if (Name != null)
                 {
+                    if (this.Quality == ItemQuality.ObraPrima)
+                        nome += " obra prima";
                     if (this.Quality == ItemQuality.Exceptional)
                         nome += " excepcional";
                     if (this.Quality == ItemQuality.Low)

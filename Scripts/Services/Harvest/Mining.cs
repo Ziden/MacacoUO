@@ -48,7 +48,7 @@ namespace Server.Engines.Harvest
         public static Dificuldade NIOBIO = new Dificuldade(80, 95);
         public static Dificuldade LAZURITA = new Dificuldade(90, 100);
         public static Dificuldade QUARTZO = new Dificuldade(100, 105);
-        public static Dificuldade BERILO = new Dificuldade(101, 110);
+        public static Dificuldade BERILO = new Dificuldade(100, 110);
         public static Dificuldade VIBRANIUM = new Dificuldade(110, 125);
         public static Dificuldade ADAMANTIUM = new Dificuldade(120, 135);
 

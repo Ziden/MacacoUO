@@ -63,7 +63,7 @@ namespace Server.Items
         Low,
         Normal,
         Exceptional,
-        //ObraPrima,
+        ObraPrima
     }
 
     public enum DirectionType

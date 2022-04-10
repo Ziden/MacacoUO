@@ -356,6 +356,8 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(ScrollBinderDeed), 1044294, 1113135, 75.0, 125.0, typeof(RelicFragment), "Fragmento de Reliquia", 10, "Voce precisa de 10 fragmentos de reliquia");
             SetItemHue(index, 1641);
 
+            AddCraft(typeof(SewingKit), 1044294, "Kit de Costura de Couro", 10.0, 90.0, typeof(Leather), 1044036, 5, 1044037);
+
             AddCraft(typeof(BodySash), 1015283, 1025441, 4.1, 29.1, typeof(Cloth), 1044455, 4, 1044287);
             AddCraft(typeof(HalfApron), 1015283, 1025435, 20.7, 45.7, typeof(Cloth), 1044455, 6, 1044287);
             AddCraft(typeof(FullApron), 1015283, 1025437, 29.0, 54.0, typeof(Cloth), 1044455, 10, 1044287);

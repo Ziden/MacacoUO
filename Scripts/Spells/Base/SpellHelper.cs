@@ -1551,6 +1551,16 @@ namespace Server.Spells
 
                 int damageGiven = AOS.Damage(damageable, from, iDamage, phys, fire, cold, pois, nrgy, chaos, direct, dtype);
 
+                if(damageable is BaseCreature && spell.ManaToCaster == null)
+                {
+                    int manaRefund = AosAttributes.GetValue(from, AosAttribute.LowerManaCost, true);
+                    int refunded = (int)(spell.GetMana() * (manaRefund / 100d));
+                    if (Shard.DebugEnabled)
+                        Shard.Debug($"Refund mana {refunded} - lcm={manaRefund}");
+                    from.Mana += refunded;
+                    spell.ManaToCaster = from;
+                } 
+
                 if (target != null)
                     Spells.Mysticism.SpellPlagueSpell.OnMobileDamaged(target);
 

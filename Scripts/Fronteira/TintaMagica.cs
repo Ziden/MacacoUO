@@ -7,16 +7,30 @@ namespace Server.Ziden
 {
     public class TintaMagica : Item
     {
-
         [CommandProperty(AccessLevel.Administrator)]
         public SlayerName Slayer { get; set; }
+
+        [CommandProperty(AccessLevel.Administrator)]
+        public int BonusDanoMagico { get; set; }
+
+        [CommandProperty(AccessLevel.Administrator)]
+        public int BonusMana { get; set; }
 
         [Constructable]
         public TintaMagica() : base(0xFBF)
         {
             Name = "Tinta Magica";
             Hue = TintaBranca.COR;
-            Slayer = BaseRunicTool.GetRandomSlayer();
+            if(Utility.RandomDouble() <= 0.35)
+                Slayer = BaseRunicTool.GetRandomSlayer();
+            if (Utility.RandomDouble() < 0.35)
+                BonusMana = 5 + Utility.Random(25);
+            if(Utility.RandomDouble() < 0.35)
+                BonusDanoMagico = 5 + Utility.Random(25);
+
+            if(BonusDanoMagico == 0 && BonusMana == 0 && Slayer == SlayerName.None)
+                Slayer = BaseRunicTool.GetRandomSlayer();
+
         }
 
         public TintaMagica(BaseCreature mob) : base(0xFBF)
@@ -31,14 +45,20 @@ namespace Server.Ziden
         public override void AddNameProperties(ObjectPropertyList list)
         {
             list.Add("Tinta Magica");
+
             list.Add("Use em um livro para encanta-lo");
-            list.Add("Magias darao mais dano a monstro do tipo " + Slayer.ToString());
+            if (Slayer != SlayerName.None)
+                list.Add("Magias darao mais dano a monstro do tipo " + Slayer.ToString());
+            if (BonusDanoMagico != 0)
+                list.Add($"+ {BonusDanoMagico} Bonus Magico PvM");
+            if (BonusMana != 0)
+                list.Add($"+ {BonusMana} Retorno de Mana PvM");
             list.Add("Imbuing: 90");
         }
 
         public override void OnDoubleClick(Mobile from)
         {
-            if(from.Skills[SkillName.Imbuing].Value <= 90)
+            if (from.Skills[SkillName.Imbuing].Value <= 90)
             {
                 from.SendMessage("Voce precisa de pelo menos 90 Imbuing para usar isto");
                 return;
@@ -62,13 +82,15 @@ namespace Server.Ziden
                 if (targeted is Spellbook)
                 {
                     var spellbook = (Spellbook)targeted;
-                    if (spellbook.Slayer != SlayerName.None)
+                    if (spellbook.Slayer != SlayerName.None || spellbook.Attributes.LowerManaCost != 0 || spellbook.Attributes.SpellDamage != 0)
                     {
                         from.SendGump(new ConfirmaOverride(tinta, spellbook));
                         return;
                     }
                     tinta.Consume();
                     spellbook.Slayer = tinta.Slayer;
+                    spellbook.Attributes.LowerManaCost = tinta.BonusMana;
+                    spellbook.Attributes.SpellDamage = tinta.BonusDanoMagico;
                     from.SendMessage("Voce encantou o livro");
                     spellbook.PrivateMessage("* encantado *", from);
                     spellbook.InvalidateProperties();
@@ -116,8 +138,10 @@ namespace Server.Ziden
 
         public override void Serialize(GenericWriter writer)
         {
-            writer.Write(0);
+            writer.Write(1);
             writer.Write((int)Slayer);
+            writer.Write(BonusMana);
+            writer.Write(BonusDanoMagico);
             base.Serialize(writer);
         }
 
@@ -125,6 +149,11 @@ namespace Server.Ziden
         {
             var v = reader.ReadInt();
             this.Slayer = (SlayerName)reader.ReadInt();
+            if (v > 0)
+            {
+                BonusMana = reader.ReadInt();
+                BonusDanoMagico = reader.ReadInt();
+            }
             base.Deserialize(reader);
         }
     }

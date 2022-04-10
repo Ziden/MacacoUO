@@ -57,6 +57,9 @@ namespace Server.SkillHandlers
                 int materialType = (int)armor.MaterialType;
                 int bodyPosition = (int)armor.BodyPosition;
 
+                if (materialType == (int)ArmorMaterialType.Leather || materialType == (int)ArmorMaterialType.Studded)
+                    continue;
+
                 if (materialType >= m_ArmorTable.GetLength(0) || bodyPosition >= m_ArmorTable.GetLength(1))
                     continue;
 

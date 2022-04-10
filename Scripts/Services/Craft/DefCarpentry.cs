@@ -935,6 +935,8 @@ namespace Server.Engines.Craft
             ForceNonExceptional(index);
             #endregion
 
+            AddCraft(typeof(Saw), 1044298, "Serrote para Madeiras Especiais", 30.0, 80.0, typeof(Board), 1044036, 4, 1044037);
+
             index = AddCraft(typeof(SpinningwheelEastDeed), 1044298, 1044341, 73.6, 98.6, typeof(AshBoard), 1044041, 75, 1044351);
             AddSkill(index, SkillName.Tailoring, 65.0, 70.0);
             AddRes(index, typeof(Cloth), 1044286, 25, 1044287);

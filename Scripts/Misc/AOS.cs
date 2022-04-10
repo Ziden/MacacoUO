@@ -118,12 +118,18 @@ namespace Server
             BaseQuiver quiver = null;
 
             #region danot2a
+
+            if (Shard.DebugEnabled)
+                Shard.Debug($"Recebendo Dano phys={phys} fire={fire} cold={cold} pois={pois} nrgy={nrgy} chaos={chaos} direct={direct}", m);
+
             if (!Core.AOS)
             {
-                Shard.Debug("Aplicando Dano" + damage, m);
+                if (Shard.DebugEnabled)
+                    Shard.Debug("Aplicando Dano" + damage, m);
                 if (ArmorPierce.IsUnderEffects(m))
                 {
-                    Shard.Debug("Armor Pierce", m);
+                    if (Shard.DebugEnabled)
+                        Shard.Debug("Armor Pierce", m);
                     damage += (int)((double)damage * .1);
                 }
 
@@ -255,25 +261,6 @@ namespace Server
 
                 if (m != null)
                 {
-                    var hue = 42;
-                    if (m is PlayerMobile)
-                    {
-                        hue = 32;
-                    }
-                    if (pois > phys)
-                    {
-                        hue = 68;
-                    }
-                    else if (ignoreArmor)
-                    {
-                        hue = 48;
-                    }
-                    DamageNumbers.ShowDamage(damage, damageDealer, m, hue);
-                    m.Damage(damage, damageDealer);
-                }
-
-                if (m != null)
-                {
                     if (m.Talisman != null && m.Talisman is ITalismanProtection)
                     {
                         ITalismanProtection prot = m.Talisman as ITalismanProtection;
@@ -316,10 +303,70 @@ namespace Server
                 }
                 #endregion
 
+                // BaseCreature  funciona resistencias elementais
+                if(m is BaseCreature)
+                {
+                    Fix(ref phys);
+                    Fix(ref fire);
+                    Fix(ref cold);
+                    Fix(ref pois);
+                    Fix(ref nrgy);
+                    Fix(ref chaos);
+                    Fix(ref direct);
+                    if (!ignoreArmor)
+                    {
+                        int totalDamage = 0;
+                        int physDamage = damage * phys * (100 - damageable.PhysicalResistance);
+                        int fireDamage = damage * fire * (100 - damageable.FireResistance);
+                        int coldDamage = damage * cold * (100 - damageable.ColdResistance);
+                        int poisonDamage = damage * pois * (100 - damageable.PoisonResistance);
+                        int energyDamage = damage * nrgy * (100 - damageable.EnergyResistance);
+
+                        totalDamage = physDamage + fireDamage + coldDamage + poisonDamage + energyDamage;
+                        totalDamage /= 10000;
+
+                      
+                        if (Core.HS && ArmorPierce.IsUnderEffects(m))
+                        {
+                            totalDamage += (int)((double)totalDamage * .1);
+                        }
+
+                        if (totalDamage < 1)
+                            totalDamage = 1;
+
+                        if(TastyTreat.UnderInfluence(m as BaseCreature))
+                            SkillMasterySpell.OnDamage(m, damageDealer, type, ref totalDamage);
+
+                        damage = totalDamage;
+                    }
+                }
+
+                var hue = 42;
+                if (m != null)
+                {
+                    if (m is PlayerMobile)
+                    {
+                        hue = 32;
+                    }
+                    if (pois > phys)
+                    {
+                        hue = 68;
+                    }
+                    else if (ignoreArmor)
+                    {
+                        hue = 48;
+                    }
+                    DamageNumbers.ShowDamage(damage, damageDealer, m, hue);
+                    m.Damage(damage, damageDealer);
+                }
                 return damage;
+            } else
+            {
+                return 0; // AOS = 0 damage
             }
             #endregion
 
+            /*
             // CODIGO AOS //
             if (quiver != null)
                 damage += damage * quiver.DamageIncrease / 100;
@@ -422,19 +469,13 @@ namespace Server
             {
                 Mobile oath = BloodOathSpell.GetBloodOath(damageDealer);
 
-                /* Per EA's UO Herald Pub48 (ML):
-                * ((resist spellsx10)/20 + 10=percentage of damage resisted)
-                * 
-                * Tested 12/29/2017-
-                * No cap, also, above forumula is only in effect vs. creatures
-                */
 
                 if (oath == m)
                 {
                     int originalDamage = totalDamage;
                     totalDamage = (int)(totalDamage * 1.2);
 
-                    if (!Core.TOL && totalDamage > 35 && damageDealer is PlayerMobile) /* capped @ 35, seems no expansion */
+                    if (!Core.TOL && totalDamage > 35 && damageDealer is PlayerMobile)
                     {
                         totalDamage = 35;
                     }
@@ -573,6 +614,7 @@ namespace Server
             BaseCostume.OnDamaged(m);
 
             return totalDamage;
+            */
         }
 
         public static void Fix(ref int val)
@@ -731,9 +773,9 @@ namespace Server
             return attributes.Select(a => GetValue(m, a));
         }
 
-        public static int GetValue(Mobile m, AosAttribute attribute)
+        public static int GetValue(Mobile m, AosAttribute attribute, bool t2a=false)
         {
-            if (World.Loading || !IsValid(attribute))
+            if (World.Loading || (!t2a && !IsValid(attribute)))
             {
                 return 0;
             }

@@ -127,37 +127,37 @@ namespace Server.Items
             if (m_Quality == ItemQuality.Low)
                 scalar -= 30;
             if (m_Quality == ItemQuality.Exceptional)
-                scalar += 50;
+                scalar += 30;
             if (Resource == CraftResource.Cobre)
-                scalar += 100;
+                scalar += 500;
             else if (Resource == CraftResource.Bronze)
-                scalar += 100;
+                scalar += 500;
             else if (Resource == CraftResource.Dourado)
-                scalar += 250;
+                scalar += 150;
             else if (Resource == CraftResource.Niobio)
-                scalar += 100;
+                scalar += 50;
             else if (Resource == CraftResource.Lazurita)
-                scalar += 130;
+                scalar += 80;
             else if (Resource == CraftResource.Quartzo)
-                scalar += 350;
+                scalar += 150;
             else if (Resource == CraftResource.Berilo)
-                scalar += 130;
+                scalar += 60;
             else if (Resource == CraftResource.Vibranium)
-                scalar += 130;
+                scalar += 60;
             else if (Resource == CraftResource.Adamantium)
-                scalar += 130;
+                scalar += 60;
             else if (Resource == CraftResource.Carmesim)
-                scalar += 350;
+                scalar += 150;
             else if (Resource == CraftResource.Gelo)
-                scalar += 350;
+                scalar += 150;
             else if (Resource == CraftResource.Eucalipto)
                 scalar += 150;
             else if (Resource == CraftResource.Mogno)
-                scalar += 210;
+                scalar += 60;
             else if (Resource == CraftResource.Pinho)
-                scalar += 100;
+                scalar += 60;
             else if (Resource == CraftResource.Carvalho)
-                scalar += 50;
+                scalar += 30;
             return scalar;
         }
 
@@ -199,7 +199,10 @@ namespace Server.Items
                 list.Add(1060636); // exceptional
 
             if (Resource != CraftResource.None)
+            {
                 list.Add("Feito de " + Resource.ToString());
+                list.Add("Bonus para craftar obras primas de " + Resource.ToString());
+            }
 
             list.Add("Usos Restantes: "+ m_UsesRemaining.ToString()); // uses remaining: ~1_val~
         }

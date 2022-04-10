@@ -899,7 +899,7 @@ namespace Server.Items
         {
             int bonus = 1;
 
-            if (m_Quality == ItemQuality.Exceptional)
+            if (m_Quality >= ItemQuality.Exceptional)
             {
                 bonus += 40;
             }
@@ -1586,7 +1586,7 @@ namespace Server.Items
             }
 
             double chance = ourValue / (theirValue * 1.8);
-            chance *= 1.0 + ((double)bonus / 100);
+            chance *= 1.0 + ((double)bonus / 100d);
 
             var bonusArmsLore = defender.Skills.ArmsLore.Value / 2000; // 0.05 = 5%
             chance -= bonusArmsLore;
@@ -1704,7 +1704,6 @@ namespace Server.Items
                 }
             }
 
-
             if (v <= 0)
             {
                 v = 1;
@@ -1714,8 +1713,10 @@ namespace Server.Items
 
             if (m.Player && defender != null && !defender.Player)
             {
+                var bonusSpeedArma = (m.Weapon as BaseWeapon).Attributes.WeaponSpeed;
                 var bonus = m.GetBonusElemento(ElementoPvM.Vento) / 2;
                 if (bonus > 0.9) bonus = 0.9;
+                bonus += bonusSpeedArma / 100d;
                 v += (int)(bonus * v);
             }
 
@@ -1977,7 +1978,7 @@ namespace Server.Items
                 if (defender.Player && parry > 70 && attacker is BaseCreature)
                 {
                     var p = ((PlayerMobile)defender);
-                    chance += AosAttributes.GetValue(defender, AosAttribute.DefendChance) / 100d;
+                    chance += AosAttributes.GetValue(defender, AosAttribute.DefendChance, true) / 100d;
 
                     if (!Shard.SPHERE_STYLE && defender.Skills.Wrestling.Value >= 60)
                     {
@@ -2077,7 +2078,7 @@ namespace Server.Items
                 // Low dexterity lowers the chance.
                 if (defender.Dex < 80)
                 {
-                    chance = chance * (20 + defender.Dex) / 100;
+                    chance = chance * (20 + defender.Dex) / 100d;
                 }
 
                 if (chance > aosChance)
@@ -2407,7 +2408,7 @@ namespace Server.Items
             if (defender.Player && !attacker.Player)
             {
                 virtualArmor += (virtualArmor / 2) * ((defender.GetBonusElemento(ElementoPvM.Terra) + defender.GetBonusElemento(ElementoPvM.Luz)));
-                damage -= (int)Math.Ceiling(damage * (AosAttributes.GetValue(defender, AosAttribute.DefendChance) / 100));
+                damage -= (int)Math.Ceiling(damage * (AosAttributes.GetValue(defender, AosAttribute.DefendChance, true) / 100d));
             }
             if (!defender.Player && attacker.Player)
             {
@@ -2416,7 +2417,7 @@ namespace Server.Items
                     bonus = virtualArmor;
                 virtualArmor -= bonus;
 
-                damage += (int)Math.Ceiling(damage * (AosAttributes.GetValue(attacker, AosAttribute.WeaponDamage)/100));
+                damage += (int)Math.Ceiling(damage * (AosAttributes.GetValue(attacker, AosAttribute.WeaponDamage, true)/100));
 
                
             }
@@ -2918,9 +2919,9 @@ namespace Server.Items
                     if (bracelete != null)
                     {
                         if(bracelete.Tipo == TipoJoias.Arma && attacker.Weapon is BaseMeleeWeapon)
-                            bonus += bracelete.Bonus / 100;
+                            bonus += bracelete.Bonus / 100d;
                         if (bracelete.Tipo == TipoJoias.Arco && attacker.Weapon is BaseRanged)
-                            bonus += bracelete.Bonus / 100;
+                            bonus += bracelete.Bonus / 100d;
                     }
                         
                 }
@@ -3593,7 +3594,7 @@ namespace Server.Items
 
             damage = AOS.Scale(damage, evalScale);
 
-            return damage / 100;
+            return damage / 100d;
         }
 
         #region Do<AoSEffect>
@@ -4296,6 +4297,7 @@ namespace Server.Items
                         bonus -= 5;
                         break;
                     case ItemQuality.Exceptional:
+                    case ItemQuality.ObraPrima:
                         bonus += 5;
                         break;
                 }
@@ -4469,7 +4471,10 @@ namespace Server.Items
             // New quality bonus:
             if (m_Quality != ItemQuality.Normal)
             {
-                modifiers += (((int)m_Quality - 1) * 0.1);
+                var q = (int)m_Quality;
+                if (q > 2)
+                    q = 2;
+                modifiers += ((q - 1) * 0.1);
             }
 
             // Virtual damage bonus:
@@ -6036,6 +6041,8 @@ namespace Server.Items
             var nome = Name;
             if (Name != null)
             {
+                if (this.Quality == ItemQuality.ObraPrima)
+                    nome += " obra prima";
                 if (this.Quality == ItemQuality.Exceptional)
                     nome += " excepcional";
                 if (this.Quality == ItemQuality.Low)
@@ -6549,6 +6556,23 @@ namespace Server.Items
                 list.Add(1060441); // night sight
             }
 
+            if ((prop = m_AosAttributes.WeaponSpeed) != 0)
+            {
+                list.Add($"Velocidade PvM: +{prop / 2}"); // swing speed increase ~1_val~%
+            }
+
+            if ((prop = m_AosAttributes.WeaponDamage) != 0)
+                list.Add($"Dano Fisico PvM: +{prop}%");
+
+            if ((prop = m_AosAttributes.DefendChance) != 0)
+                list.Add($"Parry & Armor PvM: +{prop}%"); // defense chance increase ~1_val~%
+
+            if ((prop = m_AosAttributes.SpellDamage) != 0)
+                list.Add($"Bonus Dano Magico PvM: +{prop}%"); // spell damage increase ~1_val~%
+
+            if ((prop = m_AosAttributes.LowerManaCost) != 0)
+                list.Add($"Retorno Mana PvM: +{prop}%"); // lower mana cost ~1_val~%
+
             return;
 
 
@@ -6632,11 +6656,6 @@ namespace Server.Items
                 list.Add(1060442, prop.ToString()); // reflect physical damage ~1_val~%
             }
 
-            if ((prop = m_AosAttributes.SpellDamage) != 0)
-            {
-                list.Add(1060483, prop.ToString()); // spell damage increase ~1_val~%
-            }
-
             if ((prop = m_AosAttributes.CastRecovery) != 0)
             {
                 list.Add(1060412, prop.ToString()); // faster cast recovery ~1_val~
@@ -6652,29 +6671,9 @@ namespace Server.Items
                 list.Add(1060415, prop.ToString()); // hit chance increase ~1_val~%
             }
 
-            if ((prop = m_AosAttributes.DefendChance) != 0)
-            {
-                list.Add(1060408, prop.ToString()); // defense chance increase ~1_val~%
-            }
-
-            if ((prop = m_AosAttributes.LowerManaCost) != 0)
-            {
-                list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
-            }
-
             if ((prop = m_AosAttributes.LowerRegCost) != 0)
             {
                 list.Add(1060434, prop.ToString()); // lower reagent cost ~1_val~%
-            }
-
-            if ((prop = m_AosAttributes.WeaponSpeed) != 0)
-            {
-                list.Add(1060486, prop.ToString()); // swing speed increase ~1_val~%
-            }
-
-            if ((prop = (GetdDamageBonusSoPraMostrarProClient() + m_AosAttributes.WeaponDamage + damBonus)) != 0)
-            {
-                list.Add(1060401, prop.ToString()); // damage increase ~1_val~%
             }
 
             if (Core.ML && (prop = m_AosAttributes.IncreasedKarmaLoss) != 0)
@@ -6968,6 +6967,16 @@ namespace Server.Items
                 typeRes = craftItem.Resources.GetAt(0).ItemType;
             }
 
+            CraftResource thisResource = CraftResources.GetFromType(typeRes);
+            if(thisResource != CraftResource.None)
+            {
+                this.Hue = CraftResources.GetHue(thisResource);
+            }
+     
+
+            var power = 0;
+
+            double chancefoda = 0;
             if (Core.AOS)
             {
                 if (!craftItem.ForceNonExceptional)
@@ -7002,113 +7011,74 @@ namespace Server.Items
             {
                 if (craftItem != null && !craftItem.ForceNonExceptional)
                 {
-                    CraftResource thisResource = CraftResources.GetFromType(typeRes);
-
                     if (thisResource == ((BaseRunicTool)tool).Resource)
                     {
-                        Resource = thisResource;
-
-                        switch (thisResource)
-                        {
-                            case CraftResource.Carvalho:
-                            case CraftResource.Berilo:
-                                {
-                                    Identified = true;
-                                    DurabilityLevel = WeaponDurabilityLevel.Durable;
-                                    AccuracyLevel = WeaponAccuracyLevel.Leve;
-                                    break;
-                                }
-                            case CraftResource.Pinho:
-                            case CraftResource.Vibranium:
-                                {
-                                    Identified = true;
-                                    DurabilityLevel = WeaponDurabilityLevel.Durable;
-                                    DamageLevel = WeaponDamageLevel.Ruin;
-                                    break;
-                                }
-                            case CraftResource.Mogno:
-                            case CraftResource.Cobre:
-                                {
-                                    Identified = true;
-                                    DurabilityLevel = WeaponDurabilityLevel.Fortified;
-                                    DamageLevel = WeaponDamageLevel.Ruin;
-                                    AccuracyLevel = WeaponAccuracyLevel.Agil;
-                                    break;
-                                }
-                            case CraftResource.Bronze:
-                                {
-                                    Identified = true;
-                                    DurabilityLevel = WeaponDurabilityLevel.Fortified;
-                                    DamageLevel = WeaponDamageLevel.Might;
-                                    AccuracyLevel = WeaponAccuracyLevel.Agil;
-                                    break;
-                                }
-                            case CraftResource.Dourado:
-                                {
-                                    Identified = true;
-                                    DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-                                    DamageLevel = WeaponDamageLevel.Force;
-                                    AccuracyLevel = WeaponAccuracyLevel.Veloz;
-                                    break;
-                                }
-                            case CraftResource.Eucalipto:
-                            case CraftResource.Niobio:
-                                {
-                                    Identified = true;
-                                    DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-                                    DamageLevel = WeaponDamageLevel.Power;
-                                    AccuracyLevel = WeaponAccuracyLevel.Veloz;
-                                    break;
-                                }
-                            case CraftResource.Carmesim:
-                            case CraftResource.Lazurita:
-                                {
-                                    Identified = true;
-                                    DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-                                    DamageLevel = WeaponDamageLevel.Power;
-                                    AccuracyLevel = WeaponAccuracyLevel.Exceedingly;
-                                    break;
-                                }
-                            case CraftResource.Gelo:
-                            case CraftResource.Quartzo:
-                            case CraftResource.Adamantium:
-                                {
-                                    Identified = true;
-                                    DurabilityLevel = WeaponDurabilityLevel.Indestructible;
-                                    DamageLevel = WeaponDamageLevel.Vanq;
-                                    AccuracyLevel = WeaponAccuracyLevel.Supremely;
-                                    break;
-                                }
-                        }
+                        chancefoda += 100;
+                        power = 5;
                     }
                 }
             }
 
-            if (craftItem != null && !craftItem.ForceNonExceptional)
+
+            var props = 0;
+
+            if (chancefoda == 0 && this is BaseStaff && this.Quality == ItemQuality.Exceptional)
             {
-                CraftResourceInfo resInfo = CraftResources.GetInfo(m_Resource);
+                chancefoda += 0.5;
+                power = 1;
 
-                CraftResource thisResource = CraftResources.GetFromType(typeRes);
-                Resource = thisResource;
-
-                if (resInfo == null)
+                switch (this.Resource)
                 {
-                    return quality;
+                    case CraftResource.Cobre:
+                    case CraftResource.Bronze:
+                    case CraftResource.Carvalho:
+                        power += 1; break;
+                    case CraftResource.Niobio:
+                    case CraftResource.Dourado:
+                    case CraftResource.Vibranium:
+                    case CraftResource.Pinho:
+                        power += 3; break;
+                    case CraftResource.Lazurita:
+                    case CraftResource.Eucalipto:
+                    case CraftResource.Quartzo:
+                        power += 4; break;
+                    case CraftResource.Mogno:
+                    case CraftResource.Berilo:
+                        power += 7; break;
+                    case CraftResource.Adamantium:
+                    case CraftResource.Gelo:
+                        power += 10; break;
                 }
-
-                CraftAttributeInfo attrInfo = resInfo.AttributeInfo;
-
-                if (attrInfo == null)
-                {
-                    return quality;
-                }
-
-                DistributeMaterialBonus(attrInfo);
             }
-            #endregion
+
+            if (chancefoda > 0 && Utility.Random(100) <= chancefoda)
+            {
+                from.SendMessage("Voce craftou uma obra prima. Use ferramentas color para aumentar suas chances de craftar obras primas !");
+                Quality = ItemQuality.ObraPrima;
+                var propChance = 0.35;
+                if (this is BaseStaff)
+                {
+                    Attributes.SpellDamage = power;
+                    if (Utility.RandomDouble() < propChance)
+                        Attributes.LowerManaCost = power + Utility.Random(power * 4);
+                    if (Utility.RandomDouble() < propChance)
+                        Attributes.SpellDamage = power + Utility.Random(power * 4);
+                    if (Utility.RandomDouble() < propChance / 2)
+                        Slayer = BaseRunicTool.GetRandomSlayer();
+                }
+                this.HueRaridade = 1161;
+                tool.UsesRemaining -= 10;
+                if (tool.UsesRemaining <= 0)
+                {
+                    tool.Delete();
+                    from.SendMessage("Sua ferramenta quebrou");
+                }
+            }
 
             return quality;
         }
+
+     
 
         public virtual void DistributeMaterialBonus(CraftAttributeInfo attrInfo)
         {
@@ -7319,4 +7289,5 @@ namespace Server.Items
         Opposition
     }
 }
+#endregion
 #endregion

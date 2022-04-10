@@ -2734,7 +2734,7 @@ namespace Server.Mobiles
         {
             get
             {
-                return Math.Min(VirtualArmor, 500) + VirtualArmorMod;
+                return 0;
             }
         }
 

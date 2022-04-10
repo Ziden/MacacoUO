@@ -1029,7 +1029,7 @@ namespace Server.Items
 
             if(SpellbookType==SpellbookType.Regular && m_Count==64)
             {
-                list.Add("Bonus Fullbook: +10% Dano PvM");
+                list.Add("Bonus Fullbook: +20% Dano Magico PvM");
             }
 
             if (this.m_MaxHitPoints > 0)
