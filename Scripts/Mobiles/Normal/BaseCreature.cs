@@ -7511,6 +7511,13 @@ namespace Server.Mobiles
 
         public override void OnDeath(Container c)
         {
+            if(Shard.PASCOA)
+            {
+                if(Utility.RandomDouble() < 0.1)
+                {
+                    c.DropItem(new ChocolateRabbit());
+                }
+            }
             MeerMage.StopEffect(this, false);
 
             if (IsBonded)

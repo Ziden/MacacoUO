@@ -888,42 +888,6 @@ namespace Server.Items
         {
         }
 
-        public HashSet<string> Ganhou = new HashSet<string>();
-
-        public static Type[] PremiosPascoa = new Type[] { typeof(eastereggAddonDeed), typeof(easteregg1AddonDeed) };
-        public static int[] PremiosMenores = new int[] { 0x47E6, 0x4CEE, 0x99A3, 0x9CA8, 0x9CA9, 0x9F13, 0x9F14, 0x9F15, 0x9F16, 0x9F17, 0x9F18, 0x9E1D, 0xA738 };
-
-        public override void OnDoubleClick(Mobile from)
-        {
-            from.SendMessage("Voce abriu o ovo de pascoa");
-            Item item = null;
-            if (!Ganhou.Contains(from.NetState.Address.ToString()) &&  Utility.RandomDouble() < 0.05)
-            {
-                var c = new FloppyHat();
-                c.Name = "Chapeu da Pascoa [Raro][2022]";
-                c.Hue = 2733;
-                if (Utility.RandomBool())
-                    c.Attributes.SpellDamage = 10;
-                else
-                    c.Attributes.WeaponDamage = 10;
-                item = c;
-                Ganhou.Add(from.NetState.Address.ToString());
-            }
-            else if (Utility.RandomDouble() < 0.1)
-            {
-                item = (Item)Activator.CreateInstance(PremiosPascoa[Utility.Random(PremiosPascoa.Length)]);
-            }
-            else
-            {
-                item = new Item(PremiosMenores[Utility.Random(PremiosMenores.Length)]);
-            }
-            from.PlaySound(0x57);
-            item.Name = "Premio de Pascoa";
-            from.AddToBackpack(item);
-            from.SendMessage("Um premio foi colocado em sua mochila");
-            this.Consume(1);
-        }
-
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);

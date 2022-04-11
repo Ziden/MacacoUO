@@ -75,7 +75,6 @@ namespace Server.Mobiles
             base.OnDeath(c);
             DistribuiItem(new PersonalTelescope());
             SorteiaItem(new LegacyGuildstone());
-            SorteiaItem(new PergaminhoSkillcap());
             DistribuiItem(new PergaminhoPeso());
             DistribuiItem(new PergaminhoCarregamento());
             SorteiaItem(new DragonTurtleFountainAddonDeed());

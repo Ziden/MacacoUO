@@ -83,21 +83,22 @@ namespace Server.Mobiles
             if (0.2 > Utility.RandomDouble())
                 PackItem(new BolaBall());
 
-            if(Utility.RandomDouble() < 0.3)
+            if (Utility.RandomDouble() < 0.3)
             {
                 if (Utility.RandomDouble() < 0.2)
                 {
                     var livro = new Spellbook();
                     livro.Slayer = SlayerName.Goblins;
                     AddItem(livro);
-                } else
+                }
+                else
                 {
                     var livro = Loot.RandomWeapon();
                     livro.Slayer = SlayerName.Goblins;
                     AddItem(livro);
                 }
             }
-            
+
         }
 
         public static int BANDS_TIME = 6;
@@ -105,7 +106,7 @@ namespace Server.Mobiles
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
 
-            if(!IsCooldown("fala"))
+            if (!IsCooldown("fala"))
             {
                 SetCooldown("fala", TimeSpan.FromSeconds(40));
                 Say("Sai fora !!! Nao vai pegar nosso tesouro !!!");
@@ -288,7 +289,7 @@ namespace Server.Mobiles
 
             if (!IsCooldown("bands"))
             {
-              
+
                 if (!willKill && this.Hits < this.HitsMax)
                 {
                     SetCooldown("bands", TimeSpan.FromSeconds(BANDS_TIME + 10));
@@ -363,11 +364,13 @@ namespace Server.Mobiles
     {
         public override int BonusExp => 500;
 
+        public override bool Murderer => false;
+
         [Constructable]
         public CoelhoDaPascoa()
             : base(AIType.AI_Runner, FightMode.Closest, 10, 1, 0.05, 0.05)
         {
-            Name = "coelho da pascoa";
+            Name = "coelinho da pascoa";
             Body = 205;
             Hue = 3 + (Utility.Random(20) * 5);
 
@@ -375,7 +378,7 @@ namespace Server.Mobiles
             SetDex(80, 80);
             SetInt(118, 118);
 
-            SetHits(200, 300);
+            SetHits(200, 200);
             SetStam(80, 80);
             SetMana(118, 118);
 
@@ -399,14 +402,16 @@ namespace Server.Mobiles
 
             VirtualArmor = 28;
             Tamable = false;
-
-            PackItem(new Gold(1000));
         }
 
         public override void OnDeath(Container c)
         {
             base.OnDeath(c);
-            DistribuiItem(new EasterEggs());
+            var b = new DannysGiftBox();
+            b.MoveToWorld(c.Location, c.Map);
+            Effects.SendLocationParticles(EffectItem.Create(c.Location, c.Map, EffectItem.DefaultDuration), 0x3728, 10, 10, 2023);
+            c.Delete();
+            DistribuiItem(new Gold(1000));
         }
 
         public CoelhoDaPascoa(Serial serial)

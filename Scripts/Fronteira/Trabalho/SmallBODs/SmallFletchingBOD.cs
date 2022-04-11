@@ -117,6 +117,21 @@ namespace Server.Engines.BulkOrders
 
                 BulkMaterialType material = BulkMaterialType.None;
 
+                if (useMaterials && theirSkill >= 70.1)
+                {
+                    for (int i = 0; i < 20; ++i)
+                    {
+                        BulkMaterialType check = GetRandomMaterial(BulkMaterialType.Carvalho, m_FletchingMaterialChances);
+                        double skillReq = GetRequiredSkill(check);
+
+                        if (theirSkill >= skillReq)
+                        {
+                            material = check;
+                            break;
+                        }
+                    }
+                }
+
                 if (material != BulkMaterialType.None)
                 {
                     if (theirSkill >= 100)
@@ -136,22 +151,6 @@ namespace Server.Engines.BulkOrders
                         amountMax = Utility.RandomList(15, 20, 20, 25);
                     else
                         amountMax = Utility.RandomList(10, 10, 15, 20);
-                }
-
-
-                if (useMaterials && theirSkill >= 70.1)
-                {
-                    for (int i = 0; i < 20; ++i)
-                    {
-                        BulkMaterialType check = GetRandomMaterial(BulkMaterialType.Carvalho, m_FletchingMaterialChances);
-                        double skillReq = GetRequiredSkill(check);
-
-                        if (theirSkill >= skillReq)
-                        {
-                            material = check;
-                            break;
-                        }
-                    }
                 }
 
                 double excChance = 0.0;
