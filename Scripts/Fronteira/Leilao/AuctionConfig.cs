@@ -102,7 +102,7 @@ namespace Server.Leilaum
 		/// the max value between the starting bid and the reserve.
 		/// - A value higher than 1.0 represents a fixed cost for the service (rounded).
 		/// </summary>
-		public static double CostOfAuction = 0.05;
+		public static double CostOfAuction = 0.01;
 
 		/// <summary>
 		/// Savings Account configuration for daily interest paid

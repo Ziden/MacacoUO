@@ -913,7 +913,7 @@ namespace Server.Items
                 list.Add($"Bonus Dano Magico PvM: {prop}%"); // spell damage increase ~1_val~%
 
             if ((prop = m_AosAttributes.LowerManaCost) != 0)
-                list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
+                list.Add($"Retorno Mana PvM: {prop}%"); // lower mana cost ~1_val~%
 
             if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
                 list.Add($"Bonus Habilidades de Armas PvM: {prop}%");
