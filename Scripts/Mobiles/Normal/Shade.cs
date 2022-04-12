@@ -11,7 +11,7 @@ namespace Server.Mobiles
     [CorpseName("a ghostly corpse")]
     public class Shade : BaseCreature
     {
-        public override int BonusExp => 10;
+        public override int BonusExp => 1;
 
         public override Spell ChooseSpell()
         {

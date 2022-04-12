@@ -26,11 +26,7 @@ namespace Server.Engines.Craft
             this.m_NameString = name;
             this.m_MessageString = message;
 
-            this.m_NameString = Trads.GetNome(type);
-            if(this.m_NameString != null)
-            {
-                return;
-            }
+      
             try
             {
                 // Gambiarra porca... mas eh oq tem pra hj
@@ -48,11 +44,21 @@ namespace Server.Engines.Craft
                     m_NameString = i.DefaultName;
                 }
                 i = null;
+
             }
             catch (Exception e)
             {
                 Item.BypassInitialization = false;
                 Console.WriteLine("[Erro] Instanciando craft item " + type.Name);
+            }
+
+            if (this.m_NameString != null)
+                return;
+
+            this.m_NameString = Trads.GetNome(type);
+            if (this.m_NameString != null)
+            {
+                return;
             }
 
             if (m_NameString != null)

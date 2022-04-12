@@ -6,7 +6,7 @@ namespace Server.Mobiles
     [CorpseName("a rotting corpse")]
     public class Zombie : BaseCreature
     {
-        public override int BonusExp => 5;
+        public override int BonusExp => 2;
 
         [Constructable]
         public Zombie()

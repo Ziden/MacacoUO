@@ -6,7 +6,7 @@ namespace Server.Mobiles
     [CorpseName("a skeletal corpse")]
     public class Skeleton : BaseCreature
     {
-        public override int BonusExp => 5;
+        public override int BonusExp => 2;
 
         [Constructable]
         public Skeleton()

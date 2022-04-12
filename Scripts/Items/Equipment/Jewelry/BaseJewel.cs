@@ -1067,6 +1067,11 @@ namespace Server.Items
             if ((prop = m_AosAttributes.SpellDamage) != 0)
                 list.Add($"Bonus Dano Magico PvM: {prop}%"); // spell damage increase ~1_val~%
 
+            if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
+                list.Add($"Bonus Dano Magico PvM: {prop}%"); // spell damage increase ~1_val~%
+
+            if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
+                list.Add($"Bonus Habilidades de Armas PvM: {prop}%");
 
             if ((prop = m_AosAttributes.CastRecovery) != 0)
                 list.Add(1060412, prop.ToString()); // faster cast recovery ~1_val~

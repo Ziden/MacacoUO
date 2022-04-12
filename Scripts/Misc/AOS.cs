@@ -303,8 +303,8 @@ namespace Server
                 }
                 #endregion
 
-                // BaseCreature  funciona resistencias elementais
-                if(m is BaseCreature)
+                // BaseCreature vs BaseCreature funfa resist elementais
+                if(m is BaseCreature && !(damageDealer is PlayerMobile))
                 {
                     Fix(ref phys);
                     Fix(ref fire);
@@ -328,7 +328,8 @@ namespace Server
                         totalDamage = physDamage + fireDamage + coldDamage + poisonDamage + energyDamage;
                         totalDamage /= 10000;
 
-                      
+                        totalDamage += damage * direct / 100;
+
                         if (Core.HS && ArmorPierce.IsUnderEffects(m))
                         {
                             totalDamage += (int)((double)totalDamage * .1);

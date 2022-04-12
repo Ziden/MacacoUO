@@ -1226,6 +1226,9 @@ namespace Server.Items
             if ((prop = m_AosAttributes.LowerManaCost) != 0)
                 list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
 
+            if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
+                list.Add($"Bonus Habilidades de Armas PvM: {prop}%");
+
             return;
 
             if (m_Crafter != null)

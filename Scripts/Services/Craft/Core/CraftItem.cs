@@ -238,11 +238,21 @@ namespace Server.Engines.Craft
             }
 
             var itemName = Lang.ItemTrans(type.Name);
-
+            if (Shard.DebugEnabled)
+                Shard.Debug("Name: " + itemName);
+            if ((itemName == null || itemName == "Item") && type.Name.EndsWith("Exp"))
+            {
+                itemName = Lang.ItemTrans(type.Name.Substring(0, type.Name.Length - 3));
+                if (Shard.DebugEnabled)
+                    Shard.Debug("Substring nome: " + itemName);
+            }
             if (Trads.Items.ContainsKey(type.Name))
             {
                 m_NameNumber = 0;
                 m_NameString = Trads.Items[type.Name];
+                if (Shard.DebugEnabled)
+                    Shard.Debug("NameString: " + m_NameString);
+
             }
             else if (itemName != null)
             {

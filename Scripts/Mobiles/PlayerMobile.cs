@@ -2230,7 +2230,8 @@ namespace Server.Mobiles
                 pm.m_SpeechLog = null;
                 pm.LastOnline = DateTime.UtcNow;
 
-                pm.AutoStablePets();
+                if(pm.Alive)
+                    pm.AutoStablePets();
             }
 
             DisguiseTimers.StopTimer(from);

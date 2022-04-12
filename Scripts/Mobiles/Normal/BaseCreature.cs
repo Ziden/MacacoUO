@@ -219,7 +219,7 @@ namespace Server.Mobiles
 
         public virtual int BonusExp => 0;
 
-        public virtual bool IsBoss => false;
+        public virtual bool IsBoss => this is BaseChampion || this is BaseRenowned;
 
         public override bool SendGump(Gump g)
         {
@@ -2352,6 +2352,15 @@ namespace Server.Mobiles
                 poison = PoisonImpl.IncreaseLevel(poison);
             }
 
+            if(from is BaseCreature)
+            {
+                var chanceResist = this.PoisonResistance / 300;
+                if(Utility.RandomDouble() < chanceResist)
+                {
+                    return ApplyPoisonResult.Immune;
+                }
+            }
+            
             ApplyPoisonResult result = base.ApplyPoison(from, poison);
 
             if (from != null && result == ApplyPoisonResult.Poisoned && PoisonTimer is PoisonImpl.PoisonTimer)
@@ -2734,7 +2743,7 @@ namespace Server.Mobiles
         {
             get
             {
-                return 0;
+                return ControlMaster is PlayerMobile ? 0 : Math.Min(VirtualArmor, 500) + VirtualArmorMod;
             }
         }
 

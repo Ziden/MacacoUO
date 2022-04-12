@@ -136,6 +136,7 @@ namespace Server.Engines.Craft
             }
 
             this.AddCraft(typeof(Kindling), 1044457, 1023553, 0.0, 00.0, typeof(Board), 1044041, 1, 1044351);
+            AddCraft(typeof(FletcherTools), 1044457, 1044166, 35.0, 85.0, typeof(Board), 1044036, 3, 1044037);
 
             index = this.AddCraft(typeof(Shaft), 1044457, 1027124, 0.0, 65.0, typeof(Board), 1044041, 10, 1044351);
             //this.SetUseAllRes(index, true);
