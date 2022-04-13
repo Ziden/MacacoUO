@@ -236,12 +236,11 @@ namespace Server.Spells
                     if (bonus > resist) bonus = resist;
                     resist -= bonus;
                 }
-                if (target.Player)
+                if (target.Player && target.RP)
                 {
                     if(((PlayerMobile)target).Talentos.Tem(Talento.PeleArcana))
                         resist += 10;
                 }
-
                 if (Caster.Player && Caster.RP)
                 {
                     if (((PlayerMobile)Caster).Talentos.Tem(Talento.MentePerfurante))

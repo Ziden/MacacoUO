@@ -68,12 +68,12 @@ namespace Shrink.ShrinkSystem
 				else if ( m_IsStatuette = value )
 				{
 					ItemID = ShrinkTable.Lookup( m_Pet );
-					Name = "a shrunken pet";
+					Name = "animal encolhido";
 				}
 				else
 				{
 					ItemID = 0x14EF;
-					Name = "a pet deed";
+					Name = "escritura para animal";
 				}
 			}
 		}

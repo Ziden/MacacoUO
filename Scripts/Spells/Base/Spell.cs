@@ -646,7 +646,7 @@ namespace Server.Spells
 
             scalar += (m_Caster.Skills[CastSkill].Value - 100.0) / 400.0;
 
-            if (!target.Player && !target.Body.IsHuman /*&& !Core.AOS*/)
+            if (!target.Player && !target.Body.IsHuman)
             {
                 scalar *= 2.5;
             }

@@ -9,6 +9,7 @@ using Server.Network;
 using Server.Targeting;
 using Server.Engines.Quests;
 using System.Linq;
+using Shrink.ShrinkSystem;
 #endregion
 
 namespace Server.Mobiles
@@ -1060,7 +1061,35 @@ namespace Server.Mobiles
                         }, 0xE81, 0, new string[] { "Bondar Animal", "Cancelar" }));
 
                     }
-                }, 0xE81, 0, new string[] { "Estabular", "Ver Lista", "Bondar" }));   
+                    else if (opt == 3)
+                    {
+                        e.Mobile.SendGump(new GumpOpcoes("3K Moedas", (o) =>
+                        {
+                            if (o == 0)
+                            {
+                                e.Mobile.DaTarget<BaseCreature>(c =>
+                                {
+                                    if(!Banker.Withdraw(e.Mobile, 3000))
+                                    {
+                                        e.Mobile.SendMessage("Voce nao tem dinheiro suficiente no banco");
+                                        return;
+                                    }
+                                    var t = new ShrinkTarget(e.Mobile, null, false);
+                                    t.Targeteia(e.Mobile, c);
+                                    if(!t.done)
+                                    {
+                                        Banker.Deposit(e.Mobile, 3000);
+                                    } else
+                                    {
+                                        this.SayTo(e.Mobile, true, "* joga uma pocao de miniatura na criatura *");
+                                        this.SayTo(e.Mobile, true, "Aqui esta sua miniatura. Meu amigo eh um otimo alquimista, ele fazer essas belezinhas de pocoes de encolhimento.");
+                                    }
+                                });
+                            }
+                        }, 0xE81, 0, new string[] { "Miniaturizar ", "Cancelar" }));
+
+                    }
+                }, 0xE81, 0, new string[] { "Estabular", "Ver Lista", "Bondar", "Miniaturizar" }));   
 			}
 			else if (!e.Handled && e.HasKeyword(0x0009)) // *claim*
 			{

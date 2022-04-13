@@ -81,6 +81,7 @@ namespace Shrink.ShrinkSystem
 	{
 		private IShrinkTool m_ShrinkTool;
 		private bool m_StaffCommand;
+        public bool done = false;
 
 		public ShrinkTarget( Mobile from, IShrinkTool shrinkTool, bool staffCommand ) : base( 10, false, TargetFlags.None )
 		{
@@ -88,6 +89,11 @@ namespace Shrink.ShrinkSystem
 			m_StaffCommand = staffCommand;
 			from.SendMessage( "Selecione o animal que deseja encolher." );
 		}
+
+        public void Targeteia(Mobile from, object target)
+        {
+            OnTarget(from, target);
+        }
 
 		protected override void OnTarget( Mobile from, object target )
 		{
@@ -131,7 +137,7 @@ namespace Shrink.ShrinkSystem
 
             else if ( !m_StaffCommand && ShrinkItem.IsPackAnimal( pet ) && ( null != pet.Backpack && pet.Backpack.Items.Count > 0 ) )
 				from.SendMessage( "Voce precisa liberar a mochila do pet antes de encolher ele." );
-            else if(!Banker.Withdraw(from, 2000))
+            else if(!(m_ShrinkTool is PocaoShrink) && !Banker.Withdraw(from, 2000))
             {
                 from.SendMessage("Voce precisa de 2000 moedas no banco para isto");
             }
@@ -161,6 +167,8 @@ namespace Shrink.ShrinkSystem
 				Effects.SendMovingParticles( p2, p1, ShrinkTable.Lookup( pet ), 1, 0, true, false, 0, 3, 1153, 1, 0, EffectLayer.Head, 0x100 );
 				from.PlaySound( 492 );
 				from.AddToBackpack( new ShrinkItem( pet ) );
+
+                done = true;
 
 				if ( !m_StaffCommand && null != m_ShrinkTool && m_ShrinkTool.ShrinkCharges > 0 )
 					m_ShrinkTool.ShrinkCharges--;

@@ -4773,7 +4773,7 @@ namespace Server.Mobiles
         public double CurrentTameSkill { get { return m_CurrentTameSkill; } set { m_CurrentTameSkill = value; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool Tamable { get { return m_bTamable && !m_Paragon; } set { m_bTamable = value; } }
+        public override bool Tamable { get { return m_bTamable && !m_Paragon; } set { m_bTamable = value; } }
 
         [CommandProperty(AccessLevel.Administrator)]
         public bool Summoned

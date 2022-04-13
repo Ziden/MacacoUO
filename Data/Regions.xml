@@ -823,7 +823,7 @@
       <entrance x="6430" y="2678" />
       <music name="Dungeon9" />
     </region>
-    <region type="TownRegion" priority="50" name="Delucia">
+    <region type="NoGuardCity" priority="50" name="Delucia">
       <rect x="5123" y="3942" width="192" height="122" />
       <rect x="5147" y="4064" width="125" height="20" />
       <rect x="5235" y="3930" width="80" height="12" />

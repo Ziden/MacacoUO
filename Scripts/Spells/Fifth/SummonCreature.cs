@@ -36,10 +36,10 @@ namespace Server.Spells.Fifth
         private static readonly Type[] topTypes = new Type[]
        {
             typeof(BlackBear),
-            typeof(Gorilla),
+            typeof(GiantSerpent),
             typeof(SnowLeopard),
             typeof(GreatHart),
-            typeof(Boar)
+            typeof(Scorpion)
        };
 
         public SummonCreatureSpell(Mobile caster, Item scroll)
@@ -78,7 +78,32 @@ namespace Server.Spells.Fifth
             {
                 try
                 {
-                    BaseCreature creature = (BaseCreature)Activator.CreateInstance(m_Types[Utility.Random(m_Types.Length)]);
+                    var type = m_Types[Utility.Random(m_Types.Length)];
+                    var pl = this.Caster as PlayerMobile;
+
+                    if (pl != null)
+                    {
+                        if(pl.Almas == 30)
+                        {
+                            type = topTypes[Utility.Random(topTypes.Length)];
+                        }
+                    }
+
+                    BaseCreature creature = (BaseCreature)Activator.CreateInstance(type);
+
+                    if (pl != null)
+                    {
+                        if (pl.Almas > 0)
+                        {
+                            creature.HitsMaxSeed = creature.HitsMaxSeed + (pl.Almas * 10);
+                            creature.Hits = creature.HitsMax;
+                        }
+                        if(pl.Almas > 10)
+                        {
+                            creature.ControlSlots = 1;
+                        }
+                      
+                    }
 
                     //creature.ControlSlots = 2;
 
@@ -88,14 +113,7 @@ namespace Server.Spells.Fifth
                         duration = TimeSpan.FromSeconds((2 * this.Caster.Skills.SpiritSpeak.Fixed) / 5);
                     else
                         duration = TimeSpan.FromSeconds(15 + this.Caster.Skills[SkillName.SpiritSpeak].Value * 2);
-
-                    var pl = this.Caster as PlayerMobile;
-                    if(pl != null && pl.Almas > 0)
-                    {
-                        creature.HitsMaxSeed = creature.HitsMaxSeed + (pl.Almas * 10);
-                        creature.Hits = creature.HitsMax;
-                    }
-                   
+  
                     SpellHelper.Summon(creature, this.Caster, 0x215, duration, true, true, true, SkillName.SpiritSpeak);
                 }
                 catch

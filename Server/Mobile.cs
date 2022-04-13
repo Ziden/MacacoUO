@@ -3223,6 +3223,29 @@ namespace Server
             }
         }
 
+        /*
+         * .BeginTarget(10, false, TargetFlags.None, new TargetCallback(object target) =>
+                                {
+
+                                }));
+                                */
+
+        public virtual bool Tamable { get { return false; } set { } }
+
+
+        public Target DaTarget<Type>(Action<Type> callback)
+        {
+            Target t = new SimpleTarget(12, TargetFlags.None, true, new TargetCallback((Mobile m, object target) =>
+            {
+                if(typeof(Type).IsAssignableFrom(target.GetType()))
+                {
+                    callback((Type)target);
+                }
+            }));
+            Target = t;
+            return t;
+        }
+
         public Target BeginTarget(int range, bool allowGround, TargetFlags flags, TargetCallback callback)
         {
             Target t = new SimpleTarget(range, flags, allowGround, callback);

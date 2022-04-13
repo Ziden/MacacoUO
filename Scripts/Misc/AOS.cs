@@ -304,7 +304,7 @@ namespace Server
                 #endregion
 
                 // BaseCreature vs BaseCreature funfa resist elementais
-                if(m is BaseCreature && !(damageDealer is PlayerMobile))
+                if(m is BaseCreature && damageDealer is BaseCreature)
                 {
                     Fix(ref phys);
                     Fix(ref fire);

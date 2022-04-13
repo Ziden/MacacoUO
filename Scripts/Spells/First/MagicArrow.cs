@@ -80,7 +80,7 @@ namespace Server.Spells.First
 
                     if (CheckResisted((Mobile)target))
                     {
-                        damage = 2;
+                        damage /= 2;
 
                         ((Mobile)target).SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Server.Gumps;
+using Server.Mobiles;
 using Server.Network;
 using Server.Spells;
 using Server.Spells.Necromancy;
@@ -301,7 +302,7 @@ namespace Server.SkillHandlers
 
         private static bool IsAnimal(Mobile m)
         {
-            return (!m.Player && m.Body.IsAnimal);
+            return (!m.Player && m.Body.IsAnimal) || m.Tamable;
         }
 
         private static bool IsMonster(Mobile m)

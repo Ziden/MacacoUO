@@ -37,7 +37,7 @@ namespace Server.Multis
         {
             get
             {
-                return (Core.ML ? Core.SA ? 1.4 : 1.2 : 1.0);
+                return 1.4;
             }
         }
 
@@ -133,7 +133,7 @@ namespace Server.Multis
         {
             get
             {
-                return TimeSpan.FromDays(14.0);
+                return TimeSpan.FromDays(30.0);
             }
         }
 
@@ -450,7 +450,7 @@ namespace Server.Multis
         {
             get
             {
-                return Core.AOS;
+                return true;// Core.AOS;
             }
         }
 
