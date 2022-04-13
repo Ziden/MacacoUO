@@ -923,20 +923,21 @@ namespace Server.Items
 
         public int OnCraft(int quality, bool makersMark, Mobile from, CraftSystem craftSystem, Type typeRes, ITool tool, CraftItem craftItem, int resHue)
         {
+            this.MaxItems += 50;
             if (typeRes != null)
             {
                 CraftResource thisResource = CraftResources.GetFromType(typeRes);
                 Shard.Debug(thisResource.ToString());
                 if (thisResource == CraftResource.Eucalipto && this.GetType().Name.Contains("Chest") || this.GetType().Name.Contains("Armario"))
                 {
-                    this.MaxItems += 100;
+                    this.MaxItems += 200;
 
                     if (this.Quality == ItemQuality.Exceptional)
-                        this.MaxItems += 50;
+                        this.MaxItems += 100;
 
                     if (from.Skills.Carpentry.Value >= 100)
                     {
-                        this.MaxItems += 100;
+                        this.MaxItems += 200;
                     }
                 }
             }
