@@ -160,7 +160,7 @@ namespace Server.Mobiles
 
         public static Item _GetRandomPS(int skill)
         {
-            switch (Utility.Random(19))
+            switch (Utility.Random(20))
             {
                 case 0: return new PowerScrollNovo(SkillName.Mining, skill);
                 case 1: return new PowerScrollNovo(SkillName.Blacksmith, skill);
@@ -181,6 +181,7 @@ namespace Server.Mobiles
                 case 16: return new PowerScrollNovo(SkillName.Cartography, skill);
                 case 17: return new PowerScrollNovo(SkillName.ArmsLore, skill);
                 case 18: return new PowerScrollNovo(SkillName.RemoveTrap, skill);
+                case 19: return new PowerScrollNovo(SkillName.Lockpicking, skill);
             }
             return null;
         }

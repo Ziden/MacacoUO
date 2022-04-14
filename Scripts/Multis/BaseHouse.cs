@@ -450,7 +450,7 @@ namespace Server.Multis
         {
             get
             {
-                return true;// Core.AOS;
+                return Core.AOS;
             }
         }
 

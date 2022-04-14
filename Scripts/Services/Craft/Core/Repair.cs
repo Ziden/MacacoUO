@@ -299,11 +299,13 @@ namespace Server.Engines.Craft
                                     number = "Voce arrumou o item"; // You repair the item.
                                     m_CraftSystem.PlayCraftEffect(from);
                                     weapon.HitPoints = weapon.MaxHitPoints;
+                                    /*
                                     if(weapon.Elemento != ElementoPvM.None)
                                     {
                                         weapon.Elemento = ElementoPvM.None;
                                         from.SendMessage("O equipamento perdeu o elemento ao reparar");
                                     }
+                                    */
                                 }
                                 else
                                 {

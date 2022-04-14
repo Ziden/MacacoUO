@@ -495,6 +495,8 @@ namespace Server.Items
             Weight = 3.0;
         }
 
+        public override int DefaultMaxItems { get { return 100; } }
+
         public Backpack(Serial serial)
             : base(serial)
         {

@@ -321,7 +321,7 @@ namespace Server.Engines.Craft
 
             index = AddCraft(typeof(TalismanElemental), "Talismans", "Talisman Elemental", 80, 120, typeof(QuartzoIngot), "Lingote de Quartzo", 20, "Voce precisa de lingotes de quartzo");
             AddRes(index, typeof(CristalElemental), "Cristal Elemental", 100, "Voce precisa de cristais elementais para isto");
-            AddRes(index, typeof(CristalElemental), "Cristal Terathan", 100, "Voce precisa de cristais terathan para isto");
+            AddRes(index, typeof(CristalTherathan), "Cristal Terathan", 100, "Voce precisa de cristais terathan para isto");
             AddRecipe(index, (int)SmithRecipes.TalismanElemental);
 
             #region Metal Armor

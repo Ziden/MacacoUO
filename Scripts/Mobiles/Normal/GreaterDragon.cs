@@ -15,7 +15,7 @@ namespace Server.Mobiles
             Body = Utility.RandomList(12, 59);
             BaseSoundID = 362;
 
-            SetStr(1025, 1425);
+            SetStr(600, 700);
             SetDex(81, 148);
             SetInt(475, 675);
 

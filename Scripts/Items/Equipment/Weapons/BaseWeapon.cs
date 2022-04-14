@@ -2122,7 +2122,17 @@ namespace Server.Items
                 var bloqueado = 0;
                 if (shield != null)
                 {
-                    bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.7 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
+                    if(attacker is BaseCreature)
+                    {
+                        bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.7 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
+                    } else
+                    {
+                        var max = (int)(damage * 0.8);
+                        bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.7 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
+                        if (bloqueado > max)
+                            bloqueado = max;
+                    }
+                   
                 }
                 else
                 {

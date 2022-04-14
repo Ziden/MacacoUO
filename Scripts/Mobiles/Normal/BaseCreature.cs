@@ -2785,7 +2785,7 @@ namespace Server.Mobiles
 
                 if (elementoBatendo.FracoContra(this.Elemento))
                 {
-                    damage = (int)(damage * 0.5);
+                    damage = (int)(damage * 0.9);
                     if (Shard.DebugEnabled) Shard.Debug("Recebido dano de elemento mais fraco", this);
                 }
             }
@@ -2805,7 +2805,7 @@ namespace Server.Mobiles
             {
                 if (to.Elemento.ForteContra(this.Elemento))
                 {
-                    damage = (int)(damage * 0.8);
+                    damage = (int)(damage * 0.9);
                 }
                 else if (to.Elemento.FracoContra(this.Elemento))
                 {
@@ -2880,7 +2880,7 @@ namespace Server.Mobiles
                 else if (from.Elemento.FracoContra(this.Elemento))
                 {
                     Shard.Debug("Fraco contra elemento", from);
-                    damage = (int)(damage * (TalismanElemental.Tem(from) ? 0.3 : 0.7));
+                    damage = (int)(damage * (TalismanElemental.Tem(from) ? 0.8 : 0.9));
                 }
 
             }
@@ -2947,7 +2947,7 @@ namespace Server.Mobiles
                 }
                 else if (this.Elemento.FracoContra(to.Elemento) && TalismanElemental.Tem(to))
                 {
-                    damage = (int)(damage * 0.85);
+                    damage = (int)(damage * 0.9);
                 }
             }
         }
