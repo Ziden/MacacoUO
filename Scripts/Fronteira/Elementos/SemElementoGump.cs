@@ -3,6 +3,7 @@ using Server.Commands;
 using Server.Items;
 using Server.Mobiles;
 using System;
+using Fronteira.Discord;
 
 namespace Server.Gumps
 {
@@ -63,11 +64,12 @@ namespace Server.Gumps
             from.SendMessage("Fabrique armaduras elementais usando pedras preciosas e Imbuing. Voce ganhou duas pedras preciosas.");
             from.Backpack.DropItem(new Amber());
             from.Backpack.DropItem(new Sapphire());
+            var msg = from.Name + " acaba de destravar o potencial dos elementos PvM";
             foreach (var pl in NetState.GetOnlinePlayerMobiles())
             {
-                pl.SendMessage(2, from.Name + " acaba de destravar o potencial dos elementos PvM");
+                pl.SendMessage(msg);
             }
-            from._PlaceInBackpack(new Amber());
+            DiscordBot.SendMessage(":fire: "+msg);
 
             var elemento = DecideElementoGratiz(from);
 
@@ -87,12 +89,12 @@ namespace Server.Gumps
             cap.Elemento = elemento;
 
             var pedra = (Item)Activator.CreateInstance(BasePedraPreciosa.GetTipoPedra(elemento));
-            bag.AddItem(pedra);
-            bag.AddItem(cap);
-            bag.AddItem(gloves);
-            bag.AddItem(legs);
-            bag.AddItem(armor);
-            bag.AddItem(arms);
+            bag.DropItem(pedra);
+            bag.DropItem(cap);
+            bag.DropItem(gloves);
+            bag.DropItem(legs);
+            bag.DropItem(armor);
+            bag.DropItem(arms);
 
             var livro = new RedBook(1, false);
             livro.Title = "Elementos PvM";
@@ -105,8 +107,8 @@ namespace Server.Gumps
                 "sua XP tambem eh ganha",
                 "para o elemento do set."
             };
-            bag.AddItem(livro);
-            from.AddItem(bag);
+            bag.DropItem(livro);
+            from.AddToBackpack(bag);
             from.SendGump(new ElementosGump(from));
         }
 

@@ -31,7 +31,7 @@ namespace Server.Mobiles
         {
             public InternalBuyInfo()
             {
-                Add(new GenericBuyInfo(typeof(ElvenBoots), 3000, 999, 0x2FC4, 0));
+                Add(new GenericBuyInfo(typeof(ElvenBoots), 10000, 999, 0x2FC4, 0));
             }
         }
 

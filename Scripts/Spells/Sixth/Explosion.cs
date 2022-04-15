@@ -103,7 +103,7 @@ namespace Server.Spells.Sixth
                     }
                     else if (defender != null)
                     {
-                        damage = Utility.Random(18, 24);
+                        damage = Utility.Random(20, 22);
 
                         if (m_Spell.CheckResisted(defender))
                         {

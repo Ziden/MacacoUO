@@ -10,12 +10,12 @@ namespace Server.Engines.BulkOrders
         public static double[] m_FletchingMaterialChances = new double[]
         {
             0.113718750, // None
-            0.592968750, // Oak
-            0.417187500, // Ash
-            0.346875000, // Yew
-            0.218750000, // Heartwood
-            0.007500000, // Bloodwood
-            0.003000000 // Frostwood
+            0.3, // Oak
+            0.2, // Ash
+            0.1, // Yew
+            0.05, // Heartwood
+            0.03, // Bloodwood
+            0.01 // Frostwood
         };
 
         public override BODType BODType { get { return BODType.Fletching; } }

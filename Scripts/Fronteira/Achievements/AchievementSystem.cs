@@ -468,7 +468,7 @@ namespace Scripts.Mythik.Systems.Achievements
 
             foreach(var e in new ElementoPvM[] { ElementoPvM.Agua, ElementoPvM.Fogo, ElementoPvM.Terra, ElementoPvM.Gelo, ElementoPvM.Vento, ElementoPvM.Raio, ElementoPvM.Luz, ElementoPvM.Escuridao })
             {
-                for(var lvl = 1; lvl < 100; lvl+=5)
+                for(var lvl = 1; lvl < 100; lvl+=1)
                 {
                     Achievements.Add(new ElementoAchievement(id++, 6000, icone, false, ach, lvl, $"{e.ToString()} lvl {lvl}", $"Mate um monstro estando {e.ToString()} lvl {lvl}", e, 10));
                 }

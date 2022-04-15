@@ -8,68 +8,43 @@ using static Server.Fronteira.Weeklies.Weekly;
 
 namespace Server.Fronteira.Weeklies
 {
-    public class SaveWeekly
+    public class SaveRP
     {
-        private static string FilePath = Path.Combine("Saves/Dungeons", "Semanal.bin");
-        public static bool Carregado = false;
-        public static HashSet<int> JaCompletou = new HashSet<int>();
-        public static int SEMANA_ATUAL = 0;
-        public static List<KillCombo> Kills = new List<KillCombo>();
+        private static string FilePath = Path.Combine("Saves/RP", "RP.bin");
+        private static bool Carregado;
+
+        public static int PontosBons = 0;
+        public static int PontosRuims = 0;
 
         public static void Configure()
         {
-            Console.WriteLine("Inicializando save das weeklies");
+            Console.WriteLine("Inicializando save RP");
             EventSink.WorldSave += OnSave;
             EventSink.WorldLoad += OnLoad;
         }
        
         private static void Salva(GenericWriter writer)
         {
-            Console.WriteLine("Salvando weeklies");
-            writer.Write((int)2);
-            writer.Write(SEMANA_ATUAL);
-            writer.Write(Kills.Count);
-            
-            foreach(var kill in Kills)
-            {
-                writer.Write(kill.n);
-                writer.Write(kill.qtd);
-                writer.Write(kill.Monstro);
-            }
-            writer.Write(JaCompletou.Count);
-            foreach (var c in JaCompletou)
-                writer.Write(c);
+            Console.WriteLine("Salvando RP");
+            writer.Write(0);
+            writer.Write(PontosBons);
+            writer.Write(PontosRuims);
+           
         }
 
         private static void Carrega(GenericReader reader)
         {
-            Console.WriteLine("Carregando weeklies");
+            Console.WriteLine("Carregando RP");
             var ver = reader.ReadInt();
-            if (ver > 1)
-            {
-                SEMANA_ATUAL = reader.ReadInt();
-                var count = reader.ReadInt();
-                for (var x = 0; x < count; x++)
-                {
-
-                    var n = reader.ReadString();
-                    var qtd = reader.ReadInt();
-                    var t = reader.ReadType();
-                    Kills.Add(new KillCombo(n, t, qtd));
-                }
-                count = reader.ReadInt();
-                for (var x = 0; x < count; x++)
-                {
-                    var s = reader.ReadInt();
-                    JaCompletou.Add(s);
-                }
-            }
+            PontosBons = reader.ReadInt();
+            PontosRuims = reader.ReadInt();
 
         }
 
         public static void OnSave(WorldSaveEventArgs e)
         {
             Persistence.Serialize(FilePath, Salva);
+
         }
 
         public static void OnLoad()

@@ -7,6 +7,8 @@ namespace Server.Mobiles
     [CorpseName("an ogre corpse")]
     public class BaseOgre : BaseCreature
     {
+        public override int BonusExp => 15;
+
         [Constructable]
         public BaseOgre(AIType type, FightMode mode, int n1, int n2, double n3, double n4)
             : base(type, mode, n1, n2, n3, n4)

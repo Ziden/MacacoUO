@@ -499,8 +499,10 @@ namespace Server.Engines.BulkOrders
                 case BulkMaterialType.Barbed:
                     skillReq = 99.0;
                     break;
+
+
                 case BulkMaterialType.Carvalho:
-                    skillReq = 65.0;
+                    skillReq = 70.0;
                     break;
                 case BulkMaterialType.Pinho:
                     skillReq = 75.0;
@@ -509,11 +511,13 @@ namespace Server.Engines.BulkOrders
                     skillReq = 85.0;
                     break;
                 case BulkMaterialType.Eucalipto:
+                    skillReq = 100;
+                    break;
                 case BulkMaterialType.Carmesin:
-                    skillReq = 95.0;
+                    skillReq = 110;
                     break;
                 case BulkMaterialType.Gelo:
-                    skillReq = 100;
+                    skillReq = 115;
                     break;
             }
 

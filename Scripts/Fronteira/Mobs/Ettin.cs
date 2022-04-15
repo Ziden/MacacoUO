@@ -6,6 +6,8 @@ namespace Server.Mobiles
     [CorpseName("an ettins corpse")]
     public class Ettin : BaseCreature
     {
+        public override int BonusExp => 10;
+
         [Constructable]
         public Ettin()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)

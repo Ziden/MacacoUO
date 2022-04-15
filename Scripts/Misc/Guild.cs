@@ -47,7 +47,8 @@ namespace Server.Guilds
                 2,
                 RankFlags.Member | RankFlags.RemovePlayers | RankFlags.CanInvitePlayer | RankFlags.CanSetGuildTitle |
                 RankFlags.CanPromoteDemote), //Emmissary
-			new RankDefinition(1062960, 3, RankFlags.Member | RankFlags.ControlWarStatus), //Warlord
+			new RankDefinition(1062960, 3, RankFlags.Member | RankFlags.RemovePlayers | RankFlags.CanInvitePlayer | RankFlags.CanSetGuildTitle |
+                RankFlags.CanPromoteDemote | RankFlags.ControlWarStatus), //Warlord
 			new RankDefinition(1062959, 4, RankFlags.All) //Leader
 		};
 

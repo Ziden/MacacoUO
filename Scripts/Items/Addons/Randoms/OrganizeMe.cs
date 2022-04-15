@@ -24,17 +24,17 @@ namespace Server.Commands
         {
             OrganizePouch weaponPouch = null;
             OrganizePouch jewelPouch = null;
-            OrganizePouch potionPouch = null;
             OrganizePouch currencyPouch = null;
             OrganizePouch resourcePouch = null;
             OrganizePouch toolPouch = null;
-            OrganizePouch regsPouch = null;
             OrganizePouch miscPouch = null;
 
             Mobile from = arg.Mobile;
             var bp = from.Backpack as Backpack;
+            var potX = 0;
+            var potY = 250;
 
-            if (@from == null || bp == null)
+            if (from == null || bp == null)
             {
                 return;
             }
@@ -94,10 +94,6 @@ namespace Server.Commands
                         else
                             weaponPouch = item as OrganizePouch;
                     }
-                    if (item.Name == "Pocoes")
-                    {
-                        potionPouch = item as OrganizePouch;
-                    }
                     if (item.Name == "Moedas")
                     {
                         if (currencyPouch != null)
@@ -131,17 +127,6 @@ namespace Server.Commands
                         else
                             toolPouch = item as OrganizePouch;
                     }
-                    if (item.Name == "Reagents")
-                    {
-                        if (regsPouch != null)
-                        {
-                            foreach (var i in new List<Item>(item.Items))
-                                regsPouch.AddItem(i);
-                            item.Delete();
-                        }
-                        else
-                            regsPouch = item as OrganizePouch;
-                    }
                     if (item.Name == "Misc")
                     {
                         if (miscPouch != null)
@@ -172,10 +157,6 @@ namespace Server.Commands
             {
                 jewelPouch = new OrganizePouch { Name = "Joias", Hue = 62 };
             }
-            if (potionPouch == null)
-            {
-                potionPouch = new OrganizePouch { Name = "Pocoes", Hue = 52 };
-            }
             if (currencyPouch == null)
             {
                 currencyPouch = new OrganizePouch { Name = "Moedas", Hue = 42 };
@@ -188,10 +169,6 @@ namespace Server.Commands
             {
                 toolPouch = new OrganizePouch { Name = "Ferramentas", Hue = 22 };
             }
-            if (regsPouch == null)
-            {
-                regsPouch = new OrganizePouch { Name = "Reagents", Hue = 12 };
-            }
             if (miscPouch == null)
             {
                 miscPouch = new OrganizePouch { Name = "Misc" };
@@ -200,14 +177,13 @@ namespace Server.Commands
             {
                 weaponPouch,
                 jewelPouch,
-                potionPouch,
                 currencyPouch,
                 resourcePouch,
                 toolPouch,
-                regsPouch,
                 miscPouch
             };
 
+        
             foreach (
                 Item item in
                     backpackitems.Where(
@@ -232,7 +208,16 @@ namespace Server.Commands
                 }
                 else if (item is BasePotion)
                 {
-                    potionPouch.TryDropItem(from, item, false);
+                    from.Backpack.AddItem(item);
+                    item.X = potX;
+                    item.Y = potY;
+                    potX += 20;
+                }
+                else if (item is Bandage)
+                {
+                    from.Backpack.AddItem(item);
+                    item.X = 0;
+                    item.Y = 90;
                 }
                 else if (item is Gold)
                 {
@@ -250,7 +235,9 @@ namespace Server.Commands
                 }
                 else if (item is BaseReagent)
                 {
-                    regsPouch.TryDropItem(from, item, false);
+                    from.Backpack.AddItem(item);
+                    item.X = 300;
+                    item.Y = 300;
                 }
                 else
                 {
@@ -280,8 +267,6 @@ namespace Server.Commands
 
                 x += 10;
             }
-            regsPouch.DisplayTo(from);
-            potionPouch.DisplayTo(from);
         }
     }
 }

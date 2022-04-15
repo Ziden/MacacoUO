@@ -55,10 +55,7 @@ namespace Server.Engines.BulkOrders
                 Bodies[typeof(Drake)] = new List<int>(new int[] { 60, 61 });
                 Bodies[typeof(Dragon)] = new List<int>(new int[] { 12, 59, 49, 180 });
                 Bodies[typeof(WhiteWyrm)] = new List<int>(new int[] { 49, 180,12, 59 });
-                Bodies[typeof(Horse)] = new List<int>(new int[] { 0xC8, 0xcc,
-                0xE2,
-                0xE4,
-                0xCC });
+                Bodies[typeof(Horse)] = new List<int>(new int[] { 0xC8, 0xcc, 0xE2, 0xE4, 0xCC });
             }
         }
 

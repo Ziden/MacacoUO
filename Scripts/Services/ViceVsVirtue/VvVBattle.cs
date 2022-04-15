@@ -236,10 +236,11 @@ namespace Server.Engines.VvV
         {
             System = sys;
         }
-        
 
         public void Begin(VvVCity cidade = VvVCity.NIUMA)
         {
+            ViceVsVirtueSystem.Entraram.Clear();
+
             OnGoing = true;
             PisouDentro.Clear();
             NextCombatHeatCycle = DateTime.UtcNow;
@@ -614,11 +615,14 @@ namespace Server.Engines.VvV
             {
                 System.CheckBattleStatus(true);
             });
+            var msg = "A guerra infinita eh um evento PvP. Jogadores com ou sem guilda podem ir a cidade da guerra para lutar e ganhar premios. Nao se perde items e ganha-se premios por participar se tiver uma guilda !";
 
             var msg1 = cooldown - 60;
             Timer.DelayCall(TimeSpan.FromMinutes(msg1), () =>
             {
                 Anuncio.Anuncia("Guerra Infinita inicia em 1 hora");
+                foreach (var pl in NetState.GetOnlinePlayerMobiles())
+                    pl.SendMessage(78, msg);
             });
 
             var msg2 = cooldown - 30;
@@ -631,12 +635,16 @@ namespace Server.Engines.VvV
             Timer.DelayCall(TimeSpan.FromMinutes(msg3), () =>
             {
                 Anuncio.Anuncia("Guerra Infinita inicia em 10 minutos");
+                foreach (var pl in NetState.GetOnlinePlayerMobiles())
+                    pl.SendMessage(78, msg);
             });
 
             var msg4 = cooldown - 3;
             Timer.DelayCall(TimeSpan.FromMinutes(msg4), () =>
             {
                 Anuncio.Anuncia("Guerra Infinita inicia em 3 minutos");
+                foreach (var pl in NetState.GetOnlinePlayerMobiles())
+                    pl.SendMessage(78, msg);
             });
 
             var msg5 = cooldown - 1;

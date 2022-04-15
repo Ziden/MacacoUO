@@ -14,6 +14,7 @@ using Server.Engines.CityLoyalty;
 using Server.Regions;
 using Server.Accounting;
 using Server.Engines.ArenaSystem;
+using Server.Commands;
 
 namespace Server.Engines.VvV
 {
@@ -29,7 +30,7 @@ namespace Server.Engines.VvV
         Jhelom,
         Minoc,
         Moonglow,
-      //  Ocllo, 
+        //  Ocllo, 
         SkaraBrae,
         Trinsic,
         Yew,
@@ -70,7 +71,7 @@ namespace Server.Engines.VvV
         {
             Instance = this;
             Battle = new VvVBattle(this);
-      
+
             GuildStats = new Dictionary<Guild, VvVGuildStats>();
             ExemptCities = new List<VvVCity>();
             Timer.DelayCall(TimeSpan.FromSeconds(10), () => { Battle.TimerRestart(); });
@@ -207,7 +208,7 @@ namespace Server.Engines.VvV
             }
         }
 
-        public void CheckBattleStatus(bool force=false)
+        public void CheckBattleStatus(bool force = false)
         {
             Shard.Debug("Check Status Global");
             if (Battle.OnGoing)
@@ -509,6 +510,8 @@ namespace Server.Engines.VvV
             return city.ToString();
         }
 
+        public static HashSet<BaseGuild> Entraram = new HashSet<BaseGuild>();
+
         public static void OnRegionChange(PlayerMobile pl, Region Old, Region New)
         {
             if (ViceVsVirtueSystem.Instance != null && ViceVsVirtueSystem.Enabled)
@@ -518,11 +521,11 @@ namespace Server.Engines.VvV
                 if (oldVVV && !newVVV)
                 {
                     pl.Delta(MobileDelta.Noto);
-                    if(ViceVsVirtueSystem.Instance.Battle.OnGoing)
+                    if (ViceVsVirtueSystem.Instance.Battle.OnGoing)
                         pl.SetCooldown("gi", TimeSpan.FromMinutes(10));
                     pl.SendMessage("Voce saiu da regiao da guerra infinita");
-                    if(Shard.DebugEnabled)
-                        Shard.Debug("Temp ?" + (GetTemporario(pl) != null)+" VVV ? "+IsVvV(pl));
+                    if (Shard.DebugEnabled)
+                        Shard.Debug("Temp ?" + (GetTemporario(pl) != null) + " VVV ? " + IsVvV(pl));
 
                     foreach (var p in pl.FindPlayersInRange(pl.Map, 20))
                         p.Delta(MobileDelta.Noto);
@@ -536,11 +539,20 @@ namespace Server.Engines.VvV
                     Shard.Debug("Temp ?" + (GetTemporario(pl) != null) + " VVV ? " + IsVvV(pl));
                     foreach (var p in pl.FindPlayersInRange(pl.Map, 20))
                         p.Delta(MobileDelta.Noto);
+
+                    if (pl.Guild != null)
+                    {
+                        if (!Entraram.Contains(pl.Guild))
+                        {
+                            Entraram.Add(pl.Guild);
+                            Anuncio.Anuncia("A guilda " + pl.Guild.Abbreviation + " entrou na batalha");
+                        }
+                    }
                 }
             }
         }
 
-            public static bool IsVvV(Mobile m, out VvVPlayerEntry entry, bool checkpet = true, bool guildedonly = false)
+        public static bool IsVvV(Mobile m, out VvVPlayerEntry entry, bool checkpet = true, bool guildedonly = false)
         {
             if (!Enabled)
             {
@@ -554,7 +566,7 @@ namespace Server.Engines.VvV
                     m = ((BaseCreature)m).GetMaster();
             }
 
-       
+
 
             entry = Instance.GetPlayerEntry<VvVPlayerEntry>(m as PlayerMobile);
 

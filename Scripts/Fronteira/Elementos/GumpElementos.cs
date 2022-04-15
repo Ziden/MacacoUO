@@ -243,6 +243,16 @@ namespace Server.Gumps
                         from.SendMessage("Voce sente mais poder em seu corpo");
                         from.CloseAllGumps();
                         from.SendGump(new ElementosGump(from, e));
+
+                        if(nivel > 1 && from.Young)
+                        {
+                            if(from.Wisp != null)
+                            {
+                                from.Wisp.Delete();
+                            }
+                            from.Young = false;
+                        }
+
                         break;
                     }
 

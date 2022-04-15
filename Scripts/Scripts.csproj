@@ -427,6 +427,7 @@
     <Compile Include="Fronteira\Pvm\GateDG.cs" />
     <Compile Include="Fronteira\Pvm\Lapide.cs" />
     <Compile Include="Fronteira\Quests\MatarDeceit.cs" />
+    <Compile Include="Fronteira\Quests\QuestsRP.cs" />
     <Compile Include="Fronteira\Quests\QuestDaCasa.cs" />
     <Compile Include="Fronteira\Rankings\RanksTrampo.cs" />
     <Compile Include="Fronteira\RecompensaLogin\RecompensasGuilda.cs" />

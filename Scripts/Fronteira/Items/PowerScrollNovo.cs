@@ -63,6 +63,14 @@ namespace Server.Items
         {
         }
 
+        public override void OnAfterDuped(Item newItem)
+        {
+            base.OnAfterDuped(newItem);
+            var i = newItem as PowerScrollNovo;
+            i.Skill = this.Skill;
+            i.Value = this.Value;
+        }
+
         [Constructable]
         public PowerScrollNovo(SkillName skill, double value)
             : base(skill, value)
