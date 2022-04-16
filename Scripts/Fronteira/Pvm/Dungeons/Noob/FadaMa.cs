@@ -24,7 +24,7 @@ namespace Server.Mobiles
             this.SetDex(196, 225);
             this.SetInt(196, 225);
 
-            this.SetHits(200, 200);
+            this.SetHits(150, 150);
 
             this.SetDamage(5, 7);
 
@@ -46,7 +46,7 @@ namespace Server.Mobiles
             this.Fame = 200;
             this.Karma = -200;
 
-            this.VirtualArmor = 40;
+            this.VirtualArmor = 0;
 
             if (Utility.RandomDouble() < .33)
                 this.PackItem(Engines.Plants.Seed.RandomPeculiarSeed(4));

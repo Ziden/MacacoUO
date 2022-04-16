@@ -4279,6 +4279,12 @@ namespace Server.Mobiles
             if (this.Region is GuardedRegion)
                 return true;
 
+            if (shoved.Str <= 30)
+                return true;
+
+            if (Mounted && shoved.Str <= 60)
+                return true;
+
             return base.CheckShove(shoved);
         }
 

@@ -387,11 +387,9 @@ namespace Server
 
 		public Mobile Beholder { get { return m_Beholder; } }
 		public Mobile Beheld { get { return m_Beheld; } }
-        public string TextOver;
 
-		public ProfileRequestEventArgs(Mobile beholder, Mobile beheld, string textOverride)
+		public ProfileRequestEventArgs(Mobile beholder, Mobile beheld)
 		{
-            TextOver = textOverride;
 			m_Beholder = beholder;
 			m_Beheld = beheld;
 		}

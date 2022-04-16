@@ -39,7 +39,7 @@ namespace Server.Mobiles
             this.Fame = 500;
             this.Karma = -500;
 
-            this.VirtualArmor = 32;
+            this.VirtualArmor = 0;
         }
 
         public OgroSuspeito(Serial serial)
