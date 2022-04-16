@@ -33,6 +33,7 @@ namespace Server.Mobiles
             this.SetSkill(SkillName.MagicResist, 100, 100);
             this.SetSkill(SkillName.Tactics, 65.1, 90.0);
             this.SetSkill(SkillName.Wrestling, 65.1, 80.0);
+            this.SetSkill(SkillName.DetectHidden, 100, 100);
 
             this.Fame = 5500;
             this.Karma = -5500;
