@@ -30,7 +30,7 @@ namespace Server.Gumps
             this.Resizable = false;
 
             AddPage(0);
-            AddBackground(-1, 27 + y, 537, 25, 9200);
+            AddBackground(-1, 27 + y, 537, 25, 9300);
             AddHtml(28, 30 + y, 421, 22, texto, (bool)false, (bool)false);
             AddButton(502, 30 + y, 4018, 4024, 0, GumpButtonType.Reply, 0);
             AddItem(-6, 29 + y, 3636);
