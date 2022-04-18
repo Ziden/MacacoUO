@@ -446,6 +446,19 @@ namespace Server.Multis
 
         private static readonly Dictionary<Mobile, List<BaseHouse>> m_Table = new Dictionary<Mobile, List<BaseHouse>>();
 
+        public static List<BaseHouse> GetAll()
+        {
+            List<BaseHouse> all = new List<BaseHouse>();
+            foreach(var kv in m_Table)
+            {
+                if(kv.Value != null)
+                {
+                    all.AddRange(kv.Value);
+                }
+            }
+            return all;
+        }
+
         public virtual bool IsAosRules
         {
             get

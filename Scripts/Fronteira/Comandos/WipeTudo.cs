@@ -5,6 +5,7 @@ using Server.Engines.Points;
 using Server.Gumps;
 using Server.Items;
 using Server.Mobiles;
+using Server.Multis;
 using Server.Targeting;
 
 namespace Server.Commands
@@ -15,6 +16,8 @@ namespace Server.Commands
         {
             CommandSystem.Register("wipegeral", AccessLevel.Owner, new CommandEventHandler(CMD));
             CommandSystem.Register("wipeskillcap", AccessLevel.Owner, new CommandEventHandler(CMD2));
+            CommandSystem.Register("wipepets", AccessLevel.Owner, new CommandEventHandler(CMD3));
+            CommandSystem.Register("wipecasas", AccessLevel.Owner, new CommandEventHandler(CMD4));
         }
 
         public static void CMD2(CommandEventArgs arg)
@@ -29,6 +32,28 @@ namespace Server.Commands
             PlayerMobile.Instances.Clear();
             arg.Mobile.SendMessage("Wipado");
         }
+
+        public static void CMD3(CommandEventArgs arg)
+        {
+            arg.Mobile.SendMessage("Wipando");
+            foreach (var m in new List<Mobile>(World.Mobiles.Values))
+            {
+                if (m is BaseCreature && ((BaseCreature)m).GetMaster() is PlayerMobile)
+                    m.Delete();
+            }
+            arg.Mobile.SendMessage("Wipado");
+        }
+
+        public static void CMD4(CommandEventArgs arg)
+        {
+            arg.Mobile.SendMessage("Wipando");
+            foreach (var m in new List<BaseHouse>(BaseHouse.GetAll()))
+            {
+                m.Delete();
+            }
+            arg.Mobile.SendMessage("Wipado");
+        }
+
 
         [Usage("receitas")]
         [Description("Camping Menu.")]

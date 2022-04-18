@@ -122,6 +122,7 @@
     <Compile Include="Commands\Custom\Secure.cs" />
     <Compile Include="Commands\Custom\Trancar.cs" />
     <Compile Include="Fronteira\Achievements\AchieveTypes\ElementoAchievement.cs" />
+    <Compile Include="Fronteira\Comandos\DebugMobiles.cs" />
     <Compile Include="Fronteira\Pvp\LordOfPvP.cs" />
     <Compile Include="Fronteira\Pvp\RewardsArena.cs" />
     <Compile Include="Fronteira\Armarios\BaseArmario.cs" />

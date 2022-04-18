@@ -85,12 +85,16 @@ namespace Server.Engines.Quests
             }
             if (conta.GetSharedAccounts().Any(c => c.Casa))
                 return;
-            
+
             if (this.Owner.Young && conta != null && !conta.Casa && !pegaram.Contains(Owner.NetState.Address.ToString()))
             {
                 pegaram.Add(Owner.NetState.Address.ToString());
                 conta.Casa = true;
-                this.Owner._PlaceInBackpack(new StonePlasterHouseDeed());
+
+                if (Shard.CRASH)
+                    this.Owner.AddToBackpack(new VillaDeed());
+                else
+                    this.Owner.AddToBackpack(new ThatchedRoofCottageDeed());
                 this.Owner.SendMessage("Voce ganhou uma escritura para uma casa !");
                 var npc = Quester as BaseVendor;
                 if (npc != null)
