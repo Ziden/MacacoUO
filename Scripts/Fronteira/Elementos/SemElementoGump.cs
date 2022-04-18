@@ -9,6 +9,8 @@ namespace Server.Gumps
 {
     public class SemElementoGump : Gump
     {
+        public static int ITEMS = Shard.CRASH ? 20 : 100;
+
         public SemElementoGump() : base(0, 0)
         {
             this.Closable = true;
@@ -33,7 +35,7 @@ namespace Server.Gumps
             AddHtml(340, 213, 562, 24, @"Va a Shame e colete cristais para liberar seus elementos PvM.", (bool)false, (bool)false);
             AddItem(756, 494, 16395, 2611);
             AddHtml(772, 357, 50, 22, @"20K", (bool)false, (bool)false);
-            AddHtml(761, 468, 47, 22, @"100", (bool)false, (bool)false);
+            AddHtml(761, 468, 47, 22, $@"{ITEMS}", (bool)false, (bool)false);
             AddImage(341, 249, 1550);
             AddHtml(705, 571, 153, 19, @"Destravar Potencial", (bool)false, (bool)false);
             AddHtml(714, 287, 148, 77, @"Voce precisara dos seguinte items", (bool)false, (bool)false);
@@ -47,7 +49,7 @@ namespace Server.Gumps
 
         private void Unlock(PlayerMobile from)
         {
-            from.Backpack.ConsumeTotal(new System.Type[] { typeof(CristalElemental) }, new int[] { 100 });
+            from.Backpack.ConsumeTotal(new System.Type[] { typeof(CristalElemental) }, new int[] { ITEMS });
             ((PlayerMobile)from).Nivel = 2;
 
             Effects.SendLocationParticles(EffectItem.Create(from.Location, from.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
@@ -152,9 +154,9 @@ namespace Server.Gumps
                             from.SendMessage("Voce precisa de pelo menos 600 pontos de skill para conseguir fazer isto...");
                             return;
                         }
-                        if (!sender.Mobile.Backpack.HasItem<CristalElemental>(100, true))
+                        if (!sender.Mobile.Backpack.HasItem<CristalElemental>(ITEMS, true))
                         {
-                            from.SendMessage("Voce precisa de 100 Pedras Elementais na mochila e 20000 Moedas de Ouro no banco. Encontre as pedras em Shame.");
+                            from.SendMessage($"Voce precisa de {ITEMS} Pedras Elementais na mochila e 20000 Moedas de Ouro no banco. Encontre as pedras em Shame.");
                             return;
                         }
                           

@@ -247,6 +247,7 @@ namespace Scripts.Mythik.Systems.Achievements
 
             // SKILLS
             // BS
+            /*
             var ach = new SkillProgressAchievement(2001, 4000, 0x13E3, false, null, 60, "Ferreiro Noob", "Obtenha 60 Blacksmithy", SkillName.Blacksmith, 5, typeof(SacolaMinerios));
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(2002, 4000, 0x13E3, false, ach, 70, "Ferreiro Perito", "Obtenha 70 Blacksmithy", SkillName.Blacksmith, 5, typeof(SacolaMinerios));
@@ -269,6 +270,7 @@ namespace Scripts.Mythik.Systems.Achievements
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(2010, 4000, 0xE9B, false, ach, 100, "Alquimista Grande Mestre", "Obtenha 100 Alchemy", SkillName.Alchemy, 50, typeof(BagOfAllReagents), typeof(BagOfAllReagents), typeof(BagOfAllReagents), typeof(BagOfAllReagents));
             Achievements.Add(ach);
+            */
 
             // BOW
             var nome = "Bowcrafter";
@@ -277,7 +279,7 @@ namespace Scripts.Mythik.Systems.Achievements
             Type recompensa = typeof(SacolaMadeiras);
             var icone = 0x13B2;
             var id = 2011;
-            ach = new SkillProgressAchievement(id++, 4000, icone, false, null, 60, nome+" Noob", "Obtenha 60 " + skill, skillName, 5, recompensa);
+            var ach = new SkillProgressAchievement(id++, 4000, icone, false, null, 60, nome+" Noob", "Obtenha 60 " + skill, skillName, 5, recompensa);
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 70, nome + " Perito", "Obtenha 70 " + skill, skillName, 5, recompensa);
             Achievements.Add(ach);
@@ -286,6 +288,14 @@ namespace Scripts.Mythik.Systems.Achievements
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 90, nome + " Mestre", "Obtenha 90 " + skill, skillName, 30, recompensa, recompensa);
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 "+ skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
             Achievements.Add(ach);
 
             // CARP
@@ -304,6 +314,64 @@ namespace Scripts.Mythik.Systems.Achievements
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
             Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+
+            // BS
+            nome = "Ferreiro";
+            skill = "Blacksmith";
+            skillName = SkillName.Blacksmith;
+            recompensa = typeof(SacolaMinerios);
+            icone = 0x13E3;
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, null, 60, nome + " Noob", "Obtenha 60 " + skill, skillName, 5, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 70, nome + " Perito", "Obtenha 70 " + skill, skillName, 5, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 80, nome + " Profissional", "Obtenha 80 " + skill, skillName, 20, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 90, nome + " Mestre", "Obtenha 90 " + skill, skillName, 30, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+
+            // ALCH
+            nome = "Alquimista";
+            skill = "Alchemy";
+            skillName = SkillName.Alchemy;
+            recompensa = typeof(BagOfReagents);
+            icone = 0xE9B;
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, null, 60, nome + " Noob", "Obtenha 60 " + skill, skillName, 5, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 70, nome + " Perito", "Obtenha 70 " + skill, skillName, 5, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 80, nome + " Profissional", "Obtenha 80 " + skill, skillName, 20, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 90, nome + " Mestre", "Obtenha 90 " + skill, skillName, 30, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
 
             // TINKER
             nome = "Funileiro";
@@ -320,6 +388,14 @@ namespace Scripts.Mythik.Systems.Achievements
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 90, nome + " Mestre", "Obtenha 90 " + skill, skillName, 30, recompensa, recompensa);
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
             Achievements.Add(ach);
 
             // TAILOR
@@ -338,6 +414,14 @@ namespace Scripts.Mythik.Systems.Achievements
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
             Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
 
             // TAMER
             nome = "Domador";
@@ -355,6 +439,14 @@ namespace Scripts.Mythik.Systems.Achievements
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
             Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
 
             // JEWEL
             nome = "Joalheiro";
@@ -371,6 +463,14 @@ namespace Scripts.Mythik.Systems.Achievements
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 90, nome + " Mestre", "Obtenha 90 " + skill, skillName, 30, recompensa, recompensa);
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
             Achievements.Add(ach);
 
 
@@ -391,8 +491,15 @@ namespace Scripts.Mythik.Systems.Achievements
             Achievements.Add(ach);
             ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 100, nome + " Grande Mestre", "Obtenha 100 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
             Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 105, nome + " Grande Mestre+ (105)", "Obtenha 105 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 110, nome + " Guru (110)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 115, nome + " Mitico (115)", "Obtenha 110 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
+            ach = new SkillProgressAchievement(id++, 4000, icone, false, ach, 120, nome + " Lendario (120)", "Obtenha 120 " + skill, skillName, 50, recompensa, recompensa, recompensa, recompensa, recompensa);
+            Achievements.Add(ach);
 
-         
 
             icone = 0x227C;
             // GMS

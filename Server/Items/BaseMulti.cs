@@ -175,11 +175,6 @@ namespace Server.Items
 					ItemID -= 0x4000;
 				}
 			}
-
-            Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
-            {
-                this.Delete();
-            });
 		}
 	}
 }

@@ -89,6 +89,8 @@ namespace Server.Mobiles
                 }
             }
 
+            from.CloseGump(typeof(GumpOpcoes));
+
             from.SendGump(new GumpOpcoes("Custo: 500", (opt) =>
             {
                 if (!Banker.Withdraw(from, 500))
