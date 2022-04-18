@@ -849,7 +849,7 @@ namespace Server.Items
             {
                 CraftResource thisResource = CraftResources.GetFromType(typeRes);
                 Shard.Debug(thisResource.ToString());
-                if (thisResource == CraftResource.Eucalipto && this.GetType().Name.Contains("Chest") || this.GetType().Name.Contains("Armario"))
+                if (thisResource == CraftResource.Eucalipto)
                 {
                     this.MaxItems += 100;
 

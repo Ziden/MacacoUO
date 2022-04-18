@@ -230,7 +230,10 @@ namespace Server.Engines.BulkOrders
 
         public virtual int ComputeGold(SmallBOD bod)
         {
-            return this.ComputeGold(bod.AmountMax, bod.RequireExceptional, bod.Material, 1, bod.Type);
+            var gold = this.ComputeGold(bod.AmountMax, bod.RequireExceptional, bod.Material, 1, bod.Type);
+            if (gold < 1000)
+                gold = 1000;
+            return gold;
         }
 
         public virtual int ComputeGold(LargeBOD bod)
@@ -605,15 +608,15 @@ namespace Server.Engines.BulkOrders
         {
             new int[][] // 1-part (regular)
             {
-                new int[] { 300, 300, 300, 400, 400, 750, 750, 1200, 1200 },
-                new int[] { 300, 375, 375, 600, 600, 1125, 1125, 1800, 1800 },
-                new int[] { 300, 500, 750, 800, 1050, 1500, 2250, 2400, 4000 }
+                new int[] { 600, 600, 600, 600, 600, 750, 750, 1200, 1200 },
+                new int[] { 600, 600, 600, 600, 600, 1125, 1125, 1800, 1800 },
+                new int[] { 600, 600, 750, 800, 1050, 1500, 2250, 2400, 4000 }
             },
             new int[][] // 1-part (exceptional)
             {
-                new int[] { 400, 400, 400, 750, 750, 1500, 1500, 3000, 3000 },
-                new int[] { 500, 600, 600, 1125, 1125, 2250, 2250, 4500, 4500 },
-                new int[] { 500, 800, 1200, 1500, 2500, 3000, 6000, 6000, 12000 }
+                new int[] { 600, 600, 600, 750, 750, 1500, 1500, 3000, 3000 },
+                new int[] { 600, 600, 600, 1125, 1125, 2250, 2250, 4500, 4500 },
+                new int[] { 600, 800, 1200, 1500, 2500, 3000, 6000, 6000, 12000 }
             },
             new int[][] // Ringmail (regular)
             {

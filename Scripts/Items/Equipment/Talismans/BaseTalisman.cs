@@ -649,6 +649,14 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
+            if(Slayer != TalismanSlayerName.None)
+            {
+                from.SendMessage("Este talisman causa um grande bonus de dano a um tipo de criatura especifico.");
+                if (Charges > 0)
+                    from.SendMessage($"Voce pode usar este item por {Charges} vezes");
+            }
+
+
             if (from.Talisman != this)
                 from.SendLocalizedMessage(502641); // You must equip this item to use it.
             else if (m_ChargeTime > 0)

@@ -23,7 +23,7 @@ namespace Server.Accounting
         public bool Casa = false;
         public bool Checou = false;
 
-		public static readonly TimeSpan YoungDuration = TimeSpan.FromHours(24*15);
+		public static readonly TimeSpan YoungDuration = TimeSpan.FromHours(24*7);
 		public static readonly TimeSpan InactiveDuration = TimeSpan.FromDays(180.0);
 		public static readonly TimeSpan EmptyInactiveDuration = TimeSpan.FromDays(30.0);
 

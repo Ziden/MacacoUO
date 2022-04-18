@@ -63,6 +63,21 @@ namespace Server.Items
         {
         }
 
+        public override bool WillStack(Mobile from, Item item)
+        {
+            var stack = base.WillStack(from, item);
+            if(stack)
+            {
+                if(item is PowerScrollNovo)
+                {
+                    var ps = item as PowerScrollNovo;
+                    if (ps.Skill != this.Skill || ps.getGrupoMax() != getGrupoMax())
+                        return false;
+                }
+            }
+            return stack;
+        }
+
         public override void OnAfterDuped(Item newItem)
         {
             base.OnAfterDuped(newItem);

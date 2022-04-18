@@ -76,7 +76,7 @@ namespace Server.Spells.First
 				
                 if (target is Mobile)
                 {
-                    damage = Utility.Random(4, 4);
+                    damage = Utility.Random(5, 5);
 
                     if (CheckResisted((Mobile)target))
                     {

@@ -242,7 +242,6 @@ namespace Server.Spells.Third
                 }
                 eable.Free();
             }
-
             this.FinishSequence();
         }
 
@@ -251,7 +250,7 @@ namespace Server.Spells.Third
         public override TimeSpan GetCastDelay()
         {
             if (Shard.POL_STYLE && Caster.Player)
-                return TimeSpan.FromSeconds(2);
+                return TimeSpan.FromSeconds(2.5);
             else
                 return base.GetCastDelay();
         }

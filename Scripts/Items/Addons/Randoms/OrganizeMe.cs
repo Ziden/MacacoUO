@@ -208,14 +208,14 @@ namespace Server.Commands
                 }
                 else if (item is BasePotion)
                 {
-                    from.Backpack.AddItem(item);
+                    from.Backpack.DropItem(item);
                     item.X = potX;
                     item.Y = potY;
                     potX += 20;
                 }
                 else if (item is Bandage)
                 {
-                    from.Backpack.AddItem(item);
+                    from.Backpack.DropItem(item);
                     item.X = 0;
                     item.Y = 90;
                 }
@@ -235,7 +235,7 @@ namespace Server.Commands
                 }
                 else if (item is BaseReagent)
                 {
-                    from.Backpack.AddItem(item);
+                    from.Backpack.DropItemStack(item);
                     item.X = 300;
                     item.Y = 300;
                 }

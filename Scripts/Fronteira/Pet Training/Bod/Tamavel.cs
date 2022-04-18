@@ -100,6 +100,7 @@ namespace Server.Fronteira.Quests
         public int Hue;
         public double Skill;
         public int Body;
+        public Type tipo;
 
         public Tamavel(BaseCreature bc)
         {
@@ -107,6 +108,7 @@ namespace Server.Fronteira.Quests
             Name = bc.Name;
             Skill = bc.MinTameSkill;
             Body = bc.Body;
+            tipo = bc.GetType();
         }
 
         public override int GetHashCode()

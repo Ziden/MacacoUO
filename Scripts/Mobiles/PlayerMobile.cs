@@ -2346,7 +2346,7 @@ namespace Server.Mobiles
             get { return 0; }
             set
             {
-                TileMatrix.GroundGate();
+                //TileMatrix.GroundGate();
             }
         }
 
@@ -4838,8 +4838,6 @@ namespace Server.Mobiles
 
         public override DeathMoveResult GetParentMoveResultFor(Item item)
         {
-           
-
             if (CheckInsuranceOnDeath(item) && !Young)
             {
                 return DeathMoveResult.MoveToBackpack;

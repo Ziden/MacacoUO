@@ -118,7 +118,7 @@ namespace Server.Items
                     m.OverheadMessage("* retornando *");
                 } else
                 {
-                    if (from.Region is GuardedRegion)  // see if they are in an "inn" zone and mark if they are
+                    if (from.Region is GuardedRegion || from.Region is NoGuardCity)  // see if they are in an "inn" zone and mark if they are
                     {
                         from.FixedEffect(0x375A, 10, 15);
                         from.PlaySound(0x1E7);

@@ -410,6 +410,11 @@ namespace Server.Items
                 case PotionEffect.ForcaMaior:
                     return new GreaterStrengthPotion();
 
+                case PotionEffect.Inteligencia:
+                    return new IntelligencePotion();
+                case PotionEffect.InteligenciaMaior:
+                    return new GreaterIntelligencePotion();
+
                 case PotionEffect.VenenoFraco:
                     return new LesserPoisonPotion();
                 case PotionEffect.Veneno:

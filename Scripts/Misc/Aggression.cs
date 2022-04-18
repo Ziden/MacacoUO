@@ -9,8 +9,8 @@ namespace Server.Misc
 {
     public class Aggression
     {
-        private static readonly TimeSpan Delay = TimeSpan.FromSeconds(30);
-        private static readonly TimeSpan DelayFast = TimeSpan.FromSeconds(10);
+        private static readonly TimeSpan Delay = TimeSpan.FromSeconds(60);
+        private static readonly TimeSpan DelayFast = TimeSpan.FromSeconds(20);
         private const string AggressorFormat = "Voce esta atacando {0}!";
         private const string AggressedFormat = "{0} esta lhe atacando!";
         private const int Hue = 0x22;

@@ -29,6 +29,9 @@ namespace Server.Engines.BulkOrders
         [CommandProperty(AccessLevel.GameMaster)]
         public int DuracaoDias { get; set; }
 
+        [CommandProperty(AccessLevel.GameMaster)]
+        public Type Tipo { get; set; }
+
         public double Skill;
 
         public override int Lifespan { get { return 60 * 60 * 24 * DuracaoDias; } }
@@ -45,6 +48,7 @@ namespace Server.Engines.BulkOrders
             Nome = tamavel.Name;
             Skill = skill;
             DuracaoDias = 5;
+            Tipo = tamavel.tipo;
         }
 
         private static void InitBodies()
@@ -106,7 +110,7 @@ namespace Server.Engines.BulkOrders
         {
             base.Serialize(writer);
 
-            writer.Write((int)3); // version
+            writer.Write((int)4); // version
             writer.Write(Nome);
             writer.Write(Cor);
             writer.Write(Quantidade);
@@ -114,6 +118,7 @@ namespace Server.Engines.BulkOrders
             writer.Write(GraficoBody);
             writer.Write(DuracaoDias);
             writer.Write(Skill);
+            writer.Write(Tipo);
         }
 
         public override void Deserialize(GenericReader reader)
@@ -133,6 +138,10 @@ namespace Server.Engines.BulkOrders
                 Skill = 100;
             if (DuracaoDias == 0)
                 DuracaoDias = 5;
+            if(version >= 4)
+            {
+                Tipo = reader.ReadType();
+            }
         }
 
         private static Item CriaBod(PlayerMobile tamer)

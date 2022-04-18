@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Server.Fronteira.Weeklies.Daily;
 using static Server.Fronteira.Weeklies.Weekly;
 
 namespace Server.Fronteira.Weeklies
@@ -12,9 +13,13 @@ namespace Server.Fronteira.Weeklies
     {
         private static string FilePath = Path.Combine("Saves/Dungeons", "Semanal.bin");
         public static bool Carregado = false;
+        public static HashSet<int> JaCompletouDia = new HashSet<int>();
         public static HashSet<int> JaCompletou = new HashSet<int>();
         public static int SEMANA_ATUAL = 0;
+        public static int DIA_ATUAL = 0;
+
         public static List<KillCombo> Kills = new List<KillCombo>();
+        public static List<KillComboDia> KillsDia = new List<KillComboDia>();
 
         public static void Configure()
         {
@@ -26,7 +31,7 @@ namespace Server.Fronteira.Weeklies
         private static void Salva(GenericWriter writer)
         {
             Console.WriteLine("Salvando weeklies");
-            writer.Write((int)2);
+            writer.Write((int)3);
             writer.Write(SEMANA_ATUAL);
             writer.Write(Kills.Count);
             
@@ -36,8 +41,25 @@ namespace Server.Fronteira.Weeklies
                 writer.Write(kill.qtd);
                 writer.Write(kill.Monstro);
             }
+
+
             writer.Write(JaCompletou.Count);
             foreach (var c in JaCompletou)
+                writer.Write(c);
+
+            // V3 Dias
+            writer.Write(DIA_ATUAL);
+            writer.Write(KillsDia.Count);
+
+            foreach (var kill in KillsDia)
+            {
+                writer.Write(kill.n);
+                writer.Write(kill.qtd);
+                writer.Write(kill.Monstro);
+            }
+
+            writer.Write(JaCompletouDia.Count);
+            foreach (var c in JaCompletouDia)
                 writer.Write(c);
         }
 
@@ -62,6 +84,26 @@ namespace Server.Fronteira.Weeklies
                 {
                     var s = reader.ReadInt();
                     JaCompletou.Add(s);
+                }
+
+                if(ver > 2)
+                {
+                    DIA_ATUAL = reader.ReadInt();
+                    count = reader.ReadInt();
+                    for (var x = 0; x < count; x++)
+                    {
+
+                        var n = reader.ReadString();
+                        var qtd = reader.ReadInt();
+                        var t = reader.ReadType();
+                        KillsDia.Add(new KillComboDia(n, t, qtd));
+                    }
+                    count = reader.ReadInt();
+                    for (var x = 0; x < count; x++)
+                    {
+                        var s = reader.ReadInt();
+                        JaCompletouDia.Add(s);
+                    }
                 }
             }
 

@@ -60,7 +60,7 @@ namespace Server.Spells.Fourth
                 }
                 else if (mob != null)
                 {
-                    damage = Utility.Random(12, 16);
+                    damage = Utility.Random(18, 11);
 
                     if (CheckResisted(mob))
                     {

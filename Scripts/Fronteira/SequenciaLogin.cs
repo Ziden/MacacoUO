@@ -33,6 +33,9 @@ namespace Server.Fronteira
                 return;
             }
 
+            if (pm.Young && !pm.Account.Young)
+                pm.Young = false;
+
             if (Shard.WHITELIST)
             {
                 if (pm.IsStaff() || pm.Name.StartsWith("Tester"))

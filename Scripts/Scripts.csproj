@@ -518,6 +518,7 @@
     <Compile Include="Fronteira\Tutorial\WispGuia\NovoWispGuia.cs" />
     <Compile Include="Fronteira\Tutorial\WispGump.cs" />
     <Compile Include="Fronteira\Weeklies\Save.cs" />
+    <Compile Include="Fronteira\Weeklies\Daily.cs" />
     <Compile Include="Fronteira\Weeklies\Weekly.cs" />
     <Compile Include="Fronteira\XML\XmlSiege\BaseSiegeProjectile.cs" />
     <Compile Include="Fronteira\XML\XmlSiege\BaseSiegeWeapon.cs" />

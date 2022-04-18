@@ -7,7 +7,6 @@ using Server.Ziden.Dungeons.Goblins.Quest;
 
 namespace Server.Engines.Quests
 {
-
     public class Contrabando : Item
     {
         [Constructable]
@@ -52,7 +51,7 @@ namespace Server.Engines.Quests
         {
             get
             {
-                return "Há uma ameaça se formando a Oeste. Precisamos nos preparar! Nos chegou a notícia de que comerciantes de Cove estão contrabandeando armas e provisões para o… bom, não importa agora para quem! É nosso inimigo! Vamos interromper essas rotas comerciais e usar essas armas para nosso proveito. Você será bem recompensado. Tenha coragem! Vá e faça a coisa certa! !";
+                return "Há uma ameaça se formando a Oeste. Precisamos nos preparar! Nos chegou a notícia de que comerciantes estão contrabandeando armas e provisões para o… bom, não importa agora para quem! É nosso inimigo! Vamos interromper essas rotas comerciais e usar essas armas para nosso proveito. Você será bem recompensado. Tenha coragem! Vá e faça a coisa certa!";
             }
         }
         public override object Refuse
@@ -123,7 +122,6 @@ namespace Server.Engines.Quests
         };
             }
         }
-
 
         [Constructable]
         public NpcDoBem()
