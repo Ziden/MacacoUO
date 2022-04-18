@@ -20,13 +20,13 @@ namespace Server.Commands
         public static void CMD2(CommandEventArgs arg)
         {
             arg.Mobile.SendMessage("Wipando");
-          
             foreach(var player in new List<PlayerMobile>(PlayerMobile.Instances))
             {
                 foreach (var pet in new List<Mobile>(player.AllFollowers))
                     pet.Delete();
                 player.Delete();
             }
+            PlayerMobile.Instances.Clear();
             arg.Mobile.SendMessage("Wipado");
         }
 
