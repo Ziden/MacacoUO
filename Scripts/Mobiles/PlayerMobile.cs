@@ -5684,7 +5684,7 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-
+            reader.ReadInt();
             switch (version)
             {
                 case 55:
