@@ -1,4 +1,5 @@
 using CustomsFramework;
+using Server.Accounting;
 using Server.Fronteira.Tutorial.WispGuia;
 using Server.Gumps;
 using Server.Misc;
@@ -19,6 +20,20 @@ namespace Server.Fronteira
         {
             Console.WriteLine("Carregando sequencia de login");
             EventSink.Login += OnLogin;
+            EventSink.AccountLogin += AccLogin;
+        }
+
+        private static void AccLogin(AccountLoginEventArgs e)
+        {
+            if(Shard.WHITELIST)
+            {
+                var a = Accounts.GetAccount(e.Username);
+                if(a == null || a.AccessLevel <= AccessLevel.Player)
+                {
+                    e.Accepted = false;
+                    e.RejectReason = Network.ALRReason.Blocked;
+                }
+            }
         }
 
         private static void OnLogin(LoginEventArgs e)
