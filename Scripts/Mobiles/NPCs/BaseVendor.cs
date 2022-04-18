@@ -1414,6 +1414,9 @@ namespace Server.Mobiles
                         else if (from.Skills[skill].Value > 115)
                             exp = (ushort)(exp * 0.1);
 
+                        if (Shard.CRASH)
+                            exp *= 2;
+
                         if (dropped is LargeBOD)
                         {
                             var large = (LargeBOD)dropped;

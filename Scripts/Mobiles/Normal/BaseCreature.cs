@@ -7694,6 +7694,10 @@ namespace Server.Mobiles
                     i.Delete();
 
                 var goldMult = GoldHour.GOLD_MULT + 1;
+
+                if (Shard.CRASH)
+                    goldMult += 1;
+
                 if (Shard.DebugEnabled)
                     Shard.Debug("Loc Creature: " + this.Location + " REG " + this.Region);
 

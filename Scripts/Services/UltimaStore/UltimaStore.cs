@@ -505,7 +505,7 @@ namespace Server.Engines.UOStore
 
         public static void Register(Type itemType, TextDefinition[] name, int tooltip, int itemID, int gumpID, int hue, int cost, StoreCategory cat, Func<Mobile, StoreEntry, Item> constructor = null)
         {
-            Register(new StoreEntry(itemType, name, tooltip, itemID, gumpID, hue, (int)(cost * 0.8), cat, constructor));
+            Register(new StoreEntry(itemType, name, tooltip, itemID, gumpID, hue, Shard.CRASH ? (int)(cost * 0.8) : cost, cat, constructor));
         }
 
         public static void Register(StoreEntry entry)

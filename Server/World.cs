@@ -421,8 +421,12 @@ namespace Server
 
 							if (m != null)
 							{
-								mobiles.Add(new MobileEntry(m, typeID, typeName, pos, length));
-								AddMobile(m);
+                                if(typeName != "PlayerMobile")
+                                {
+                                    mobiles.Add(new MobileEntry(m, typeID, typeName, pos, length));
+                                    AddMobile(m);
+                                }
+								
 							}
 						}
 

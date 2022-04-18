@@ -190,6 +190,17 @@ namespace Server.Gumps
                         ball.InvalidateProperties();
                         PackItem(from, ball);
 
+                        if(Shard.CRASH)
+                        {
+                            PackItem(from, new CombatSkillBook() { Exp = 4000 });
+                            PackItem(from, new CombatSkillBook() { Exp = 4000 });
+                            PackItem(from, new CombatSkillBook() { Exp = 4000 });
+                            PackItem(from, new CombatSkillBook() { Exp = 4000 });
+                            PackItem(from, new CombatSkillBook() { Exp = 4000 });
+                            PackItem(from, new CombatSkillBook() { Exp = 4000 });
+                            PackItem(from, new CombatSkillBook() { Exp = 4000 });
+                        }
+                      
                         foreach (var item in k.items)
                         {
                             var dupe = Dupe.DupeItem(item);
