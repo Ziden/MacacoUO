@@ -38,8 +38,13 @@ namespace Server.Commands
             arg.Mobile.SendMessage("Wipando");
             foreach (var m in new List<Mobile>(World.Mobiles.Values))
             {
-                if (m is BaseCreature && ((BaseCreature)m).GetMaster() is PlayerMobile)
-                    m.Delete();
+                if (m is BaseCreature)
+                {
+                    var bc = m as BaseCreature;
+                    if(bc.Controlled || bc.ControlMaster is PlayerMobile)
+                        m.Delete();
+                }
+                  
             }
             arg.Mobile.SendMessage("Wipado");
         }
