@@ -2346,7 +2346,7 @@ namespace Server.Mobiles
             get { return 0; }
             set
             {
-                //TileMatrix.GroundGate();
+                TileMatrix.GroundGate();
             }
         }
 

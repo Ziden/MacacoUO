@@ -187,7 +187,7 @@ namespace Server.Engines.UOStore
 
             cat = StoreCategory.Mounts;
             Register<EtherealHorse>(new TextDefinition("Cavalo Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x20DD, 0, 0, 2000, cat, CavaloEthy);
-            Register<EtherealOstard>(new TextDefinition("Ostard Negro Magico [20/05/2022]"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um ostard magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2135, 0, TintaPreta.COR, 10000, cat, OstardEthy);
+            Register<EtherealOstard>(new TextDefinition("Ostard Magico [20/05/2022]"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um ostard magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2135, 0, 0, 10000, cat, OstardEthy);
             // Register<WindrunnerStatue>(new TextDefinition("Windrunner"), "Montaria. <br>Esta montaria vem Bound e pode ser ressada com Veterinary.<br>", 0x9ED5, 0, 0, 3000, cat, WindRunner);
 
             /*
@@ -505,11 +505,12 @@ namespace Server.Engines.UOStore
 
         public static void Register(Type itemType, TextDefinition[] name, int tooltip, int itemID, int gumpID, int hue, int cost, StoreCategory cat, Func<Mobile, StoreEntry, Item> constructor = null)
         {
-            Register(new StoreEntry(itemType, name, tooltip, itemID, gumpID, hue, cost, cat, constructor));
+            Register(new StoreEntry(itemType, name, tooltip, itemID, gumpID, hue, (int)(cost * 0.8), cat, constructor));
         }
 
         public static void Register(StoreEntry entry)
         {
+
             Entries.Add(entry);
         }
 
@@ -584,8 +585,8 @@ namespace Server.Engines.UOStore
             var cavalo = new EtherealOstard();
             cavalo.Transparent = false;
             cavalo.BoundTo = m.RawName;
-            cavalo.Hue = TintaPreta.COR;
-            cavalo.NonTransparentMountedHue = TintaPreta.COR;
+            //cavalo.Hue = TintaPreta.COR;
+            //cavalo.NonTransparentMountedHue = TintaPreta.COR;
             return cavalo;
         }
 

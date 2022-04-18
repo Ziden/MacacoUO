@@ -15,6 +15,8 @@ namespace Server
 
         public static bool PASCOA = true;
 
+        public static bool CRASH = true;
+
         public static string BotID { get { return Config.Get("General.BotID", ""); } }
         public static string BotKey { get { return Config.Get("General.BotKey", ""); } }
 

@@ -20,10 +20,12 @@ namespace Server.Commands
         public static void CMD2(CommandEventArgs arg)
         {
             arg.Mobile.SendMessage("Wipando");
-            foreach(var player in PlayerMobile.Instances)
+          
+            foreach(var player in new List<PlayerMobile>(PlayerMobile.Instances))
             {
-                if (player.SkillsCap > 7500)
-                    player.SkillsCap = 7500;
+                foreach (var pet in new List<Mobile>(player.AllFollowers))
+                    pet.Delete();
+                player.Delete();
             }
             arg.Mobile.SendMessage("Wipado");
         }
