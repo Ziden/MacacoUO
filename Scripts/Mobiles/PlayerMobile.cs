@@ -5684,7 +5684,6 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-            reader.ReadInt();
             switch (version)
             {
                 case 55:
@@ -6535,7 +6534,13 @@ namespace Server.Mobiles
                 faction.RemoveMember(this);
             }
 
-            BaseHouse.HandleDeletion(this);
+            try
+            {
+                BaseHouse.HandleDeletion(this);
+            } catch(Exception e)
+            {
+
+            }
 
             DisguiseTimers.RemoveTimer(this);
         }

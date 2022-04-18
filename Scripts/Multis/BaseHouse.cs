@@ -3692,6 +3692,9 @@ namespace Server.Multis
                 return;
 
             Account acct = mob.Account as Account;
+            if (acct == null)
+                return;
+
             Mobile trans = null;
 
             for (int i = 0; i < acct.Length; ++i)
