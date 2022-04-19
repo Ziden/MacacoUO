@@ -117,8 +117,13 @@ namespace Server.Gumps
         public static int formulaCusto(double skill)
         {
             V = (int)Math.Pow(skill / 28, 8) / 17;
+
+            if (Shard.CRASH)
+                V /= 10;
+
             if (V <= 0)
                 V = 1;
+          
             return V;
         }
 

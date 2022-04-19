@@ -99,6 +99,11 @@ namespace Server.Engines.Quests
                 var npc = Quester as BaseVendor;
                 if (npc != null)
                     npc.PrivateOverheadMessage("Tome aqui, uma escritura de casa para voce morar !", Owner, 0);
+            } else
+            {
+                var npc = Quester as BaseVendor;
+                if(npc != null)
+                    npc.PrivateOverheadMessage("Ja te vi por aqui ?", Owner, 0);
             }
         }
 

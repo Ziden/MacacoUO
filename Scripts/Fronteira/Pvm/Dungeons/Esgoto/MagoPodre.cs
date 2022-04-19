@@ -164,9 +164,6 @@ namespace Server.Mobiles
             }
         }
 
-
-
-
         public override bool OnBeforeDeath()
         {
             var manolos = GetLootingRights();
