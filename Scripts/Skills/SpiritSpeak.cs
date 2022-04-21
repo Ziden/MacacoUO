@@ -233,6 +233,8 @@ namespace Server.SkillHandlers
                                 }
 
                                 pl.Almas+= qtdAlmas;
+                                if (pl.Almas > 30)
+                                    pl.Almas = 30;
                                 pl.SendMessage($"Almas coletadas: {pl.Almas}/30");
                                 pl.PrivateOverheadMessage($"* {pl.Almas}/30 *");
                             }
