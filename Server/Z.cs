@@ -13,7 +13,7 @@ namespace Server
         public static bool GUIA { get { return Config.Get("General.Guia", false); } }
         public static bool WHITELIST { get => false; }
 
-        public static bool PASCOA = true;
+        public static bool PASCOA = false;
 
         public static bool CRASH = true;
 

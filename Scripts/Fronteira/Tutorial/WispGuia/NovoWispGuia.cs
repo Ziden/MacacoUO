@@ -71,7 +71,7 @@ namespace Server.Mobiles
             return false;
         }
 
-        private void Completa(ObjetivoGuia obj)
+        public void Completa(ObjetivoGuia obj)
         {
             if (Jogador.QuestArrow != null)
             {
@@ -210,8 +210,15 @@ namespace Server.Mobiles
 
             if (!IsCooldown("fala") && obj.FraseProgresso != null)
             {
+
                 SetCooldown("fala", TimeSpan.FromSeconds(60));
                 Fala(obj.FraseProgresso);
+
+                if(obj.OnCheck != null)
+                {
+                    obj.OnCheck(Jogador, obj);
+                }
+
             }
         }
 

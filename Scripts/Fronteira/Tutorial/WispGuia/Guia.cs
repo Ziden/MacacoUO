@@ -4,6 +4,9 @@ using Server.Items;
 using Server.Mobiles;
 using System;
 using System.Collections.Generic;
+using Linq;
+using System.Linq;
+using Server.Engines.Quests;
 
 namespace Server.Fronteira.Tutorial.WispGuia
 {
@@ -18,6 +21,7 @@ namespace Server.Fronteira.Tutorial.WispGuia
         public Func<PlayerMobile, PassoTutorial> GetProximo;
         public bool PrecisaEvento = false;
         public Action<PlayerMobile> Completar;
+        public Action<PlayerMobile, ObjetivoGuia> OnCheck;
     }
 
     public enum PassoTutorial
@@ -178,6 +182,15 @@ namespace Server.Fronteira.Tutorial.WispGuia
             Objetivos.Add(PassoTutorial.PEGAR_QUEST, new ObjetivoGuia()
             {
                 Local = new Point3D(3503, 2483, 26),
+                OnCheck = (PlayerMobile player, ObjetivoGuia obj) => {
+                    if (player.DoneQuests.Any(q => q.QuestType == typeof(SapatoLindoQ)) || player.Quests.Any(q => q.GetType() == typeof(SapatoLindoQ)))
+                    {
+                        if(player.Wisp != null)
+                        {
+                            ((NovoWispGuia)player.Wisp).Completa(obj);
+                        }
+                    }
+                },
                 PrecisaEvento = true,
                 FraseIniciar = "Vamos agora a norte de haven. Encontre o Ze e de 2 cliques nele para pegar iniciar a aventura.",
                 FraseProgresso = "Va a norte de Haven e encontre o Zeh Roela e de dois cliques nele !",

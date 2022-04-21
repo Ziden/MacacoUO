@@ -218,7 +218,21 @@ namespace Server.SkillHandlers
                             var pl = Caster as PlayerMobile;
                             if (pl != null && pl.Almas < 30)
                             {
-                                pl.Almas++;
+
+                                var qtdAlmas = 1;
+                                if(toChannel.Owner != null)
+                                {
+                                    if (toChannel.Owner.HitsMax > 300)
+                                        qtdAlmas++;
+                                    if (toChannel.Owner.HitsMax > 600)
+                                        qtdAlmas++;
+                                    if (toChannel.Owner.HitsMax > 1000)
+                                        qtdAlmas++;
+                                    if (toChannel.Owner.HitsMax > 1500)
+                                        qtdAlmas++;
+                                }
+
+                                pl.Almas+= qtdAlmas;
                                 pl.SendMessage($"Almas coletadas: {pl.Almas}/30");
                                 pl.PrivateOverheadMessage($"* {pl.Almas}/30 *");
                             }

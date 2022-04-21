@@ -663,7 +663,7 @@ namespace Server
 
         public static readonly LootPack MedScrolls = new LootPack(new[] {
             new LootPackEntry(false, MedScrollItems, 100.00, 1),
-            new LootPackEntry(false, MedScrollItems, 10, 1),
+            new LootPackEntry(false, HighScrollItems, 1, 1)
         });
 
         public static readonly LootPack HighScrolls =
