@@ -4209,6 +4209,8 @@ namespace Server.Items
                     bonusOre += 5;
                     break;
                 case CraftResource.Berilo:
+                    bonusOre += 7;
+                        break;
                 case CraftResource.Carmesim:
                     if (this is BaseStaff)
                         bonusOre += 4;

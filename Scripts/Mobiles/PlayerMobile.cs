@@ -1134,16 +1134,17 @@ namespace Server.Mobiles
         public override void Lift(Item item, int amount, out bool rejected, out LRReason reject)
         {
             var delay = false;
-            if(item != null && item.Parent != null)
+            if (item != null && item.Parent != null)
             {
-                if(item.Parent is Corpse)
+                if (item.Parent is Corpse)
                 {
                     var corpse = (Corpse)item.Parent;
-                    if(corpse.Owner is BaseCreature)
+                    if (corpse.Owner is BaseCreature)
                     {
                         if (((BaseCreature)corpse.Owner).GetLootingRights().Count > 1)
                             delay = true;
-                    } else if(corpse.Owner is PlayerMobile)
+                    }
+                    else if (corpse.Owner is PlayerMobile)
                     {
                         delay = true;
                     }
@@ -2231,7 +2232,7 @@ namespace Server.Mobiles
                 pm.m_SpeechLog = null;
                 pm.LastOnline = DateTime.UtcNow;
 
-                if(pm.Alive)
+                if (pm.Alive)
                     pm.AutoStablePets();
             }
 
@@ -2785,7 +2786,7 @@ namespace Server.Mobiles
 
         public bool SmoothForceEquip(Item item)
         {
-            if(item.HueRaridade != 0)
+            if (item.HueRaridade != 0)
             {
                 item.HueRaridade = 0;
                 item.ReleaseWorldPackets();
@@ -3973,7 +3974,7 @@ namespace Server.Mobiles
                 return false;
             }
 
-            if(item.RootParent != this && item.RootParent != this.Backpack)
+            if (item.RootParent != this && item.RootParent != this.Backpack)
             {
                 RevealingAction();
             }
@@ -5460,11 +5461,16 @@ namespace Server.Mobiles
                 return ApplyPoisonResult.Immune;
             }
 
-            if(!from.Player && Skills.TasteID.Value >= 50)
+            if (!from.Player && Skills.TasteID.Value >= 50)
             {
-                if(Utility.RandomDouble() < Skills.TasteID.Value/120)
+                if (Utility.RandomDouble() < Skills.TasteID.Value / 500)
                 {
-                    if(poison.Level > 0)
+                    return ApplyPoisonResult.Immune;
+                }
+
+                if (Utility.RandomDouble() < Skills.TasteID.Value / 100)
+                {
+                    if (poison.Level > 0)
                         poison = PoisonImpl.DecreaseLevel(poison);
                     else
                         return ApplyPoisonResult.Immune;
@@ -6540,7 +6546,8 @@ namespace Server.Mobiles
             try
             {
                 BaseHouse.HandleDeletion(this);
-            } catch(Exception e)
+            }
+            catch (Exception e)
             {
 
             }
@@ -6803,7 +6810,7 @@ namespace Server.Mobiles
                         {
                             RevealingAction(false);
                         }
-                    }                 
+                    }
                     else if (Shard.RP && Mounted && AllowedStealthSteps > 0)
                     {
                         var mount = this.Mount;
@@ -6816,7 +6823,7 @@ namespace Server.Mobiles
                             bc.OverheadMessage("* deixou a montaria escondida *");
                         }
                     }
-                  
+
                     else if (AllowedStealthSteps-- < 0)
                     {
                         Stealth.OnUse(this);

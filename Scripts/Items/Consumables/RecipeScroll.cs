@@ -12,6 +12,17 @@ namespace Server.Items
             : this(r.ID)
         {
             var skill = RecipeScrollDefinition.RecipeSkillNameConvert(r.CraftSystem.MainSkill);
+            switch(skill)
+            {
+                case RecipeSkillName.Alchemy: this.Hue = 110; break;
+                case RecipeSkillName.Blacksmith: this.Hue = 220; break;
+                case RecipeSkillName.Carpentry: this.Hue = 330; break;
+                case RecipeSkillName.Cartography: this.Hue = 440; break;
+                case RecipeSkillName.Cooking: this.Hue = 550; break;
+                case RecipeSkillName.Jewelcrafting: this.Hue = 660; break;
+                case RecipeSkillName.Tailoring: this.Hue = 770; break;
+                case RecipeSkillName.Tinkering: this.Hue = 880; break;
+            }
             Name = "pergaminho de receita de "+skill.ToString();
         }
 
@@ -24,6 +35,17 @@ namespace Server.Items
                 var recipe = Recipe.Recipes[recipeID];
                 var skill = RecipeScrollDefinition.RecipeSkillNameConvert(recipe.CraftSystem.MainSkill);
                 Name = "pergaminho de receita de " + skill.ToString();
+                switch (skill)
+                {
+                    case RecipeSkillName.Alchemy: this.Hue = 110; break;
+                    case RecipeSkillName.Blacksmith: this.Hue = 220; break;
+                    case RecipeSkillName.Carpentry: this.Hue = 330; break;
+                    case RecipeSkillName.Cartography: this.Hue = 440; break;
+                    case RecipeSkillName.Cooking: this.Hue = 550; break;
+                    case RecipeSkillName.Jewelcrafting: this.Hue = 660; break;
+                    case RecipeSkillName.Tailoring: this.Hue = 770; break;
+                    case RecipeSkillName.Tinkering: this.Hue = 880; break;
+                }
                 this.m_RecipeID = recipeID;
             } else
             {

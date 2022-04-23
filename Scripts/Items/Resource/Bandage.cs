@@ -576,7 +576,7 @@ namespace Server.Items
             {
                 double healing = m_Healer.Skills[primarySkill].Value;
                 double anatomy = m_Healer.Skills[secondarySkill].Value;
-                double chance = ((healing - 68.0) / 50.0) - (m_Slips * 0.02);
+                double chance = ((healing - 55) / 50.0) - (m_Slips * 0.02);
 
                 if (((checkSkills = (healing >= 80.0 && anatomy >= 80.0)) && chance > Utility.RandomDouble()) ||
                     (Core.SE && petPatient is FactionWarHorse && petPatient.ControlMaster == m_Healer) ||
