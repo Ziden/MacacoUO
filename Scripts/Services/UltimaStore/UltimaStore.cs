@@ -28,7 +28,8 @@ namespace Server.Engines.UOStore
         Mounts,
         Misc,
         Cart,
-        Houses
+        Houses,
+        Vestuario,
     }
 
     public enum SortBy
@@ -84,41 +85,47 @@ namespace Server.Engines.UOStore
         public static void Initialize()
         {
             StoreCategory cat = StoreCategory.Featured;
-            //CharacterStatueMaker
-           
-            Register<CharacterStatueMaker>("Estatua de Jogador", "Construa uma estatua do seu personagem.<br>Se eternalize !.", 0x32F0, 0, 0, 20000, cat);
+            //GERAL
+            Register<AventalDaLuz>(new TextDefinition("Avental Das Trevas"), "Roupas True Black", 0x153b, 0, 0, 2000, cat);
+            Register<BandanaDaluz>(new TextDefinition("Bandana  Das Trevas"), "Roupas True Black", 0x1540, 0, 0, 2000, cat);
+            Register<RobeAnjoDaluz>(new TextDefinition("Robe Das Trevas"), "Roupas True Black", 0x1F03, 0, 0, 5000, cat);
+            Register<AventalDaDasTrevas>(new TextDefinition("Avental Das Trevas"), "Roupas True Black", 0x153b, 0, 0, 2000, cat);
+            Register<BandanaDasTrevas>(new TextDefinition("Bandana  Das Trevas"), "Roupas True Black", 0x1540, 0, 0, 2000, cat);
+            Register<RobeAnjoDasTrevas>(new TextDefinition("Robe Das Trevas"), "Roupas True Black", 0x1F03, 0, 0, 5000, cat);
+            Register<DragonicRobe>(new TextDefinition("Robe Dragonic "), "Roupa Comemorativa<b>Estoque limitado.", 0x1F03, 0, 0, 5000, cat);
+            Register<SobretudodoCarrasco>(new TextDefinition("Sobretudo Do Carrasco"), "Sobretudo Especial<b> Pode ser pintado.", 0x2687, 0, 0, 6000, cat);
+            Register<CharacterStatueMaker>("Estatua de Jogador", "Construa uma estatua do seu personagem.<br>Se eternalize !.", 0x32F0, 0, 0, 15000, cat);
             Register<PergaminhoPerdao>("Pergaminho do Perdao", "Remove 1 long count.", 0x1F35, 0, 55, 500, cat);
-            Register<SacolaCristais>("100 Cristais Elementais", "Sacola com 100 cristais elementais.", 16395, 0, 2611, 25000, cat);
-
-            Register<Sobrado11x11>("Sobrado Custom 7x7", "Sobrado Custom 7x7.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 10000, cat);
-            Register<Sobrado11x11>("Sobrado Custom 11x11", "Sobrado Custom 11x11.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 30000, cat);
-            Register<TorreMansao>("Torre Custom 18x18", "Torre Custom 18x18.<br>Custa gold para construir partes.", 0xEFA, 0, 0, 50000, cat);
+            Register<SacolaCristais>("100 Cristais Elementais", "Sacola com 100 cristais elementais.", 16395, 0, 2611, 25000, cat);          
             Register<Spellbook>("Fullbook", "Fullbook.<br>Tem todas as magias.", 0x14F0, 0, 0, 5000, cat, ConstructSpellbook);
-
             Register<DoubleExpDeed>("PowerHour 2x Exp", "Ativa double exp para o shard todo por 1h.</ br > Todos vao te amar um pouco mais.", 0x14F0, 0, 256, 500, cat);
             Register<DoubleGoldDeed>("Power Hour 2x Gold", "Ativa double gold para o shard todo por 1h.</br>Todos vao te amar um pouco mais.", 0x14F0, 0, 54, 500, cat);
-            
+            Register<Cloak>(new TextDefinition("Robe Dragonic "), "Roupa Comemorativa<b>Estoque limitado.", 0x1F03, 0, 0, 5000, cat);
+
             cat = StoreCategory.Misc;
-            Register<PergaminhoSagradoSupremo>("Pergaminho de Item Pessoal (Newbie)", "Torna uma roupa um percence pessoal (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 2500, cat);
-            Register<TintaPreta>("Tinta Preta", "Balde de tinta preta.<br>Ma-ra-vi-lhosa com roupas sombrias.", 0xFAB, 0, TintaPreta.COR, 500, cat);
-            Register<TintaBranca>("Tinta Branca", "Balde de tinta branca.<br>Divina cor para iluminados e praticantes da luz.", 0xFAB, 0, TintaBranca.COR, 500, cat);
-            //Register<BagOfBulkOrderCovers>(1071116, 1157603, 0, 0x9CC6, 0, 200, cat, ConstructBOBCoverOne);
+            //MORADIAS
             Register<CastleDeed>("Castelo", "Deed de Castelo imenso.<br>Moradia super glamurosa para realeza.", 0x14F0, 0, 0, 10000, cat);
             Register<KeepDeed>("Keep", "Deed de Keep.<br>Moradia chique para lords.", 0x14F0, 0, 0, 7500, cat);
             Register<TowerDeed>("Torre", "Deed de Torre.<br>Moradia chique para lords.", 0x14F0, 0, 0, 5000, cat);
             Register<LargeMarbleDeed>("Marble", "Deed de Marble.<br>Moradia chique para lords.", 0x14F0, 0, 0, 5000, cat);
-            Register<TrinsicKeepDeed>("Keep Trinsic", "Deed de Moradia Keep 3 andares .<br>Moradia chique para lords.", 0x14F0, 0, 0, 40000, cat);
-            Register<CasaMogaDeed>("Casa Moga", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 50000, cat);
-            Register<RobinsNestDeed>("Casa The robin’s", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 40000, cat);
+            Register<TrinsicKeepDeed>("Keep Trinsic", "Deed de Moradia Keep 3 andares .<br>Moradia chique para lords.", 0x14F0, 0, 0, 28000, cat);
+            Register<CasaMogaDeed>("Casa Moga", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 35000, cat);
+            Register<RobinsNestDeed>("Casa The robin’s", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 28000, cat);
+            Register<CastleOfOceaniaDeed>("Oceania Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 35000, cat);
+            Register<FeudalCastleDeed>("Castle Feudal", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 30000, cat);
+            Register<ElsaCastleDeed>("Elsa Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 30000, cat);
+            Register<SpiresDeed>("Spires Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 30000, cat);
+            Register<GothicRoseCastleDeed>("Gothic Rose Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 30000, cat);
+            Register<TraditionalKeepDeed>("Traditional Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 22000, cat);
+            Register<SandalwoodKeepDeed>("Sandalwood Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 25000, cat);
+            Register<DarkthornKeepDeed>("Darkthorn Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 28000, cat); 
+            Register<Sobrado7x7>("Deed Casa Custom 7x7", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 10000, cat); 
+            Register<Sobrado11x11>("Deed Casa Custom 11x11", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 30000, cat);
+            Register<TorreMansao>("Deed Casa Custom 18x18", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 30000, cat);
 
-            Register<Sobrado11x11>("Sobrado Custom 7x7", "Sobrado Custom 7x7.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 10000, cat);
-            Register<Sobrado11x11>("Sobrado Custom 11x11", "Sobrado Custom 11x11.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 30000, cat);
-            Register<TorreMansao>("Torre Custom 18x18", "Torre Custom 18x18.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 40000, cat);
-
-            Register<DoubleExpDeed>("PowerHour 2x Exp", "Ativa double exp para o shard todo por 1h.</ br > Todos vao te amar um pouco mais.", 0x14F0, 0, 256, 500, cat);
-            Register<DoubleGoldDeed>("Power Hour 2x Gold", "Ativa double gold para o shard todo por 1h.</br>Todos vao te amar um pouco mais.", 0x14F0, 0, 54, 500, cat);
 
             cat = StoreCategory.Character;
+            //PERSONAGEM
             Register<CombatSkillBook>("Livro +5000 Exp", "Livro que garante instantaneamente 5000 EXP.</br>Nao funciona para elementos.", 0xEFA, 0, 0xA33, 1000, cat, ConstructLivro);
             Register<StableSlotIncreaseToken>("+1 Slot Estabulo", "Aumenta um slot para deixar animais no estabulo", 0x2AAA, 0, 0, 2000, cat);
             Register<AbyssalHairDye>("Tinta para Cabelos", "Vermelho Abissal", 0, 0x9C7A, 0, 1000, cat);
@@ -137,18 +144,19 @@ namespace Server.Engines.UOStore
             Register<SpecialHairDye>(new TextDefinition("Tinta para Cabelos"), "Preto do Nevoeiro", 0, 0x9C75, 0, 1000, cat, ConstructHairDye); // Dusk Black
             Register<GenderChangeToken>(new TextDefinition[] { "Trocar de Genero", 1156615 }, 1156642, 0x2AAA, 0, 0, 1000, cat);
             Register<NameChangeToken>(new TextDefinition[] { "Trocar de Nome", 1156615 }, 1156641, 0x2AAA, 0, 0, 1000, cat);
+            Register<PergaminhoSagradoSupremo>("Pergaminho de Item Pessoal (Newbie)", "Torna uma roupa um percence pessoal (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 2500, cat);
+            Register<TintaPreta>("Tinta Preta", "Balde de tinta preta.<br>Ma-ra-vi-lhosa com roupas sombrias.", 0xFAB, 0, TintaPreta.COR, 500, cat);
+            Register<TintaBranca>("Tinta Branca", "Balde de tinta branca.<br>Divina cor para iluminados e praticantes da luz.", 0xFAB, 0, TintaBranca.COR, 500, cat);
 
             cat = StoreCategory.Equipment;
+            //EQUIPAMENTOS
             Register<SmugglersLantern>(new TextDefinition("Lanterna Magica"), "Percente Pessoal<br>Permite usar magias com a lanterna na mao.<br>Vem em cores sortidas.", 0xA25, 0, 0, 2000, cat);
             Register<Kasa>(new TextDefinition("Chapeu Oriental"), "Percence Pessoal. <br>Apenas cosmetico. <br> Pode ser pintado.", 0x2798, 0, 0, 1000, cat, ConstructNewbie);
-            //Register<MythicCharacterToken>(new TextDefinition[] { 1156614, 1156615 }, 1156679, 0x2AAA, 0, 0, 2500, cat); // Colocar 5 skills até 90
             Register<DeerMask> (new TextDefinition("Máscara de Viado Sacrificado"), "Percence Pessoal.", 0x1547, 0, 0, 3000, cat, ConstructNewbie);
             Register< LeatherNinjaHood> (new TextDefinition("Capuz de Ninja"), "Percence Pessoal.", 0x27DA, 0, 0, 2000, cat, ConstructNewbie);
-            //Register<Tekagi>(new TextDefinition("Tekagi"), "Percence Pessoal.", 0x27AB, 0, 0, 1000, cat, ConstructNewbie);//trocar valor
-            //Register<Daisho>(new TextDefinition("Daisho"), "Percence Pessoal.", 0x27A9, 0, 0, 1000, cat, ConstructNewbie);//trocar valor
             Register<Tessen>(new TextDefinition("Tessen"), "Percence Pessoal.", 0x27A3, 0, 0, 2000, cat, ConstructNewbie);
-                  
-            // decorations
+           
+            //DECORAÇÃO
             cat = StoreCategory.Decorations;
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
             Register<HildebrandtDragonRugDeed>(1157889, 1157890, 0, 0x9CD8, 0, 700, cat);
@@ -181,13 +189,21 @@ namespace Server.Engines.UOStore
             Register<HearthOfHomeFireDeed>(1062919, 1156958, 0, 0x9C97, 0, 500, cat);
             Register<GreenGoblinStatuette>(1125133, 1158015, 0xA095, 0, 0, 1500, cat);
             Register<WelcomeMat> (new TextDefinition("Tapete de boas vindas"), "Decoração.", 0x47DA, 0, 0, 2000, cat);
-           
             Register<HitchingPost>("Poste de Estabulo", "Permite estabular e retirar animais em casa. </br>Tem 30 cargas mas pode ser recarregado com cordas de estabulo.", 0x14E7, 0, 0, 5000, cat, ConstructHitchingPost);
             Register<HitchingRope>("Corda de Estabulo", "Recarrega o poste de estabulo", 0x14F8, 0, 0, 100, cat, ConstructHitchingPost);
 
             cat = StoreCategory.Mounts;
+            //MONTARIAS
             Register<EtherealHorse>(new TextDefinition("Cavalo Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x20DD, 0, 0, 2000, cat, CavaloEthy);
             Register<EtherealOstard>(new TextDefinition("Ostard Magico [20/05/2022]"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um ostard magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2135, 0, 0, 10000, cat, OstardEthy);
+            
+
+                                                  
+            //- - - REFERENCIAS --- //
+            //Register<MythicCharacterToken>(new TextDefinition[] { 1156614, 1156615 }, 1156679, 0x2AAA, 0, 0, 2500, cat); // Colocar 5 skills até 90
+            //Register<Tekagi>(new TextDefinition("Tekagi"), "Percence Pessoal.", 0x27AB, 0, 0, 1000, cat, ConstructNewbie);//trocar valor
+            //Register<Daisho>(new TextDefinition("Daisho"), "Percence Pessoal.", 0x27A9, 0, 0, 1000, cat, ConstructNewbie);//trocar valor
+
             // Register<WindrunnerStatue>(new TextDefinition("Windrunner"), "Montaria. <br>Esta montaria vem Bound e pode ser ressada com Veterinary.<br>", 0x9ED5, 0, 0, 3000, cat, WindRunner);
 
             /*
