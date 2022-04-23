@@ -108,7 +108,7 @@ namespace Server.Engines.UOStore
             AddECHandleInput();
 
             AddButton(36, 97, Category == StoreCategory.Featured ? B1 : B2, B1, 100, GumpButtonType.Reply, 0);
-            AddHtml(36, 100, 125, 25, " Novidades", 0x7FFF, false, false); // Featured
+            AddHtml(36, 100, 125, 25, " Geral", 0x7FFF, false, false); // Featured
 
             AddECHandleInput();
             AddECHandleInput();
@@ -138,7 +138,7 @@ namespace Server.Engines.UOStore
             AddECHandleInput();
 
             AddButton(36, 242, Category == StoreCategory.Misc ? B1 : B2, B1, 105, GumpButtonType.Reply, 0);
-            AddHtml(36, 245, 125, 25, " Geral", 0x7FFF, false, false); // Miscellaneous
+            AddHtml(36, 245, 125, 25, " Moradias", 0x7FFF, false, false); // Miscellaneous
 
             AddECHandleInput();
             AddECHandleInput();
