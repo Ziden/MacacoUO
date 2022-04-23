@@ -46,7 +46,7 @@ namespace Server.Engines.VvV
 
         public override void OnDoubleClick(Mobile m)
         {
-            if (!ViceVsVirtueSystem.IsVvV(m))
+            if (!ViceVsVirtueSystem.IsVvV(m) && !ViceVsVirtueSystem.Instance.Battle.OnGoing)
             {
                 m.SendLocalizedMessage("Este item so pode ser usado para jogadores da Guerra Infinita"); // This item can only be used by VvV participants!
                 return;
