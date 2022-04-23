@@ -3084,10 +3084,10 @@ namespace Server
                     flags = id.Flags;
                     height = id.CalcHeight;
 
-                    if(Shard.DebugEnabled)
-                    {
-                        Shard.Debug($"Passa por static: {t.ID} - Ambas Flags: {(flags & (TileFlag.Window | TileFlag.NoShoot)) != 0} Window {(flags & TileFlag.Window) != 0}  NoShoot {(flags & TileFlag.NoShoot) != 0}");
-                    }
+                    //if(Shard.DebugEnabled)
+                    //{
+                    //    Shard.Debug($"Passa por static: {t.ID} - Ambas Flags: {(flags & (TileFlag.Window | TileFlag.NoShoot)) != 0} Window {(flags & TileFlag.Window) != 0}  NoShoot {(flags & TileFlag.NoShoot) != 0}");
+                    //}
 
                     if (t.Z <= pointTop && t.Z + height >= point.Z && (id.Impassable || (flags & (TileFlag.Window | TileFlag.NoShoot)) != 0))
                     {

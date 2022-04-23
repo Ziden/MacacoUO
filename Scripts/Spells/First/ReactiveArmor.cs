@@ -149,6 +149,10 @@ namespace Server.Spells.First
 
                         this.Caster.FixedParticles(0x376A, 9, 32, 5008, EffectLayer.Waist);
                         this.Caster.PlaySound(0x1F2);
+
+                        string args = String.Format("{0}\t{1}\t{2}\t{3}\t{4}", value, 0, 0, 0, 0);
+                        BuffInfo.AddBuff(this.Caster, new BuffInfo(BuffIcon.ReactiveArmor, 1075812, 1075813, args.ToString()));
+
                     }
                     else
                     {

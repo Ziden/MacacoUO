@@ -50,6 +50,7 @@ namespace Server.Items
                 {
                     defender.MeleeDamageAbsorb = 0;
                     defender.SendLocalizedMessage("Sua armadura reativa acabou"); // Your reactive armor spell has been nullified.
+                    BuffInfo.RemoveBuff(defender, BuffIcon.ReactiveArmor);
                     DefensiveSpell.Nullify(defender);
                 }
             }

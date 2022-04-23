@@ -666,7 +666,7 @@ namespace Server
             new SkillInfo(33, "Stealing", 0.0, 10.0, 0.0, "Ladino", null, 0.0, 1.0, 0.0, EASY, StatCode.Dex, StatCode.Int),
             new SkillInfo(34, "Tailoring", 3.75, 16.25, 5.0, "Alfaiate", null, 0.38, 1.63, 0.5, HARD, StatCode.Dex, StatCode.Int),
             new SkillInfo(35, "Animal Taming", 14.0, 2.0, 4.0, "Domador", null, 1.4, 0.2, 0.4, HARD, StatCode.Str, StatCode.Int, true ),
-            new SkillInfo(36, "Jewelcrafting", 0.0, 0.0, 0.0, "Joalheiro", null, 0.2, 0.0, 0.8, EASY, StatCode.Int, StatCode.Str),
+            new SkillInfo(36, "Taste Identification", 0.0, 0.0, 0.0, "Degustador", null, 0.2, 0.0, 0.8, EASY, StatCode.Int, StatCode.Str),
             new SkillInfo(37, "Tinkering", 5.0, 2.0, 3.0, "Funileiro", null, 0.5, 0.2, 0.3, HARD, StatCode.Dex, StatCode.Int),
             new SkillInfo(38, "Tracking", 0.0, 12.5, 12.5, "Ranger", null, 0.0, 1.25, 1.25, EASY, StatCode.Int, StatCode.Dex),
             new SkillInfo(39, "Veterinary", 8.0, 4.0, 8.0, "Veterinario", null, 0.8, 0.4, 0.8, EASY, StatCode.Int, StatCode.Dex),

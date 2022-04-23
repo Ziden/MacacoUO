@@ -136,8 +136,10 @@ namespace Server.Misc
                         {
                             dir.MoveTo(FormatDirectory(root, m_Backups[i - 1], timeStamp));
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            Console.WriteLine(ex.Message);
+                            Console.WriteLine(ex.StackTrace);
                         }
                     }
                 }
@@ -147,8 +149,10 @@ namespace Server.Misc
                     {
                         dir.Delete(true);
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.WriteLine(ex.StackTrace);
                     }
                 }
             }

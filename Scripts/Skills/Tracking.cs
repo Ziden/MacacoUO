@@ -139,7 +139,7 @@ namespace Server.SkillHandlers
         private readonly Mobile m_From;
         private readonly int m_Range;
         private readonly List<Mobile> m_List;
-        private TrackWhoGump(Mobile from, List<Mobile> list, int range)
+        private TrackWhoGump(Mobile from, List<Mobile> list, int range, int index = 0)
             : base(20, 30)
         {
             this.m_From = from;
@@ -169,7 +169,7 @@ namespace Server.SkillHandlers
                 }
             }
 
-            for (int i = 0; i < list.Count && i < 12; ++i)
+            for (int i = index; i < list.Count && i < index + 12; ++i)
             {
                 Mobile m = list[i];
 

@@ -540,7 +540,7 @@ namespace Server.Engines.VvV
                     foreach (var p in pl.FindPlayersInRange(pl.Map, 20))
                         p.Delta(MobileDelta.Noto);
 
-                    if (pl.Guild != null)
+                    if (pl.Guild != null && ViceVsVirtueSystem.Instance.Battle.OnGoing)
                     {
                         if (!Entraram.Contains(pl.Guild))
                         {

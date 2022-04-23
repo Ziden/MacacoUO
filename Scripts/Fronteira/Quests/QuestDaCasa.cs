@@ -90,7 +90,15 @@ namespace Server.Engines.Quests
             {
                 pegaram.Add(Owner.NetState.Address.ToString());
                 conta.Casa = true;
-                this.Owner.AddToBackpack(new ThatchedRoofCottageDeed());
+                switch(Utility.Random(5))
+                {
+                    case 0: this.Owner.AddToBackpack(new ThatchedRoofCottageDeed()); break;
+                    case 1: this.Owner.AddToBackpack(new StonePlasterHouseDeed()); break;
+                    case 2: this.Owner.AddToBackpack(new FieldStoneHouseDeed()); break;
+                    case 3: this.Owner.AddToBackpack(new SmallBrickHouseDeed()); break;
+                    case 4: this.Owner.AddToBackpack(new WoodHouseDeed()); break;
+                }
+              
                 this.Owner.SendMessage("Voce ganhou uma escritura para uma casa !");
                 var npc = Quester as BaseVendor;
                 if (npc != null)

@@ -65,6 +65,7 @@ namespace Server.Engines.Quests
             // AQUI VC BOTA QUANTO DE EXP VAI DAR A QUEST
             PointsSystem.Exp.AwardPoints(this.Owner, 300);
             this.Owner.PlaySound(this.CompleteSound);
+            this.Owner.SendMessage("Completou a quest de matar orcs");
         }
 
         public override void Serialize(GenericWriter writer)

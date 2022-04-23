@@ -20,7 +20,8 @@ namespace Server.SkillHandlers
             m.SendLocalizedMessage(502807); // What would you like to taste?
 
             */
-            m.SendMessage("Compre ferramentas no joalheiro para poder usar Jewelcrafting");
+            //m.SendMessage("Compre ferramentas no joalheiro para poder usar Jewelcrafting");
+            m.SendMessage("Use .xp para subir taste identification. A skill lhe deixa mais resistente a venenos");
             return TimeSpan.FromSeconds(1.0);
         }
 

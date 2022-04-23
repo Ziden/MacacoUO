@@ -386,15 +386,27 @@ namespace Server.Items
                
             }
 
-            /*
-            var beforeDungeon = m.Region as DungeonRegion;
-            var afterDungeon = Region.Find(this.m_PointDest, this.m_MapDest);
 
-            if(beforeDungeon == null && afterDungeon != null)
+            if(m.Murderer && m is PlayerMobile)
             {
+                var pl = m as PlayerMobile;
+                var beforeDungeon = m.Region as DungeonRegion;
+                var afterDungeon = Region.Find(this.m_PointDest, this.m_MapDest) as DungeonRegion;
 
+                // entrando na dg
+                if (beforeDungeon == null && afterDungeon != null)
+                {
+                    var libera = pl.UltimaMorte + TimeSpan.FromHours(2);
+                    var diff = libera - DateTime.UtcNow;
+                    if(diff.TotalMilliseconds > 0)
+                    {
+                        m.SendMessage("Aguarde "+(int)(diff.TotalMinutes)+" minutos para poder entrar em dungeons novamente");
+                        return false;
+                    }
+                }
             }
-            */
+           
+            
 
             StartTeleport(m);
             

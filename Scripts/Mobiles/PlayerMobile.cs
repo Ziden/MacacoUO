@@ -141,6 +141,7 @@ namespace Server.Mobiles
         public WispGuia Wisp = null;
         public int Anuncios = 0;
         public int RankingFama = 0;
+        public DateTime UltimaMorte;
 
         public List<CustomDungeons> DungeonsCompletas { get; set; }
 
@@ -4927,6 +4928,8 @@ namespace Server.Mobiles
             {
                 Waypoints.OnDeath(this);
             }
+
+            UltimaMorte = DateTime.UtcNow;
 
             if (Wisp != null)
             {
