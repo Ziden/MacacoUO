@@ -531,7 +531,7 @@
         <logoutDelay active="false" />
       </region>
     </region>
-    <region type="TownRegion" priority="50" name="Serpent's Hold">
+    <region type="NoGuardCity" priority="50" name="Serpent's Hold">
       <rect x="2868" y="3324" width="205" height="195" />
       <go x="3010" y="3371" z="15" />
       <music name="Serpents" />
@@ -1606,7 +1606,7 @@
         <logoutDelay active="false" />
       </region>
     </region>
-    <region type="TownRegion" priority="50" name="Serpent's Hold">
+    <region type="NoGuardCity" priority="50" name="Serpent's Hold">
       <rect x="2868" y="3324" width="205" height="195" />
       <go x="3010" y="3371" z="15" />
       <music name="Serpents" />

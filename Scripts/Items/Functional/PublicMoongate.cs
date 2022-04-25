@@ -358,7 +358,7 @@ namespace Server.Items
               new PMEntry(new Point3D(4721, 3817, 5), "1. Hyloth"),
               new PMEntry(new Point3D(1298, 1081, 5), "2. Despise"),
               new PMEntry(new Point3D(2043, 227, 14), "3. Wrong"),
-              new PMEntry(new Point3D(2768, 3517, 0), "4. Caverna de Fogo"),
+              new PMEntry(new Point3D(2924, 3409, 6), "4. Caverna de Fogo"),
               new PMEntry(new Point3D(3785,1109, 21), "5. Caverna de Cristal"),
               new PMEntry(new Point3D(1482, 1474, 0), "6. Castelo Blackthorn"),
               new PMEntry(new Point3D(1176, 2637, 5), "7. Destard"),

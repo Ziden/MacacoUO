@@ -4930,8 +4930,11 @@ namespace Server.Mobiles
                 Waypoints.OnDeath(this);
             }
 
-            UltimaMorte = DateTime.UtcNow;
-
+            if(LastKiller is PlayerMobile)
+            {
+                UltimaMorte = DateTime.UtcNow;
+            }
+          
             if (Wisp != null)
             {
                 Timer.DelayCall(TimeSpan.FromSeconds(10), () =>

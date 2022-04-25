@@ -19,7 +19,7 @@ namespace Server.Gumps
 
         public TemplatesGump(PlayerMobile player) : base(0, 0)
         {
-            if(!player.Region.IsPartOf<GuardedRegion>() && !player.Region.IsPartOf<NoHousingRegion>())
+            if(!player.Region.IsPartOf<GuardedRegion>() && !player.Region.IsPartOf<NoHousingRegion>() && !player.Region.IsPartOf<NoGuardCity>())
             {
                 var house = BaseHouse.FindHouseAt(player);
                 if(house == null || (!house.IsCoOwner(player) && !house.IsFriend(player) && !house.IsOwner(player))) {

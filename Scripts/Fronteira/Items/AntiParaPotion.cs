@@ -13,10 +13,10 @@ public class AntiParaPotion : BasePotion
     }
 
     [Constructable]
-    public AntiParaPotion(): base(3836, PotionEffect.AntiParalize)
+    public AntiParaPotion(): base(0x5748, PotionEffect.AntiParalize)
     {
         Name = "Pocao Anti Paralizia";
-        Hue = 2550;
+        Hue = 255;
         Stackable = true;
     }
 
@@ -35,18 +35,20 @@ public class AntiParaPotion : BasePotion
     {
         base.Deserialize(reader);
         int version = reader.ReadInt();
+        ItemID = 0x5748;
+        Hue = 255;
     }
 
     public override void Drink(Mobile m)
     {
         m.OverheadMessage("* bebendo algo *");
-        Timer.DelayCall(TimeSpan.FromSeconds(2), () =>
+        Timer.DelayCall(TimeSpan.FromSeconds(1.8), () =>
         {
             if(m.Alive && m.Paralyzed)
             {
                 m.SendMessage("Voce terminou de tomar uma pocao para paralizia");
                 m.Paralyzed = false;
-                m.Stam = 1;
+                m.Stam /= 2;
                 m.Damage(m.Hits / 10);
                 Consume();
                 m.FixedEffect(0x375A, 10, 15);

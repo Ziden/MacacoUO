@@ -107,7 +107,7 @@ namespace Server.Leilaum
 				if ( m_ControlStone == null )
 					return 0;
 				else
-					return m_ControlStone.MaxAuctionsParAccount;
+					return m_ControlStone.MaxAuctionsParAccount; // 20
 			}
 		}
 

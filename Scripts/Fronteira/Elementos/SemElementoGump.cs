@@ -9,7 +9,7 @@ namespace Server.Gumps
 {
     public class SemElementoGump : Gump
     {
-        public static int ITEMS = Shard.CRASH ? 20 : 100;
+        public static int ITEMS = 50;
 
         public SemElementoGump() : base(0, 0)
         {

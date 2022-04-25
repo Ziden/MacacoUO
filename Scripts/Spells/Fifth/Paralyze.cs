@@ -76,7 +76,7 @@ namespace Server.Spells.Fifth
                     // Algorithm: ((20% of magery) + 7) seconds [- 50% if resisted]
                     duration = Utility.Random(6, 4);
 
-                    var limiteParalize = DateTime.UtcNow - TimeSpan.FromSeconds(5);
+                    var limiteParalize = DateTime.UtcNow - TimeSpan.FromSeconds(10);
                     if (duration <= 0 || this.CheckResisted(m) || (m.Skills.MagicResist.Value > 60 && m.LastParalized > limiteParalize))
                     {
                         duration = 0;

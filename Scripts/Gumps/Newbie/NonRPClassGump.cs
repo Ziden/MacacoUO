@@ -190,7 +190,7 @@ namespace Server.Gumps
                         ball.InvalidateProperties();
                         PackItem(from, ball);
 
-                        if(Shard.CRASH)
+                        if (Shard.CRASH) // lembrete
                         {
                             PackItem(from, new CombatSkillBook() { Exp = 4000 });
                             PackItem(from, new CombatSkillBook() { Exp = 4000 });

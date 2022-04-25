@@ -5845,7 +5845,6 @@ namespace Server.Mobiles
 
         protected override bool OnMove(Direction d)
         {
-
             if (Hidden) //Hidden, let's try stealth
             {
                 if (!Mounted && Skills.Stealth.Value >= 25.0 && CanStealth)
@@ -7695,9 +7694,6 @@ namespace Server.Mobiles
 
                 var goldMult = GoldHour.GOLD_MULT + 1;
 
-                if (Shard.CRASH)
-                    goldMult += 0.5;
-
                 if (Shard.DebugEnabled)
                     Shard.Debug("Loc Creature: " + this.Location + " REG " + this.Region);
 
@@ -9025,6 +9021,9 @@ namespace Server.Mobiles
         public virtual void OnThink()
         {
             if (BaseCreature.BypassConstructor)
+                return;
+
+            if (this.BardPacified)
                 return;
 
             long tc = Core.TickCount;

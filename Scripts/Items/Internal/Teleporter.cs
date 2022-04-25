@@ -386,7 +386,6 @@ namespace Server.Items
                
             }
 
-
             if(m.Murderer && m is PlayerMobile)
             {
                 var pl = m as PlayerMobile;
@@ -396,17 +395,15 @@ namespace Server.Items
                 // entrando na dg
                 if (beforeDungeon == null && afterDungeon != null)
                 {
-                    var libera = pl.UltimaMorte + TimeSpan.FromHours(2);
+                    var libera = pl.UltimaMorte + TimeSpan.FromMinutes(20);
                     var diff = libera - DateTime.UtcNow;
                     if(diff.TotalMilliseconds > 0)
                     {
-                        m.SendMessage("Aguarde "+(int)(diff.TotalMinutes)+" minutos para poder entrar em dungeons novamente");
+                        m.SendMessage("Voce morreu faz menos de 2h sendo PK. Aguarde "+(int)(diff.TotalMinutes)+" minutos para poder entrar em dungeons novamente");
                         return false;
                     }
                 }
             }
-           
-            
 
             StartTeleport(m);
             

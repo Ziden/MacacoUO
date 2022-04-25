@@ -144,6 +144,7 @@ namespace Server.Spells.Second
                     {
                         damage = Utility.Random(1, 8);
 
+
                         if (m_Spell.CheckResisted(defender))
                         {
                             damage *= 0.75;
@@ -153,6 +154,9 @@ namespace Server.Spells.Second
 
                         damage *= m_Spell.GetDamageScalar(defender, ElementoPvM.Escuridao);
                     }
+
+                    if (m_Target == Caster)
+                        damage = 1;
 
                     Caster.MovingParticles(defender, 0x374A, 7, 0, false, false, 5013, 5013, 0x1F1);
                     defender.FixedParticles(0x374A, 10, 15, 5013, EffectLayer.Waist);

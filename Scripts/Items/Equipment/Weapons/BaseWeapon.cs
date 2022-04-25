@@ -7088,10 +7088,10 @@ namespace Server.Items
                         Slayer = BaseRunicTool.GetRandomSlayer();
                 } else
                 {
-                    Attributes.WeaponDamage = power/2 + Utility.Random(power/2);
+                    Attributes.WeaponDamage = power + Utility.Random(power);
                     if (Utility.RandomDouble() < 0.35)
                         Attributes.WeaponSpeed = power / 2 + Utility.Random(power/2);
-                    if (Utility.RandomDouble() < 0.2)
+                    if (Utility.RandomDouble() < 0.4)
                         Slayer = BaseRunicTool.GetRandomSlayer();
                 }
                 this.HueRaridade = 1161;

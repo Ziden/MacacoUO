@@ -956,20 +956,15 @@ namespace Server
                             weapon.DamageLevel = (WeaponDamageLevel)GetRandomOldBonus();
                         }
 
-                        if (5 > Utility.Random(100))
-                        {
-                            weapon.Slayer = SlayerName.Undeads;
-                        }
-
-                        if (from != null && weapon.AccuracyLevel == 0 && weapon.DamageLevel == 0 && weapon.DurabilityLevel == 0 &&
-                            weapon.Slayer == SlayerName.None && 5 > Utility.Random(100))
+                        if (from != null
+                           && weapon.Slayer == SlayerName.None && 1 > Utility.Random(100))
                         {
                             weapon.Slayer = SlayerGroup.GetLootSlayerType(from.GetType());
                         }
 
                         item.HueRaridade = 70;
                         var soma = (int)weapon.AccuracyLevel + (int)weapon.DamageLevel + (int)weapon.DurabilityLevel;
-                        if (soma >= 10)
+                        if (soma >= 10 || weapon.Slayer != SlayerName.None)
                             item.HueRaridade = 10;
                         else if (soma >= 5)
                             item.HueRaridade = 100;

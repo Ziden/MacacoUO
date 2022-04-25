@@ -92,9 +92,9 @@ namespace Server.Engines.BulkOrders
                         bool allRequiredSkills = true;
                         double chance = item.GetSuccessChance(m, null, system, false, ref allRequiredSkills);
 
-                        if (allRequiredSkills && chance >= BulkOrderSystem.MIN_CRAFT_BODS && chance < 1)
+                        if (allRequiredSkills && chance >= 20)
                         {
-                            if (chance > BulkOrderSystem.MIN_CRAFT_BODS)
+                            if (chance > 20)
                                 validEntries.Add(entries[i]);
                         }
                     }
