@@ -308,6 +308,8 @@ namespace Server.Multis
 
     public class ElsaCastle : BaseContestHouse
     {
+        public static Rectangle2D[] AreaArray { get; internal set; }
+
         public ElsaCastle(Mobile owner)
             : base(ContestHouseType.Castle, 0x1480, owner, 3281, 28)
         {
@@ -357,6 +359,8 @@ namespace Server.Multis
 
     public class Spires : BaseContestHouse
     {
+        public static Rectangle2D[] AreaArray { get; internal set; }
+
         public Spires(Mobile owner)
             : base(ContestHouseType.Castle, 0x1481, owner, 3281, 28)
         {
@@ -397,6 +401,8 @@ namespace Server.Multis
 
     public class CastleOfOceania : BaseContestHouse
     {
+        public static Rectangle2D[] AreaArray { get; internal set; }
+
         public CastleOfOceania(Mobile owner)
             : base(ContestHouseType.Castle, 0x1482, owner, 3281, 28)
         {
@@ -635,6 +641,8 @@ namespace Server.Multis
 
     public class DarkthornKeep : BaseContestHouse
     {
+        public static Rectangle2D[] AreaArray { get; internal set; }
+
         public DarkthornKeep(Mobile owner)
             : base(ContestHouseType.Keep, 0x1487, owner, 2113, 18)
         {
@@ -665,6 +673,8 @@ namespace Server.Multis
     public class SandalwoodKeep : BaseContestHouse
     {
         public override int SignPostID { get { return 353; } }
+
+        public static Rectangle2D[] AreaArray { get; internal set; }
 
         public SandalwoodKeep(Mobile owner)
             : base(ContestHouseType.Keep, 0x1488, owner, 2113, 18)
