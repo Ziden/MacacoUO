@@ -5,6 +5,350 @@ using Server.Targeting;
 
 namespace Server.Multis.Deeds
 {
+    public class DarkthornKeepDeed : HouseDeed
+    {
+        [Constructable]
+        public DarkthornKeepDeed()
+            : base(0x1487, new Point3D(0, 11, 0))
+        {
+        }
+
+        public DarkthornKeepDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return DarkthornKeep.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new DarkthornKeep(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class SandalwoodKeepDeed : HouseDeed
+    {
+        [Constructable]
+        public SandalwoodKeepDeed()
+            : base(0x1488, new Point3D(0, 11, 0))
+        {
+        }
+
+        public SandalwoodKeepDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return SandalwoodKeep.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new SandalwoodKeep(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class TraditionalKeepDeed : HouseDeed
+    {
+        [Constructable]
+        public TraditionalKeepDeed()
+            : base(0x1485, new Point3D(0, 11, 0))
+        {
+        }
+
+        public TraditionalKeepDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return TraditionalKeep.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new TraditionalKeep(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class GothicRoseCastleDeed : HouseDeed
+    {
+        [Constructable]
+        public GothicRoseCastleDeed()
+            : base(0x147F, new Point3D(0, 11, 0))
+        {
+        }
+
+        public GothicRoseCastleDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return GothicRoseCastle.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new GothicRoseCastle(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class SpiresDeed : HouseDeed
+    {
+        [Constructable]
+        public SpiresDeed()
+            : base(0x1481, new Point3D(0, 11, 0))
+        {
+        }
+
+        public SpiresDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return Spires.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new Spires(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class ElsaCastleDeed : HouseDeed
+    {
+        [Constructable]
+        public ElsaCastleDeed()
+            : base(0x1480, new Point3D(0, 11, 0))
+        {
+        }
+
+        public ElsaCastleDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return ElsaCastle.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new ElsaCastle(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class FeudalCastleDeed : HouseDeed
+    {
+        [Constructable]
+        public FeudalCastleDeed()
+            : base(0x1483, new Point3D(0, 11, 0))
+        {
+        }
+
+        public FeudalCastleDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return FeudalCastle.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new FeudalCastle(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+    
+    public class CastleOfOceaniaDeed : HouseDeed
+    {
+        [Constructable]
+        public CastleOfOceaniaDeed()
+            : base(0x1482, new Point3D(0, 11, 0))
+        {
+        }
+
+        public CastleOfOceaniaDeed(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override int LabelNumber {
+            get {
+                return 1041223;
+            }
+        }
+        public override Rectangle2D[] Area {
+            get {
+                return CastleOfOceania.AreaArray;
+            }
+        }
+        public override BaseHouse GetHouse(Mobile owner)
+        {
+            return new CastleOfOceania(owner);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    } 
+    
     public class HousePlacementTarget : MultiTarget
     {
         private readonly HouseDeed m_Deed;
@@ -82,7 +426,7 @@ namespace Server.Multis.Deeds
 
             int version = reader.ReadInt();
         }
-    } 
+    }
 
     public class CasaMogaDeed : HouseDeed
     {
@@ -125,9 +469,8 @@ namespace Server.Multis.Deeds
 
             int version = reader.ReadInt();
         }
-    } // Adicionado 
-
-
+    } 
+    
     public class TrinsicKeepDeed : HouseDeed
     {
         [Constructable]
@@ -169,7 +512,7 @@ namespace Server.Multis.Deeds
 
             int version = reader.ReadInt();
         }
-    } // Adicionado 
+    } 
 
     public abstract class HouseDeed : Item
     {
@@ -191,26 +534,20 @@ namespace Server.Multis.Deeds
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int MultiID
-        {
-            get
-            {
+        public int MultiID {
+            get {
                 return this.m_MultiID;
             }
-            set
-            {
+            set {
                 this.m_MultiID = value;
             }
         }
         [CommandProperty(AccessLevel.GameMaster)]
-        public Point3D Offset
-        {
-            get
-            {
+        public Point3D Offset {
+            get {
                 return this.m_Offset;
             }
-            set
-            {
+            set {
                 this.m_Offset = value;
             }
         }
@@ -232,7 +569,7 @@ namespace Server.Multis.Deeds
 
             int version = reader.ReadInt();
 
-            switch ( version )
+            switch (version)
             {
                 case 1:
                     {
@@ -285,7 +622,7 @@ namespace Server.Multis.Deeds
                 Point3D center = new Point3D(p.X - this.m_Offset.X, p.Y - this.m_Offset.Y, p.Z - this.m_Offset.Z);
                 HousePlacementResult res = HousePlacement.Check(from, this.m_MultiID, center, out toMove);
 
-                switch ( res )
+                switch (res)
                 {
                     case HousePlacementResult.Valid:
                         {
@@ -336,10 +673,10 @@ namespace Server.Multis.Deeds
                             break;
                         }
                     case HousePlacementResult.NoQueenLoyalty:
-                    {
-                        from.SendLocalizedMessage(1113707, "10000"); // You must have at lease ~1_MIN~ loyalty to the Gargoyle Queen to place a house in Ter Mur.
-                        break;
-                    }
+                        {
+                            from.SendLocalizedMessage(1113707, "10000"); // You must have at lease ~1_MIN~ loyalty to the Gargoyle Queen to place a house in Ter Mur.
+                            break;
+                        }
                 }
             }
         }
@@ -358,17 +695,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041211;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallOldHouse.AreaArray;
             }
         }
@@ -405,17 +738,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041212;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallOldHouse.AreaArray;
             }
         }
@@ -452,17 +781,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041213;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallOldHouse.AreaArray;
             }
         }
@@ -499,17 +824,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041214;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallOldHouse.AreaArray;
             }
         }
@@ -546,17 +867,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041215;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallOldHouse.AreaArray;
             }
         }
@@ -593,17 +910,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041216;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallOldHouse.AreaArray;
             }
         }
@@ -640,17 +953,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041219;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return GuildHouse.AreaArray;
             }
         }
@@ -687,17 +996,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041220;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return TwoStoryHouse.AreaArray;
             }
         }
@@ -734,17 +1039,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041221;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return TwoStoryHouse.AreaArray;
             }
         }
@@ -781,17 +1082,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041222;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return Tower.AreaArray;
             }
         }
@@ -828,17 +1125,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041223;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return Keep.AreaArray;
             }
         }
@@ -875,17 +1168,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041224;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return Castle.AreaArray;
             }
         }
@@ -922,17 +1211,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041231;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return LargePatioHouse.AreaArray;
             }
         }
@@ -969,17 +1254,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041236;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return LargeMarbleHouse.AreaArray;
             }
         }
@@ -1016,17 +1297,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041237;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallTower.AreaArray;
             }
         }
@@ -1063,17 +1340,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041238;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return LogCabin.AreaArray;
             }
         }
@@ -1110,17 +1383,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041239;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SandStonePatio.AreaArray;
             }
         }
@@ -1157,17 +1426,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041240;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return TwoStoryVilla.AreaArray;
             }
         }
@@ -1204,17 +1469,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041241;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallShop.AreaArray2;
             }
         }
@@ -1251,17 +1512,13 @@ namespace Server.Multis.Deeds
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1041242;
             }
         }
-        public override Rectangle2D[] Area
-        {
-            get
-            {
+        public override Rectangle2D[] Area {
+            get {
                 return SmallShop.AreaArray1;
             }
         }
