@@ -154,7 +154,7 @@ namespace Server.Items
             list.Add("Tinkering: 90");
         }
 
-        public static readonly int QTD = 10;
+        public static readonly int QTD = 5;
 
         public override void OnDoubleClick(Mobile from)
         {

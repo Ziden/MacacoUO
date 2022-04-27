@@ -130,10 +130,7 @@ namespace Server.Engines.BulkOrders
 
                 if (material != BulkMaterialType.None)
                 {
-                    if (theirSkill >= 100)
-                        amountMax = Utility.RandomList(20, 20, 25, 30);
-                    else
-                        amountMax = Utility.RandomList(10, 10, 15, 20);
+                    amountMax = Utility.RandomList(10, 10, 15, 20);
                 }
                 else
                 {
@@ -174,7 +171,7 @@ namespace Server.Engines.BulkOrders
                         bool allRequiredSkills = true;
                         double chance = item.GetSuccessChance(m, res, system, false, ref allRequiredSkills);
 
-                        if (allRequiredSkills && chance > 0.2)
+                        if (allRequiredSkills && chance > 0.4)
                         {
                             if (reqExceptional)
                                 chance = item.GetExceptionalChance(system, chance, m);
@@ -191,7 +188,7 @@ namespace Server.Engines.BulkOrders
                     CraftItem item = system.CraftItems.SearchFor(entry.Type);
                     bool b = false;
                     double chance = item.GetSuccessChance(m, res, system, false, ref b);
-                    if (chance <= 0.5 && material != BulkMaterialType.None)
+                    if (chance <= 0.6 && material != BulkMaterialType.None)
                         amountMax /= 2;
                     return new SmallSmithBOD(entry, material, amountMax, reqExceptional);
                 }

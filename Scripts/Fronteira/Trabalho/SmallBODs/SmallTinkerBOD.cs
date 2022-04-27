@@ -192,12 +192,12 @@ namespace Server.Engines.BulkOrders
                         bool allRequiredSkills = true;
                         double chance = item.GetSuccessChance(m, null, system, false, ref allRequiredSkills);
 
-                        if (allRequiredSkills && chance >= 0.2)
+                        if (allRequiredSkills && chance >= 0.35)
                         {
                             if (reqExceptional)
                                 chance = item.GetExceptionalChance(system, chance, m);
 
-                            if (chance > 0.2)
+                            if (chance > 0.35)
                                 validEntries.Add(entries[i]);
                         }
                     }

@@ -22,6 +22,7 @@ namespace Server.Services.Harvest
             switch(res)
             {
                 // Metais
+                case CraftResource.Ferro: return Mining.FERRO;
                 case CraftResource.Cobre: return Mining.COBRE;
                 case CraftResource.Bronze: return Mining.BRONZE;
                 case CraftResource.Dourado: return Mining.DOURADO;

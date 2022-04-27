@@ -10,6 +10,7 @@ using System.Collections;
 using System.Globalization;
 using Server.Gumps;
 using Leilaum.Utilities;
+using Server.Items;
 
 namespace Server.Leilaum
 {
@@ -335,6 +336,15 @@ namespace Server.Leilaum
 					m_Auction.ItemName = name;
 					m_Auction.Duration = TimeSpan.FromDays( days );					
 					m_Auction.Description = description;
+
+                    if(m_Auction.Item is Spellbook)
+                    {
+                        var book = m_Auction.Item as Spellbook;
+                        if(book.SpellbookType == SpellbookType.Regular || book.SpellbookType == SpellbookType.Necromancer)
+                        {
+                            m_Auction.Description = $"{book.SpellCount} magias";
+                        }
+                    }
 					m_Auction.WebLink = weblink;
 					m_Auction.BuyNow = allowBuyNow ? buynow : 0;
 

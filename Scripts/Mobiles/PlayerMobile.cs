@@ -4955,9 +4955,9 @@ namespace Server.Mobiles
                 {
                     if (((BaseCreature)m).IsBoss)
                     {
-                        DiscordBot.SendMessage($":skull_crossbones: [BOSS] {Name} foi obliterado pelo boss {m.Name} !", 30);
-                    }
-                    DiscordBot.SendMessage($":skull_crossbones: {Name} foi morto por um(a) {m.Name}", 30);
+                        DiscordBot.SendMessage($":skull_crossbones: [BOSS] {Name} foi obliterado pelo boss {m.Name} !", 160);
+                    } else
+                        DiscordBot.SendMessage($":skull_crossbones: {Name} foi morto por um(a) {m.Name}", 160);
                 }
             }
             PlayerMobile killer = m as PlayerMobile;
@@ -7587,7 +7587,7 @@ namespace Server.Mobiles
 
         public override TimeSpan GetLogoutDelay()
         {
-            if (Young || BedrollLogout || BlanketOfDarknessLogout || TestCenter.Enabled)
+            if (BedrollLogout || BlanketOfDarknessLogout || TestCenter.Enabled)
             {
                 return TimeSpan.Zero;
             }

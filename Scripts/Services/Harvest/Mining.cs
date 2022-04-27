@@ -41,7 +41,7 @@ namespace Server.Engines.Harvest
                 return this.m_Sand;
             }
         }
-
+        public static Dificuldade FERRO = new Dificuldade(0, 60);
         public static Dificuldade COBRE = new Dificuldade(60, 80);
         public static Dificuldade BRONZE = new Dificuldade(65, 85);
         public static Dificuldade DOURADO = new Dificuldade(75, 90);

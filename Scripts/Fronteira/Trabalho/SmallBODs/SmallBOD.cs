@@ -384,15 +384,44 @@ namespace Server.Engines.BulkOrders
             {
                 Type objectType = o.GetType();
                 Item item = o as Item;
+                var arma = item as BaseWeapon;
+                var ar = item as BaseArmor;
+                var roupa = item as BaseClothing;
+                var f = item as CraftableFurniture;
+                var tool = item as BaseTool;
 
-                if(item is BaseWeapon && !((BaseWeapon)item).PlayerConstructed)
+                if (arma != null && !arma.PlayerConstructed)
                 {
                     from.SendMessage("Este item nao tem qualidade suficiente, parece ate que foi comprado de uma loja barata...");
                 }
-                else if (item is BaseArmor && !((BaseArmor)item).PlayerConstructed)
+                else if (ar != null && ar.PlayerConstructed)
                 {
                     from.SendMessage("Este item nao tem qualidade suficiente, parece ate que foi comprado de uma loja barata...");
+                } else if(ar != null && ar.Crafter != null && ar.Crafter != from)
+                {
+                    from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
                 }
+                else if (arma != null && arma.Crafter != null && ar.Crafter != from)
+                {
+                    from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
+                }
+                else if (roupa != null && roupa.Crafter != null && roupa.Crafter != from)
+                {
+                    from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
+                }
+                else if (tool != null && tool.Crafter != null && tool.Crafter != from)
+                {
+                    from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
+                }
+                else if (f != null && f.Crafter != null && f.Crafter != from)
+                {
+                    from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
+                }
+                else if (f != null && f.Crafter != null && f.Crafter != from)
+                {
+                    from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
+                }
+
                 else if (m_AmountCur >= m_AmountMax)
                 {
                     from.SendMessage("A quantidade pedida ja foi combinada"); // The maximum amount of requested items have already been combined to this deed.

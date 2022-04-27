@@ -42,7 +42,7 @@ namespace Server.Gumps
 
             this.AddHtml(62, 192, 111, 24, $"<CENTER>Jarro de Po Magico</CENTER>", false, false);
             NewAuctionGump.AddItemCentered(67, 112, 111, 101, 0x0E48, 0, this);
-            this.AddHtml(71, 125, 89, 21, $"<CENTER>20</CENTER>", false, false);
+            this.AddHtml(71, 125, 89, 21, $"<CENTER>5</CENTER>", false, false);
 
             this.AddBackground(180, 112, 100, 100, 3500);
 
@@ -55,7 +55,7 @@ namespace Server.Gumps
             this.AddBackground(286, 192, 111, 24, 3000);
             this.AddHtml(286, 192, 111, 24, $"<CENTER>Ess. " + colar.Elemento.ToString() + "</CENTER>", false, false);
             NewAuctionGump.AddItemCentered(292, 112, 111, 101, 0x571C, colar.Hue, this);
-            this.AddHtml(296, 125, 89, 21, $"<CENTER>10</CENTER>", false, false);
+            this.AddHtml(296, 125, 89, 21, $"<CENTER>5</CENTER>", false, false);
 
             this.AddImage(49, 61, 113);
             this.AddImage(381, 63, 113);
@@ -151,7 +151,7 @@ namespace Server.Gumps
 
             var jarros = from.Backpack.Items.Where(i => i is PedraMagica);
 
-            if(!from.Backpack.HasItems(new Type[] { typeof(PedraMagica) }, new int[] { 20 }))
+            if(!from.Backpack.HasItems(new Type[] { typeof(PedraMagica) }, new int[] { 5 }))
             {
                 from.SendMessage("Falta po magico");
                 return;
@@ -164,7 +164,7 @@ namespace Server.Gumps
             }
             var tipoEssencia = BaseEssencia.GetEssencia(e.Elemento);
             var essencia = from.Backpack.FindItemByType(tipoEssencia);
-            if (essencia == null ||  essencia.Amount < 30)
+            if (essencia == null ||  essencia.Amount < 5)
             {
                 from.SendMessage("Falta essencia elemental de "+e.Elemento);
                 return;

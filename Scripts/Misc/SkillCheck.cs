@@ -52,7 +52,7 @@ namespace Server.Misc
             _PlayerChanceToGainStats = 7;//Config.Get("PlayerCaps.PlayerChanceToGainStats", 5);
             _PetChanceToGainStats = Config.Get("PlayerCaps.PetChanceToGainStats", 5);
 
-            if (!Config.Get("PlayerCaps.EnablePlayerStatTimeDelay", false))
+            //if (!Config.Get("PlayerCaps.EnablePlayerStatTimeDelay", false))
                 _StatGainDelay = TimeSpan.FromSeconds(0.5);
 
             if (!Config.Get("PlayerCaps.EnablePetStatTimeDelay", false))
@@ -536,9 +536,6 @@ namespace Server.Misc
             if (from is PlayerMobile)
                 QuestHelper.CheckSkill((PlayerMobile)from, skill);
             #endregion
-
-            if (Shard.EXP && Utility.RandomBool())
-                return;
 
             if (skill.Lock == SkillLock.Up &&
                 (!Siege.SiegeShard || !(from is PlayerMobile) || Siege.CanGainStat((PlayerMobile)from)))

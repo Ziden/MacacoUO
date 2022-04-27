@@ -913,6 +913,7 @@
     <Compile Include="Items\Consumables\AntiPoisonTreat.cs" />
     <Compile Include="Items\Consumables\SpecialLockPick.cs" />
     <Compile Include="Items\Containers\BagOfBlackPearl.cs" />
+    <Compile Include="Items\Equipment\Clothing\Estoque loja.cs" />
     <Compile Include="Items\Equipment\Weapons\PraticeBow.cs" />
     <Compile Include="Items\Functional\Pergaminhos\DoubleExp.cs" />
     <Compile Include="Items\Functional\Pergaminhos\PergaminhoDeBencao.cs" />

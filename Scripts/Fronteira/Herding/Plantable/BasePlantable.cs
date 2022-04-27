@@ -86,6 +86,12 @@ namespace Server.Items
                 {
                     var target = (IPoint3D)p;
 
+                    if(from.Region is GuardedRegion)
+                    {
+                        from.SendMessage("Voce nao pode plantar em cidades. Plante em gramados ou fazendas fora da cidade ou em casas");
+                        return;
+                    }
+
                     if(target is LandTarget)
                     {
                         var land = (LandTarget)target;
@@ -137,13 +143,15 @@ namespace Server.Items
 
                     if (from.CheckSkillMult(SkillName.Herding, toPlant.GetMinSkill(), toPlant.GetMaxSkill() + 15))
                     {
+
+
                         from.Emote("* plantando *");
                         from.Animate(AnimationType.Attack, 3);
 
                         if(!from.IsCooldown("dp"))
                         {
-                            from.SetCooldown("dp", TimeSpan.FromMinutes(10));
-                            from.SendMessage(78, "Uma planta demora horas para crescer, porem retorna muitos recursos !");
+                            from.SetCooldown("dp", TimeSpan.FromSeconds(60));
+                            from.SendMessage(78, "Colha plantas pela floresta para conseguir mais recursos !!!");
                         }
                         var tipo = toPlant.GetType();
                        

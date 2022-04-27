@@ -92,8 +92,8 @@ namespace Server.Engines.UOStore
             Register<AventalDaDasTrevas>(new TextDefinition("Avental Das Trevas"), "Roupas True Black", 0x153b, 0, 0, 2000, cat);
             Register<BandanaDasTrevas>(new TextDefinition("Bandana  Das Trevas"), "Roupas True Black", 0x1540, 0, 0, 2000, cat);
             Register<RobeAnjoDasTrevas>(new TextDefinition("Robe Das Trevas"), "Roupas True Black", 0x1F03, 0, 0, 5000, cat);
-            Register<DragonicRobe>(new TextDefinition("Robe Dragonic "), "Roupa Comemorativa<b>Estoque limitado.", 0x1F03, 0, 0, 5000, cat);
-            Register<SobretudodoCarrasco>(new TextDefinition("Sobretudo Do Carrasco"), "Sobretudo Especial<b> Pode ser pintado.", 0x2687, 0, 0, 6000, cat);
+            Register<DragonicRobe>(new TextDefinition("Robe Dragonic "), "Roupa Comemorativa<b>Estoque limitado.", 0x1F03, 0, 0, 6000, cat);
+            Register<SobretudodoCarrasco>(new TextDefinition("Sobretudo Do Carrasco"), "Sobretudo Especial<b> Pode ser pintado.", 0x2687, 0, 0, 5000, cat);
             Register<CharacterStatueMaker>("Estatua de Jogador", "Construa uma estatua do seu personagem.<br>Se eternalize !.", 0x32F0, 0, 0, 15000, cat);
             Register<PergaminhoPerdao>("Pergaminho do Perdao", "Remove 1 long count.", 0x1F35, 0, 55, 500, cat);
             Register<SacolaCristais>("100 Cristais Elementais", "Sacola com 100 cristais elementais.", 16395, 0, 2611, 25000, cat);          

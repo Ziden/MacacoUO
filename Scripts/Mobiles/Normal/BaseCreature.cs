@@ -4691,7 +4691,9 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public IDamageable ControlTarget { get { return m_ControlTarget; } set { m_ControlTarget = value; } }
+        public IDamageable ControlTarget { get { return m_ControlTarget; } set { if (m_ControlTarget != null && value == null) {
+                  
+                } m_ControlTarget = value; } }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D ControlDest { get { return m_ControlDest; } set { m_ControlDest = value; } }
@@ -4710,6 +4712,7 @@ namespace Server.Mobiles
 
                 m_ControlOrder = value;
 
+             
                 if (m_Allured)
                 {
                     if (m_ControlOrder == OrderType.Release)
@@ -4720,6 +4723,17 @@ namespace Server.Mobiles
                     {
                         Say(1079120); // Very well.
                     }
+                }
+
+                // tira de combate qnd liberta
+                if (m_ControlOrder == OrderType.Release && Combatant is Mobile)
+                {
+                    var m = Combatant as Mobile;
+                    RemoveAggressed(m);
+                    RemoveAggressor(m);
+                    m.RemoveAggressor(this);
+                    m.RemoveAggressed(this);
+                    Combatant = null;
                 }
 
                 if (m_AI != null)
@@ -8140,9 +8154,9 @@ namespace Server.Mobiles
                     m.Combatant = null;
 
                 RemoveAggressed(m);
-                RemoveAggressor(m);
+
                 m.RemoveAggressed(this);
-                m.RemoveAggressor(this);
+     
 
                 if (Combatant != null)
                     Combatant = null;

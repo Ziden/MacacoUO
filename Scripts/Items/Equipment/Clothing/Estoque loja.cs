@@ -2,16 +2,14 @@ using System;
 
 namespace Server.Items
 {
-    public class SobretudodoCarrasco : BaseSuit
+    public class SobretudodoCarrasco : HoodedShroudOfShadowsNoob
     {
         [Constructable]
         public SobretudodoCarrasco()
-            : base(AccessLevel.GameMaster, 0x0, 0x2687)
+            : base()
         {
             Name = "Sobretudo Do Carrasco";
             Hue = 0;
-            LootType = LootType.Blessed;
-
         }
 
         public SobretudodoCarrasco(Serial serial)

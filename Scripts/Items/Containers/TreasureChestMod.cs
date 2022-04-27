@@ -36,7 +36,7 @@ namespace Server.Items
             AddLoot(Loot.RandomProvision());
             AddLoot(new Charcoal());
             if (Utility.Random(3) == 1)
-                AddLoot(new BagOfReagents());
+                AddLoot(new BagOfReagents(15));
             if (Utility.Random(5) == 1)
                 AddLoot(new BagOfNecroReagents());
             if (Utility.Random(3) == 1)
@@ -219,7 +219,7 @@ namespace Server.Items
                 AddLoot(new Bandage(6));
             AddLoot(new Charcoal(2));
             if (Utility.Random(3) == 1)
-                AddLoot(new BagOfReagents());
+                AddLoot(new BagOfReagents(25));
             if (Utility.Random(5) == 1)
                 AddLoot(new BagOfNecroReagents());
             DropItem(new Gold(25, 70));
@@ -332,7 +332,7 @@ namespace Server.Items
             if (Utility.Random(3) == 1)
                 AddLoot(new Bandage(10));
 
-            AddLoot(new BagOfReagents());
+            AddLoot(new BagOfReagents(30));
             if (Utility.Random(3) == 1)
                 AddLoot(new BagOfNecroReagents());
 
@@ -433,7 +433,7 @@ namespace Server.Items
         {
             if (Utility.RandomDouble() < 0.1)
                 this.Visible = false;
-            AddLoot(new BagOfReagents());
+            AddLoot(new BagOfReagents(30));
             AddLoot(new BagOfNecroReagents());
             AddLoot(new Charcoal(10));
             var t = Utility.Random(100);
@@ -625,8 +625,6 @@ namespace Server.Items
             if(Utility.RandomDouble() < 0.1)
                 DropItem(Loot.RandomTalisman());
 
-            AddLoot(new BagOfReagents());
-            AddLoot(new BagOfNecroReagents());
             AddLoot(new BagOfReagents());
             AddLoot(new BagOfNecroReagents());
 

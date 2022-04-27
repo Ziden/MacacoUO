@@ -205,10 +205,16 @@ namespace Server.Items
             Item spawn = this.GetCropObject();
 
             var Skill = (int)from.Skills[SkillName.Herding].Value;
-            var amt = 2 + Skill / 20;
+            var amt = 1 + Skill / 20;
             if (nomeQuemPlantou == null)
             {
-                amt *= 3;
+                amt += 1;
+                amt *= 2;
+            }
+            if(spawn is BaseReagent)
+            {
+                amt += 1;
+                amt *= 2;
             }
 
             spawn.Amount = amt;

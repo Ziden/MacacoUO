@@ -113,10 +113,8 @@ namespace Server.Engines.BulkOrders
 
                 if (material != BulkMaterialType.None)
                 {
-                    if (theirSkill >= 100)
-                        amountMax = Utility.RandomList(20, 20, 30, 25);
-                    else
-                        amountMax = Utility.RandomList(10, 10, 15, 20);
+
+                    amountMax = Utility.RandomList(10, 10, 15, 20);
                 }
                 else
                 {
@@ -156,12 +154,12 @@ namespace Server.Engines.BulkOrders
                         bool allRequiredSkills = true;
                         double chance = item.GetSuccessChance(m, res, system, false, ref allRequiredSkills);
 
-                        if (allRequiredSkills && chance >= 0.2)
+                        if (allRequiredSkills && chance >= 0.5)
                         {
                             if (reqExceptional)
                                 chance = item.GetExceptionalChance(system, chance, m);
 
-                            if (chance > 0.2)
+                            if (chance > 0.5)
                                 validEntries.Add(entries[i]);
                         }
                     }
