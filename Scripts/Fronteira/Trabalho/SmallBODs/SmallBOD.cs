@@ -401,7 +401,7 @@ namespace Server.Engines.BulkOrders
                 {
                     from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
                 }
-                else if (arma != null && arma.Crafter != null && ar.Crafter != from)
+                else if (arma != null && arma.Crafter != null && arma.Crafter != from)
                 {
                     from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
                 }
@@ -410,10 +410,6 @@ namespace Server.Engines.BulkOrders
                     from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
                 }
                 else if (tool != null && tool.Crafter != null && tool.Crafter != from)
-                {
-                    from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
-                }
-                else if (f != null && f.Crafter != null && f.Crafter != from)
                 {
                     from.SendMessage("Este item nao e fruto do seu arduo trabalho...");
                 }
