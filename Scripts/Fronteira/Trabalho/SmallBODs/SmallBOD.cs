@@ -394,7 +394,7 @@ namespace Server.Engines.BulkOrders
                 {
                     from.SendMessage("Este item nao tem qualidade suficiente, parece ate que foi comprado de uma loja barata...");
                 }
-                else if (ar != null && ar.PlayerConstructed)
+                else if (ar != null && !ar.PlayerConstructed)
                 {
                     from.SendMessage("Este item nao tem qualidade suficiente, parece ate que foi comprado de uma loja barata...");
                 } else if(ar != null && ar.Crafter != null && ar.Crafter != from)
