@@ -32,10 +32,10 @@ namespace Server.Mobiles
             public InternalBuyInfo()
             {
                 Add(new GenericBuyInfo(typeof(Bandage), 30, 999, 0xE21, 0));
-                Add(new GenericBuyInfo(typeof(SewingKit), 3, 20, 0xF9D, 0)); 
+                Add(new GenericBuyInfo(typeof(SewingKit), 3, 20, 0xF9D, 0));
                 Add(new GenericBuyInfo(typeof(Scissors), 11, 20, 0xF9F, 0));
-                Add(new GenericBuyInfo(typeof(DyeTub), 8, 20, 0xFAB, 0)); 
-                Add(new GenericBuyInfo(typeof(Dyes), 8, 20, 0xFA9, 0)); 
+                Add(new GenericBuyInfo(typeof(DyeTub), 8, 20, 0xFAB, 0));
+                Add(new GenericBuyInfo(typeof(Dyes), 8, 20, 0xFA9, 0));
 
                 Add(new GenericBuyInfo(typeof(Shirt), 12, 20, 0x1517, 0));
                 Add(new GenericBuyInfo(typeof(ShortPants), 7, 20, 0x152E, 0));
@@ -131,7 +131,7 @@ namespace Server.Mobiles
                 Add(typeof(SpoolOfThread), 9);
 
                 Add(typeof(Flax), 21);
-                Add(typeof(Cotton), 21);
+                //Add(typeof(Cotton), 21);
                 Add(typeof(Wool), 11);
             }
         }
