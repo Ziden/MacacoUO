@@ -131,7 +131,7 @@ namespace Server.Mobiles
                 Add(typeof(SpoolOfThread), 9);
 
                 Add(typeof(Flax), 21);
-                //Add(typeof(Cotton), 21);
+                Add(typeof(Cotton), 8);
                 Add(typeof(Wool), 11);
             }
         }
