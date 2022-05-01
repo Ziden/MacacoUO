@@ -109,8 +109,7 @@ namespace Server.Ziden.Kills
 
             var c = e.Corpse;
             var killer = e.Killer;
-            if (bc.IsParagon)
-                exp *= 3;
+
 
             exp += bc.BonusExp;
 
@@ -123,6 +122,10 @@ namespace Server.Ziden.Kills
             if (bc is BaseChampion)
                 exp *= 5;
 
+            if (bc.IsParagon)
+            {
+                exp *= 4;
+            }
             if (Shard.DebugEnabled)
             {
                 Shard.Debug("Rolando XP " + exp);

@@ -66,7 +66,14 @@ namespace Server.Spells.Eighth
                     duration = TimeSpan.FromSeconds(10 + (3 * this.Caster.Skills.SpiritSpeak.Fixed));
 
                 var creature = new EnergyVortex(true);
-                SpellHelper.Summon(creature, Caster, 0x212, duration, true, true, false, SkillName.SpiritSpeak);
+                if (Caster.Skills.SpiritSpeak.Value >= 100)
+                {
+                    SpellHelper.Summon(creature, Caster, 0x212, duration, true, true, true, SkillName.SpiritSpeak);
+                }
+                else {
+                    SpellHelper.Summon(creature, Caster, 0x212, duration, true, true, false, SkillName.SpiritSpeak);
+                }
+               
             }
 
             this.FinishSequence();

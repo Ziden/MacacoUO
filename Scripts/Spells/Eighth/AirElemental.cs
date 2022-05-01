@@ -52,7 +52,7 @@ namespace Server.Spells.Eighth
                 TimeSpan duration = TimeSpan.FromSeconds(20 + (2 * this.Caster.Skills.SpiritSpeak.Value));
 
                 var ele = new AirElemental();
-                SpellHelper.Summon(ele, this.Caster, 0x217, duration, false, false);
+                SpellHelper.Summon(ele, this.Caster, 0x217, duration, true, true);
                 ele.VirtualArmor = 0;
             }
 

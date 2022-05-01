@@ -133,7 +133,6 @@ namespace Server.Mobiles
                 Add(typeof(Flax), 4);
                 Add(typeof(Cotton), 4);
                 Add(typeof(Wool), 3);
-
             }
         }
     }

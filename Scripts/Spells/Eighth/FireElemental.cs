@@ -32,7 +32,7 @@ namespace Server.Spells.Eighth
                 return false;
 
             var custoSummon = 4;
-            if (m_Caster.Skills.AnimalLore.Value >= 100)
+            if (m_Caster.Skills.SpiritSpeak.Value >= 100)
                 custoSummon = 2;
 
             if ((this.Caster.Followers + custoSummon) > this.Caster.FollowersMax)
@@ -55,7 +55,7 @@ namespace Server.Spells.Eighth
                 ele.DamageMax = 5;
                 ele.DamageMin = 1;
                 ele.Elemento = Items.ElementoPvM.Fogo;
-                SpellHelper.Summon(ele, this.Caster, 0x217, duration, false, false);
+                SpellHelper.Summon(ele, this.Caster, 0x217, duration, true, true);
      
             }
 

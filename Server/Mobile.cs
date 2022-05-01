@@ -2602,7 +2602,7 @@ namespace Server
             }
         }
 
-        private static TimeSpan m_ExpireCriminalDelay = TimeSpan.FromMinutes(5);
+        private static TimeSpan m_ExpireCriminalDelay = TimeSpan.FromMinutes(2.5);
 
         public static TimeSpan ExpireCriminalDelay { get { return m_ExpireCriminalDelay; } set { m_ExpireCriminalDelay = value; } }
 

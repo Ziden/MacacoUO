@@ -83,7 +83,7 @@ namespace Server.Spells.Fifth
 
                     if (pl != null)
                     {
-                        if(pl.Almas == 30)
+                        if (pl.Almas > 20)
                         {
                             type = topTypes[Utility.Random(topTypes.Length)];
                         }
@@ -98,14 +98,18 @@ namespace Server.Spells.Fifth
                             creature.HitsMaxSeed = creature.HitsMaxSeed + (pl.Almas * 10);
                             creature.Hits = creature.HitsMax;
                         }
-                        if(pl.Almas > 10)
+                        if (pl.Almas > 10)
                         {
                             creature.ControlSlots = 1;
                         }
-                      
+
                     }
 
-                    //creature.ControlSlots = 2;
+                    if (m_Caster.Skills.AnimalLore.Value >= 100)
+                    {
+                        creature.HitsMaxSeed = creature.HitsMaxSeed + 100;
+                        creature.Hits = creature.HitsMax;
+                    }
 
                     TimeSpan duration;
 
@@ -113,7 +117,7 @@ namespace Server.Spells.Fifth
                         duration = TimeSpan.FromSeconds((2 * this.Caster.Skills.SpiritSpeak.Fixed) / 5);
                     else
                         duration = TimeSpan.FromSeconds(15 + this.Caster.Skills[SkillName.SpiritSpeak].Value * 2);
-  
+
                     SpellHelper.Summon(creature, this.Caster, 0x215, duration, true, true, true, SkillName.SpiritSpeak);
                 }
                 catch
