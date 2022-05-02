@@ -309,7 +309,7 @@ namespace Server.Engines.Doom
 				return;
 			}
 
-			if (d.Link != null)
+			if (d.Link != null && d.Link != d)
 			{
 				DeleteDoor(d.Link);
 			}

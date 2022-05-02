@@ -30,9 +30,9 @@ namespace Server.Spells.Eighth
             if (!base.CheckCast())
                 return false;
 
-            var custoSummon = 3;
+            var custoSummon = 4;
             if (m_Caster.Skills.SpiritSpeak.Value >= 100)
-                custoSummon = 1;
+                custoSummon = 2;
 
             if ((this.Caster.Followers + custoSummon) > this.Caster.FollowersMax)
             {
@@ -49,6 +49,12 @@ namespace Server.Spells.Eighth
             {
                 TimeSpan duration = TimeSpan.FromSeconds(40 + (2 * this.Caster.Skills.SpiritSpeak.Value));
                 var ele = new WaterElemental();
+
+                var custoSummon = 4;
+                if (m_Caster.Skills.SpiritSpeak.Value >= 100)
+                    custoSummon = 2;
+                ele.ControlSlots = custoSummon;
+             
                 SpellHelper.Summon(ele, this.Caster, 0x217, duration, true, true);
                 ele.VirtualArmor = 0;
             }

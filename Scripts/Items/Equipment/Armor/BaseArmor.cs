@@ -2913,6 +2913,30 @@ namespace Server.Items
             return m_Durability != ArmorDurabilityLevel.Regular || m_Protection != ArmorProtectionLevel.Regular;
         }
 
+        public static void AddPropsPvM(ObjectPropertyList list, AosAttributes m_AosAttributes)
+        {
+            var prop = 0;
+            if ((prop = m_AosAttributes.WeaponSpeed) != 0)
+            {
+                list.Add($"Velocidade PvM: +{prop / 2}"); // swing speed increase ~1_val~%
+            }
+
+            if ((prop = m_AosAttributes.WeaponDamage) != 0)
+                list.Add($"Dano Fisico PvM: +{prop}%");
+
+            if ((prop = m_AosAttributes.DefendChance) != 0)
+                list.Add($"Parry & Armor PvM: +{prop}%"); // defense chance increase ~1_val~%
+
+            if ((prop = m_AosAttributes.SpellDamage) != 0)
+                list.Add($"Bonus Dano Magico PvM: +{prop}%"); // spell damage increase ~1_val~%
+
+            if ((prop = m_AosAttributes.LowerManaCost) != 0)
+                list.Add($"Retorno Mana PvM: +{prop}%"); // lower mana cost ~1_val~%
+
+            if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
+                list.Add($"Bonus Habilidades de Armas PvM: {prop}%");
+        }
+
         public override void AddNameProperties(ObjectPropertyList list)
         {
             base.AddNameProperties(list);
@@ -2976,6 +3000,8 @@ namespace Server.Items
 
             if (RP)
                 list.Add("[ RP ]");
+
+            AddPropsPvM(list, Attributes);
 
             if (!Core.AOS)
                 return;

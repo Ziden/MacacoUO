@@ -97,7 +97,7 @@ namespace Server.Engines.BulkOrders
         {
             if (info.ButtonID == 1) // Ok
             {
-                if (m_From._PlaceInBackpack(m_Deed))
+                if (m_From.AddToBackpack(m_Deed))
                 {
                     m_From.SendMessage("Voce pegou uma ordem de compra"); // The bulk order deed has been placed in your backpack.
                 }

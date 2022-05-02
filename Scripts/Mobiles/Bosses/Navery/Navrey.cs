@@ -131,6 +131,11 @@ namespace Server.Mobiles
             SorteiaItem(DefJewelcrafting.GetRandomReceitaNoob());
             DistribuiItem(new FragmentosAntigos());
             DistribuiItem(new FragmentosAntigos());
+            var sandalia = new Sandals();
+            sandalia.Hue = 1161;
+            sandalia.Name = "[Boss][Navrey] Sandalias da Humildade";
+            sandalia.Attributes.WeaponDamage = 10;
+            SorteiaItem(sandalia);
             SorteiaItem(new PergaminhoPeso());
 
             GolemMecanico.JorraOuro(this.Location, this.Map, 1000);

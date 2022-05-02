@@ -24,6 +24,7 @@ using Server.Spells.Sixth;
 using Server.Misc.Custom;
 using Server.Fronteira.Talentos;
 using Server.Fronteira.Elementos;
+using Server.Spells.Eighth;
 #endregion
 
 namespace Server.Spells
@@ -1411,6 +1412,9 @@ namespace Server.Spells
                     {
                         return true;
                     }
+
+                    if (this is ResurrectionSpell && Utility.RandomBool())
+                        return true;
                 }
                 bool skillCheck = Caster.CheckSkillMult(CastSkill, minSkill, maxSkill);
                 return skillCheck;

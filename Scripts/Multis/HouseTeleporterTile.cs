@@ -17,7 +17,7 @@ namespace Server.Multis
             TileData.ItemTable[0x574A].Flags = TileFlag.None;
         }
 
-        public static int MaxCharges = 1000;
+        public static int MaxCharges = 2000;
 
 		private int _Charges;
 

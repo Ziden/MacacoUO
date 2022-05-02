@@ -85,6 +85,7 @@ namespace Server.Mobiles
             var book = new Spellbook();
             book.Hue = TintaPreta.COR;
             book.Name = "Livro do Lich Rei";
+            book.Attributes.SpellDamage = 10;
             SorteiaItem(book);
             for (var x = 0; x < 4; x++)
             {

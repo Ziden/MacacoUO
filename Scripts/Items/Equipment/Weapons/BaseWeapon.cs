@@ -1611,6 +1611,15 @@ namespace Server.Items
                 }
             }
 
+            if(attacker.Player)
+            {
+                var diffDex = attacker.Dex - defender.Dex;
+                if (diffDex > 0)
+                {
+                    chance += diffDex / 150;
+                }
+            }
+
             if (defender.Weapon is Fists && defender is PlayerMobile)
             {
                 if (defender.Skills.Wrestling.Value >= 100)
@@ -2118,7 +2127,7 @@ namespace Server.Items
                 defender.FixedEffect(0x37B9, 10, 16);
                 defender.Animate(AnimationType.Parry, 0);
 
-                var ratioBloqueio = (attacker is BaseCreature ? 2 : attackerWeapon is BaseRanged ? 1.5 : 1.2);
+                var ratioBloqueio = (attacker is BaseCreature ? 2 : attackerWeapon is BaseRanged ? 1.2 : 1);
                 var bloqueado = 0;
                 if (shield != null)
                 {
@@ -2127,12 +2136,11 @@ namespace Server.Items
                         bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.7 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
                     } else
                     {
-                        var max = (int)(damage * 0.8);
-                        bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.7 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
+                        var max = (int)(damage * 0.7);
+                        bloqueado = (int)(shield.ArmorRating * (attackerWeapon is BaseRanged ? 1.2 : 1.0));
                         if (bloqueado > max)
                             bloqueado = max;
                     }
-                   
                 }
                 else
                 {
@@ -6562,25 +6570,7 @@ namespace Server.Items
                 list.Add(1060441); // night sight
             }
 
-            if ((prop = m_AosAttributes.WeaponSpeed) != 0)
-            {
-                list.Add($"Velocidade PvM: +{prop / 2}"); // swing speed increase ~1_val~%
-            }
-
-            if ((prop = m_AosAttributes.WeaponDamage) != 0)
-                list.Add($"Dano Fisico PvM: +{prop}%");
-
-            if ((prop = m_AosAttributes.DefendChance) != 0)
-                list.Add($"Parry & Armor PvM: +{prop}%"); // defense chance increase ~1_val~%
-
-            if ((prop = m_AosAttributes.SpellDamage) != 0)
-                list.Add($"Bonus Dano Magico PvM: +{prop}%"); // spell damage increase ~1_val~%
-
-            if ((prop = m_AosAttributes.LowerManaCost) != 0)
-                list.Add($"Retorno Mana PvM: +{prop}%"); // lower mana cost ~1_val~%
-
-            if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
-                list.Add($"Bonus Habilidades de Armas PvM: {prop}%");
+            BaseArmor.AddPropsPvM(list, Attributes);
 
             return;
 

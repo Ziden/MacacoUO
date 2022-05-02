@@ -54,6 +54,12 @@ namespace Server.Spells.Eighth
                 ele.VirtualArmor = 0;
                 ele.DamageMax = 5;
                 ele.DamageMin = 1;
+
+                var custoSummon = 4;
+                if (m_Caster.Skills.SpiritSpeak.Value >= 100)
+                    custoSummon = 2;
+                ele.ControlSlots = custoSummon;
+
                 ele.Elemento = Items.ElementoPvM.Fogo;
                 SpellHelper.Summon(ele, this.Caster, 0x217, duration, true, true);
      

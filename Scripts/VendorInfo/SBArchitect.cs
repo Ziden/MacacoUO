@@ -34,6 +34,7 @@ namespace Server.Mobiles
             {
                 Add(new GenericBuyInfo("Construir Casa", typeof(HousePlacementTool), 500, 20, 5360, 0));
                 Add(new GenericBuyInfo("Ferramenta de Decoracao", typeof(InteriorDecorator), 10001, 20, 0xFC1, 0));
+                Add(new GenericBuyInfo("Teleportador", typeof(HouseTeleporterTileBag), 50000, 20, 0x40BB, 0));
                 //Add(new GenericBuyInfo("Ferramenta de Decoracao", typeof(HouseTeleporterTileBag), 10000, 20, 6173, 0));
 
             }

@@ -46,9 +46,15 @@ namespace Server.Spells.Eighth
         {
             if (this.CheckSequence())
             {
+
                 TimeSpan duration = TimeSpan.FromSeconds(40 + (2 * this.Caster.Skills.SpiritSpeak.Value));
 
                 var ele = new EarthElemental();
+
+                var custoSummon = 4;
+                if (m_Caster.Skills.SpiritSpeak.Value >= 100)
+                    custoSummon = 2;
+                ele.ControlSlots = custoSummon;
                 SpellHelper.Summon(ele, this.Caster, 0x217, duration, true, true);
                 ele.VirtualArmor *= 2;
             }

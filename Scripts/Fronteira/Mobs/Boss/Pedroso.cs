@@ -128,7 +128,13 @@ namespace Server.Mobiles
             SorteiaItem(new FragmentosAntigos());
             SorteiaItem(new FragmentosAntigos());
             SorteiaItem(new FragmentosAntigos());
-            if(Utility.RandomBool())
+            var itemRaro = new Necklace();
+            itemRaro.Hue = TintaPreta.COR;
+            itemRaro.Name = "[Boss][Pedroso] Colar de Pedra-Negra";
+            itemRaro.Attributes.WeaponDamage = 10;
+            SorteiaItem(itemRaro);
+
+            if (Utility.RandomBool())
                 SorteiaItem(new BronzeIngot(300));
             else
                 SorteiaItem(new BronzeIngot(300));

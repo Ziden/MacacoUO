@@ -51,6 +51,10 @@ namespace Server.Spells.Eighth
                 TimeSpan duration = TimeSpan.FromSeconds(20 + (2 * this.Caster.Skills.SpiritSpeak.Value));
                 Shard.Debug("Duration Inicial: " + duration.TotalSeconds);    
                 BaseCreature m_Daemon = new SummonedDaemon();
+                var custoSummon = 4;
+                if (m_Caster.Skills.SpiritSpeak.Value >= 100)
+                    custoSummon = 2;
+                m_Daemon.ControlSlots = custoSummon;
                 SpellHelper.Summon(m_Daemon, this.Caster, 0x216, duration, true, true);
                 m_Daemon.FixedParticles(0x3728, 8, 20, 5042, EffectLayer.Head);
 

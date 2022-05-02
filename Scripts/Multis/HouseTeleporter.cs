@@ -71,7 +71,24 @@ namespace Server.Items
         {
             BaseHouse house = BaseHouse.FindHouseAt(this);
 
-            m.SendMessage(38, "Teleporters serao desativados em breve.");
+            if (house != null && (house.IsCombatRestricted(m) || m.InCombat()))
+            {
+                m.SendLocalizedMessage(1071514); // You cannot use this item during the heat of battle.
+                return false;
+            }
+
+            if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m)))
+            {
+                m.SendLocalizedMessage(1115577); // You cannot teleport from here to the destination because you do not have the correct house permissions. 
+                return false;
+            }
+
+            if (house == null || !house.HasSecureAccess(m, m_Level))
+            {
+                m.SendLocalizedMessage(1115577); // You cannot teleport from here to the destination because you do not have the correct house permissions.
+                return false;
+            }
+
             return true;
         }
 
@@ -81,6 +98,12 @@ namespace Server.Items
             {
                 return true;
             }
+
+            if (m.InCombat())
+            {
+                m.SendMessage("Voce esta em combate");
+                return true;
+            }     
 
             if (m_Target != null && !m_Target.Deleted)
             {

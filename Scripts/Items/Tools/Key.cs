@@ -538,7 +538,7 @@ namespace Server.Items
                     {
                         number = 501675; // This key is also blank.
                     }
-                    else if (from.CheckTargetSkillMinMax(SkillName.Tinkering, k, 0, 75.0))
+                    else if (from.CheckTargetSkillMinMax(SkillName.Tinkering, k, 0, 10) || true)
                     {
                         number = 501676; // You make a copy of the key.
 
@@ -546,6 +546,13 @@ namespace Server.Items
                         m_Key.KeyValue = k.KeyValue;
                         m_Key.Link = k.Link;
                         m_Key.MaxRange = k.MaxRange;
+                        if(k.LootType == LootType.Blessed)
+                        {
+                            if (from.Skills.Tinkering.Value >= 100)
+                                m_Key.LootType = LootType.Blessed;
+                            else
+                                from.SendMessage(78, "Com 100 de tinkering a copia da chave ficara newbie !");
+                        }
                     }
                     else if (Utility.RandomDouble() <= 0.1) // 10% chance to destroy the key
                     {

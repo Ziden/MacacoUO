@@ -123,7 +123,7 @@ namespace Server
 			return m != null && m.Aggressed.Any(o => o != null && !o.Expired && o.Defender == source);
 		}
 
-		public static TimeSpan CombatHeatDelay = TimeSpan.FromSeconds(5.0);
+		public static TimeSpan CombatHeatDelay = TimeSpan.FromSeconds(10.0);
 
 		public static bool InCombat(this Mobile m)
 		{

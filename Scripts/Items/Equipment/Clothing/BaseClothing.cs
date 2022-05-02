@@ -1214,20 +1214,7 @@ namespace Server.Items
             if ((prop = m_AosAttributes.BonusStam) != 0)
                 list.Add(1060484, prop.ToString()); // stamina increase ~1_val~
 
-            if ((prop = m_AosAttributes.WeaponDamage) != 0)
-                list.Add($"Dano Fisico PvM: {prop}%");
-
-            if ((prop = m_AosAttributes.DefendChance) != 0)
-                list.Add($"Parry & Armor PvM: {prop}%"); // defense chance increase ~1_val~%
-
-            if ((prop = m_AosAttributes.SpellDamage) != 0)
-                list.Add($"Bonus Dano Magico PvM: {prop}%"); // spell damage increase ~1_val~%
-
-            if ((prop = m_AosAttributes.LowerManaCost) != 0)
-                list.Add(1060433, prop.ToString()); // lower mana cost ~1_val~%
-
-            if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
-                list.Add($"Bonus Habilidades de Armas PvM: {prop}%");
+            BaseArmor.AddPropsPvM(list, Attributes);
 
             return;
 

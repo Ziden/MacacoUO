@@ -29,7 +29,7 @@ namespace Server.Mobiles
             c.PublicOverheadMessage("* dropou 1/3 da pedra elemental *");
 
             SorteiaItem(new CristalElemental(Utility.RandomMinMax(3, 5)));
-
+            
             Altar = null;
         }
 

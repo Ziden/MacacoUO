@@ -3233,13 +3233,17 @@ namespace Server
         public virtual bool Tamable { get { return false; } set { } }
 
 
-        public Target DaTarget<Type>(Action<Type> callback)
+        public Target DaTarget<Type>(Action<Type> callback, string msgType=null)
         {
             Target t = new SimpleTarget(12, TargetFlags.None, true, new TargetCallback((Mobile m, object target) =>
             {
                 if(typeof(Type).IsAssignableFrom(target.GetType()))
                 {
                     callback((Type)target);
+                } else
+                {
+                    if (msgType != null)
+                        SendMessage(msgType);
                 }
             }));
             Target = t;

@@ -23,6 +23,51 @@ namespace Server.Items
         {
         }
 
+        public override void AddNameProperties(ObjectPropertyList list)
+        {
+            base.AddNameProperties(list);
+            list.Add("Use em armaduras para adicionar poderes PvM");
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            from.SendMessage("Selecione uma armadura para adicionar mais poder PvM");
+            from.DaTarget<BaseArmor>(armor =>
+            {
+                if (this.Deleted)
+                    return;
+
+                if(armor.Attributes.WeaponDamage > 0 ||
+                armor.Attributes.SpellDamage > 0 ||
+                armor.Attributes.WeaponSkillDamage > 0 ||
+                armor.Attributes.WeaponSpeed > 0 ||
+                armor.Attributes.DefendChance > 0 ||
+                armor.Attributes.LowerManaCost > 0)
+                {
+                    from.SendMessage("Esta armadura ja esta encantada !");
+                    return;
+                }
+                Effects.SendLocationParticles(EffectItem.Create(from.Location, from.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
+                Effects.PlaySound(from.Location, from.Map, 0x243);
+
+                Effects.SendMovingParticles(new Entity(Serial.Zero, new Point3D(from.X - 6, from.Y - 6, from.Z + 15), from.Map), from, 0x36D4, 7, 0, false, true, 0x497, 0, 9502, 1, 0, (EffectLayer)255, 0x100);
+                Effects.SendMovingParticles(new Entity(Serial.Zero, new Point3D(from.X - 4, from.Y - 6, from.Z + 15), from.Map), from, 0x36D4, 7, 0, false, true, 0x497, 0, 9502, 1, 0, (EffectLayer)255, 0x100);
+                Effects.SendMovingParticles(new Entity(Serial.Zero, new Point3D(from.X - 6, from.Y - 4, from.Z + 15), from.Map), from, 0x36D4, 7, 0, false, true, 0x497, 0, 9502, 1, 0, (EffectLayer)255, 0x100);
+
+                Effects.SendTargetParticles(from, 0x375A, 35, 90, 0x00, 0x00, 9502, (EffectLayer)255, 0x100);
+
+                switch (Utility.Random(6))
+                {
+                    case 0: armor.Attributes.WeaponDamage = Utility.Random(1, 2); break;
+                    case 1: armor.Attributes.WeaponSkillDamage = Utility.Random(2, 5); break;
+                    case 2: armor.Attributes.WeaponSpeed = Utility.Random(1, 2); break;
+                    case 3: armor.Attributes.LowerManaCost = Utility.Random(1, 2); break;
+                    case 4: armor.Attributes.DefendChance = Utility.Random(1, 2); break;
+                    case 5: armor.Attributes.SpellDamage = Utility.Random(1, 2); break;
+                }
+            }, "Selecione uma armadura");
+        }
+
         public override double DefaultWeight
         {
             get

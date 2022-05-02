@@ -94,7 +94,17 @@ namespace Server.Fronteira.Recursos
             {
                 if (!this.Deleted && this.Coletando == null)
                 {
+                    if (this.Spawner is XmlSpawner) {
+                        var spawner = this.Spawner as XmlSpawner;
+                        if (Shard.DebugEnabled)
+                            Shard.Debug($"{spawner.TotalSpawnedObjects} / {spawner.TotalSpawnObjectCount} spawns");
+                        if(spawner.TotalSpawnedObjects <= spawner.TotalSpawnObjectCount / 3)
+                        {
+                            spawner.Respawn();
+                        }
+                    }
                     this.Delete();
+                 
                 }
             });
         }

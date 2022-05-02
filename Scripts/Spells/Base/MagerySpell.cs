@@ -4,6 +4,7 @@ using Server.Fronteira.Talentos;
 using Server.Items;
 using Server.Mobiles;
 using Server.Network;
+using Server.Spells.Eighth;
 using Server.Spells.Fifth;
 using Server.Spells.First;
 using Server.Spells.Fourth;
@@ -98,7 +99,7 @@ namespace Server.Spells
             get
             {
                 if (Circle == SpellCircle.Eighth)
-                    return 100;
+                    return 90;
                 if (Circle == SpellCircle.Seventh)
                     return 80;
                 if (Circle == SpellCircle.Sixth)
