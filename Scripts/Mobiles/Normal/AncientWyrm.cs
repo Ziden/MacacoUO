@@ -106,6 +106,7 @@ namespace Server.Mobiles
             arma.Resource = CraftResource.Bronze;
             arma.Quality = ItemQuality.Exceptional;
             arma.WeaponAttributes.HitColdArea = 50;
+            arma.Attributes.WeaponDamage = 20;
             if (arma.Name != null)
                 arma.Name += " de gelo de dragao";
         }

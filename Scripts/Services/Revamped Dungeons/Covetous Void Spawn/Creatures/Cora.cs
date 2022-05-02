@@ -311,7 +311,7 @@ namespace Server.Mobiles
                 else
                     artifact.Resource = CraftResource.Bronze;
                 artifact.Quality = ItemQuality.Exceptional;
-
+                artifact.Attributes.WeaponDamage = 20;
                 if (artifact != null)
                 {
                     Container pack = m.Backpack;
