@@ -263,15 +263,6 @@ namespace Server.Mobiles
         }
 
 
-        public override void OnDamage(int amount, Mobile from, bool willKill)
-        {
-            RevealingAction();
-            base.OnDamage(amount, from, willKill);
-            BaseOrc.TentaAtacarMaster(this, from);
-        }
-
-
-
         public override void OnDeath(Container c)
         {
             List<DamageStore> rights = GetLootingRights();
@@ -399,6 +390,8 @@ namespace Server.Mobiles
 
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
+            BaseOrc.TentaAtacarMaster(this, from);
+
             if (from != null && from != this && !m_InHere)
             {
                 m_InHere = true;
