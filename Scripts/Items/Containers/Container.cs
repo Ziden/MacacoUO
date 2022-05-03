@@ -848,7 +848,7 @@ namespace Server.Items
             if (typeRes != null)
             {
                 CraftResource thisResource = CraftResources.GetFromType(typeRes);
-                Shard.Debug(thisResource.ToString());
+
                 if (thisResource == CraftResource.Eucalipto)
                 {
                     this.MaxItems += 100;

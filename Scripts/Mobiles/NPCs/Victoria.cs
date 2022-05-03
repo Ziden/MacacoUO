@@ -10,7 +10,7 @@ namespace Server.Engines.Quests.Doom
         private SummoningAltar m_Altar;
         [Constructable]
         public Victoria()
-            : base("the Sorceress")
+            : base("a feiticeira")
         {
         }
 

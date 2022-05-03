@@ -75,8 +75,8 @@ namespace Server.Items
             get { return _OwnerName; }
             set { _OwnerName = value; InvalidateProperties(); }
         }
-
-        public virtual bool CanFortify { get { return !IsImbued && NegativeAttributes.Antique < 4; } }
+        
+        public virtual bool CanFortify { get { return NegativeAttributes.Antique < 4; } }
         public virtual bool CanRepair { get { return m_NegativeAttributes.NoRepair == 0; } }
 		public virtual bool CanAlter { get { return true; } }
 
@@ -99,7 +99,7 @@ namespace Server.Items
 
         #region Stygian Abyss
         private int m_TimesImbued;
-        private bool m_IsImbued;
+        public bool isUniforme;
         private int m_GorgonLenseCharges;
         private LenseType m_GorgonLenseType;
 
@@ -222,24 +222,6 @@ namespace Server.Items
             set { m_TimesImbued = value; InvalidateProperties(); }
         }
 
-        [CommandProperty(AccessLevel.GameMaster)]
-        public bool IsImbued
-        {
-            get
-            {
-                if (TimesImbued >= 1 && !m_IsImbued)
-                    m_IsImbued = true;
-
-                return m_IsImbued;
-            }
-            set
-            {
-                if (TimesImbued >= 1)
-                    m_IsImbued = true;
-                else
-                    m_IsImbued = value; InvalidateProperties();
-            }
-        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public int GorgonLenseCharges
@@ -1127,7 +1109,7 @@ namespace Server.Items
         public override void AddNameProperty(ObjectPropertyList list)
         {
            
-
+             
             if (m_ReforgedPrefix != ReforgedPrefix.None || m_ReforgedSuffix != ReforgedSuffix.None)
             {
                 if (m_ReforgedPrefix != ReforgedPrefix.None)
@@ -1153,6 +1135,8 @@ namespace Server.Items
                     nome += " de baixa qualidade";
                 if (m_Resource != CraftResource.None && m_Resource != CraftResource.Ferro && m_Resource != CraftResource.RegularLeather && m_Resource != CraftResource.Cedro)
                     nome += " de couro " + m_Resource;
+                if (isUniforme)
+                    nome += " [Uniforme]";
             }
 
             if (Name == null)
@@ -1224,9 +1208,7 @@ namespace Server.Items
             if (m_Quality == ItemQuality.Exceptional)
                 list.Add(1018303); // Exceptional
             
-            if (IsImbued == true)
-                list.Add(1080418); // (Imbued)
-
+        
             if (m_Altered)
                 list.Add(1111880); // Altered
 
@@ -1545,7 +1527,7 @@ namespace Server.Items
             writer.Write(_OwnerName);
 
             //Version 8
-            writer.Write((bool)m_IsImbued);
+            writer.Write((bool)isUniforme);
 
             // Version 7
             m_SAAbsorptionAttributes.Serialize(writer);
@@ -1705,7 +1687,7 @@ namespace Server.Items
                     }
                 case 8:
                         {
-                            m_IsImbued = reader.ReadBool();
+                            isUniforme = reader.ReadBool();
                             goto case 7;
                         }
                 case 7:
@@ -2371,5 +2353,7 @@ namespace Server.Items
                 InvalidateProperties();
             }
         }
+
+        public bool IsImbued { get => false; set { } }
     }
 }

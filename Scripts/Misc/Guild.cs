@@ -831,6 +831,7 @@ namespace Server.Guilds
         public static readonly TimeSpan InactiveTime = TimeSpan.FromDays(30);
 
         public BauDeGuilda Banco;
+        public ArmarioUniforme ArmarioUniforme;
 
         #region New Alliances
         public AllianceInfo Alliance
@@ -1426,8 +1427,8 @@ namespace Server.Guilds
                 Alliance.CheckLeader();
             }
 
-            writer.Write(6); //version
-
+            writer.Write(7); //version
+            writer.WriteItem(ArmarioUniforme);
             writer.WriteItem(Banco);
 
             #region War Serialization
@@ -1497,6 +1498,10 @@ namespace Server.Guilds
 
             switch (version)
             {
+                case 7:
+                    ArmarioUniforme = (ArmarioUniforme)reader.ReadItem();
+                    ArmarioUniforme.Guild = this;
+                    goto case 6;
                 case 6:
                     Banco = (BauDeGuilda)reader.ReadItem();
                     goto case 5;

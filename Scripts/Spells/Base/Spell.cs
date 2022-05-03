@@ -1745,7 +1745,7 @@ namespace Server.Spells
             }
             else if (Caster.CanBeHarmful(target) && CheckSequence())
             {
-                Caster.DoHarmful(target);
+                Caster.DoHarmful(target, true); // INDIRECT TEST
                 return true;
             }
             else

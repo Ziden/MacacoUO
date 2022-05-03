@@ -36,14 +36,14 @@ namespace Server.Mobiles
             SetResistance(ResistanceType.Energy, 20, 30);
 
             SetSkill(SkillName.Poisoning, 120.0);
-            SetSkill(SkillName.MagicResist, 250.0);
+            SetSkill(SkillName.MagicResist, 150);
             SetSkill(SkillName.Tactics, 100.0);
             SetSkill(SkillName.Wrestling, 90.1, 100.0);
 
             Fame = 6000;
             Karma = -6000;
 
-            VirtualArmor = 40;
+            VirtualArmor = 0;
         }
 
         public RottingCorpse(Serial serial)

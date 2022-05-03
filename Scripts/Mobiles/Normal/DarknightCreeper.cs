@@ -46,6 +46,28 @@ namespace Server.Mobiles
             VirtualArmor = 34;
         }
 
+        public override void OnDeath(Container c)
+        {
+            base.OnDeath(c);
+            DistribuiItem(new CristalDoPoder() { Amount = 5 });
+            DistribuiItem(new FragmentosAntigos());
+            SorteiaItem(Decos.RandomDeco(this));
+            var joia = Loot.RandomJewelry();
+            if (joia.Name != null)
+            {
+                joia.Name += " [DOOM]";
+            }
+            joia.Attributes.SpellDamage = 5;
+            SorteiaItem(joia);
+            GolemMecanico.JorraOuro(c.Location, c.Map, 350);
+        }
+
+        public override void OnDamage(int amount, Mobile from, bool willKill)
+        {
+            base.OnDamage(amount, from, willKill);
+            BaseOrc.TentaAtacarMaster(this, from);
+        }
+
         public DarknightCreeper(Serial serial)
             : base(serial)
         {
@@ -111,8 +133,6 @@ namespace Server.Mobiles
         {
             AddLoot(LootPack.LV6, 2);
         }
-
-       
 
         public override void Serialize(GenericWriter writer)
         {

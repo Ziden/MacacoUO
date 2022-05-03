@@ -272,7 +272,7 @@ namespace Server.Items
         {
             get
             {
-                return !IsImbued && NegativeAttributes.Antique < 4;
+                return NegativeAttributes.Antique < 4;
             }
         }
 
@@ -3016,9 +3016,6 @@ namespace Server.Items
 
             //if (m_Quality == ItemQuality.Exceptional)
             //    list.Add(1060636); // Exceptional
-
-            if (IsImbued)
-                list.Add(1080418); // (Imbued)
 
             if (m_Altered)
                 list.Add(1111880); // Altered

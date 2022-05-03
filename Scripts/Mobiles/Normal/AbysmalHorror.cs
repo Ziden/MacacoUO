@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public AbysmalHorror()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "an abyssmal horror";
+            Name = "horror do abismo";
             Body = 312;
             BaseSoundID = 0x451;
 
@@ -107,7 +107,28 @@ namespace Server.Mobiles
             AddLoot(LootPack.LV6, 2);
         }
 
-       
+        public override void OnDamage(int amount, Mobile from, bool willKill)
+        {
+            RevealingAction();
+            base.OnDamage(amount, from, willKill);
+            BaseOrc.TentaAtacarMaster(this, from);
+        }
+
+        public override void OnDeath(Container c)
+        {
+            base.OnDeath(c);
+            DistribuiItem(new CristalDoPoder() { Amount = 5 });
+            DistribuiItem(new FragmentosAntigos());
+            SorteiaItem(Decos.RandomDeco(this));
+            var joia = Loot.RandomJewelry();
+            if (joia.Name != null)
+            {
+                joia.Name += " [DOOM]";
+            }
+            joia.Attributes.BonusStam = 10;
+            SorteiaItem(joia);
+            GolemMecanico.JorraOuro(c.Location, c.Map, 350);
+        }
 
         public override void Serialize(GenericWriter writer)
         {

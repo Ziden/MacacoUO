@@ -56,6 +56,7 @@ using Server.Fronteira.Elementos;
 using Server.Fronteira.Pvm;
 using Server.Menus.Questions;
 using Fronteira.Discord;
+using Server.Fronteira.Guildas;
 #endregion
 
 namespace Server.Mobiles
@@ -4744,8 +4745,6 @@ namespace Server.Mobiles
 
             m_EquipSnapshot = new List<Item>(Items);
 
-            m_NonAutoreinsuredItems = 0;
-            m_InsuranceCost = 0;
             m_InsuranceAward = base.FindMostRecentDamager(false);
 
             if (m_InsuranceAward is BaseCreature)
@@ -4840,6 +4839,46 @@ namespace Server.Mobiles
 
         public override DeathMoveResult GetParentMoveResultFor(Item item)
         {
+            if (item is Uniforme)
+            {
+                var ropa = item as Uniforme;
+                if (ropa != null)
+                {
+                    var guilda = (item.RootParent as PlayerMobile).Guild as Guild;
+
+                    if (guilda == null)
+                    {
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    else if (!item.Name.Contains(guilda.Abbreviation))
+                    {
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    else if (guilda.ArmarioUniforme == null)
+                    {
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    var panosGuilda = guilda.ArmarioUniforme.QtdPanos();
+                    if (panosGuilda < ArmarioUniforme.CUSTO_PANOS)
+                    {
+                        SendMessage("Sua guilda nao tinha panos suficientes para repor partes do seu uniforme de guilda");
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    else if (!guilda.ArmarioUniforme.Paga())
+                    {
+                        SendMessage("Sua guilda nao tinha panos suficientes para repor partes do seu uniforme de guilda");
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    QtdPanosGuilda = panosGuilda - ArmarioUniforme.CUSTO_PANOS;
+                    return DeathMoveResult.RemainEquiped;
+                }
+            }
+
             if (CheckInsuranceOnDeath(item) && !Young)
             {
                 return DeathMoveResult.MoveToBackpack;
@@ -4866,6 +4905,8 @@ namespace Server.Mobiles
             return res;
         }
 
+        public int QtdPanosGuilda = -1;
+
         public override DeathMoveResult GetInventoryMoveResultFor(Item item)
         {
             if (ViceVsVirtueSystem.Enabled && ViceVsVirtueSystem.Instance.Battle.OnGoing)
@@ -4876,6 +4917,45 @@ namespace Server.Mobiles
                 if (ViceVsVirtueSystem.GetTemporario(this) != null)
                 {
                     return DeathMoveResult.MoveToBackpack;
+                }
+            }
+
+            if (item is Uniforme)
+            {
+                var ropa = item as Uniforme;
+                if (ropa != null)
+                {
+                    var guilda = (item.RootParent as PlayerMobile).Guild as Guild;
+
+                    if (guilda == null)
+                    {
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    else if (!item.Name.Contains(guilda.Abbreviation))
+                    {
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    else if(guilda.ArmarioUniforme == null)
+                    {
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    var panosGuilda = guilda.ArmarioUniforme.QtdPanos();
+                    if (panosGuilda < ArmarioUniforme.CUSTO_PANOS)
+                    {
+                        SendMessage("Sua guilda nao tinha panos suficientes para repor partes do seu uniforme de guilda");
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    } else if(!guilda.ArmarioUniforme.Paga())
+                    {
+                        SendMessage("Sua guilda nao tinha panos suficientes para repor partes do seu uniforme de guilda");
+                        item.Consume();
+                        return DeathMoveResult.RemainEquiped;
+                    }
+                    QtdPanosGuilda = panosGuilda - ArmarioUniforme.CUSTO_PANOS;
+                    return DeathMoveResult.RemainEquiped;
                 }
             }
 
@@ -4984,6 +5064,12 @@ namespace Server.Mobiles
             }
 
             base.OnDeath(c);
+
+            if(QtdPanosGuilda >= 0)
+            {
+                SendMessage($"Voce usou panos de guilda para continuar com seu uniforme. Panos restantes: {QtdPanosGuilda}");
+                QtdPanosGuilda = 0;
+            }
 
             //FE: Sistema de demaios BEGIN
             if (RP)

@@ -9,7 +9,7 @@ namespace Server.Mobiles
         public ToxicElemental()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "an acid elemental";
+            this.Name = "elemental toxico";
             this.Body = 0x9E;
             this.BaseSoundID = 278;
 

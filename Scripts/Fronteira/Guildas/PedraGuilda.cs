@@ -77,6 +77,7 @@ namespace Server.Fronteira.Guildas
             : base(0x9AB)
         {
             tag = tag;
+            Visible = false;
         }
 
         public BauDeGuilda(Serial serial)

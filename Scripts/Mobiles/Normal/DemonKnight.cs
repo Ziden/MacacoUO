@@ -12,7 +12,7 @@ namespace Server.Mobiles
         private DateTime m_NextArea;
         private bool m_InHere;
 
-         public override bool IsBoss => true;
+        public override bool IsBoss => true;
         public override bool ReduceSpeedWithDamage => false;
         public override bool IsSmart => true;
         public override bool UseSmartAI => true;
@@ -72,7 +72,7 @@ namespace Server.Mobiles
             SetDex(100);
             SetInt(1000);
 
-            SetHits(10000);
+            SetHits(20000);
             SetMana(5000);
 
             SetDamage(17, 21);
@@ -185,12 +185,15 @@ namespace Server.Mobiles
             if (!boss)
                 return;
 
-            if (Utility.RandomDouble() < 0.2)
-            {
-                pm.PlaySound(0x5B4);
-                pm._PlaceInBackpack(new ValeDecoracaoRara());
-            }
 
+            pm.PlaySound(0x5B4);
+            pm._PlaceInBackpack(new ValeDecoracaoRara());
+
+
+            pm._PlaceInBackpack(new CombatSkillBook());
+            pm._PlaceInBackpack(new CombatSkillBook());
+            pm._PlaceInBackpack(new CombatSkillBook());
+            pm._PlaceInBackpack(new CombatSkillBook());
             pm._PlaceInBackpack(new CombatSkillBook());
 
             if (!Core.AOS)
@@ -232,7 +235,7 @@ namespace Server.Mobiles
                         i = Activator.CreateInstance(t) as Item;
                     }
                 }
-                else if(Core.AOS)
+                else if (Core.AOS)
                 {
                     i = Activator.CreateInstance(m_DoomArtifact[Utility.Random(m_DoomArtifact.Length)]) as Item;
                 }
@@ -260,22 +263,29 @@ namespace Server.Mobiles
         }
 
 
+        public override void OnDamage(int amount, Mobile from, bool willKill)
+        {
+            RevealingAction();
+            base.OnDamage(amount, from, willKill);
+            BaseOrc.TentaAtacarMaster(this, from);
+        }
+
+
 
         public override void OnDeath(Container c)
         {
             List<DamageStore> rights = GetLootingRights();
 
-            if (Utility.RandomBool())
-                c.DropItem(new RunebookDyeTub());
+            SorteiaItem(new RunebookDyeTub());
 
             if (Utility.RandomBool())
-                c.DropItem(new PianoAddon());
+                SorteiaItem(new PianoAddon());
 
             int top = 0;
             Item blood = null;
 
-            c.DropItem(Decos.RandomDeco(this));
-            c.DropItem(new SoulForgeDeed());
+            DistribuiItem(Decos.RandomDeco(this));
+            SorteiaItem(new SoulForgeDeed());
 
             foreach (Mobile m in rights.Select(x => x.m_Mobile).Distinct().Take(3))
             {
@@ -294,6 +304,29 @@ namespace Server.Mobiles
                 }
             }
 
+            DistribuiItem(new CristalDoPoder() { Amount = 20 });
+            var frags = new FragmentosAntigos();
+            frags.Amount = 10;
+            DistribuiItem(frags);
+            for (var x = 0; x < 10; x++)
+            {
+                SorteiaItem(Carnage.GetRandomPS(Utility.RandomBool() ? 105 : 110));
+                SorteiaItem(BaseEssencia.RandomEssencia(5));
+            }
+
+            SorteiaItem(Decos.RandomDeco(this));
+            var joia = Loot.RandomJewelry();
+            if (joia.Name != null)
+            {
+                joia.Name += " [DOOM]";
+            }
+            joia.Attributes.SpellDamage = 10;
+            joia.Attributes.LowerManaCost = 7;
+            joia.Attributes.WeaponDamage = 10;
+            joia.Attributes.WeaponSkillDamage = 10;
+            joia.Hue = TintaPreta.COR;
+            SorteiaItem(joia);
+            GolemMecanico.JorraOuro(c.Location, c.Map, 350);
             base.OnDeath(c);
         }
 

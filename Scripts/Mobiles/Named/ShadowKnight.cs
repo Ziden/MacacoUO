@@ -62,11 +62,28 @@ namespace Server.Mobiles
         {
         }
 
-		public override void OnDamage(int amount, Mobile from, bool willKill)
-		{
-			RevealingAction();
-			base.OnDamage(amount, from, willKill);
-		}
+        public override void OnDamage(int amount, Mobile from, bool willKill)
+        {
+            RevealingAction();
+            base.OnDamage(amount, from, willKill);
+            BaseOrc.TentaAtacarMaster(this, from);
+        }
+
+        public override void OnDeath(Container c)
+        {
+            base.OnDeath(c);
+            DistribuiItem(new CristalDoPoder() { Amount = 5 });
+            DistribuiItem(new FragmentosAntigos());
+            SorteiaItem(Decos.RandomDeco(this));
+            var joia = Loot.RandomJewelry();
+            if (joia.Name != null)
+            {
+                joia.Name += " [DOOM]";
+            }
+            joia.Attributes.LowerManaCost = 7;
+            SorteiaItem(joia);
+            GolemMecanico.JorraOuro(c.Location, c.Map, 350);
+        }
 
 		public override void OnDamagedBySpell(Mobile from)
 		{

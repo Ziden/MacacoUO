@@ -670,7 +670,7 @@ namespace Server.Items
         {
         }
 
-        public virtual bool CanFortify { get { return IsImbued == false && NegativeAttributes.Antique < 4; } }
+        public virtual bool CanFortify { get { return NegativeAttributes.Antique < 4; } }
         public virtual bool CanRepair { get { return m_NegativeAttributes.NoRepair == 0; } }
         #endregion
 
@@ -925,9 +925,7 @@ namespace Server.Items
                 list.Add("[ Combo ]");
             }
 
-            if (IsImbued)
-                list.Add(1080418); // (Imbued)            
-
+        
             #region Factions
             FactionEquipment.AddFactionProperties(this, list);
             #endregion

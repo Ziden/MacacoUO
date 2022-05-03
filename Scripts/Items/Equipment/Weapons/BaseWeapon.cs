@@ -336,7 +336,7 @@ namespace Server.Items
         public virtual int InitMinHits { get { return 0; } }
         public virtual int InitMaxHits { get { return 0; } }
 
-        public virtual bool CanFortify { get { return !IsImbued && NegativeAttributes.Antique < 4; } }
+        public virtual bool CanFortify { get { return NegativeAttributes.Antique < 4; } }
         public virtual bool CanRepair { get { return m_NegativeAttributes.NoRepair == 0; } }
         public virtual bool CanAlter { get { return true; } }
 
@@ -2414,7 +2414,7 @@ namespace Server.Items
             }
 
             var virtualArmor = defender.ArmorRating;
-            if(defender.Player)
+            if(defender.Player && defender.Dex > 50)
             {
                 if(defender.Str >= 80)
                     virtualArmor += 3;
@@ -2542,7 +2542,7 @@ namespace Server.Items
                     }
                     else
                     {
-                        scalar *= 3.5;
+                        scalar *= 3;
                     }
                 }
 
@@ -6218,11 +6218,6 @@ namespace Server.Items
             if (m_Crafter != null)
             {
                 list.Add("Criado por " + m_Crafter.TitleName); // crafted by ~1_NAME~
-            }
-
-            if (IsImbued)
-            {
-                list.Add("Imbuido"); // (Imbued)
             }
 
             if (RP)

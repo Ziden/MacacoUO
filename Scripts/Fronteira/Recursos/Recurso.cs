@@ -140,13 +140,13 @@ namespace Server.Fronteira.Recursos
         public static CraftResource MinerioRandom()
         {
             var rnd = Utility.Random(1000);
-            if (rnd < 10)
+            if (rnd < 5)
                 return CraftResource.Adamantium;
-            else if (rnd < 20)
+            else if (rnd < 10)
                 return CraftResource.Vibranium;
-            else if (rnd < 80)
+            else if (rnd < 60)
                 return CraftResource.Quartzo;
-            else if (rnd < 140)
+            else if (rnd < 110)
                 return CraftResource.Berilo;
             else if (rnd < 300)
                 return CraftResource.Lazurita;

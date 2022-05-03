@@ -304,12 +304,12 @@ namespace Server.Engines.Doom
 
 		private static void DeleteDoor(BaseDoor d)
 		{
-			if (d == null)
+			if (d == null || d.Deleted)
 			{
 				return;
 			}
 
-			if (d.Link != null && d.Link != d)
+			if (d.Link != null && d.Link != d && d.Link?.Link != d)
 			{
 				DeleteDoor(d.Link);
 			}

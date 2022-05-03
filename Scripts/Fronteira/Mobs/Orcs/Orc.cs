@@ -100,7 +100,7 @@ namespace Server.Mobiles
                 var master = summon.GetMaster();
                 if (master != null)
                 {
-                    if (monster.GetDistance(master.Location) < 12)
+                    if (monster.GetDistance(master.Location) < 20)
                     {
                         monster.Combatant = master;
                         monster.PlayAngerSound();

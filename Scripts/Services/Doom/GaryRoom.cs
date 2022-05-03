@@ -704,7 +704,7 @@ namespace Server.Engines.Doom
             Blessed = true;
             Body = 0x190;
             Name = "Gary";
-            Title = "the Dungeon Master";
+            Title = "o mestre da dungeon";
 
             SetStr(150);
             SetInt(150);
@@ -751,7 +751,7 @@ namespace Server.Engines.Doom
         {
             Blessed = true;
             Body = 0x190;
-            Name = "Game Master";
+            Name = "GM";
 
             SetStr(150);
             SetInt(150);

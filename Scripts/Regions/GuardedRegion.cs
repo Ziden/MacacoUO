@@ -208,7 +208,7 @@ namespace Server.Regions
 
 			base.OnAggressed(aggressor, aggressed, criminal);
 
-            if (!IsDisabled() && aggressor != aggressed && criminal && Utility.InRange(aggressor.Location, aggressed.Location, 12))
+            if (this.Name.Contains("Haven") && !IsDisabled() && aggressor != aggressed && criminal && Utility.InRange(aggressor.Location, aggressed.Location, 12))
 			{
 				CheckGuardCandidate(aggressor, aggressor is BaseCreature && ((BaseCreature)aggressor).IsAggressiveMonster);
 			}
@@ -253,7 +253,7 @@ namespace Server.Regions
 
             base.OnCriminalAction(m, message);
 
-			if (!IsDisabled())
+			if (!IsDisabled() && this.Name.Contains("Haven"))
 			{
 				CheckGuardCandidate(m);
 			}
