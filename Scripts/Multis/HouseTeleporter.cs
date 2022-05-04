@@ -71,13 +71,13 @@ namespace Server.Items
         {
             BaseHouse house = BaseHouse.FindHouseAt(this);
 
-            if (house != null && (house.IsCombatRestricted(m) || m.InCombat()))
+            if (house != null && (house.IsCombatRestricted(m) || m.InCombat(TimeSpan.FromSeconds(60))))
             {
                 m.SendLocalizedMessage(1071514); // You cannot use this item during the heat of battle.
                 return false;
             }
 
-            if (house != null && (house.Public ? house.IsBanned(m) : !house.HasAccess(m)))
+            if (house != null && !house.HasAccess(m))
             {
                 m.SendLocalizedMessage(1115577); // You cannot teleport from here to the destination because you do not have the correct house permissions. 
                 return false;

@@ -64,7 +64,7 @@ namespace Server.Spells.Fourth
 
                     if (CheckResisted(mob))
                     {
-                        damage *= 0.8;  
+                        damage *= 0.5;  
                         mob.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                     }
 

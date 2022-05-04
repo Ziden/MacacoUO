@@ -1407,6 +1407,9 @@ namespace Server.Mobiles
                             exp += 5000;
                         else if (from.Skills[skill].Value < 100)
                             exp += 3000;
+                        else if (from.Skills[skill].Value < 110)
+                            exp += 1000;
+                        /*
                         else if (from.Skills[skill].Value > 100)
                             exp = (ushort)(exp * 0.7);
                         else if (from.Skills[skill].Value > 105)
@@ -1415,6 +1418,7 @@ namespace Server.Mobiles
                             exp = (ushort)(exp * 0.5);
                         else if (from.Skills[skill].Value > 115)
                             exp = (ushort)(exp * 0.3);
+                            */
 
                         if (dropped is LargeBOD)
                         {

@@ -8,20 +8,15 @@ using System.Threading.Tasks;
 
 namespace Server.Fronteira
 {
-    public class RobeGuilda : Robe 
+    public class RobeGuilda : Robe
     {
         [Constructable]
-        public RobeGuilda(): base()
+        public RobeGuilda() : base()
         {
             LootType = LootType.Blessed;
             Name = "Sobretudo de Guilda";
         }
 
-        public override void OnAdded(object parent)
-        {
-            base.OnAdded(parent);
-            var pl = parent as PlayerMobile;
- 
-        }
+        public RobeGuilda(Serial s) : base(s) { }
     }
 }

@@ -135,7 +135,6 @@ namespace Server.Engines.Craft
                         return SmeltResult.Invalid;
 
                     CraftItem craftItem = m_CraftSystem.CraftItems.SearchFor(item.GetType());
-
                     if (craftItem == null || craftItem.Resources.Count == 0)
                         return SmeltResult.Invalid;
 
@@ -182,12 +181,13 @@ namespace Server.Engines.Craft
                     double skill = Math.Max(from.Skills[SkillName.Mining].Value, from.Skills[SkillName.Blacksmith].Value);
                     if (CraftResources.GetType(resource) == CraftResourceType.Wood)
                         skill = Math.Max(from.Skills[SkillName.Lumberjacking].Value, from.Skills[SkillName.Carpentry].Value);
+                    if(typeof(BaseRanged).IsAssignableFrom(craftItem.ItemType) || craftItem.ItemType.IsAssignableFrom(typeof(BaseRanged)))
+                        skill = Math.Max(from.Skills[SkillName.Lumberjacking].Value, from.Skills[SkillName.Bowcraft].Value);
 
                     if (difficulty > skill)
                         return SmeltResult.NoSkill;
 
                     Type resourceType = info.ResourceTypes[0];
-
                     if (Shard.DebugEnabled)
                     {
                         Shard.Debug("Resmelt resource " + resourceType);

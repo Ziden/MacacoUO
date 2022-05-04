@@ -2568,7 +2568,7 @@ namespace Server
                         foreach (var ag in m_Mobile.Aggressors)
                         {
                             var c = ag.Attacker;
-                            if (c.Combatant == m_Mobile)
+                            if (c.Combatant == m_Mobile && !c.Player)
                             {
                                 if (Shard.DebugEnabled)
                                     Shard.Debug("Revidando em " + c.Name, m_Mobile);
