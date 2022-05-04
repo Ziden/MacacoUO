@@ -1,4 +1,4 @@
-/*sing Server.Guilds;
+using Server.Guilds;
 using Server.Gumps;
 using Server.Items;
 using Server.Mobiles;
@@ -296,4 +296,3 @@ namespace Server.Fronteira.Guildas
     }
 
 }
-*/
