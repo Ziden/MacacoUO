@@ -60,11 +60,11 @@ namespace Server.Spells.Fourth
                 }
                 else if (mob != null)
                 {
-                    damage = Utility.Random(18, 11);
+                    damage = Utility.Random(11, 11);
 
                     if (CheckResisted(mob))
                     {
-                        damage *= 0.5;  
+                        damage *= 0.7;  
                         mob.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                     }
 
