@@ -1500,7 +1500,8 @@ namespace Server.Guilds
             {
                 case 7:
                     ArmarioUniforme = (ArmarioUniforme)reader.ReadItem();
-                    ArmarioUniforme.Guild = this;
+                    if(ArmarioUniforme != null)
+                        ArmarioUniforme.Guild = this;
                     goto case 6;
                 case 6:
                     Banco = (BauDeGuilda)reader.ReadItem();
