@@ -42,6 +42,10 @@ namespace Server.Misc
 
                 if (ourAddress.Equals(compState.Address))
                 {
+                    // Tentativa de resolver problema de reconectar
+                    if (compState.IsDisposing || compState.Mobile == null)
+                        continue;
+
                     ++count;
 
                     if (count >= MaxAddresses)

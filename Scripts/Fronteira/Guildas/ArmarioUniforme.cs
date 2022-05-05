@@ -82,6 +82,9 @@ namespace Server.Fronteira.Guildas
         public override void OnAfterDelete()
         {
             base.OnAfterDelete();
+            if (Guild == null)
+                return;
+
             if (Guild.ArmarioUniforme == this)
             {
                 Guild.ArmarioUniforme = null;

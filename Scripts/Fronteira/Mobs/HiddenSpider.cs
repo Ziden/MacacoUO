@@ -58,6 +58,8 @@ namespace Server.Mobiles
         public override void OnThink()
         {
             base.OnThink();
+           
+
             Teia();
             if (!this.Hidden && this.Combatant == null)
             {
@@ -77,6 +79,10 @@ namespace Server.Mobiles
             {
                 return;
             }
+
+            if (this.ControlMaster is PlayerMobile && this.Combatant is PlayerMobile)
+                return;
+
             if (this.Combatant != null && this.Combatant.InRange2D(this.Location, 7))
             {
                 if (!this.IsCooldown("teiab"))

@@ -463,8 +463,8 @@ namespace Server.Misc
 
                 var master = bc.GetMaster();
 
-                //if (master != null && master.IsStaff())
-                //    return Notoriety.CanBeAttacked;
+                if (master != null && master == source)
+                    return Notoriety.CanBeAttacked;
 
                 master = bc.ControlMaster;
 
