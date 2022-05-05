@@ -207,6 +207,8 @@ namespace Server.Gumps
                             PackItem(from, dupe);
                         }
 
+                        PackItem(from, new CombatSkillBook() { Exp = 4000 });
+
                         foreach (var item in k.equips)
                         {
                             var dupe = Dupe.DupeItem(item);
