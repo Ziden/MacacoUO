@@ -646,13 +646,13 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 380, 280, 5054);
+            AddBackground(0, 0, 380, 280, 9300);
 
-            AddButton(10, 210, 4005, 4007, 1, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(45, 210, 140, 25, 1011036, false, false); // OKAY
+            AddButton(10, 210, 30533, 30534, 1, GumpButtonType.Reply, 0);
+            AddHtmlLocalized(45, 210, 140, 25, 1011036, false, false); // OKAY 30533
 
-            AddButton(10, 235, 4005, 4007, 0, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(45, 235, 140, 25, 1011012, false, false); // CANCEL
+            AddButton(10, 235, 30533, 30535, 0, GumpButtonType.Reply, 0);
+            AddHtmlLocalized(45, 235, 140, 25, 1011012, false, false); // CANCEL  30533
 
             AddHtmlLocalized(5, 5, 200, 20, 1012011, false, false); // Pick your destination:
 
