@@ -58,31 +58,17 @@ namespace Server.Spells.Fifth
                 SpellHelper.CheckReflect((int)this.Circle, this.Caster, ref m);
 
                 double duration;
-				
-                if (Core.AOS)
+
+                // Algorithm: ((20% of magery) + 7) seconds [- 50% if resisted]
+                duration = Utility.Random(6, 4);
+
+                var limiteParalize = DateTime.UtcNow - TimeSpan.FromSeconds(10);
+                if (duration <= 0 || this.CheckResisted(m) || (m.Skills.MagicResist.Value > 60 && m.LastParalized > limiteParalize) || (DateTime.UtcNow < m.PotAntiPara && Utility.Random(6) != 1))
                 {
-                    int secs = (int)((this.GetDamageSkill(this.Caster) / 10) - (this.GetResistSkill(m) / 10));
-					
-                    if (!m.Player)
-                        secs *= 3;
-
-                    if (secs < 0)
-                        secs = 0;
-
-                    duration = secs;
+                    duration = 0;
+                    m.SendMessage("Voce sente seu corpo resistindo a magia");
                 }
-                else
-                {
-                    // Algorithm: ((20% of magery) + 7) seconds [- 50% if resisted]
-                    duration = Utility.Random(6, 4);
 
-                    var limiteParalize = DateTime.UtcNow - TimeSpan.FromSeconds(10);
-                    if (duration <= 0 || this.CheckResisted(m) || (m.Skills.MagicResist.Value > 60 && m.LastParalized > limiteParalize))
-                    {
-                        duration = 0;
-                        m.SendMessage("Voce sente seu corpo resistindo a magia");
-                    } 
-                }
 
                 if (m is PlagueBeastLord)
                 {

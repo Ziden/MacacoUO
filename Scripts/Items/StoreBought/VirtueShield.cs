@@ -27,7 +27,7 @@ namespace Server.Items
             : base(0x7818)
         {
             Name = "Escudo da Virtude";
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.DefendChance = 10;
             
             LootType = LootType.Blessed;

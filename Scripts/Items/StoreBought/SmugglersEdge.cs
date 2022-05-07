@@ -19,7 +19,7 @@ namespace Server.Items
             Hue = 1461;
 
             WeaponAttributes.UseBestSkill = 1;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.WeaponSpeed = 30;
 
             if (!Siege.SiegeShard)
@@ -87,7 +87,7 @@ namespace Server.Items
             Hue = 1461;
 
             WeaponAttributes.UseBestSkill = 1;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.WeaponSpeed = 30;
 
             if (!Siege.SiegeShard)

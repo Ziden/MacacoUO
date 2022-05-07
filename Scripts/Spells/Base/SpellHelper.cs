@@ -1353,8 +1353,8 @@ namespace Server.Spells
         public static bool CheckReflect(int circle, ref IDamageable source, ref IDamageable defender, DamageType type = DamageType.Spell)
         {
             bool reflect = false;
-            Mobile target = defender as Mobile;
-
+           
+            /*
             if (Core.AOS && type >= DamageType.Spell)
             {
                 if (target != null && defender is Mobile)
@@ -1375,62 +1375,69 @@ namespace Server.Spells
                     return true;
                 }
             }
+            */
 
             Mobile caster = source as Mobile;
 
-            if (target == null || caster == null)
+            if (defender == null || caster == null)
                 return false;
 
-            if (target.MagicDamageAbsorb > 0)
+            if (defender is Mobile && ((Mobile)defender).MagicDamageAbsorb > 0)
             {
-                ++circle;
-
-                var ini = target.MagicDamageAbsorb;
-                target.MagicDamageAbsorb -= circle;
-
-
-                // This order isn't very intuitive, but you have to nullify reflect before target gets switched
-
-                reflect = (target.MagicDamageAbsorb >= 0);
-
-                if (reflect)
+                while (defender is Mobile && ((Mobile)defender).MagicDamageAbsorb > 0)
                 {
-                    target.SendMessage("Seu Magic Reflection desceu em " + circle + " circulos, agora voce tem " + target.MagicDamageAbsorb + " circulos de protecao");
-                }
-                else
-                {
-                    target.SendMessage("Seu Magic Reflection desceu em " + circle + " circulos, como voce tinha apenas " + ini + " circulos de protecao voce nao conseguiu refletir a magia");
-                }
+                    var target = defender as Mobile;
 
-                if (target is BaseCreature)
-                    ((BaseCreature)target).CheckReflect(caster, ref reflect);
+                    var ini = target.MagicDamageAbsorb;
+                    target.MagicDamageAbsorb -= circle;
 
-                if (target.MagicDamageAbsorb <= 0)
-                {
-                    target.MagicDamageAbsorb = 0;
-                    DefensiveSpell.Nullify(target);
-                }
+                    // This order isn't very intuitive, but you have to nullify reflect before target gets switched
 
-                if (reflect)
-                {
-                    target.FixedEffect(0x37B9, 10, 5);
-                    target.SendMessage("Sua aura magica o protege");
+                    reflect = (target.MagicDamageAbsorb >= 0);
 
-                    var tmp = defender;
-                    defender = source;
-                    source = tmp;
+                 
+                    /*
+                    if (reflect)
+                    {
+                        target.SendMessage("Seu Magic Reflection desceu em " + circle + " circulos, agora voce tem " + target.MagicDamageAbsorb + " circulos de protecao");
+                    }
+                    else
+                    {
+                        target.SendMessage("Seu Magic Reflection desceu em " + circle + " circulos, como voce tinha apenas " + ini + " circulos de protecao voce nao conseguiu refletir a magia");
+                    }
+                    */
 
+                    if (target is BaseCreature)
+                        ((BaseCreature)target).CheckReflect(caster, ref reflect);
+
+                    if (target.MagicDamageAbsorb <= 0)
+                    {
+                        target.MagicDamageAbsorb = 0;
+                        DefensiveSpell.Nullify(target);
+                    }
+                    target.SendMessage($"Circulos de Reflection: {target.MagicDamageAbsorb} (-{circle})");
+                    if (reflect)
+                    {
+                        target.FixedEffect(0x37B9, 10, 5);
+                        target.SendMessage("Sua aura magica o protege");
+
+                        var tmp = defender;
+                        defender = source;
+                        source = tmp;
+                    }
                 }
             }
-            else if (target is BaseCreature)
+         
+
+            else if (defender is BaseCreature)
             {
                 reflect = false;
 
-                ((BaseCreature)target).CheckReflect(caster, ref reflect);
+                ((BaseCreature)defender).CheckReflect(caster, ref reflect);
 
                 if (reflect)
                 {
-                    target.FixedEffect(0x37B9, 10, 5);
+                    defender.FixedEffect(0x37B9, 10, 5);
 
                     IDamageable temp = source;
                     source = defender;

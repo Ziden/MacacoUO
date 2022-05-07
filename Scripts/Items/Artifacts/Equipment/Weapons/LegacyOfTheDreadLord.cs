@@ -9,7 +9,7 @@ namespace Server.Items
         public LegacyOfTheDreadLord()
         {
             Hue = 0x676;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.CastRecovery = 3;
             Attributes.WeaponSpeed = 30;
             Attributes.WeaponDamage = 50;

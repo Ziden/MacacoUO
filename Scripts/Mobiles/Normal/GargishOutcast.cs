@@ -53,7 +53,7 @@ namespace Server.Mobiles
                 case 2: wep = new Boomerang(); break;
             }
 
-            wep.Attributes.SpellChanneling = 1;
+            wep.Attributes.ResistMagica = 1;
             AddImmovableItem(wep);
             AddImmovableItem(new GargishClothChest(Utility.RandomNeutralHue()));
             AddImmovableItem(new GargishClothArms(Utility.RandomNeutralHue()));

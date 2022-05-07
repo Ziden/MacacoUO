@@ -394,7 +394,8 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile from)
         {
-            if (from.InRange(GetWorldLocation(), (Core.ML ? 3 : 1)) && CheckAccess(from))
+            Shard.Debug("Runebook click");
+            if (from.InRange(GetWorldLocation(), (Core.ML ? 3 : 1)) && CheckAccess(from, false))
             {
                 if (RootParent is BaseCreature)
                 {
@@ -440,17 +441,17 @@ namespace Server.Items
             base.OnAfterDuped(newItem);
         }
 
-        public bool CheckAccess(Mobile m)
+        public bool CheckAccess(Mobile m, bool modify)
         {
             if (!IsLockedDown || m.AccessLevel >= AccessLevel.GameMaster)
                 return true;
 
-            BaseHouse house = BaseHouse.FindHouseAt(this);
+            //BaseHouse house = BaseHouse.FindHouseAt(this);
 
-            if (house != null && house.IsAosRules && (house.Public ? house.IsBanned(m) : !house.HasAccess(m)))
-                return false;
-
-            return (house != null && house.HasSecureAccess(m, m_Level));
+            //if (house != null && house.IsAosRules && (house.Public ? house.IsBanned(m) : !house.HasAccess(m)))
+            //    return false;
+            return !modify;
+            //return (house != null && house.HasSecureAccess(m, m_Level));
         }
 
         public override bool OnDragDrop(Mobile from, Item dropped)

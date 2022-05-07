@@ -285,7 +285,7 @@ namespace Server.Gumps
                 if (m_Book.Deleted || !from.InRange(m_Book.GetWorldLocation(), (Core.ML ? 3 : 1)))
                     return;
 
-                if (m_Book.CheckAccess(from))
+                if (m_Book.CheckAccess(from, true))
                 {
                     m_Book.Description = Utility.FixHtml(text.Trim());
 
@@ -332,7 +332,7 @@ namespace Server.Gumps
             }
             else if (buttonID == 1) // Rename book
             {
-                if (m_Book.CheckAccess(from) && m_Book.Movable != false)
+                if (m_Book.CheckAccess(from, true) && m_Book.Movable != false)
                 {
                     from.Prompt = new InternalPrompt(m_Book);
                 }
@@ -391,7 +391,7 @@ namespace Server.Gumps
                                 }
                             case 8: // Drop rune
                                 {
-                                    if (m_Book.CheckAccess(from) && m_Book.Movable != false)
+                                    if (m_Book.CheckAccess(from, true) && m_Book.Movable != false)
                                     {
                                         m_Book.DropRune(from, e, index);
 
@@ -409,7 +409,7 @@ namespace Server.Gumps
                                 }
                             case 12: // Set default
                                 {
-                                    if (m_Book.CheckAccess(from))
+                                    if (m_Book.CheckAccess(from, true))
                                     {
                                         m_Book.Default = e;
 

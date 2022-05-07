@@ -29,20 +29,40 @@ namespace Server.Items
             list.Add("Use em armaduras para adicionar poderes PvM");
         }
 
+        public static bool Tem(AosAttributes attrs)
+        {
+            return (attrs.WeaponDamage > 0 ||
+             attrs.SpellDamage > 0 ||
+            attrs.WeaponSkillDamage > 0 ||
+             attrs.WeaponSpeed > 0 ||
+             attrs.DefendChance > 0 ||
+             attrs.LowerManaCost > 0);
+        }
+
+        public static bool Limpa(AosAttributes attrs)
+        {
+            if (Tem(attrs))
+            {
+                attrs.WeaponDamage = 0;
+                attrs.WeaponSkillDamage = 0;
+                attrs.WeaponSpeed = 0;
+                attrs.LowerManaCost = 0;
+                attrs.DefendChance = 0;
+                attrs.SpellDamage = 0;
+                return true;
+            }
+            return false;
+        }
+
         public override void OnDoubleClick(Mobile from)
         {
-            from.SendMessage("Selecione uma armadura para adicionar mais poder PvM");
+            from.SendMessage("Selecione uma armadura para adicionar mais poder PvM.");
             from.DaTarget<BaseArmor>(armor =>
             {
                 if (this.Deleted)
                     return;
 
-                if(armor.Attributes.WeaponDamage > 0 ||
-                armor.Attributes.SpellDamage > 0 ||
-                armor.Attributes.WeaponSkillDamage > 0 ||
-                armor.Attributes.WeaponSpeed > 0 ||
-                armor.Attributes.DefendChance > 0 ||
-                armor.Attributes.LowerManaCost > 0)
+                if (Tem(armor.Attributes))
                 {
                     from.SendMessage("Esta armadura ja esta encantada !");
                     return;

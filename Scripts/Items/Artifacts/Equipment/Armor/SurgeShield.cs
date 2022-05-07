@@ -71,7 +71,7 @@ namespace Server.Items
 				Attributes.LowerManaCost = 4;
 
 			if(Utility.RandomBool())
-				Attributes.SpellChanneling = 1;			
+				Attributes.ResistMagica = 1;			
 			else
 				Attributes.Resistence = 1;
 		}

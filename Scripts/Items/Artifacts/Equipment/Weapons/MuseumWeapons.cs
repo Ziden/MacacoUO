@@ -67,7 +67,7 @@ namespace Server.Items
         {
             Hue = 0x47E;
             Slayer = SlayerGroup.RandomSuperSlayerAOS();		
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.Resistence = -1;
             Attributes.WeaponDamage = 50;
             Attributes.Luck = 100;			

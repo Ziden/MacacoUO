@@ -12,6 +12,12 @@ namespace Server.Items
             Hue = 0;
         }
 
+
+        public override bool Dye(Mobile from, DyeTub sender)
+        {
+            return true;
+        }
+
         public SobretudodoCarrasco(Serial serial)
             : base(serial)
         {
@@ -74,39 +80,53 @@ namespace Server.Items
 
     public class BandanaDaluz : BaseHat
     {
-        public override int BasePhysicalResistance {
-            get {
+        public override int BasePhysicalResistance
+        {
+            get
+            {
                 return 0;
             }
         }
-        public override int BaseFireResistance {
-            get {
+        public override int BaseFireResistance
+        {
+            get
+            {
                 return 3;
             }
         }
-        public override int BaseColdResistance {
-            get {
+        public override int BaseColdResistance
+        {
+            get
+            {
                 return 5;
             }
         }
-        public override int BasePoisonResistance {
-            get {
+        public override int BasePoisonResistance
+        {
+            get
+            {
                 return 8;
             }
         }
-        public override int BaseEnergyResistance {
-            get {
+        public override int BaseEnergyResistance
+        {
+            get
+            {
                 return 8;
             }
         }
 
-        public override int InitMinHits {
-            get {
+        public override int InitMinHits
+        {
+            get
+            {
                 return 20;
             }
         }
-        public override int InitMaxHits {
-            get {
+        public override int InitMaxHits
+        {
+            get
+            {
                 return 30;
             }
         }
@@ -162,28 +182,38 @@ namespace Server.Items
         {
         }
 
-        public override int LabelNumber {
-            get {
+        public override int LabelNumber
+        {
+            get
+            {
                 return 1095236;
             }
         }// Acid-Proof Robe [Replica]
-        public override int BaseFireResistance {
-            get {
+        public override int BaseFireResistance
+        {
+            get
+            {
                 return 4;
             }
         }
-        public override int InitMinHits {
-            get {
+        public override int InitMinHits
+        {
+            get
+            {
                 return 150;
             }
         }
-        public override int InitMaxHits {
-            get {
+        public override int InitMaxHits
+        {
+            get
+            {
                 return 150;
             }
         }
-        public override bool CanFortify {
-            get {
+        public override bool CanFortify
+        {
+            get
+            {
                 return false;
             }
         }
@@ -247,39 +277,53 @@ namespace Server.Items
 
     public class BandanaDasTrevas : BaseHat
     {
-        public override int BasePhysicalResistance {
-            get {
+        public override int BasePhysicalResistance
+        {
+            get
+            {
                 return 0;
             }
         }
-        public override int BaseFireResistance {
-            get {
+        public override int BaseFireResistance
+        {
+            get
+            {
                 return 3;
             }
         }
-        public override int BaseColdResistance {
-            get {
+        public override int BaseColdResistance
+        {
+            get
+            {
                 return 5;
             }
         }
-        public override int BasePoisonResistance {
-            get {
+        public override int BasePoisonResistance
+        {
+            get
+            {
                 return 8;
             }
         }
-        public override int BaseEnergyResistance {
-            get {
+        public override int BaseEnergyResistance
+        {
+            get
+            {
                 return 8;
             }
         }
 
-        public override int InitMinHits {
-            get {
+        public override int InitMinHits
+        {
+            get
+            {
                 return 20;
             }
         }
-        public override int InitMaxHits {
-            get {
+        public override int InitMaxHits
+        {
+            get
+            {
                 return 30;
             }
         }
@@ -294,7 +338,7 @@ namespace Server.Items
         public BandanaDasTrevas(int hue)
             : base(0x1540, hue)
         {
-        Name = "Bandana Das Trevas";
+            Name = "Bandana Das Trevas";
             Hue = 1;
             LootType = LootType.Blessed;
         }
@@ -317,7 +361,7 @@ namespace Server.Items
 
             int version = reader.ReadInt();
         }
-    } 
+    }
 
     public class RobeAnjoDasTrevas : Robe
     {
@@ -335,28 +379,38 @@ namespace Server.Items
         {
         }
 
-        public override int LabelNumber {
-            get {
+        public override int LabelNumber
+        {
+            get
+            {
                 return 1095236;
             }
         }// Acid-Proof Robe [Replica]
-        public override int BaseFireResistance {
-            get {
+        public override int BaseFireResistance
+        {
+            get
+            {
                 return 4;
             }
         }
-        public override int InitMinHits {
-            get {
+        public override int InitMinHits
+        {
+            get
+            {
                 return 150;
             }
         }
-        public override int InitMaxHits {
-            get {
+        public override int InitMaxHits
+        {
+            get
+            {
                 return 150;
             }
         }
-        public override bool CanFortify {
-            get {
+        public override bool CanFortify
+        {
+            get
+            {
                 return false;
             }
         }

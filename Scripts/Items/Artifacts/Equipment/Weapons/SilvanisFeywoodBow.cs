@@ -9,7 +9,7 @@ namespace Server.Items
         public SilvanisFeywoodBow()
         {
             Hue = 0x1A;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.AttackChance = 12;
             Attributes.WeaponSpeed = 30;
             Attributes.WeaponDamage = 35;

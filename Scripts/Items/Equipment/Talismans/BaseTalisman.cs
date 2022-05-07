@@ -883,7 +883,7 @@ namespace Server.Items
             if ((prop = m_AosAttributes.RegenHits) != 0)
                 list.Add(1060444, prop.ToString()); // hit point regeneration ~1_val~
 
-            if ((prop = m_AosAttributes.SpellChanneling) != 0)
+            if ((prop = m_AosAttributes.ResistMagica) != 0)
                 list.Add(1060482); // spell channeling
 
             if ((prop = m_AosAttributes.SpellDamage) != 0)

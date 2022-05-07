@@ -13,7 +13,7 @@ namespace Server.Items
 		public HarvestersBlade()
 		{
             Hue = 1191;
-			Attributes.SpellChanneling = 1;
+			Attributes.ResistMagica = 1;
             Name = "Lamina de Coleta";
 		}
 	

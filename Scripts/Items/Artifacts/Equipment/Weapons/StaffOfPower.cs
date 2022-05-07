@@ -10,7 +10,7 @@ namespace Server.Items
         {
             Hue = Utility.RandomBool() ? 0x4F2 : 0x4EF;
             WeaponAttributes.MageWeapon = 15;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.SpellDamage = 5;
             Attributes.CastRecovery = 2;
             Attributes.LowerManaCost = 5;

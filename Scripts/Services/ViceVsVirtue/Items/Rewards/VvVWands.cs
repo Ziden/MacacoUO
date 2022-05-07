@@ -71,7 +71,7 @@ namespace Server.Engines.VvV
         {
             ItemID = 3571;
 
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             WeaponAttributes.UseBestSkill = 1;
 
             m_MaxArcaneCharges = 50;
@@ -182,7 +182,7 @@ namespace Server.Engines.VvV
         {
             ItemID = 3571;
 
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             WeaponAttributes.MageWeapon = 15;
 
             m_MaxArcaneCharges = 50;

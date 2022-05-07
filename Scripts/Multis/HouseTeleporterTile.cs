@@ -261,7 +261,7 @@ namespace Server.Multis
                         else
                         {
                             int left = MaxCharges - Item.Charges;
-                            int scrollsNeeded = Math.Max(1, left / 5);
+                            int scrollsNeeded = Math.Max(1, left / 2);
 
                             if (scroll.Amount <= scrollsNeeded)
                             {

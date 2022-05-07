@@ -136,20 +136,20 @@ namespace Server.Spells
             return m_ManaTable[(int)Circle];
         }
 
-   
+
 
         public virtual bool CheckResisted(Mobile target)
         {
             if (target == Caster)
                 return false;
 
-            if(target.Player && !Caster.Player)
+            if (target.Player && !Caster.Player)
             {
                 var lvl = ColarElemental.GetNivel(Caster, ElementoPvM.Luz);
-                if(lvl > 0 && Caster.Skills.Parry.Value >= 100)
+                if (lvl > 0 && Caster.Skills.Parry.Value >= 100)
                 {
                     var chance = 0.1 + lvl / 100;
-                    if(Utility.RandomDouble() <= chance)
+                    if (Utility.RandomDouble() <= chance)
                     {
                         target.SendMessage("Voce bloqueou a magia com seu escudo");
                         target.FixedEffect(0x37B9, 10, 16);
@@ -157,12 +157,12 @@ namespace Server.Spells
                         return true;
                     }
                 }
-           
+
             }
 
-            if(target.IsPlayer() && target.LastCast + TimeSpan.FromSeconds(1) > DateTime.UtcNow)
+            if (target.IsPlayer() && target.LastCast + TimeSpan.FromSeconds(1) > DateTime.UtcNow)
             {
-                if(target.LastCaster != Caster)
+                if (target.LastCaster != Caster)
                 {
                     target.LastCaster = Caster;
                     target.LastResist = DateTime.UtcNow;
@@ -226,12 +226,10 @@ namespace Server.Spells
                 {
                     resist += (int)(resist * Caster.GetBonusElemento(ElementoPvM.Agua));
                     resist += ColarElemental.GetNivel(Caster, ElementoPvM.Agua);
+                    resist += ColarElemental.GetNivel(Caster, ElementoPvM.Escuridao) * 2;
 
-                    if(DarkSpells.Contains(this.GetType())) {
-                        resist += ColarElemental.GetNivel(Caster, ElementoPvM.Escuridao) * 2;
-                    }
                 }
-                if(!target.Player && Caster.Player)
+                if (!target.Player && Caster.Player)
                 {
                     var bonus = resist * Caster.GetBonusElemento(ElementoPvM.Escuridao);
                     if (bonus > resist) bonus = resist;
@@ -239,7 +237,7 @@ namespace Server.Spells
                 }
                 if (target.Player && target.RP)
                 {
-                    if(((PlayerMobile)target).Talentos.Tem(Talento.PeleArcana))
+                    if (((PlayerMobile)target).Talentos.Tem(Talento.PeleArcana))
                         resist += 10;
                 }
                 if (Caster.Player && Caster.RP)
@@ -264,7 +262,7 @@ namespace Server.Spells
 
                 if (Shard.SPHERE_STYLE)
                     chance *= 0.35; // sem pre cast mais dificil de resistir
-                else if(Circle >= SpellCircle.Sixth)
+                else if (Circle >= SpellCircle.Sixth)
                     chance *= 0.90;
 
                 if (Caster is BaseCreature && target is PlayerMobile)
@@ -291,20 +289,20 @@ namespace Server.Spells
 
                 var pl = Caster as PlayerMobile;
 
-                if(pl.RP)
+                if (pl.RP)
                 {
-                    if(pl.Talentos.Tem(Talento.Cajados) && Caster.Weapon is BaseStaff)
+                    if (pl.Talentos.Tem(Talento.Cajados) && Caster.Weapon is BaseStaff)
                         return TimeSpan.FromSeconds(0.5 + (0.25 * (int)(1 + Circle)));
                     return TimeSpan.FromSeconds(0.5 + (0.5 * (int)Circle));
                 }
 
-                if(Shard.POL_STYLE)
+                if (Shard.POL_STYLE)
                     return TimeSpan.FromSeconds(0.5 + (0.4 * (int)Circle));
-                else if(Shard.SPHERE_STYLE)
+                else if (Shard.SPHERE_STYLE)
                     return TimeSpan.FromSeconds(1 + (0.5 * (int)Circle));
                 else
-                    return TimeSpan.FromSeconds(0.5 + (0.25 * (int)(1+Circle)));
-               
+                    return TimeSpan.FromSeconds(0.5 + (0.25 * (int)(1 + Circle)));
+
             }
             return base.GetCastDelay();
         }

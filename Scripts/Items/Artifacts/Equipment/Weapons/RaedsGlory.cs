@@ -10,7 +10,7 @@ namespace Server.Items
         {
             Hue = 0x1E6;
             Attributes.BonusMana = 8;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.WeaponSpeed = 20;
             WeaponAttributes.HitLeechHits = 40;
         }

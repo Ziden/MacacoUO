@@ -8,7 +8,7 @@ namespace Server.Items
         [Constructable]
         public TrueSpellblade()
         {
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.Resistence = -1;
         }
 

@@ -228,6 +228,7 @@ namespace Server.Items
                     }
                     else
                     {
+                        from.OverheadMessage("* bebendo *");
                         this.Drink(from);
                         from.SendMessage("Voce tomou uma pocao de " + this.PotionEffect);
                     }

@@ -19,7 +19,7 @@ namespace Server.Items
         public Hephaestus(bool antique)
         {
             Hue = 1910;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.ReflectPhysical = 15;
             Attributes.DefendChance = 15;
             Attributes.Resistence = 1;
@@ -73,7 +73,7 @@ namespace Server.Items
         public GargishHephaestus(bool antique)
         {
             Hue = 1910;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.ReflectPhysical = 15;
             Attributes.DefendChance = 15;
             Attributes.Resistence = 1;

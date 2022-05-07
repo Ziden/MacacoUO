@@ -1478,7 +1478,7 @@ namespace Server
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public int SpellChanneling
+        public int ResistMagica
         {
             get
             {

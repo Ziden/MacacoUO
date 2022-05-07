@@ -275,7 +275,7 @@ namespace Server.Items
             if (base.AllowEquipedCast(from))
                 return true;
 
-            return (m_AosAttributes.SpellChanneling != 0);
+            return (m_AosAttributes.ResistMagica != 0);
         }
 
         public virtual int GetLuckBonus()
@@ -579,7 +579,7 @@ namespace Server.Items
         {
             if (m_Resource != CraftResource.Eucalipto)
             {
-                Attributes.SpellChanneling = attrInfo.OtherSpellChanneling;
+                Attributes.ResistMagica = attrInfo.OtherSpellChanneling;
                 Attributes.Luck = attrInfo.OtherLuck;
                 Attributes.RegenHits = attrInfo.OtherRegenHits;
                 LowerStatReq = attrInfo.OtherLowerRequirements;
@@ -591,7 +591,7 @@ namespace Server.Items
                     case 0: Attributes.Luck += 40; break;
                     case 1: Attributes.Luck += 10; break;
                     case 2: Attributes.RegenHits += attrInfo.OtherRegenHits; break;
-                    case 3: Attributes.SpellChanneling = attrInfo.OtherSpellChanneling; break;
+                    case 3: Attributes.ResistMagica = attrInfo.OtherSpellChanneling; break;
                     case 4: LowerStatReq = attrInfo.OtherLowerRequirements; break;
                 }
             }

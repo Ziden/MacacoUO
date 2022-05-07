@@ -12,6 +12,7 @@ using Server.Items.Functional.Pergaminhos;
 using Server.Misc.Custom;
 using Server.Engines.VeteranRewards;
 using Server.Engines.Auction;
+using Server.Ziden;
 
 namespace Server.Engines.VvV
 {
@@ -58,6 +59,9 @@ namespace Server.Engines.VvV
             Rewards.Add(new CollectionItem(typeof(ManaSpike), 2308, "Espinho de Mana", 0, 1000));            // Mana Spike
             Rewards.Add(new CollectionItem(typeof(SkillBook), 0xEFA, "Livro Cientifico", 0, 3000));   // Scroll of Transcendence
             Rewards.Add(new CollectionItem(typeof(PergaminhoSagrado), 0x14F0, "Pergaminho Sagrado 30 Dias Pertence Pessoal", 0, 10000));
+            Rewards.Add(new CollectionItem(typeof(PergaminhoCarregamento), 0x14F0, "Pergaminho Carregar +Iem", 0, 5000));
+            Rewards.Add(new CollectionItem(typeof(PergaminhoPeso), 0x14F0, "Pergaminho Carregar +Peso", 0, 5000));
+            Rewards.Add(new CollectionItem(typeof(PergaminhoSagrado), 0x14F0, "Pergaminho Sagrado 30 Dias Pertence Pessoal", 0, 10000));
             Rewards.Add(new CollectionItem(typeof(TalismanDragao), 0x2F58, "Talisman Protecao contra Bafo de Dragao", 0, 5000));
             Rewards.Add(new CollectionItem(typeof(SandMiningBook), 0xFF4, "Manual de Minerar na Areia", 0, 1000));
 
@@ -98,6 +102,7 @@ namespace Server.Engines.VvV
             Rewards.Add(new CollectionItem(typeof(RepairBenchDeed), 0x14F0, "Mesa de Reparos</br>Permite Reparar Items", 0, 10000));
 
             Rewards.Add(new CollectionItem(typeof(KegManaMaior), 6870, "Keg de Mana Maior", 0, 3000));  // Greater Stam
+            Rewards.Add(new CollectionItem(typeof(Fullbook), 0xEFA, "Fullbook", 0, 3000));  
 
             /*
             Rewards.Add(new CollectionItem(typeof(MorphEarrings), 4231, 0, 0, 500));

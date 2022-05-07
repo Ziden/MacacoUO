@@ -831,7 +831,7 @@ namespace Server.Items
             Attributes.WeaponSpeed = 20;
             Attributes.CastRecovery = 2;
             Attributes.DefendChance = 5;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
         }
 
         public PilferedDancerFans(Serial serial)

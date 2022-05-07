@@ -30,7 +30,7 @@ namespace Server.Items
         {
             if (from is PlayerMobile && (from.InRange(GetWorldLocation(), 2) || from.AccessLevel >= AccessLevel.Counselor))
             {
-                if (CheckAccess(from) || from.AccessLevel >= AccessLevel.Counselor)
+                if (CheckAccess(from, true) || from.AccessLevel >= AccessLevel.Counselor)
                 {
                     if (DateTime.UtcNow < NextUse)
                     {
@@ -360,7 +360,7 @@ namespace Server.Items
 
         public void RenameBook()
         {
-            if (Atlas.CheckAccess(User) && Atlas.Movable != false || User.AccessLevel >= AccessLevel.GameMaster)
+            if (Atlas.CheckAccess(User, true) && Atlas.Movable != false || User.AccessLevel >= AccessLevel.GameMaster)
             {
                 User.Prompt = new InternalPrompt(Atlas);
             }
@@ -378,7 +378,7 @@ namespace Server.Items
 
         private void SetDefault()
         {
-            if (Atlas.CheckAccess(User) || User.AccessLevel >= AccessLevel.GameMaster)
+            if (Atlas.CheckAccess(User, true) || User.AccessLevel >= AccessLevel.GameMaster)
             {
                 Atlas.DefaultIndex = Selected;
                 Refresh();
@@ -393,7 +393,7 @@ namespace Server.Items
 
         private void DropRune()
         {
-            if (Atlas.CheckAccess(User) && Atlas.Movable != false || User.AccessLevel >= AccessLevel.GameMaster)
+            if (Atlas.CheckAccess(User, true) && Atlas.Movable != false || User.AccessLevel >= AccessLevel.GameMaster)
             {
                 Atlas.DropRune(User, Atlas.Entries[Selected], Selected);
                 Refresh();
@@ -513,7 +513,7 @@ namespace Server.Items
                 if (Atlas.Deleted || !from.InRange(Atlas.GetWorldLocation(), 3) || !(from is PlayerMobile))
                     return;
 
-                if (Atlas.CheckAccess(from) || from.AccessLevel >= AccessLevel.GameMaster)
+                if (Atlas.CheckAccess(from, true) || from.AccessLevel >= AccessLevel.GameMaster)
                 {
                     Atlas.Description = Utility.FixHtml(text.Trim());
                     from.SendGump(new RunicAtlasGump((PlayerMobile)from, Atlas));

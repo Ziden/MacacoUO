@@ -18,7 +18,7 @@ namespace Server.Items
 				case 3 : AbsorptionAttributes.ResonanceEnergy = 20; break;
 				case 4 : AbsorptionAttributes.ResonanceKinetic = 20; break;			
 			}
-			Attributes.SpellChanneling = 1;
+			Attributes.ResistMagica = 1;
 			WeaponAttributes.MageWeapon = 10;
 			WeaponAttributes.HitHarm = 50;
 			Attributes.DefendChance = 10;

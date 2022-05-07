@@ -283,6 +283,9 @@ namespace Server.Engines.Craft
             AddRecipe(index, (int)JewelRecipes.AnelDeOuro);
 
             // Pedra JC
+            index = AddCraft(typeof(Taint), "Pedras", "Tourmalina Derretida", 40, 120, typeof(Tourmaline), "Turmalina", 5, "Faltam pedras para criar isto");
+            SetNeedForno(index, true);
+
             index = AddCraft(typeof(BlueDiamond), "Pedras", "Diamante Azul", 40, 120, typeof(Diamond), "Diamante", 5, "Faltam pedras para criar isto");
             SetNeedForno(index, true);
             AddRecipe(index, (int)JewelRecipes.DiamanteAzul);

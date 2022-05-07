@@ -510,7 +510,7 @@ namespace Server.SkillHandlers
 
                     if (attr == AosAttribute.SpellChanneling)
                     {
-                        wep.Attributes.SpellChanneling = value;
+                        wep.Attributes.ResistMagica = value;
 
                         if (wep.Attributes.Resistence >= 0)
                             wep.Attributes.Resistence -= 1;
@@ -594,7 +594,7 @@ namespace Server.SkillHandlers
 
                     if (attr == AosAttribute.SpellChanneling)
                     {
-                        shield.Attributes.SpellChanneling = value;
+                        shield.Attributes.ResistMagica = value;
 
                         if (shield.Attributes.Resistence >= 0)
                             shield.Attributes.Resistence -= 1;
@@ -627,7 +627,7 @@ namespace Server.SkillHandlers
 
                     if (attr == AosAttribute.SpellChanneling)
                     {
-                        arm.Attributes.SpellChanneling = value;
+                        arm.Attributes.ResistMagica = value;
                         arm.Attributes.Resistence -= 1;
                     }
                     else if (attr == AosAttribute.WeaponDamage)
@@ -2018,7 +2018,7 @@ namespace Server.SkillHandlers
             {
                 BaseWeapon w = (BaseWeapon)item;
 
-                if (mod == 16 && w.Attributes.SpellChanneling > 0)
+                if (mod == 16 && w.Attributes.ResistMagica > 0)
                     return w.Attributes[AosAttribute.Resistence] + 1;
 
                 if (attr is AosAttribute)
@@ -2054,7 +2054,7 @@ namespace Server.SkillHandlers
             {
                 BaseArmor a = (BaseArmor)item;
 
-                if (a is BaseShield && mod == 16 && a.Attributes.SpellChanneling > 0)
+                if (a is BaseShield && mod == 16 && a.Attributes.ResistMagica > 0)
                     return a.Attributes[AosAttribute.Resistence] + 1;
 
                 if (attr is AosAttribute)
@@ -2198,7 +2198,7 @@ namespace Server.SkillHandlers
             {
                 AosAttributes attrs = RunicReforging.GetAosAttributes(item);
 
-                if (attrs != null && attrs.SpellChanneling > 0)
+                if (attrs != null && attrs.ResistMagica > 0)
                     value++;
             }
 

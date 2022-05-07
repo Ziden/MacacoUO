@@ -2344,7 +2344,7 @@ namespace Server.Mobiles
                 return ApplyPoisonResult.Immune;
             }
 
-            if(TastyTreat.UnderInfluence(this))
+            if (TastyTreat.UnderInfluence(this))
                 return ApplyPoisonResult.Immune;
 
             if (EvilOmenSpell.TryEndEffect(this))
@@ -2352,15 +2352,15 @@ namespace Server.Mobiles
                 poison = PoisonImpl.IncreaseLevel(poison);
             }
 
-            if(from is BaseCreature)
+            if (from is BaseCreature)
             {
                 var chanceResist = this.PoisonResistance / 300;
-                if(Utility.RandomDouble() < chanceResist)
+                if (Utility.RandomDouble() < chanceResist)
                 {
                     return ApplyPoisonResult.Immune;
                 }
             }
-            
+
             ApplyPoisonResult result = base.ApplyPoison(from, poison);
 
             if (from != null && result == ApplyPoisonResult.Poisoned && PoisonTimer is PoisonImpl.PoisonTimer)
@@ -2671,15 +2671,16 @@ namespace Server.Mobiles
         {
             if (BardPacified)
             {
-                if(tomouEmPeace > this.HitsMax / 2 || tomouEmPeace > 700)
+                if (tomouEmPeace > this.HitsMax / 2 || tomouEmPeace > 700)
                 {
                     Unpacify();
                     tomouEmPeace = 0;
-                } else
+                }
+                else
                 {
                     tomouEmPeace += amount;
                 }
-                
+
             }
 
             int disruptThreshold;
@@ -2866,7 +2867,7 @@ namespace Server.Mobiles
 
             if (from != null && from.Elemento != ElementoPvM.None && from.Weapon is BaseWeapon && from.Elemento == ((BaseWeapon)from.Weapon).Elemento)
             {
-                if(!from.IsCooldown("msgel"))
+                if (!from.IsCooldown("msgel"))
                 {
                     from.SetCooldown("msgel");
                     from.SendMessage("Com armas elementais voce bate mais forte ou mais fraco em certos elementos, depende do elemento da arma");
@@ -2895,10 +2896,10 @@ namespace Server.Mobiles
             // pet batendo em monstro
             if (ControlMaster != null && ControlMaster.Player)
             {
-                if(!to.Player)
+                if (!to.Player)
                 {
                     if (StuckMenu.IsInSecondAgeArea(this))
-                        damage = (int)(damage * 0.5);
+                        damage = (int)(damage * 0.6);
                     else
                         damage = (int)(damage * 0.9);
 
@@ -2908,13 +2909,10 @@ namespace Server.Mobiles
                         var redux = nivel / 25; // max 50%
                         damage += damage * redux;
                     }
-                } else
+                }
+                else
                 {
-                    if (!to.Criminal && !to.Murderer && to.Region is DungeonRegion)
-                        damage = 1; // pets pvp batem 1
-                    else
-                        damage /= 3;
-
+                    damage /= 3;
                     if (damage < 1)
                         damage = 1;
                 }
@@ -2923,7 +2921,7 @@ namespace Server.Mobiles
             if (to.Player && to.Elemento != ElementoPvM.None)
             {
 
-                if(to.Weapon is Fists)
+                if (to.Weapon is Fists)
                 {
                     var red = to.Skills.Parry.Value * 0.2 * damage;
                     damage -= (int)red;
@@ -3323,7 +3321,7 @@ namespace Server.Mobiles
                 });
             Shard.Debug("Criado", this);
 
-            if(Shard.PASCOA && Utility.RandomDouble() < 0.02)
+            if (Shard.PASCOA && Utility.RandomDouble() < 0.02)
             {
                 Timer.DelayCall(TimeSpan.FromSeconds(1), () =>
                 {
@@ -4691,9 +4689,18 @@ namespace Server.Mobiles
         }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public IDamageable ControlTarget { get { return m_ControlTarget; } set { if (m_ControlTarget != null && value == null) {
-                  
-                } m_ControlTarget = value; } }
+        public IDamageable ControlTarget
+        {
+            get { return m_ControlTarget; }
+            set
+            {
+                if (m_ControlTarget != null && value == null)
+                {
+
+                }
+                m_ControlTarget = value;
+            }
+        }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public Point3D ControlDest { get { return m_ControlDest; } set { m_ControlDest = value; } }
@@ -4704,7 +4711,7 @@ namespace Server.Mobiles
             get { return m_ControlOrder; }
             set
             {
-                if(value == OrderType.Attack || value == OrderType.Guard || value == OrderType.Patrol)
+                if (value == OrderType.Attack || value == OrderType.Guard || value == OrderType.Patrol)
                 {
                     if (this is IMount && ControlMaster != null && ControlMaster.Skills.AnimalTaming.Value < 80)
                         return;
@@ -4712,7 +4719,7 @@ namespace Server.Mobiles
 
                 m_ControlOrder = value;
 
-             
+
                 if (m_Allured)
                 {
                     if (m_ControlOrder == OrderType.Release)
@@ -5825,9 +5832,9 @@ namespace Server.Mobiles
 
             if (Warmode)
             {
-               
-                    Animate(AnimationType.Alert, 0);
-                
+
+                Animate(AnimationType.Alert, 0);
+
 
                 if (CanFly)
                 {
@@ -7096,7 +7103,7 @@ namespace Server.Mobiles
             List<DamageStore> rights = GetLootingRights();
             if (Shard.DebugEnabled)
             {
-                Shard.Debug("onBeforeDeath com looters " + (rights == null ? "null" : "qtd "+ rights.Count));
+                Shard.Debug("onBeforeDeath com looters " + (rights == null ? "null" : "qtd " + rights.Count));
             }
 
             // Qnd um bixo morrer, se eh de player e foi morto por monstros, os monstros viram no dono do bixo q morreu
@@ -7113,19 +7120,20 @@ namespace Server.Mobiles
                 }
             }
 
-            if(this.Backpack != null)
+            if (this.Backpack != null)
             {
-                foreach (var i in new List<Item>(this.Backpack.Items)) {
+                foreach (var i in new List<Item>(this.Backpack.Items))
+                {
                     if (i.HueRaridade == 10 || i.HueRaridade == 100 || i is BasePedraPreciosa || i is BaseEssencia)
                         SorteiaItem(i);
                 }
             }
-            
+
 
 
 
             int treasureLevel = TreasureMapLevel;
-           
+
             DropScrollsGarantidos();
             if (this.Region != null && this.Region is DungeonRegion)
             {
@@ -7315,11 +7323,15 @@ namespace Server.Mobiles
         }
 
         List<DamageStore> _lootingRights = null;
-        public List<DamageStore> LootingRights { get => _lootingRights; set {
+        public List<DamageStore> LootingRights
+        {
+            get => _lootingRights; set
+            {
                 _lootingRights = value;
                 if (Shard.DebugEnabled)
-                    Shard.Debug("Looting rights setado " + (_lootingRights == null ? "null" : "qtd "+_lootingRights.Count));
-         } }
+                    Shard.Debug("Looting rights setado " + (_lootingRights == null ? "null" : "qtd " + _lootingRights.Count));
+            }
+        }
 
         public bool HasLootingRights(Mobile m)
         {
@@ -7346,16 +7358,16 @@ namespace Server.Mobiles
         {
             if (LootingRights != null)
             {
-                if(Shard.DebugEnabled)
-                    Shard.Debug("Retornando looters cacheados ct="+ LootingRights.Count, this);
-               
+                if (Shard.DebugEnabled)
+                    Shard.Debug("Retornando looters cacheados ct=" + LootingRights.Count, this);
+
                 return LootingRights;
             }
 
             Shard.Debug("Calculando looters", this);
             List<DamageEntry> damageEntries = DamageEntries;
 
-         
+
 
             int hitsMax = HitsMax;
 
@@ -7374,7 +7386,7 @@ namespace Server.Mobiles
                     Shard.Debug("Damage entry: " + de.Damager.Name + " bateu " + de.DamageGiven);
                 }
 
-               
+
 
                 if (de.HasExpired)
                 {
@@ -7397,7 +7409,7 @@ namespace Server.Mobiles
 
                         if (master == null || master.Deleted || !master.Player)
                         {
-                          
+
                             continue;
                         }
 
@@ -7533,9 +7545,9 @@ namespace Server.Mobiles
 
         public override void OnDeath(Container c)
         {
-            if(Shard.PASCOA)
+            if (Shard.PASCOA)
             {
-                if(Utility.RandomDouble() < 0.1)
+                if (Utility.RandomDouble() < 0.1)
                 {
                     c.DropItem(new ChocolateRabbit());
                 }
@@ -7652,11 +7664,11 @@ namespace Server.Mobiles
                         c.DropItem(new FragmentosAntigos() { Amount = nivel });
 
                     Shard.Debug("Bixo paragon morrendo");
-                    if(this.HitsMax >= 3000)
+                    if (this.HitsMax >= 3000)
                     {
                         Shard.Debug("Bixo paragon tem mais de 3k de vida");
-                       
-                        DistribuiItem(new Gold(this.HitsMax/2));
+
+                        DistribuiItem(new Gold(this.HitsMax / 2));
                         var talisman = new BaseTalisman(0x9E28);
                         talisman.Hue = Paragon.Hue;
                         talisman.Name = "Talisman Paragon Especial";
@@ -7676,11 +7688,12 @@ namespace Server.Mobiles
                     SorteiaItem(AnimatedSeed.GetRandomSeed());
                 }
 
-                Timer.DelayCall(TimeSpan.FromSeconds(0.2), () => {
-                    if(Ganhadores.Count > 0)
+                Timer.DelayCall(TimeSpan.FromSeconds(0.2), () =>
+                {
+                    if (Ganhadores.Count > 0)
                     {
                         var loots = Ganhadores.ToList();
-                        foreach(var m in GetLootingRights())
+                        foreach (var m in GetLootingRights())
                         {
                             m.m_Mobile.SendGump(new LootsGump(loots));
                         }
@@ -8145,7 +8158,7 @@ namespace Server.Mobiles
 
                 if (Combatant != null)
                 {
-                    if(Shard.DebugEnabled)
+                    if (Shard.DebugEnabled)
                         Shard.Debug("Forca combatant null", this);
                     Combatant = null;
                 }
@@ -8156,7 +8169,7 @@ namespace Server.Mobiles
                 RemoveAggressed(m);
 
                 m.RemoveAggressed(this);
-     
+
 
                 if (Combatant != null)
                     Combatant = null;

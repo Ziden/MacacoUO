@@ -47,17 +47,14 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(FlourSifterExp), 2, 20, 0x103E, 0));
 
                 var values = Enum.GetValues(typeof(CookRecipesExp)).CastToList<int>();
-                values.Shuffle();
-
-                for (var i = 0; i < 30; i++)
+  
+                foreach(var recipe in values)
                 {
-                    var recipe = values[i];
                     if (Recipe.Recipes.ContainsKey(recipe))
                     {
-                        values.Remove(recipe);
-                        Add(new GenericBuyInfo(typeof(RecipeScroll), 10000, 10, 0x2831, 0, new object[] { recipe }));
+                        Add(new GenericBuyInfo(typeof(RecipeScroll), 20000, 10, 0x2831, 0, new object[] { recipe }));
                     }
-                }
+                } 
             }
         }
 

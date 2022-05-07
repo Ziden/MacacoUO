@@ -126,7 +126,7 @@ namespace Server.Items
 		{
 			SkillBonuses.SetValues( 0, SkillName.Meditation, 10.0 );
 			WeaponAttributes.MageWeapon = 30;
-			Attributes.SpellChanneling = 1;
+			Attributes.ResistMagica = 1;
 			Attributes.EnhancePotions = 25;
 		}
 		
@@ -161,7 +161,7 @@ namespace Server.Items
 		{
 			SkillBonuses.SetValues( 0, SkillName.Meditation, 10.0 );
 			WeaponAttributes.MageWeapon = 30;
-			Attributes.SpellChanneling = 1;
+			Attributes.ResistMagica = 1;
 			Attributes.EnhancePotions = 25;
 		}
 		

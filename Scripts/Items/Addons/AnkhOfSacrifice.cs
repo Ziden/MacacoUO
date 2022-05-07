@@ -155,7 +155,7 @@ namespace Server.Items
 
                     if (from is PlayerMobile)
                     {
-                        ((PlayerMobile)from).AnkhNextUse = DateTime.UtcNow + TimeSpan.FromHours(1);
+                        ((PlayerMobile)from).AnkhNextUse = DateTime.UtcNow + TimeSpan.FromHours(12);
                     }
 
                     base.OnResponse(state, info);

@@ -9,7 +9,7 @@ namespace Server.Items
         public Subdue()
         {
             Hue = 0x2cb;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.WeaponSpeed = 20;
             Attributes.WeaponDamage = 50;
             Attributes.AttackChance = 10;

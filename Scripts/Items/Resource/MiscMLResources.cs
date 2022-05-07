@@ -999,12 +999,22 @@ namespace Server.Items
         {
             this.Stackable = true;
             this.Amount = amount;
-            this.Hue = 731;
+            this.Hue = 55;
+            Name = "Tourmalina Derretida";
         }
 
         public Taint(Serial serial)
             : base(serial)
         {
+        }
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            base.OnDoubleClick(from);
+            from.SendMessage("Escolha uma armadura para retirar seus bonus PvM");
+            from.DaTarget<BaseArmor>(armor => {
+
+            });
         }
 
         TextDefinition ICommodity.Description { get { return LabelNumber; } }

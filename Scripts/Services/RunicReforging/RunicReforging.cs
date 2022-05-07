@@ -577,7 +577,7 @@ namespace Server.Items
 
                 bool hasValue;
 
-                if ((AosAttribute)attribute == AosAttribute.Resistence && attrs.SpellChanneling > 0)
+                if ((AosAttribute)attribute == AosAttribute.Resistence && attrs.ResistMagica > 0)
                     hasValue = attrs.Resistence > -1;
                 else
                     hasValue = attrs[(AosAttribute)attribute] > 0;
@@ -2551,7 +2551,7 @@ namespace Server.Items
 
                     bool hasValue;
 
-                    if ((AosAttribute)attr == AosAttribute.Resistence && aosattrs.SpellChanneling > 0)
+                    if ((AosAttribute)attr == AosAttribute.Resistence && aosattrs.ResistMagica > 0)
                         hasValue = aosattrs.Resistence > -1;
                     else
                         hasValue = aosattrs[(AosAttribute)attr] > 0;
@@ -2669,7 +2669,7 @@ namespace Server.Items
 
         public static bool HasAosAttributesValue(AosAttributes attrs, AosAttribute attr)
         {
-            if (attr == AosAttribute.Resistence && attrs.SpellChanneling > 0)
+            if (attr == AosAttribute.Resistence && attrs.ResistMagica > 0)
             {
                 return attrs.Resistence >= 0;
             }

@@ -12,7 +12,7 @@ namespace Server.Items
         public TongueOfTheBeast()
         {
             Hue = 153;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.RegenStam = 3;
             Attributes.RegenMana = 3;
         }

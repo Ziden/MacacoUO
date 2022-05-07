@@ -41,7 +41,15 @@ public class AntiParaPotion : BasePotion
 
     public override void Drink(Mobile m)
     {
-        m.OverheadMessage("* bebendo algo *");
+        m.PotAntiPara = DateTime.UtcNow + TimeSpan.FromSeconds(10);
+        BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.AnticipateHit, 1114057, "Anti-Paralyze"));
+        m.SendMessage("Voce agora esta mais resistente a paralizia por 10 segundos");
+        Timer.DelayCall(TimeSpan.FromSeconds(10), () =>
+        {
+            BuffInfo.RemoveBuff(m, BuffIcon.AnticipateHit);
+        });
+
+        /*
         Timer.DelayCall(TimeSpan.FromSeconds(1.8), () =>
         {
             if(m.Alive && m.Paralyzed)
@@ -55,5 +63,6 @@ public class AntiParaPotion : BasePotion
                 m.PlaySound(0x1E7);
             }
         });
+        */
     }
 }

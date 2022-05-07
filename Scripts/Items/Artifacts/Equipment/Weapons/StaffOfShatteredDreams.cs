@@ -17,7 +17,7 @@ namespace Server.Items
             Attributes.WeaponDamage = 50;			
             WeaponAttributes.ResistFireBonus = 15;
             Attributes.Resistence = -1;
-            Attributes.SpellChanneling = 1;	
+            Attributes.ResistMagica = 1;	
         }
 
         public StaffOfShatteredDreams(Serial serial)

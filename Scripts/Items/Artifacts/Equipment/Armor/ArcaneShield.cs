@@ -10,7 +10,7 @@ namespace Server.Items
         {
             Hue = 0x556;
             Attributes.NightSight = 1;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.DefendChance = 15;
             Attributes.Resistence = 1;
         }

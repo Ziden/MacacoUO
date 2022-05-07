@@ -41,12 +41,12 @@ namespace Server.Multis
             }
         }
 
-        public const int MaxCoOwners = 15;
+        public const int MaxCoOwners = 30;
         public static int MaxFriends
         {
             get
             {
-                return !Core.AOS ? 50 : 140;
+                return 140;
             }
         }
         public static int MaxBans
@@ -1323,6 +1323,8 @@ namespace Server.Multis
 
         public bool CheckAccessibility(Item item, Mobile from)
         {
+            if (item is Runebook)
+                return true;
 
             SecureAccessResult res = CheckSecureAccess(from, item);
 
@@ -1330,6 +1332,7 @@ namespace Server.Multis
             {
                 Shard.Debug("Check Acesso a coisa em casa - Secured ?" + res.ToString());
             }
+          
             switch (res)
             {
                 case SecureAccessResult.Insecure:

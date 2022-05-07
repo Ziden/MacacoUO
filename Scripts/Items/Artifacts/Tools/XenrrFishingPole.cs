@@ -68,7 +68,7 @@ namespace Server.Items
         {
             LootType = LootType.Blessed;
 
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.Resistence = -1;
         }
 

@@ -8,7 +8,7 @@ namespace Server.Items
         [Constructable]
         public RoyalGuardSurvivalKnife()
         {
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.Luck = 140;
             Attributes.EnhancePotions = 25;
             WeaponAttributes.UseBestSkill = 1;

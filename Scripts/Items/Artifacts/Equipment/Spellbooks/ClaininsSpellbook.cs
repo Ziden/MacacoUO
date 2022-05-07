@@ -10,7 +10,7 @@ namespace Server.Items
             : base()
         {
             Hue = 0x84D;		
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.RegenMana = 3;
             Attributes.Luck = 80;
             Attributes.LowerRegCost = 15;

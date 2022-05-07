@@ -9,7 +9,7 @@ namespace Server.Items
         public ColdForgedBlade()
         {
             WeaponAttributes.HitHarm = 40;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.NightSight = 1;
             Attributes.WeaponSpeed = 25;
             Attributes.WeaponDamage = 50;

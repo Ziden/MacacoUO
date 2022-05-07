@@ -25,7 +25,7 @@ namespace Server.Items
                 case 4: AbsorptionAttributes.ResonanceEnergy = 10; break;
             }
 
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.ReflectPhysical = 20;
             Attributes.DefendChance = 8;
 
@@ -77,7 +77,7 @@ namespace Server.Items
                 case 4: AbsorptionAttributes.ResonanceEnergy = 10; break;
             }
 
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.ReflectPhysical = 20;
             Attributes.DefendChance = 8;
 

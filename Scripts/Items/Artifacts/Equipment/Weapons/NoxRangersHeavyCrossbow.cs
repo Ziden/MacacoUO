@@ -10,7 +10,7 @@ namespace Server.Items
         {
             Hue = 0x58C;
             WeaponAttributes.HitLeechStam = 40;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.WeaponSpeed = 30;
             Attributes.WeaponDamage = 20;
             WeaponAttributes.ResistPoisonBonus = 10;

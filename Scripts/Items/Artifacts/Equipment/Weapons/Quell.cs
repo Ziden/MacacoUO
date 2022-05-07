@@ -9,7 +9,7 @@ namespace Server.Items
         public Quell()
         {
             Hue = 0x225;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.WeaponSpeed = 20;
             Attributes.WeaponDamage = 50;
             Attributes.AttackChance = 10;

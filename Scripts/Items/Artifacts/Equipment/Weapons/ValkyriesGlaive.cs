@@ -10,7 +10,7 @@ namespace Server.Items
         [Constructable]
         public ValkyriesGlaive()
         {
-			Attributes.SpellChanneling = 1;
+			Attributes.ResistMagica = 1;
 			Slayer = SlayerName.Undeads;
 			WeaponAttributes.HitFireball = 40;
 			Attributes.BonusStr = 5;

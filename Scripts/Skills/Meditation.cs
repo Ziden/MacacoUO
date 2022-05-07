@@ -24,7 +24,7 @@ namespace Server.SkillHandlers
             if (item is BaseShield) //Permitir meditar com escudo na mão
                 return true;
 
-            if (Core.AOS && item is BaseArmor && ((BaseArmor)item).Attributes.SpellChanneling != 0)
+            if (Core.AOS && item is BaseArmor && ((BaseArmor)item).Attributes.ResistMagica != 0)
                 return true;
 
             if (item is SmugglersLantern)

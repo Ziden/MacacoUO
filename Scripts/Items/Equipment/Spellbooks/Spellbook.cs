@@ -35,6 +35,24 @@ namespace Server.Items
         Exceptional,
     }
 
+    public class Fullbook : Spellbook
+    {
+        public Fullbook() {
+            Name = "Fullbook";
+            Content = ulong.MaxValue;
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+    }
+
     public class Spellbook : Item, ICraftable, ISlayer, IEngravable, IVvVItem, IOwnerRestricted, IWearableDurability, IFactionItem
     {
         private static readonly Dictionary<Mobile, List<Spellbook>> m_Table = new Dictionary<Mobile, List<Spellbook>>();
@@ -940,7 +958,7 @@ namespace Server.Items
             if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
                 list.Add($"Bonus Habilidades de Armas PvM: {prop}%");
 
-            if ((prop = m_AosAttributes.SpellChanneling) != 0)
+            if ((prop = m_AosAttributes.ResistMagica) != 0)
             {
                 list.Add(1060482); // spell channeling
             }

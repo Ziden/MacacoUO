@@ -14,7 +14,7 @@ namespace Server.Items
             SkillBonuses.SetValues(0, SkillName.Mysticism, 15.0);		
             Attributes.SpellDamage = 10;
             Attributes.LowerManaCost = 5;	
-            Attributes.SpellChanneling = 1;	
+            Attributes.ResistMagica = 1;	
         }
 
         public EternalGuardianStaff(Serial serial)

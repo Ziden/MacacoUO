@@ -609,6 +609,7 @@ namespace Server
     public class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable, IDamageable
     {
 
+        public DateTime PotAntiPara;
         public Mobile LastCaster;
         public DateTime LastCast = DateTime.UtcNow;
         public DateTime LastResist = DateTime.MinValue;
@@ -5034,6 +5035,7 @@ namespace Server
             }
             else if (!item.IsAccessibleTo(this))
             {
+                Shard.Debug("Item nao acessivel");
                 Region reg = Region.Find(item.GetWorldLocation(), item.Map);
 
                 if (reg == null || !reg.SendInaccessibleMessage(item, this))
@@ -5055,6 +5057,7 @@ namespace Server
             }
             else if (!item.CheckItemUse(this, item))
             {
+                Shard.Debug("Item nao passou CheckItemUse");
                 okay = false;
             }
             else if (root != null && root is Mobile && ((Mobile)root).IsSnoop(this))

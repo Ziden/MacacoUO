@@ -18,7 +18,7 @@ namespace Server.Items
             Attributes.LowerManaCost = 5;
             Attributes.WeaponSpeed = 20;					
             Attributes.CastRecovery = 1;		
-            Attributes.SpellChanneling = 1;	
+            Attributes.ResistMagica = 1;	
             WeaponAttributes.HitLowerAttack = 60;
             AosElementDamages.Energy = 100;		
         }

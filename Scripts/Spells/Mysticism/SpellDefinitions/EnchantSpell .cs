@@ -140,7 +140,7 @@ namespace Server.Spells.Mysticism
 
                 Enhancement.SetValue(Caster, this.Attribute, value, ModName);
 
-                if (prim >= 80 && sec >= 80 && Weapon.Attributes.SpellChanneling == 0)
+                if (prim >= 80 && sec >= 80 && Weapon.Attributes.ResistMagica == 0)
                 {
                     Enhancement.SetValue(Caster, AosAttribute.SpellChanneling, 1, ModName);
                     Enhancement.SetValue(Caster, AosAttribute.Resistence, -1, ModName);

@@ -9,7 +9,7 @@ namespace Server.Items
         public LightsRampart()
         {
             Hue = 1272;			
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.DefendChance = 20;
         }
 

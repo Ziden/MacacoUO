@@ -10,7 +10,7 @@ namespace Server.Items
         [Constructable]
         public Abhorrence()
         {
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             WeaponAttributes.HitLightning = 35;
             WeaponAttributes.HitLeechMana = 40;
             WeaponAttributes.HitLowerDefend = 20;

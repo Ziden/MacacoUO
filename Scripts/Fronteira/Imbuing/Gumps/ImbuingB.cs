@@ -132,7 +132,7 @@ namespace Server.Gumps
                     AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079759, LabelColor, false, false);       //Mage Weapon 
                     yOffset += 1;
 
-                    if (item is BaseWeapon && (((BaseWeapon)item).Attributes.SpellChanneling == 0 || ((BaseWeapon)item).Attributes.Resistence < 0))
+                    if (item is BaseWeapon && (((BaseWeapon)item).Attributes.ResistMagica == 0 || ((BaseWeapon)item).Attributes.Resistence < 0))
                     {
                         AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10116, GumpButtonType.Reply, 0);
                         AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1075617, LabelColor, false, false);       //Faster Casting
@@ -156,7 +156,7 @@ namespace Server.Gumps
                     AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1079766, LabelColor, false, false);       //Spell Channeling 
                     yOffset += 1;
 
-                    if (item is BaseShield && (((BaseShield)item).Attributes.SpellChanneling == 0 || ((BaseShield)item).Attributes.Resistence < 0))
+                    if (item is BaseShield && (((BaseShield)item).Attributes.ResistMagica == 0 || ((BaseShield)item).Attributes.Resistence < 0))
                     {
                         AddButton(250, 90 + (yOffset * 20), 4005, 4007, 10116, GumpButtonType.Reply, 0);
                         AddHtmlLocalized(295, 90 + (yOffset * 20), 150, 18, 1075617, LabelColor, false, false);       //Faster Casting

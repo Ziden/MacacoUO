@@ -390,7 +390,7 @@ namespace Server.Items
             : base()
         {
             WeaponAttributes.MageWeapon = 30;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.Resistence = 1;
             Attributes.Luck = 200;
         }

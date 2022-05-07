@@ -38,7 +38,7 @@ namespace Server.Items
             this.Effect = WandEffect.None;
             this.Name = "Varinha Magica";
             this.Charges = 0;
-            this.Attributes.SpellChanneling = 1;
+            this.Attributes.ResistMagica = 1;
         }
 
         public BaseWand(WandEffect effect, int minCharges, int maxCharges)
@@ -48,7 +48,7 @@ namespace Server.Items
             this.Effect = effect;
             this.Charges = Utility.RandomMinMax(minCharges, maxCharges);
             this.Name = "Varinha Magica";
-            this.Attributes.SpellChanneling = 1;
+            this.Attributes.ResistMagica = 1;
 
 
         }
@@ -255,7 +255,7 @@ namespace Server.Items
                         break;
                     }
             }
-            this.Attributes.SpellChanneling = 1;
+            this.Attributes.ResistMagica = 1;
         }
 
         public override void GetProperties(ObjectPropertyList list)

@@ -347,7 +347,7 @@ namespace Server.Items
                 new PMEntry(new Point3D(514, 1561, 5), "5. Shame"),
                 new PMEntry(new Point3D(1999, 81, 4), "6. Caverna de Gelo"),
                 //new PMEntry(new Point3D(5237, 3866, 45), "4. Delucia"),
-          }, cost: 100);
+          }, cost: 50);
 
         public static readonly PMList Lugares = new PMList(
           "Avancado",
@@ -365,7 +365,7 @@ namespace Server.Items
               new PMEntry(new Point3D(4191, 3269, 0), "8. Submundo"),
               new PMEntry(new Point3D(5237, 3866, 45), "9. Terras Perdidas"),
              //    new PMEntry(new Point3D(2494, 927, 0), "1. Covetous"),
-          }, cost: 500);
+          }, cost: 100);
 
         public static readonly PMList Pontos = new PMList(
           "Especial",
@@ -376,7 +376,7 @@ namespace Server.Items
               new PMEntry(new Point3D(747, 2162, 0), "Guilda Ranger"),
               new PMEntry(new Point3D(2711, 2234, 0), "Bucaneer's Den"), // Buccaneer's Den
               new PMEntry(new Point3D(5219, 3923, 39), "Delucia"),
-          }, cost: 500);
+          }, cost: 100);
 
         public static readonly PMList Ilshenar = new PMList(
             1012002,

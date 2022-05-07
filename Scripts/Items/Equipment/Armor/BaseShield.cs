@@ -150,7 +150,7 @@ namespace Server.Items
             {
                 if (Resource != CraftResource.Eucalipto)
                 {
-                    Attributes.SpellChanneling += attrInfo.ShieldSpellChanneling;
+                    Attributes.ResistMagica += attrInfo.ShieldSpellChanneling;
                     ArmorAttributes.LowerStatReq += attrInfo.ShieldLowerRequirements;
                     Attributes.RegenHits += attrInfo.ShieldRegenHits;
                 }
@@ -164,7 +164,7 @@ namespace Server.Items
                         case 3: Attributes.ReflectPhysical += attrInfo.ShieldReflectPhys; break;
                         case 4: ArmorAttributes.SelfRepair += attrInfo.ShieldSelfRepair; break;
                         case 5: ColdBonus += attrInfo.ShieldColdRandom; break;
-                        case 6: Attributes.SpellChanneling += attrInfo.ShieldSpellChanneling; break;
+                        case 6: Attributes.ResistMagica += attrInfo.ShieldSpellChanneling; break;
                     }
                 }
             }

@@ -11,7 +11,7 @@ namespace Server.Items
             Hue = 0x66C;
 
             Attributes.BonusMana = 8;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.WeaponDamage = 30;
             WeaponAttributes.HitLeechMana = 20;
             WeaponAttributes.UseBestSkill = 1;

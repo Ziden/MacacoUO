@@ -1053,7 +1053,7 @@ namespace Server.Items
             if (base.AllowEquipedCast(from))
                 return true;
 
-            return (m_AosAttributes.SpellChanneling != 0);
+            return (m_AosAttributes.ResistMagica != 0);
         }
 
         public void UnscaleDurability()
@@ -1296,7 +1296,7 @@ namespace Server.Items
                 list.Add(1113696, prop.ToString()); // Casting Focus ~1_val~%
             #endregion
 
-            if ((prop = m_AosAttributes.SpellChanneling) != 0)
+            if ((prop = m_AosAttributes.ResistMagica) != 0)
                 list.Add(1060482); // spell channeling
 			
 			if ((prop = m_AosClothingAttributes.SelfRepair) != 0)

@@ -13,7 +13,7 @@ namespace Server.Items
             : base()
         {
             ArmorAttributes.SoulCharge = 30;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.DefendChance = 10;
             Attributes.CastRecovery = 2;
 	        Hue = 0x671;

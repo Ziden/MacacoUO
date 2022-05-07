@@ -187,7 +187,7 @@ namespace Server.Items
             : base()
         {
             Hue = 0x835;	
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.Luck = 80;		
             Attributes.Resistence = -1;		
             Attributes.AttackChance = 15;		
@@ -250,7 +250,7 @@ namespace Server.Items
             : base()
         {
             Hue = 0xFA;	
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.CastRecovery = 2;	
             Attributes.Resistence = 1;				
             ArmorAttributes.SelfRepair = 1;

@@ -251,7 +251,7 @@ namespace Server.Items
         private int m_HealedPoisonOrBleed;
         private InternalTimer m_Timer;
         private int m_HealingBonus;
-
+        private bool curaPoison = false;
         public Mobile Healer { get { return m_Healer; } }
         public Mobile Patient { get { return m_Patient; } }
         public int Slips { get { return m_Slips; } set { m_Slips = value; } }
@@ -266,13 +266,16 @@ namespace Server.Items
         public void Slip(bool pvm = false, int dano = 0)
         {
             FullPower = false;
-            ++m_Slips;
-            //if (pvm)
-            //    ++m_Slips;
-            if (dano > 15)
+            if (!pvm)
+            {
                 ++m_Slips;
-            if (dano > 35)
-                m_Slips += 2;
+                if (dano > 15)
+                    ++m_Slips;
+                if (dano > 35)
+                    m_Slips += 2;
+            }
+            else if (Utility.RandomBool())
+                m_Slips++;
             m_Healer.SendMessage("Seus dedos escorregam [- " + m_Slips * SLIP_MULT + " cura]"); // Your fingers slip!
         }
 
@@ -380,53 +383,70 @@ namespace Server.Items
             }
         }
 
-        public void CheckPoisonOrBleed()
+        public void CheckBleed()
         {
             bool bleeding = BleedAttack.IsBleeding(m_Patient);
-            bool poisoned = m_Patient.Poisoned;
 
-            if (bleeding || poisoned)
+            if (bleeding)
             {
                 double healing = m_Healer.Skills[SkillName.Healing].Value;
                 double anatomy = m_Healer.Skills[SkillName.Anatomy].Value;
                 double chance = ((healing + anatomy) - 120) * 25;
 
-                if (poisoned)
-                    chance /= m_Patient.Poison.RealLevel * 20;
-                else
-                    chance /= 3 * 20;
+                chance /= 3 * 20;
 
                 Shard.Debug("Chance curar poison: " + chance);
 
                 if (chance >= Utility.Random(100))
                 {
-                    m_HealedPoisonOrBleed = poisoned ? m_Patient.Poison.RealLevel : 3;
+                    m_HealedPoisonOrBleed = 3;
+
+                    if (BleedAttack.IsBleeding(m_Patient))
+                    {
+                        BleedAttack.EndBleed(m_Patient, false);
+                    }
+                    m_Patient.SendLocalizedMessage("Voce curou o sangramento"); // You bind the wound and stop the bleeding
+                }
+            }
+        }
+
+        public void CheckPoison()
+        {
+            bool poisoned = m_Patient.Poisoned;
+            if (poisoned)
+            {
+                double healing = m_Healer.Skills[SkillName.Healing].Value;
+                double anatomy = m_Healer.Skills[SkillName.Anatomy].Value;
+                double chance = ((healing + anatomy) - 120) * 25;
+
+                chance /= m_Patient.Poison.RealLevel * 20;
+
+                Shard.Debug("Chance curar poison: " + chance);
+
+                if (chance >= Utility.Random(100))
+                {
+                    m_HealedPoisonOrBleed = m_Patient.Poison.RealLevel;
 
                     if (poisoned && m_Patient.CurePoison(m_Healer))
                     {
                         m_Patient.SendLocalizedMessage(1010059); // You have been cured of all poisons.
                     }
-                    else
-                    {
-                        if (BleedAttack.IsBleeding(m_Patient))
-                        {
-                            BleedAttack.EndBleed(m_Patient, false);
-                        }
-
-                        m_Patient.SendLocalizedMessage("Voce curou o sangramento"); // You bind the wound and stop the bleeding
-                        //m_Patient.SendLocalizedMessage(1060167); // The bleeding wounds have healed, you are no longer bleeding!
-                    }
                 }
             }
         }
 
-        //InterruptHealing
+        public void CheckPoisonOrBleed()
+        {
+            CheckPoison();
+            CheckBleed();
+        }
 
         public bool IsHealing(Mobile from)
         {
             return GetContext(from) != null;
         }
 
+        /*
         public void InterruptAndHealPartially()
         {
             if (this.m_Patient != this.m_Healer)
@@ -468,7 +488,7 @@ namespace Server.Items
 
             StopHeal();
         }
-
+        */
 
         public double GetToHeal()
         {
@@ -496,8 +516,8 @@ namespace Server.Items
 
             double min, max;
 
-            min = (anatomy / 6.0) + (healing / 6.0) + 3.0;
-            max = (anatomy / 6.0) + (healing / 3.0) + 10.0;
+            min = (anatomy / 5.0) + (healing / 6.0) + 6.0;
+            max = (anatomy / 5.0) + (healing / 3.0) + 12.0;
 
             double toHeal = (min + (Utility.RandomDouble() * (max - min))) * 0.8;
 
@@ -516,19 +536,20 @@ namespace Server.Items
             if ((m_Patient.Body.IsMonster || m_Patient.Body.IsAnimal) && !m_Patient.Player)
             {
                 toHeal += m_Patient.HitsMax / 170;
-                if(this.enhanced)
+                if (this.enhanced)
                     toHeal += m_Patient.HitsMax / 20;
 
                 if (Shard.DebugEnabled)
-                    Shard.Debug("Bonus Enhanced: " +(this.enhanced), m_Patient);
+                    Shard.Debug("Bonus Enhanced: " + (this.enhanced), m_Patient);
 
                 toHeal -= m_Slips * SLIP_MULT * 3;
-            } else
+            }
+            else
             {
                 toHeal -= m_Slips * SLIP_MULT;
             }
 
-           
+
             if (toHeal < 5)
                 toHeal = 5;
             if (Shard.DebugEnabled)
@@ -642,7 +663,7 @@ namespace Server.Items
                     patientNumber = null;
                 }
             }
-            else if (m_Patient.Poisoned)
+            else if (curaPoison && m_Patient.Poisoned)
             {
                 m_Healer.SendMessage("Voce terminou de aplicar as bandagens"); // You finish applying the bandages.
 
@@ -709,7 +730,7 @@ namespace Server.Items
 
                 double chance = ((healing + 20.0) / 100.0) - (m_Slips * 0.02);
                 var toHeal = GetToHeal();
-              
+
                 if (chance > Utility.RandomDouble())
                 {
                     healerNumber = "Voce terminou de aplicar as bandagens"; // You finish applying the bandages.
@@ -876,13 +897,22 @@ namespace Server.Items
                 context = new BandageContext(healer, patient, delay, enhanced, c);
 
                 m_Table[healer] = context;
+                context.curaPoison = patient.Poisoned;
 
                 if (healer != patient)
                 {
                     patient.SendMessage(healer.Name + " comecou aplicar bandagens em voce"); //  : Attempting to heal you.
                 }
 
-                healer.SendMessage("Voce comecou aplicar as bandagens em seus ferimentos");
+                if (context.curaPoison)
+                {
+                    healer.SendMessage("Voce comecou aplicar as bandagens na ferida envenenada");
+                }
+                else
+                {
+                    healer.SendMessage("Voce comecou aplicar as bandagens nos ferimentos");
+                }
+
                 healer.OverheadMessage("* Aplicando bandagens *"); // You begin applying the bandages.
 
                 if (healer.NetState != null && healer.NetState.IsEnhancedClient)
@@ -935,7 +965,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    seconds = 9.4 + (0.6 * ((double)(120 - dex) / 10));
+                    seconds = 9.4 + (0.6 * ((double)(130 - dex) / 10));
                 }
 
             }

@@ -14,7 +14,7 @@ namespace Server.Items
 
             Attributes.BonusStr = 10;
             WeaponAttributes.MageWeapon = 30;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.Resistence = 2;
             Attributes.LowerManaCost = 5;
             Attributes.LowerRegCost = 10;
@@ -52,7 +52,7 @@ namespace Server.Items
             Hue = 1150;
 
             WeaponAttributes.MageWeapon = 30;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.Resistence = 2;
             Attributes.LowerManaCost = 5;
             Attributes.LowerRegCost = 10;

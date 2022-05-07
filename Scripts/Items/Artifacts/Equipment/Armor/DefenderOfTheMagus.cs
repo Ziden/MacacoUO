@@ -9,7 +9,7 @@ namespace Server.Items
         public DefenderOfTheMagus() 
         {
             Hue = 590;		
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.DefendChance = 10;				
             Attributes.CastRecovery = 1;
             //Random Resonance:

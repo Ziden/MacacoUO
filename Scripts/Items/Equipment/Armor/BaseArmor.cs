@@ -2883,7 +2883,7 @@ namespace Server.Items
             if (base.AllowEquipedCast(from))
                 return true;
 
-            return (m_AosAttributes.SpellChanneling != 0 || Enhancement.GetValue(from, AosAttribute.SpellChanneling) != 0);
+            return (m_AosAttributes.ResistMagica != 0 || Enhancement.GetValue(from, AosAttribute.SpellChanneling) != 0);
         }
 
         public virtual int GetLuckBonus()
@@ -2935,6 +2935,9 @@ namespace Server.Items
 
             if ((prop = m_AosAttributes.WeaponSkillDamage) != 0)
                 list.Add($"Bonus Habilidades de Armas PvM: {prop}%");
+
+            if ((prop = m_AosAttributes.ResistMagica) != 0)
+                list.Add($"Resistencia Magica PvM: {prop}%");
         }
 
         public override void AddNameProperties(ObjectPropertyList list)
@@ -3116,8 +3119,7 @@ namespace Server.Items
             if ((prop = m_SAAbsorptionAttributes.CastingFocus) != 0)
                 list.Add(1113696, prop.ToString()); // Casting Focus ~1_val~%
 
-            if ((prop = m_AosAttributes.SpellChanneling) != 0)
-                list.Add(1060482); // spell channeling
+    
 
             if ((prop = m_AosArmorAttributes.SelfRepair) != 0)
                 list.Add(1060450, prop.ToString()); // self repair ~1_val~

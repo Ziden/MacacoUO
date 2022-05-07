@@ -14,7 +14,7 @@ namespace Server.Items
         public CrookOfHumility()
         {
             Slayer3 = TalismanSlayerName.Wolf;
-            Attributes.SpellChanneling = 1;
+            Attributes.ResistMagica = 1;
             Attributes.BonusInt = 10;
             Attributes.WeaponDamage = 20;
         }
