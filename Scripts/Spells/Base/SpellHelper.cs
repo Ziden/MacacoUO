@@ -1384,7 +1384,7 @@ namespace Server.Spells
 
             if (defender is Mobile && ((Mobile)defender).MagicDamageAbsorb > 0)
             {
-                while (defender is Mobile && ((Mobile)defender).MagicDamageAbsorb > 0)
+                if (defender is Mobile && ((Mobile)defender).MagicDamageAbsorb > 0)
                 {
                     var target = defender as Mobile;
 

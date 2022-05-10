@@ -364,7 +364,7 @@
       <rect x="1224" y="3592" width="309" height="473" />
       <go x="1383" y="3815" z="0" />
       <music name="Jhelom" />
-      <region type="TownRegion" name="Jhelom">
+      <region type="NoGuardCity" name="Jhelom">
         <rect x="1303" y="3670" width="189" height="225" />
         <rect x="1338" y="3895" width="74" height="28" />
         <rect x="1383" y="3951" width="109" height="94" />
@@ -1379,7 +1379,7 @@
       <rect x="1224" y="3592" width="309" height="473" />
       <go x="1383" y="3815" z="0" />
       <music name="Jhelom" />
-      <region type="TownRegion" name="Jhelom">
+      <region type="NoGuardCity" name="Jhelom">
         <rect x="1303" y="3670" width="189" height="225" />
         <rect x="1338" y="3895" width="74" height="28" />
         <rect x="1383" y="3951" width="109" height="94" />

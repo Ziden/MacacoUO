@@ -272,7 +272,7 @@ namespace Server.Engines.VvV
                 return;
             }
             */
-            newCity = VvVCity.Trinsic;
+            newCity = VvVCity.Jhelom;
 
             ColUtility.Free(cities);
             City = newCity;

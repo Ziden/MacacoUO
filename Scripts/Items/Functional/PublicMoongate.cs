@@ -376,6 +376,7 @@ namespace Server.Items
               new PMEntry(new Point3D(747, 2162, 0), "Guilda Ranger"),
               new PMEntry(new Point3D(2711, 2234, 0), "Bucaneer's Den"), // Buccaneer's Den
               new PMEntry(new Point3D(5219, 3923, 39), "Delucia"),
+              new PMEntry(new Point3D(1383, 3815, 0), "Jhelom"),
           }, cost: 100);
 
         public static readonly PMList Ilshenar = new PMList(
