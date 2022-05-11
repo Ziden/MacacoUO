@@ -19,6 +19,8 @@ namespace Server.Fronteira.Items
             Name = "Tambor da Discordia";
         }
 
+        public TamborDaDiscordia(Serial s) : base(s) { }
+
         public override void AddNameProperties(ObjectPropertyList list)
         {
             base.AddNameProperties(list);
