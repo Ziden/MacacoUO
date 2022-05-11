@@ -44,7 +44,7 @@ namespace Server.Fronteira.Items
                 from.PlaySound(0x39);
                 from.OverheadMessage("* tocou *");
                 from.SetCooldown("tambor", TimeSpan.FromMinutes(10));
-                var msgPlayer = "{from.RawName} esta tocando o Tambor da Discordia em { from.Region?.Name}";
+                var msgPlayer = $"{from.RawName} esta tocando o Tambor da Discordia em { from.Region?.Name}";
                 var msg = $":drum: {msgPlayer}";
                 DiscordBot.SendMessage(msg);
                 foreach (var p in NetState.GetOnlinePlayerMobiles())
