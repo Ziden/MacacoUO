@@ -124,6 +124,7 @@
     <Compile Include="Fronteira\Achievements\AchieveTypes\ElementoAchievement.cs" />
     <Compile Include="Fronteira\Comandos\DebugMobiles.cs" />
     <Compile Include="Fronteira\Guildas\ArmarioUniforme.cs" />
+    <Compile Include="Fronteira\Items\TamborDaDiscordia.cs" />
     <Compile Include="Fronteira\Pvp\LordOfPvP.cs" />
     <Compile Include="Fronteira\Pvp\RewardsArena.cs" />
     <Compile Include="Fronteira\Armarios\BaseArmario.cs" />

@@ -51,6 +51,15 @@ namespace Server.Fronteira
             if (pm.Young && !pm.Account.Young)
                 pm.Young = false;
 
+            if(pm.Young)
+            {
+                if(pm.Skills.Mining.Cap > 1000 || pm.Skills.Lumberjacking.Cap > 1000 || pm.Skills.AnimalTaming.Value > 90)
+                {
+                    pm.Account.Young = false;
+                    pm.Young = false;
+                }
+            }
+
             if (Shard.WHITELIST)
             {
                 if (pm.IsStaff() || pm.Name.StartsWith("Tester"))

@@ -105,13 +105,6 @@ namespace Server.Mobiles
             {
                 return true;
             }
-        }// fire breath enabled
-        public override bool AutoDispel
-        {
-            get
-            {
-                return !Controlled;
-            }
         }
         public override int TreasureMapLevel
         {

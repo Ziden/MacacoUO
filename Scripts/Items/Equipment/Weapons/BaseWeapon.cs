@@ -1555,8 +1555,6 @@ namespace Server.Items
             if (forceInfo != null && forceInfo.Defender == defender)
                 bonus -= forceInfo.DefenseChanceMalus;
 
-
-
             if (defender.Player)
             {
                 if (((PlayerMobile)defender).Talentos.Tem(Talento.Esquiva))
@@ -2100,7 +2098,6 @@ namespace Server.Items
                     // Only skillcheck if wielding a shield & there's no effect from Bushido
                 }
             }
-
             return false;
         }
 
@@ -2126,20 +2123,19 @@ namespace Server.Items
                 defender.SendMessage("Voce bloqueou o ataque");
                 defender.FixedEffect(0x37B9, 10, 16);
                 defender.Animate(AnimationType.Parry, 0);
-
+                var max = (int)(damage * 0.7);
                 var ratioBloqueio = (attacker is BaseCreature ? 2 : attackerWeapon is BaseRanged ? 1.2 : 1);
                 var bloqueado = 0;
                 if (shield != null)
                 {
                     if(attacker is BaseCreature)
                     {
-                        bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.7 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
+                        bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.4 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
                     } else
                     {
-                        var max = (int)(damage * 0.7);
+                      
                         bloqueado = (int)(shield.ArmorRating * (attackerWeapon is BaseRanged ? 1.2 : 1.0));
-                        if (bloqueado > max)
-                            bloqueado = max;
+                       
                     }
                 }
                 else
@@ -2155,9 +2151,8 @@ namespace Server.Items
                         bloqueado = (int)(damage * 0.2);
                     }
                 }
-
-
-              
+                if (bloqueado > max)
+                    bloqueado = max;
 
                 if (Shard.DebugEnabled)
                     Shard.Debug("Bloqueado dano: " + bloqueado, defender);
@@ -4238,8 +4233,14 @@ namespace Server.Items
 
             if (m_DamageLevel != WeaponDamageLevel.Regular)
             {
-                damage += (2 * (int)m_DamageLevel) - 1;
-                damage += bonusOre / 4;
+                if(bonusOre <= 3) 
+                {
+                    damage += (2 * (int)m_DamageLevel) - 1;
+                }
+                else // armas color, menor bonus de enchants
+                {
+                    damage += (int)m_DamageLevel - 1;
+                }
             }
             else
             {
@@ -5528,7 +5529,10 @@ namespace Server.Items
 
                         if (UseSkillMod && m_AccuracyLevel != WeaponAccuracyLevel.Regular && Parent is Mobile)
                         {
-                            m_SkillMod = new DefaultSkillMod(AccuracySkill, true, (int)m_AccuracyLevel * 5);
+                            var mult = 5;
+                            if (Resource != CraftResource.Ferro && Resource != CraftResource.Cedro) // bonus menor em items color
+                                mult = 2;
+                            m_SkillMod = new DefaultSkillMod(AccuracySkill, true, (int)m_AccuracyLevel * mult);
                             ((Mobile)Parent).AddSkillMod(m_SkillMod);
                         }
 

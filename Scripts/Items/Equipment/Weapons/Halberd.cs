@@ -76,13 +76,15 @@ namespace Server.Items
                 return 45;
             }
         }
+
         public override int OldMinDamage
         {
             get
             {
-                return 11;
+                return 20;
             }
         }
+
         public override int OldMaxDamage
         {
             get
