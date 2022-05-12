@@ -314,6 +314,7 @@ namespace Server.Items
 				/* Dynamic Z for Magincia to support both old and new maps. */
 				new PMEntry(new Point3D(3563, 2139, Map.Trammel.GetAverageZ(3563, 2139)), 1012010, "Magincia"), // (New) Magincia
 				new PMEntry(new Point3D(3500, 2582, 14), 1078098, "Haven") // New Haven
+
 			}, cost: 50);
 
         public static readonly PMList Felucca = new PMList(
@@ -376,7 +377,6 @@ namespace Server.Items
               new PMEntry(new Point3D(747, 2162, 0), "Guilda Ranger"),
               new PMEntry(new Point3D(2711, 2234, 0), "Bucaneer's Den"), // Buccaneer's Den
               new PMEntry(new Point3D(5219, 3923, 39), "Delucia"),
-              new PMEntry(new Point3D(1383, 3815, 0), "Jhelom"),
           }, cost: 100);
 
         public static readonly PMList Ilshenar = new PMList(
@@ -647,15 +647,13 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 380, 280, 9300);
+            AddBackground(0, 0, 380, 280, 9350); //9350 plano de fundo, 380 largura, 280 altura, 380 comprimento
 
-            AddButton(10, 210, 30533, 30534, 1, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(45, 210, 140, 25, 1011036, false, false); // OKAY 30533
+            AddButton(10, 210, 30534, 30534, 1, GumpButtonType.Reply, 0); // 30533 botao de escolha, 30534 verde - ok
+            AddButton(70, 210, 30535, 30535, 0, GumpButtonType.Reply, 0); // 70 localizacao vertical do botao, 210 linha horizontal do botao, 30535 botao fixo, 30535 bota apertar - cancel
+           
 
-            AddButton(10, 235, 30533, 30535, 0, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(45, 235, 140, 25, 1011012, false, false); // CANCEL  30533
-
-            AddHtmlLocalized(5, 5, 200, 20, 1012011, false, false); // Pick your destination:
+            AddHtmlLocalized(5, 5, 200, 20, 1012011, 3, false, false); // Pick your destination: // 
 
             for (var i = 0; i < checkLists.Length; ++i)
             {
@@ -721,7 +719,7 @@ namespace Server.Items
 
             if (m_Mobile.Map == list.Map && m_Mobile.InRange(entry.Location, 1))
             {
-                m_Mobile.SendLocalizedMessage(1019003); // You are already there.
+                m_Mobile.SendLocalizedMessage(1019003); // Você já está lá.
                 return;
             }
             if (m_Mobile.IsStaff())
@@ -730,13 +728,15 @@ namespace Server.Items
             }
             else if (!m_Mobile.InRange(m_Moongate.GetWorldLocation(), 1) || m_Mobile.Map != m_Moongate.Map)
             {
-                m_Mobile.SendLocalizedMessage(1019002); // You are too far away to use the gate.
+                m_Mobile.SendLocalizedMessage(1019002); // Você está muito longe para usar o portão.
                 return;
             }
             /*
             else if (m_Mobile.Player && SpellHelper.RestrictRedTravel && m_Mobile.Murderer && list.Map != Map.Felucca && !Siege.SiegeShard)
             {
-                m_Mobile.SendLocalizedMessage(1019004); // You are not allowed to travel there.
+                m_Mobile.SendLocalizedMessage(1019004); // Você não tem permissão para viajar para lá.
+
+
                 return;
             }
             */
@@ -748,13 +748,13 @@ namespace Server.Items
             /*
             else if (m_Mobile.Criminal)
             {
-                m_Mobile.SendLocalizedMessage(1005561, "", 0x22); // Thou'rt a criminal and cannot escape so easily.
+                m_Mobile.SendLocalizedMessage(1005561, "", 0x22); // Você é um criminoso e não pode escapar tão facilmente.
                 return;
             }
             */
             else if (SpellHelper.CheckCombat(m_Mobile))
             {
-                m_Mobile.SendLocalizedMessage(1005564, "", 0x22); // Wouldst thou flee during the heat of battle??
+                m_Mobile.SendLocalizedMessage(1005564, "", 0x22); // Você fugiria durante o calor da batalha?
                 return;
             }
             else if (m_Mobile.Spell != null)
