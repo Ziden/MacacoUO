@@ -226,9 +226,9 @@ namespace Server.Items
 			AddLabel(331, 110, 1153, "?");
 
 			//buttons
-			AddButton(42, 39, 30533, 30534, (int)Buttons.cmdAddRaw, GumpButtonType.Reply, 0);
-			AddButton(42, 70, 30533, 30534, (int)Buttons.cmdRenderWax, GumpButtonType.Reply, 0);
-			AddButton(42, 102, 30533, 30534, (int)Buttons.cmdEmptyPot, GumpButtonType.Reply, 0);
+			AddButton(42, 39, 4005, 4006, (int)Buttons.cmdAddRaw, GumpButtonType.Reply, 0);
+			AddButton(42, 70, 4005, 4006, (int)Buttons.cmdRenderWax, GumpButtonType.Reply, 0);
+			AddButton(42, 102, 4005, 4006, (int)Buttons.cmdEmptyPot, GumpButtonType.Reply, 0);
 			AddButton(326, 110, 212, 212, (int)Buttons.cmdHelp, GumpButtonType.Reply, 0);
 
 			//wax amounts
