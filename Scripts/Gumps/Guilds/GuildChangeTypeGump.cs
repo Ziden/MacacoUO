@@ -18,25 +18,25 @@ namespace Server.Gumps
             this.Dragable = false;
 
             this.AddPage(0);
-            this.AddBackground(0, 0, 550, 400, 5054);
+            this.AddBackground(0, 0, 550, 400, 9350);
             this.AddBackground(10, 10, 530, 380, 3000);
 
             this.AddHtmlLocalized(20, 15, 510, 30, 1013062, false, false); // <center>Change Guild Type Menu</center>
 
             this.AddHtmlLocalized(50, 50, 450, 30, 1013066, false, false); // Please select the type of guild you would like to change to
 
-            this.AddButton(20, 100, 4005, 4007, 1, GumpButtonType.Reply, 0);
+            this.AddButton(20, 100, 30533, 30534, 1, GumpButtonType.Reply, 0);
             this.AddHtmlLocalized(85, 100, 300, 30, 1013063, false, false); // Standard guild
 
-            this.AddButton(20, 150, 4005, 4007, 2, GumpButtonType.Reply, 0);
+            this.AddButton(20, 150, 30533, 30534, 2, GumpButtonType.Reply, 0);
             this.AddItem(50, 143, 7109);
             this.AddHtmlLocalized(85, 150, 300, 300, 1013064, false, false); // Order guild
 
-            this.AddButton(20, 200, 4005, 4007, 3, GumpButtonType.Reply, 0);
+            this.AddButton(20, 200, 30533, 30534, 3, GumpButtonType.Reply, 0);
             this.AddItem(45, 200, 7107);
             this.AddHtmlLocalized(85, 200, 300, 300, 1013065, false, false); // Chaos guild
 
-            this.AddButton(300, 360, 4005, 4007, 4, GumpButtonType.Reply, 0);
+            this.AddButton(300, 360, 30533, 30535, 4, GumpButtonType.Reply, 0);
             this.AddHtmlLocalized(335, 360, 150, 30, 1011012, false, false); // CANCEL
         }
 
