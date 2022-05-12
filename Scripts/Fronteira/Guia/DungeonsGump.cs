@@ -131,7 +131,7 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(10, 10, width, 439, 5054);
+            AddBackground(10, 10, width, 439, 9350);
             AddImageTiled(18, 20, width - 17, 420, 2624);
 
             AddImageTiled(58, 64, 36, 352, 200);
@@ -167,27 +167,27 @@ namespace Server.Items
             AddTextEntry(80, 32, 100, 32, 0, 0, filtro);
 
             //AddBackground(80, 32, 200, 32, 9359);
-            AddButton(35, 28, 4005, 4007, 1, GumpButtonType.Reply, 0);
+            AddButton(35, 28, 30534, 30534, 1, GumpButtonType.Reply, 0);
 
             AddHtml(147, 64, 200, 32, "Nome", LabelColor, false, false); // Item
             AddHtml(246, 64, 200, 32, "Local", LabelColor, false, false); // Expansion
             //AddHtml(336, 64, 200, 32, "", LabelColor, false, false); // Crafting
             AddHtml(429, 64, 100, 32, "Localizar", LabelColor, false, false); // Amount
 
-            AddButton(375, 416, 4017, 4018, 0, GumpButtonType.Reply, 0);
+            AddButton(375, 416, 30535, 30535, 0, GumpButtonType.Reply, 0);
             AddHtmlLocalized(410, 416, 120, 20, 1011441, LabelColor, false, false); // EXIT
 
             tableIndex = 0;
 
             if (page > 0)
             {
-                AddButton(75, 416, 4014, 4016, 2, GumpButtonType.Reply, 0);
+                AddButton(75, 416, 30533, 30534, 2, GumpButtonType.Reply, 0);
                 AddHtmlLocalized(110, 416, 150, 20, 1011067, LabelColor, false, false); // Previous page
             }
 
             if (GetIndexForPage(page + 1) < list.Count)
             {
-                AddButton(225, 416, 4005, 4007, 3, GumpButtonType.Reply, 0);
+                AddButton(225, 416, 30533, 30534, 3, GumpButtonType.Reply, 0);
                 AddHtmlLocalized(260, 416, 150, 20, 1011066, LabelColor, false, false); // Next page
             }
 
