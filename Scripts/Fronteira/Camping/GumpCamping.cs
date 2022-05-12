@@ -62,7 +62,7 @@ namespace Server.Gumps
 
             var page = 0;
             AddPage(page);
-            AddBackground(88, 82, 313, 321, 9200);
+            AddBackground(88, 82, 313, 321, 9350);
 
             var campsLiberados = camper.CampfireLocations.Split(';').ToList();
             var y = 0;
@@ -92,10 +92,10 @@ namespace Server.Gumps
             AddItem(360, 87, 3557);
             AddItem(81, 86, 3557);
             AddHtml(148, 90, 184, 25, @"Campings Descobertos", (bool)false, (bool)false);
-            AddButton(365, 376, 4005, 4005, 666, GumpButtonType.Reply, 0);
+            AddButton(365, 376, 30534, 30534, 666, GumpButtonType.Reply, 0);
 
             if (pageAtual > 0)
-                AddButton(94, 376, 4014, 4014, 999, GumpButtonType.Reply, 0);
+                AddButton(94, 376, 30535, 30535, 999, GumpButtonType.Reply, 0);
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
