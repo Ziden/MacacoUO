@@ -32,7 +32,7 @@ namespace Server.Gumps
             this.Resizable = false;
             e = elemento;
             AddPage(0);
-            AddBackground(306, 127, 642, 338, 9200);
+            AddBackground(306, 127, 642, 338, 9350);
 
             AddImageTiled(362, 201, 110, 10, 2053);
             var pct = (pl.Elementos.GetExp(ElementoPvM.Fogo) / ElementoUtils.CustoUpExp(pl.Elementos.GetNivel(ElementoPvM.Fogo))) * 100;
@@ -131,7 +131,7 @@ namespace Server.Gumps
                 NewAuctionGump.AddItemCentered(784, 335, 111, 101, custos[nivel <= 20 ? 0 : 1].itemID, custos[nivel <= 20 ? 0 : 1].hue, this);
 
                 AddHtml(534, 317, 324, 20, "Exp: " + pl.Elementos.GetExp(elemento) + " / " + ElementoUtils.CustoUpExp(nivel), (bool)false, (bool)false);
-                AddButton(804, 435, 247, 248, (int)ElementoButtons.Upar, GumpButtonType.Reply, 0);
+                AddButton(900, 435, 30534, 30534, (int)ElementoButtons.Upar, GumpButtonType.Reply, 0);
             }
             else
             {
