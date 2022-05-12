@@ -36,7 +36,7 @@ namespace Server.Factions
 
             this.AddPage(0);
 
-            this.AddBackground(0, 0, 320, 410, 5054);
+            this.AddBackground(0, 0, 320, 410, 9350);
             this.AddBackground(10, 10, 300, 390, 3000);
 
             #region General
