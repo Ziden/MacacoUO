@@ -25,7 +25,7 @@ namespace Server.Gumps
             context.ImbMenu_Cat = 0;
 
             AddPage(0);
-            AddBackground(0, 0, 520, 310, 5054);
+            AddBackground(0, 0, 520, 310, 9350);
             AddImageTiled(10, 10, 500, 290, 2624);
             AddImageTiled(10, 30, 500, 10, 5058);
             AddImageTiled(10, 270, 500, 10, 5058);
@@ -33,25 +33,25 @@ namespace Server.Gumps
 
             AddHtmlLocalized(10, 12, 520, 20, 1079588, LabelColor, false, false); //<CENTER>IMBUING MENU</CENTER>
 
-            AddButton(15, 60, 4005, 4007, 10005, GumpButtonType.Reply, 0);
+            AddButton(15, 60, 30533, 30534, 10005, GumpButtonType.Reply, 0);
             AddHtmlLocalized(50, 60, 430, 20, 1080432, LabelColor, false, false); //Imbue Item - Adds or modifies an item property on an item
 
-            AddButton(15, 90, 4005, 4007, 10006, GumpButtonType.Reply, 0);
+            AddButton(15, 90, 30533, 30534, 10006, GumpButtonType.Reply, 0);
             AddHtmlLocalized(50, 90, 430, 20, 1113622, LabelColor, false, false); //Reimbue Last - Repeats the last imbuing attempt
 
-            AddButton(15, 120, 4005, 4007, 10007, GumpButtonType.Reply, 0);
+            AddButton(15, 120, 30533, 30534, 10007, GumpButtonType.Reply, 0);
             AddHtmlLocalized(50, 120, 430, 20, 1113571, LabelColor, false, false); //Imbue Last Item - Auto targets the last imbued item
 
-            AddButton(15, 150, 4005, 4007, 10008, GumpButtonType.Reply, 0);
+            AddButton(15, 150, 30533, 30534, 10008, GumpButtonType.Reply, 0);
             AddHtmlLocalized(50, 150, 430, 20, 1114274, LabelColor, false, false); //Imbue Last Property - Imbues a new item with the last property
 
-            AddButton(15, 180, 4005, 4007, 10010, GumpButtonType.Reply, 0);
+            AddButton(15, 180, 30533, 30534, 10010, GumpButtonType.Reply, 0);
             AddHtmlLocalized(50, 180, 470, 20, 1080431, LabelColor, false, false); //Unravel Item - Extracts magical ingredients from an item, destroying it
 
-            AddButton(15, 210, 4005, 4007, 10011, GumpButtonType.Reply, 0);
+            AddButton(15, 210, 30533, 30534, 10011, GumpButtonType.Reply, 0);
             AddHtmlLocalized(50, 210, 430, 20, 1114275, LabelColor, false, false); //Unravel Container - Unravels all items in a container
 
-            AddButton(15, 280, 4017, 4019, 1, GumpButtonType.Reply, 0);
+            AddButton(15, 280, 30535, 30535, 1, GumpButtonType.Reply, 0);
             AddHtmlLocalized(50, 280, 50, 20, 1011012, LabelColor, false, false); //CANCEL
         }
 
@@ -200,7 +200,7 @@ namespace Server.Gumps
                     m_Item = item;
 
                     AddPage(0);
-                    AddBackground(0, 0, 520, 245, 5054);
+                    AddBackground(0, 0, 520, 245, 9350);
                     AddImageTiled(10, 10, 500, 225, 2624);
                     AddImageTiled(10, 30, 500, 10, 5058);
                     AddImageTiled(10, 202, 500, 10, 5058);
@@ -210,10 +210,10 @@ namespace Server.Gumps
 
                     AddHtmlLocalized(15, 58, 490, 113, 1112403, true, true); // WARNING! You have targeted an item made out of special material.<BR><BR>This item will be DESTROYED.<BR><BR>Are you sure you wish to unravel this item?
 
-                    AddButton(10, 180, 4005, 4007, 1, GumpButtonType.Reply, 0);
+                    AddButton(10, 180, 30535, 30535, 1, GumpButtonType.Reply, 0);
                     AddHtmlLocalized(45, 180, 430, 20, 1114292, LabelColor, false, false); // Unravel Item
 
-                    AddButton(10, 212, 4017, 4019, 0, GumpButtonType.Reply, 0);
+                    AddButton(10, 212, 30533, 30535, 0, GumpButtonType.Reply, 0);
                     AddHtmlLocalized(45, 212, 50, 20, 1011012, LabelColor, false, false); // CANCEL
                 }
 
@@ -309,7 +309,7 @@ namespace Server.Gumps
                     m_List = new List<Item>(c.Items);
 
                     AddPage(0);
-                    AddBackground(0, 0, 520, 245, 5054);
+                    AddBackground(0, 0, 520, 245, 9350);
                     AddImageTiled(10, 10, 500, 225, 2624);
                     AddImageTiled(10, 30, 500, 10, 5058);
                     AddImageTiled(10, 202, 500, 10, 5058);
@@ -319,10 +319,10 @@ namespace Server.Gumps
 
                     AddHtmlLocalized(15, 58, 490, 113, 1112404, true, true); // WARNING! The selected container contains items made with a special material.<BR><BR>These items will be DESTROYED.<BR><BR>Do you wish to unravel these items as well?
 
-                    AddButton(10, 180, 4005, 4007, 1, GumpButtonType.Reply, 0);
+                    AddButton(10, 180, 30534, 30534, 1, GumpButtonType.Reply, 0);
                     AddHtmlLocalized(45, 180, 430, 20, 1049717, LabelColor, false, false); // YES
 
-                    AddButton(10, 212, 4017, 4019, 0, GumpButtonType.Reply, 0);
+                    AddButton(10, 212, 30535, 30535, 0, GumpButtonType.Reply, 0);
                     AddHtmlLocalized(45, 212, 50, 20, 1049718, LabelColor, false, false); // NO
                 }
 
