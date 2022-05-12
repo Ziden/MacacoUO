@@ -64,9 +64,16 @@ namespace Server.Items
 
                 if (Tem(armor.Attributes))
                 {
-                    from.SendMessage("Esta armadura ja esta encantada !");
-                    return;
+                    if(this.Amount < 3)
+                    {
+                        from.SendMessage("Esta armadura ja esta encantada e voce precisa de 3 turmalinas para alterar o encantamento !");
+                        return;
+                    } else
+                    {
+                        this.Consume(2);
+                    }
                 }
+
                 Effects.SendLocationParticles(EffectItem.Create(from.Location, from.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
                 Effects.PlaySound(from.Location, from.Map, 0x243);
 
@@ -75,6 +82,8 @@ namespace Server.Items
                 Effects.SendMovingParticles(new Entity(Serial.Zero, new Point3D(from.X - 6, from.Y - 4, from.Z + 15), from.Map), from, 0x36D4, 7, 0, false, true, 0x497, 0, 9502, 1, 0, (EffectLayer)255, 0x100);
 
                 Effects.SendTargetParticles(from, 0x375A, 35, 90, 0x00, 0x00, 9502, (EffectLayer)255, 0x100);
+
+                this.Consume(1);
 
                 switch (Utility.Random(6))
                 {

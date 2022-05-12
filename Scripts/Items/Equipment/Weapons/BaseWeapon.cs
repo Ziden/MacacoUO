@@ -2409,15 +2409,7 @@ namespace Server.Items
             }
 
             var virtualArmor = defender.ArmorRating;
-            if(defender.Player && defender.Dex > 50)
-            {
-                if(defender.Str >= 80)
-                    virtualArmor += 3;
-                if (defender.Str >= 100)
-                    virtualArmor += 3;
-                if (defender.Str >= 120)
-                    virtualArmor += 5;
-            }
+
             if (defender.Player && !attacker.Player)
             {
                 virtualArmor += (virtualArmor / 2) * ((defender.GetBonusElemento(ElementoPvM.Terra) + defender.GetBonusElemento(ElementoPvM.Luz)));
@@ -2429,10 +2421,7 @@ namespace Server.Items
                 if (bonus > virtualArmor)
                     bonus = virtualArmor;
                 virtualArmor -= bonus;
-
                 damage += (int)Math.Ceiling(damage * (AosAttributes.GetValue(attacker, AosAttribute.WeaponDamage, true)/100));
-
-               
             }
 
             WeaponAbility a = WeaponAbility.GetCurrentAbility(attacker);

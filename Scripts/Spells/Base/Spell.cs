@@ -461,8 +461,6 @@ namespace Server.Spells
                     return true;
                 }
 
-
-
                 if (Shard.POL_STYLE)
                 {
                     var tempoPassou = Core.TickCount - this.m_StartCastTime;
@@ -470,7 +468,7 @@ namespace Server.Spells
                     {
                         Shard.Debug("Tempo passou: " + tempoPassou);
                     }
-                    if (tempoPassou < 500)
+                    if (tempoPassou < 150)
                     {
                         if (Caster.Skills.Focus.Value < 80)
                         {
@@ -478,11 +476,10 @@ namespace Server.Spells
                             if (!Caster.IsCooldown("dicasp"))
                             {
                                 Caster.SetCooldown("dicasp");
-                                Caster.SendMessage(78, "Voce equipou sua arma muito rapido. Aguarde pelo menos 500ms para equipar sua arma depois de iniciar uma magia. Voce pode ter 80 ou mais da skill Focus para evitar isso.");
+                                Caster.SendMessage(78, "Voce equipou sua arma muito rapido. Aguarde pelo menos 150ms para equipar sua arma depois de iniciar uma magia. Voce pode ter 80 ou mais da skill Focus para evitar isso.");
                             }
                         }
                     }
-
                 }
 
 

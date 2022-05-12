@@ -459,12 +459,12 @@ namespace Server.SkillHandlers
 
 
                 Item stolen = null;
-				object root = null;
+				object donoItem = null;
 				bool caught = false;
 
 				if (target is Item)
 				{
-					root = ((Item)target).RootParent;
+					donoItem = ((Item)target).RootParent;
 					stolen = TryStealItem((Item)target, ref caught);
 				}
 				else if (target is Mobile)
@@ -475,7 +475,7 @@ namespace Server.SkillHandlers
 					{
 						int randomIndex = Utility.Random(pack.Items.Count);
 
-						root = target;
+						donoItem = target;
 						stolen = TryStealItem(pack.Items[randomIndex], ref caught);
 					}
 
@@ -491,10 +491,10 @@ namespace Server.SkillHandlers
 					m_Thief.SendLocalizedMessage("Voce nao pode roubar isto"); // You can't steal that!
 				}
 
-                if (root is BaseCreature)
+                if (donoItem is BaseCreature)
                 {
-                    ((BaseCreature)root).Combatant = from;
-                    ((BaseCreature)root).OverheadMessage("!!");
+                    ((BaseCreature)donoItem).Combatant = from;
+                    ((BaseCreature)donoItem).OverheadMessage("!!");
                 }       
 
 				if (stolen != null)
@@ -525,23 +525,23 @@ namespace Server.SkillHandlers
 					if (!(stolen is Container || stolen.Stackable))
 					{
 						// do not return stolen containers or stackable items
-						StolenItem.Add(stolen, m_Thief, root as Mobile);
+						StolenItem.Add(stolen, m_Thief, donoItem as Mobile);
 					}
 				}
 
 				if (caught)
 				{
-					if (root == null)
+					if (donoItem == null)
 					{
 						m_Thief.CriminalAction(false);
 					}
-					else if (root is Corpse && ((Corpse)root).IsCriminalAction(m_Thief))
+					else if (donoItem is Corpse && ((Corpse)donoItem).IsCriminalAction(m_Thief))
 					{
 						m_Thief.CriminalAction(false);
 					}
-					else if (root is Mobile)
+					else if (donoItem is Mobile)
 					{
-						Mobile mobRoot = (Mobile)root;
+						Mobile mobRoot = (Mobile)donoItem;
 
 						if (IsInnocentTo(m_Thief, mobRoot))
 						{
@@ -559,18 +559,16 @@ namespace Server.SkillHandlers
 						}
 					}
 				}
-				else if (root is Corpse && ((Corpse)root).IsCriminalAction(m_Thief))
+				else if (donoItem is Corpse && ((Corpse)donoItem).IsCriminalAction(m_Thief))
 				{
 					m_Thief.CriminalAction(false);
 				}
 
-				if (root is Mobile && ((Mobile)root).Player && m_Thief is PlayerMobile && IsInnocentTo(m_Thief, (Mobile)root) &&
-					!IsInGuild((Mobile)root))
+				if (donoItem is Mobile && ((Mobile)donoItem).Player && m_Thief is PlayerMobile && IsInnocentTo(m_Thief, (Mobile)donoItem))
 				{
                     PlayerMobile pm = (PlayerMobile)m_Thief;
-                    if(!((Mobile)root).Criminal && !(root is BaseCreature))
+                    if(!((Mobile)donoItem).Criminal && !(donoItem is BaseCreature))
                         pm.CriminalAction(false);
-					pm.PermaFlags.Add((Mobile)root);
 					pm.Delta(MobileDelta.Noto);
 				}
 			}
