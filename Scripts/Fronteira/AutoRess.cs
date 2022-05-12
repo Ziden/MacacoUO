@@ -16,16 +16,16 @@ namespace Server.Gumps
             this.Dragable = true;
             this.Resizable = false;
             this.AddPage(0);
-            this.AddBackground(141, 110, 378, 280, 9200);
+            this.AddBackground(141, 110, 378, 280, 9350);
             this.AddHtml(264, 123, 248, 20, @"Você Morreu", (bool)false, (bool)false);
             this.AddHtml(264, 154, 249, 60, @"Seu corpo ficará caído no local em que você morreu até que você retorne a ele.", (bool)false, (bool)false);
-            this.AddButton(159, 219, 9721, 9721, (int)Buttons.Teleportar, GumpButtonType.Reply, 0);
+            this.AddButton(159, 219, 30533, 30534, (int)Buttons.Teleportar, GumpButtonType.Reply, 0);
             if (!Shard.WARSHARD)
                 this.AddHtml(196, 223, 248, 25, @"Teleportar a entrada da dungeon", (bool)true, (bool)false);
             else
                 this.AddHtml(196, 223, 248, 25, @"Teleportar para o Hall", (bool)true, (bool)false);
             this.AddHtml(195, 296, 248, 25, @"Continuar como alma", (bool)true, (bool)false);
-            this.AddButton(159, 292, 9721, 9721, (int)Buttons.Continuar, GumpButtonType.Reply, 0);
+            this.AddButton(159, 292, 30533, 30534, (int)Buttons.Continuar, GumpButtonType.Reply, 0);
             if (Shard.WARSHARD)
                 this.AddHtml(197, 246, 309, 35, @"Voce será ressuscitado e enviado ao Hall", (bool)false, (bool)false);
             else
