@@ -22,7 +22,7 @@ namespace Server.Gumps
             var proxInfo = BankLevels.Niveis[nivel + 1];
 
             AddPage(0);
-            AddBackground(252, 72, 364, 447, 9200);
+            AddBackground(252, 72, 364, 447, 9350);
             AddHtml(368, 100, 200, 24, @"Aprimoramento de Banco", (bool)false, (bool)false);
             AddItem(271, 390, 3820);
             AddItem(290, 91, 3649); 
@@ -34,8 +34,8 @@ namespace Server.Gumps
             AddHtml(337, 289, 235, 28, @"Quantidade de Items", (bool)true, (bool)false);
             AddHtml(299, 327, 272, 28, @"De "+info.Items+" para "+proxInfo.Items, (bool)false, (bool)false);
             AddHtml(327, 402, 263, 28, @proxInfo.Preco+" Moedas", (bool)true, (bool)false);
-            AddButton(525, 477, 247, 248, (int)Buttons.Aceitar, GumpButtonType.Reply, 0);
-            AddButton(263, 481, 242, 241, (int)Buttons.Cancelar, GumpButtonType.Reply, 0);
+            AddButton(290, 460, 30534, 30534, 1, GumpButtonType.Reply, 0);
+            AddButton(350, 460, 30535, 30535, 0, GumpButtonType.Reply, 0);
             AddItem(284, 406, 3820);
             AddItem(260, 405, 3820);
             AddItem(293, 289, 7150); // barrinhas de ouro
