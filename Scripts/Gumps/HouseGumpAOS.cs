@@ -75,7 +75,7 @@ namespace Server.Gumps
         {
             bool isSelection = (m_Page == page);
 
-            AddButton(x, y, isSelection ? 4006 : 4005, 4007, buttonID, GumpButtonType.Reply, 0);
+            AddButton(x, y, isSelection ? 30533 : 30533, 30534, buttonID, GumpButtonType.Reply, 0);
             AddHtmlLocalized(x + 45, y, 200, 20, number, isSelection ? SelectedColor : LabelColor, false, false);
         }
 
@@ -87,7 +87,7 @@ namespace Server.Gumps
         public void AddButtonLabeled(int x, int y, int buttonID, int number, bool enabled)
         {
             if (enabled)
-                AddButton(x, y, 4005, 4007, buttonID, GumpButtonType.Reply, 0);
+                AddButton(x, y, 30533, 30534, buttonID, GumpButtonType.Reply, 0);
 
             AddHtmlLocalized(x + 35, y, 240, 20, number, enabled ? LabelColor : DisabledColor, false, false);
         }
@@ -111,12 +111,12 @@ namespace Server.Gumps
                 if (page != lastPage)
                 {
                     if (lastPage != 0)
-                        AddButton(40, 360, 4005, 4007, 0, GumpButtonType.Page, page);
+                        AddButton(40, 360, 30533, 30534, 0, GumpButtonType.Page, page);
 
                     AddPage(page);
 
                     if (lastPage != 0)
-                        AddButton(10, 360, 4014, 4016, 0, GumpButtonType.Page, lastPage);
+                        AddButton(10, 360, 30533, 30534, 0, GumpButtonType.Page, lastPage);
 
                     lastPage = page;
                 }
@@ -148,7 +148,7 @@ namespace Server.Gumps
                     continue;
 
                 if (button != -1)
-                    AddButton(10 + xoffset, 150 + yoffset, 4005, 4007, GetButtonID(button, i), GumpButtonType.Reply, 0);
+                    AddButton(10 + xoffset, 150 + yoffset, 30533, 30534, GetButtonID(button, i), GumpButtonType.Reply, 0);
 
                 if (accountOf && m.Player && m.Account != null)
                     name = "Conta de " + name;
@@ -215,7 +215,7 @@ namespace Server.Gumps
 
             if (isFriend || page == HouseGumpPageAOS.Vendors)
             {
-                AddBackground(0, 0, 420, page != HouseGumpPageAOS.Vendors ? 440 : 420, 5054);
+                AddBackground(0, 0, 420, page != HouseGumpPageAOS.Vendors ? 440 : 420, 9350);
 
                 AddImageTiled(10, 10, 400, 100, 2624);
                 AddAlphaRegion(10, 10, 400, 100);
@@ -273,11 +273,11 @@ namespace Server.Gumps
             }
             */
 
-            AddPageButton(Core.TOL ? 10 : 150, 10, GetButtonID(1, 0), 1060668, HouseGumpPageAOS.Information);
-            AddPageButton(Core.TOL ? 10 : 150, 30, GetButtonID(1, 1), 1060669, HouseGumpPageAOS.Security);
-            AddPageButton(Core.TOL ? 10 : 150, 50, GetButtonID(1, 2), 1060670, HouseGumpPageAOS.Storage);
-            AddPageButton(Core.TOL ? 10 : 150, 70, GetButtonID(1, 3), 1060671, HouseGumpPageAOS.Customize);
-            AddPageButton(Core.TOL ? 10 : 150, 90, GetButtonID(1, 4), 1060672, HouseGumpPageAOS.Ownership);
+            AddPageButton(Core.TOL ? 20 : 150, 10, GetButtonID(1, 0), 1060668, HouseGumpPageAOS.Information);
+            AddPageButton(Core.TOL ? 20 : 150, 30, GetButtonID(1, 1), 1060669, HouseGumpPageAOS.Security);
+            AddPageButton(Core.TOL ? 20 : 150, 50, GetButtonID(1, 2), 1060670, HouseGumpPageAOS.Storage);
+            AddPageButton(Core.TOL ? 20 : 150, 70, GetButtonID(1, 3), 1060671, HouseGumpPageAOS.Customize);
+            AddPageButton(Core.TOL ? 20 : 150, 90, GetButtonID(1, 4), 1060672, HouseGumpPageAOS.Ownership);
 
             switch ( page )
             {
@@ -327,17 +327,23 @@ namespace Server.Gumps
                     }
                 case HouseGumpPageAOS.Security:
                     {
-                        AddButtonLabeled(10, 130, GetButtonID(3, 0), 1011266, isCoOwner); // View Co-Owner List
-                        AddButtonLabeled(10, 150, GetButtonID(3, 1), 1011267, isOwner); // Add a Co-Owner
-                        AddButtonLabeled(10, 170, GetButtonID(3, 2), 1018036, isOwner); // Remove a Co-Owner
-                        AddButtonLabeled(10, 190, GetButtonID(3, 3), 1011268, isOwner); // Clear Co-Owner List
+                        AddButtonLabeled(20, 125, GetButtonID(3, 0), 1011266, isCoOwner); // View Co-Owner List
 
-                        AddButtonLabeled(10, 220, GetButtonID(3, 4), 1011243); // View Friends List
-                        AddButtonLabeled(10, 240, GetButtonID(3, 5), 1011244, isCoOwner); // Add a Friend
-                        AddButtonLabeled(10, 260, GetButtonID(3, 6), 1018037, isCoOwner); // Remove a Friend
-                        AddButtonLabeled(10, 280, GetButtonID(3, 7), 1011245, isCoOwner); // Clear Friend List
+                        AddButtonLabeled(20, 151, GetButtonID(3, 1), 1011267, isOwner); // Add a Co-Owner
 
-                        AddButtonLabeled(10, 300, GetButtonID(3, 13), 1060694, isOwner); // Change to Public
+                        AddButtonLabeled(20, 176, GetButtonID(3, 2), 1018036, isOwner); // Remove a Co-Owner
+
+                        AddButtonLabeled(20, 201, GetButtonID(3, 3), 1011268, isOwner); // Clear Co-Owner List
+
+                        AddButtonLabeled(20, 226, GetButtonID(3, 4), 1011243); // View Friends List
+
+                        AddButtonLabeled(20, 251, GetButtonID(3, 5), 1011244, isCoOwner); // Add a Friend
+
+                        AddButtonLabeled(20, 276, GetButtonID(3, 6), 1018037, isCoOwner); // Remove a Friend
+
+                        AddButtonLabeled(20, 301, GetButtonID(3, 7), 1011245, isCoOwner); // Clear Friend List
+
+                        AddButtonLabeled(20, 326, GetButtonID(3, 13), 1060694, isOwner); // Change to Public
                         /*
                         if (house.Public)
                         {
@@ -363,7 +369,7 @@ namespace Server.Gumps
                     }
                 case HouseGumpPageAOS.Storage:
                     {
-                        AddHtmlLocalized(10, 130, 400, 20, 1060682, LabelColor, false, false); // <CENTER>HOUSE STORAGE SUMMARY</CENTER>
+                        AddHtmlLocalized(20, 130, 400, 20, 1060682, LabelColor, false, false); // <CENTER>HOUSE STORAGE SUMMARY</CENTER>
 
                         // This is not as OSI; storage changes not yet implemented
 
@@ -391,54 +397,54 @@ namespace Server.Gumps
 
                         if (bonusStorage > 0)
                         {
-                            AddHtmlLocalized(10, 150, 300, 20, 1072519, LabelColor, false, false); // Increased Storage
+                            AddHtmlLocalized(20, 150, 300, 20, 1072519, LabelColor, false, false); // Increased Storage
                             AddLabel(310, 150, LabelHue, String.Format("{0}%", bonusStorage));
                         }
 
-                        AddHtmlLocalized(10, 170, 300, 20, 1060683, LabelColor, false, false); // Maximum Secure Storage
+                        AddHtmlLocalized(20, 170, 300, 20, 1060683, LabelColor, false, false); // Maximum Secure Storage
                         AddLabel(310, 170, LabelHue, house.SecureCount.ToString());
 
-                        AddHtmlLocalized(10, 190, 300, 20, 1060685, LabelColor, false, false); // Used by Moving Crate
+                        AddHtmlLocalized(20, 190, 300, 20, 1060685, LabelColor, false, false); // Used by Moving Crate
                         AddLabel(310, 190, LabelHue, fromMovingCrate.ToString());
 
-                        AddHtmlLocalized(10, 210, 300, 20, 1060686, LabelColor, false, false); // Used by Lockdowns
+                        AddHtmlLocalized(20, 210, 300, 20, 1060686, LabelColor, false, false); // Used by Lockdowns
                         AddLabel(310, 210, LabelHue, fromLockdowns.ToString());
 
                         if (BaseHouse.NewVendorSystem)
                         {
-                            AddHtmlLocalized(10, 230, 300, 20, 1060688, LabelColor, false, false); // Used by Secure Containers
+                            AddHtmlLocalized(20, 230, 300, 20, 1060688, LabelColor, false, false); // Used by Secure Containers
                             AddLabel(310, 230, LabelHue, fromSecures.ToString());
 
-                            AddHtmlLocalized(10, 250, 300, 20, 1060689, LabelColor, false, false); // Available Storage
+                            AddHtmlLocalized(20, 250, 300, 20, 1060689, LabelColor, false, false); // Available Storage
                             AddLabel(310, 250, LabelHue, Math.Max(maxSecures - curSecures, 0).ToString());
 
-                            AddHtmlLocalized(10, 290, 300, 20, 1060690, LabelColor, false, false); // Maximum Lockdowns
+                            AddHtmlLocalized(20, 290, 300, 20, 1060690, LabelColor, false, false); // Maximum Lockdowns
                             AddLabel(310, 290, LabelHue, maxLockdowns.ToString());
 
-                            AddHtmlLocalized(10, 310, 300, 20, 1060691, LabelColor, false, false); // Available Lockdowns
+                            AddHtmlLocalized(20, 310, 300, 20, 1060691, LabelColor, false, false); // Available Lockdowns
                             AddLabel(310, 310, LabelHue, Math.Max(maxLockdowns - curLockdowns, 0).ToString());
 
                             int maxVendors = house.GetNewVendorSystemMaxVendors();
                             int vendors = house.PlayerVendors.Count + house.VendorRentalContracts.Count;
 
-                            AddHtmlLocalized(10, 350, 300, 20, 1062391, LabelColor, false, false); // Vendor Count
+                            AddHtmlLocalized(20, 350, 300, 20, 1062391, LabelColor, false, false); // Vendor Count
                             AddLabel(310, 350, LabelHue, vendors.ToString() + " / " + maxVendors.ToString());
                         }
                         else
                         {
-                            AddHtmlLocalized(10, 230, 300, 20, 1060687, LabelColor, false, false); // Used by Vendors
+                            AddHtmlLocalized(20, 230, 300, 20, 1060687, LabelColor, false, false); // Used by Vendors
                             AddLabel(310, 230, LabelHue, fromVendors.ToString());
 
-                            AddHtmlLocalized(10, 250, 300, 20, 1060688, LabelColor, false, false); // Used by Secure Containers
+                            AddHtmlLocalized(20, 250, 300, 20, 1060688, LabelColor, false, false); // Used by Secure Containers
                             AddLabel(310, 250, LabelHue, fromSecures.ToString());
 
-                            AddHtmlLocalized(10, 270, 300, 20, 1060689, LabelColor, false, false); // Available Storage
+                            AddHtmlLocalized(20, 270, 300, 20, 1060689, LabelColor, false, false); // Available Storage
                             AddLabel(310, 270, LabelHue, Math.Max(maxSecures - curSecures, 0).ToString());
 
-                            AddHtmlLocalized(10, 330, 300, 20, 1060690, LabelColor, false, false); // Maximum Lockdowns
+                            AddHtmlLocalized(20, 330, 300, 20, 1060690, LabelColor, false, false); // Maximum Lockdowns
                             AddLabel(310, 330, LabelHue, maxLockdowns.ToString());
 
-                            AddHtmlLocalized(10, 350, 300, 20, 1060691, LabelColor, false, false); // Available Lockdowns
+                            AddHtmlLocalized(20, 350, 300, 20, 1060691, LabelColor, false, false); // Available Lockdowns
                             AddLabel(310, 350, LabelHue, Math.Max(maxLockdowns - curLockdowns, 0).ToString());
                         }
 
@@ -448,23 +454,33 @@ namespace Server.Gumps
                     {
                         bool isCustomizable = isOwner && (house is HouseFoundation);
 
-                        AddButtonLabeled(10, 120, GetButtonID(5, 0), 1060759, isOwner && !isCustomizable && (house.ConvertEntry != null)); // Convert Into Customizable House
-                        AddButtonLabeled(10, 140, GetButtonID(5, 8), 1060004, isOwner && house is BaseContestHouse || house is Castle || house is Keep);
-                        AddButtonLabeled(10, 160, GetButtonID(5, 1), 1060765, isOwner && isCustomizable); // Customize This House
-                        AddButtonLabeled(10, 180, GetButtonID(5, 2), 1060760, isOwner && house.MovingCrate != null); // Relocate Moving Crate
-                        AddButtonLabeled(10, 210, GetButtonID(5, 3), 1060761, isOwner && house.Public); // Change House Sign
-                        AddButtonLabeled(10, 230, GetButtonID(5, 4), 1060762, isOwner && isCustomizable); // Change House Sign Hanger
-                        AddButtonLabeled(10, 250, GetButtonID(5, 5), 1060763, isOwner && isCustomizable && (((HouseFoundation)house).Signpost != null)); // Change Signpost
-                        AddButtonLabeled(10, 280, GetButtonID(5, 6), 1062004, isOwner && isCustomizable); // Change Foundation Style
-                        AddButtonLabeled(10, 310, GetButtonID(5, 7), 1060764, isCoOwner); // Rename House
+                        AddButtonLabeled(20, 120, GetButtonID(5, 0), 1060759, isOwner && !isCustomizable && (house.ConvertEntry != null)); // Convert Into Customizable House
+
+                        AddButtonLabeled(20, 140, GetButtonID(5, 8), 1060004, isOwner && house is BaseContestHouse || house is Castle || house is Keep);
+
+                        AddButtonLabeled(20, 160, GetButtonID(5, 1), 1060765, isOwner && isCustomizable); // Customize This House
+
+                        AddButtonLabeled(20, 180, GetButtonID(5, 2), 1060760, isOwner && house.MovingCrate != null); // Relocate Moving Crate
+
+                        AddButtonLabeled(20, 200, GetButtonID(5, 3), 1060761, isOwner && house.Public); // Change House Sign
+
+                        AddButtonLabeled(20, 230, GetButtonID(5, 4), 1060762, isOwner && isCustomizable); // Change House Sign Hanger
+
+                        AddButtonLabeled(20, 260, GetButtonID(5, 5), 1060763, isOwner && isCustomizable && (((HouseFoundation)house).Signpost != null)); // Change Signpost
+
+                        AddButtonLabeled(20, 290, GetButtonID(5, 6), 1062004, isOwner && isCustomizable); // Change Foundation Style
+
+                        AddButtonLabeled(20, 320, GetButtonID(5, 7), 1060764, isCoOwner); // Rename House
 
                         break;
                     }
                 case HouseGumpPageAOS.Ownership:
                     {
-                        AddButtonLabeled(10, 130, GetButtonID(6, 0), 1061794, isOwner && house.MovingCrate == null && house.InternalizedVendors.Count == 0); // Demolish House
-                        AddButtonLabeled(10, 150, GetButtonID(6, 1), 1061797, isOwner); // Trade House
-                        AddButtonLabeled(10, 190, GetButtonID(6, 2), 1061798, false); // Make Primary
+                        AddButtonLabeled(20, 130, GetButtonID(6, 0), 1061794, isOwner && house.MovingCrate == null && house.InternalizedVendors.Count == 0); // Demolish House
+
+                        AddButtonLabeled(20, 150, GetButtonID(6, 1), 1061797, isOwner); // Trade House
+
+                        AddButtonLabeled(20, 190, GetButtonID(6, 2), 1061798, false); // Make Primary
 
                         break;
                     }
@@ -475,7 +491,7 @@ namespace Server.Gumps
                             int x = 50 + ((i % 3) * 100);
                             int y = 180 + ((i / 3) * 80);
 
-                            AddButton(x, y, 4005, 4007, GetButtonID(7, i), GumpButtonType.Reply, 0);
+                            AddButton(x, y, 30533, 30534, GetButtonID(7, i), GumpButtonType.Reply, 0);
                             AddItem(x + 20, y, m_HangerNumbers[i]);
                         }
 
@@ -488,7 +504,7 @@ namespace Server.Gumps
                             int x = 15 + ((i % 5) * 80);
                             int y = 180 + ((i / 5) * 100);
 
-                            AddButton(x, y, 4005, 4007, GetButtonID(8, i), GumpButtonType.Reply, 0);
+                            AddButton(x, y, 30533, 30534, GetButtonID(8, i), GumpButtonType.Reply, 0);
                             AddItem(x + 25, y, m_FoundationNumbers[i]);
                         }
 
@@ -519,14 +535,14 @@ namespace Server.Gumps
                         {
                             AddPage(i + 1);
 
-                            AddButton(10, 360, 4005, 4007, 0, GumpButtonType.Page, ((i + 1) % pages) + 1);
+                            AddButton(10, 360, 30533, 30534, 0, GumpButtonType.Page, ((i + 1) % pages) + 1);
 
                             for (int j = 0; j < signsPerPage && totalSigns - (signsPerPage * i) - j > 0; ++j)
                             {
                                 int x = 30 + ((j % 6) * 60);
                                 int y = 130 + ((j / 6) * 60);
 
-                                AddButton(x, y, 4005, 4007, GetButtonID(9, index), GumpButtonType.Reply, 0);
+                                AddButton(x, y, 30533, 30534, GetButtonID(9, index), GumpButtonType.Reply, 0);
                                 AddItem(x + 20, y, _HouseSigns[index++]);
                             }
                         }
@@ -589,14 +605,14 @@ namespace Server.Gumps
                         {
                             AddPage(i + 1);
 
-                            AddButton(10, 360, 4005, 4007, 0, GumpButtonType.Page, ((i + 1) % 2) + 1);
+                            AddButton(10, 360, 30533, 30534, 0, GumpButtonType.Page, ((i + 1) % 2) + 1);
 
                             for (int j = 0; j < 16 && index < m_PostNumbers.Length; ++j)
                             {
                                 int x = 15 + ((j % 8) * 50);
                                 int y = 130 + ((j / 8) * 110);
 
-                                AddButton(x, y, 4005, 4007, GetButtonID(14, index), GumpButtonType.Reply, 0);
+                                AddButton(x, y, 30533, 30534, GetButtonID(14, index), GumpButtonType.Reply, 0);
                                 AddItem(x + 10, y, m_PostNumbers[index++]);
                             }
                         }
