@@ -102,7 +102,7 @@ namespace Server.Gumps
             this.Resizable = false;
 
             AddPage(0);
-            AddBackground(191, 177, 231, 70, 9200);
+            AddBackground(191, 177, 231, 70, 9350);
 
             var botao = 1;
             var x = 0;
