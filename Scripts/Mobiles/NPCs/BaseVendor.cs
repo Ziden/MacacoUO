@@ -1396,11 +1396,11 @@ namespace Server.Mobiles
 
                     if (dropped.BoundTo == from.RawName || from.AccessLevel > AccessLevel.VIP)
                     {
-                        ushort exp = 1000;
+                        ushort exp = 3000;
                         if (from.Skills[skill].Value < 60)
-                            exp += 43000;
+                            exp += 40000;
                         else if (from.Skills[skill].Value < 70)
-                            exp += 13000;
+                            exp += 10000;
                         if (from.Skills[skill].Value < 80)
                             exp += 9000;
                         else if (from.Skills[skill].Value < 90)
