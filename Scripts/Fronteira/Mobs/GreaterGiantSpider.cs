@@ -102,8 +102,8 @@ namespace Server.Mobiles
                     m.OverheadMessage("* Preso em uma teia *");
                     var teia = new Teia(m);
                     teia.MoveToWorld(m.Location, m.Map);
-                    m.Freeze(TimeSpan.FromSeconds(4));
-                    Timer.DelayCall(TimeSpan.FromSeconds(3), () =>
+                    m.Freeze(TimeSpan.FromSeconds(2));
+                    Timer.DelayCall(TimeSpan.FromSeconds(2), () =>
                     {
                         teia.Delete();
                         m.Frozen = false;

@@ -110,9 +110,9 @@ namespace Server.Items
                     {
                         return;
                     }
-                    m.Freeze(TimeSpan.FromSeconds(4));
-                    hearth = Timer.DelayCall(TimeSpan.FromSeconds(4), new TimerCallback(HearthTeleport));
-                    m.SendMessage("Voce esta retornando para casa em 4 segundos.");
+                    m.Freeze(TimeSpan.FromSeconds(6));
+                    hearth = Timer.DelayCall(TimeSpan.FromSeconds(6), new TimerCallback(HearthTeleport));
+                    m.SendMessage("Voce esta retornando para casa em 6 segundos.");
                     m.FixedEffect(0x375A, 10, 15);
                     m.PlaySound(0x1E7);
                     m.OverheadMessage("* retornando *");

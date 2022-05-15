@@ -2920,11 +2920,10 @@ namespace Server.Mobiles
 
             if (to.Player && to.Elemento != ElementoPvM.None)
             {
-
-                if (to.Weapon is Fists)
+                if (to.Weapon is Fists && to.FindItemOnLayer(Layer.TwoHanded) is BaseShield)
                 {
                     var red = to.Skills.Parry.Value * 0.2 * damage;
-                    damage -= (int)red;
+                    damage = (int)(damage * 0.7);
                 }
 
                 var colarGelo = ColarElemental.GetNivel(to, ElementoPvM.Gelo);

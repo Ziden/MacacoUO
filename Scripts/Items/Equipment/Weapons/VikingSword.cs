@@ -27,6 +27,7 @@ namespace Server.Items
                 return WeaponAbility.CrushingBlow;
             }
         }
+
         public override WeaponAbility SecondaryAbility
         {
             get
@@ -34,6 +35,7 @@ namespace Server.Items
                 return WeaponAbility.ParalyzingBlow;
             }
         }
+
         public override int AosStrengthReq
         {
             get

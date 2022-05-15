@@ -207,6 +207,8 @@ namespace Server.Items
             if (m_Quality == ItemQuality.Exceptional)
                 scalar += 100;
 
+            if (m_Quality == ItemQuality.ObraPrima)
+                scalar += 1000;
 
             return scalar;
         }

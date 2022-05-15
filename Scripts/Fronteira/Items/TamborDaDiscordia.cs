@@ -55,7 +55,7 @@ namespace Server.Fronteira.Items
                 if (from.Guild != null)
                 {
                     var g = from.Guild as Guild;
-                    Chamaram.Add(g, DateTime.UtcNow);
+                    Chamaram[g] = DateTime.UtcNow;
                     var recentes = ChamadasRecentes();
                     if (recentes.Count >= 2)
                     {

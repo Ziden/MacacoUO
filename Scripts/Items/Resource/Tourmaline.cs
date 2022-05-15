@@ -71,6 +71,7 @@ namespace Server.Items
                     } else
                     {
                         this.Consume(2);
+                        Limpa(armor.Attributes);
                     }
                 }
 
