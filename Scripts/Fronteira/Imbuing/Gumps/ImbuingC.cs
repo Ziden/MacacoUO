@@ -98,7 +98,7 @@ namespace Server.Gumps
 
             // ------------------------------ Gump Menu -------------------------------------------------------------
             AddPage(0);
-            AddBackground(0, 0, 520, 440, 5054);
+            AddBackground(0, 0, 520, 440, 9350);
             AddImageTiled(10, 10, 500, 420, 2624);
 
             AddImageTiled(10, 30, 500, 10, 5058);
@@ -243,10 +243,10 @@ namespace Server.Gumps
                 AddLabel(189, 370, 0, "<");
             }
 
-            AddButton(15, 410, 4005, 4007, 10099, GumpButtonType.Reply, 0);
+            AddButton(15, 410, 30533, 30534, 10099, GumpButtonType.Reply, 0);
             AddHtmlLocalized(50, 410, 100, 18, 1114268, LabelColor, false, false); // Back 
 
-            AddButton(390, 410, 4005, 4007, 10100, GumpButtonType.Reply, 0);
+            AddButton(390, 410, 30534, 30534, 10100, GumpButtonType.Reply, 0);
             AddHtmlLocalized(425, 410, 120, 18, 1114267, LabelColor, false, false); // Imbue Item
         }
 

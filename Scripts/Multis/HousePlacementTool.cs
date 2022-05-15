@@ -188,30 +188,30 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 270, 170, 5054);
+            AddBackground(0, 0, 270, 170, 9350); // MUDEI A PLANO DE FUNDO
 
             AddImageTiled(10, 10, 250, 150, 2624);
             AddAlphaRegion(10, 10, 250, 150);
 
-            AddHtml(10, 10, 250, 20, "FERRAMENTA DA MORADIA", LabelColor, false, false); // <CENTER>HOUSE PLACEMENT TOOL</CENTER>
+            AddHtml(10, 10, 300, 20, "TIPOS DE MORADIA", LabelColor, false, false); // <CENTER>HOUSE PLACEMENT TOOL</CENTER> // mudei localizacao da frase
 
-            AddButton(10, 130, 4017, 4019, 0, GumpButtonType.Reply, 0);
-            AddHtml(45, 130, 150, 20, "Fechar", LabelColor, false, false); // Close
+            AddButton(10, 130, 30533, 30535, 0, GumpButtonType.Reply, 0); 
+            AddHtml(45, 130, 150, 20, "Sair", LabelColor, false, false); // Close
 
             AddPage(1);
 
-            AddButton(10, 40, 4005, 4007, 1, GumpButtonType.Reply, 0);
+            AddButton(10, 40, 30533, 30534, 1, GumpButtonType.Reply, 0); // MUDEI O BORTAO ESCOLHA E OK
             AddHtml(45, 40, 200, 20, "Casas Classicas", LabelColor, false, false); // Classic Houses
 
-            AddButton(10, 60, 4005, 4007, 2, GumpButtonType.Reply, 0);
+            AddButton(10, 60, 30533, 30534, 2, GumpButtonType.Reply, 0); // MUDEI O BORTAO ESCOLHA E OK
             AddHtml(45, 60, 200, 20, "Customizaveis de 2 Andares", LabelColor, false, false); // 2-Story Customizable Houses
 
-            AddButton(10, 80, 4005, 4007, 3, GumpButtonType.Reply, 0);
+            AddButton(10, 80, 30533, 30534, 3, GumpButtonType.Reply, 0); // MUDEI O BORTAO ESCOLHA E OK
             AddHtml(45, 80, 200, 20, "Customizaveis de 3 Andares", LabelColor, false, false); // 3-Story Customizable Houses
 
             if (m_Tool.UseCustomHousePlots || from.AccessLevel > AccessLevel.VIP)
             {
-                AddButton(10, 100, 4005, 4007, 4, GumpButtonType.Reply, 0);
+                AddButton(10, 100, 30533, 30534, 4, GumpButtonType.Reply, 0); // MUDEI O BORTAO ESCOLHA E OK
                 AddHtml(45, 100, 200, 20, "Competicao Casa Custom", LabelColor, false, false); // Custom House Contest
             }
         }
@@ -275,12 +275,12 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 530, 430, 5054);
+            AddBackground(0, 0, 530, 430, 9350); // modifiquei plano de fundo 9350
 
             AddImageTiled(10, 10, 500, 20, 2624);
             AddAlphaRegion(10, 10, 500, 20);
 
-            AddHtml(10, 10, 500, 20, "FERRAMENTA DA MORADIA", LabelColor, false, false); // <CENTER>HOUSE PLACEMENT TOOL</CENTER>
+            AddHtml(10, 10, 500, 20, "TIPOS DE CASAS CLASSICAS", LabelColor, false, false); // <CENTER>HOUSE PLACEMENT TOOL</CENTER>
 
             AddImageTiled(10, 40, 500, 20, 2624);
             AddAlphaRegion(10, 40, 500, 20);
@@ -291,7 +291,7 @@ namespace Server.Items
             AddHtml(425, 40, 75, 20, "Preco", LabelColor, false, false); // Cost
 
             AddImageTiled(10, 70, 500, 280, 2624);
-            AddAlphaRegion(10, 70, 500, 280);
+            AddAlphaRegion(10, 70, 800, 280);
 
             AddImageTiled(10, 370, 500, 20, 2624);
             AddAlphaRegion(10, 370, 500, 20);
@@ -302,8 +302,8 @@ namespace Server.Items
             AddImageTiled(10, 400, 500, 20, 2624);
             AddAlphaRegion(10, 400, 500, 20);
 
-            AddButton(10, 400, 4017, 4019, 0, GumpButtonType.Reply, 0);
-            AddHtml(50, 400, 100, 20, "Fechar", LabelColor, false, false); // Close
+            AddButton(10, 400, 30533, 30534, 0, GumpButtonType.Reply, 0);
+            AddHtml(50, 400, 100, 20, "Voltar", LabelColor, false, false); // Close
 
             int page = 1;
             int index = -1;
@@ -342,7 +342,7 @@ namespace Server.Items
                 {
                     if (page > 1)
                     {
-                        AddButton(450, 400, 4005, 4007, 0, GumpButtonType.Page, page);
+                        AddButton(450, 400, 30533, 30534, 0, GumpButtonType.Page, page);
                         AddHtmlLocalized(400, 400, 100, 20, 3000406, LabelColor, false, false); // Next
                     }
 
@@ -350,7 +350,7 @@ namespace Server.Items
 
                     if (page > 1)
                     {
-                        AddButton(200, 400, 4014, 4016, 0, GumpButtonType.Page, page - 1);
+                        AddButton(220, 400, 30533, 30534, 0, GumpButtonType.Page, page - 1);
                         AddHtmlLocalized(250, 400, 100, 20, 3000405, LabelColor, false, false); // Previous
                     }
                 }
@@ -361,7 +361,7 @@ namespace Server.Items
                 int storage = (int)(entry.Storage * BaseHouse.GlobalBonusStorageScalar);
                 int lockdowns = (int)(entry.Lockdowns * BaseHouse.GlobalBonusStorageScalar);
 
-                AddButton(10, y, 4005, 4007, 1 + i, GumpButtonType.Reply, 0);
+                AddButton(10, y, 30533, 30534, 1 + i, GumpButtonType.Reply, 0);
                 AddHtmlLocalized(50, y, 225, 20, entry.Description, LabelColor, false, false);
                 AddLabel(275, y, LabelHue, storage.ToString());
                 AddLabel(350, y, LabelHue, lockdowns.ToString());
@@ -1191,7 +1191,7 @@ Se você não deseja trocar por esta casa, clique em CANCELAR.", 32512, 420, 280
         {
             AddPage(0);
 
-            AddBackground(0, 0, 530, 430, 5054);
+            AddBackground(0, 0, 530, 430, 9350);
 
             AddImageTiled(10, 10, 500, 20, 2624);
             AddAlphaRegion(10, 10, 500, 20);
@@ -1218,7 +1218,7 @@ Se você não deseja trocar por esta casa, clique em CANCELAR.", 32512, 420, 280
             AddImageTiled(10, 400, 500, 20, 2624);
             AddAlphaRegion(10, 400, 500, 20);
 
-            AddButton(10, 400, 4017, 4019, 0, GumpButtonType.Reply, 0);
+            AddButton(10, 400, 30533, 30535, 0, GumpButtonType.Reply, 0);
             AddHtml(50, 400, 100, 20, "Fechar", LabelColor, false, false); // Close
 
             for (int i = 0; i < m_Entries.Length; ++i)
@@ -1230,7 +1230,7 @@ Se você não deseja trocar por esta casa, clique em CANCELAR.", 32512, 420, 280
                 {
                     if (page > 1)
                     {
-                        AddButton(450, 400, 4005, 4007, 0, GumpButtonType.Page, page);
+                        AddButton(450, 400, 30533, 30534, 0, GumpButtonType.Page, page);
                         AddHtml(400, 400, 100, 20, "Proximo", LabelColor, false, false); // Next
                     }
 
@@ -1238,7 +1238,7 @@ Se você não deseja trocar por esta casa, clique em CANCELAR.", 32512, 420, 280
 
                     if (page > 1)
                     {
-                        AddButton(200, 400, 4014, 4016, 0, GumpButtonType.Page, page - 1);
+                        AddButton(200, 400, 30533, 30534, 0, GumpButtonType.Page, page - 1);
                         AddHtml(250, 400, 100, 20, "Anterior", LabelColor, false, false); // Previous
                     }
                 }
@@ -1249,7 +1249,7 @@ Se você não deseja trocar por esta casa, clique em CANCELAR.", 32512, 420, 280
                 int storage = (int)(entry.Storage * BaseHouse.GlobalBonusStorageScalar);
                 int lockdowns = (int)(entry.Lockdowns * BaseHouse.GlobalBonusStorageScalar);
 
-                AddButton(10, y, 4005, 4007, 1 + i, GumpButtonType.Reply, 0);
+                AddButton(10, y, 30533, 30534, 1 + i, GumpButtonType.Reply, 0);
                 AddHtmlLocalized(50, y, 225, 20, entry.Description, LabelColor, false, false);
                 AddLabel(275, y, LabelHue, storage.ToString());
                 AddLabel(350, y, LabelHue, lockdowns.ToString());

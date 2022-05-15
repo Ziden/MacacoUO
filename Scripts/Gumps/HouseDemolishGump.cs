@@ -25,7 +25,7 @@ namespace Server.Gumps
 
 			AddPage(0);
 
-			AddBackground(0, 0, 420, 280, 5054);
+			AddBackground(0, 0, 420, 280, 9350);
 
 			AddImageTiled(10, 10, 400, 20, 2624);
 			AddAlphaRegion(10, 10, 400, 20);
@@ -45,10 +45,10 @@ Tem certeza que deseja continuar?", 32512, false, true);
 			AddImageTiled(10, 250, 400, 20, 2624);
 			AddAlphaRegion(10, 250, 400, 20);
 
-			AddButton(10, 250, 4005, 4007, 1, GumpButtonType.Reply, 0);
+			AddButton(10, 250, 30533, 30534, 1, GumpButtonType.Reply, 0);
 			AddHtmlLocalized(40, 250, 170, 20, 1011036, 32767, false, false); // OKAY
 
-			AddButton(210, 250, 4005, 4007, 0, GumpButtonType.Reply, 0);
+			AddButton(210, 250, 30533, 30535, 0, GumpButtonType.Reply, 0);
 			AddHtmlLocalized(240, 250, 170, 20, 1011012, 32767, false, false); // CANCEL
 		}
 

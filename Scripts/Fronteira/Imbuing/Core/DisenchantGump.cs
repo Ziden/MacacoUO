@@ -44,7 +44,7 @@ namespace Server.Gumps
             this.Resizable = false;
 
             AddPage(0);
-            AddBackground(102, 82, 467, 229, 9200);
+            AddBackground(102, 82, 467, 229, 9350);
             AddBackground(113, 93, 180, 205, 9380);
             AddHtml(153, 96, 119, 22, @"Desencantar", (bool)false, (bool)false);
             AddHtml(133, 134, 139, 127, @"Voce ira destruir o item para converter em essencias !", (bool)false, (bool)false);

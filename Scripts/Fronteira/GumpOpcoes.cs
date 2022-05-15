@@ -33,7 +33,7 @@ namespace Server.Gumps
             }
 
             var tamanhoX = 50 + (maiorOptionX * 10);
-            AddBackground(182, 188, tamanhoX, 119 + extras, 9200);
+            AddBackground(182, 188, tamanhoX, 119 + extras, 9350);
             AddHtml(196, 207, 200, 21, titulo, (bool)false, (bool)false);
 
             var posY = 0;
@@ -46,7 +46,7 @@ namespace Server.Gumps
 
             if(icone != 0)
             {
-                AddBackground(108, 210, 74, 72, 9200);
+                AddBackground(108, 210, 74, 72, 9350);
                 NewAuctionGump.AddItemCentered(108, 210, 74, 72, icone, hue, this);
             }
         }
