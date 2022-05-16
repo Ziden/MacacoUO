@@ -173,7 +173,6 @@ namespace Server.Multis
                             //Console.WriteLine(addTile.X + " " + addTile.Y + " " + addTile.Z);
                         }
 
-
                         int addTileZ = center.Z + addTile.Z;
                         int addTileTop = addTileZ + addTile.Height;
 
@@ -188,7 +187,7 @@ namespace Server.Multis
                             
                         var diff = Math.Abs(landAvgZ - center.Z);
                         var passable = (TileData.LandTable[landTile.ID & TileData.MaxLandValue].Flags & TileFlag.Impassable) == 0;
-                        if (isFoundation && passable && diff <= 2)
+                        if (isFoundation && passable && diff <= 5) // maior diff de altura q rola
                             hasSurface = true;
                         else
                         {

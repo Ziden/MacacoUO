@@ -1411,84 +1411,59 @@
         <logoutDelay active="false" />
       </region>
     </region>
-    <region type="NoHousingRegion" priority="50" name="Haven Island">
-      <rect x="3314" y="2345" width="500" height="750" />
-      <go x="3627" y="2606" z="0" />
-      <smartNoHousing active="true" />
-      <region type="ApprenticeRegion" name="Haven Tracking">
-        <rect x="3314" y="2345" width="500" height="750" />
-        <region name="the New Haven Bard">
-          <rect x="3410" y="2598" width="11" height="9" />
-          <rect x="3408" y="2607" width="7" height="5" />
-        </region>
-        <region name="the New Haven Carpenter">
-          <rect x="3439" y="2633" width="9" height="15" />
-        </region>
-        <region name="the New Haven Farm">
-          <rect x="3703" y="2567" width="40" height="110" />
-        </region>
-        <region type="ApprenticeRegion" name="Old Haven Training">
-          <rect x="3589" y="2443" width="115" height="100" />
-        </region>
-        <region type="ApprenticeRegion" name="Haven Mountains">
-          <rect x="3426" y="2732" width="110" height="50" />
-        </region>
-        <region type="GuardedRegion" name="Haven Moongate">
-          <rect x="3755" y="2763" width="17" height="13" />
-        </region>
-        <region type="TownRegion" name="New Haven">
-          <rune name="New Haven City" />
-          <rect x="3423" y="2480" width="111" height="143" />
-          <go x="3503" y="2574" z="14" />
-          <music name="Honor" />
-          <logoutDelay active="false" />
-          <region name="the New Haven Alchemist">
-            <rect x="3457" y="2564" width="9" height="9" />
-          </region>
-          <region name="the New Haven Warrior">
-            <rect x="3518" y="2510" width="19" height="21" />
-            <rect x="3521" y="2531" width="22" height="22" />
-            <rect x="3521" y="2553" width="15" height="11" />
-            <region name="the New Haven Bowyer">
-              <rect x="3529" y="2534" width="10" height="10" />
-            </region>
-          </region>
-          <region name="the New Haven Tailor">
-            <rect x="3492" y="2546" width="10" height="11" />
-          </region>
-          <region name="the New Haven Mapmaker">
-            <rect x="3490" y="2588" width="7" height="7" />
-          </region>
-          <region name="the New Haven Mage">
-            <rect x="3464" y="2488" width="27" height="16" />
-          </region>
-          <region name="the New Haven Inn">
-            <rect x="3493" y="2513" width="17" height="9" />
-            <rect x="3503" y="2523" width="7" height="7" />
-            <logoutDelay active="false" />
-          </region>
-          <region name="the New Haven Docks">
-            <rect x="3501" y="2587" width="26" height="30" />
-            <rect x="3512" y="2581" width="7" height="12" />
-          </region>
-          <region name="the New Haven Bank">
-            <rect x="3479" y="2565" width="13" height="15" />
-          </region>
-          <region type="ApprenticeRegion" name="Springs And Things Workshop">
-            <rect x="3455" y="2523" width="9" height="10" />
-          </region>
-          <region type="ApprenticeRegion" name="Haven Dojo">
-            <rect x="3415" y="2513" width="11" height="11" />
-          </region>
-          <region type="ApprenticeRegion" name="Gorge's Shop">
-            <rect x="3465" y="2535" width="7" height="8" />
-          </region>
-          <region type="ApprenticeRegion" name="Haven Library">
-            <rect x="3464" y="2488" width="16" height="11" />
-          </region>
+
+    <region type="TownRegion" name="New Haven">
+      <rune name="New Haven City" />
+      <rect x="3423" y="2480" width="111" height="143" />
+      <go x="3503" y="2574" z="14" />
+      <music name="Honor" />
+      <logoutDelay active="false" />
+      <region name="the New Haven Alchemist">
+        <rect x="3457" y="2564" width="9" height="9" />
+      </region>
+      <region name="the New Haven Warrior">
+        <rect x="3518" y="2510" width="19" height="21" />
+        <rect x="3521" y="2531" width="22" height="22" />
+        <rect x="3521" y="2553" width="15" height="11" />
+        <region name="the New Haven Bowyer">
+          <rect x="3529" y="2534" width="10" height="10" />
         </region>
       </region>
+      <region name="the New Haven Tailor">
+        <rect x="3492" y="2546" width="10" height="11" />
+      </region>
+      <region name="the New Haven Mapmaker">
+        <rect x="3490" y="2588" width="7" height="7" />
+      </region>
+      <region name="the New Haven Mage">
+        <rect x="3464" y="2488" width="27" height="16" />
+      </region>
+      <region name="the New Haven Inn">
+        <rect x="3493" y="2513" width="17" height="9" />
+        <rect x="3503" y="2523" width="7" height="7" />
+        <logoutDelay active="false" />
+      </region>
+      <region name="the New Haven Docks">
+        <rect x="3501" y="2587" width="26" height="30" />
+        <rect x="3512" y="2581" width="7" height="12" />
+      </region>
+      <region name="the New Haven Bank">
+        <rect x="3479" y="2565" width="13" height="15" />
+      </region>
+      <region type="ApprenticeRegion" name="Springs And Things Workshop">
+        <rect x="3455" y="2523" width="9" height="10" />
+      </region>
+      <region type="ApprenticeRegion" name="Haven Dojo">
+        <rect x="3415" y="2513" width="11" height="11" />
+      </region>
+      <region type="ApprenticeRegion" name="Gorge's Shop">
+        <rect x="3465" y="2535" width="7" height="8" />
+      </region>
+      <region type="ApprenticeRegion" name="Haven Library">
+        <rect x="3464" y="2488" width="16" height="11" />
+      </region>
     </region>
+
     <region type="NoGuardCity" priority="50" name="Trinsic">
       <rect x="1856" y="2636" width="75" height="28" />
       <rect x="1816" y="2664" width="283" height="231" />
