@@ -111,8 +111,6 @@ namespace Server.Mobiles
         public static void OfereceBulkOrder(Mobile from, BaseVendor vendor)
         {
 
-
-
             if (vendor is AnimalTrainer)
             {
                 BodTamer.EntregaBodTamer(from as PlayerMobile, vendor);
@@ -1308,27 +1306,27 @@ namespace Server.Mobiles
                 }
                 else if (from.Skills[SkillName.AnimalTaming].Value < 70)
                 {
-                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 5);
+                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 8);
                     from._PlaceInBackpack(new Gold(Utility.RandomMinMax(150, 350)));
                 }
                 else if (from.Skills[SkillName.AnimalTaming].Value < 80)
                 {
-                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 4);
+                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 6);
                     from._PlaceInBackpack(new Gold(Utility.RandomMinMax(200, 400)));
                 }
                 else if (from.Skills[SkillName.AnimalTaming].Value < 90)
                 {
-                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 3);
+                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 5);
                     from._PlaceInBackpack(new Gold(Utility.RandomMinMax(250, 450)));
                 }
                 else if (from.Skills[SkillName.AnimalTaming].Value < 95)
                 {
-                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 2);
+                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 4);
                     from._PlaceInBackpack(new Gold(Utility.RandomMinMax(300, 500)));
                 }
                 else
                 {
-                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 1);
+                    SkillCheck.Gain(from, from.Skills[SkillName.AnimalTaming], 3);
                     from._PlaceInBackpack(new Gold(Utility.RandomMinMax(350, 550)));
                 }
                 from.PlaySound(0x5B5);

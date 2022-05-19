@@ -768,6 +768,7 @@ namespace Server.Items
         {
             if (m_Completed || m_Decoder != null)
             {
+                from.SendMessage("Este mapa ja esta completo");
                 return;
             }
 
@@ -795,7 +796,7 @@ namespace Server.Items
                     }
                 }
 
-                if (!from.CheckSkill(SkillName.Cartography, minSkill - 10, minSkill + 30))
+                if (!from.CheckSkillMult(SkillName.Cartography, minSkill - 10, minSkill + 30, 10))
                 {
                     from.LocalOverheadMessage(MessageType.Regular, 0x3B2, 503018); // You fail to make anything of the map.
                     return;

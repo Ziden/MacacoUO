@@ -108,7 +108,7 @@ namespace Server.Mobiles
         public override void OnDamage(int amount, Mobile from, bool willKill)
         {
             var diff = DateTime.UtcNow - last;
-            if(diff.TotalSeconds > 20)
+            if(diff.TotalSeconds > 20 && from.GetDistance(this) <= 30)
             {
                 this.MoveToWorld(from.Location, from.Map);
                 this.OverheadMessage("* pulou *");
