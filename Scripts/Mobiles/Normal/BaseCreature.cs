@@ -3301,7 +3301,7 @@ namespace Server.Mobiles
                         {
                             regiao = "em " + this.Region.Name+" ";
                         }
-                        Anuncio.Anuncia($":resurrection2: {this.Name} nasceu {regiao}[{this.Location.X}/{this.Location.Y}]");
+                        Anuncio.Anuncia($"{this.Name} nasceu {regiao}[{this.Location.X}/{this.Location.Y}]");
                     }
 
                     if (!Deleted && Alive)
