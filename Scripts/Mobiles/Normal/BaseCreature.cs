@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fronteira.Discord;
 using Server.Commands;
 using Server.ContextMenus;
 using Server.Engines.PartySystem;
@@ -3200,6 +3201,9 @@ namespace Server.Mobiles
         public const int DefaultRangePerception = 16;
         public const int OldRangePerception = 10;
 
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool AnuncioSpawn { get; set; }
+
         public static bool BypassTimerInicial = false;
 
         public BaseCreature(
@@ -3290,6 +3294,16 @@ namespace Server.Mobiles
             if (!BypassTimerInicial)
                 Timer.DelayCall(TimeSpan.FromMilliseconds(100), () =>
                 {
+                    if(IsBoss || AnuncioSpawn)
+                    {
+                        var regiao = "";
+                        if(this.Region != null && this.Region.Name != null)
+                        {
+                            regiao = "em " + this.Region.Name+" ";
+                        }
+                        Anuncio.Anuncia($":resurrection2: {this.Name} nasceu {regiao}[{this.Location.X}/{this.Location.Y}]");
+                    }
+
                     if (!Deleted && Alive)
                         Tamavel.RegistraBixo(this);
 
@@ -3346,8 +3360,8 @@ namespace Server.Mobiles
         {
             base.Serialize(writer);
 
-            writer.Write(28); // version
-
+            writer.Write(29); // version
+            writer.Write(AnuncioSpawn);
             writer.Write(DistribuiItems);
             writer.Write((int)Elemento);
             writer.Write(CanMove);
@@ -3539,6 +3553,9 @@ namespace Server.Mobiles
 
             switch (version)
             {
+                case 29:
+                    AnuncioSpawn = reader.ReadBool();
+                    goto case 28;
                 case 28:
                     DistribuiItems = reader.ReadBool();
                     goto case 27;

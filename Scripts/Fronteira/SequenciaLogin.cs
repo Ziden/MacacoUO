@@ -53,7 +53,7 @@ namespace Server.Fronteira
 
             if(pm.Young)
             {
-                if(pm.Skills.Mining.Cap > 1000 || pm.Skills.Lumberjacking.Cap > 1000 || pm.Skills.AnimalTaming.Value > 90)
+                if(pm.Skills.Mining.Cap > 1000 || pm.Skills.Lumberjacking.Cap > 1000 || pm.Skills.AnimalTaming.Value > 90 || pm.SkillsTotal >= 7500)
                 {
                     pm.Account.Young = false;
                     pm.Young = false;
@@ -100,6 +100,10 @@ namespace Server.Fronteira
                         }, Faces.GM_PRETO, "Bem vindo...novamente ! Voce nao e mais um novato !", "Tera de re-escrever a historia com suas proprias pernas!"));
                     }
                 }
+            } else
+            {
+                pm.SendGump(new Rankings(pm, null));
+                pm.SendMessage(78, "Voce pode acompanhar os rankings de GW e GI nos quadros de ranking em cidades");
             }
         }
     }

@@ -60,12 +60,11 @@ namespace Server.TournamentSystem
             else
             {
                 AddLabel(350, 60, LabelHue, "Arena");
+                if (UseList == null)
+                    UseList = new List<Tournament>();
 
                 foreach (var sys in PVPTournamentSystem.SystemList)
                 {
-                    if (UseList == null)
-                        UseList = new List<Tournament>();
-
                     UseList.AddRange(sys.Tournaments);
                 }
 

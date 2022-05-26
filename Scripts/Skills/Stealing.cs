@@ -591,6 +591,12 @@ namespace Server.SkillHandlers
 
 		public static TimeSpan OnUse(Mobile m)
 		{
+            if(m.IsYoung())
+            {
+                m.SendMessage("Novato ladrao, mil anos sem perdao");
+                return TimeSpan.FromSeconds(1);
+            }
+
             if (m.Region.IsPartOf("New Haven"))
             {
                 m.SendMessage("Voce nao pode roubar em Haven");

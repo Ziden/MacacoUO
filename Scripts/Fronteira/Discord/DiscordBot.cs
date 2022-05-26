@@ -80,7 +80,13 @@ namespace Fronteira.Discord
 
             message = message.StripHtmlBreaks(true).StripHtml(false);
 
-            Requesta(message);
+            try
+            {
+                Requesta(message);
+            } catch(Exception e)
+            {
+                
+            }
         }
 
         // MIGRAR PRA UMA THREAD

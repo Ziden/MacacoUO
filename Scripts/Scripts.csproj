@@ -83,6 +83,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\AccountGoldCheck.cs" />
+    <Compile Include="Commands\zeraosrank.cs" />
     <Compile Include="Commands\Custom\Musicali.cs" />
     <Compile Include="Commands\LimpaGuilda.cs" />
     <Compile Include="Commands\RP.cs" />
