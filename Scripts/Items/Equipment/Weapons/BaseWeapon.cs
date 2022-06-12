@@ -1994,6 +1994,9 @@ namespace Server.Items
                         chance += defender.Skills.Wrestling.Value / 100 * 0.30; // 30%
                     }
 
+                    if (defender.Weapon is Fists)
+                        chance += 0.1;
+
                    // chance += parry * 0.25; // +25%
                   //  var brace = defender.FindItemOnLayer(Layer.Bracelet) as BraceleteDoPoder;
                    // if (brace != null && brace.Tipo == TipoJoias.Escudo)
@@ -2118,9 +2121,16 @@ namespace Server.Items
                 damage = (int)(damage * 0.85);
             }
 
+            BaseShield shield = defender.FindItemOnLayer(Layer.TwoHanded) as BaseShield;
+
+            if (shield != null && defender.Weapon is Fists && defender.Player && attacker is BaseCreature)
+            {
+                damage = (int)(damage * 0.85);
+            }
+
             if (blocked)
             {
-                BaseShield shield = defender.FindItemOnLayer(Layer.TwoHanded) as BaseShield;
+              
                 attacker.SendMessage("O alvo bloqueou seu ataque");
                 defender.SendMessage("Voce bloqueou o ataque");
                 defender.FixedEffect(0x37B9, 10, 16);

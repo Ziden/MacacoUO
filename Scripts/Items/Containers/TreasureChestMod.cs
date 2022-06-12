@@ -154,7 +154,7 @@ namespace Server.Items
                 return;
             }
 
-   
+
 
             AddLoot(Loot.RandomSeed());
             AddLoot(Loot.RandomProvision());
@@ -230,9 +230,10 @@ namespace Server.Items
             {
                 DropItem(new CopperIngot(amt));
                 return;
-            } else if (t == 3)
+            }
+            else if (t == 3)
             {
-                var cloth = new Cloth(amt*2);
+                var cloth = new Cloth(amt * 2);
                 cloth.Hue = Utility.RandomDyedHue();
                 DropItem(cloth);
                 return;
@@ -254,7 +255,7 @@ namespace Server.Items
             AddLoot(Loot.RandomProvision());
             AddLoot(Loot.RandomProvision());
             AddLoot(Loot.RandomProvision());
-        
+
             DropItem(new Bolt(5));
             switch (Utility.Random(10))
             {
@@ -336,7 +337,7 @@ namespace Server.Items
             if (Utility.Random(3) == 1)
                 AddLoot(new BagOfNecroReagents());
 
-            
+
             var t = Utility.Random(100);
             var amt = Utility.Random(200, 100);
             if (t <= 1)
@@ -346,7 +347,7 @@ namespace Server.Items
             }
             else if (t == 3)
             {
-                var cloth = new Cloth(amt*2);
+                var cloth = new Cloth(amt * 2);
                 cloth.Hue = Utility.RandomDyedHue();
                 DropItem(cloth);
                 //return;
@@ -384,7 +385,7 @@ namespace Server.Items
                 for (int i = Utility.Random(8) + 1; i > 0; i--)
                     DropItem(Loot.RandomScroll(0, 39, SpellbookType.Regular));
 
-        
+
         }
 
         public TreasureLevel2(Serial serial) : base(serial)
@@ -441,25 +442,25 @@ namespace Server.Items
             if (t <= 1)
             {
                 DropItem(new CopperIngot(amt));
-             
+
             }
             else if (t == 3)
             {
-                var cloth = new Cloth(amt*2);
+                var cloth = new Cloth(amt * 2);
                 cloth.Hue = Utility.RandomDyedHue();
                 DropItem(cloth);
-            
+
             }
             else if (t == 4)
             {
                 DropItem(new Bolt(amt));
                 DropItem(new Arrow(amt));
-             
+
             }
             else if (t == 5)
             {
                 DropItem(new OakBoard(amt));
-              
+
             }
 
             DropItem(Loot.RandomSeed());
@@ -497,7 +498,7 @@ namespace Server.Items
             if (0.67 > Utility.RandomDouble()) //67% chance = 2/3
                 for (int i = Utility.Random(12) + 1; i > 0; i--)
                     DropItem(Loot.RandomScroll(0, 47, SpellbookType.Regular));
-            
+
 
             for (int i = Utility.Random(1, 3); i > 1; i--)
                 DropItem(Loot.RandomWand());
@@ -592,7 +593,7 @@ namespace Server.Items
         [Constructable]
         public TreasureLevel4() : base(Utility.RandomList(0xe40, 0xe42, 0x9ab))
         {
-            if(Utility.RandomDouble() < 0.1)
+            if (Utility.RandomDouble() < 0.1)
                 this.Visible = false;
             RequiredSkill = 100;
             LockLevel = this.RequiredSkill - Utility.Random(1, 10);
@@ -602,27 +603,38 @@ namespace Server.Items
             AddLoot(new Charcoal(25));
             var t = Utility.Random(100);
             var amt = Utility.Random(25, 25);
-            if (t <= 1)
+            if (t <= 5)
             {
-                DropItem(new LazuritaIngot(amt));
+                DropItem(new LazuritaIngot(amt * 2));
             }
-            else if (t == 3)
+            else if (t <= 7)
             {
-                var cloth = new Cloth(amt*4);
+                var cloth = new Cloth(amt * 4);
                 cloth.Hue = Utility.RandomDyedHue();
                 DropItem(cloth);
             }
-            else if (t == 4)
+            else if (t <= 15)
             {
                 DropItem(new Bolt(amt));
                 DropItem(new Arrow(amt));
             }
-            else if (t == 5)
+            else if (t <= 25)
             {
                 DropItem(new OakBoard(amt));
             }
+            else if (t <= 27)
+            {
+                DropItem(new YewBoard(amt));
+            }
+            else if (t <= 30)
+            {
+                DropItem(new BeriloIngot(amt));
+            }
 
-            if(Utility.RandomDouble() < 0.1)
+            if (Utility.RandomDouble() < 0.2)
+                DropItem(new PotionKeg());
+
+            if (Utility.RandomDouble() < 0.1)
                 DropItem(Loot.RandomTalisman());
 
             AddLoot(new BagOfReagents());
@@ -642,7 +654,7 @@ namespace Server.Items
             DropItem(DefAlchemy.GetRandomRecipe());
             DropItem(DefCookingExp.GetReceitaRandom());
 
-           
+
             DropItem(new Gold(1000, 1210));
             DropItem(new BlankScroll(Utility.Random(1, 4)));
 

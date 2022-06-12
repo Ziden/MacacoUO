@@ -5250,6 +5250,18 @@ namespace Server.Mobiles
         #region Teaching
         public virtual bool CanTeach { get { return false; } }
 
+        public override bool Hidden
+        {
+            get { return base.Hidden; }
+            set
+            {
+                if (value && BardPacified)
+                    return;
+                base.Hidden = value;
+            }
+
+        }
+
         public virtual bool CheckTeach(SkillName skill, Mobile from)
         {
             if (!CanTeach || Siege.SiegeShard)
@@ -5884,7 +5896,7 @@ namespace Server.Mobiles
         {
             if (Hidden) //Hidden, let's try stealth
             {
-                if (!Mounted && Skills.Stealth.Value >= 25.0 && CanStealth)
+                if (!Mounted && Skills.Stealth.Value >= 25.0 && CanStealth && !BardPacified)
                 {
                     bool running = (d & Direction.Running) != 0;
                     if (running)

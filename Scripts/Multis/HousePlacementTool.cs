@@ -571,7 +571,7 @@ namespace Server.Items
             new HousePlacementEntry(typeof(HouseFoundation), 1158539,   4076,   2038,   4688,   2344,   78, 525000, 0,  10, 0,  0x147D),  // 32x32 3-Story Customizable Castle
         };
 
-        public static int MULT_TERRENOS = 10;
+        public static int MULT_TERRENOS = 5;
 
         private static readonly HousePlacementEntry[] m_TwoStoryFoundations = new HousePlacementEntry[]
         {
