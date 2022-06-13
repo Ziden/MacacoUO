@@ -18,16 +18,16 @@ namespace Server.Mobiles
             SetDex(75);
             SetInt(151, 200);
 
-            SetHits(20000);
-            SetStam(20000);
-            SetMana(20000);
+            SetHits(5000);
+            SetStam(5000);
+            SetMana(5000);
 
             SetDamage(25, 35);
 
             SetDamageType(ResistanceType.Fire, 100);
 
             SetResistance(ResistanceType.Fire, 100, 100);
-           
+
 
             SetSkill(SkillName.Poisoning, 120.0);
             SetSkill(SkillName.MagicResist, 250.0);

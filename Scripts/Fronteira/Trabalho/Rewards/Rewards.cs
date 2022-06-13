@@ -378,7 +378,7 @@ namespace Server.Engines.BulkOrders
                 //RewardCollection.Add(new BODCollectionItem(0x13E3, 1157094, CraftResources.GetHue(CraftResource.Cobre), 650, RunicHammer, 3));
                 RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 105-110 Blacksmithy<br>Aumenta seu cap de blacksmithy.", 0x481, RewardType.PS110, PowerScroll, 10));
                 //RewardCollection.Add(new BODCollectionItem(0x13E3, 1157095, CraftResources.GetHue(CraftResource.Bronze), 700, RunicHammer, 4));
-            
+
                 RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 110-115 Blacksmithy<br>Aumenta seu cap de blacksmithy.", 0x481, RewardType.PS115, PowerScroll, 15));
 
                 RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 110-115 Mining<br>Aumenta seu cap de mining.", 0x481, RewardType.PS115*2, PowerScroll2, 15));
@@ -589,7 +589,7 @@ namespace Server.Engines.BulkOrders
                 points += 10;
             else if (quantity <= 45)
                 points += 25;
-            else 
+            else
                 points += 50;
 
             if (exceptional)
@@ -744,7 +744,7 @@ namespace Server.Engines.BulkOrders
                 gold = 500;
             }
 
-          
+
 
             Shard.Debug("Gold: " + gold);
             int min = (gold * 9) / 10;
@@ -1834,6 +1834,11 @@ namespace Server.Engines.BulkOrders
             RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 105-110 Bowcraft<br>Aumenta seu cap de bowcraft.", 0x481, RewardType.PS110, PowerScroll, 10));
             RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 110-115 Bowcraft<br>Aumenta seu cap de bowcraft.", 0x481, RewardType.PS115, PowerScroll, 15));
             RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 115-120 Bowcraft<br>Aumenta seu cap de bowcraft.", 0x481, RewardType.PS120, PowerScroll, 20));
+
+            RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 100-105 Lumberjacking<br>Aumenta seu cap de Lumberjacking.", 0x481, RewardType.PS105, PowerScroll2, 5));
+            RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 105-110 Lumberjacking<br>Aumenta seu cap de Lumberjacking.", 0x481, RewardType.PS110, PowerScroll2, 10));
+            RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 110-115 Lumberjacking<br>Aumenta seu cap de Lumberjacking.", 0x481, RewardType.PS115, PowerScroll2, 15));
+            RewardCollection.Add(new BODCollectionItem(0xEF3, "Powerscroll 115-120 Lumberjacking<br>Aumenta seu cap de Lumberjacking.", 0x481, RewardType.PS120, PowerScroll2, 20));
         }
 
         private static Item CreatePowerScroll(int type)
