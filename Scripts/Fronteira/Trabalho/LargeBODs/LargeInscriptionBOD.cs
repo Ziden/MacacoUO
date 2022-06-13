@@ -12,7 +12,7 @@ namespace Server.Engines.BulkOrders
         {
             LargeBulkEntry[] entries;
 
-            switch (Utility.Random(7))
+            switch (Utility.Random(4))
             {
                 default:
                 case 0:
@@ -27,6 +27,7 @@ namespace Server.Engines.BulkOrders
                 case 3:
                     entries = LargeBulkEntry.ConvertEntries(this, LargeBulkEntry.LargeCircle4);
                     break;
+                /*
                 case 4:
                     entries = LargeBulkEntry.ConvertEntries(this, LargeBulkEntry.LargeCircle5);
                     break;
@@ -36,7 +37,7 @@ namespace Server.Engines.BulkOrders
                 case 6:
                     entries = LargeBulkEntry.ConvertEntries(this, LargeBulkEntry.LargeCircle8);
                     break;
-                /*
+
                 case 7:
                     entries = LargeBulkEntry.ConvertEntries(this, LargeBulkEntry.LargeNecromancy1);
                     break;

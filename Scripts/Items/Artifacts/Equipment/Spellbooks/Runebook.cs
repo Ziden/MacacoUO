@@ -15,8 +15,8 @@ namespace Server.Items
         public static readonly TimeSpan UseDelay = TimeSpan.FromSeconds(7.0);
 
         private BookQuality m_Quality;
-		
-        [CommandProperty(AccessLevel.GameMaster)]		
+
+        [CommandProperty(AccessLevel.GameMaster)]
         public BookQuality Quality
         {
             get
@@ -27,7 +27,7 @@ namespace Server.Items
             {
                 m_Quality = value;
                 InvalidateProperties();
-            } 
+            }
         }
 
         private List<RunebookEntry> m_Entries;
@@ -36,9 +36,9 @@ namespace Server.Items
         private int m_DefaultIndex;
         private SecureLevel m_Level;
         private Mobile m_Crafter;
-		
+
         private DateTime m_NextUse;
-		
+
         private List<Mobile> m_Openers = new List<Mobile>();
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -122,7 +122,7 @@ namespace Server.Items
                 InvalidateProperties();
             }
         }
-		
+
         public List<Mobile> Openers
         {
             get
@@ -224,7 +224,7 @@ namespace Server.Items
 
             writer.Write((int)3);
 
-            writer.Write((byte)m_Quality);	
+            writer.Write((byte)m_Quality);
 
             writer.Write(m_Crafter);
 
@@ -254,7 +254,7 @@ namespace Server.Items
             {
                 case 3:
                     {
-                        m_Quality = (BookQuality)reader.ReadByte();		
+                        m_Quality = (BookQuality)reader.ReadByte();
                         goto case 2;
                     }
                 case 2:
@@ -351,19 +351,19 @@ namespace Server.Items
         public override void GetProperties(ObjectPropertyList list)
         {
             base.GetProperties(list);
-		
+
             if (m_Quality == BookQuality.Exceptional)
                 list.Add(1063341); // exceptional
 
             if (m_Crafter != null)
-				list.Add(1050043, m_Crafter.TitleName); // crafted by ~1_NAME~
+				        list.Add(1050043, m_Crafter.TitleName); // crafted by ~1_NAME~
 
             list.Add($"Cargas: {m_CurCharges}/{m_MaxCharges}");
 
             if (m_Description != null && m_Description.Length > 0)
                 list.Add(m_Description);
         }
-		
+
         public override bool OnDragLift(Mobile from)
         {
             if (from.HasGump(typeof(RunebookGump)))
@@ -371,13 +371,13 @@ namespace Server.Items
                 from.SendLocalizedMessage(500169); // You cannot pick that up.
                 return false;
             }
-			
+
             foreach (Mobile m in m_Openers)
                 if (IsOpen(m))
                     m.CloseGump(typeof(RunebookGump));
-				
+
             m_Openers.Clear();
-			
+
             return true;
         }
 
@@ -411,7 +411,7 @@ namespace Server.Items
 
                 from.CloseGump(typeof(RunebookGump));
                 from.SendGump(new RunebookGump(from, this));
-				
+
                 m_Openers.Add(from);
             }
         }
@@ -584,10 +584,14 @@ namespace Server.Items
             if (charges > 10)
                 charges = 10;
 
+            if (makersMark)
+            {
+                Crafter = from;
+                charges =* 2;
+            }
             MaxCharges = (Core.SE ? charges * 2 : charges);
 
-            if (makersMark)
-                Crafter = from;
+
 
             m_Quality = (BookQuality)(quality - 1);
 
