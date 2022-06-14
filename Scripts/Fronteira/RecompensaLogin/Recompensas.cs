@@ -1,3 +1,4 @@
+using Server.Fronteira.Guildas;
 using Server.Items;
 using Server.Mobiles;
 using Server.Ziden.Achievements;
@@ -72,6 +73,8 @@ namespace Server.Ziden.RecompensaLogin
             // Rewards.Add(new CollectionItem(typeof(MagicalFishFinder), 0x14F6, "Encontrador de Peixes Magicos", 2500, 100));
             Rewards.Add(new CollectionItem(typeof(PergaminhoRunebook), 0x1F35, "Pergaminho de Runebook<br>Recarrega um runebook", 0, 10));
             Rewards.Add(new CollectionItem(typeof(HoodedShroudOfShadowsNoob), 0x2684, "Tunica dos Mortos Pessoal", 0, 24 * 30)); // Yew
+            Rewards.Add(new CollectionItem(typeof(ArmarioUniforme), 0x2D07, "Armario de uniforme para Guildas", 0, 24 * 30)); // Yew
+            Rewards.Add(new CollectionItem(typeof(PergaminhoBancoGuilda), 0x14F0, "Pergaminho de banco para Guildas", 0, 24 * 30)); // Yew
             Rewards.Add(new CollectionItem(typeof(EtherealHorse), 0x20DD, "Cavalo Magico", 0, 24 * 30)); // Yew
 
             Rewards.Add(new CollectionItem(typeof(SewingMachineDeed), 0x1F35, "Maquina de Tecer", 0, 24 * 10));
