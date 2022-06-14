@@ -98,6 +98,14 @@ namespace Server.Mobiles
         {
             this.AddLoot(LootPack.LV6, 4);
             this.AddLoot(LootPack.LV5);
+            this.AddLoot(LootPack.Gems, 20);
+        }
+
+        public override void OnDeath()
+        {
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(110))
         }
 
         public override int GetDrainAmount(Mobile m)

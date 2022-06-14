@@ -398,7 +398,7 @@ namespace Server.Mobiles
             public override bool Unprovokable { get { return true; } }
             public override bool Uncalmable { get { return true; } }
             public override Poison PoisonImmune { get { return Poison.Lethal; } }
-            
+
             public override int Meat { get { return 1; } }
 
             public EffectSpawn(Serial serial)
@@ -571,6 +571,9 @@ namespace Server.Mobiles
             c.DropItem(new SpecialFishingNet());
             c.DropItem(new SpecialFishingNet());
             c.DropItem(new SpecialFishingNet());
+            SorteiaItem(Carnage.GetRandomPS(115))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(110))
 
             FishingPole pole = new FishingPole();
             BaseRunicTool.ApplyAttributesTo(pole, false, 0, Utility.RandomMinMax(2, 5), 50, 100);
@@ -640,6 +643,7 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.LV7, 8);
+            AddLoot(LootPack.Gems, 20);
         }
 
         public Charydbis(Serial serial)

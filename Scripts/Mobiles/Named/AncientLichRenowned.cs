@@ -7,7 +7,7 @@ using Server.Ziden.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Ancient Lich [Renowned] corpse")]  
+    [CorpseName("Ancient Lich [Renowned] corpse")]
     public class AncientLichRenowned : BaseRenowned
     {
         public override double DisturbChance { get { return 0; } }
@@ -52,7 +52,7 @@ namespace Server.Mobiles
 
             this.VirtualArmor = 60;
             this.PackNecroReg(200, 375);
-        
+
         }
 
         public AncientLichRenowned(Serial serial)
@@ -91,6 +91,10 @@ namespace Server.Mobiles
             {
                 SorteiaItem(ElementoUtils.GetRandomPedraSuperior());
             }
+            if (Utility.RandomDouble() < 0.3)
+                    SorteiaItem(Carnage.GetRandomPS(105));
+            if (Utility.RandomDouble() < 0.1)
+                    SorteiaItem(Carnage.GetRandomPS(110));
         }
 
         public override OppositionGroup OppositionGroup

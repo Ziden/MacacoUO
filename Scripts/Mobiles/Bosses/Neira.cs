@@ -48,7 +48,7 @@ namespace Server.Mobiles
             Female = true;
 
             Item shroud = new HoodedShroudOfShadows();
-         
+
             AddItem(shroud);
             shroud.Movable = false;
 
@@ -164,6 +164,7 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.LV4, 1);
+            AddLoot(LootPack.Gems, 20);
         }
 
         public override bool OnBeforeDeath()
@@ -192,7 +193,10 @@ namespace Server.Mobiles
             //NecromancerSpellbook book = new NecromancerSpellbook();
             //book.Content = (1ul << book.BookCount) - 1;
             //c.DropItem(book);
-
+            if (Utility.RandomDouble() < 0.5)
+                    SorteiaItem(Carnage.GetRandomPS(105));
+            if (Utility.RandomDouble() < 0.3)
+                    SorteiaItem(Carnage.GetRandomPS(110));
             switch(Utility.Random(3))
             {
                 case 0: SorteiaItem(new AbbygifttobaleAddonDeed()); break;
@@ -232,7 +236,7 @@ namespace Server.Mobiles
 
             if (0.1 >= Utility.RandomDouble()) // 10% chance to drop or throw an unholy bone
                 AddUnholyBone(defender, 0.25);
-				
+
             CheckSpeedBoost();
         }
 
@@ -282,7 +286,7 @@ namespace Server.Mobiles
             base.Deserialize(reader);
 
             int version = reader.ReadInt();
-			
+
             switch( version )
             {
                 case 1:

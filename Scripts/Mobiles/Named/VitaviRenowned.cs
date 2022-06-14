@@ -42,7 +42,7 @@ namespace Server.Mobiles
             this.Karma = -7500;
 
             this.VirtualArmor = 44;
-            
+
             this.PackReg(6);
 
             if (0.02 > Utility.RandomDouble())
@@ -99,6 +99,14 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.LV5, 3);
+            AddLoot(LootPack.Gems, 20);
+        }
+
+        public override void OnDeath()
+        {
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(110))
         }
 
         public override void Serialize(GenericWriter writer)

@@ -3,7 +3,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Fire Daemon [Renowned] corpse")]  
+    [CorpseName("Fire Daemon [Renowned] corpse")]
     public class FireDaemonRenowned : BaseRenowned
     {
         [Constructable]
@@ -74,6 +74,15 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.LV5, 2);
+            AddLoot(LootPack.Gems, 20);
+
+        }
+
+        public override void OnDeath()
+        {
+            SorteiaItem(Carnage.GetRandomPS(115))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(110))
         }
 
         public override void Serialize(GenericWriter writer)
