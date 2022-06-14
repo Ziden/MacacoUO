@@ -29,7 +29,7 @@ namespace Server.Mobiles
             c.PublicOverheadMessage("* dropou 1/3 da pedra elemental *");
 
             SorteiaItem(new CristalElemental(Utility.RandomMinMax(3, 5)));
-            
+
             Altar = null;
         }
 
@@ -332,6 +332,7 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             this.AddLoot(LootPack.LV6, 1);
+            this.AddLoot(LootPack.Gems, 15);
         }
 
         public override void OnDeath(Container c)
@@ -340,6 +341,9 @@ namespace Server.Mobiles
 
             if ((c.Map != null && c.Map.Rules == MapRules.FeluccaRules) || 0.5 > Utility.RandomDouble())
                 c.DropItem(new CorrosiveAsh());
+
+            if (Utility.RandomDouble() < 0.3)
+                    SorteiaItem(Carnage.GetRandomPS(105));
         }
 
         public FlameElemental(Serial serial)
@@ -419,6 +423,7 @@ namespace Server.Mobiles
         {
             this.AddLoot(LootPack.LV6, 1);
             this.AddLoot(LootPack.HighScrolls, Utility.RandomMinMax(3, 5));
+            this.AddLoot(LootPack.Gems, 15);
         }
 
         public override void OnDeath(Container c)
@@ -427,6 +432,9 @@ namespace Server.Mobiles
 
             if ((c.Map != null && c.Map.Rules == MapRules.FeluccaRules) || 0.5 > Utility.RandomDouble())
                 c.DropItem(new CursedOilstone());
+
+            if (Utility.RandomDouble() < 0.3)
+                    SorteiaItem(Carnage.GetRandomPS(105));
         }
 
         public WindElemental(Serial serial)

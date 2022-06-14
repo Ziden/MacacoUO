@@ -145,6 +145,9 @@ namespace Server.Mobiles
         {
             DistribuiItem(new CristalDoPoder() { Amount = 5 });
             base.OnDeath(c);
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(110))
         }
 
         public override bool BardImmune { get { return true; } }
@@ -362,7 +365,7 @@ namespace Server.Mobiles
             Karma = -8500;
 
             VirtualArmor = 0;
-   
+
             Tamable = false;
             ControlSlots = 4;
             MinTameSkill = 102.0;
@@ -412,7 +415,7 @@ namespace Server.Mobiles
 
         public override void OnBeforeDamage(Mobile from, ref int totalDamage, DamageType type)
         {
-           
+
         }
 
         public class PotTimer : Timer
@@ -478,7 +481,7 @@ namespace Server.Mobiles
                                 }
                             }
                             alvos.Free();
-                        
+
                         });
                     }
 

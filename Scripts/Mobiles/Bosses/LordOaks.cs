@@ -156,6 +156,7 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.LV4, 1);
+            AddLoot(LootPack.Gems, 20);
         }
 
         public void SpawnPixies(Mobile target)
@@ -299,6 +300,13 @@ namespace Server.Mobiles
             /*attacker.Damage(Utility.Random(20, 10), this);
             attacker.Stam -= Utility.Random(20, 10);
             attacker.Mana -= Utility.Random(20, 10);*/
+        }
+
+        public override void OnDeath()
+        {
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(110))
         }
 
         public override void Serialize(GenericWriter writer)

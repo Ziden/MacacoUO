@@ -180,6 +180,16 @@ namespace Server.Mobiles
             DoCounter(attacker);
         }
 
+        public override void OnDeath(Container)
+        {
+
+            SorteiaItem(Carnage.GetRandomPS(115))
+            SorteiaItem(Carnage.GetRandomPS(115))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(110))
+
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);

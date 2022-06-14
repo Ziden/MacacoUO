@@ -21,8 +21,8 @@ namespace Server.Mobiles
             this.SetInt(327);
 
             this.SetHits(50000);
-			this.SetMana(327);
-			this.SetStam(279);
+			      this.SetMana(327);
+			      this.SetStam(279);
 
             this.SetDamage(8, 10);
 
@@ -44,7 +44,7 @@ namespace Server.Mobiles
             this.Karma = -6500;
 
             this.VirtualArmor = 56;
-			
+
             this.AddItem(new Bow());
             this.PackItem(new Arrow(Utility.RandomMinMax(10, 30)));
         }
@@ -105,6 +105,14 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             this.AddLoot(LootPack.LV6, 3);
+            this.AddLoot(LootPack.Gems, 20);
+        }
+
+        public override void OnDeath()
+        {
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(110))
         }
 
         public override void Serialize(GenericWriter writer)

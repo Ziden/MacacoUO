@@ -3,7 +3,7 @@ using Server.Items;
 
 namespace Server.Mobiles
 {
-    [CorpseName("Devourer of Souls [Renowned] corpse")]  
+    [CorpseName("Devourer of Souls [Renowned] corpse")]
     public class DevourerRenowned : BaseRenowned
     {
         [Constructable]
@@ -86,6 +86,14 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.LV5, 2);
+            AddLoot(LootPack.Gems, 20);
+        }
+
+        public override void OnDeath()
+        {
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(110))
         }
 
         public override void Serialize(GenericWriter writer)

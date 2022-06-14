@@ -63,9 +63,9 @@ namespace Server.Mobiles
 
             SetWeaponAbility(WeaponAbility.ConcussionBlow);
             AddItem(new Gold(1000));
-         
 
-           
+
+
             //AddItem(Carnage.GetRandomPS(110));
         }
 
@@ -82,8 +82,8 @@ namespace Server.Mobiles
             {
                 if (e.m_HasRight && e.m_Mobile != null)
                 {
-                    
-                   
+
+
                     e.m_Mobile.AddToBackpack(Decos.RandomDeco(this));
 
                     e.m_Mobile.AddToBackpack(Loot.JoiaRaraRandom(this.Map));
@@ -133,6 +133,8 @@ namespace Server.Mobiles
             itemRaro.Name = "[Boss][Pedroso] Colar de Pedra-Negra";
             itemRaro.Attributes.WeaponDamage = 10;
             SorteiaItem(itemRaro);
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(105))
 
             if (Utility.RandomBool())
                 SorteiaItem(new BronzeIngot(300));
@@ -145,7 +147,7 @@ namespace Server.Mobiles
                 bola.LootType = LootType.Regular;
                 SorteiaItem(bola);
             }
-               
+
             if (Utility.RandomBool())
                 SorteiaItem(new QuartzoIngot(80));
             else
@@ -347,7 +349,7 @@ namespace Server.Mobiles
 
         public override void GenerateLoot()
         {
-            this.AddLoot(LootPack.Gems, 20);
+            this.AddLoot(LootPack.Gems, 40);
             AddLoot(LootPack.OldRich, 2);
         }
 

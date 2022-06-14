@@ -156,7 +156,7 @@ namespace Server.Mobiles
                     SorteiaItem(Carnage.GetRandomPS(110));
             }
             SorteiaItem(Carnage.GetRandomPS(110));
-           
+
             SorteiaItem(new CustomizableSquaredDoorMatDeed());
             SorteiaItem(new eviltreeAddonDeed());
             for (var x = 0; x < 10; x++)
@@ -396,12 +396,16 @@ namespace Server.Mobiles
         public override void GenerateLoot()
         {
             AddLoot(LootPack.LV7, 6);
+            AddLoot(LootPack.Gems, 20);
         }
 
         public override void OnDeath(Container c)
         {
             base.OnDeath(c);
-
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            
             if (m_Altar != null)
                 m_Altar.OnBossKilled();
 

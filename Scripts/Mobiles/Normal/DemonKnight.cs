@@ -272,6 +272,11 @@ namespace Server.Mobiles
             if (Utility.RandomBool())
                 SorteiaItem(new PianoAddon());
 
+            SorteiaItem(Carnage.GetRandomPS(115))
+            SorteiaItem(Carnage.GetRandomPS(115))
+            SorteiaItem(Carnage.GetRandomPS(120))
+
+
             int top = 0;
             Item blood = null;
 

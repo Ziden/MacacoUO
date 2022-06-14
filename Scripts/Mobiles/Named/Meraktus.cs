@@ -151,6 +151,11 @@ namespace Server.Mobiles
         {
             base.OnDeath(c);
 
+            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(110))
+
+
             if (Core.ML)
             {
                 c.DropItem(new MalletAndChisel());
@@ -182,6 +187,7 @@ namespace Server.Mobiles
             {
                 AddLoot(LootPack.AosSuperBoss, 5);  // Need to verify
             }
+            this.AddLoot(LootPack.Gems, 20);
         }
 
         public override int GetAngerSound()
