@@ -302,11 +302,11 @@ namespace Server.Mobiles
             attacker.Mana -= Utility.Random(20, 10);*/
         }
 
-        public override void OnDeath()
+        public override void OnDeath(Container c)
         {
-            SorteiaItem(Carnage.GetRandomPS(105))
-            SorteiaItem(Carnage.GetRandomPS(110))
-            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(105));
+            SorteiaItem(Carnage.GetRandomPS(110));
+            SorteiaItem(Carnage.GetRandomPS(110));
         }
 
         public override void Serialize(GenericWriter writer)

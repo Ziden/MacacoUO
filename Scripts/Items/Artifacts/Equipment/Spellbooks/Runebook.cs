@@ -587,7 +587,7 @@ namespace Server.Items
             if (makersMark)
             {
                 Crafter = from;
-                charges =* 2;
+                charges *= 2;
             }
             MaxCharges = (Core.SE ? charges * 2 : charges);
 

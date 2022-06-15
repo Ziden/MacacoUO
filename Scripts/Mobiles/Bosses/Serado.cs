@@ -180,13 +180,13 @@ namespace Server.Mobiles
             DoCounter(attacker);
         }
 
-        public override void OnDeath(Container)
+        public override void OnDeath(Container c)
         {
 
-            SorteiaItem(Carnage.GetRandomPS(115))
-            SorteiaItem(Carnage.GetRandomPS(115))
-            SorteiaItem(Carnage.GetRandomPS(110))
-            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(115));
+            SorteiaItem(Carnage.GetRandomPS(115));
+            SorteiaItem(Carnage.GetRandomPS(110));
+            SorteiaItem(Carnage.GetRandomPS(110));
 
         }
 

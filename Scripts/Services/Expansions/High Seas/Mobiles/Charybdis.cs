@@ -571,9 +571,9 @@ namespace Server.Mobiles
             c.DropItem(new SpecialFishingNet());
             c.DropItem(new SpecialFishingNet());
             c.DropItem(new SpecialFishingNet());
-            SorteiaItem(Carnage.GetRandomPS(115))
-            SorteiaItem(Carnage.GetRandomPS(110))
-            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(115));
+            SorteiaItem(Carnage.GetRandomPS(110));
+            SorteiaItem(Carnage.GetRandomPS(110));
 
             FishingPole pole = new FishingPole();
             BaseRunicTool.ApplyAttributesTo(pole, false, 0, Utility.RandomMinMax(2, 5), 50, 100);

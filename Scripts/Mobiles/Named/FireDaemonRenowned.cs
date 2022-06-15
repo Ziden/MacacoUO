@@ -78,11 +78,11 @@ namespace Server.Mobiles
 
         }
 
-        public override void OnDeath()
+        public override void OnDeath(Container c)
         {
-            SorteiaItem(Carnage.GetRandomPS(115))
-            SorteiaItem(Carnage.GetRandomPS(110))
-            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(115));
+            SorteiaItem(Carnage.GetRandomPS(110));
+            SorteiaItem(Carnage.GetRandomPS(110));
         }
 
         public override void Serialize(GenericWriter writer)

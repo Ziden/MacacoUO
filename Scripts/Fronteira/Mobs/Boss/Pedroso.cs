@@ -133,8 +133,8 @@ namespace Server.Mobiles
             itemRaro.Name = "[Boss][Pedroso] Colar de Pedra-Negra";
             itemRaro.Attributes.WeaponDamage = 10;
             SorteiaItem(itemRaro);
-            SorteiaItem(Carnage.GetRandomPS(105))
-            SorteiaItem(Carnage.GetRandomPS(105))
+            SorteiaItem(Carnage.GetRandomPS(105));
+            SorteiaItem(Carnage.GetRandomPS(105));
 
             if (Utility.RandomBool())
                 SorteiaItem(new BronzeIngot(300));

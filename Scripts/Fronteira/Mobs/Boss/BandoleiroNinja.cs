@@ -145,9 +145,9 @@ namespace Server.Mobiles
         {
             DistribuiItem(new CristalDoPoder() { Amount = 5 });
             base.OnDeath(c);
-            SorteiaItem(Carnage.GetRandomPS(105))
-            SorteiaItem(Carnage.GetRandomPS(105))
-            SorteiaItem(Carnage.GetRandomPS(110))
+            SorteiaItem(Carnage.GetRandomPS(105));
+            SorteiaItem(Carnage.GetRandomPS(105));
+            SorteiaItem(Carnage.GetRandomPS(110));
         }
 
         public override bool BardImmune { get { return true; } }
