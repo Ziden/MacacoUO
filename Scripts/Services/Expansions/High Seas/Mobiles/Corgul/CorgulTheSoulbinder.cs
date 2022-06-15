@@ -402,10 +402,10 @@ namespace Server.Mobiles
         public override void OnDeath(Container c)
         {
             base.OnDeath(c);
-            SorteiaItem(Carnage.GetRandomPS(105))
-            SorteiaItem(Carnage.GetRandomPS(110))
-            SorteiaItem(Carnage.GetRandomPS(110))
-            
+            SorteiaItem(Carnage.GetRandomPS(105));
+            SorteiaItem(Carnage.GetRandomPS(110));
+            SorteiaItem(Carnage.GetRandomPS(110));
+
             if (m_Altar != null)
                 m_Altar.OnBossKilled();
 

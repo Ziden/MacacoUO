@@ -104,11 +104,12 @@ namespace Server.Mobiles
             this.AddLoot(LootPack.Gems, 20);
         }
 
-        public override void OnDeath()
+        public override void OnDeath(Container c)
         {
-            SorteiaItem(Carnage.GetRandomPS(105))
-            SorteiaItem(Carnage.GetRandomPS(105))
-            SorteiaItem(Carnage.GetRandomPS(110))
+            base.OnDeath(c);
+            SorteiaItem(Carnage.GetRandomPS(105));
+            SorteiaItem(Carnage.GetRandomPS(105));
+            SorteiaItem(Carnage.GetRandomPS(110));
         }
 
         public override void Serialize(GenericWriter writer)

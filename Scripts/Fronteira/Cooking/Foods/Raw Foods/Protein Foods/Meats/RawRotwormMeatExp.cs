@@ -10,7 +10,7 @@ namespace Server.Items
 
         [Constructable]
         public RawRotwormMeatExp(int amount)
-            : base(0x2DB9, 10)
+            : base(amount, 0x2DB9)
         {
             Stackable = true;
             Weight = 0.1;

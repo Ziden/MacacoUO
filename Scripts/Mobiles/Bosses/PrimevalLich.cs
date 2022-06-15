@@ -106,7 +106,7 @@ namespace Server.Mobiles
             {
                 return new MonsterStatuetteType[] { };
             }
-        }        
+        }
 
         public override void GenerateLoot()
         {
@@ -120,13 +120,16 @@ namespace Server.Mobiles
 
             c.DropItem(new PrimalLichDust());
             c.DropItem(new RisingColossusScroll());
+            SorteiaItem(Carnage.GetRandomPS(105));
+            SorteiaItem(Carnage.GetRandomPS(110));
+            SorteiaItem(Carnage.GetRandomPS(110));
         }
 
         public void ChangeCombatant()
         {
             this.ForceReacquire();
             this.BeginFlee(TimeSpan.FromSeconds(2.5));
-        }       
+        }
 
         public override void OnThink()
         {
@@ -415,10 +418,10 @@ namespace Server.Mobiles
                 {
                     if (target.Skills[i].Value > 0)
                     {
-                        mods.Add(new DefaultSkillMod((SkillName)i, true, target.Skills[i].Value - scalar));                        
+                        mods.Add(new DefaultSkillMod((SkillName)i, true, target.Skills[i].Value - scalar));
                     }
                 }
-                
+
                 target.PlaySound(0x458);
 
                 ApplyMods(target, mods);
