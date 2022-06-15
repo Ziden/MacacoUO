@@ -80,6 +80,7 @@ namespace Server.Mobiles
 
         public override void OnDeath(Container c)
         {
+            base.OnDeath(c);
             SorteiaItem(Carnage.GetRandomPS(115));
             SorteiaItem(Carnage.GetRandomPS(110));
             SorteiaItem(Carnage.GetRandomPS(110));

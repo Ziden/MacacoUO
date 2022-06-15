@@ -70,7 +70,7 @@ namespace Server.Mobiles
             base.OnDeath(c);
             SorteiaItem(Carnage.GetRandomPS(115));
             SorteiaItem(Carnage.GetRandomPS(110));
-            //c.DropItem(new DiseasedBark());
+            c.DropItem(new DiseasedBark());
             c.DropItem(new EternallyCorruptTree());
 
             int drop = Utility.Random(4, 8);

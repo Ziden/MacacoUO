@@ -423,7 +423,7 @@ namespace Server
             if (item is ICanBeElfOrHuman)
                 ((ICanBeElfOrHuman)item).ElfOnly = false;
 
-            peerlessCorpse.DropItem(item);
+            //peerlessCorpse.DropItem(item);
         }
 
         public static bool CheckML(Mobile from)
@@ -722,7 +722,7 @@ namespace Server
 			this.AddLabel(125, 10, 150, "Settings");
 			this.AddImage(256, 5, 0x9E1);
 
-			// dungeons			
+			// dungeons
 			this.AddButton(20, 60, MondainsLegacy.PalaceOfParoxysmus ? 0x939 : 0x938, MondainsLegacy.PalaceOfParoxysmus ? 0x939 : 0x938, 1, GumpButtonType.Reply, 0);
 			this.AddButton(20, 85, MondainsLegacy.TwistedWeald ? 0x939 : 0x938, MondainsLegacy.TwistedWeald ? 0x939 : 0x938, 2, GumpButtonType.Reply, 0);
 			this.AddButton(20, 110, MondainsLegacy.BlightedGrove ? 0x939 : 0x938, MondainsLegacy.BlightedGrove ? 0x939 : 0x938, 3, GumpButtonType.Reply, 0);
