@@ -145,10 +145,11 @@ namespace Server.Spells
 
             if (target.Player && !Caster.Player)
             {
-                var lvl = ColarElemental.GetNivel(Caster, ElementoPvM.Luz);
-                if (lvl > 0 && Caster.Skills.Parry.Value >= 100)
+                var lvl = ColarElemental.GetNivel(target, ElementoPvM.Luz);
+                if (lvl > 0 && target.Skills.Parry.Value >= 100)
                 {
-                    var chance = 0.1 + lvl / 100;
+                    var chance = 0.10;
+                    chance += lvl / 100d;
                     if (Utility.RandomDouble() <= chance)
                     {
                         target.SendMessage("Voce bloqueou a magia com seu escudo");
