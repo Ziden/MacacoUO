@@ -5456,7 +5456,7 @@ namespace Server.Mobiles
                     }
                 case TeachResult.KnowsWhatIKnow:
                     {
-                        Say(501509); // I cannot teach thee, for thou knowest all I can teach! 
+                        Say(501509); // I cannot teach thee, for thou knowest all I can teach!
                         break;
                     }
                 case TeachResult.NotEnoughFreePoints:
@@ -6981,7 +6981,7 @@ namespace Server.Mobiles
         });
 
         //private static int COR_CINZA = 0x3B2;
-        //private static int COR_AZUL = 
+        //private static int COR_AZUL =
 
         public override void OnSingleClick(Mobile from)
         {
@@ -7780,7 +7780,7 @@ namespace Server.Mobiles
 
                 if (this.m_Paragon)
                 {
-                    c.DropItem(new RelicFragment(Utility.Random(1, 2)));
+                    c.DropItem(new RelicFragment((int)Math.Round(this.HitsMax / 500d)));
                 }
 
                 LootingRights = null;
