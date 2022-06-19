@@ -41,29 +41,25 @@ namespace Server.Menus.Questions
     {
         private static readonly StuckMenuEntry[] m_TerMurEntries = new StuckMenuEntry[]
         {
-            // Royal City
-            /*
-            new StuckMenuEntry("Rhodes", new Point3D[]
+             //Royal City;
+            
+            new StuckMenuEntry("Tokuno", new Point3D[]
             {
-                new Point3D(750, 3440, -20),
-                new Point3D(709, 3444, -20),
-                new Point3D(802, 3431, -10),
-                new Point3D(848, 3450, -19),
-                new Point3D(738, 3486, -19)
-            }, Map.TerMur),
-            */
+                new Point3D(737, 1257, 30),
+            }, Map.Tokuno),
+           
             new StuckMenuEntry("Haven", new Point3D[]
             {
               CharacterCreation.HAVEN,
 
             }, Map.Trammel),
-            /*
+            
             new StuckMenuEntry("Cabo da Tormenta", new Point3D[]
             {
               new Point3D(994, 1915, 0),
 
             }, Map.Felucca)
-            */
+            
         };
 
         private readonly Mobile m_Mobile;
@@ -82,7 +78,7 @@ namespace Server.Menus.Questions
             Dragable = false;
             Disposable = false;
 
-            AddBackground(0, 0, 270, 320, 2600);
+            AddBackground(0, 0, 270, 320, 9350);
 
             AddHtml(50, 20, 250, 35, "Escolha uma cidade", false, false); // Chose a town:
 
