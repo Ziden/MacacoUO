@@ -25,12 +25,12 @@ namespace Server.Engines.Help
         }
 
         [Usage("SpeechLog")]
-        [Description("Opens the speech log of a given target.")]
+        [Description("Abre o log de fala de um determinado alvo.")]
         private static void SpeechLog_OnCommand(CommandEventArgs e)
         {
             Mobile from = e.Mobile;
 
-            from.SendMessage("Target a player to view his speech log.");
+            from.SendMessage("Selecione um jogador para ver seu registro de fala.");
             e.Mobile.Target = new SpeechLogTarget();
         }
 
@@ -51,15 +51,15 @@ namespace Server.Engines.Help
                 }
                 else if (from != targeted && from.AccessLevel <= pm.AccessLevel && from.AccessLevel != AccessLevel.Owner)
                 {
-                    from.SendMessage("You don't have the required access level to view {0} speech log.", pm.Female ? "her" : "his");
+                    from.SendMessage("Você não tem o nível de acesso necessário para visualizar {0} registro de fala.", pm.Female ? "her" : "his");
                 }
                 else if (pm.SpeechLog == null)
                 {
-                    from.SendMessage("{0} has no speech log.", pm.Female ? "She" : "He");
+                    from.SendMessage("{0} não tem registro de fala.", pm.Female ? "Ela" : "Ele");
                 }
                 else
                 {
-                    CommandLogging.WriteLine(from, "{0} {1} viewing speech log of {2}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(targeted));
+                    CommandLogging.WriteLine(from, "{0} {1} visualizando o registro de fala de {2}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(targeted));
 
                     Gump gump = new SpeechLogGump(pm, pm.SpeechLog);
                     from.SendGump(gump);
