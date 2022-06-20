@@ -2,59 +2,6 @@ using System;
 
 namespace Server.Items
 {
-    public class Sandaliahumildade : BaseShoes
-    {
-        public override CraftResource DefaultResource {
-            get {
-                return CraftResource.RegularLeather;
-            }
-        }
-
-        [Constructable]
-        public Sandaliahumildade()
-            : this(0)
-        {
-        }
-
-        [Constructable]
-        public Sandaliahumildade(int hue)
-            : base(0x170D, hue)
-        {
-            Name = "Sandalias da Humildade";
-            Hue = 2045;
-            LootType = LootType.Blessed;
-        }
-
-        public Sandaliahumildade(Serial serial)
-            : base(serial)
-        {
-        }
-
-        public override bool Dye(Mobile from, DyeTub sender)
-        {
-            if (Core.TOL)
-            {
-                return base.Dye(from, sender);
-            }
-
-            return false;
-        }
-
-        public override void Serialize(GenericWriter writer)
-        {
-            base.Serialize(writer);
-
-            writer.Write((int)0); // version
-        }
-
-        public override void Deserialize(GenericReader reader)
-        {
-            base.Deserialize(reader);
-
-            int version = reader.ReadInt();
-        }
-    }
-
     public class RobeElfico : BaseOuterTorso
     {
         public override Race RequiredRace {
