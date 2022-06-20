@@ -86,6 +86,9 @@ namespace Server.Engines.UOStore
         {
             StoreCategory cat = StoreCategory.Featured;
             //GERAL
+            Register<RobeElfico>(new TextDefinition("Robe Elfico com Capuz"), "Roupas Especiais", 0x2FB9, 0, 0, 8000, cat);
+            Register<BotasElfica>(new TextDefinition("Bota Elfica"), "Roupas Especiais", 0x2FC4, 0, 0, 2000, cat);
+            Register<RobeElficoFeminino>(new TextDefinition("Robe Elfico com Capuz Feminino"), "Roupas Especiais", 0x2FBA, 0, 0, 8000, cat);
             Register<AventalDaLuz>(new TextDefinition("Avental Da Luz"), "Roupas Especiais", 0x153b, 0, 0, 2000, cat);
             Register<BandanaDaluz>(new TextDefinition("Bandana  Da Luz"), "Roupas Especiais", 0x1540, 0, 0, 2000, cat);
             Register<RobeAnjoDaluz>(new TextDefinition("Robe Anjo Da Luz"), "Roupas Especiais", 0x1F03, 0, 0, 5000, cat);
@@ -100,6 +103,7 @@ namespace Server.Engines.UOStore
             Register<Spellbook>("Fullbook", "Fullbook.<br>Tem todas as magias.", 0x14F0, 0, 0, 5000, cat, ConstructSpellbook);
             Register<DoubleExpDeed>("PowerHour 2x Exp", "Ativa double exp para o shard todo por 1h.</ br > Todos vao te amar um pouco mais.", 0x14F0, 0, 256, 500, cat);
             Register<DoubleGoldDeed>("Power Hour 2x Gold", "Ativa double gold para o shard todo por 1h.</br>Todos vao te amar um pouco mais.", 0x14F0, 0, 54, 500, cat);
+            
             
             cat = StoreCategory.Misc;
             //MORADIAS
@@ -154,9 +158,9 @@ namespace Server.Engines.UOStore
             Register<DeerMask> (new TextDefinition("Máscara de Viado Sacrificado"), "Percence Pessoal.", 0x1547, 0, 0, 3000, cat, ConstructNewbie);
             Register< LeatherNinjaHood> (new TextDefinition("Capuz de Ninja"), "Percence Pessoal.", 0x27DA, 0, 0, 2000, cat, ConstructNewbie);
             Register<Tessen>(new TextDefinition("Tessen"), "Percence Pessoal.", 0x27A3, 0, 0, 2000, cat, ConstructNewbie);
-           
-            //DECORAÇÃO
-            cat = StoreCategory.Decorations;
+            
+             //DECORAÇÃO
+             cat = StoreCategory.Decorations;
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
             Register<HildebrandtDragonRugDeed>(1157889, 1157890, 0, 0x9CD8, 0, 700, cat);
             Register<SmallWorldTreeRugAddonDeed>(1157206, 1157898, 0, 0x9CBA, 0, 300, cat);
