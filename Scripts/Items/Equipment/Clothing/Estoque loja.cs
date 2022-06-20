@@ -2,6 +2,204 @@ using System;
 
 namespace Server.Items
 {
+    public class Sandaliahumildade : BaseShoes
+    {
+        public override CraftResource DefaultResource {
+            get {
+                return CraftResource.RegularLeather;
+            }
+        }
+
+        [Constructable]
+        public Sandaliahumildade()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public Sandaliahumildade(int hue)
+            : base(0x170D, hue)
+        {
+            Name = "Sandalias da Humildade";
+            Hue = 2045;
+            LootType = LootType.Blessed;
+        }
+
+        public Sandaliahumildade(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override bool Dye(Mobile from, DyeTub sender)
+        {
+            if (Core.TOL)
+            {
+                return base.Dye(from, sender);
+            }
+
+            return false;
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class RobeElfico : BaseOuterTorso
+    {
+        public override Race RequiredRace {
+            get {
+                return Race.Elf;
+            }
+        }
+
+        [Constructable]
+        public RobeElfico()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public RobeElfico(int hue)
+            : base(0x2FB9, hue)
+        {
+            Name = " Robe Elfico com Capuz";
+            LootType = LootType.Blessed;
+            Weight = 2.0;
+        }
+
+        public RobeElfico(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.WriteEncodedInt(0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadEncodedInt();
+        }
+    }
+
+    public class RobeElficoFeminino : BaseOuterTorso
+    {
+        public override Race RequiredRace {
+            get {
+                return Race.Elf;
+            }
+        }
+        [Constructable]
+        public RobeElficoFeminino()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public RobeElficoFeminino(int hue)
+            : base(0x2FBA, hue)
+        {
+            Name = " Robe Elfico ";
+            LootType = LootType.Blessed;
+            Weight = 2.0;
+        }
+
+        public override bool AllowMaleWearer {
+            get {
+                return false;
+            }
+        }
+
+        public RobeElficoFeminino(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.WriteEncodedInt(0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadEncodedInt();
+        }
+    }
+
+    public class BotasElfica : BaseShoes
+    {
+        public override CraftResource DefaultResource {
+            get {
+                return CraftResource.RegularLeather;
+            }
+        }
+
+        public override Race RequiredRace {
+            get {
+                return Race.Elf;
+            }
+        }
+
+        [Constructable]
+        public BotasElfica()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public BotasElfica(int hue)
+            : base(0x2FC4, hue)
+        {
+            Name = "Botas Elficas";
+            LootType = LootType.Blessed;
+            this.Weight = 2.0;
+        }
+
+        public BotasElfica(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override bool Dye(Mobile from, DyeTub sender)
+        {
+            return false;
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.WriteEncodedInt(0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadEncodedInt();
+        }
+    }
+
     public class SobretudodoCarrasco : HoodedShroudOfShadowsNoob
     {
         [Constructable]
@@ -10,6 +208,7 @@ namespace Server.Items
         {
             Name = "Sobretudo Do Carrasco";
             Hue = 0;
+            LootType = LootType.Blessed;
         }
 
 
@@ -38,8 +237,6 @@ namespace Server.Items
         }
     }
 
-    //Categoria = Vestuario !
-    //Branco 
     public class AventalDaLuz : BaseWaist
     {
         [Constructable]
@@ -236,7 +433,7 @@ namespace Server.Items
             }
         }
     }
-    // Preto 
+
     public class AventalDaDasTrevas : BaseWaist
     {
         [Constructable]
