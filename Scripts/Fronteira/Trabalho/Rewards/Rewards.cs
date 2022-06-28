@@ -1858,6 +1858,7 @@ namespace Server.Engines.BulkOrders
         }
 
         private static readonly ConstructCallback PowerScroll = new ConstructCallback(CreatePowerScroll);
+        private static readonly ConstructCallback PowerScroll2 = new ConstructCallback(CreatePowerScroll2);
 
         #region Constructors
 
