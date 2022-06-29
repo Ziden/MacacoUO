@@ -5,7 +5,7 @@ namespace Server.Items
 {
     public class MysteriousTunnel : Item
     {
-        public override int LabelNumber { get { return 1152265; } } // mysterious tunnel       
+        public override int LabelNumber { get { return 1152265; } } // mysterious tunnel
         private Point3D m_PointDest;
         private Map m_Map;
 
@@ -55,7 +55,11 @@ namespace Server.Items
 
         public override void OnDoubleClick(Mobile m)
         {
-            Entra(m);
+            var dist = m.GetDistance(this);
+            if (dist < 2)
+                Entra(m);
+            else
+                m.SendMessage(78, "Você deve estar ao lado do túnel para usá-lo.");
         }
 
         public void Entra(Mobile m)

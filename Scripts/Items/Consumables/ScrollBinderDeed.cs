@@ -20,24 +20,24 @@ namespace Server.Items
 		private double m_Value;
 		private int m_Needed;
 		private double m_Has;
-		
+
 		[CommandProperty(AccessLevel.GameMaster)]
 		public BinderType BinderType { get { return m_BinderType; } set { m_BinderType = value; } }
-		
+
 		[CommandProperty(AccessLevel.GameMaster)]
 		public SkillName Skill { get { return m_Skill; } set { m_Skill = value; } }
-		
+
 		[CommandProperty(AccessLevel.GameMaster)]
 		public double Value { get { return m_Value; } set { m_Value = value; } }
-		
+
 		[CommandProperty(AccessLevel.GameMaster)]
 		public int Needed { get { return m_Needed; } set { m_Needed = value; } }
-		
+
 		[CommandProperty(AccessLevel.GameMaster)]
 		public double Has { get { return m_Has; } set { m_Has = value; } }
-		
+
 		public override int LabelNumber { get { return 1113135; } } //Scroll Binder
-		
+
 		[Constructable]
 		public ScrollBinderDeed() : base(0x14F0)
 		{
@@ -46,11 +46,11 @@ namespace Server.Items
 			m_Value = 0;
 			m_Needed = 0;
 			m_Has = 0;
-			
+
 			LootType = LootType.Cursed;
             Hue = 1641;
 		}
-		
+
 		public override void GetProperties(ObjectPropertyList list)
 		{
 			base.GetProperties(list);
@@ -72,7 +72,7 @@ namespace Server.Items
 					break;
 			}
 		}
-		
+
 		public override void OnDoubleClick(Mobile from)
 		{
 			if(IsChildOf(from.Backpack))
@@ -96,7 +96,7 @@ namespace Server.Items
                 from.SendLocalizedMessage(cliloc); //Target the scroll you wish to bind.
 			}
 		}
-		
+
 		public void OnTarget(Mobile from, object targeted)
 		{
             if(targeted is Item && !((Item)targeted).IsChildOf(from.Backpack))
@@ -112,33 +112,44 @@ namespace Server.Items
 						if(targeted is PowerScroll)
 						{
 							PowerScroll ps = (PowerScroll)targeted;
-							
+
 							if(ps.Value >= 120)
 							    from.SendLocalizedMessage(1113144); //This scroll is already the highest of its type and cannot be bound.
 							else
 							{
 								double value = ps.Value;
-                                int needed = 0;
+                int needed = 0;
 								if(value == 105) needed = 8;
 								else if(value == 110) needed = 6;
 								else if(value == 115) needed = 4;
 								else
 									return;
-								
+
 								m_Value = value;
 								m_Needed = needed;
-                                m_Has = 1;
+                m_Has = ps.Amount;
 								m_Skill = ps.Skill;
 								m_BinderType = BinderType.PowerScroll;
-								ps.Delete();
-                                from.SendMessage("Anexando.");
-                                from.PlaySound(0x249);
+								from.SendMessage("Anexando.");
+								if(m_Has >= m_Needed)
+								{
+									GiveItem(from, new PowerScroll(m_Skill, m_Value + 5));
+									from.SendLocalizedMessage(1113145); //You've completed your binding and received an upgraded version of your scroll!
+									if (ps.Amount > m_Needed)
+											ps.Consume(m_Needed);
+									else
+											ps.Delete();
+									Delete();
+								}
+								else
+										ps.Delete();
+                from.PlaySound(0x249);
 							}
 						}
 						else if (targeted is StatCapScroll)
 						{
 							StatCapScroll ps = (StatCapScroll)targeted;
-							
+
 							if(ps.Value >= 250)
 							    from.SendLocalizedMessage(1113144); //This scroll is already the highest of its type and cannot be bound.
 							else
@@ -151,7 +162,7 @@ namespace Server.Items
 								else if(value == 245) needed = 5;
 								else
 									return;
-								
+
 								m_Value = value;
 								m_Needed = needed;
                                 m_Has = 1;
@@ -164,7 +175,7 @@ namespace Server.Items
 						else if (targeted is ScrollOfTranscendence)
 						{
 							ScrollOfTranscendence sot = (ScrollOfTranscendence)targeted;
-							
+
 							m_Skill = sot.Skill;
 							m_BinderType = BinderType.SOT;
 							m_Needed = 5;
@@ -175,7 +186,7 @@ namespace Server.Items
 						}
 						else
 							from.SendLocalizedMessage(1113142); //You may only bind powerscrolls, stats scrolls or scrolls of transcendence.
-							
+
 						break;
 					}
 				case BinderType.PowerScroll:
@@ -183,24 +194,27 @@ namespace Server.Items
 						if(targeted is PowerScroll)
 						{
 							PowerScroll ps = (PowerScroll)targeted;
-							
+
 							if(ps.Value == m_Value)
 							{
 								if(ps.Skill ==  m_Skill)
 								{
-									m_Has++;
-									
+									m_Has += ps.Amount;
+
 									if(m_Has >= m_Needed)
 									{
 										GiveItem(from, new PowerScroll(m_Skill, m_Value + 5));
 										from.SendLocalizedMessage(1113145); //You've completed your binding and received an upgraded version of your scroll!
-										ps.Delete();
+										if (ps.Amount > ( m_Needed - m_Has ))
+												ps.Consume((int)m_Needed - ((int)m_Has - ps.Amount));
+										else
+												ps.Delete();
 										Delete();
 									}
 									else
 									{
 										ps.Delete();
-                                        from.PlaySound(0x249);
+                    from.PlaySound(0x249);
 										from.SendMessage("Binding Powerscroll.");
 									}
 								}
@@ -219,11 +233,11 @@ namespace Server.Items
 						if(targeted is StatCapScroll)
 						{
 							StatCapScroll stat = (StatCapScroll)targeted;
-							
+
 							if(stat.Value == m_Value)
 							{
 								m_Has++;
-								
+
 								if(m_Has >= m_Needed)
 								{
 									GiveItem(from, new StatCapScroll((int)m_Value + 5));
@@ -250,11 +264,11 @@ namespace Server.Items
 						if(targeted is ScrollOfTranscendence)
 						{
 							ScrollOfTranscendence sot = (ScrollOfTranscendence)targeted;
-							
+
 							if(sot.Skill == m_Skill)
 							{
 								double newValue = sot.Value + m_Has;
-								
+
 								if(newValue == m_Needed)
 								{
 									GiveItem(from, new ScrollOfTranscendence(m_Skill, m_Needed));
@@ -284,41 +298,41 @@ namespace Server.Items
 
             InvalidateProperties();
 		}
-		
+
 		public void GiveItem(Mobile from, Item item)
 		{
 			Container pack = from.Backpack;
-			
+
 			if(pack == null || !pack.TryDropItem(from, item, false))
 				item.MoveToWorld(from.Location, from.Map);
 		}
-		
+
 		private class InternalTarget : Target
 		{
 			private ScrollBinderDeed m_Binder;
-			
+
 			public InternalTarget(ScrollBinderDeed binder) : base(-1, false, TargetFlags.None)
 			{
                 m_Binder = binder;
 			}
-			
+
 			protected override void OnTarget(Mobile from, object targeted)
 			{
 				if(m_Binder != null && !m_Binder.Deleted && m_Binder.IsChildOf(from.Backpack))
 					m_Binder.OnTarget(from, targeted);
 			}
 		}
-		
+
 		private class BinderWarningGump : BaseConfirmGump
 		{
 			private double m_Value;
 			private int m_Needed;
 			private ScrollOfTranscendence m_Scroll;
 			private ScrollBinderDeed m_Binder;
-			
+
 			//public override int TitleNumber{ get{ return 1075083; } }
             public override int LabelNumber { get { return 1113147; } }
-			
+
 			public BinderWarningGump(double value, ScrollBinderDeed binder, ScrollOfTranscendence scroll, int needed)
 			{
 				m_Value = value;
@@ -326,9 +340,9 @@ namespace Server.Items
 				m_Scroll = scroll;
 				m_Binder = binder;
 			}
-			
+
 			public override void Confirm( Mobile from )
-			{		
+			{
 				if(m_Scroll != null && m_Binder != null)
 				{
 					m_Binder.GiveItem(from, new ScrollOfTranscendence(m_Scroll.Skill, m_Needed));
@@ -338,16 +352,16 @@ namespace Server.Items
                     from.SendLocalizedMessage(1113145); //You've completed your binding and received an upgraded version of your scroll!
 				}
 			}
-		
+
 			public override void Refuse( Mobile from )
 			{
 			}
 		}
-		
+
 		public ScrollBinderDeed(Serial serial) : base(serial)
 		{
 		}
-		
+
 		public override void Serialize(GenericWriter writer)
 		{
 			base.Serialize(writer);
@@ -381,7 +395,7 @@ namespace Server.Items
             else
                 writer.Write((int)0);*/
 		}
-		
+
 		public override void Deserialize(GenericReader reader)
 		{
 			base.Deserialize(reader);
