@@ -178,10 +178,10 @@ namespace Server
                 {
                     var from = damageable as Mobile;
                     var nivel = ColarElemental.GetNivel(damageable as Mobile, ElementoPvM.Luz);
-                    var chanceResist = nivel / 100; 
+                    var chanceResist = nivel / 100;
                     if(m.Hits > 50)
                     {
-                        chanceResist += nivel / 100; 
+                        chanceResist += nivel / 100;
                     }
                     if(chanceResist > 0 && Utility.RandomDouble() < chanceResist)
                     {
@@ -231,7 +231,7 @@ namespace Server
                         damage += 2;
                     }
                 }
-                
+
                 // PRESSAGIO
                 if (m != null && EvilOmenSpell.TryEndEffect(m))
                 {
@@ -553,7 +553,7 @@ namespace Server
             SkillMasterySpell.OnDamage(m, damageDealer, type, ref totalDamage);
             #endregion
 
-        
+
 
             if (type <= DamageType.Ranged)
             {
@@ -2592,7 +2592,7 @@ namespace Server
                     m_Mods = new List<SkillMod>();
 
                 SkillMod sk = new DefaultSkillMod(skill, true, bonus);
-                sk.ObeyCap = !Core.AOS; // passa do cap se for estilo t2a
+                sk.ObeyCap = Core.AOS; // passa do cap se for estilo t2a
                 m.AddSkillMod(sk);
                 m_Mods.Add(sk);
             }
@@ -2916,8 +2916,8 @@ namespace Server
         ResonancePoison = 0x00000100,
         ResonanceEnergy = 0x00000200,
         ResonanceKinetic = 0x00000400,
-        /*Soul Charge is wrong. 
-         * Do not use these types. 
+        /*Soul Charge is wrong.
+         * Do not use these types.
          * Use AosArmorAttribute type only.
          * Fill these in with any new attributes.*/
         SoulChargeFire = 0x00000800,
