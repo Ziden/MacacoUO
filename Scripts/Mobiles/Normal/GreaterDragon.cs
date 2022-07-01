@@ -5,11 +5,11 @@ using Server.Items;
 namespace Server.Mobiles
 {
     [CorpseName("a dragon corpse")]
-    public class GreaterDragon : Dragon
+    public class GreaterDragon : BaseCreature
     {
         [Constructable]
         public GreaterDragon()
-            : base()
+            : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.05, 0.1)
         {
             Name = "dragao anciao";
             Body = Utility.RandomList(12, 59);
@@ -20,7 +20,7 @@ namespace Server.Mobiles
             SetInt(475, 675);
 
             SetHits(1500, 2500);
-            
+
             SetDamage(24, 33);
 
             SetDamageType(ResistanceType.Physical, 100);
@@ -190,7 +190,7 @@ namespace Server.Mobiles
 
 			switch(version)
 			{
-                case 3:
+        case 3:
 				case 2:
 					break;
 				case 1:
