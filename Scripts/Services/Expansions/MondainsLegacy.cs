@@ -418,12 +418,14 @@ namespace Server
 
         public static void DropPeerlessMinor(Container peerlessCorpse)
         {
+
+            return; //Fix bug Boss Peerless
             Item item = Activator.CreateInstance(m_Artifacts[Utility.Random(m_Artifacts.Length)]) as Item;
 
             if (item is ICanBeElfOrHuman)
                 ((ICanBeElfOrHuman)item).ElfOnly = false;
 
-            //peerlessCorpse.DropItem(item);
+            peerlessCorpse.DropItem(item);
         }
 
         public static bool CheckML(Mobile from)
