@@ -186,6 +186,23 @@ namespace Server.Items
                     }
                 }
 
+                // FireBeetle como forja...
+                IPooledEnumerable eable = from.GetMobilesInRange(1);
+
+                foreach (Mobile mob in eable)
+                {
+
+                    if (mob is BaseCreature && (mob as BaseCreature).Controlled && !(mob as BaseCreature).IsDeadBondedPet && mob is FireBeetle) //mob is typeof(FireBeetle))
+                    {
+                        forja = new Point3D(mob.X, mob.Y, mob.Z);
+                        //Shard.Debug("FireBeetle: " + forja.ToString());
+                        temForja = true;
+                        break;
+                    }
+                }
+
+
+
                 if (!temForja)
                 {
                     var items = from.Map.GetItemsInRange(from.Location, 2);
@@ -396,7 +413,7 @@ namespace Server.Items
             var loc = forge;
             loc.Z = loc.Z + 7;
             Effects.SendLocationParticles(EffectItem.Create(loc, from.Map, TimeSpan.FromSeconds(1)), 0x3709, 30, 30, 5052);
-      
+
             Timer.DelayCall(TimeSpan.FromSeconds(2), () =>
             {
                 if (from != null && this != null && this.Amount > 0 && !this.Deleted)
@@ -478,7 +495,7 @@ namespace Server.Items
                     }
                     else if (m_Ore == ore)
                     {
-                        from.SendLocalizedMessage(501972); // Select another pile or ore with which to combine 
+                        from.SendLocalizedMessage(501972); // Select another pile or ore with which to combine
                         from.Target = new InternalTarget(ore);
                         return;
                     }
