@@ -149,9 +149,9 @@ namespace Server.Gumps
                 return;
             }
 
-            var jarros = from.Backpack.Items.Where(i => i is PedraMagica);
+            var jarros = from.Backpack.FindItemByType<PedraMagica>();
 
-            if(!from.Backpack.HasItems(new Type[] { typeof(PedraMagica) }, new int[] { 5 }))
+            if (jarros == null ||  jarros.Amount < 5)
             {
                 from.SendMessage("Falta po magico");
                 return;
@@ -170,9 +170,10 @@ namespace Server.Gumps
                 return;
             }
 
-            essencia.Consume(30);
+            jarros.Consume(5);
+            essencia.Consume(5);
             cristal.Consume(50);
-            from.Backpack.ConsumeTotal(new Type[] { typeof(PedraMagica) }, new int[] { 20 });
+            //from.Backpack.ConsumeTotal(new Type[] { typeof(PedraMagica) }, new int[] { 20 });
 
             Effects.SendLocationParticles(EffectItem.Create(from.Location, from.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
             Effects.PlaySound(from.Location, from.Map, 0x243);
@@ -191,4 +192,3 @@ namespace Server.Gumps
         }
     }
 }
-
