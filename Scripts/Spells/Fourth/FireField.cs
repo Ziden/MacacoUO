@@ -339,6 +339,8 @@ namespace Server.Spells.Fourth
                                 caster.DoHarmful(m);
 
                                 int damage = m_Item.m_Damage;
+                                if (!m.Player)
+                                    damage = ColarElemental.GetNivel(caster, ElementoPvM.Fogo);
 
                                 AOS.Damage(m, caster, damage, 0, 100, 0, 0, 0);
                                 m.PlaySound(0x208);
