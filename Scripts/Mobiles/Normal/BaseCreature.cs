@@ -2846,8 +2846,11 @@ namespace Server.Mobiles
                 var nivel = ColarElemental.GetNivel(ControlMaster, ElementoPvM.Terra);
                 if (nivel > 0)
                 {
-                    var redux = nivel / 50;
-                    damage -= damage * redux;
+                    //Shard.Debug("Sem bonus elemento PvM Terra na defesa: " + damage);
+                    var redux = (int)(damage * ((double)nivel / 50d));
+                    //Shard.Debug("Redux: " + redux);
+                    damage -= redux;
+                    //Shard.Debug("Bonus elemento PvM Terra na defesa: " + damage);
                 }
             }
 
@@ -2907,8 +2910,11 @@ namespace Server.Mobiles
                     var nivel = ColarElemental.GetNivel(ControlMaster, ElementoPvM.Terra);
                     if (nivel > 0)
                     {
-                        var redux = nivel / 25; // max 50%
-                        damage += damage * redux;
+                        //Shard.Debug("Sem bonus elemento PvM Terra no dano: " + damage);
+                        var redux = (int)(damage * ((double)nivel / 25d));
+                        //Shard.Debug("Redux: " + redux);
+                        damage += redux;
+                        //Shard.Debug("Bonus elemento PvM Terra no dano: " + damage);
                     }
                 }
                 else
