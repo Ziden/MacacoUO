@@ -293,7 +293,7 @@ namespace Server.Engines.Craft
             get
             {
                 return "<CENTER>COZINHEIRO</CENTER>";
-            }// 
+            }//
         }
 
         private static CraftSystem m_CraftSystem;
@@ -483,7 +483,7 @@ namespace Server.Engines.Craft
             AddRecipe(index, (int)CookRecipesExp.Teriyaki);
             SetNeedHeat(index, true);
 
-            index = AddCraft(typeof(TomatoSauce), "Molhos", "Tomato Sauce", 25.0, 100.0, typeof(Tomato), "Tomato", 3, 1044253);
+            index = AddCraft(typeof(TomatoSauce), "Molhos", "Molho de Tomate", 25.0, 100.0, typeof(Tomato), "Tomato", 3, 1044253);
             AddRes(index, typeof(BasketOfHerbsFarm), "Herbs", 1, 1044253);
             AddRecipe(index, (int)CookRecipesExp.TomatoSauce);
             SetNeedHeat(index, true);
@@ -506,7 +506,7 @@ namespace Server.Engines.Craft
             AddRecipe(index, (int)CookRecipesExp.VenisonRoast);
             SetNeedHeat(index, true);
 
- 
+
             #endregion
 
             #endregion
@@ -713,7 +713,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(BaseBeverage), 1046458, 1, 1044253);
             AddRecipe(index, (int)CookRecipesExp.WoodPulp);
 
-            index = AddCraft(typeof(DeliciouslyTastyTreat), 1044496, "Biscoito de Pet", 0, 100.0, typeof(TomatoSauce), "Tomate", 5, "Voce precisa de tomates");
+            index = AddCraft(typeof(DeliciouslyTastyTreat), 1044496, "Biscoito de Pet", 0, 100.0, typeof(TomatoSauce), "Molho de Tomate", 5, "Voce precisa de Molho de Tomate");
             AddRes(index, typeof(DriedOnions), "Cebolas Secas", 10, "Voce precisa de cebolas secas");
             AddRes(index, typeof(DriedHerbs), "Ervas Secas", 10, "Voce precisa de ervas secas");
             AddRes(index, typeof(Carrot), "Cenoura", 10, "Voce precisa cenouras");

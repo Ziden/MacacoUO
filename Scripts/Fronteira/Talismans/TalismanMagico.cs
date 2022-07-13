@@ -104,7 +104,7 @@ namespace Server.Items
                     }
                     else
                     {
-                        if (tali.Protection.Amount >= 25)
+                        if (tali.Protection.Amount >= 70)
                             continue;
                     }
 
@@ -114,7 +114,7 @@ namespace Server.Items
 
                         bixo.MovingParticles(pl, 0x36D4, 5, 0, false, true, 1, 9502, 4019, 0x160, 0, 0);
                         tali.Exp += 1;
-                        if (tali.Exp > tali.ExpPrecisa())
+                        if (tali.Exp >= tali.ExpPrecisa())
                         {
                             tali.Exp = 0;
                             tali.Protection.Amount += 1;
@@ -142,7 +142,7 @@ namespace Server.Items
                         }
                         else
                         {
-                            if (tali2.Killer.Amount >= 25)
+                            if (tali2.Killer.Amount >= 70)
                                 continue;
                         }
 
@@ -152,7 +152,7 @@ namespace Server.Items
 
                             bixo.MovingParticles(pl, 0x36D4, 5, 0, false, true, 1, 9502, 4019, 0x160, 0, 0);
                             tali2.Exp += 1;
-                            if (tali2.Exp > tali2.ExpPrecisa())
+                            if (tali2.Exp >= tali2.ExpPrecisa())
                             {
                                 tali2.Exp = 0;
                                 tali2.Killer.Amount += 1;
@@ -162,7 +162,7 @@ namespace Server.Items
                         }
                     }
                 }
-                
+
             }
         }
 
@@ -207,7 +207,7 @@ namespace Server.Items
             else
             {
                 list.Add(String.Format("Protecao: {0}%", this.Protection.Amount.ToString()));
-                if(this.Protection.Amount < 20)
+                if(this.Protection.Amount < 70)
                     list.Add("Exp: " + Exp + "/" + ExpPrecisa());
             }
         }
