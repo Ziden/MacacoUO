@@ -31,7 +31,7 @@ namespace Server.Commands
                 ts = date - dateNow;
             else
             {
-                date = date.AddDays(1);
+                date = date.AddHours(12);
                 ts = date - dateNow;
             }
             var cooldown = ts;
@@ -77,7 +77,7 @@ namespace Server.Commands
                 Anuncio.Anuncia("O GoldHour Terminou !");
             });
 
-            
+
         }
     }
 }

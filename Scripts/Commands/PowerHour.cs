@@ -49,7 +49,7 @@ namespace Server.Commands
                 ts = date - dateNow;
             else
             {
-                date = date.AddDays(1);
+                date = date.AddHours(12);
                 ts = date - dateNow;
             }
             var cooldown = ts;
@@ -58,9 +58,9 @@ namespace Server.Commands
                 if (SkillCheck.BONUS_GERAL != 0)
                     return;
 
-                Anuncio.Anuncia("POWEHOUR !! Bonus de UP por 3 Horas !");
+                Anuncio.Anuncia("POWEHOUR !! Bonus de UP por 2 Horas !");
                 SkillCheck.BONUS_GERAL = 2;
-                Timer.DelayCall(TimeSpan.FromHours(3), () => {
+                Timer.DelayCall(TimeSpan.FromHours(2), () => {
                     SkillCheck.BONUS_GERAL = 0;
                     Anuncio.Anuncia("O PowerHour de XP Terminou !");
                     Inicial();
@@ -95,7 +95,7 @@ namespace Server.Commands
                 Anuncio.Anuncia("O PowerHour de XP Terminou !");
             });
 
-            
+
         }
     }
 }
