@@ -47,7 +47,7 @@ namespace Server.Items
             else
             {
                 list.Add(String.Format("Dano: {0}%", this.Killer.Amount.ToString()));
-                if (this.Killer.Amount < 20)
+                if (this.Killer.Amount < 70)
                     list.Add("Exp: " + Exp + "/" + ExpPrecisa());
             }
         }
