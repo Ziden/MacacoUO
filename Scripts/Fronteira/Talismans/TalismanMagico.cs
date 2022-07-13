@@ -113,7 +113,14 @@ namespace Server.Items
                         pl.PlaySound(0x1FA);
 
                         bixo.MovingParticles(pl, 0x36D4, 5, 0, false, true, 1, 9502, 4019, 0x160, 0, 0);
-                        tali.Exp += 1;
+                        if (bixo.IsParagon)
+                        {
+                            tali.Exp += 5;
+                        }
+                        else
+                        {
+                            tali.Exp += 1;
+                        }
                         if (tali.Exp >= tali.ExpPrecisa())
                         {
                             tali.Exp = 0;
@@ -151,7 +158,14 @@ namespace Server.Items
                             pl.PlaySound(0x1FA);
 
                             bixo.MovingParticles(pl, 0x36D4, 5, 0, false, true, 1, 9502, 4019, 0x160, 0, 0);
-                            tali2.Exp += 1;
+                            if (bixo.IsParagon)
+                            {
+                                tali2.Exp += 5;
+                            }
+                            else
+                            {
+                                tali2.Exp += 1;
+                            }
                             if (tali2.Exp >= tali2.ExpPrecisa())
                             {
                                 tali2.Exp = 0;

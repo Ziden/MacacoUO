@@ -25,7 +25,7 @@ namespace Server.Commands
             CommandSystem.Register("goldhour", AccessLevel.Administrator, OnAction);
 
             var dateNow = DateTime.Now;
-            var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 23, 59, 59);
+            var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 01, 00, 00);
             TimeSpan ts;
             if (date > dateNow)
                 ts = date - dateNow;
