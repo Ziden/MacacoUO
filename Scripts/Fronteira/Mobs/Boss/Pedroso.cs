@@ -123,7 +123,7 @@ namespace Server.Mobiles
             DistribuiItem(new CristalDoPoder() { Amount = 10 });
             SorteiaItem(new DecoRelPor());
             SorteiaItem(new Granite());
-            SorteiaItem(new Rock1Rand());
+            //SorteiaItem(new Rock1Rand());
             //SorteiaItem(new Rock2Rand());
             SorteiaItem(new FragmentosAntigos());
             SorteiaItem(new FragmentosAntigos());
