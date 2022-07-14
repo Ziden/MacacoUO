@@ -178,7 +178,7 @@ namespace Server.Items
         }
     }
 
- 
+
     public class FragmentosAntigos : Item
     {
         [Constructable]
@@ -225,13 +225,13 @@ namespace Server.Items
                     colar.Attributes.SpellDamage = 1;
                     colar.Crafter = from;
                     from._PlaceInBackpack(colar);
-                    from.SendMessage("Voce o anel !");
+                    from.SendMessage("Voce criou um anel de dano magico !");
                 }
 
 
             }, 0x1053, 1152, "Dano Fisico", "Parry & Armor", "Dano Magico"));
 
-           
+
         }
 
         public FragmentosAntigos(Serial s) : base(s) { }

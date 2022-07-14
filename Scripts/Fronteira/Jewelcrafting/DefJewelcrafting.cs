@@ -33,7 +33,7 @@ namespace Server.Engines.Craft
 
     public class DefJewelcrafting : CraftSystem
     {
-       
+
         public static Item GetRandomReceitaNoob()
         {
             return new RecipeScroll(18901 + Utility.Random(4));
@@ -223,7 +223,7 @@ namespace Server.Engines.Craft
             index = AddCraft(typeof(DragonStone), "Utils", "Pedra Draconiana", 70, 110, typeof(DragonHead), "Cabeca de Dragao", 1, "Voce precisa de 1 cabeca de dragao");
             SetNeedForno(index, true);
 
-            index = AddCraft(typeof(JoiaArma), "Utils", "Joia Slayer para Armas", 70, 110, typeof(BloodOfTheDarkFather), "Sangue do Senhor das Sombras", 7, "Voce precisa de 7 sangue do senhor das sombras");
+            index = AddCraft(typeof(JoiaArma), "Utils", "Joia Slayer para Armas", 70, 110, typeof(BloodOfTheDarkFather), "Sangue do Senhor da Escuridao", 2, "Voce precisa de 2 sangue do senhor das sombras");
             SetNeedForno(index, true);
 
             index = AddCraft(typeof(TalismanDaProtecao), "Talismans", "Talisman de Protecao", 80, 110, typeof(RelicFragment), "Fragmento de Reliquia", 5, "Voce precisa de 5 Fragmentos de Reliquia");

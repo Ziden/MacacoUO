@@ -76,7 +76,7 @@ namespace Server.Mobiles
             SetWeaponAbility(WeaponAbility.MortalStrike);
             //SetSpecialAbility(SpecialAbility.VenomousBite);
 
-      
+
         }
 
         public Medusa(Serial serial)
@@ -103,7 +103,7 @@ namespace Server.Mobiles
 
             corpse.DropItem(new MedusaDarkScales(amount));
 
-            if (0.20 > Utility.RandomDouble())
+            if (0.40 > Utility.RandomDouble())
                 corpse.DropItem(new EscamaMagica());
             else
             {
