@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
 using Server.Items;
 using Server.Mobiles;
 using Server.Network;
 using Server.Services.Virtues;
+using System;
+using System.Collections.Generic;
 
 namespace Server.Gumps
 {
@@ -14,6 +14,7 @@ namespace Server.Gumps
         Healer = 2,
         Generic = 3,
         SilverSapling = 102034,
+        GemOfSalvation = 84106,
     }
 
     public class ResurrectGump : Gump
@@ -24,7 +25,7 @@ namespace Server.Gumps
         private readonly double m_HitsScalar;
         private readonly ResurrectMessage m_Msg;
 
-        private Action<Mobile> m_Callback;
+        private readonly Action<Mobile> m_Callback;
 
         public ResurrectGump(Mobile owner)
             : this(owner, owner, ResurrectMessage.Generic, false)
@@ -57,14 +58,13 @@ namespace Server.Gumps
         }
 
         public ResurrectGump(Mobile owner, Mobile healer, ResurrectMessage msg, bool fromSacrifice)
-            : this(owner, healer, msg, fromSacrifice, 0.0, null)
+            : this(owner, healer, msg, fromSacrifice, 0.1, null)
         {
         }
 
         public ResurrectGump(Mobile owner, Mobile healer, ResurrectMessage msg, bool fromSacrifice, double hitsScalar, Action<Mobile> callback)
             : base(100, 0)
         {
-
             m_Healer = healer;
             m_FromSacrifice = fromSacrifice;
             m_HitsScalar = hitsScalar;
@@ -75,9 +75,9 @@ namespace Server.Gumps
 
             AddBackground(0, 0, 400, 350, 2600);
 
-            AddHtml(0, 20, 400, 35, "<center>Voltar a Vida</center>", false, false); // <center>Resurrection</center>
+            AddHtmlLocalized(0, 20, 400, 35, 1011022, false, false); // <center>Resurrection</center>
 
-            AddHtmlLocalized(50, 55, 300, 140, @"Voce pode ressusitar aqui, gostaria ?<br>* CONTINUE - Voltar a vida.< br >*CANCEL - Prefere continuar como fantasma por hora.", true, true); /* It is possible for you to be resurrected here by this healer. Do you wish to try?<br>
+            AddHtmlLocalized(50, 55, 300, 140, 1011023 + (int)msg, true, true); /* It is possible for you to be resurrected here by this healer. Do you wish to try?<br>
             * CONTINUE - You chose to try to come back to life now.<br>
             * CANCEL - You prefer to remain a ghost for now.
             */
@@ -118,14 +118,14 @@ namespace Server.Gumps
             AddImageTiled(15, 15, 365, 190, 2624);
 
             AddRadio(30, 140, 9727, 9730, true, 1);
-            AddHtml(65, 145, 300, 25, "Pagar o dinheiro", 0x7FFF, false, false); // Grudgingly pay the money
+            AddHtmlLocalized(65, 145, 300, 25, 1060015, 0x7FFF, false, false); // Grudgingly pay the money
 
             AddRadio(30, 175, 9727, 9730, false, 0);
-            AddHtml(65, 178, 300, 25, "Prefiro ficar morto", 0x7FFF, false, false); // I'd rather stay dead, you scoundrel!!!
+            AddHtmlLocalized(65, 178, 300, 25, 1060016, 0x7FFF, false, false); // I'd rather stay dead, you scoundrel!!!
 
-            AddHtml(30, 20, 360, 35, "Deseja se juntar aos vivos, não é? Eu posso restaurar <br> seu corpo... por um preço, claro...", 0x7FFF, false, false); // Wishing to rejoin the living, are you?  I can restore your body... for a price of course...
+            AddHtmlLocalized(30, 20, 360, 35, 1060017, 0x7FFF, false, false); // Wishing to rejoin the living, are you?  I can restore your body... for a price of course...
 
-            AddHtml(30, 105, 345, 40, "Você aceita a taxa, que será retirada do seu banco?", 0x5B2D, false, false); // Do you accept the fee, which will be withdrawn from your bank?
+            AddHtmlLocalized(30, 105, 345, 40, 1060018, 0x5B2D, false, false); // Do you accept the fee, which will be withdrawn from your bank?
 
             AddImage(65, 72, 5605);
 
@@ -133,7 +133,7 @@ namespace Server.Gumps
             AddImageTiled(95, 92, 200, 1, 9157);
 
             AddLabel(90, 70, 1645, price.ToString());
-            AddHtml(140, 70, 100, 25, "moedas de ouro", 0x7FFF, false, false); // gold coins
+            AddHtmlLocalized(140, 70, 100, 25, 1023823, 0x7FFF, false, false); // gold coins
 
             AddButton(290, 175, 247, 248, 2, GumpButtonType.Reply, 0);
 
@@ -184,19 +184,18 @@ namespace Server.Gumps
                     {
                         if (Banker.Withdraw(from, m_Price))
                         {
-                            from.SendLocalizedMessage("Bem vindo de volta ao mundo dos vivos");                     
-                            //from.SendLocalizedMessage(1060398, m_Price.ToString()); // ~1_AMOUNT~ gold has been withdrawn from your bank box.
-                            //from.SendLocalizedMessage(1060022, Banker.GetBalance(from).ToString()); // You have ~1_AMOUNT~ gold in cash remaining in your bank box.
+                            from.SendLocalizedMessage(1060398, m_Price.ToString()); // ~1_AMOUNT~ gold has been withdrawn from your bank box.
+                            from.SendLocalizedMessage(1060022, Banker.GetBalance(from).ToString()); // You have ~1_AMOUNT~ gold in cash remaining in your bank box.
                         }
                         else
                         {
-                            from.SendLocalizedMessage("Infelizmente, você não tem dinheiro suficiente em seu banco para cobrir o custo da cura. "); // Unfortunately, you do not have enough cash in your bank to cover the cost of the healing.
+                            from.SendLocalizedMessage(1060020); // Unfortunately, you do not have enough cash in your bank to cover the cost of the healing.
                             return;
                         }
                     }
                     else
                     {
-                        from.SendLocalizedMessage("Você decide não pagar o curandeiro e, assim, permanece morto. "); // You decide against paying the healer, and thus remain dead.
+                        from.SendLocalizedMessage(1060019); // You decide against paying the healer, and thus remain dead.
                         return;
                     }
                 }
@@ -210,7 +209,7 @@ namespace Server.Gumps
                 {
                     VirtueLevel level = VirtueHelper.GetLevel(m_Healer, VirtueName.Compassion);
 
-                    switch( level )
+                    switch (level)
                     {
                         case VirtueLevel.Seeker:
                             from.Hits = AOS.Scale(from.HitsMax, 20);
@@ -257,33 +256,8 @@ namespace Server.Gumps
                     Misc.Titles.AwardFame(from, -amount, true);
                 }
 
-                /*
-                if (!Core.AOS && from.ShortTermMurders >= 5)
-                {
-                    double loss = (100.0 - (4.0 + (from.ShortTermMurders / 5.0))) / 100.0; // 5 to 15% loss
-
-                    if (loss < 0.85)
-                        loss = 0.85;
-                    else if (loss > 0.95)
-                        loss = 0.95;
-
-                    if (from.RawStr * loss > 10)
-                        from.RawStr = (int)(from.RawStr * loss);
-                    if (from.RawInt * loss > 10)
-                        from.RawInt = (int)(from.RawInt * loss);
-                    if (from.RawDex * loss > 10)
-                        from.RawDex = (int)(from.RawDex * loss);
-
-                    for (int s = 0; s < from.Skills.Length; s++)
-                    {
-                        if (from.Skills[s].Base * loss > 35)
-                            from.Skills[s].Base *= loss;
-                    }
-                }
-                */
-
                 if (from.Alive && m_HitsScalar > 0)
-                    from.Hits = from.HitsMax;
+                    from.Hits = (int)(from.HitsMax * m_HitsScalar);
 
                 if (m_Callback != null)
                     m_Callback(from);
