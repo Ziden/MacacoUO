@@ -94,7 +94,7 @@ namespace Server.Engines.UOStore
             Register<RobeAnjoDasTrevas>(new TextDefinition("Robe Das Trevas"), "Roupas True Black", 0x1F03, 0, 0, 5000, cat);
             Register<DragonicRobe>(new TextDefinition("Robe Dragonic "), "Roupa Comemorativa<b>Estoque limitado.", 0x1F03, 0, 0, 6000, cat);
             Register<SobretudodoCarrasco>(new TextDefinition("Sobretudo Do Carrasco"), "Sobretudo Especial<b> Pode ser pintado.", 0x2687, 0, 0, 5000, cat);
-            Register<CharacterStatueMaker>("Estatua de Jogador", "Construa uma estatua do seu personagem.<br>Se eternalize !.", 0x32F0, 0, 0, 15000, cat);
+            Register<CharacterStatueMaker>("Estatua de Jogador", "Construa uma estatua do seu personagem.<br>Se eternalize !.", 0x32F0, 0, 0, 8000, cat);
             Register<PergaminhoPerdao>("Pergaminho do Perdao", "Remove 1 long count.", 0x1F35, 0, 55, 500, cat);
             Register<SacolaCristais>("100 Cristais Elementais", "Sacola com 100 cristais elementais.", 16395, 0, 2611, 25000, cat);          
             Register<Spellbook>("Fullbook", "Fullbook.<br>Tem todas as magias.", 0x14F0, 0, 0, 5000, cat, ConstructSpellbook);
@@ -107,20 +107,20 @@ namespace Server.Engines.UOStore
             Register<KeepDeed>("Keep", "Deed de Keep.<br>Moradia chique para lords.", 0x14F0, 0, 0, 7500, cat);
             Register<TowerDeed>("Torre", "Deed de Torre.<br>Moradia chique para lords.", 0x14F0, 0, 0, 5000, cat);
             Register<LargeMarbleDeed>("Marble", "Deed de Marble.<br>Moradia chique para lords.", 0x14F0, 0, 0, 3000, cat);
-            Register<TrinsicKeepDeed>("Keep Trinsic", "Deed de Moradia Keep 3 andares .<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
+            Register<TrinsicKeepDeed>("Keep Trinsic", "Deed de Moradia Keep 3 andares .<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
             Register<CasaMogaDeed>("Casa Moga", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<RobinsNestDeed>("Casa The robin’s", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<CastleOfOceaniaDeed>("Oceania Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<FeudalCastleDeed>("Castle Feudal", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<ElsaCastleDeed>("Elsa Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<SpiresDeed>("Spires Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<GothicRoseCastleDeed>("Gothic Rose Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<TraditionalKeepDeed>("Traditional Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<SandalwoodKeepDeed>("Sandalwood Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat);
-            Register<DarkthornKeepDeed>("Darkthorn Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 20000, cat); 
-            Register<Sobrado7x7>("Deed Casa Custom 7x7", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 8000, cat); 
-            Register<Sobrado11x11>("Deed Casa Custom 11x11", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 20000, cat);
-            Register<TorreMansao>("Deed Casa Custom 18x18", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 20000, cat);
+            Register<RobinsNestDeed>("Casa The robin’s", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
+            Register<CastleOfOceaniaDeed>("Oceania Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
+            Register<FeudalCastleDeed>("Castle Feudal", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
+            Register<ElsaCastleDeed>("Elsa Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
+            Register<SpiresDeed>("Spires Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
+            Register<GothicRoseCastleDeed>("Gothic Rose Castle", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
+            Register<TraditionalKeepDeed>("Traditional Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
+            Register<SandalwoodKeepDeed>("Sandalwood Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat);
+            Register<DarkthornKeepDeed>("Darkthorn Keep Deed", "Deed de Moradia.<br>Moradia chique para lords.", 0x14F0, 0, 0, 15000, cat); 
+            Register<Sobrado7x7>("Deed Casa Custom 7x7", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 5000, cat); 
+            Register<Sobrado11x11>("Deed Casa Custom 11x11", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 15000, cat);
+            Register<TorreMansao>("Deed Casa Custom 18x18", "Atenção.<br>Custa gold para construir partes.", 0x14F0, 0, 0, 15000, cat);
 
 
             cat = StoreCategory.Character;
@@ -203,7 +203,7 @@ namespace Server.Engines.UOStore
             Register<EtherealHiryu>(new TextDefinition("Hiryu Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x276A, 0, 0, 5000, cat);
             Register<EtherealAncientHellHound>(new TextDefinition("HellHound Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x3FFD, 0, 0, 5000, cat);
             Register<EtherealTarantula>(new TextDefinition("Tarantula"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x9DD6, 0, 0, 5000, cat);
-            Register<EtherealSerpentineDragon>(new TextDefinition("SerpentineDragon"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0xA010, 0, 0, 10000, cat);
+            Register<EtherealSerpentineDragon>(new TextDefinition("SerpentineDragon"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0xA010, 0, 0, 80000, cat);
             
 
                                                   
