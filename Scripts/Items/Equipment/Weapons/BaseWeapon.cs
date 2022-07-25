@@ -1597,7 +1597,7 @@ namespace Server.Items
             {
                 chance += 0.1; // +10% em players
             }
-          
+
             if (defender.Weapon is BaseRanged)
             {
                 chance += 0.1; // +10% chance hit em ranged
@@ -1982,7 +1982,7 @@ namespace Server.Items
 
             if (shield != null || !defender.Player)
             {
-                double chance = parry / 400; // 25% 
+                double chance = parry / 400; // 25%
 
                 if (defender.Player && parry > 70 && attacker is BaseCreature)
                 {
@@ -2130,7 +2130,7 @@ namespace Server.Items
 
             if (blocked)
             {
-              
+
                 attacker.SendMessage("O alvo bloqueou seu ataque");
                 defender.SendMessage("Voce bloqueou o ataque");
                 defender.FixedEffect(0x37B9, 10, 16);
@@ -2145,9 +2145,9 @@ namespace Server.Items
                         bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.4 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
                     } else
                     {
-                      
+
                         bloqueado = (int)(shield.ArmorRating * (attackerWeapon is BaseRanged ? 1.2 : 1.0));
-                       
+
                     }
                 }
                 else
@@ -2548,7 +2548,7 @@ namespace Server.Items
                 damage -= redux;
                 if (damage < 1)
                     damage = 1;
-              
+
                 if (Shard.DebugEnabled)
                 {
                     Shard.Debug("Virtual Armor: " + virtualArmor + " Scalar: " + scalar + " REDUX " + redux);
@@ -2931,7 +2931,7 @@ namespace Server.Items
                 {
                     var skillDmg = AosAttributes.GetValue(attacker, AosAttribute.WeaponSkillDamage, true) / 100d;
                     bonus += skillDmg;
-                        
+
                 }
                 percentageBonus += (int)(bonus * 100) - 100;
             }
@@ -2986,7 +2986,7 @@ namespace Server.Items
             if (tal != CheckSlayerResult.None)
             {
                 percentageBonus += 75;
-                
+
             }
 
             if (CheckSlayerOpposition(attacker, defender) != CheckSlayerResult.None)
@@ -3252,6 +3252,16 @@ namespace Server.Items
                 defender.PublicOverheadMessage(MessageType.Regular, 38, true, "* crit *");
                 damage *= 2;
             }
+
+            double colarRaio = ColarElemental.GetNivel(attacker, ElementoPvM.Raio);
+            double chanceraio = 0.10d + ( colarRaio / 100d );
+            //Shard.Debug("Chance Golpe Eletrico: " + chanceraio);
+            if (colarRaio > 0 && Utility.RandomDouble() < chanceraio)
+            {
+                DoLightning(attacker, defender);
+                attacker.OverheadMessage("* Golpe Eletrico *");
+            }
+
 
             damageGiven = AOS.Damage(
                 defender,
@@ -4234,7 +4244,7 @@ namespace Server.Items
 
             if (m_DamageLevel != WeaponDamageLevel.Regular)
             {
-                if(bonusOre <= 3) 
+                if(bonusOre <= 3)
                 {
                     damage += (2 * (int)m_DamageLevel) - 1;
                 }
@@ -4436,7 +4446,7 @@ namespace Server.Items
                 if (quiver != null)
                     damage += damage * quiver.DamageIncrease / 100;
             }
-          
+
 
             /* Compute tactics modifier
             * :   0.0 = 50% loss
@@ -7116,7 +7126,7 @@ namespace Server.Items
             return quality;
         }
 
-     
+
 
         public virtual void DistributeMaterialBonus(CraftAttributeInfo attrInfo)
         {
