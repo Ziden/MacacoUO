@@ -3257,6 +3257,8 @@ namespace Server.Items
             if (colarRaio > 0 && Utility.RandomDouble() < 0.1 + colarRaio / 100)
             {
                 DoLightning(attacker, defender);
+                from.SendMessage("Voce acertou um golpe eletrico no inimigo");
+                this.OverheadMessage("* Golpe Eletrico *");
             }
 
 
