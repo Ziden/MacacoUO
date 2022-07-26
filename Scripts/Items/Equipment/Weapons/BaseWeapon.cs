@@ -3246,8 +3246,10 @@ namespace Server.Items
                 damage += (int)inc;
             }
 
-            var colarVento = ColarElemental.GetNivel(attacker, ElementoPvM.Vento);
-            if (colarVento > 0 && Utility.RandomDouble() < 0.1 + colarVento / 120)
+            double colarVento = ColarElemental.GetNivel(attacker, ElementoPvM.Vento);
+            double chancevento = 0.10d + ( colarVento / 120d );
+            Shard.Debug("Chance de Critico: " + chancevento);
+            if (colarVento > 0 && Utility.RandomDouble() < chancevento)
             {
                 defender.PublicOverheadMessage(MessageType.Regular, 38, true, "* crit *");
                 damage *= 2;
@@ -3255,7 +3257,7 @@ namespace Server.Items
 
             double colarRaio = ColarElemental.GetNivel(attacker, ElementoPvM.Raio);
             double chanceraio = 0.10d + ( colarRaio / 100d );
-            //Shard.Debug("Chance Golpe Eletrico: " + chanceraio);
+            Shard.Debug("Chance Golpe Eletrico: " + chanceraio);
             if (colarRaio > 0 && Utility.RandomDouble() < chanceraio)
             {
                 DoLightning(attacker, defender);

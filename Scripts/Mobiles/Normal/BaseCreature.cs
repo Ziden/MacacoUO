@@ -2933,10 +2933,13 @@ namespace Server.Mobiles
                     damage = (int)(damage * 0.7);
                 }
 
-                var colarGelo = ColarElemental.GetNivel(to, ElementoPvM.Gelo);
-                if (colarGelo > 0 && Utility.RandomDouble() < 0.1 + colarGelo / 100)
+                double colarGelo = ColarElemental.GetNivel(to, ElementoPvM.Gelo);
+                double chancegelo = 0.10d + ( colarGelo / 100d );
+                Shard.Debug("Chance de Congelar: " + chancegelo);
+                if (colarGelo > 0 && Utility.RandomDouble() < chancegelo)
                 {
                     this.Paralyze(TimeSpan.FromSeconds(colarGelo / 25));
+                    to.OverheadMessage("* Golpe Congelante *");
                 }
 
                 if (this.Elemento.ForteContra(to.Elemento))
