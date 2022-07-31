@@ -138,7 +138,7 @@ namespace Server.Mobiles
                     m_SlayerVulnerabilities.Add("Repond");
                 }
 
-                new ExpirePolymorphTimer(m).Start();
+               
             }
         }
 
