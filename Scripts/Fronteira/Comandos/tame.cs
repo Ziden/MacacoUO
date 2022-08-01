@@ -18,7 +18,7 @@ namespace Server.Commands
         {
             Mobile m = e.Mobile;
 
-            m.SendMessage("O que você deseja domar");
+            m.SendMessage("O que você deseja domar l");
             m.Target = new IstaTameTarget(m);
         }
         public class IstaTameTarget : Target
