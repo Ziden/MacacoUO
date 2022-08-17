@@ -32,6 +32,7 @@ namespace Server.SkillHandlers
 
         public static TimeSpan OnUse(Mobile src)
         {
+            src.RevealingAction();
             src.SendLocalizedMessage(500819);//Where will you search?
             src.Target = new InternalTarget();
 

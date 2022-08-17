@@ -60,7 +60,7 @@ namespace Server.Mobiles
             Fame = 25000;
             Karma = -25000;
 
-            VirtualArmor = 1000;
+            VirtualArmor = 0;
 
             Tamable = true;
             ControlSlots = 3;

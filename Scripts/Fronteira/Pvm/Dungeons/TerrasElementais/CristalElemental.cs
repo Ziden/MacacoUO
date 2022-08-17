@@ -63,7 +63,7 @@ namespace Server.Items
         [Constructable]
         public CristalTherathan(int amount) : base(16395)
         {
-            Name = "Cristais Therathan";
+            Name = "Cristais Terathan";
             Stackable = true;
             Amount = amount;
 

@@ -20,6 +20,7 @@ namespace Server.SkillHandlers
 
         public static TimeSpan OnUse(Mobile m)
         {
+            m.RevealingAction();
             m.SendLocalizedMessage("O que deseja procurar ?"); // What do you wish to track?
 
             m.CloseGump(typeof(TrackWhatGump));
