@@ -42,7 +42,15 @@ namespace Server.Spells.Sixth
 
         public void Target(RecallRune rune)
         {
+            
+            Map map = Caster.Map;
+            
             if(StuckMenu.IsInSecondAgeArea(Caster) && !(rune is T2ARecallRune))
+            {
+                Caster.SendMessage("A magia parece nao ter efeito com esta runa neste local");
+                return;
+            }
+            if ( map == Map.Ilshenar && !(rune is T2ARecallRune))
             {
                 Caster.SendMessage("A magia parece nao ter efeito com esta runa neste local");
                 return;

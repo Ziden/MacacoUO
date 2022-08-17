@@ -344,7 +344,7 @@ namespace Server.Items
         public T2ARecallRune()
             : base()
         {
-            Name = "Runa das Terras Perdida";
+            Name = "Runa Temporal";
         }
 
         public T2ARecallRune(Serial serial)

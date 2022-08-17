@@ -64,6 +64,11 @@ namespace Server.Mobiles
             m_SpecialSlayerMechanics = true;
         }
 
+        public override bool TeleportsTo { get { return true; } }
+        public override TimeSpan TeleportDuration { get { return TimeSpan.FromSeconds(Utility.RandomMinMax(30, 60)); } }
+        public override double TeleportProb { get { return 1.0; } }
+        public override bool TeleportsPets { get { return true; } }
+
         public Barracoon(Serial serial)
             : base(serial)
         {
@@ -220,7 +225,7 @@ namespace Server.Mobiles
             }
         }
 
-        public virtual int BonusExp => 1800;
+        public override int BonusExp => 1800;
 
         public override void OnDeath(Container c)
         {

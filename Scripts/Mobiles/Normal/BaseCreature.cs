@@ -3318,10 +3318,10 @@ namespace Server.Mobiles
 
                     if (this.Map == Map.Ilshenar && !(this.Region is DungeonGuardedRegion))
                     {
-                        if (IsParagon || Utility.Random(1000) == 1)
+                        if (IsParagon || Utility.Random(100) == 1)
                             PackItem(Loot.RandomTalisman());
 
-                        if (IsParagon && Utility.Random(5) == 1)
+                        if (IsParagon && Utility.Random(50) == 1)
                             PackItem(new TalismanElemental());
 
                         //SetHits(Hits * 3);

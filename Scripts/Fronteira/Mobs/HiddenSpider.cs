@@ -61,7 +61,7 @@ namespace Server.Mobiles
            
 
             Teia();
-            if (!this.Hidden && this.Combatant == null)
+            if (!this.Hidden && this.Combatant == null && !(this.ControlMaster is PlayerMobile))
             {
                 this.AllowedStealthSteps = 999;
                 this.Hidden = true;

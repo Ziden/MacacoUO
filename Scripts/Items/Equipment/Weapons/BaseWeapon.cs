@@ -2424,9 +2424,12 @@ namespace Server.Items
 
             if (defender.Player && !attacker.Player)
             {
-                virtualArmor += (virtualArmor / 2) * ((defender.GetBonusElemento(ElementoPvM.Terra) + defender.GetBonusElemento(ElementoPvM.Luz)));
+                //Shard.Debug("DEFESA ANTES ELEMENTO - Armor: " + virtualArmor + " dano: " + damage, defender);
+                virtualArmor += virtualArmor * ((defender.GetBonusElemento(ElementoPvM.Terra) + defender.GetBonusElemento(ElementoPvM.Luz)));
                 damage -= (int)Math.Ceiling(damage * (AosAttributes.GetValue(defender, AosAttribute.DefendChance, true) / 100d));
+                //Shard.Debug("DEFESA DEPOIS ELEMENTO - Armor: " + virtualArmor + " dano: " + damage, defender);
             }
+
             if (!defender.Player && attacker.Player)
             {
                 var bonus = virtualArmor * attacker.GetBonusElemento(ElementoPvM.Vento);
@@ -2546,6 +2549,7 @@ namespace Server.Items
                 int to = (int)(virtualArmor * scalar);
                 var redux = Utility.Random(from, (to - from) + 1);
                 damage -= redux;
+
                 if (damage < 1)
                     damage = 1;
 
