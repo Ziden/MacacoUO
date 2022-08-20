@@ -1575,7 +1575,7 @@ namespace Server.Items
             else
             {
                 var bonusElemental = defender.GetBonusElemento(ElementoPvM.Fogo) + (defender.GetBonusElemento(ElementoPvM.Vento) / 2) + defender.GetBonusElemento(ElementoPvM.Raio) + defender.GetBonusElemento(ElementoPvM.Gelo);
-                bonusElemental /= 3;
+                bonusElemental /= 2;
                 bonus -= (int)(bonusElemental * 100);
                 if (Shard.DebugEnabled && bonusElemental > 0)
                 {

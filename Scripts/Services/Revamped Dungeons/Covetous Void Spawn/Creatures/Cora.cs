@@ -303,6 +303,8 @@ namespace Server.Mobiles
             if (m != null)
             {
                 BaseWeapon artifact = Loot.RandomWeapon();
+                if(0.20 > Utility.RandomDouble())
+                    artifact = Loot.RandomRangedWeapon();
                 artifact.WeaponAttributes.HitFireArea = 100;
                 if (artifact.Name != null)
                     artifact.Name += " de fogo de Cora";
