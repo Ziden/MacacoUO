@@ -1,4 +1,3 @@
-using Server.Fronteira.Guildas;
 using Server.Items;
 using Server.Mobiles;
 using Server.Ziden.Achievements;
@@ -52,11 +51,10 @@ namespace Server.Ziden.RecompensaLogin
 
             Rewards.Add(new CollectionItem(typeof(SacolaBands), 0xE21, "Sacola com 50 Bandagens", 0, 6));
             Rewards.Add(new CollectionItem(typeof(BagOfReagents), 0xE76, "Sacola com 50 Reagentes", 0, 6));
-            Rewards.Add(new CollectionItem(typeof(BagOfNecroReagents), 0xE76, "Sacola com 50 Reagentes Necro", 0, 8));
-            Rewards.Add(new CollectionItem(typeof(BagOfArrows), 0xE76, "100 Flechas", 0, 3));
-            Rewards.Add(new CollectionItem(typeof(BagOfBolts), 0xE76, "100 Dardos", 0, 3));
+            Rewards.Add(new CollectionItem(typeof(BagOfArrows), 0x0F40, "100 Flechas", 0, 3));
+            Rewards.Add(new CollectionItem(typeof(BagOfBolts), 0x1BFC, "100 Dardos", 0, 3));
             Rewards.Add(new CollectionItem(typeof(HealPotion), 0xF0C, "Pocao de Cura", 0, 3));
-            Rewards.Add(new CollectionItem(typeof(SacolaDeOuro), 0xE76, "Sacola com 300 Moedas", 0, 3));
+            Rewards.Add(new CollectionItem(typeof(SacolaDeOuro), 0x0EEF, "Sacola com 300 Moedas", 0, 3));
             Rewards.Add(new CollectionItem(typeof(BagOfSending), 0xE76, "Sacola de Envio para Banco", 55, 200));
             Rewards.Add(new CollectionItem(typeof(SpellbookPreto), 0xEFA, "Livro de Magias Negro", TintaPreta.COR, 200));
 
@@ -73,19 +71,16 @@ namespace Server.Ziden.RecompensaLogin
             // Rewards.Add(new CollectionItem(typeof(MagicalFishFinder), 0x14F6, "Encontrador de Peixes Magicos", 2500, 100));
             Rewards.Add(new CollectionItem(typeof(PergaminhoRunebook), 0x1F35, "Pergaminho de Runebook<br>Recarrega um runebook", 0, 10));
             Rewards.Add(new CollectionItem(typeof(HoodedShroudOfShadowsNoob), 0x2684, "Tunica dos Mortos Pessoal", 0, 24 * 30)); // Yew
-            //Rewards.Add(new CollectionItem(typeof(ArmarioUniforme), 0x2D07, "Armario de uniforme para Guildas", 0, 24 * 30)); // Yew
-            //Rewards.Add(new CollectionItem(typeof(PergaminhoBancoGuilda), 0x14F0, "Pergaminho de banco para Guildas", 0, 24 * 30)); // Yew
             Rewards.Add(new CollectionItem(typeof(EtherealHorse), 0x20DD, "Cavalo Magico", 0, 24 * 30)); // Yew
-
-            Rewards.Add(new CollectionItem(typeof(SewingMachineDeed), 0x1F35, "Maquina de Tecer", 0, 24 * 10));
-            Rewards.Add(new CollectionItem(typeof(SmithingPressDeed), 0x1F35, "Maquina de Fundicao", 0, 24 * 10));
-            Rewards.Add(new CollectionItem(typeof(SpinningLatheDeed), 0x1F35, "Maquina de Couros", 0, 24 * 10));
-            Rewards.Add(new CollectionItem(typeof(FletchingStationDeed), 0x1F35, "Mesa do arqueiro", 0, 24 * 10));
-            Rewards.Add(new CollectionItem(typeof(BBQSmokerDeed), 0x1F35, "Churrasqueira", 0, 24 * 10));
-            Rewards.Add(new CollectionItem(typeof(AlchemyStationDeed), 0x1F35, "Estacao do Alquimista", 0, 24 * 10));
-            Rewards.Add(new CollectionItem(typeof(WritingDeskDeed), 0x1F35, "Mesa do Escriba", 0, 24 * 10));
-            Rewards.Add(new CollectionItem(typeof(AlchemyStationDeed), 0x1F35, "Estacao do Alquimista", 0, 24 * 10));
-            Rewards.Add(new CollectionItem(typeof(TinkerBenchDeed), 0x1F35, "Mesa de Funilaria", 0, 24 * 10));
+            
+            Rewards.Add(new CollectionItem(typeof(SewingMachineDeed), 0x9A40, "Maquina de Tecer", 0, 24 * 10));
+            Rewards.Add(new CollectionItem(typeof(SmithingPressDeed), 0x9AA9, "Maquina de Fundicao", 0, 24 * 10));
+            Rewards.Add(new CollectionItem(typeof(SpinningLatheDeed), 0x9C24, "Maquina de Couros", 0, 24 * 10));
+            Rewards.Add(new CollectionItem(typeof(FletchingStationDeed), 0x9C2E, "Mesa do arqueiro", 0, 24 * 10));
+            Rewards.Add(new CollectionItem(typeof(BBQSmokerDeed), 0x9D98, "Churrasqueira", 0, 24 * 10));
+            Rewards.Add(new CollectionItem(typeof(AlchemyStationDeed), 0x9D8E, "Estacao do Alquimista", 0, 24 * 10));
+            Rewards.Add(new CollectionItem(typeof(WritingDeskDeed), 0x9FEA, "Mesa do Escriba", 0, 24 * 10));
+            Rewards.Add(new CollectionItem(typeof(TinkerBenchDeed), 0xA213, "Mesa de Funilaria", 0, 24 * 10));
 
         }
     }
