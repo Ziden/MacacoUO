@@ -13,6 +13,7 @@ namespace Server.Items
         {
             this.Weight = 1.0;
             Name = "Adaga";
+            LootType = LootType.Blessed;
         }
 
         public Dagger(Serial serial)
