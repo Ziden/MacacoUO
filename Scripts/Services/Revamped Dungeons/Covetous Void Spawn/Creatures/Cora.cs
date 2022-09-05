@@ -290,7 +290,7 @@ namespace Server.Mobiles
             base.OnDeath(c);
 
             Mobile m = DemonKnight.FindRandomPlayer(this);
-        
+
             for (var x = 0; x < 10; x++)
             {
                 SorteiaItem(ElementoUtils.GetRandomPedraSuperior(3));
@@ -302,9 +302,12 @@ namespace Server.Mobiles
 
             if (m != null)
             {
-                BaseWeapon artifact = Loot.RandomWeapon();
-                if(0.20 > Utility.RandomDouble())
+                BaseWeapon artifact;
+                double rand = Utility.RandomDouble();
+                if(0.35 > rand)
                     artifact = Loot.RandomRangedWeapon();
+                else
+                    artifact = Loot.RandomWeapon();
                 artifact.WeaponAttributes.HitFireArea = 100;
                 if (artifact.Name != null)
                     artifact.Name += " de fogo de Cora";
