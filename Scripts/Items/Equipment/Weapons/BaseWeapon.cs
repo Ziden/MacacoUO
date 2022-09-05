@@ -7060,6 +7060,13 @@ namespace Server.Items
                 }
             }
 
+            string toolname = tool.Name;
+            if(toolname.Contains("Mistica") == true)
+            {
+                chancefoda += 100;
+                power = 5;
+            }
+            
             var props = 0;
 
             if (chancefoda == 0 && this is BaseStaff && this.Quality == ItemQuality.Exceptional)
@@ -7090,19 +7097,20 @@ namespace Server.Items
                         Attributes.LowerManaCost = power + Utility.Random(power * 4);
                     if (Utility.RandomDouble() < propChance)
                         Attributes.SpellDamage = power + Utility.Random(power * 4);
-                    if (Utility.RandomDouble() < propChance / 2)
+                    if (Utility.RandomDouble() < 0.8)
                         Slayer = BaseRunicTool.GetRandomSlayer();
-                } else
+                } 
+                else
                 {
-                    Attributes.WeaponDamage = power + Utility.Random(power);
-                    if (Utility.RandomDouble() < 0.35)
-                        Attributes.WeaponSpeed = power / 2 + Utility.Random(power/2);
-                    if (Utility.RandomDouble() < 0.4)
+                    Attributes.WeaponDamage = power + Utility.Random(power * 3);
+                    // if (Utility.RandomDouble() < 0.35)
+                    Attributes.WeaponSpeed = power + Utility.Random(power * 3);
+                    if (Utility.RandomDouble() < 0.5)
                         Slayer = BaseRunicTool.GetRandomSlayer();
                 }
                 this.HueRaridade = 1161;
                 tool.UsesRemaining -= 30;
-                if (tool.UsesRemaining <= 0)
+                if (tool.UsesRemaining <= 0 || toolname.Contains("Mistica") == true)
                 {
                     tool.Delete();
                     from.SendMessage("Sua ferramenta quebrou");
