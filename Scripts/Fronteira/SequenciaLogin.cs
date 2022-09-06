@@ -102,8 +102,10 @@ namespace Server.Fronteira
                 }
             } else
             {
-                pm.SendGump(new Rankings(pm, null));
+                //pm.SendGump(new Rankings(pm, null));
                 pm.SendMessage(78, "Voce pode acompanhar os rankings de GW e GI nos quadros de ranking em cidades");
+                pm.SendMessage(78, "Ajude a divulgar o shard, compartilhe com seus amigos.");
+                
             }
         }
     }
