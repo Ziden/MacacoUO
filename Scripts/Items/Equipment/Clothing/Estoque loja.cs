@@ -2,6 +2,76 @@ using System;
 
 namespace Server.Items
 {
+    public class Tabardo : BaseWaist
+    {
+        [Constructable]
+        public Tabardo()
+            : this(0)
+        {
+            Name = "Tabardo";
+            Hue = 0;
+            LootType = LootType.Blessed;
+        }
+
+        [Constructable]
+        public Tabardo(int hue)
+            : base(0xA412, hue)
+        {
+            this.Weight = 2.0;
+        }
+
+        public Tabardo(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+    //0xA412
+    public class NewDragonicRobe : BaseOuterTorso
+    {
+        public override int LabelNumber { get { return 1157009; } } // Commemorative Robe
+
+        [Constructable]
+        public NewDragonicRobe()
+            : base(0x4B9F)
+        {
+            Name = "Robe New Dragonic";
+            LootType = LootType.Blessed;
+        }
+
+        public NewDragonicRobe(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
     public class SobretudodoCarrasco : HoodedShroudOfShadowsNoob
     {
         [Constructable]
@@ -19,6 +89,43 @@ namespace Server.Items
         }
 
         public SobretudodoCarrasco(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class SobretudoScale : HoodedShroudOfShadowsNoob
+    {
+        [Constructable]
+        public SobretudoScale()
+            : base()
+        {
+            Name = "Sobretudo Scale";
+            Hue = 1161;
+            LootType = LootType.Blessed;
+        }
+
+
+        public override bool Dye(Mobile from, DyeTub sender)
+        {
+            return true;
+        }
+
+        public SobretudoScale(Serial serial)
             : base(serial)
         {
         }
@@ -80,53 +187,39 @@ namespace Server.Items
 
     public class BandanaDaluz : BaseHat
     {
-        public override int BasePhysicalResistance
-        {
-            get
-            {
+        public override int BasePhysicalResistance {
+            get {
                 return 0;
             }
         }
-        public override int BaseFireResistance
-        {
-            get
-            {
+        public override int BaseFireResistance {
+            get {
                 return 3;
             }
         }
-        public override int BaseColdResistance
-        {
-            get
-            {
+        public override int BaseColdResistance {
+            get {
                 return 5;
             }
         }
-        public override int BasePoisonResistance
-        {
-            get
-            {
+        public override int BasePoisonResistance {
+            get {
                 return 8;
             }
         }
-        public override int BaseEnergyResistance
-        {
-            get
-            {
+        public override int BaseEnergyResistance {
+            get {
                 return 8;
             }
         }
 
-        public override int InitMinHits
-        {
-            get
-            {
+        public override int InitMinHits {
+            get {
                 return 20;
             }
         }
-        public override int InitMaxHits
-        {
-            get
-            {
+        public override int InitMaxHits {
+            get {
                 return 30;
             }
         }
@@ -182,38 +275,28 @@ namespace Server.Items
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1095236;
             }
         }// Acid-Proof Robe [Replica]
-        public override int BaseFireResistance
-        {
-            get
-            {
+        public override int BaseFireResistance {
+            get {
                 return 4;
             }
         }
-        public override int InitMinHits
-        {
-            get
-            {
+        public override int InitMinHits {
+            get {
                 return 150;
             }
         }
-        public override int InitMaxHits
-        {
-            get
-            {
+        public override int InitMaxHits {
+            get {
                 return 150;
             }
         }
-        public override bool CanFortify
-        {
-            get
-            {
+        public override bool CanFortify {
+            get {
                 return false;
             }
         }
@@ -277,53 +360,39 @@ namespace Server.Items
 
     public class BandanaDasTrevas : BaseHat
     {
-        public override int BasePhysicalResistance
-        {
-            get
-            {
+        public override int BasePhysicalResistance {
+            get {
                 return 0;
             }
         }
-        public override int BaseFireResistance
-        {
-            get
-            {
+        public override int BaseFireResistance {
+            get {
                 return 3;
             }
         }
-        public override int BaseColdResistance
-        {
-            get
-            {
+        public override int BaseColdResistance {
+            get {
                 return 5;
             }
         }
-        public override int BasePoisonResistance
-        {
-            get
-            {
+        public override int BasePoisonResistance {
+            get {
                 return 8;
             }
         }
-        public override int BaseEnergyResistance
-        {
-            get
-            {
+        public override int BaseEnergyResistance {
+            get {
                 return 8;
             }
         }
 
-        public override int InitMinHits
-        {
-            get
-            {
+        public override int InitMinHits {
+            get {
                 return 20;
             }
         }
-        public override int InitMaxHits
-        {
-            get
-            {
+        public override int InitMaxHits {
+            get {
                 return 30;
             }
         }
@@ -379,38 +448,28 @@ namespace Server.Items
         {
         }
 
-        public override int LabelNumber
-        {
-            get
-            {
+        public override int LabelNumber {
+            get {
                 return 1095236;
             }
         }// Acid-Proof Robe [Replica]
-        public override int BaseFireResistance
-        {
-            get
-            {
+        public override int BaseFireResistance {
+            get {
                 return 4;
             }
         }
-        public override int InitMinHits
-        {
-            get
-            {
+        public override int InitMinHits {
+            get {
                 return 150;
             }
         }
-        public override int InitMaxHits
-        {
-            get
-            {
+        public override int InitMaxHits {
+            get {
                 return 150;
             }
         }
-        public override bool CanFortify
-        {
-            get
-            {
+        public override bool CanFortify {
+            get {
                 return false;
             }
         }
