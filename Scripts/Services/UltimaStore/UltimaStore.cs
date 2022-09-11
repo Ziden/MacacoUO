@@ -86,7 +86,6 @@ namespace Server.Engines.UOStore
         {
             StoreCategory cat = StoreCategory.Featured;
             //GERAL
-            Register<Tabardo>(new TextDefinition("Tabardo"), "ATENÇÃO ao equipar coloque o tabardo antes do sobretudo.", 0xA412, 0, 0, 5000, cat);
             Register<AventalDaLuz>(new TextDefinition("Avental Da Luz"), "Roupas Especiais", 0x153b, 0, 0, 2000, cat);
             Register<BandanaDaluz>(new TextDefinition("Bandana  Da Luz"), "Roupas Especiais", 0x1540, 0, 0, 2000, cat);
             Register<RobeAnjoDaluz>(new TextDefinition("Robe Anjo Da Luz"), "Roupas Especiais", 0x1F03, 0, 0, 5000, cat);
@@ -158,7 +157,6 @@ namespace Server.Engines.UOStore
            
             //DECORAÇÃO
             cat = StoreCategory.Decorations;
-            Register<UltimaBanner>("Banner Ultima Online", "Item de decoração", 0x42c9, 0, 0, 20, cat); // ok
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
             Register<HildebrandtDragonRugDeed>(1157889, 1157890, 0, 0x9CD8, 0, 700, cat);
             Register<SmallWorldTreeRugAddonDeed>(1157206, 1157898, 0, 0x9CBA, 0, 300, cat);
@@ -192,7 +190,6 @@ namespace Server.Engines.UOStore
             Register<WelcomeMat> (new TextDefinition("Tapete de boas vindas"), "Decoração.", 0x47DA, 0, 0, 2000, cat);
             Register<HitchingPost>("Poste de Estabulo", "Permite estabular e retirar animais em casa. </br>Tem 30 cargas mas pode ser recarregado com cordas de estabulo.", 0x14E7, 0, 0, 5000, cat, ConstructHitchingPost);
             Register<HitchingRope>("Corda de Estabulo", "Recarrega o poste de estabulo", 0x14F8, 0, 0, 100, cat, ConstructHitchingPost);
-            
 
             cat = StoreCategory.Mounts;
             //MONTARIAS
