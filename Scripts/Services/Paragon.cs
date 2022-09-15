@@ -206,9 +206,15 @@ namespace Server.Mobiles
                     BaseWeapon weapon = (BaseWeapon)i;
                     ((IResource)i).Resource = CraftResource.Dourado;
                     ((IQuality)i).Quality = ItemQuality.Exceptional;
+<<<<<<< HEAD
                     weapon.DamageLevel = (WeaponDamageLevel)Utility.Random(6);
                     weapon.AccuracyLevel = (WeaponAccuracyLevel)Utility.Random(6);
                     weapon.DurabilityLevel = (WeaponDurabilityLevel)Utility.Random(6);
+=======
+                    i.DamageLevel = (WeaponDamageLevel)Utility.Random(6);
+                    i.AccuracyLevel = (WeaponAccuracyLevel)Utility.Random(6);
+                    i.DurabilityLevel = (WeaponDurabilityLevel)Utility.Random(6);
+>>>>>>> e3c0c2ea0f5e5c6d8d4606b858bf24e05ca4f813
                 }
             } else
             {
@@ -216,8 +222,13 @@ namespace Server.Mobiles
                 BaseArmor armor = (BaseArmor)i;
                 ((IResource)i).Resource = CraftResource.Dourado;
                 ((IQuality)i).Quality = ItemQuality.Exceptional;
+<<<<<<< HEAD
                 armor.ProtectionLevel = (ArmorProtectionLevel)Utility.Random(6);
                 armor.Durability = (ArmorDurabilityLevel)Utility.Random(6);
+=======
+                i.ProtectionLevel = (ArmorProtectionLevel)Utility.Random(6);
+                i.Durability = (ArmorDurabilityLevel)Utility.Random(6);
+>>>>>>> e3c0c2ea0f5e5c6d8d4606b858bf24e05ca4f813
             }
 
             if (i.Name != null)
