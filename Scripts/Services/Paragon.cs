@@ -184,14 +184,14 @@ namespace Server.Mobiles
                 m.SendMessage(78, "Voce ganhou um titulo !");
                 m.SendMessage(78, "Use .titulos para ver seus titulos !");
             }
-           
+
             Item i = null;
             if (Utility.RandomDouble() < 0.2)
             {
                 i = Decos._RandomDecoComum();
                 i.Hue = Paragon.Hue;
                 i.Name = "Artefato banhado a ouro";
-            } 
+            }
             else if (Utility.RandomBool())
             {
                 if(Utility.RandomDouble() < 0.2)
@@ -203,14 +203,21 @@ namespace Server.Mobiles
                 } else
                 {
                     i = Loot.RandomWeapon();
+                    BaseWeapon weapon = (BaseWeapon)i;
                     ((IResource)i).Resource = CraftResource.Dourado;
                     ((IQuality)i).Quality = ItemQuality.Exceptional;
+                    weapon.DamageLevel = (WeaponDamageLevel)Utility.Random(6);
+                    weapon.AccuracyLevel = (WeaponAccuracyLevel)Utility.Random(6);
+                    weapon.DurabilityLevel = (WeaponDurabilityLevel)Utility.Random(6);
                 }
             } else
             {
                 i = Loot.RandomArmor();
+                BaseArmor armor = (BaseArmor)i;
                 ((IResource)i).Resource = CraftResource.Dourado;
                 ((IQuality)i).Quality = ItemQuality.Exceptional;
+                armor.ProtectionLevel = (ArmorProtectionLevel)Utility.Random(6);
+                armor.Durability = (ArmorDurabilityLevel)Utility.Random(6);
             }
 
             if (i.Name != null)
