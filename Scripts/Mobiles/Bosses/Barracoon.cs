@@ -64,10 +64,6 @@ namespace Server.Mobiles
             m_SpecialSlayerMechanics = true;
         }
 
-        public override bool TeleportsTo { get { return true; } }
-        public override TimeSpan TeleportDuration { get { return TimeSpan.FromSeconds(Utility.RandomMinMax(30, 60)); } }
-        public override double TeleportProb { get { return 1.0; } }
-        public override bool TeleportsPets { get { return true; } }
 
         public Barracoon(Serial serial)
             : base(serial)
@@ -97,7 +93,7 @@ namespace Server.Mobiles
             {
                 return new Type[]
                 {
-                    
+
                 };
             }
         }
@@ -216,11 +212,11 @@ namespace Server.Mobiles
             {
                 m.BodyMod = 42;
                 m.HueMod = 0;
-                if (m == this) { 
+                if (m == this) {
                     m_SlayerVulnerabilities.Add("Vermin");
                     m_SlayerVulnerabilities.Add("Repond");
                 }
-   
+
                 new ExpirePolymorphTimer(m).Start();
             }
         }
@@ -236,7 +232,7 @@ namespace Server.Mobiles
             SorteiaItem(new WhiteHangingLantern());
             DistribuiItem(Decos.RandomDecoRara(this));
             SorteiaItem(Decos.RandomDecoRara(this));
-        
+
             DistribuiItem(new FragmentosAntigos());
             DistribuiItem(new FragmentosAntigos());
             DistribuiItem(new CristalTherathan(10));
@@ -331,7 +327,7 @@ namespace Server.Mobiles
                     rat.Team = Team;
 
                     bool validLocation = false;
-                    Point3D loc = Location;
+                    Point3D loc = target.Location;
 
                     for (int j = 0; !validLocation && j < 10; ++j)
                     {
@@ -425,7 +421,7 @@ namespace Server.Mobiles
                     if (m_Owner.SlayerVulnerabilities != null)
                     {
                         m_Owner.SlayerVulnerabilities.Remove("Vermin");
-                        m_Owner.SlayerVulnerabilities.Remove("Repond");    
+                        m_Owner.SlayerVulnerabilities.Remove("Repond");
                     }
                 }
             }
