@@ -3847,17 +3847,19 @@ namespace Server.Items
                 return;
             }
 
-            var list = SpellHelper.AcquireIndirectTargets(from, from, from.Map, 5);
+            var list = SpellHelper.AcquireIndirectTargets(from, from, defender.Map, 5);
 
             var count = 0;
 
             foreach (var m in list)
             {
-                ++count;
-
-                from.DoHarmful(m, true);
-                m.FixedEffect(0x3779, 1, 15, hue, 0);
-                AOS.Damage(m, from, (int)(damageGiven / 2), phys, fire, cold, pois, nrgy, Server.DamageType.SpellAOE);
+                if(!(m is PlayerMobile))
+                {
+                    ++count;
+                    from.DoHarmful(m, true);
+                    m.FixedEffect(0x3779, 1, 15, hue, 0);
+                    AOS.Damage(m, from, (int)(damageGiven / 2), phys, fire, cold, pois, nrgy, Server.DamageType.SpellAOE);
+                }
             }
 
             if (count > 0)
@@ -7066,7 +7068,7 @@ namespace Server.Items
                 chancefoda += 100;
                 power = 5;
             }
-            
+
             var props = 0;
 
             if (chancefoda == 0 && this is BaseStaff && this.Quality == ItemQuality.Exceptional)
@@ -7099,7 +7101,7 @@ namespace Server.Items
                         Attributes.SpellDamage = power + Utility.Random(power * 4);
                     if (Utility.RandomDouble() < 0.8)
                         Slayer = BaseRunicTool.GetRandomSlayer();
-                } 
+                }
                 else
                 {
                     Attributes.WeaponDamage = power + Utility.Random(power * 3);
