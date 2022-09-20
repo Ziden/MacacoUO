@@ -73,11 +73,11 @@ namespace Server.Items
 
         public override bool Scissor(Mobile from, Scissors scissors)
         {
-            if (this.DefaultResource == CraftResource.None)
-                return base.Scissor(from, scissors);
-
-            from.SendLocalizedMessage(502440); // Scissors can not be used on that to produce anything.
-            return false;
+            //if (this.DefaultResource == CraftResource.None)
+            //    return base.Scissor(from, scissors);
+            //from.SendLocalizedMessage(502440); // Scissors can not be used on that to produce anything.
+            base.ScissorHelper(from, new Leather(), 1);
+            return true;
         }
 
         public override void Serialize(GenericWriter writer)

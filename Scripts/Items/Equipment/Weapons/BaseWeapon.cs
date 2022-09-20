@@ -7066,7 +7066,6 @@ namespace Server.Items
             if(toolname.Contains("Mistica") == true)
             {
                 chancefoda += 100;
-                power = 5;
             }
 
             var props = 0;
@@ -7079,6 +7078,8 @@ namespace Server.Items
 
             if (Shard.DebugEnabled)
                 Shard.Debug("Chance craft obra prima: " + chancefoda);
+
+            power = 5; //verificar porque não está puxando o power quando é do mesmo material - paliativo.
 
             if (chancefoda > 0 && Utility.Random(100) <= chancefoda)
             {

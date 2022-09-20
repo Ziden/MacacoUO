@@ -1,5 +1,6 @@
 using System;
 using Server.Spells.Spellweaving;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -23,7 +24,7 @@ namespace Server.Items
 
             if (Core.AOS)
                 return mods;
-			
+
             int absorb = defender.MeleeDamageAbsorb;
 
             if (absorb > 0)
@@ -45,6 +46,15 @@ namespace Server.Items
 
                     attacker.PlaySound(0x1F1);
                     attacker.FixedEffect(0x374A, 10, 16);
+
+                    if (attacker is PlayerMobile && defender is PlayerMobile)
+                    {
+                        defender.MeleeDamageAbsorb = 0;
+                        defender.SendLocalizedMessage("Armadura reativa resiste apenas a um golpe outros jogadores");
+                        BuffInfo.RemoveBuff(defender, BuffIcon.ReactiveArmor);
+                        DefensiveSpell.Nullify(defender);
+                    }
+
                 }
                 else
                 {
