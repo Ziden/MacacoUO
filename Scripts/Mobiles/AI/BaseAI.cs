@@ -654,7 +654,7 @@ namespace Server.Mobiles
                             m_Mobile.ControlOrder = OrderType.Release;
                         }
                     }
-                 
+
 
                     // First, check the all*
                     for (var i = 0; i < keywords.Length; ++i)
@@ -733,7 +733,7 @@ namespace Server.Mobiles
                                     if (m_Mobile.CheckControlChance(e.Mobile))
                                     {
                                         m_Mobile.ControlTarget = null;
-                                         
+
                                         m_Mobile.ControlOrder = OrderType.Stay;
                                     }
                                     return;
@@ -1736,12 +1736,12 @@ namespace Server.Mobiles
 
             if (controlMaster == null || controlMaster.Deleted)
             {
-                return true;
+                return false;
             }
 
             var combatant = m_Mobile.Combatant as Mobile;
 
-            if (combatant != null && !ValidGuardTarget(combatant))
+            if (combatant != null && !ValidGuardTarget(combatant) && !combatant.Hidden)
                 combatant = null;
 
             Mobile closestMob = combatant;
