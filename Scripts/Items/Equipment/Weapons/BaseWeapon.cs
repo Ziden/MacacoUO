@@ -7063,7 +7063,7 @@ namespace Server.Items
             }
 
             string toolname = tool.Name;
-            if(toolname.Contains("Mistica") == true)
+            if(toolname?.Contains("Mistica") == true)
             {
                 chancefoda += 100;
             }
