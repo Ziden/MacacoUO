@@ -337,6 +337,7 @@ namespace Server.Items.Functional.Pergaminhos
                     }
                     else
                     {
+                        item.BlessedUntil = DateTime.UtcNow + TimeSpan.FromDays(scroll.Dias+1);
                         item.LootType = LootType.Blessed;
                         from.FixedEffect(0x37C4, 87, 2000, 4, 3);
                         from.FixedParticles(0x376A, 9, 32, 5030, EffectLayer.Waist);
