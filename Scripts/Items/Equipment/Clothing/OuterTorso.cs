@@ -757,7 +757,7 @@ namespace Server.Items
     }
 
     [Flipable]
-    public class RewardRobe : BaseOuterTorso, IRewardItem
+    public class RobeGuild : BaseOuterTorso, IRewardItem
     {
         private int m_LabelNumber;
         private bool m_IsRewardItem;
@@ -847,28 +847,36 @@ namespace Server.Items
         }
 
         [Constructable]
-        public RewardRobe()
+        public RobeGuild()
             : this(0)
         {
         }
 
         [Constructable]
-        public RewardRobe(int hue)
+        public RobeGuild(int hue)
             : this(hue, 0)
         {
         }
 
         [Constructable]
-        public RewardRobe(int hue, int labelNumber)
-            : base(0x1F03, hue)
+        public RobeGuild(int hue, int labelNumber)
+            : base(0x26AE, hue)
         {
+            Name = "Nome da Guilda";         
             Weight = 3.0;
             LootType = LootType.Blessed;
 
             m_LabelNumber = labelNumber;
         }
 
-        public RewardRobe(Serial serial)
+        public override void AddNameProperties(ObjectPropertyList list)
+        {
+            base.AddNameProperties(list);
+            list.Add("Sobretudo de Guilda");
+
+        }
+
+        public RobeGuild(Serial serial)
             : base(serial)
         {
         }
