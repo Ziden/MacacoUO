@@ -123,35 +123,6 @@ namespace Server.Mobiles
             this.AddLoot(LootPack.LV4);
         }
 
-        public void Polymorph(Mobile m)
-        {
-            if (!m.CanBeginAction(typeof(PolymorphSpell)) || !m.CanBeginAction(typeof(IncognitoSpell)) || m.IsBodyMod)
-                return;
-
-            IMount mount = m.Mount;
-
-            if (mount != null)
-                mount.Rider = null;
-
-            if (m.Flying)
-                m.ToggleFlying();
-
-            if (m.Mounted)
-                return;
-
-            if (m.BeginAction(typeof(PolymorphSpell)))
-            {
-                m.BodyMod = 50;
-                m.HueMod = 0;
-                if (m == this)
-                {
-                    m_SlayerVulnerabilities.Add("charles");
-                    m_SlayerVulnerabilities.Add("charles");
-                }
-
-                new ExpirePolymorphTimer(m).Start();
-            }
-        }
 
         public override void OnDeath(Container c)
         {
