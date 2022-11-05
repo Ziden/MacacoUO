@@ -146,6 +146,9 @@ namespace Server.Engines.UOStore
             Register<PergaminhoSagradoSupremo>("Pergaminho de Item Pessoal (Newbie)", "Torna uma roupa um percence pessoal (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 2500, cat);
             Register<TintaPreta>("Tinta Preta", "Balde de tinta preta.<br>Ma-ra-vi-lhosa com roupas sombrias.", 0xFAB, 0, TintaPreta.COR, 500, cat);
             Register<TintaBranca>("Tinta Branca", "Balde de tinta branca.<br>Divina cor para iluminados e praticantes da luz.", 0xFAB, 0, TintaBranca.COR, 500, cat);
+            Register<PergaminhoSagradoPvM>("Pergaminho Sagrado", "Torna uma Torna joia magica Newbie</br> Por 31 dias, 0x14F0, 0, 0, 5000", 0x14F0, 0, 0, 50000, cat);
+            Register<PergaminhoSagradoSupremoPvM>("Pergaminho Sagrado Supremo (Newbie)", "Torna joia magica Newbie (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 10000, cat);
+
 
             cat = StoreCategory.Equipment;
             //EQUIPAMENTOS
@@ -154,7 +157,14 @@ namespace Server.Engines.UOStore
             Register<DeerMask> (new TextDefinition("Máscara de Viado Sacrificado"), "Percence Pessoal.", 0x1547, 0, 0, 3000, cat, ConstructNewbie);
             Register< LeatherNinjaHood> (new TextDefinition("Capuz de Ninja"), "Percence Pessoal.", 0x27DA, 0, 0, 2000, cat, ConstructNewbie);
             Register<Tessen>(new TextDefinition("Tessen"), "Percence Pessoal.", 0x27A3, 0, 0, 2000, cat, ConstructNewbie);
-           
+            Register<Tekagi>(new TextDefinition("Tekagi"), "Percence Pessoal.", 0x27AB, 0, 0, 8000, cat, ConstructNewbie);//trocar valor
+            Register<VirtueShield>(1109616, 1158384, 0x7818, 0, 0, 8000, cat);// arrumar
+            Register<PetBrandingIron>(1157314, 1157372, 0, 0x9CC3, 0, 3000, cat);// arrumar
+            Register<PetBondingPotion>(1152921, 1156678, 0, 0x9CBC, 0, 5000, cat);// arrumar
+            Register<ArmorEngravingToolToken>(1080547, 1156652, 0, 0x9C65, 0, 2500, cat);//arrumar
+            Register<ResurrectToken>(new TextDefinition[] { "Ressuscitar seu personagem Morto", 1156615 }, 1156641, 0x2AAA, 0, 0, 2500, cat);
+
+
             //DECORAÇÃO
             cat = StoreCategory.Decorations;
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
@@ -226,7 +236,6 @@ namespace Server.Engines.UOStore
             Register<HaochisPigment>(new TextDefinition[] { 1071249, 1157274 }, 1156671, 0, 0x9CBD, 0, 400, cat, ConstructHaochisPigment); // Campion White
             Register<HaochisPigment>(new TextDefinition[] { 1071249, 1157273 }, 1156671, 0, 0x9CC2, 0, 400, cat, ConstructHaochisPigment); // Yewish Pine
             Register<HaochisPigment>(new TextDefinition[] { 1071249, 1157272 }, 1156671, 0, 0x9CC0, 0, 400, cat, ConstructHaochisPigment); // Minocian Fire
-            Register<HaochisPigment>(new TextDefinition[] { 1071249, 1157269 }, 1156671, 0, 0x9CC1, 0, 400, cat, ConstructHaochisPigment); // Celtic Lime
 
             Register<PigmentsOfTokuno>(new TextDefinition[] { 1070933, 1070994 }, 1156906, 0, 0x9CA8, 0, 400, cat, ConstructPigments); // Nox Green
             Register<PigmentsOfTokuno>(new TextDefinition[] { 1070933, 1079584 }, 1156906, 0, 0x9CAF, 0, 400, cat, ConstructPigments); // Midnight Coal
@@ -269,7 +278,7 @@ namespace Server.Engines.UOStore
              Register<SoulstoneToken>(1158404, 1158405, 0x2A93, 0, 2598, 1000, cat, ConstructSoulstone);
              Register<DeluxeStarterPackToken>(1158368, 1158369, 0, 0x9CCB, 0, 2000, cat);
              Register<GreenGoblinStatuette>(1125133, 1158015, 0xA095, 0, 0, 600, cat);
-             //Register<TotemOfChromaticFortune>(1157606, 1157604, 0, 0x9CC9, 0, 300, cat);
+             //Register<PigmentsOfTokuno>(1157606, 1157604, 0, 0x9CC9, 0, 300, cat);
 
              // TOKEN PICA
              Register<MythicCharacterToken>(new TextDefinition[] { 1156614, 1156615 }, 1156679, 0x2AAA, 0, 0, 2500, cat);
@@ -487,7 +496,7 @@ namespace Server.Engines.UOStore
 
            //TODO: UndeadWeddingBundle, TotemOfChromaticFortune, 
 
-           Register<PetBrandingIron>(1157314, 1157372, 0, 0x9CC3, 0, 600, cat);
+           Register<PetBrandingIron>(1157314, 1157372, 0, 0x9CC3, 0, 600, cat); 
            Register<PetBondingPotion>(1152921, 1156678, 0, 0x9CBC, 0, 500, cat); 
 
            Register<ForgedMetalOfArtifacts>(new TextDefinition[] { 1149868, 1156686 }, 1156674, 0, 0x9C65, 0, 1000, cat, ConstructForgedMetal);
