@@ -12,7 +12,6 @@ namespace Server.Items
             : base(0x27AB)
         {
             this.Name = "Tekagi";
-            Hue = 2075;
             this.Weight = 5.0;
             this.Layer = Layer.TwoHanded;
             this.Attributes.RegenMana = 1;
