@@ -685,7 +685,7 @@ namespace Server.Mobiles
         public EtherealOstard()
             : base(0x2135, 0x3EAC, 0x3EA5)
         {
-            Name = "Ostard Magico";
+            Name = "Ostard Deserto Magico";
             this.Transparent = false;
         }
 
@@ -716,6 +716,44 @@ namespace Server.Mobiles
             }
         }
     }
+
+    public class EtherealOstardFantasma : EtherealMount
+    {
+        [Constructable]
+        public EtherealOstardFantasma()
+            : base(0x2137, 0x3EA5, 0x3EA5)
+        {
+            Name = "Ostard Magico";
+            this.Transparent = false;
+        }
+
+        public EtherealOstardFantasma(Serial serial)
+            : base(serial)
+        {
+            this.Transparent = false;
+        }
+
+        public override string DefaultName { get { return "Ostard Magico"; } }
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write(1); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+
+            if (version == 0)
+            {
+                NonTransparentMountedID = 0x3EA5;
+                Transparent = true;
+            }
+        }
+    } // Arrumar
 
     public class EtherealRidgeback : EtherealMount
     {
