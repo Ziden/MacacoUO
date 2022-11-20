@@ -58,6 +58,7 @@ namespace Server.Items
             TimeSpan timetouse = ((this.lastused + Server.Items.Hearthstone.delay) - DateTime.Now);
             string lisths;
 
+ 
             if(this.map != null && this.i_home != Point3D.Zero)
             {
                 var region = Region.Find(this.i_home, this.map);
@@ -101,6 +102,16 @@ namespace Server.Items
                 from.SendMessage("Precisa estar em sua mochila.");
                 return;
             }
+
+            if(Shard.RP)
+            {
+                if(from.Region is DungeonRegion)
+                {
+                    from.SendMessage("Voce nao pode usar isto em dungeons");
+                    return;
+                }
+            }
+
             from.RevealingAction();
             from.SendGump(new GumpOpcoes("Hearthstone", (opt) =>
             {

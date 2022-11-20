@@ -2,9 +2,15 @@ using System.Collections.Generic;
 
 namespace Server.Fronteira.Talentos
 {
+
     public class DefTalentos
     {
         private static Dictionary<Talento, DefTalentos> _talentos = new Dictionary<Talento, DefTalentos>();
+
+        public string Desc1;
+        public int Icone;
+        public string Nome;
+        public Dictionary<SkillName, int> Aprende = new Dictionary<SkillName, int>();
 
         public static DefTalentos GetDef(Talento t)
         {
@@ -33,14 +39,14 @@ namespace Server.Fronteira.Talentos
             {
                 Desc1 = "Max 90 Spirit Speak, +100% Potencia Buffs/Debuffs",
                 Icone = 2295,
-                Nome = "Magia Metafisica"
+                Nome = "Feiticaria"
             });
 
             _talentos.Add(Talento.Necromante, new DefTalentos()
             {
                 Desc1 = "Max 90 Necromancy & Spirit Speak",
                 Icone = 2300,
-                Nome = "Magia de Sangue"
+                Nome = "Magia Negra"
             });
 
             _talentos.Add(Talento.Arquimago, new DefTalentos()
@@ -92,6 +98,13 @@ namespace Server.Fronteira.Talentos
                 Nome = "Estudo Sagrado"
             });
 
+            _talentos.Add(Talento.BardoGuerreiro, new DefTalentos()
+            {
+                Desc1 = "90 Cap Tactics, Anatomy, Healing & Cooking",
+                Icone = 40849,
+                Nome = "Bardo de Bar"
+            });
+
             _talentos.Add(Talento.Elementalismo, new DefTalentos()
             {
                 Desc1 = "+25% Dano Magico",
@@ -103,21 +116,36 @@ namespace Server.Fronteira.Talentos
             {
                 Desc1 = "Max 90 Lockpick Cartography Remove Trap & Detect Hidden",
                 Icone = 40848,
-                Nome = "Adoracao por Ouro"
+                Nome = "Cacador de Tesouros"
             });
 
             _talentos.Add(Talento.Assassino, new DefTalentos()
             {
                 Desc1 = "Max 90 Tactics & Poisoning & 70 Alchemy",
                 Icone = 40848,
-                Nome = "Frio e Calculista"
+                Nome = "Assassino"
             });
 
             _talentos.Add(Talento.Ranger, new DefTalentos()
             {
                 Desc1 = "Max 90 Veterinary & Animal Taming",
                 Icone = 40848,
-                Nome = "Amante dos Animais"
+                Nome = "Ranger"
+            });
+
+            _talentos.Add(Talento.MusicaBranca, new DefTalentos()
+            {
+                Desc1 = "Max 80 Magery, Incription & +25% Curas",
+                Icone = 40848,
+                Nome = "Musico Magico"
+            });
+
+
+            _talentos.Add(Talento.Encantador, new DefTalentos()
+            {
+                Desc1 = "Max 70 Veterinary, Animal Taming & Animal Lore",
+                Icone = 40848,
+                Nome = "Encantador de Animais"
             });
 
             _talentos.Add(Talento.Nenhum, new DefTalentos()
@@ -157,7 +185,7 @@ namespace Server.Fronteira.Talentos
 
             _talentos.Add(Talento.Adagas, new DefTalentos()
             {
-                Desc1 = "+30% Bonus de dano com adagas",
+                Desc1 = "+30% Bonus de dano com adagas & 90 Fencing",
                 Icone = 39850,
                 Nome = "Adagas"
             });
@@ -206,7 +234,7 @@ namespace Server.Fronteira.Talentos
             });
 
             _talentos.Add(Talento.Hab_SerpentArrow, new DefTalentos()
-            { 
+            {
                 Desc1 = "Permite usar Serpent Arrow",
                 Icone = 20480,
                 Nome = "Tiro Venenoso"
@@ -315,6 +343,30 @@ namespace Server.Fronteira.Talentos
                 Desc1 = "Permite usar Whirlwind Attack",
                 Icone = 21004,
                 Nome = "Ataque em Area"
+            });
+
+
+            _talentos.Add(Talento.Ferreiro, new DefTalentos()
+            {
+                Desc1 = "90 Blacksmith, Mining & Tinkering",
+                Icone = 21004,
+                Nome = "Ferreiro"
+            });
+
+
+            _talentos.Add(Talento.Carpinteiro, new DefTalentos()
+            {
+                Desc1 = "90 Carpentry, Bowcraft & Lumberjack",
+                Icone = 21004,
+                Nome = "Carpinteiro"
+            });
+
+
+            _talentos.Add(Talento.Alfaiate, new DefTalentos()
+            {
+                Desc1 = "90 Tailoring, Herding, Imbuing",
+                Icone = 21004,
+                Nome = "Alfaiate"
             });
 
             _talentos.Add(Talento.Hab_Shadowstrike, new DefTalentos()
@@ -542,6 +594,36 @@ namespace Server.Fronteira.Talentos
                 Nome = "Defensor"
             });
 
+            _talentos.Add(Talento.EstudoAnatomico, new DefTalentos()
+            {
+                Desc1 = "70 Healing & Anatomy",
+                Icone = 39846,
+                Nome = "Estudo Anatomico"
+            });
+
+            _talentos.Add(Talento.ArmasEpicas, new DefTalentos()
+            {
+                Desc1 = "+10% Chance Armas Obras Prima",
+                Icone = 39846,
+                Nome = "Mestre Armeiro"
+            });
+
+
+            _talentos.Add(Talento.ColetorAvancado, new DefTalentos()
+            {
+                Desc1 = "+1 Recursos Coletados",
+                Icone = 39846,
+                Nome = "Coletor Avancado"
+            });
+
+            _talentos.Add(Talento.Lockpick, new DefTalentos()
+            {
+                Desc1 = "90 Lockpicking",
+                Icone = 39846,
+                Nome = "Chaveiro",
+                Aprende = new Dictionary<SkillName, int>() { { SkillName.Lockpicking, 90 } }
+            });
+
             _talentos.Add(Talento.Esquiva, new DefTalentos()
             {
                 Desc1 = "+20% Esquiva",
@@ -674,10 +756,88 @@ namespace Server.Fronteira.Talentos
                 Icone = 21286,
                 Nome = "Curandeiro"
             });
+
+            _talentos.Add(Talento.Musculoso, new DefTalentos()
+            {
+                Desc1 = "+5% Dano Fisico, +200 Peso Carregado",
+                Icone = 21286,
+                Nome = "Musculoso",
+            });
+
+            _talentos.Add(Talento.Armeiro, new DefTalentos()
+            {
+                Desc1 = "90 Arms Lore (+ armas exp)",
+                Icone = 21286,
+                Nome = "Armeiro",
+                Aprende = new Dictionary<SkillName, int>() { { SkillName.ArmsLore, 90 } }
+            });
+
+            _talentos.Add(Talento.Musica, new DefTalentos()
+            {
+                Desc1 = "90 Musicanship [Craft Instrumentos]",
+                Icone = 21286,
+                Nome = "Fabricador de Instrumentos",
+                Aprende = new Dictionary<SkillName, int>() { { SkillName.Musicianship, 90 } }
+            });
+
+            _talentos.Add(Talento.Tinkering, new DefTalentos()
+            {
+                Desc1 = "90 Tinkering",
+                Icone = 21286,
+                Nome = "Funileiro Mestre",
+                Aprende = new Dictionary<SkillName, int>() { { SkillName.Tinkering, 90 } }
+            });
+
+            _talentos.Add(Talento.FabricadorDeCajados, new DefTalentos()
+            {
+                Desc1 = "+ Cajados Obra Prima",
+                Icone = 21286,
+                Nome = "Fabricador de Cajados",
+            });
+
+            _talentos.Add(Talento.FabricadorDeArcos, new DefTalentos()
+            {
+                Desc1 = "+ Arcos Obra Prima",
+                Icone = 21286,
+                Nome = "Fabricador de Arcos",
+            });
+
+            _talentos.Add(Talento.FabricadorDeEspadas, new DefTalentos()
+            {
+                Desc1 = "+ Espadas Obra Prima",
+                Icone = 21286,
+                Nome = "Fabricador de Espadas",
+            });
+
+            _talentos.Add(Talento.FabricadorDeLancas, new DefTalentos()
+            {
+                Desc1 = "+ Lancas Obra Prima",
+                Icone = 21286,
+                Nome = "Fabricador de Lancas",
+            });
+
+            _talentos.Add(Talento.FabricadorDeMachados, new DefTalentos()
+            {
+                Desc1 = "+ Machados Obra Prima",
+                Icone = 21286,
+                Nome = "Fabricador de Machados",
+            });
+
+            _talentos.Add(Talento.FabricadorDeArmasDeAste, new DefTalentos()
+            {
+                Desc1 = "+ Armas de Aste Obra Prima",
+                Icone = 21286,
+                Nome = "Fabricador de Armas de Haste",
+            });
+
+            _talentos.Add(Talento.FabricadorDePorretes, new DefTalentos()
+            {
+                Desc1 = "+ Porretes Obra Prima",
+                Icone = 21286,
+                Nome = "Fabricador de Porretes",
+            });
         }
 
-        public string Desc1;
-        public int Icone;
-        public string Nome;
+      
     }
 }

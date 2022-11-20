@@ -267,6 +267,12 @@ namespace Server.Fronteira.Recursos
                     i.Amount *= 2;
 
                 var bonus = (int)Math.Round(i.Amount * from.GetBonusElemento(ElementoPvM.Gelo));
+
+                if(from.RP && from.TemTalento(Talentos.Talento.ColetorAvancado))
+                {
+                    bonus += 1;
+                }
+
                 if (bonus > 0)
                     i.Amount += bonus;
             }

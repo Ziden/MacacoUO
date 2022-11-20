@@ -7,6 +7,7 @@ using Server.Mobiles;
 using Server.Scripts.New.Adam.NewGuild;
 using Server.Misc.Templates;
 using Server.Misc.Custom;
+using Server.Fronteira.Classes;
 
 namespace Server.Gumps
 {
@@ -15,10 +16,10 @@ namespace Server.Gumps
         string chosen = null;
         string desc = null;
 
-        private StarterKits.Kit k;
+        private ClassePersonagem classe;
         private bool newCharacter;
 
-        public RPClassGump(StarterKits.Kit kit = null, bool newCharacter = true) : base(0, 0)
+        public RPClassGump(ClassePersonagem classe = null, bool newCharacter = true) : base(0, 0)
         {
             this.Closable = !newCharacter;
             this.Disposable = !newCharacter;
@@ -28,64 +29,61 @@ namespace Server.Gumps
 
             StarterKits.BuildKits();
 
-            k = kit;
-            var code = -1;
-            if (kit != null)
-                code = kit.Code;
-
+            this.classe = classe;
+        
             AddPage(0);
-            AddBackground(79, 69, 493, 464, 9200);
-            AddButton(353, 104, 5553, 5554, 3, GumpButtonType.Reply, 0);
+            AddBackground(79, 69, 493, 864, 9200);
+         
             //if (newCharacter)
             //    AddButton(473, 185, 5545, 5546, 8, GumpButtonType.Reply, 0);
             AddButton(107, 103, 5577, 5578, 1, GumpButtonType.Reply, 0);
-            AddButton(227, 102, 5555, 5556, 2, GumpButtonType.Reply, 0);
-            AddButton(472, 103, 5551, 5552, 4, GumpButtonType.Reply, 0);
-            AddButton(107, 181, 5549, 5550, 5, GumpButtonType.Reply, 0);
-            AddButton(228, 183, 5569, 5570, 6, GumpButtonType.Reply, 0);
-            AddButton(355, 183, 5571, 5572, 7, GumpButtonType.Reply, 0);
+            AddButton(227, 102, 5561, 5562, 2, GumpButtonType.Reply, 0);
+            AddButton(353, 104, 5553, 5554, 3, GumpButtonType.Reply, 0);
+            AddButton(472, 103, 5571, 5572, 4, GumpButtonType.Reply, 0);
+            AddButton(107, 183, 5569, 5570, 5, GumpButtonType.Reply, 0);
             AddImage(29, 13, 10440);
             AddImage(540, 14, 10441);
             AddImage(234, -167, 1418);
             AddHtml(100, 84, 86, 19, @"Guerreiro", (bool)false, (bool)false);
-            AddHtml(224, 84, 86, 19, @"Ferreiro", (bool)false, (bool)false);
+            AddHtml(224, 84, 86, 19, @"Ladino", (bool)false, (bool)false);
             AddHtml(359, 83, 86, 19, @"Bardo", (bool)false, (bool)false);
-            AddHtml(471, 83, 124, 19, @"Arqueiro", (bool)false, (bool)false);
-            AddHtml(105, 163, 124, 19, @"Domador", (bool)false, (bool)false);
-            AddHtml(235, 164, 124, 19, @"Mago", (bool)false, (bool)false);
-            AddHtml(352, 165, 124, 19, @"Mercador", (bool)false, (bool)false);
+            AddHtml(471, 83, 124, 19, @"Mercador", (bool)false, (bool)false);    
+            AddHtml(100, 164, 124, 19, @"Mago", (bool)false, (bool)false);
 
-            if (newCharacter)
-                AddHtml(450, 166, 124, 19, @"Manter Skills", (bool)false, (bool)false);
+            //if (newCharacter)
+            //    AddHtml(450, 166, 124, 19, @"Manter Skills", (bool)false, (bool)false);
 
-            var desc = "Selecione uma template de skills iniciais.";
+            var desc = "Selecione sua classe.";
 
-            if (kit != null)
+            if (classe != null)
             {
-                desc = kit.Name + "<br>" + kit.Desc;
+                desc = classe.Nome + "<br>" + classe.Desc;
                 AddHtml(103, 258, 441, 83, desc, (bool)true, (bool)false);
                 AddButton(473, 498, 247, 248, 0, GumpButtonType.Reply, 0);
 
                 AddHtml(104, 368, 441, 83, "", (bool)true, (bool)false);
-                AddHtml(106, 345, 200, 20, @"Skills", (bool)false, (bool)false);
+                AddHtml(106, 345, 200, 20, @"Skill Caps", (bool)false, (bool)false);
 
                 var x = 0;
                 var y = 0;
 
-                foreach (var skillname in kit.Skills.Keys)
+                var skillString = "";
+
+                foreach (var skillname in classe.ClassSkills.Keys)
                 {
-                    var value = Shard.SPHERE_STYLE ? 100 : kit.Skills[skillname];
-                    AddHtml(110 + x, 370 + y, 441, 83, skillname + ": " + value, false, false);
-                    x += 120;
-                    if (x > 330)
+                    var value = classe.ClassSkills[skillname];
+                    skillString += skillname + ": " + value +" | ";
+                    x += 1;
+                    if (x > 3)
                     {
+                        skillString += "</br>";
                         x = 0;
-                        y += 30;
                     }
                 }
+                AddHtml(106, 368, 441, 83, skillString, (bool)true, (bool)true);
             } else
             {
-                AddHtml(103, 258, 445, 233, @"<br>Escolha seu kit de skills iniciais. <br><br>Voce podera ter quaisquer skills que quiser, isto e apenas um inicio.", (bool)true, (bool)false);
+                AddHtml(103, 258, 445, 233, @"<br>Escolha sua classe. <br><br>Sua classe define seus caps de skills iniciais.", (bool)true, (bool)false);
             }
         }
 
@@ -119,9 +117,8 @@ namespace Server.Gumps
 
             if (info.ButtonID == 0)
             {
-                if (k != null)
+                if (classe != null)
                 {
-
                     if (newCharacter)
                     {
                         var robe = from.FindItemOnLayer(Layer.OuterTorso);
@@ -133,42 +130,40 @@ namespace Server.Gumps
 
                     PackItem(from, new Torch());
 
-                    if (k.Code == 8)
-                    {
-                        if (newCharacter)
-                            PackItem(from, new Gold(500));
-                    }
-                    else
-                    {
-                        if(Shard.SPHERE_STYLE)
-                        {
-                            from.Str = 100;
-                            from.Dex = 100;
-                            from.Int = 100;
-                        } else
-                        {
-                            from.Str = k.Str;
-                            from.Dex = k.Dex;
-                            from.Int = k.Int;
-                        }
-                       
-                        from.Stam = from.StamMax;
-                        from.Mana = from.ManaMax;
-                        from.Hits = from.HitsMax;
-                    }
+                    if (newCharacter)
+                        PackItem(from, new Gold(500)); 
 
                     foreach (var skill in from.Skills)
                     {
                         skill.SendPacket = false;
                         skill.m_Exp = 0;
                         skill.SetLockNoRelay(SkillLock.Up);
-                        if (k.Skills.ContainsKey(skill.SkillName))
+                        if (classe.ClassSkills.ContainsKey(skill.SkillName))
                         {
-                            from.Skills[skill.SkillName].Base = Shard.SPHERE_STYLE ? 100 : k.Skills[skill.SkillName];
+                            var valor = classe.ClassSkills[skill.SkillName];
+                            if(valor >= 90)
+                            {
+                                valor = 40;
+                            } else if(valor >= 70)
+                            {
+                                valor = 30;
+                            } else if(valor >= 40)
+                            {
+                                valor = 20;
+                            } else
+                            {
+                                valor = 0;
+                            }
+                            if(valor != 0)
+                            {
+                                from.Skills[skill.SkillName].Base = valor;
+                            }
+                            from.Skills[skill.SkillName].Cap = classe.ClassSkills[skill.SkillName];
                         }
                         else
                         {
                             from.Skills[skill.SkillName].Base = 0;
+                            from.Skills[skill.SkillName].Cap = 0;
                         }
                         skill.SendPacket = true;
                     }
@@ -181,12 +176,7 @@ namespace Server.Gumps
                         from.Thirst = 20;
                         var hue = StarterKits.GetNoobColor();
 
-                        var ball = new ElementalBall();
-                        ball.BoundTo = from.RawName;
-                        ball.InvalidateProperties();
-                        PackItem(from, ball);
-
-                        foreach (var item in k.items)
+                        foreach (var item in classe.ItemsIniciais)
                         {
                             var dupe = Dupe.DupeItem(item);
                             if (dupe.Hue == 78)
@@ -197,69 +187,30 @@ namespace Server.Gumps
                             {
                                 ((IQuality)dupe).Quality = ItemQuality.Low;
                             }
+
                             PackItem(from, dupe);
+                            if (dupe.Layer != Layer.Invalid && dupe is ICombatEquipment)
+                            {
+                                if(from.FindItemOnLayer(dupe.Layer) == null)
+                                {
+                                    from.EquipItem(dupe);
+                                }
+                            }
                         }
 
-                        foreach (var item in k.equips)
-                        {
-                            var dupe = Dupe.DupeItem(item);
-                            if (dupe.Hue == 78)
-                            {
-                                dupe.Hue = hue;
-                            }
-                            if(dupe is IQuality)
-                            {
-                                ((IQuality)dupe).Quality = ItemQuality.Low;
-                            }
-                            EquipItem(from, dupe);
-                        }
                         var player = (PlayerMobile)from;
-                        player.Profession = k.Code;
-                        player.SendMessage("Kit Inicial Escolhido - Bem Vindo !");
-                        //NewPlayerGuildAutoJoin.SendStarterGuild(player);
-                    }
-                    else
-                    {
-                        
-                        var player = (PlayerMobile)from;
-                        player.SendMessage("Nova template criada");
-                        var template = new Template();
-                        template.Name = k.Name + Utility.Random(9999999);
-                        template.FromPlayer(player);
-                        player.Templates.Templates.Add(template);
-                        player.CurrentTemplate = template.Name;
-                        if(player.Wisp != null)
-                        {
-                            player.Wisp.TrocaTemplate(k.Code);
-                        }
+                        player.Profession = classe.ID;
+                        player.SendMessage("Classe Escolhida");
                     }
                 }
             }
 
-            if (info.ButtonID == 8)
-            {
-                var k = new StarterKits.Kit()
-                {
-                    Name = "Manter",
-                    Code = 8,
-                    Desc = "Manter skills escolhidas na criacao do personagem"
-                };
-                foreach (var skill in from.Skills)
-                {
-                    if (skill.Value > 0)
-                        k.Skills.Add(skill.SkillName, (int)skill.Value);
-                }
-                from.CloseGump(typeof(NonRPClassGump));
-                from.SendGump(new NonRPClassGump(k, newCharacter));
-                return;
-            }
-
-            var kit = StarterKits.GetKit(info.ButtonID);
+            var kit = ClassDef.GetClasse(info.ButtonID);
 
             if (kit != null)
             {
-                from.CloseGump(typeof(NonRPClassGump));
-                from.SendGump(new NonRPClassGump(kit, newCharacter));
+                from.CloseGump(typeof(RPClassGump));
+                from.SendGump(new RPClassGump(kit));
             }
         }
     }

@@ -1611,7 +1611,7 @@ namespace Server.Items
                 }
             }
 
-            if(attacker.Player)
+            if (attacker.Player)
             {
                 var diffDex = attacker.Dex - defender.Dex;
                 if (diffDex > 0)
@@ -1854,7 +1854,7 @@ namespace Server.Items
                 if (attacker != null && defender != null && defender.Player)
                 {
                     var bc = attacker as BaseCreature;
-                    if(bc == null || bc.ControlMaster == null || !bc.IsControlled())
+                    if (bc == null || bc.ControlMaster == null || !bc.IsControlled())
                     {
                         if (defender.Weapon.MaxRange <= defender.GetDistance(attacker))
                         {
@@ -1997,10 +1997,10 @@ namespace Server.Items
                     if (defender.Weapon is Fists)
                         chance += 0.1;
 
-                   // chance += parry * 0.25; // +25%
-                  //  var brace = defender.FindItemOnLayer(Layer.Bracelet) as BraceleteDoPoder;
-                   // if (brace != null && brace.Tipo == TipoJoias.Escudo)
-                   //     chance += brace.Bonus / 400;
+                    // chance += parry * 0.25; // +25%
+                    //  var brace = defender.FindItemOnLayer(Layer.Bracelet) as BraceleteDoPoder;
+                    // if (brace != null && brace.Tipo == TipoJoias.Escudo)
+                    //     chance += brace.Bonus / 400;
                 }
 
                 if (shield is WoodenShield || shield is WoodenKiteShield)
@@ -2140,10 +2140,11 @@ namespace Server.Items
                 var bloqueado = 0;
                 if (shield != null)
                 {
-                    if(attacker is BaseCreature)
+                    if (attacker is BaseCreature)
                     {
                         bloqueado = (int)(shield.ArmorRating * (attacker is BaseCreature ? 1.4 : attackerWeapon is BaseRanged ? 1.5 : 1.2));
-                    } else
+                    }
+                    else
                     {
 
                         bloqueado = (int)(shield.ArmorRating * (attackerWeapon is BaseRanged ? 1.2 : 1.0));
@@ -2436,7 +2437,7 @@ namespace Server.Items
                 if (bonus > virtualArmor)
                     bonus = virtualArmor;
                 virtualArmor -= bonus;
-                damage += (int)Math.Ceiling(damage * (AosAttributes.GetValue(attacker, AosAttribute.WeaponDamage, true)/100));
+                damage += (int)Math.Ceiling(damage * (AosAttributes.GetValue(attacker, AosAttribute.WeaponDamage, true) / 100));
             }
 
             WeaponAbility a = WeaponAbility.GetCurrentAbility(attacker);
@@ -2473,24 +2474,27 @@ namespace Server.Items
                 if (pl.RP)
                 {
                     if (pl.Talentos.Tem(Talento.Potencia))
-                        damage += (int)(damage * 0.1);
+                        damage += (int)(damage * 0.2);
+
+                    if (pl.Talentos.Tem(Talento.Musculoso))
+                        damage += (int)(damage * 0.05);
 
                     if (pl.Weapon is BaseBashing && !pl.Talentos.Tem(Talento.Porretes))
-                        damage *= 0.85;
+                        damage *= 0.8;
 
                     if (pl.Weapon is BaseSword && !pl.Talentos.Tem(Talento.Espadas))
-                        damage *= 0.85;
+                        damage *= 0.8;
 
                     if (pl.Weapon is BaseSpear && !pl.Talentos.Tem(Talento.Lancas))
-                        damage *= 0.85;
+                        damage *= 0.8;
 
                     if (pl.Weapon is BaseAxe && !pl.Talentos.Tem(Talento.Machados))
-                        damage *= 0.85;
+                        damage *= 0.8;
 
                     if (pl.Weapon is BasePoleArm && !pl.Talentos.Tem(Talento.Hastes))
-                        damage *= 0.85;
+                        damage *= 0.8;
 
-                    if (pl.Weapon is Dagger && !pl.Talentos.Tem(Talento.Adagas))
+                    if (pl.Weapon is Dagger && pl.Talentos.Tem(Talento.Adagas))
                         damage *= 1.30;
                 }
 
@@ -2931,7 +2935,7 @@ namespace Server.Items
             if (a != null)
             {
                 var bonus = defender.Player ? a.DamageScalar : (a.DamageScalar * 1.3);
-                if(!defender.Player)
+                if (!defender.Player)
                 {
                     var skillDmg = AosAttributes.GetValue(attacker, AosAttribute.WeaponSkillDamage, true) / 100d;
                     bonus += skillDmg;
@@ -3090,7 +3094,7 @@ namespace Server.Items
                 percentageBonus += talisman.Killer.DamageBonus(defender);
             }
 
-            if(talisman != null && talisman.Charges > 0 && tal != CheckSlayerResult.None)
+            if (talisman != null && talisman.Charges > 0 && tal != CheckSlayerResult.None)
             {
                 talisman.Charges -= 1;
             }
@@ -3251,7 +3255,7 @@ namespace Server.Items
             }
 
             double colarVento = ColarElemental.GetNivel(attacker, ElementoPvM.Vento);
-            double chancevento = 0.10d + ( colarVento / 120d );
+            double chancevento = 0.10d + (colarVento / 120d);
             Shard.Debug("Chance de Critico: " + chancevento);
             if (colarVento > 0 && Utility.RandomDouble() < chancevento)
             {
@@ -3260,7 +3264,7 @@ namespace Server.Items
             }
 
             double colarRaio = ColarElemental.GetNivel(attacker, ElementoPvM.Raio);
-            double chanceraio = 0.10d + ( colarRaio / 100d );
+            double chanceraio = 0.10d + (colarRaio / 100d);
             Shard.Debug("Chance Golpe Eletrico: " + chanceraio);
             if (colarRaio > 0 && Utility.RandomDouble() < chanceraio)
             {
@@ -3426,7 +3430,7 @@ namespace Server.Items
                 int lightningChance = (int)(AosWeaponAttributes.GetValue(attacker, AosWeaponAttribute.HitLightning) * propertyBonus);
                 int dispelChance = (int)(AosWeaponAttributes.GetValue(attacker, AosWeaponAttribute.HitDispel) * propertyBonus);
 
-                if(Shard.DebugEnabled)
+                if (Shard.DebugEnabled)
                 {
                     Shard.Debug("Change light " + lightningChance);
                 }
@@ -3853,7 +3857,7 @@ namespace Server.Items
 
             foreach (var m in list)
             {
-                if(!(m is PlayerMobile))
+                if (!(m is PlayerMobile))
                 {
                     ++count;
                     from.DoHarmful(m, true);
@@ -4232,7 +4236,7 @@ namespace Server.Items
                     break;
                 case CraftResource.Berilo:
                     bonusOre += 7;
-                        break;
+                    break;
                 case CraftResource.Carmesim:
                     if (this is BaseStaff)
                         bonusOre += 4;
@@ -4252,7 +4256,7 @@ namespace Server.Items
 
             if (m_DamageLevel != WeaponDamageLevel.Regular)
             {
-                if(bonusOre <= 3)
+                if (bonusOre <= 3)
                 {
                     damage += (2 * (int)m_DamageLevel) - 1;
                 }
@@ -4448,7 +4452,7 @@ namespace Server.Items
                 //attacker.CheckSkillMult(SkillName.ArmsLore, 0.0, 100.0);
             }
 
-            if(this is BaseRanged)
+            if (this is BaseRanged)
             {
                 var quiver = attacker.FindItemOnLayer(Layer.Cloak) as BaseQuiver;
                 if (quiver != null)
@@ -7031,10 +7035,10 @@ namespace Server.Items
                 }
             }
 
-            if(tool is IResource) // so pra cajados por hora
+            if (tool is IResource) // so pra cajados por hora
             {
                 var resTool = ((IResource)tool).Resource;
-                if(resTool == thisResource)
+                if (resTool == thisResource)
                 {
                     chancefoda += 5;
                     switch (this.Resource)
@@ -7063,26 +7067,123 @@ namespace Server.Items
             }
 
             string toolname = tool.Name;
-            if(toolname != null && toolname.Contains("Mistica") == true)
+            if (toolname != null && toolname.Contains("Mistica") == true)
             {
                 chancefoda += 100;
             }
 
             var props = 0;
 
-            if (chancefoda == 0 && this is BaseStaff && this.Quality == ItemQuality.Exceptional)
-            {
-                chancefoda += 0.5;
-                power = 1;
-            }
-
             if (Shard.DebugEnabled)
                 Shard.Debug("Chance craft obra prima: " + chancefoda);
 
-            power = 5; //verificar porque não está puxando o power quando é do mesmo material - paliativo.
+            if (power < 5)
+                power = 5; //verificar porque não está puxando o power quando é do mesmo material - paliativo.
+
+            if (chancefoda == 0 && this is BaseStaff && this.Quality == ItemQuality.Exceptional)
+            {
+                chancefoda += 5;
+
+                if (from.RP && !from.TemTalento(Talento.FabricadorDeCajados))
+                {
+                    power = 1;
+                }
+            }
+
+            if (from.RP)
+            {
+                if (this.Quality == ItemQuality.Exceptional)
+                {
+                    if (from.TemTalento(Talento.ArmasEpicas))
+                    {
+                        chancefoda += 5;
+                    }
+
+                    if (this is BasePoleArm)
+                    {
+                        if (from.TemTalento(Talento.FabricadorDeArmasDeAste))
+                        {
+                            chancefoda += 1;
+                        }
+                        else
+                        {
+                            chancefoda /= 2;
+                            power /= 2;
+                        }
+                    }
+
+                    if (this is BaseStaff)
+                    {
+                        if (from.TemTalento(Talento.FabricadorDeCajados))
+                        {
+                            chancefoda += 1;
+                        }
+                        else
+                        {
+                            chancefoda /= 2;
+                            power /= 2;
+                        }
+                    }
+
+                    if (this is BaseSword)
+                    {
+                        if (from.TemTalento(Talento.FabricadorDeEspadas))
+                        {
+                            chancefoda += 1;
+                        }
+                        else
+                        {
+                            chancefoda /= 2;
+                            power /= 2;
+                        }
+                    }
+
+                    if (this is BaseBashing)
+                    {
+                        if (from.TemTalento(Talento.FabricadorDePorretes))
+                        {
+                            chancefoda += 1;
+                        }
+                        else
+                        {
+                            chancefoda /= 2;
+                            power /= 2;
+                        }
+                    }
+
+                    if (this is BaseAxe)
+                    {
+                        if (from.TemTalento(Talento.FabricadorDeMachados))
+                        {
+                            chancefoda += 1;
+                        }
+                        else
+                        {
+                            chancefoda /= 2;
+                            power /= 2;
+                        }
+                    }
+
+                    if (this is BaseSpear)
+                    {
+                        if (from.TemTalento(Talento.FabricadorDeLancas))
+                        {
+                            chancefoda += 1;
+                        }
+                        else
+                        {
+                            chancefoda /= 2;
+                            power /= 2;
+                        }
+                    }
+                }
+            }
 
             if (chancefoda > 0 && Utility.Random(100) <= chancefoda)
             {
+                if (power < 1)
+                    power = 1;
+
                 from.SendMessage(55, "Voce craftou uma obra prima. Use ferramentas color da mesma cor do minerio do item para aumentar suas chances de craftar obras primas e tambem craftar obras primas melhores !");
                 Quality = ItemQuality.ObraPrima;
                 quality = (int)quality;

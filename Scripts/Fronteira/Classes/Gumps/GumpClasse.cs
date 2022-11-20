@@ -19,7 +19,8 @@ namespace Server.Gumps
         public static void _OnCommand(CommandEventArgs e)
         {
             var caller = e.Mobile;
-            Mostra(caller);
+            caller.SendGump(new RPClassGump());
+            //Mostra(caller);
         }
 
         public static void Mostra(Mobile caller)
@@ -42,7 +43,7 @@ namespace Server.Gumps
             this.escolhida = classeEscolhida;
                
             AddPage(0);
-            AddImage(43, 24, 40318);
+            AddBackground(113, 64, 500, 500, 9250);
 
             var x = 0;
             var y = 0;
@@ -50,9 +51,9 @@ namespace Server.Gumps
             foreach(var cl in ClassDef.GetClasses())
             {
                 AddHtml(362, 180+y, 111, 15, Gump.Cor(cl.Nome, "white"), (bool)false, (bool)false);
-                var id = 40308;
+                var id = 210;
                 if (cl == classeEscolhida)
-                    id = 40310;
+                    id = 211;
                 AddButton(344, 180+y, id, 40310, cl.ID+1, GumpButtonType.Reply, 0);
                 y += 20;
             }

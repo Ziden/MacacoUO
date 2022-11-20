@@ -44,6 +44,7 @@ namespace Server.Fronteira.Classes
 
         public Dictionary<SkillName, ushort> ClassSkills = new Dictionary<SkillName, ushort>();
         public OpcaoTalentos[] Talentos;
+        public Item[] ItemsIniciais; 
 
         public ClassePersonagem(string nome, int icone, string descricao, params SkillClasse[] skills)
         {
@@ -55,6 +56,12 @@ namespace Server.Fronteira.Classes
             }
             this.Icone = icone;
             this.Desc = descricao;
+        }
+
+        public ClassePersonagem ComItemsIniciais(params Item[] items)
+        {
+            ItemsIniciais = items;
+            return this;
         }
 
         public void ViraClasse(PlayerMobile player)

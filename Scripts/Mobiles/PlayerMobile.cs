@@ -1594,10 +1594,9 @@ namespace Server.Mobiles
         {
             get
             {
-                return 10 + (int)(4 * Str) + (int)(Skills[SkillName.Camping].Value * 2) + BonusPeso;
+                return 10 + (int)(4 * Str) + (int)(Skills[SkillName.Camping].Value * 2) + BonusPeso + (this.RP && this.TemTalento(Talento.Musculoso) ? 200 : 0);
             }
         }
-
 
         [CommandProperty(AccessLevel.Administrator)]
         public int PropMaxWeigt { get { return MaxWeight; } set { } }

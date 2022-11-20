@@ -1643,7 +1643,7 @@ namespace Server.Spells
             var pl = from as PlayerMobile;
             if (pl != null && pl.RP)
             {
-                if (pl != null && pl.Talentos.Tem(Fronteira.Talentos.Talento.EstudoSagrado))
+                if (pl != null && (pl.Talentos.Tem(Fronteira.Talentos.Talento.EstudoSagrado) || pl.Talentos.Tem(Fronteira.Talentos.Talento.MusicaBranca)))
                     cura *= 1.1;
                 else
                     cura *= 0.9;

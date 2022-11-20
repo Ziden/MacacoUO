@@ -157,8 +157,8 @@ namespace Server.Engines.UOStore
            
             //DECORAÇÃO
             cat = StoreCategory.Decorations;
-            Register<LargeChristmasTreeAddonDeed>(new TextDefinition("Arvore de Natal"), "item de decoração .", 0x0E58, 0, 0, 4000, cat);
-            Register<Christmas_TrainAddonDeed>(new TextDefinition("Trem Natalino"), "Apenas para Casas Maiores que 18x18.", 0x14EF, 0, 0, 6000, cat);
+            //Register<LargeChristmasTreeAddonDeed>(new TextDefinition("Arvore de Natal"), "item de decoração .", 0x0E58, 0, 0, 4000, cat);
+            //Register<Christmas_TrainAddonDeed>(new TextDefinition("Trem Natalino"), "Apenas para Casas Maiores que 18x18.", 0x14EF, 0, 0, 6000, cat);
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
             Register<HildebrandtDragonRugDeed>(1157889, 1157890, 0, 0x9CD8, 0, 700, cat);
             Register<SmallWorldTreeRugAddonDeed>(1157206, 1157898, 0, 0x9CBA, 0, 300, cat);

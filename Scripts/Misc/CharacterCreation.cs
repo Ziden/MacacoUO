@@ -66,19 +66,20 @@ namespace Server.Misc
                     }
                     book.LootType = LootType.Blessed;
                     pack.DropItem(book);
-                } else
+                } else if(!Shard.RP)
                 {
                     var book = new Spellbook((ulong)0x382A8C38);
                     book.LootType = LootType.Blessed;
                     pack.DropItem(book);
                 }
-             
-                var stone = new Hearthstone();
-                stone.LootType = LootType.Blessed;
-                stone.BoundTo = m.Name;
-                pack.DropItem(stone);
 
-               
+                if(!Shard.RP)
+                {
+                    var stone = new Hearthstone();
+                    stone.LootType = LootType.Blessed;
+                    stone.BoundTo = m.Name;
+                    pack.DropItem(stone);
+                }
             } else
             {
                 m.EquipItem(new Shoes(color));

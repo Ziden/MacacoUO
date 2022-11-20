@@ -403,6 +403,17 @@ namespace Server
             }
         }
 
+        [CommandProperty(AccessLevel.Counselor, AccessLevel.GameMaster)]
+        public double CapApenasMax
+        {
+            get { return Cap; }
+            set
+            {
+                if(value > Cap)
+                    Cap = value;
+            }
+        }
+
         private static bool m_UseStatMods;
 
         public static bool UseStatMods { get { return m_UseStatMods; } set { m_UseStatMods = value; } }

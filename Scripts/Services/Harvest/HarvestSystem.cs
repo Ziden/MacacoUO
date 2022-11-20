@@ -254,6 +254,9 @@ namespace Server.Engines.Harvest
                         var bonusGelo = amount * from.GetBonusElemento(ElementoPvM.Gelo);
                         amount += (int)Math.Round(bonusGelo);
 
+                        if (from.RP && from.TemTalento(Fronteira.Talentos.Talento.ColetorAvancado))
+                            amount += 1;
+
                         int feluccaAmount = amount;
 
                         if (item is BaseGranite)

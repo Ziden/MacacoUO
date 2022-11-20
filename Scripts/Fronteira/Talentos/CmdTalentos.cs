@@ -36,8 +36,8 @@ namespace Server.Commands
                 {
                     s += t.ToString() + " ";
                 }
-                e.Mobile.SendMessage("Nao achei este talento. Talentos registrados: "+s);
-
+                e.Mobile.SendMessage("Nao achei este talento");
+                e.Mobile.SendMessage("Talentos registrados: " + s);
             }
         }
 

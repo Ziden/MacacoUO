@@ -750,6 +750,12 @@ namespace Server.Items
                     PlayInstrumentWell(from);
                 else
                     PlayInstrumentBadly(from);
+
+                if(!from.IsCooldown("dicatoca"))
+                {
+                    from.SetCooldown("dicatoca");
+                    from.SendMessage(78, "Com musicianship, sua skill peacemaking pode acalmar monstros, provocation provoca-los e discordance torna-los fracos ! Isto pode funcionar nao apenas contra monstros...");
+                }
             }
             else
             {
