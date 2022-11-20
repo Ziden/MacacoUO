@@ -9,7 +9,6 @@ namespace Server.Gumps
 {
     public class GumpLore : Gump
     {
-
         public GumpLore(Mobile caller) : base(0, 0)
         {
             this.Closable = false;

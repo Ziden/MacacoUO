@@ -42,7 +42,7 @@ namespace Server.Engines.VvV
         public static int VirtueHue = 2124;
         public static int ViceHue = 2118;
 
-        public static bool Enabled = true; // Config.Get("VvV.Enabled", true);
+        public static bool Enabled = !Shard.RP; // Config.Get("VvV.Enabled", true);
         public static int StartSilver = 0;//Config.Get("VvV.StartSilver", 1000);
         public static bool EnhancedRules = false; //  Config.Get("VvV.EnhancedRules", false);
 

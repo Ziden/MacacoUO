@@ -132,11 +132,14 @@ namespace Server.Fronteira.Clima
 
         public static int GetSensacaoTermica(Mobile m)
         {
+            return 0;
+            /*
             int protecao = GetProtecao(m);
             int sensacao = m.Temperatura - protecao;
             if (Shard.DebugEnabled)
                 Shard.Debug(String.Format("Temperatura: {0} Proteção: {1} Sensação: {2}", m.Temperatura, protecao, sensacao), m);
             return sensacao;
+             */
         }
 
         private class Loop : Timer

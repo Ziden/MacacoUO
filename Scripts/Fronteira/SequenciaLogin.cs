@@ -1,5 +1,6 @@
 using CustomsFramework;
 using Server.Accounting;
+using Server.Fronteira.RP;
 using Server.Fronteira.Tutorial.WispGuia;
 using Server.Gumps;
 using Server.Misc;
@@ -76,7 +77,7 @@ namespace Server.Fronteira
                 CharacterCreation.Novos.Remove(e.Mobile);
                 if (pm.RP && pm.Profession == 0)
                 {
-                    GumpClasse.Mostra(pm);
+                    InicioRP.InitializaPlayer(pm);
                 }
                 else if (pm.Profession == 0)
                 {

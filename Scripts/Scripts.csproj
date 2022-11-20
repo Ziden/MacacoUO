@@ -439,6 +439,7 @@
     <Compile Include="Fronteira\RopaGuilda.cs" />
     <Compile Include="Fronteira\RP\GumpLoreThirdAge.cs" />
     <Compile Include="Fronteira\RP\GumpFala.cs" />
+    <Compile Include="Fronteira\RP\InicioRP.cs" />
     <Compile Include="Fronteira\RP\Save.cs" />
     <Compile Include="Fronteira\Skills\Informacoes.cs" />
     <Compile Include="Fronteira\Storages\MasterStorage.cs" />

@@ -528,7 +528,6 @@ namespace Server.Engines.VvV
                     pm.RecheckTownProtection();
                     pm.Delta(MobileDelta.Noto);
                 }
-
             }
 
             foreach (VvVAltar altar in Altars)

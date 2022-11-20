@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Server.Accounting;
+using Server.Fronteira.RP;
 using Server.Gumps.Newbie;
 using Server.Items;
 using Server.Mobiles;
@@ -212,10 +213,17 @@ namespace Server.Misc
             }
 
             var city = args.City;
-            if(newChar.IsYoung())
-                newChar.MoveToWorld(HAVEN_NOOB, Map.Trammel);
-            else
-                newChar.MoveToWorld(HAVEN, Map.Trammel);
+            if (newChar.RP)
+            {
+                InicioRP.InitializaPlayer(newChar as PlayerMobile);
+            } else
+            {
+                if (newChar.IsYoung())
+                    newChar.MoveToWorld(HAVEN_NOOB, Map.Trammel);
+                else
+                    newChar.MoveToWorld(HAVEN, Map.Trammel);
+            }
+           
             Utility.PushColor(ConsoleColor.Green);
             Console.WriteLine("Login: {0}: New character being created (account={1})", state, args.Account.Username);
             Utility.PopColor();

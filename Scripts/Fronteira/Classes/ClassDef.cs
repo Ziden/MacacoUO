@@ -49,9 +49,9 @@ namespace Server.Fronteira.Classes
                     new SkillClasse(SkillName.Macing, 90),  new SkillClasse(SkillName.Tactics, 90),
                     new SkillClasse(SkillName.Healing, 80), new SkillClasse(SkillName.Anatomy, 80),
                     new SkillClasse(SkillName.MagicResist, 70),
-
+                    new SkillClasse(SkillName.Herding, 30),
                     new SkillClasse(SkillName.Lumberjacking, 60),  new SkillClasse(SkillName.Blacksmith, 60), new SkillClasse(SkillName.Mining, 60), new SkillClasse(SkillName.Parry, 60),
-                    new SkillClasse(SkillName.Fishing, 60),  new SkillClasse(SkillName.Focus, 50),  new SkillClasse(SkillName.Cooking, 60)
+                    new SkillClasse(SkillName.Fishing, 60)
            }).ComItemsIniciais(
                 new Longsword(), new ChainChest(), new ChainLegs(), new ChainGloves(), new BronzeShield(), new Bandage(100),
                 new Cloak(78), new Boots(), new BodySash(78), new Dagger(), new ChainCoif()
@@ -81,7 +81,8 @@ namespace Server.Fronteira.Classes
                     new SkillClasse(SkillName.Poisoning, 50),  new SkillClasse(SkillName.Begging, 60), new SkillClasse(SkillName.Focus, 60),
 
                     new SkillClasse(SkillName.AnimalLore, 50), new SkillClasse(SkillName.Camping, 60), new SkillClasse(SkillName.Bowcraft, 40), new SkillClasse(SkillName.RemoveTrap, 60),
-                    new SkillClasse(SkillName.DetectHidden, 60), new SkillClasse(SkillName.Tracking, 40)
+                    new SkillClasse(SkillName.DetectHidden, 60), new SkillClasse(SkillName.Tracking, 40),
+                     new SkillClasse(SkillName.Herding, 30)
               }).ComItemsIniciais(
                  new Kryss(), new RingmailLegs(), new RingmailGloves(), new RingmailChest(), new RingmailArms(), new Bandage(100),
                  new Cloak(78), new Boots(), new BodySash(78), new Bandana(78), new Dagger()
@@ -109,7 +110,7 @@ namespace Server.Fronteira.Classes
              new SkillClasse[] {
                     new SkillClasse(SkillName.Magery, 90), new SkillClasse(SkillName.EvalInt, 90),  new SkillClasse(SkillName.Meditation, 90), new SkillClasse(SkillName.MagicResist, 90),
                     new SkillClasse(SkillName.Wrestling, 70), new SkillClasse(SkillName.Macing, 70),
-                    new SkillClasse(SkillName.Poisoning, 50),  new SkillClasse(SkillName.Alchemy, 40), new SkillClasse(SkillName.Herding, 30), new SkillClasse(SkillName.Healing, 60),
+                    new SkillClasse(SkillName.Poisoning, 50),  new SkillClasse(SkillName.Alchemy, 40), new SkillClasse(SkillName.Herding, 60), new SkillClasse(SkillName.Healing, 60),
                     new SkillClasse(SkillName.Tailoring, 60), new SkillClasse(SkillName.Fencing, 60), new SkillClasse(SkillName.Fishing, 60), new SkillClasse(SkillName.SpiritSpeak, 30),
                     new SkillClasse(SkillName.ItemID, 60),  new SkillClasse(SkillName.Forensics, 40),  new SkillClasse(SkillName.Imbuing, 40)
             }).ComItemsIniciais(
@@ -138,7 +139,7 @@ namespace Server.Fronteira.Classes
                     new SkillClasse(SkillName.Musicianship, 90), new SkillClasse(SkillName.Peacemaking, 90),  new SkillClasse(SkillName.Discordance, 90), new SkillClasse(SkillName.Provocation, 90),
                     new SkillClasse(SkillName.Fencing, 80),  new SkillClasse(SkillName.Wrestling, 80),  new SkillClasse(SkillName.Archery, 70), new SkillClasse(SkillName.MagicResist, 70),
                     new SkillClasse(SkillName.Tactics, 70),  new SkillClasse(SkillName.Healing, 60), new SkillClasse(SkillName.Anatomy, 60),
-
+                     new SkillClasse(SkillName.Herding, 30),
                     new SkillClasse(SkillName.Lumberjacking, 60), new SkillClasse(SkillName.Carpentry, 60), new SkillClasse(SkillName.Fishing, 60),
                     new SkillClasse(SkillName.Camping, 60),  new SkillClasse(SkillName.Magery, 50),
               }).ComItemsIniciais(new Kryss(), new RingmailLegs(), new RingmailGloves(), new RingmailChest(), new RingmailArms(), new Bandage(100),
@@ -170,7 +171,7 @@ namespace Server.Fronteira.Classes
                     new SkillClasse(SkillName.ArmsLore, 50),
                     new SkillClasse(SkillName.Blacksmith, 80), new SkillClasse(SkillName.Carpentry, 80), new SkillClasse(SkillName.Alchemy, 60),
                     new SkillClasse(SkillName.Bowcraft, 80),  new SkillClasse(SkillName.Camping, 80),  new SkillClasse(SkillName.Tailoring, 80),
-                    new SkillClasse(SkillName.Herding, 80),  new SkillClasse(SkillName.MagicResist, 40),
+                    new SkillClasse(SkillName.Herding, 90),  new SkillClasse(SkillName.MagicResist, 40),
              }).ComItemsIniciais(
                 new Mace(), new ChainChest(), new ChainLegs(), new ChainGloves(), new Bandage(100),
                 new Boots(78), new SkullCap(78), new Pickaxe(), new SledgeHammer(), new Saw(), new Hatchet(), new TinkerTools()

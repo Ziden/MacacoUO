@@ -8,6 +8,7 @@ using Server.Scripts.New.Adam.NewGuild;
 using Server.Misc.Templates;
 using Server.Misc.Custom;
 using Server.Fronteira.Classes;
+using System;
 
 namespace Server.Gumps
 {
@@ -32,7 +33,7 @@ namespace Server.Gumps
             this.classe = classe;
         
             AddPage(0);
-            AddBackground(79, 69, 493, 864, 9200);
+            AddBackground(79, 69, 493, 464, 9200);
          
             //if (newCharacter)
             //    AddButton(473, 185, 5545, 5546, 8, GumpButtonType.Reply, 0);
@@ -131,7 +132,9 @@ namespace Server.Gumps
                     PackItem(from, new Torch());
 
                     if (newCharacter)
-                        PackItem(from, new Gold(500)); 
+                        PackItem(from, new Gold(500));
+
+                    from.Skills.Cap = int.MaxValue;
 
                     foreach (var skill in from.Skills)
                     {
@@ -170,6 +173,7 @@ namespace Server.Gumps
 
                     from.Send(new SkillUpdate(from.Skills));
 
+
                     if (newCharacter)
                     {
                         from.Hunger = 20;
@@ -200,7 +204,20 @@ namespace Server.Gumps
 
                         var player = (PlayerMobile)from;
                         player.Profession = classe.ID;
-                        player.SendMessage("Classe Escolhida");
+                        player.BodyMod = 0;
+                        player.MoveToWorld(new Point3D(1199, 1037, 34), Map.Ilshenar);
+                        player.SendMessage("Voce re-lembrou sua escolha...");
+                        Timer.DelayCall(TimeSpan.FromSeconds(2), () => {
+                            player.OverheadMessage("* boceijando *");
+                        });
+
+                        Timer.DelayCall(TimeSpan.FromSeconds(4), () => {
+                            player.OverheadMessage("Dormi pesado...");
+                        });
+
+                        Timer.DelayCall(TimeSpan.FromSeconds(6), () => {
+                            player.OverheadMessage("Que sonho confuso...");
+                        });
                     }
                 }
             }
