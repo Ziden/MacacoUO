@@ -2240,7 +2240,7 @@
     <region type="TownRegion" priority="48" name="Lake Shire">
       <rect x="1144" y="1072" width="120" height="128" />
       <go x="1212" y="1144" z="-25" />
-      <guards disabled="true" />
+      <music name="Honor" />
     </region>
     <region priority="2" name="Entrance Rat Cave">
       <rect x="1024" y="1152" width="8" height="8" />
