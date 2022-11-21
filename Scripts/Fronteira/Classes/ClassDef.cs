@@ -177,12 +177,12 @@ namespace Server.Fronteira.Classes
                 new Boots(78), new SkullCap(78), new Pickaxe(), new SledgeHammer(), new Saw(), new Hatchet(), new TinkerTools()
            ),
 
-              new OpcaoTalentos(Talento.Armeiro, Talento.Musculoso, Talento.Porretes),
+              new OpcaoTalentos(Talento.Armeiro, Talento.BurroDeCarga, Talento.Porretes),
               new OpcaoTalentos(Talento.Herbalismo, Talento.ArmaduraPesada, Talento.EstudoAnatomico),
               new OpcaoTalentos(Talento.ArmasEpicas, Talento.ColetorAvancado, Talento.Machados),
+              new OpcaoTalentos(Talento.Forjador, Talento.DurabilidadeArmas, Talento.EconomizaRecurso),
               new OpcaoTalentos(Talento.Esquiva, Talento.Ladrao, Talento.Hab_ParalizeBlow),
-              new OpcaoTalentos(Talento.ProtecaoPesada, Talento.PeleArcana, Talento.Perseveranca),
-
+ 
               new OpcaoTalentos(Talento.Ferreiro, Talento.Alfaiate, Talento.Carpinteiro),
 
               new OpcaoTalentos(Talento.Hipismo, Talento.Hab_Block, Talento.Hab_CrushingBlow),

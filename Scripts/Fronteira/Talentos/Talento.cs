@@ -348,8 +348,9 @@ namespace Server.Fronteira.Talentos
         Esconderijo,
 
         Armeiro,
-        Musculoso, 
+        BurroDeCarga, 
 
+        DurabilidadeArmas,
         ArmasEpicas,
         ColetorAvancado,
 
@@ -362,6 +363,8 @@ namespace Server.Fronteira.Talentos
         FabricadorDeMachados,
         FabricadorDeArmasDeAste,
         FabricadorDePorretes,
+        EconomizaRecurso,
+
         Tinkering
 
         // Loja anywhere

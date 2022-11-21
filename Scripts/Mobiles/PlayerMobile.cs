@@ -1594,7 +1594,7 @@ namespace Server.Mobiles
         {
             get
             {
-                return 10 + (int)(4 * Str) + (int)(Skills[SkillName.Camping].Value * 2) + BonusPeso + (this.RP && this.TemTalento(Talento.Musculoso) ? 200 : 0);
+                return 10 + (int)(4 * Str) + (int)(Skills[SkillName.Camping].Value * 2) + BonusPeso + (this.RP && this.TemTalento(Talento.BurroDeCarga) ? 200 : 0);
             }
         }
 

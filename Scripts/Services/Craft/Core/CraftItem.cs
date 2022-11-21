@@ -9,6 +9,7 @@ using Server.Items;
 using Server.Mobiles;
 using Server.Engines.Quests;
 using Server.Ziden.Traducao;
+using Server.Fronteira.Talentos;
 #endregion
 
 namespace Server.Engines.Craft
@@ -1203,6 +1204,21 @@ namespace Server.Engines.Craft
 
             int index = 0;
 
+            if (isFailure)
+            {
+                if (from.RP && from.TemTalento(Talento.EconomizaRecurso))
+                {
+                    for (int i = 0; i < amounts.Length; i++)
+                    {
+                        amounts[i] /= 2;
+                        if (amounts[i] < 1)
+                        {
+                            amounts[i] = 1;
+                        }
+                    }
+                }
+            }
+
             // Consume ALL
             if (consumeType == ConsumeType.All)
             {
@@ -1226,13 +1242,15 @@ namespace Server.Engines.Craft
 
                 resHue = m_ResHue;
             }
+
+
             // Consume Half ( for use all resource craft type )
             else if (consumeType == ConsumeType.Half)
             {
+                var economiza = false;
                 for (int i = 0; i < amounts.Length; i++)
                 {
                     amounts[i] /= 2;
-
                     if (amounts[i] < 1)
                     {
                         amounts[i] = 1;
@@ -1465,16 +1483,13 @@ namespace Server.Engines.Craft
                 from.CheckTargetSkillMinMax(SkillName.ArmsLore, null, 0, 120);
             }
 
+            chance -= 0.05;
             if (from.RP && from.Player)
             {
                 if (((PlayerMobile)from).Talentos.Tem(Fronteira.Talentos.Talento.Forjador))
                     chance *= 1.2; // 20%
                 else
                     chance *= 0.9; // -10%
-            }
-            else if (!from.RP)
-            {
-                chance -= 0.05;
             }
 
             if (chance > 0)
@@ -1697,13 +1712,13 @@ namespace Server.Engines.Craft
                 {
                     Shard.Debug("RES ATUAL CRAFT CHANCE: " + resAtual.Name);
                     Shard.Debug("TypeRes CRAFT CHANCE: " + typeRes);
-
                 }
 
                 CraftResource res = CraftResource.None;
-
-                if (typeof(Leather).IsAssignableFrom(ItemType) || typeof(Board).IsAssignableFrom(ItemType) || typeof(IronIngot).IsAssignableFrom(ItemType))
-                    res = CraftResources.GetFromType(resAtual);
+                try
+                {
+                    res = CraftResources.GetFromType(typeRes);
+                } catch(Exception e) {}
 
                 if (res >= CraftResource.Cobre && res <= CraftResource.Dourado)
                 {
@@ -1723,7 +1738,7 @@ namespace Server.Engines.Craft
                 }
                 else if (res == CraftResource.Berilo)
                 {
-                    chance -= 0.5;
+                    chance -= 0.6;
                 }
                 else if (res == CraftResource.Vibranium)
                 {
@@ -1731,7 +1746,7 @@ namespace Server.Engines.Craft
                 }
                 else if (res == CraftResource.Adamantium)
                 {
-                    chance -= 0.8;
+                    chance -= 0.9;
                 }
 
                 else if (res == CraftResource.Pinho)

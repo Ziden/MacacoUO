@@ -906,6 +906,18 @@ namespace Server.Items
                 bonus += 40;
             }
 
+            if (this.Crafter is PlayerMobile pm)
+            {
+                Shard.Debug("Crafter player");
+                if (pm.RP && pm.TemTalento(Talento.DurabilidadeArmas)) {
+                    Shard.Debug("Bonus de talento +100%");
+                    bonus += 100;
+                }
+            } else
+            {
+                Shard.Debug("Crafter sem player");
+            }
+
             switch (m_DurabilityLevel)
             {
                 case WeaponDurabilityLevel.Durable:
@@ -2475,9 +2487,6 @@ namespace Server.Items
                 {
                     if (pl.Talentos.Tem(Talento.Potencia))
                         damage += (int)(damage * 0.2);
-
-                    if (pl.Talentos.Tem(Talento.Musculoso))
-                        damage += (int)(damage * 0.05);
 
                     if (pl.Weapon is BaseBashing && !pl.Talentos.Tem(Talento.Porretes))
                         damage *= 0.8;
@@ -6974,12 +6983,14 @@ namespace Server.Items
             CraftItem craftItem,
             int resHue)
         {
-            Quality = (ItemQuality)quality;
+          
 
             if (makersMark)
             {
                 Crafter = from;
             }
+
+            Quality = (ItemQuality)quality;
 
             PlayerConstructed = true;
 

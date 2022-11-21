@@ -722,6 +722,13 @@ namespace Server.Fronteira.Talentos
                 Nome = "Forjador"
             });
 
+            _talentos.Add(Talento.EconomizaRecurso, new DefTalentos()
+            {
+                Desc1 = "+50% Economiza Recurso ao Falhar Craft",
+                Icone = 39822,
+                Nome = "Economizador de Recursos"
+            });
+
             _talentos.Add(Talento.Naturalista, new DefTalentos()
             {
                 Desc1 = "+3 Recursos por spot",
@@ -757,11 +764,18 @@ namespace Server.Fronteira.Talentos
                 Nome = "Curandeiro"
             });
 
-            _talentos.Add(Talento.Musculoso, new DefTalentos()
+            _talentos.Add(Talento.BurroDeCarga, new DefTalentos()
             {
-                Desc1 = "+5% Dano Fisico, +200 Peso Carregado",
+                Desc1 = "+200 Peso Carregado",
                 Icone = 21286,
                 Nome = "Musculoso",
+            });
+
+            _talentos.Add(Talento.DurabilidadeArmas, new DefTalentos()
+            {
+                Desc1 = "+20% Durabilidade em Armas",
+                Icone = 21286,
+                Nome = "Armeiro Perfeccionista",
             });
 
             _talentos.Add(Talento.Armeiro, new DefTalentos()
