@@ -102,7 +102,7 @@ namespace Server.Mobiles
                     }
                 }
                 var selecionado = ensina[opt];
-                this.Teach(selecionado, from, 500, true);
+                this.Teach(selecionado, from, from.RP ? 200 : 500, true);
                 //from.Skills[selecionado].Base = 50;
 
             }, 3708, 0, ensina.Select(e => e.ToString()).ToArray()));

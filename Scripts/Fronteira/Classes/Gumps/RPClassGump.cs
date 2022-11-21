@@ -146,10 +146,10 @@ namespace Server.Gumps
                             var valor = classe.ClassSkills[skill.SkillName];
                             if(valor >= 90)
                             {
-                                valor = 40;
+                                valor = 30;
                             } else if(valor >= 60)
                             {
-                                valor = 20;
+                                valor = 15;
                             } else
                             {
                                 valor = 0;

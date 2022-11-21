@@ -1,5 +1,6 @@
 using Server.Gumps;
 using Server.Mobiles;
+using Server.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,62 @@ using System.Threading.Tasks;
 
 namespace Server.Fronteira.RP
 {
+
+    public class ItemTexto : Item
+    {
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public string Texto { get; set; }
+
+        [CommandProperty(AccessLevel.GameMaster)]
+        public int Cor { get; set; }
+
+
+        [Constructable]
+        public ItemTexto() : base(0xF6C)
+        {
+            Name = "Mude Me";
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write(0);
+            writer.Write(Texto);
+            writer.Write(Cor);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+            var v = reader.ReadInt();
+            Texto = reader.ReadString();
+            Cor = reader.ReadInt();
+        }
+
+        public override void OnDoubleClick(Mobile m)
+        {
+            this.PrivateMessage(Texto, m, Cor);
+        }
+
+        public override bool OnMoveOver(Mobile m)
+        {
+            base.OnMoveOver(m);
+            if (m.HasGump<RPClassGump>())
+                return false;
+
+            if (m.IsCooldown("portalvida"))
+                return true;
+
+            m.SetCooldown("portalvida", TimeSpan.FromSeconds(3));
+            m.SendMessage("Algumas escolhas na vida, podemos fazer...");
+            m.SendMessage("Eis sua primeira escolha...");
+            Timer.DelayCall(TimeSpan.FromSeconds(3), () => {
+                m.SendGump(new RPClassGump());
+            });
+            return true;
+        }
+    }
 
     public class TeleporterInicio : Item
     {

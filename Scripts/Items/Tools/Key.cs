@@ -386,7 +386,7 @@ namespace Server.Items
 
                         if (!o.CanUseKey)
                         {
-                            item.PrivateMessage("Voce nao pode usar isto aqui", from);
+                            item.OnDoubleClick(from);
                             return false;
                         }
 
