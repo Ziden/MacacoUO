@@ -338,14 +338,7 @@ namespace Server
                 }
                 else
                 {
-                    ctor = t.BaseType.GetConstructor(m_SerialTypeArray);
-                    if (ctor != null)
-                    {
-                        types.Add(new Tuple<ConstructorInfo, string>(ctor, typeName));
-                    } else
-                    {
-                        throw new Exception(String.Format("Type '{0}' does not have a serialization constructor", t));
-                    }
+                    throw new Exception(String.Format("Type '{0}' does not have a serialization constructor", t));
                 }
             }
             return types;

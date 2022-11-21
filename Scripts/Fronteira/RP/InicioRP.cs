@@ -26,6 +26,11 @@ namespace Server.Fronteira.RP
             Name = "Mude Me";
         }
 
+        public ItemTexto(Serial s) : base(s)
+        {
+
+        }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
@@ -72,6 +77,11 @@ namespace Server.Fronteira.RP
         public TeleporterInicio() : base(0xF6C)
         {
             Name = "Portal da Vida";
+        }
+
+        public TeleporterInicio(Serial s) : base(s)
+        {
+
         }
 
         public override void Serialize(GenericWriter writer)
