@@ -644,6 +644,34 @@ namespace Server.Mobiles
         }
     }
 
+    public class EtherealWindrunner : EtherealMount
+    {
+        [Constructable]
+        public EtherealWindrunner() : base(0x9ED5, 0x3ECC, 0x3ECC)
+        {
+            Name = "Windrunner Magico";
+        }
+        public EtherealWindrunner(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+
+        }
+    }
+
     public class EtherealLlama : EtherealMount
     {
         [Constructable]
