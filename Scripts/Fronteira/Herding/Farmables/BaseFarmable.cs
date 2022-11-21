@@ -222,19 +222,21 @@ namespace Server.Items
 
             var check = from.CheckSkillMult(SkillName.Herding, GetMinSkill(), GetMaxSkill());
 
-            var faiou = false;
             if (!check)
             {
                 from.Emote("* tentou colher e estragou tudo *");
                 Effects.PlaySound(this.Location, this.Map, 0x12E);
                 this.m_Picked = true;
                 this.Unlink();
-                Timer.DelayCall(TimeSpan.FromMinutes(5.0), new TimerCallback(Delete));
+                spawn.Amount = 1;
+                spawn.MoveToWorld(loc, map);
+                Timer.DelayCall(TimeSpan.FromMinutes(1.0), new TimerCallback(Delete));
+                return;
             }
 
             from.Emote("* colheu a planta *");
             ((PlayerMobile)from).HarvestAnimation(0);
-            if (Skill < 35 || faiou)
+            if (Skill < 10 || !check)
             {
                 from.SendMessage("Por ser inexperiente voce retirou a planta de forma errada");
                 spawn.MoveToWorld(loc, map);
@@ -268,7 +270,7 @@ namespace Server.Items
             Effects.PlaySound(this.Location, this.Map, 0x12E);
             this.m_Picked = true;
             this.Unlink();
-            Timer.DelayCall(TimeSpan.FromMinutes(5.0), new TimerCallback(Delete));
+            Timer.DelayCall(TimeSpan.FromMinutes(1.0), new TimerCallback(Delete));
         }
 
         public void Unlink()

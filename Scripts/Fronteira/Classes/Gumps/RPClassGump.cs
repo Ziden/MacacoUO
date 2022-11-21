@@ -147,10 +147,7 @@ namespace Server.Gumps
                             if(valor >= 90)
                             {
                                 valor = 40;
-                            } else if(valor >= 70)
-                            {
-                                valor = 30;
-                            } else if(valor >= 40)
+                            } else if(valor >= 60)
                             {
                                 valor = 20;
                             } else
