@@ -2246,11 +2246,11 @@
       <rect x="1024" y="1152" width="8" height="8" />
       <go x="1031" y="1154" z="-24" />
     </region>
-    <region priority="2" name="Rat Cave Territory">
+    <region type="DungeonRegion" priority="2" name="Rat Cave Territory">
       <rect x="1144" y="1440" width="224" height="144" />
       <go x="1345" y="1511" z="-3" />
     </region>
-    <region priority="2" name="Ratman Cave">
+    <region type="DungeonRegion" priority="2" name="Ratman Cave">
       <rect x="1264" y="1448" width="96" height="128" />
       <rect x="1152" y="1456" width="104" height="104" />
       <go x="1348" y="1511" z="-3" />

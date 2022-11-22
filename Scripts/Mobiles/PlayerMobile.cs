@@ -57,6 +57,7 @@ using Server.Fronteira.Pvm;
 using Server.Menus.Questions;
 using Fronteira.Discord;
 using Server.Fronteira.Guildas;
+using VitaNex;
 #endregion
 
 namespace Server.Mobiles
@@ -4047,7 +4048,7 @@ namespace Server.Mobiles
                     var name = item.Name;
                     if (name == "" || name == null)
                     {
-                        name = item.GetType().Name;
+                        name = ClilocLNG.ENU.GetString(item.GetType());
                     }
                     PublicOverheadMessage(MessageType.Emote, 0, false, "* pegou " + name + " *");
                 }

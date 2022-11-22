@@ -49,6 +49,11 @@ namespace Server.Fronteira.RP
 
         public override void OnDoubleClick(Mobile m)
         {
+            if(!m.InRange(this, 2))
+            {
+                m.SendMessage("Muito longe...");
+                return;
+            }
             this.PrivateMessage(Texto, m, Cor);
         }
 

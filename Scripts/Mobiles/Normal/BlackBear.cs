@@ -8,9 +8,9 @@ namespace Server.Mobiles
     {
         [Constructable]
         public BlackBear()
-            : base(AIType.AI_Melee, FightMode.Aggressor, 10, 1, 0.2, 0.4)
+            : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "um urso negro";
+            this.Name = "urso negro";
             this.Body = 211;
             this.BaseSoundID = 0xA3;
 
@@ -18,7 +18,7 @@ namespace Server.Mobiles
             this.SetDex(56, 75);
             this.SetInt(11, 14);
 
-            this.SetHits(86, 90);
+            this.SetHits(96, 110);
             this.SetMana(0);
 
             this.SetDamage(8, 25);

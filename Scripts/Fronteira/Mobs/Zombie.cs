@@ -39,16 +39,12 @@ namespace Server.Mobiles
             VirtualArmor = 0;
 
             PackBodyPartOrBones();
-            var reag = Utility.Random(1, 3);
-            switch(reag)
-            {
-                case 1: PackItem(new Bloodmoss(5)); break;
-                case 2: PackItem(new MandrakeRoot(5)); break;
-                case 3: PackItem(new Nightshade(5)); break;
-            }
+           
+            PackItem(new Bloodmoss(5));
 
-            if(Utility.Chance(3))
+            if (Utility.Random(0, 100) < 25 && Utility.Chance(3))
             {
+                var reag = Utility.Random(1, 3);
                 switch (reag)
                 {
                     case 1: PackItem(new MandrakeSeeds(1)); break;

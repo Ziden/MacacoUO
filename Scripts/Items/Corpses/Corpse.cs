@@ -15,6 +15,7 @@ using Server.Misc;
 using Server.Mobiles;
 using Server.Network;
 using Server.Ziden.Items;
+using VitaNex;
 #endregion
 
 namespace Server.Items
@@ -1140,7 +1141,7 @@ namespace Server.Items
                 }
                 else
                 {
-                    from.OverheadMessage("* pegou " + item.GetType().Name + " *");
+                    from.OverheadMessage("* pegou " + ClilocLNG.ENU.GetString(item.GetType()) + " *");
                 }
             }
 

@@ -126,6 +126,17 @@ namespace Server.Items
 
         protected void AddLoot(Item item)
         {
+            if(Shard.RP && item is BagOfReagents reags)
+            {
+                foreach(var reag in new List<Item>(reags.Items))
+                {
+                    if (reag is BlackPearl)
+                        continue;
+
+                    reag.Delete();
+                }
+            }
+
             if (item == null)
                 return;
 

@@ -29,7 +29,7 @@ namespace Server.Mobiles
             }
         }
 
-        public static int PRECO_REAGS = 4;
+        public static int PRECO_REAGS = Shard.RP ? 6 : 4;
 
         public static void BuyReagents(List<GenericBuyInfo> info)
         {
