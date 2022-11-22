@@ -9,7 +9,7 @@ namespace Server.Mobiles
         [Constructable]
         public CrystalSeaSerpent()
         {
-            this.Name = "serpente de cristal";
+            this.Name = "serpente maritima de cristal";
             this.Hue = 0x47E;
 
             this.SetStr(250, 450);

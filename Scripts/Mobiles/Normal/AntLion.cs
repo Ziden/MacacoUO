@@ -15,7 +15,7 @@ namespace Server.Mobiles
         public AntLion()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "formigaum";
+            Name = "formiga leao";
             Body = 787;
             BaseSoundID = 1006;
 

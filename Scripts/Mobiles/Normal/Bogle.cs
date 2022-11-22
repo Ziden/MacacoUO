@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Bogle()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a bogle";
+            this.Name = "carnical";
             this.Body = 153;
             this.BaseSoundID = 0x482;
 

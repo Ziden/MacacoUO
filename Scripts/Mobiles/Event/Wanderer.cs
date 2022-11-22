@@ -8,7 +8,7 @@ namespace Server.Mobiles
         [Constructable]
         public Wanderer()
         {
-            this.Name = "Me";
+            this.Name = "Andarilho";
             this.Body = 0x1;
             this.AccessLevel = AccessLevel.Counselor;
 

@@ -13,7 +13,7 @@ namespace Server.Mobiles
 
             this.Hue = 0x8838;
             this.Body = 0x190;
-            this.Name = "Manete Nebroso";
+            this.Name = "Lysander";
 
             this.AddItem(new Boots(0x599));
             this.AddItem(new Cloak(0x96F));

@@ -16,7 +16,7 @@ namespace Server.Mobiles
         public AgapiteElemental(int oreAmount)
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "elemental de niobio";
+            this.Name = "elemental mineral";
             this.Body = 107;
             this.BaseSoundID = 268;
 
