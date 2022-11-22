@@ -18,7 +18,7 @@ namespace Server.Mobiles
 
         [Constructable]
         public Beetle()
-            : this("besouro gigante")
+            : this("besouro")
         {
         }
 

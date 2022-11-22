@@ -13,7 +13,7 @@ namespace Server.Mobiles
 
             this.Hue = 0x8596;
             this.Body = 0x190;
-            this.Name = "Arete Nebroso";
+            this.Name = "Bergen";
 
             this.AddItem(new ShortPants(0x59C));
 

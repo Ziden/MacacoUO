@@ -9,7 +9,7 @@ namespace Server.Mobiles
         public Cougar()
             : base(AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a cougar";
+            this.Name = "puma";
             this.Body = 63;
             this.BaseSoundID = 0x73;
 

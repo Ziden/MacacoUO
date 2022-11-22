@@ -19,7 +19,7 @@ namespace Server.Mobiles
             : base(AIType.AI_Melee)
         {
             Name = "Barracoon";
-            Title = "o caximbeiro";
+            Title = "o cachimbeiro";
             Body = 0x190;
             Hue = 0x83EC;
 

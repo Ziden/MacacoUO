@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public ChiefParoxysmus()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "chefe paroxysmus";
+            Name = "Chefe Paroxysmus";
             Body = 0x100;
 
             SetStr(1232, 1400);

@@ -16,6 +16,11 @@ namespace Server.Mobiles
             this.Hue = 243;
             this.BaseSoundID = 362;
 
+            if (Shard.RP)
+            {
+                this.Name = "Guardiao das Almas";
+            }
+
             this.SetStr(1370, 1422);
             this.SetDex(103, 151);
             this.SetInt(835, 1002);

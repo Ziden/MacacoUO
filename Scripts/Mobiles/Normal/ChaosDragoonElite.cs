@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public ChaosDragoonElite()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.15, 0.4)
         {
-            this.Name = "a chaos dragoon elite";
+            this.Name = "elite do cavaleiro do caos";
             this.Body = 0x190;
             this.Hue = Utility.RandomSkinHue();
 

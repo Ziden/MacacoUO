@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public CorrosiveSlime()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "a corrosive slime";
+            Name = "gosma corrosiva";
             Body = 51;
             BaseSoundID = 456;
 

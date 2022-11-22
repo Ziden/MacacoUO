@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public DevourerRenowned()
             : base(AIType.AI_NecroMage)
         {
-            this.Name = "Devourer of Souls";
+            this.Name = "Devorador de Almas";
             this.Title = "[Renowned]";
             this.Body = 303;
             this.BaseSoundID = 357;

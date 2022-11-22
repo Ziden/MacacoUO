@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Miasma()
         {
 
-            Name = "Miasma";
+            Name = "Miasca";
             Hue = 0x8FD;
 
             SetStr(255, 847);

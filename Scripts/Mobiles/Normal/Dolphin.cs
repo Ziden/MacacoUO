@@ -9,7 +9,7 @@ namespace Server.Mobiles
         public Dolphin()
             : base(AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a dolphin";
+            this.Name = "golfinho";
             this.Body = 0x97;
             this.BaseSoundID = 0x8A;
 

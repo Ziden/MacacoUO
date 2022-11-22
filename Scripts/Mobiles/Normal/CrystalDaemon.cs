@@ -17,7 +17,7 @@ namespace Server.Mobiles
         public CrystalDaemon()
             : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            this.Name = "capeta";
+            this.Name = "demonio de cristal";
             this.Body = 0x310;
             this.Hue = 0x3E8;
             this.BaseSoundID = 0x47D;

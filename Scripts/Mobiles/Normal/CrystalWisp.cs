@@ -8,7 +8,7 @@ namespace Server.Mobiles
         [Constructable]
         public CrystalWisp()
         {
-            this.Name = "a crystal wisp";
+            this.Name = "feixe de cristal";
             this.Hue = 0x482;
 
             //for (int i = 0; i < Utility.RandomMinMax(0, 1); i++)

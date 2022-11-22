@@ -14,7 +14,7 @@ namespace Server.Mobiles
             this.Hue = 0x8838;
             this.Female = true;
             this.Body = 0x191;
-            this.Name = "Janete Nebrosa";
+            this.Name = "Tavara";
 
             this.AddItem(new Kilt(0x59C));
             this.AddItem(new Sandals(0x599));

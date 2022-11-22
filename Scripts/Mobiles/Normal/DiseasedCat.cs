@@ -9,7 +9,7 @@ namespace Server.Engines.Quests.Samurai
         public DiseasedCat()
             : base(AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a diseased cat";
+            this.Name = "gato raivoso";
             this.Body = 0xC9;
             this.Hue = Utility.RandomAnimalHue();
             this.BaseSoundID = 0x69;

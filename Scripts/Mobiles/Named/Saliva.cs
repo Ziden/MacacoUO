@@ -10,7 +10,7 @@ namespace Server.Mobiles
         public Saliva()
             : base()
         {
-            this.Name = "a saliva";
+            this.Name = "a saltiva";
             this.Hue = 0x11E;
 
             this.SetStr(136, 206);

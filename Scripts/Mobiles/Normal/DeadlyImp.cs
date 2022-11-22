@@ -9,7 +9,7 @@ namespace Server.Engines.Quests.Samurai
         public DeadlyImp()
             : base(AIType.AI_Melee, FightMode.Aggressor, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a deadly imp";
+            this.Name = "diabo mortifero";
             this.Body = 74;
             this.BaseSoundID = 422;
             this.Hue = 0x66A;

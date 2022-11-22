@@ -6,7 +6,7 @@ namespace Server.Mobiles
     public class Bird : BaseCreature
     {
         private string[] names = new string[] {
-            "canario", "arara", "periquito", "corvo", "tecoteco","picapau", "bem-te-vi", "andorinha", "pomba", "pombo"
+            "canario", "arara", "periquito", "corvo", "teco-teco","picapau", "bem-te-vi", "andorinha", "pomba", "andorinha", "sabia", "calopsita"
         };
 
 
