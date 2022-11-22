@@ -10,11 +10,16 @@ namespace Server.Mobiles
         public WyvernRenowned()
             : base(AIType.AI_Mage)
         {
-            this.Name = "Guardiao das Almas";
+            this.Name = "Fadragao das Almas";
             this.Title = "[Renowned]";
             this.Body = 62;
             this.Hue = 243;
             this.BaseSoundID = 362;
+
+            if (Shard.RP)
+            {
+                this.Name = "Guardiao das Almas";
+            }
 
             this.SetStr(1370, 1422);
             this.SetDex(103, 151);
