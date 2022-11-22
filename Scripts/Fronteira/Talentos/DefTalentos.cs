@@ -31,7 +31,7 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Herbalismo, new DefTalentos()
             {
                 Desc1 = "Max 90 Farming",
-                Icone = 40865,
+                Icone = 2291,
                 Nome = "Herbalismo"
             });
 
@@ -73,35 +73,35 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Cajados, new DefTalentos()
             {
                 Desc1 = "Cast 30% Mais Rapido com Cajados",
-                Icone = 40848,
+                Icone = 2249,
                 Nome = "Ponto de Foco"
             });
 
             _talentos.Add(Talento.Esconderijo, new DefTalentos()
             {
                 Desc1 = "Max 90 Hiding",
-                Icone = 40848,
+                Icone = 2274,
                 Nome = "Andante das Sombras"
             });
 
             _talentos.Add(Talento.Alquimista, new DefTalentos()
             {
                 Desc1 = "Max 90 Alchemy",
-                Icone = 40848,
+                Icone = 2257,
                 Nome = "Alquimista"
             });
 
             _talentos.Add(Talento.EstudoSagrado, new DefTalentos()
             {
                 Desc1 = "+25% Curas",
-                Icone = 40849,
+                Icone = 2241,
                 Nome = "Estudo Sagrado"
             });
 
             _talentos.Add(Talento.BardoGuerreiro, new DefTalentos()
             {
                 Desc1 = "90 Cap Tactics, Anatomy, Healing & Cooking",
-                Icone = 40849,
+                Icone = 2273,
                 Nome = "Bardo de Bar"
             });
 
@@ -115,28 +115,28 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.CacadorDeTesouros, new DefTalentos()
             {
                 Desc1 = "Max 90 Lockpick Cartography Remove Trap & Detect Hidden",
-                Icone = 40848,
+                Icone = 2253,
                 Nome = "Cacador de Tesouros"
             });
 
             _talentos.Add(Talento.Assassino, new DefTalentos()
             {
                 Desc1 = "Max 90 Tactics & Poisoning & 70 Alchemy",
-                Icone = 40848,
+                Icone = 2272,
                 Nome = "Assassino"
             });
 
             _talentos.Add(Talento.Ranger, new DefTalentos()
             {
                 Desc1 = "Max 90 Veterinary & Animal Taming",
-                Icone = 40848,
+                Icone = 2298,
                 Nome = "Ranger"
             });
 
             _talentos.Add(Talento.MusicaBranca, new DefTalentos()
             {
                 Desc1 = "Max 80 Magery, Incription & +25% Curas",
-                Icone = 40848,
+                Icone = 2292,
                 Nome = "Musico Magico"
             });
 
@@ -144,7 +144,7 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Encantador, new DefTalentos()
             {
                 Desc1 = "Max 70 Veterinary, Animal Taming & Animal Lore",
-                Icone = 40848,
+                Icone = 2293,
                 Nome = "Encantador de Animais"
             });
 
@@ -158,21 +158,21 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.AnimalLore, new DefTalentos()
             {
                 Desc1 = "Max 90 Animal Lore",
-                Icone = 40875,
+                Icone = 2260,
                 Nome = "Biologia"
             });
 
             _talentos.Add(Talento.Provocacao, new DefTalentos()
             {
                 Desc1 = "Max 70 Musicanship & Provocation",
-                Icone = 40875,
+                Icone = 2256,
                 Nome = "Trovador"
             });
 
             _talentos.Add(Talento.CorrerStealth, new DefTalentos()
             {
                 Desc1 = "Permite Correr em Stealth",
-                Icone = 40851,
+                Icone = 2283,
                 Nome = "Astuto"
             });
 
@@ -243,7 +243,7 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Hab_PsyAttack, new DefTalentos()
             {
                 Desc1 = "Permite usar Psychic Attack",
-                Icone = 20949,
+                Icone = 2286,
                 Nome = "Ataque Psiquico"
             });
 
@@ -357,7 +357,7 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Carpinteiro, new DefTalentos()
             {
                 Desc1 = "90 Carpentry, Bowcraft & Lumberjack",
-                Icone = 21004,
+                Icone = 2252,
                 Nome = "Carpinteiro"
             });
 
@@ -365,7 +365,7 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Alfaiate, new DefTalentos()
             {
                 Desc1 = "90 Tailoring, Herding, Imbuing",
-                Icone = 21004,
+                Icone = 2274,
                 Nome = "Alfaiate"
             });
 
@@ -449,14 +449,14 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Porretes, new DefTalentos()
             {
                 Desc1 = "+25% Dano com Macefight",
-                Icone = 40861,
+                Icone = 2282,
                 Nome = "Porretes"
             });
 
             _talentos.Add(Talento.Lancas, new DefTalentos()
             {
                 Desc1 = "+25% Dano com Fencing",
-                Icone = 39036,
+                Icone = 2244,
                 Nome = "Lancas"
             });
 
@@ -498,14 +498,14 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Ladrao, new DefTalentos()
             {
                 Desc1 = "Max 90 Stealing, Max 90 Snooping",
-                Icone = 40843,
+                Icone = 2290,
                 Nome = "Ladrao"
             });
 
             _talentos.Add(Talento.ResistSpell, new DefTalentos()
             {
                 Desc1 = "Max 90 Magic Resist",
-                Icone = 40871,
+                Icone = 2248,
                 Nome = "Resistente"
             });
 
@@ -520,35 +520,35 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Bloqueador, new DefTalentos()
             {
                 Desc1 = "Max 90 Parry",
-                Icone = 40873,
+                Icone = 2265,
                 Nome = "Bloqueador"
             });
 
             _talentos.Add(Talento.Paladino, new DefTalentos()
             {
                 Desc1 = "Max 90 Chivalry, Max 80 Meditation",
-                Icone = 40861,
+                Icone = 2245,
                 Nome = "Fe"
             });
 
             _talentos.Add(Talento.Comandante, new DefTalentos()
             {
                 Desc1 = "Permite ter aliados NPCS",
-                Icone = 40861,
+                Icone = 2285,
                 Nome = "Lideranca"
             });
 
             _talentos.Add(Talento.Darknight, new DefTalentos()
             {
                 Desc1 = "Max 90 Necromancy, Max 80 Meditation",
-                Icone = 40861,
+                Icone = 2249,
                 Nome = "Perdicao"
             });
 
             _talentos.Add(Talento.Finta, new DefTalentos()
             {
                 Desc1 = "-20% Chance de ser bloqueado",
-                Icone = 40860,
+                Icone = 2240,
                 Nome = "Finta"
             });
 
@@ -562,14 +562,14 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.ArmaduraPesada, new DefTalentos()
             {
                 Desc1 = "Nao perde dex com armaduras",
-                Icone = 40868,
+                Icone = 2246,
                 Nome = "Armadura Pesada"
             });
 
             _talentos.Add(Talento.Experiente, new DefTalentos()
             {
                 Desc1 = "+500 EXP",
-                Icone = 40862,
+                Icone = 2247,
                 Nome = "Experiente"
             });
 
@@ -597,14 +597,14 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.EstudoAnatomico, new DefTalentos()
             {
                 Desc1 = "70 Healing & Anatomy",
-                Icone = 39846,
+                Icone = 2261,
                 Nome = "Estudo Anatomico"
             });
 
             _talentos.Add(Talento.ArmasEpicas, new DefTalentos()
             {
                 Desc1 = "+10% Chance Armas Obras Prima",
-                Icone = 39846,
+                Icone = 20998,
                 Nome = "Mestre Armeiro"
             });
 
@@ -612,14 +612,14 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.ColetorAvancado, new DefTalentos()
             {
                 Desc1 = "+1 Recursos Coletados",
-                Icone = 39846,
+                Icone = 2273,
                 Nome = "Coletor Avancado"
             });
 
             _talentos.Add(Talento.Lockpick, new DefTalentos()
             {
                 Desc1 = "90 Lockpicking",
-                Icone = 39846,
+                Icone = 2262,
                 Nome = "Chaveiro",
                 Aprende = new Dictionary<SkillName, int>() { { SkillName.Lockpicking, 90 } }
             });
@@ -768,7 +768,7 @@ namespace Server.Fronteira.Talentos
             {
                 Desc1 = "+200 Peso Carregado",
                 Icone = 21286,
-                Nome = "Musculoso",
+                Nome = "Burro de Carga",
             });
 
             _talentos.Add(Talento.DurabilidadeArmas, new DefTalentos()
@@ -797,7 +797,7 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.Tinkering, new DefTalentos()
             {
                 Desc1 = "90 Tinkering",
-                Icone = 21286,
+                Icone = 2262,
                 Nome = "Funileiro Mestre",
                 Aprende = new Dictionary<SkillName, int>() { { SkillName.Tinkering, 90 } }
             });
@@ -805,49 +805,49 @@ namespace Server.Fronteira.Talentos
             _talentos.Add(Talento.FabricadorDeCajados, new DefTalentos()
             {
                 Desc1 = "+ Cajados Obra Prima",
-                Icone = 21286,
+                Icone = 2289,
                 Nome = "Fabricador de Cajados",
             });
 
             _talentos.Add(Talento.FabricadorDeArcos, new DefTalentos()
             {
                 Desc1 = "+ Arcos Obra Prima",
-                Icone = 21286,
+                Icone = 21001,
                 Nome = "Fabricador de Arcos",
             });
 
             _talentos.Add(Talento.FabricadorDeEspadas, new DefTalentos()
             {
                 Desc1 = "+ Espadas Obra Prima",
-                Icone = 21286,
+                Icone = 20738,
                 Nome = "Fabricador de Espadas",
             });
 
             _talentos.Add(Talento.FabricadorDeLancas, new DefTalentos()
             {
                 Desc1 = "+ Lancas Obra Prima",
-                Icone = 21286,
+                Icone = 2244,
                 Nome = "Fabricador de Lancas",
             });
 
             _talentos.Add(Talento.FabricadorDeMachados, new DefTalentos()
             {
                 Desc1 = "+ Machados Obra Prima",
-                Icone = 21286,
+                Icone = 2287,
                 Nome = "Fabricador de Machados",
             });
 
             _talentos.Add(Talento.FabricadorDeArmasDeAste, new DefTalentos()
             {
                 Desc1 = "+ Armas de Aste Obra Prima",
-                Icone = 21286,
+                Icone = 2248,
                 Nome = "Fabricador de Armas de Haste",
             });
 
             _talentos.Add(Talento.FabricadorDePorretes, new DefTalentos()
             {
                 Desc1 = "+ Porretes Obra Prima",
-                Icone = 21286,
+                Icone = 2280,
                 Nome = "Fabricador de Porretes",
             });
         }
