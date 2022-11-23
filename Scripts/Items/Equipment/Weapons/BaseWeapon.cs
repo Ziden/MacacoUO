@@ -1742,11 +1742,13 @@ namespace Server.Items
             }
 
             delayInSeconds = 15000.0 / v;
+
             if (Shard.DebugEnabled)
             {
                 Shard.Debug("Velocidade de ataque: " + delayInSeconds + " segundos", m);
                 Shard.Debug("V: " + v, m);
             }
+
 
             var delay = TimeSpan.FromSeconds(delayInSeconds);
 
@@ -1786,11 +1788,34 @@ namespace Server.Items
         {
             bool canSwing = true;
 
+            if(attacker.RP)
+            {
+                long nextSwing = attacker.LastMoveTime + attacker.ComputeMovementSpeed() + 50;
+
+                attacker.RevealingAction();
+
+                if(Shard.DebugEnabled)
+                {
+                    Shard.Debug("nextSwing " + nextSwing + " - " + Core.TickCount);
+
+                }
+                if (nextSwing > Core.TickCount)
+                {
+                    if(!attacker.IsCooldown("dicaswing"))
+                    {
+                        attacker.SetCooldown("dicaswing", TimeSpan.FromHours(3));
+                        attacker.SendMessage(78, "[DICA] Voce precisa ficar parado para conseguir desferir ataques");
+                    }
+
+                    return TimeSpan.FromSeconds(0.25);
+                }
+            }
+
             var diffZ = Math.Abs(attacker.Location.Z - damageable.Location.Z);
 
             canSwing = diffZ < 10;
 
-            if (attacker.Weapon is BaseRanged)
+            if (attacker.RP || attacker.Weapon is BaseRanged)
                 SpellHelper.Turn(attacker, damageable);
 
             if (attacker.RP && attacker.Mounted && attacker is PlayerMobile && !((PlayerMobile)attacker).Talentos.Tem(Talento.Hipismo))
@@ -1884,7 +1909,12 @@ namespace Server.Items
                 }
 
                 if (Shard.COMBATE_SPHERE)
-                    SphereSwing(attacker, damageable, damageBonus);
+                {
+                    var delay = GetDelay(attacker, damageable as Mobile);
+                    SphereSwing(attacker, damageable, damageBonus, delay);
+                    return delay;
+                }
+                    
                 else
                     DoHit(attacker, damageable, damageBonus);
             }
@@ -1905,36 +1935,76 @@ namespace Server.Items
             }
         }
 
-        public void SphereSwing(Mobile attacker, IDamageable damageable, double damageBonus)
+        public void CancelaTimerAtaque(Mobile attacker)
+        {
+            if(attacker.TimerAtaque != null)
+            {
+                attacker.TimerAtaque.Stop();
+                attacker.HitPronto = false;
+                attacker.TimerAtaque = null;
+                if (!attacker.IsCooldown("dicamoveswing"))
+                {
+                    attacker.SetCooldown("dicamoveswing", TimeSpan.FromHours(3));
+                    attacker.SendMessage(78, "[DICA] Voce Voce se moveu antes de terminar seu ataque e cancelou o ataque");
+                }
+            }
+          
+        }
+
+        public void SphereSwing(Mobile attacker, IDamageable damageable, double damageBonus, TimeSpan delay)
         {
             if (attacker.HitPronto)
             {
                 DoHit(attacker, damageable, damageBonus);
                 return;
             }
-            if (attacker.hitTimer != null)
+            if (attacker.TimerAtaque != null)
             {
                 return;
             }
 
-            var delay = GetDelay(attacker);
+            if(Shard.RP && delay > TimeSpan.FromSeconds(3))
+            {
+                delay = TimeSpan.FromSeconds(3);
+            }
             var frames = delay.TotalSeconds * 1.5;
             var half = delay.TotalMilliseconds / 2;
-            PlaySwingAnimation(attacker, (int)Math.Round(frames));
-            attacker.hitTimer = Timer.DelayCall(TimeSpan.FromMilliseconds(half), () =>
+            var buffer = 20;
+            if(attacker.RP)
             {
-                if (!attacker.Alive || attacker.Deleted || attacker.hitTimer == null)
+                SpellHelper.Turn(attacker, damageable);
+                //attacker.Freeze(TimeSpan.FromMilliseconds(delay.TotalMilliseconds * 0.8));
+                Timer.DelayCall(TimeSpan.FromMilliseconds(buffer), () =>
+                {
+                    PlaySwingAnimation(attacker, (int)Math.Round(frames));
+                });
+            } else
+            {
+                PlaySwingAnimation(attacker, (int)Math.Round(frames));
+            }
+            
+            attacker.TimerAtaque = Timer.DelayCall(TimeSpan.FromMilliseconds(half + buffer), () =>
+            {
+                if (!attacker.Alive || attacker.Deleted || attacker.TimerAtaque == null)
                 {
                     attacker.HitPronto = false;
-                    attacker.hitTimer = null;
+                    attacker.TimerAtaque = null;
+                    OnMiss(attacker, damageable);
                     return;
                 }
 
-                attacker.HitPronto = true;
-                attacker.hitTimer = null;
-                if (attacker.GetDistance(damageable) <= 2)
+                if(!attacker.RP)
+                {
+                    attacker.HitPronto = true;
+                }
+               
+                attacker.TimerAtaque = null;
+                if (attacker.GetDistance(damageable) <= attacker.Weapon.MaxRange)
                 {
                     DoHit(attacker, damageable, damageBonus);
+                } else
+                {
+                    OnMiss(attacker, damageable);
                 }
             });
         }
@@ -4657,6 +4727,11 @@ namespace Server.Items
         public virtual void PlaySwingAnimation(Mobile from, int delay = 0, int frameCount = 5)
         {
             int action;
+
+            if(from.RP && from is PlayerMobile pl)
+            {
+                pl.PlayOmphSound();
+            }
 
             if (!Shard.COMBATE_SPHERE)
             {

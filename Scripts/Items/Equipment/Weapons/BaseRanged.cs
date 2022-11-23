@@ -59,6 +59,75 @@ namespace Server.Items
             : base(serial)
         { }
 
+        private void Atira(Mobile attacker, IDamageable damageable)
+        {
+            if (OnFired(attacker, damageable))
+            {
+                if (CheckHit(attacker, damageable))
+                {
+                    OnHit(attacker, damageable);
+                    if (damageable is PlayerMobile)
+                        attacker.PrivateOverheadMessage(MessageType.Regular, 38, true, "!", ((PlayerMobile)damageable).NetState);
+                }
+                else
+                {
+                    OnMiss(attacker, damageable);
+                }
+            }
+        }
+
+        public void SphereShotSwing(Mobile attacker, IDamageable damageable, double damageBonus, TimeSpan delay)
+        {
+            if (attacker.HitPronto)
+            {
+                Atira(attacker, damageable);
+                return;
+            }
+            if (attacker.TimerAtaque != null)
+            {
+                return;
+            }
+
+            var frames = delay.TotalSeconds * 1.5;
+            var half = delay.TotalMilliseconds * 0.6;
+            var buffer = 20;
+            if (attacker.RP)
+            {
+                SpellHelper.Turn(attacker, damageable);
+                //attacker.Freeze(TimeSpan.FromMilliseconds(delay.TotalMilliseconds * 0.8));
+                Timer.DelayCall(TimeSpan.FromMilliseconds(buffer), () =>
+                {
+                    PlaySwingAnimation(attacker, (int)Math.Round(frames));
+                });
+            }
+            else
+            {
+                PlaySwingAnimation(attacker, (int)Math.Round(frames));
+            }
+
+            attacker.TimerAtaque = Timer.DelayCall(TimeSpan.FromMilliseconds(half + buffer), () =>
+            {
+                if (!attacker.Alive || attacker.Deleted || attacker.TimerAtaque == null)
+                {
+                    attacker.HitPronto = false;
+                    attacker.TimerAtaque = null;
+                    OnMiss(attacker, damageable);
+                    return;
+                }
+
+                if (!attacker.RP)
+                {
+                    attacker.HitPronto = true;
+                }
+
+                attacker.TimerAtaque = null;
+                if (attacker.GetDistance(damageable) <= attacker.Weapon.MaxRange)
+                {
+                    Atira(attacker, damageable);
+                }
+            });
+        }
+
         public override TimeSpan OnSwing(Mobile attacker, IDamageable damageable)
         {
             long nextShoot;
@@ -85,8 +154,11 @@ namespace Server.Items
                     canSwing = (sp == null || !sp.IsCasting || !sp.BlocksMovement);
                 }
 
+                var delay = GetDelay(attacker, damageable as Mobile);
+
                 if (canSwing && attacker.HarmfulCheck(damageable))
                 {
+                   
                     if (attacker is BaseCreature)
                     {
                         BaseCreature bc = (BaseCreature)attacker;
@@ -104,28 +176,23 @@ namespace Server.Items
                             }
                         }
                     }
-
                     attacker.DisruptiveAction();
                     attacker.Send(new Swing(0, attacker, damageable));
 
-                    if (OnFired(attacker, damageable))
+                    
+                    if (Shard.COMBATE_SPHERE)
                     {
-                        if (CheckHit(attacker, damageable))
-                        {
-                            OnHit(attacker, damageable);
-                            if (damageable is PlayerMobile)
-                                attacker.PrivateOverheadMessage(MessageType.Regular, 38, true, "!", ((PlayerMobile)damageable).NetState);
-                        }
-                        else
-                        {
-                            OnMiss(attacker, damageable);
-                        }
+                        delay = TimeSpan.FromMilliseconds(delay.TotalMilliseconds * 1.25);
+                        SphereShotSwing(attacker, damageable, 0, delay);
+                        return delay;
                     }
+
+                    Atira(attacker, damageable);
                 }
 
                 attacker.RevealingAction();
 
-                return GetDelay(attacker, damageable as Mobile);
+                return delay;
             }
 
             attacker.RevealingAction();

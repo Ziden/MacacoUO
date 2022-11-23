@@ -617,7 +617,7 @@ namespace Server
         public static bool BypassInit = false;
 
         public bool HitPronto = false;
-        public Timer hitTimer;
+        public Timer TimerAtaque;
 
         public virtual ElementoPvM Elemento { get; set; }
 

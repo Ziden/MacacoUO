@@ -2643,6 +2643,11 @@ namespace Server.Mobiles
                 return false;
             }
 
+            if(RP && Weapon is BaseWeapon w)
+            {
+                w.CancelaTimerAtaque(this);
+            }
+
             m_NextMovementTime += speed;
 
             if (!Siege.SiegeShard && Core.TickCount - NextPassiveDetectHidden >= 0)
@@ -4608,16 +4613,20 @@ namespace Server.Mobiles
 
             //FE: Wake up sounds
             //TODO: Verificar porque alguns sons estão errados (Alinhar com o patch novo)
-            Random som = new Random();
+
+            PlayOmphSound();
+        }
+
+        public void PlayOmphSound()
+        {
             if (Female)
             {
-                PlaySound(0x325 + som.Next(7)); //0x325 a 0x32B (7 sons de oomph) female f_oomph_01.wav até f_oomph_07.wav
+                PlaySound(0x325 + Utility.Random(7)); //0x325 a 0x32B (7 sons de oomph) female f_oomph_01.wav até f_oomph_07.wav
             }
             else
             {
-                PlaySound(0x435 + som.Next(9)); //0x435 a 0x43D (9 sons de oomph) male m_oomph_01.wav até m_oomph_09.wav
+                PlaySound(0x435 + Utility.Random(9)); //0x435 a 0x43D (9 sons de oomph) male m_oomph_01.wav até m_oomph_09.wav
             }
-
         }
 
         public override double RacialSkillBonus
