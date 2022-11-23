@@ -443,6 +443,11 @@ namespace Server.Gumps
             var old = from.Skills[skill].Base;
             var gain = 10;
 
+            if(Shard.RP)
+            {
+                gain = 1;
+            }
+
             if(old >= 99)
             {
                 gain = 1;

@@ -29,15 +29,15 @@ namespace Server.Misc
                 {
                     playerMobile.SendMessage(38, "Voce desmaiou de tanto passar sede!");
                     playerMobile.Kill();
-                    playerMobile.Hunger = 6;
-                    playerMobile.Thirst = 6;
+                    playerMobile.Hunger = 20;
+                    playerMobile.Thirst = 20;
                 }
                 else if (playerMobile.Hunger <= 2)
                 {
                     playerMobile.SendMessage(38, "Voce desmaiou de tanto passar fome!");
                     playerMobile.Kill();
-                    playerMobile.Hunger = 6;
-                    playerMobile.Thirst = 6;
+                    playerMobile.Hunger = 20;
+                    playerMobile.Thirst = 20;
                 }
                 else
                 {

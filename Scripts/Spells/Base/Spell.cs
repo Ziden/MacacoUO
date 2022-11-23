@@ -993,7 +993,7 @@ namespace Server.Spells
             {
                 m_Spell.InstantTarget = targeted;
                 m_Spell.CastMagiaPadrao();
-                if (Shard.SPHERE_STYLE)
+                if (Shard.COMBATE_SPHERE)
                     m_Spell.Caster.ClearHands();
 
                 /*
@@ -1200,14 +1200,14 @@ namespace Server.Spells
                         return false;
                     }
 
-                    if (!Shard.SPHERE_STYLE)
+                    if (!Shard.COMBATE_SPHERE)
                         m_Caster.ClearHand(item);
                     //Caster.SendMessage("Você não pode conjurar magias com arma nas mãos");
                     //return false;
                 }
             }
 
-            if (Shard.SPHERE_STYLE)
+            if (Shard.COMBATE_SPHERE)
             {
                 var item2 = m_Caster.FindItemOnLayer(Layer.TwoHanded);
                 if (item2 != null && !item2.AllowEquipedCast(this.Caster))
@@ -1287,7 +1287,7 @@ namespace Server.Spells
                     m_Caster.SendMessage(0x22, "Faltam reagentes para a magia. Voce pode comprar reagentes no npc Mago ou planta-los."); // More reagents are needed for this spell.
                     return false;
                 }
-                if (Shard.SPHERE_STYLE && this.Caster is PlayerMobile)
+                if (Shard.COMBATE_SPHERE && this.Caster is PlayerMobile)
                     return CastaMagiaSphere();
                 return CastMagiaPadrao();
             }

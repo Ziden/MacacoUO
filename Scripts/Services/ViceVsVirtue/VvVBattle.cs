@@ -607,6 +607,9 @@ namespace Server.Engines.VvV
 
         public void TimerRestart()
         {
+            if (!ViceVsVirtueSystem.Enabled)
+                return;
+
             var cooldown = TempoAteProxima;
             CooldownEnds = DateTime.UtcNow + TimeSpan.FromMinutes(cooldown);
 

@@ -37,6 +37,7 @@ namespace Server
 
         public static bool CAST_CLASSICO { get { return Config.Get("General.CAST_CLASSICO", false); } }
 
+        public static bool COMBATE_SPHERE => SPHERE_STYLE || RP;
         public static bool SPHERE_STYLE { get { return Config.Get("General.SPHERE", false); } }
 
         public static bool POL_SPHERE { get { return SPHERE_STYLE || POL_STYLE; } }

@@ -296,9 +296,9 @@ namespace Server.Items
                 var ctx = BandageContext.GetContext(pl);
                 if (ctx != null)
                 {
-                    var chance = 0.9;
+                    var chance = 0.8;
                     if (!pl.Correndo())
-                        chance = 0.3;
+                        chance = 0.1;
                     if (Utility.RandomDouble() < chance)
                     {
                         ctx.Slip();

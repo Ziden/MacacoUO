@@ -74,7 +74,9 @@ namespace Server.Engines.VvV
 
             GuildStats = new Dictionary<Guild, VvVGuildStats>();
             ExemptCities = new List<VvVCity>();
-            Timer.DelayCall(TimeSpan.FromSeconds(10), () => { Battle.TimerRestart(); });
+
+            if(Enabled)
+                Timer.DelayCall(TimeSpan.FromSeconds(10), () => { Battle.TimerRestart(); });
         }
 
         public override void SendMessage(PlayerMobile from, double old, double points, bool quest)

@@ -293,8 +293,8 @@ namespace Server.Spells
                 if (pl.RP)
                 {
                     if (pl.Talentos.Tem(Talento.Cajados) && Caster.Weapon is BaseStaff)
-                        return TimeSpan.FromSeconds(0.5 + (0.25 * (int)(1 + Circle)));
-                    return TimeSpan.FromSeconds(0.5 + (0.5 * (int)Circle));
+                        return TimeSpan.FromSeconds(1 + (0.35 * (int)(1 + Circle)));
+                    return TimeSpan.FromSeconds(1 + (0.6 * (int)Circle));
                 }
 
                 if (Shard.POL_STYLE)

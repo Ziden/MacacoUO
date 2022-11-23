@@ -20,6 +20,7 @@ namespace Server.Fronteira.Clima
 
         public static void Configure()
         {
+            /*
             if(Shard.RP)
             {
                 EventSink.OnEnterRegion += EnterRegion;
@@ -30,6 +31,7 @@ namespace Server.Fronteira.Clima
                 var timer = new Loop();
                 timer.Start();
             }
+            */
         }
 
         public static void OnSave(WorldSaveEventArgs e)

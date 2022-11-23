@@ -1883,7 +1883,7 @@ namespace Server.Items
                     }
                 }
 
-                if (Shard.SPHERE_STYLE)
+                if (Shard.COMBATE_SPHERE)
                     SphereSwing(attacker, damageable, damageBonus);
                 else
                     DoHit(attacker, damageable, damageBonus);
@@ -2734,8 +2734,13 @@ namespace Server.Items
                 defender = clone;
             }
 
-            if (!Shard.SPHERE_STYLE)
+            if (!Shard.COMBATE_SPHERE)
                 PlaySwingAnimation(attacker);
+
+            if(attacker.RP)
+            {
+
+            }
 
             if (defender != null)
                 PlayHurtAnimation(defender);
@@ -4132,7 +4137,7 @@ namespace Server.Items
         {
             Mobile defender = damageable as Mobile;
 
-            if (!Shard.SPHERE_STYLE)
+            if (!Shard.COMBATE_SPHERE)
                 PlaySwingAnimation(attacker);
 
             attacker.PlaySound(GetMissAttackSound(attacker, defender));
@@ -4653,7 +4658,7 @@ namespace Server.Items
         {
             int action;
 
-            if (!Shard.SPHERE_STYLE)
+            if (!Shard.COMBATE_SPHERE)
             {
                 action = GetNewAnimationAction(from);
 

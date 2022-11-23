@@ -5585,7 +5585,7 @@ namespace Server.Mobiles
                 poison = PoisonImpl.IncreaseLevel(poison);
             }
 
-            if (Shard.SPHERE_STYLE)
+            if (Shard.COMBATE_SPHERE)
             {
                 var ctx = BandageContext.GetContext(this);
                 if (ctx != null)
