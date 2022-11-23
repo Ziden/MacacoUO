@@ -88,7 +88,7 @@ namespace Server.Ziden.Kills
             BaseCreature bc = e.Creature as BaseCreature;
             var gold = e.Corpse.TotalGold;
             var dg = true;
-            var pontos = bc.PontosPvm;
+            double pontos = bc.PontosPvm;
 
             if (bc.NoKillAwards || bc.NoLootOnDeath)
                 return;
@@ -108,7 +108,7 @@ namespace Server.Ziden.Kills
             var c = e.Corpse;
             var killer = e.Killer;
 
-            var exp = (int)Math.Ceiling(pontos * 1.5);
+            var exp = Math.Ceiling(pontos * 1.5);
 
             exp += bc.BonusExp;
 
