@@ -173,7 +173,7 @@ namespace Server.Gumps
             }
 
             var old = from.Skills[skill].Value;
-            SkillCheck.Gain(from, from.Skills[skill], Shard.AVENTURA ? 100: 10);
+            SkillCheck.Gain(from, from.Skills[skill], Shard.AVENTURA ? 10: 1);
             var nw = from.Skills[skill].Value;
 
             if (nw > old)
