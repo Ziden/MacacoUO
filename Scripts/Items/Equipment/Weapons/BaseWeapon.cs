@@ -1999,7 +1999,7 @@ namespace Server.Items
                 }
                
                 attacker.TimerAtaque = null;
-                if (attacker.InRange3D(damageable, attacker.Weapon.MaxRange + 1))
+                if (attacker.InRange(damageable, attacker.Weapon.MaxRange + 1))
                 {
                     DoHit(attacker, damageable, damageBonus);
                 } else
