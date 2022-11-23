@@ -1,5 +1,6 @@
 using System;
 using Server.Engines.Craft;
+using Server.Fronteira.Cooking;
 using Server.Items;
 
 namespace Server.Mobiles
@@ -99,12 +100,14 @@ namespace Server.Mobiles
             SorteiaItem(new RecipeScroll((int)receita));
             var receita2 = DefCookingExp.Basicas[Utility.Random(DefCookingExp.Basicas.Length)];
             SorteiaItem(new RecipeScroll((int)receita2));
-            DistribuiItem(AnimatedSeed.GetRandomSeed());
+            SorteiaItem(CookingLoader.GetSementeRandom());
+            SorteiaItem(CookingLoader.GetSementeRandom());
+            SorteiaItem(CookingLoader.GetSementeRandom());
         }
 
         public override void GenerateLoot()
         {
-            AddLoot(LootPack.LV4, 2);
+            AddLoot(LootPack.LV4, 3);
         }
 
         public override void Serialize(GenericWriter writer)

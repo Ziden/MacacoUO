@@ -304,7 +304,7 @@ namespace Server.Items
                         ctx.Slip();
                         if (!pl.IsCooldown("dicabands"))
                         {
-                            pl.SetCooldown("dicabands");
+                            pl.SetCooldown("dicabands", TimeSpan.FromHours(10));
                             pl.SendMessage(78, "Evite se movimentar ou lutar enquanto se cura para uma cura mais eficiente");
                         }
                     }

@@ -45,6 +45,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(GarlicSeeds), 15, 60, 0x0F24, 0, true));
                 Add(new GenericBuyInfo(typeof(GinsengSeeds), 15, 60, 0x0F24, 0, true));
                 Add(new GenericBuyInfo(typeof(MandrakeSeeds), 15, 60, 0x0F24, 0, true));
+                Add(new GenericBuyInfo(typeof(FarmersSeedBox), 700, 60, 0x9AA, 0, true));
             }
         }
 
