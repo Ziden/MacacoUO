@@ -93,12 +93,10 @@ namespace Server.Ziden.Kills
             if (bc.NoKillAwards || bc.NoLootOnDeath)
                 return;
 
-            var exp = Math.Ceiling(pontos * 1.5);   
-
             if (!(bc.Region is DungeonRegion))
             {
                 dg = false;
-                pontos = (int)Math.Ceiling(pontos / 2d);
+                pontos = Math.Ceiling(pontos / 2d);
             }
    
             if (pontos <= 0)
@@ -110,6 +108,7 @@ namespace Server.Ziden.Kills
             var c = e.Corpse;
             var killer = e.Killer;
 
+            var exp = (int)Math.Ceiling(pontos * 1.5);
 
             exp += bc.BonusExp;
 
@@ -180,7 +179,7 @@ namespace Server.Ziden.Kills
                             } else
                             {
                                 c.PrivateOverheadMessage(Network.MessageType.Regular, 66, false, string.Format("+{0} EXP", exp), pl.NetState);
-                                pl.GanhaExpRP(pontos);
+                                pl.GanhaExpRP((int)exp);
                             }
                         }
                         PointsSystem.PontosPvmEterno.AwardPoints(pl, pontos / 3, false, false);

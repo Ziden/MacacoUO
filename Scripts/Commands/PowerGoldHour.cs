@@ -24,6 +24,9 @@ namespace Server.Commands
         {
             CommandSystem.Register("goldhour", AccessLevel.Administrator, OnAction);
 
+            if (Shard.RP)
+                return;
+
             var dateNow = DateTime.Now;
             var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 01, 00, 00);
             TimeSpan ts;

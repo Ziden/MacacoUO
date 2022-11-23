@@ -66,6 +66,12 @@ namespace Server.Items
 
 		public override void OnDoubleClick( Mobile from )
 		{
+            if(m_ranchstone==null)
+            {
+                from.SendMessage("Nao eh de um rancho");
+                return;
+            }
+
 			if (m_ranchstone.Deleted || m_ranchstone == null) 
 			{
 				this.Delete();

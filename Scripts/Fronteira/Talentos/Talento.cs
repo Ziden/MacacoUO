@@ -209,6 +209,7 @@ namespace Server.Fronteira.Talentos
         Hab_Disrobe,
         Hab_ColWind,
         Hab_Concussion,
+        Hab_MovingBlow,
         AnimalLore,
 
         // "SubClasses"

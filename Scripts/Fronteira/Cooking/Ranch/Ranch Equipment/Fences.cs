@@ -53,7 +53,7 @@ namespace Server.Items
 		[Constructable]
 		public Fence () : base( 0x88B )
 		{
-			Name = "a fence";
+			Name = "cerca";
 			Weight = 50.0;
 			Movable = true;
 		}

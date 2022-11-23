@@ -587,7 +587,14 @@ namespace Server.Items
             {
                 SpecialMove.ClearCurrentMove(m);
                 m_Table[m] = a;
-                m.SendMessage("Habilidade setada " + a.GetType().Name);
+                if(m.RP)
+                {
+                    m.SendMessage("Habilidade setada " + DefTalentos.GetDef(a.TalentoParaUsar).Nome);
+                } else
+                {
+                    m.SendMessage("Habilidade setada " + a.GetType().Name);
+                }
+               
             }
 
             return true;

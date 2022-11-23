@@ -639,8 +639,8 @@ namespace Server.Mobiles
 
 			if(ShortRange && (mob != LastSurprise))
 			{
-				this.Hidden = true;
-				this.Sneaking = true;
+				//this.Hidden = true;
+				//this.Sneaking = true;
 			}
 			else if(StrikeRange)
 			{
@@ -1679,7 +1679,7 @@ namespace Server.Mobiles
 		{
 			this.AccessLevel = AccessLevel.GameMaster;
 			this.Blessed = true;
-			this.Hidden = true;
+			//this.Hidden = true;
 			this.Sneaking = true;
 			this.Predator = null;
 			this.Combatant = null;// Had to add this, I saw Blessed animals trying to fight
@@ -1700,11 +1700,11 @@ namespace Server.Mobiles
 				sa.Hue = Hue;
 				sa.Amount = Body;
 				sa.Owner = this;
-				sa.Name = Name + " (Sleeping)";
+				sa.Name = Name + " (Dormindo)";
 				m_AnimalBody = sa;
 				sa.MoveToWorld(Location, Map);
 			}
-			if (NameMod == null) NameMod = Name + " (Resting)";
+			if (NameMod == null) NameMod = Name + " (Descansando)";
 		}
 
 		public virtual void Awake()

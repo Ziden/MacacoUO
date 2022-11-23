@@ -1788,7 +1788,7 @@ namespace Server.Items
         {
             bool canSwing = true;
 
-            if(attacker.RP)
+            if(attacker.RP && !(WeaponAbility.GetCurrentAbility(attacker) is MovingShot))
             {
                 long nextSwing = attacker.LastMoveTime + attacker.ComputeMovementSpeed() + 50;
 
@@ -1832,7 +1832,7 @@ namespace Server.Items
             }
 
 
-            if (attacker.RP && !attacker.TemTalento(Talento.Curandeiro) && Utility.RandomDouble() < 0.5)
+            if (attacker.RP && !attacker.TemTalento(Talento.Curandeiro))
             {
                 BandageContext c = BandageContext.GetContext(attacker);
                 if (c != null)
@@ -1935,9 +1935,9 @@ namespace Server.Items
             }
         }
 
-        public void CancelaTimerAtaque(Mobile attacker)
+        public void OnMovimento(Mobile attacker)
         {
-            if(attacker.TimerAtaque != null)
+            if(attacker.TimerAtaque != null && !(WeaponAbility.GetCurrentAbility(attacker) is MovingShot))
             {
                 attacker.TimerAtaque.Stop();
                 attacker.HitPronto = false;
@@ -1999,7 +1999,7 @@ namespace Server.Items
                 }
                
                 attacker.TimerAtaque = null;
-                if (attacker.GetDistance(damageable) <= attacker.Weapon.MaxRange)
+                if (attacker.InRange3D(damageable, attacker.Weapon.MaxRange + 1))
                 {
                     DoHit(attacker, damageable, damageBonus);
                 } else

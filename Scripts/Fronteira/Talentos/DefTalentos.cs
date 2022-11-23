@@ -385,9 +385,9 @@ namespace Server.Fronteira.Talentos
 
             _talentos.Add(Talento.Hab_MovingSHot, new DefTalentos()
             {
-                Desc1 = "Permite usar Moving Shot",
+                Desc1 = "Permite Ataque em Movimento",
                 Icone = 21016,
-                Nome = "Tiro em Movimento"
+                Nome = "Ataque em Movimento"
             });
 
             _talentos.Add(Talento.Hab_AtaqueMortal, new DefTalentos()

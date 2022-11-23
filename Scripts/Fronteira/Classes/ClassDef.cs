@@ -69,7 +69,7 @@ namespace Server.Fronteira.Classes
               new OpcaoTalentos(Talento.Defensor, Talento.Rastreador, Talento.Envenenador),
               new OpcaoTalentos(Talento.FisicoPerfeito, Talento.Machados, Talento.Hastes),
               new OpcaoTalentos(Talento.Hab_BleedAttack, Talento.Hab_AtaqueMortal, Talento.Hab_Bladeweave),
-              new OpcaoTalentos(Talento.ArmaduraMagica, Talento.Sabedoria, Talento.Regeneracao)
+              new OpcaoTalentos(Talento.ArmaduraMagica, Talento.Hab_MovingSHot, Talento.Regeneracao)
            );
 
             AddClass(new ClassePersonagem("Ladino", 5561,

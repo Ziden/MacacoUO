@@ -42,6 +42,9 @@ namespace Server.Commands
 
         public static void Inicial()
         {
+            if (Shard.RP)
+                return;
+
             var dateNow = DateTime.Now;
             var date = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, 23, 0, 0);
             TimeSpan ts;

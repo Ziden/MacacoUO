@@ -48,8 +48,8 @@ namespace Server.Mobiles
 		{
 			public InternalSellInfo()
 			{
-				Add( typeof( RanchDeed ), 45000 );
-				Add( typeof( RanchExtensionDeed ), 25000 );
+				Add( typeof( RanchDeed ), 145000 );
+				Add( typeof( RanchExtensionDeed ), 75000 );
 				Add( typeof( NorthGate ), 50 );
 				Add( typeof( WestGate ), 50 );
 				Add( typeof( Fence ), 20 );

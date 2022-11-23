@@ -18,7 +18,7 @@ namespace Server.Items
         {
             get
             {
-                return 20;
+                return Shard.RP ? 30 : 20;
             }
         }
         public override int AccuracyBonus
@@ -49,7 +49,7 @@ namespace Server.Items
             //Validates in OnSwing for accuracy scalar
             ClearCurrentAbility(attacker);
 
-            attacker.SendLocalizedMessage("Voce falhou ao usar o tiro em movimento"); // You fail to execute your special move
+            attacker.SendLocalizedMessage("Voce errou ao usar ataque em movimento"); // You fail to execute your special move
         }
 
         public override void OnHit(Mobile attacker, Mobile defender, int damage)
@@ -57,7 +57,7 @@ namespace Server.Items
             //Validates in OnSwing for accuracy scalar
             ClearCurrentAbility(attacker);
 
-            attacker.SendLocalizedMessage("Voce acertou seu tiro em movimento"); // Your shot was successful
+            attacker.SendLocalizedMessage("Voce acertou ataque em movimento"); // Your shot was successful
         }
     }
 }

@@ -2645,7 +2645,7 @@ namespace Server.Mobiles
 
             if(RP && Weapon is BaseWeapon w)
             {
-                w.CancelaTimerAtaque(this);
+                w.OnMovimento(this);
             }
 
             m_NextMovementTime += speed;

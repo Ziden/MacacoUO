@@ -557,7 +557,7 @@ namespace Server.Items
             return toHeal;
         }
 
-        public static int SLIP_MULT = 3;
+        public static int SLIP_MULT = Shard.RP ? 5 : 3;
 
         public void EndHeal()
         {

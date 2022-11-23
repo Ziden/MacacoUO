@@ -32,6 +32,29 @@ namespace Server.Items
 			return true;
 		}
 
+        public static void FenceOnCorners(Map map, Point3D center, int size)
+        {
+            var p1 = new Point3D(center.X + size, center.Y + size, center.Z);
+            var fence = new FencePost();
+            p1.Z = map.GetAverageZ(new Point2D(p1.X, p1.Y));
+            fence.MoveToWorld(p1, map);
+
+            var p2 = new Point3D(center.X - size, center.Y + size, center.Z);
+            var fence2 = new FencePost();
+            p2.Z = map.GetAverageZ(new Point2D(p2.X, p2.Y));
+            fence2.MoveToWorld(p2, map);
+
+            var p3 = new Point3D(center.X + size, center.Y - size, center.Z);
+            var fence3 = new FencePost();
+            p3.Z = map.GetAverageZ(new Point2D(p3.X, p3.Y));
+            fence3.MoveToWorld(p3, map);
+
+            var p4 = new Point3D(center.X - size, center.Y - size, center.Z);
+            var fence4 = new FencePost();
+            p4.Z = map.GetAverageZ(new Point2D(p4.X, p4.Y));
+            fence4.MoveToWorld(p4, map);
+        }
+
 		public override void OnDoubleClick( Mobile from )
 		{
 			if (this.IsChildOf( from.Backpack ))
@@ -61,7 +84,8 @@ namespace Server.Items
                     rs.Ranch = "rancho de " + from.Name;
 					rs.Movable = false;
 					rs.MoveToWorld(rd, from.Map);
-					this.Delete();
+                    FenceOnCorners(rs.Map, rs.Location, rs.Size);
+                    this.Delete();
 				}
 				else
 				{
