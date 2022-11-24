@@ -609,6 +609,7 @@ namespace Server
     public class Mobile : IEntity, IHued, IComparable<Mobile>, ISerializable, ISpawnable, IDamageable
     {
 
+        public bool VisivelPraOutrosPlayers = true;
         public DateTime PotAntiPara;
         public Mobile LastCaster;
         public DateTime LastCast = DateTime.UtcNow;

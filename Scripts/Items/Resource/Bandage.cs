@@ -854,6 +854,7 @@ namespace Server.Items
         {
             bool isDeadPet = (patient is BaseCreature && ((BaseCreature)patient).IsDeadPet);
 
+
             var region = Region.Find(patient.Location, patient.Map) as HouseRegion;
 
             if (patient is IRepairableMobile)
@@ -895,6 +896,11 @@ namespace Server.Items
                     BuffInfo.AddBuff(healer, new BuffInfo(BuffIcon.Veterinary, 1002167, 1151400, delay, healer, String.Format("{0}", patient.Name)));
 
                 context = new BandageContext(healer, patient, delay, enhanced, c);
+
+                if (healer.RP)
+                {
+                    healer.ClearHands();
+                }
 
                 m_Table[healer] = context;
                 context.curaPoison = patient.Poisoned;

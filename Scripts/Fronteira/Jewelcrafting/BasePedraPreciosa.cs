@@ -9,6 +9,8 @@ namespace Server.Items
     {
         public static Dictionary<Type, ElementoPvM> Elementos = new Dictionary<Type, ElementoPvM>();
 
+        public override bool NaoPodeBancoRP => false;
+
         public static Type GetTipoPedra(ElementoPvM elemento)
         {
             foreach(var tipo in Elementos.Keys)

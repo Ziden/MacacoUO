@@ -7,6 +7,10 @@ namespace Server.Items
 {
     public class RecipeScroll : Item
     {
+
+        public override bool NaoPodeBancoRP => false;
+
+
         private int m_RecipeID;
         public RecipeScroll(Recipe r)
             : this(r.ID)

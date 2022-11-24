@@ -36,6 +36,8 @@ namespace Server.Items
         }
         #endregion
 
+        public override bool NaoPodeBancoRP => false;
+
         private int m_MaxHitPoints;
         private int m_HitPoints;
 

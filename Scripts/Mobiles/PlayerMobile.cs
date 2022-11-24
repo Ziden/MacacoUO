@@ -6563,7 +6563,10 @@ namespace Server.Mobiles
 
         public override bool CanSee(Mobile m, bool los = false)
         {
-            if (m is IConditionalVisibility && !((IConditionalVisibility)m).CanBeSeenBy(this))
+            if (m is IConditionalVisibility v && !v.CanBeSeenBy(this))
+                return false;
+
+            if (m != this && !m.VisivelPraOutrosPlayers)
                 return false;
 
             if (!Alive && m != this)

@@ -55,6 +55,9 @@ namespace Server.Items
 
     public class Spellbook : Item, ICraftable, ISlayer, IEngravable, IVvVItem, IOwnerRestricted, IWearableDurability, IFactionItem
     {
+
+        public override bool NaoPodeBancoRP => false;
+
         private static readonly Dictionary<Mobile, List<Spellbook>> m_Table = new Dictionary<Mobile, List<Spellbook>>();
 
         private static readonly int[] m_LegendPropertyCounts = new[]

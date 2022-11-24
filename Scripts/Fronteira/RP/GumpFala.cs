@@ -4,6 +4,8 @@
 using Server.Network;
 using Server.Commands;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Server.Gumps
 {
@@ -13,13 +15,73 @@ namespace Server.Gumps
         GM_PRETO = 2741,
         PUNK_BARBUDO = 2734,
         FADA = 1641,
+        CACHORRO = 2745,
+        ENGENHEIRA = 2740
     }
+
+    public class Fala
+    {
+        public Faces Face;
+        public string[] Texto;
+
+        public Fala(Faces face, params string[] falas)
+        {
+            Texto = falas;
+            Face = face;
+        }
+
+        public Fala(Faces face)
+        {
+            Face = face;
+        }
+
+        public Fala Textos(params string[] texto)
+        {
+            Texto = texto;
+            return this;
+        }
+
+        public Fala(Faces face, string falas)
+        {
+            Texto = new string[1] { falas };
+            Face = face;
+        }
+
+        public Fala(Faces face, string falas, string falas2)
+        {
+            Texto = new string[2] { falas, falas2 };
+            Face = face;
+        }
+    }
+
 
     public class GumpFala : Gump
     {
 
         private Action<int> Callback;
 
+
+        private static void FalaResponse(Mobile m, List<Fala> lista, Action prox)
+        {
+            var proxima = lista.FirstOrDefault();
+            if (proxima == null)
+            {
+                prox();
+                return;
+            }
+               
+            m.SendGump(new GumpFala(_ =>
+            {
+                lista.RemoveAt(0);
+                FalaResponse(m, lista, prox);
+            }, proxima.Face, proxima.Texto));
+        }
+
+        public static void MostraFalas(Mobile m, Action prox, params Fala[] falas)
+        {
+            var popFalas = new List<Fala>(falas);
+            FalaResponse(m, popFalas, prox);
+        }
 
         public GumpFala(Action<int> callback, Faces face = Faces.GM_PRETO, params string [] lines) : base(0, 0)
         {

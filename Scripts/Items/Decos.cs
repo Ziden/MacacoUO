@@ -121,11 +121,24 @@ namespace Server.Items
 
         public static Item RandomDecoRara(BaseCreature bc)
         {
+            if(Shard.RP)
+            {
+                return Decos._RandomDecoRara();
+            }
             return new ValeDecoracaoRara() { QuemDropou = bc == null ? "" : bc.Name ?? bc.GetType().Name };
         }
 
         public static Item RandomDeco(BaseCreature bc)
         {
+            if(Shard.RP)
+            {
+                if(Utility.RandomDouble() > 0.05)
+                {
+                    return Decos._RandomDecoComum();
+                }
+                return Decos._RandomDecoRara();
+            }
+
             if (Utility.RandomDouble() > 0.1)
                 return new ValeDecoracaoComum() { QuemDropou = bc == null ? "" : bc.Name ?? bc.GetType().Name };
             return new ValeDecoracaoRara() { QuemDropou = bc == null ? "" : bc.Name ?? bc.GetType().Name };

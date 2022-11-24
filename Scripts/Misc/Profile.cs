@@ -55,7 +55,8 @@ namespace Server.Misc
             if (e.Beheld == e.Beholder && e.Beheld.Player)
             {
                 e.Beholder.SendGump(new FichaRP(e.Beheld as PlayerMobile));
-                e.Beholder.SendGump(new GlobalChat.ChatHistoryGump());
+                if(!Shard.RP)
+                    e.Beholder.SendGump(new GlobalChat.ChatHistoryGump());
             }
             else
             {
