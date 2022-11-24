@@ -162,7 +162,7 @@ namespace Server.Mobiles
 		public virtual void DetermineBreed(ChickenBreed cb)
 		{
 			if (m_MotherBreed == m_FatherBreed) this.Title = "["+m_MotherBreed+"]";
-			else this.Title = "[Mixed]";
+			else this.Title = "[Mestico]";
 			if (cb == ChickenBreed.Leghorn)
 			{
 				Hue = 2500;

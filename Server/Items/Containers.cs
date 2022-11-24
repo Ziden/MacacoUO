@@ -88,7 +88,7 @@ namespace Server.Items
         {
             if (from.RP && dropped.NaoPodeBancoRP)
             {
-                from.SendMessage("Voce apenas pode guardar ouro no banco");
+                from.SendMessage("Voce apenas pode guardar ouro, papeis ou joias no banco");
                 return false;
             }
                
@@ -105,7 +105,7 @@ namespace Server.Items
         {
             if (from.RP && item.NaoPodeBancoRP)
             {
-                from.SendMessage("Voce apenas pode guardar ouro no banco !");
+                from.SendMessage("Voce apenas pode guardar ouro, papeis ou joias no banco");
                 return false;
             }
 

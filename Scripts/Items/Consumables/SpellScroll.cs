@@ -8,6 +8,9 @@ namespace Server.Items
 {
     public class SpellScroll : Item, ICommodity
     {
+
+        public override bool NaoPodeBancoRP => false;
+
         private int m_SpellID;
         public SpellScroll(Serial serial)
             : base(serial)

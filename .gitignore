@@ -35,8 +35,8 @@
 /drng32.dll
 /libdrng.so
 
-Server.dll
-Scripts.dll
+/Server.dll
+/Scripts.dll
 
 *.pdb
 *.exe

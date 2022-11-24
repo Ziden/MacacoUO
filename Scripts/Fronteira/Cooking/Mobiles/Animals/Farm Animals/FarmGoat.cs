@@ -152,7 +152,7 @@ namespace Server.Mobiles
 		public virtual void DetermineBreed(GoatBreed cb)
 		{
 			if (m_MotherBreed == m_FatherBreed) this.Title = "["+m_MotherBreed+"]";
-			else this.Title = "[Mixed]";
+			else this.Title = "[Mestico]";
 			if (cb == GoatBreed.Pyrenean)
 			{
 				Hue = 1816;

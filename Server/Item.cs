@@ -678,7 +678,6 @@ namespace Server
 
     public class Item : IEntity, IHued, IComparable<Item>, ISerializable, ISpawnable
     {
-
         public virtual bool NaoPodeBancoRP { get { return true; } }
 
         private int _hueRaridade;

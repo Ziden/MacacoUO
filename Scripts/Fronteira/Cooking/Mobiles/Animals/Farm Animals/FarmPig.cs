@@ -115,7 +115,7 @@ namespace Server.Mobiles
 		public virtual void DetermineBreed(PigBreed pb)
 		{
 			if (m_MotherBreed == m_FatherBreed) this.Title = "["+m_MotherBreed+"]";
-			else this.Title = "[Mixed]";
+			else this.Title = "[Mestico]";
 			if (pb == PigBreed.Duroc)
 			{
 				Body = 0x122;

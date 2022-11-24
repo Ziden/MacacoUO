@@ -9,6 +9,7 @@ using Server.Misc.Templates;
 using Server.Misc.Custom;
 using Server.Fronteira.Classes;
 using System;
+using Server.Fronteira.RP;
 
 namespace Server.Gumps
 {
@@ -201,20 +202,7 @@ namespace Server.Gumps
 
                         var player = (PlayerMobile)from;
                         player.Profession = classe.ID;
-                        player.BodyMod = 0;
-                        player.MoveToWorld(new Point3D(1199, 1037, 34), Map.Ilshenar);
-                        player.SendMessage("Voce re-lembrou sua escolha...");
-                        Timer.DelayCall(TimeSpan.FromSeconds(2), () => {
-                            player.OverheadMessage("* boceijando *");
-                        });
-
-                        Timer.DelayCall(TimeSpan.FromSeconds(4), () => {
-                            player.OverheadMessage("Dormi pesado...");
-                        });
-
-                        Timer.DelayCall(TimeSpan.FromSeconds(6), () => {
-                            player.OverheadMessage("Que sonho confuso...");
-                        });
+                        InicioRP.EscolheClasse(player, classe);
                     }
                 }
             }
