@@ -521,6 +521,31 @@
     <Compile Include="Fronteira\Talentos\ValeTalento.cs" />
     <Compile Include="Fronteira\Talismans\TalismanMagico.cs" />
     <Compile Include="Fronteira\TimedStatic.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Error Reporting\Errors.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Error Reporting\ErrorsGump.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Error Reporting\ErrorsNotifyGump.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Gumps Plus Light\BackgroundPlus.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Gumps Plus Light\ButtonPlus.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Gumps Plus Light\GumpPlusLight.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Gumps Plus Light\HTML.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Gumps Plus Light\HtmlPlus.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\Gumps Plus Light\InfoGump.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\TownHouse Gumps\ContractConfirmGump.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\TownHouse Gumps\ContractSetupGump.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\TownHouse Gumps\TownHouseConfirmGump.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\TownHouse Gumps\TownHouseSetupGump.cs" />
+    <Compile Include="Fronteira\TownHouses\Gumps\TownHouse Gumps\TownHousesGump.cs" />
+    <Compile Include="Fronteira\TownHouses\Items\RentalContract.cs" />
+    <Compile Include="Fronteira\TownHouses\Items\RentalContractCopy.cs" />
+    <Compile Include="Fronteira\TownHouses\Items\RentalLicense.cs" />
+    <Compile Include="Fronteira\TownHouses\Items\SignHammer.cs" />
+    <Compile Include="Fronteira\TownHouses\Items\TownHouse.cs" />
+    <Compile Include="Fronteira\TownHouses\Items\TownHouseSign.cs" />
+    <Compile Include="Fronteira\TownHouses\Misc\CommandInfo.cs" />
+    <Compile Include="Fronteira\TownHouses\Misc\DecoreItemInfo.cs" />
+    <Compile Include="Fronteira\TownHouses\Misc\General.cs" />
+    <Compile Include="Fronteira\TownHouses\Misc\GumpResponse.cs" />
+    <Compile Include="Fronteira\TownHouses\RUOVersion.cs" />
     <Compile Include="Fronteira\Tutorial\WispGuia\Guia.cs" />
     <Compile Include="Fronteira\Tutorial\WispGuia\NovoWispGuia.cs" />
     <Compile Include="Fronteira\Tutorial\WispGump.cs" />
@@ -14390,6 +14415,7 @@
     <Folder Include="VitaNex\Items\Tools\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Fronteira\TownHouses\Read.doc" />
     <None Include="Items\Addons\Randoms\abby addons\logcabinhealers.mlt" />
     <None Include="Items\Addons\Randoms\abby addons\Loghouse1.mlt" />
     <None Include="Items\Addons\Randoms\abby addons\LogHouse2.mlt" />
