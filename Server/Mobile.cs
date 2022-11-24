@@ -10752,6 +10752,7 @@ namespace Server
 
             LastDungeonEntrance = newLocation;
 
+
             if (m_Map != null && ns != null)
             {
                 ns.Send(new MapChange(this));

@@ -57,25 +57,6 @@ namespace Server.Fronteira.RP
             }
             this.PrivateMessage(Texto, m, Cor);
         }
-
-        public override bool OnMoveOver(Mobile m)
-        {
-            base.OnMoveOver(m);
-            if (m.HasGump<RPClassGump>())
-                return false;
-
-            if (m.IsCooldown("portalvida"))
-                return true;
-
-            m.SetCooldown("portalvida", TimeSpan.FromSeconds(3));
-            m.SendMessage("Algumas escolhas na vida, podemos fazer...");
-            m.SendMessage("Eis sua primeira escolha...");
-            Timer.DelayCall(TimeSpan.FromSeconds(3), () =>
-            {
-                m.SendGump(new RPClassGump());
-            });
-            return true;
-        }
     }
 
     public class TeleporterInicio : Item
@@ -117,8 +98,14 @@ namespace Server.Fronteira.RP
 
     public class InicioRP
     {
+        public static void Initialize()
+        {
+
+        }
+
         public static void Chega(Mobile m)
         {
+            m.VisivelPraOutrosPlayers = true;
             m.MoveToWorld(new Point3D(1238, 1146, -24), Map.Ilshenar);
             m.OverheadMessage("* desembarcou *");
             m.SendMessage("O barco chega e todos desembarcam e seguem seu caminho.");
@@ -132,8 +119,15 @@ namespace Server.Fronteira.RP
                 return;
             }
             m.BodyMod = 0;
+         
             m.MoveToWorld(new Point3D(6953, 1582, 18), Map.Trammel);
+
+            Timer.DelayCall(TimeSpan.FromSeconds(0.01), () => {
+                m.Location = new Point3D(6953, 1582, 18);
+            });
+
             m.VisivelPraOutrosPlayers = false;
+            m.OverheadMessage("* !! *");
             Timer.DelayCall(TimeSpan.FromSeconds(5), () =>
             {
                 GumpFala.MostraFalas(m,
