@@ -40,9 +40,9 @@ namespace Server.Gumps
             //    AddButton(473, 185, 5545, 5546, 8, GumpButtonType.Reply, 0);
             AddButton(107, 103, 5577, 5578, 1, GumpButtonType.Reply, 0);
             AddButton(227, 102, 5561, 5562, 2, GumpButtonType.Reply, 0);
-            AddButton(353, 104, 5553, 5554, 3, GumpButtonType.Reply, 0);
-            AddButton(472, 103, 5571, 5572, 4, GumpButtonType.Reply, 0);
-            AddButton(107, 183, 5569, 5570, 5, GumpButtonType.Reply, 0);
+            AddButton(353, 104, 5553, 5554, 4, GumpButtonType.Reply, 0);
+            AddButton(472, 103, 5571, 5572, 5, GumpButtonType.Reply, 0);
+            AddButton(107, 183, 5569, 5570, 3, GumpButtonType.Reply, 0);
             AddImage(29, 13, 10440);
             AddImage(540, 14, 10441);
             AddImage(234, -167, 1418);

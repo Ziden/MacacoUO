@@ -96,6 +96,10 @@ namespace Server.Gumps
 
         public static void AchaCurandeiro(Mobile m)
         {
+            if(m.RP)
+            {
+                return;
+            }
             IPoint3D loc = Point3D.Zero;
             if (m.LastDungeonEntrance != Point3D.Zero && m.Region != null && (m.Region is DungeonRegion || m.Region is DungeonGuardedRegion))
             {

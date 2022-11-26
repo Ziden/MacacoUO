@@ -215,7 +215,7 @@ namespace Server.Misc
             var city = args.City;
             if (newChar.RP)
             {
-                InicioRP.InitializaPlayer(newChar as PlayerMobile);
+                //InicioRP.InitializaPlayer(newChar as PlayerMobile);
             } else
             {
                 if (newChar.IsYoung())

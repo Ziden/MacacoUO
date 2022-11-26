@@ -53,7 +53,7 @@ namespace Server.Fronteira.Classes
                     new SkillClasse(SkillName.Lumberjacking, 60),  new SkillClasse(SkillName.Blacksmith, 60), new SkillClasse(SkillName.Mining, 60), new SkillClasse(SkillName.Parry, 60),
                     new SkillClasse(SkillName.Fishing, 60)
            }).ComItemsIniciais(
-                new Longsword(), new ChainChest(), new ChainLegs(), new ChainGloves(), new BronzeShield(), new Bandage(100),
+                new Longsword(), new RingmailChest(), new RingmailLegs(), new RingmailArms(), new RingmailGloves(), new BronzeShield(), new Bandage(100),
                 new Cloak(78), new Boots(), new BodySash(78), new Dagger(), new ChainCoif()
            ),
               new OpcaoTalentos(Talento.Experiente, Talento.Esquiva, Talento.Precisao),
@@ -106,7 +106,7 @@ namespace Server.Fronteira.Classes
             // mago hiding
 
             AddClass(new ClassePersonagem("Mago", 5563,
-             "Magia Arcana, Magia Negra, Feiticaria",
+             "Magia Arcana, Magia Negra, Feiticos",
              new SkillClasse[] {
                     new SkillClasse(SkillName.Magery, 90), new SkillClasse(SkillName.EvalInt, 90),  new SkillClasse(SkillName.Meditation, 90), new SkillClasse(SkillName.MagicResist, 90),
                     new SkillClasse(SkillName.Wrestling, 70), new SkillClasse(SkillName.Macing, 70),
@@ -163,17 +163,17 @@ namespace Server.Fronteira.Classes
                     );
 
             AddClass(new ClassePersonagem("Mercador", 40324,
-              "Toca mao de obra",
+              "Ferreiro, Alfaiate, Carpinteiro",
               new SkillClasse[] {
                     new SkillClasse(SkillName.Mining, 80), new SkillClasse(SkillName.Lumberjacking, 80),  new SkillClasse(SkillName.Fishing, 90), new SkillClasse(SkillName.Tinkering, 80),  new SkillClasse(SkillName.Cooking, 80),
-                    new SkillClasse(SkillName.Wrestling, 80), new SkillClasse(SkillName.Macing, 80), new SkillClasse(SkillName.Swords, 70),
+                    new SkillClasse(SkillName.Wrestling, 70), new SkillClasse(SkillName.Macing, 80), new SkillClasse(SkillName.Swords, 70),
                     new SkillClasse(SkillName.Tactics, 60),  new SkillClasse(SkillName.Healing, 40), new SkillClasse(SkillName.Anatomy, 40),
                     new SkillClasse(SkillName.ArmsLore, 50),
                     new SkillClasse(SkillName.Blacksmith, 80), new SkillClasse(SkillName.Carpentry, 80), new SkillClasse(SkillName.Alchemy, 60),
                     new SkillClasse(SkillName.Bowcraft, 80),  new SkillClasse(SkillName.Camping, 80),  new SkillClasse(SkillName.Tailoring, 80),
                     new SkillClasse(SkillName.Herding, 90),  new SkillClasse(SkillName.MagicResist, 40),
              }).ComItemsIniciais(
-                new Mace(), new ChainChest(), new ChainLegs(), new ChainGloves(), new Bandage(100),
+                new Mace(), new RingmailChest(), new RingmailLegs(), new RingmailArms(), new RingmailGloves(), new Bandage(100),
                 new Boots(78), new SkullCap(78), new Pickaxe(), new SledgeHammer(), new Saw(), new Hatchet(), new TinkerTools()
            ),
 

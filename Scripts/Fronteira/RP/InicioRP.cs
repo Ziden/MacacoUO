@@ -85,13 +85,13 @@ namespace Server.Fronteira.RP
         public override void OnDoubleClick(Mobile m)
         {
             base.OnDoubleClick(m);
-            InicioRP.EntraPortal(m);
+            InicioRP.VaiProBarco(m);
         }
 
         public override bool OnMoveOver(Mobile m)
         {
             base.OnMoveOver(m);
-            InicioRP.EntraPortal(m);
+            InicioRP.VaiProBarco(m);
             return true;
         }
     }
@@ -112,16 +112,9 @@ namespace Server.Fronteira.RP
             m.SendMessage($"Voce esta {(m.Female ? "Pronta":"Pronto")} para iniciar sua nova vida.");
         }
 
-        public static void EntraPortal(Mobile m)
+        public static void VaiProBarco(Mobile m)
         {
-            if(m.BodyMod != 58)
-            {
-                return;
-            }
-            m.BodyMod = 0;
-         
             m.MoveToWorld(new Point3D(6953, 1582, 18), Map.Trammel);
-
             Timer.DelayCall(TimeSpan.FromSeconds(0.01), () => {
                 m.Location = new Point3D(6953, 1582, 18);
             });
@@ -184,8 +177,11 @@ namespace Server.Fronteira.RP
                 new Fala(Faces.ENGENHEIRA).Textos($"Aha, mais um {classe.Nome} no mundo", $"Ouvi dizer que {classe.Nome} pode se especializar", $"como {c.T1} {c.T2} ou {c.T3}", "Voce tem ideia de que caminho ira seguir ?")
             );
         }
+
         public static void InitializaPlayer(PlayerMobile player)
         {
+            VaiProBarco(player);
+            /*
             player.MoveToWorld(new Point3D(857, 2784, 5), Map.TerMur);
             if (player.BodyMod == 0)
             {
@@ -200,6 +196,7 @@ namespace Server.Fronteira.RP
                     player.OverheadMessage("* vida *");
                 });
             }
+            */
         }
     }
 }

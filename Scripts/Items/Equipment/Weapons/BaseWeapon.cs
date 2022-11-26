@@ -4529,7 +4529,7 @@ namespace Server.Items
                     attacker.CheckSkillMult(SkillName.Lumberjacking, 0.0, 80); // Passively check Lumberjacking for gain
                 }
 
-                if (Type == WeaponType.Bashing)
+                if (Type == WeaponType.Bashing && !attacker.RP)
                 {
                     attacker.CheckSkillMult(SkillName.Mining, 0.0, 80);
                 }
