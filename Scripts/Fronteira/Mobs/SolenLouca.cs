@@ -25,9 +25,9 @@ namespace Server.Mobiles
             this.SetDex(20, 30);
             this.SetInt(36, 60);
 
-            this.SetHits(9000, 9000);
+            this.SetHits(5000, 5000);
 
-            this.SetDamage(10, 30);
+            this.SetDamage(5, 20);
 
             this.SetDamageType(ResistanceType.Physical, 100);
 
@@ -90,8 +90,8 @@ namespace Server.Mobiles
             //SorteiaItem(new TemplateDeed());
             DistribuiItem(new Gold(1000));
             DistribuiPs(105);
-            DistribuiItem(new FragmentosAntigos());
-            DistribuiItem(new CristalDoPoder() { Amount = 2 });
+            //DistribuiItem(new FragmentosAntigos());
+            DistribuiItem(new CristalDoPoder());
             SorteiaItem(new FragmentosAntigos());
 
             var r = Utility.Random(5);

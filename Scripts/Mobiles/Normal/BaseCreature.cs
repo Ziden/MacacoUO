@@ -1731,7 +1731,7 @@ namespace Server.Mobiles
         #endregion
 
         #region Flee!!!
-        public virtual bool CanFlee { get { return !m_Paragon; } }
+        public virtual bool CanFlee { get { return !m_Paragon && this.Tribe != TribeType.MortoVivo; } }
 
         private DateTime m_EndFlee;
 

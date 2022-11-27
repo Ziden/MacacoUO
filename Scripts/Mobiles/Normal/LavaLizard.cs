@@ -36,8 +36,8 @@ namespace Server.Mobiles
             SetSkill(SkillName.Tactics, 60.1, 80.0);
             SetSkill(SkillName.Wrestling, 60.1, 80.0);
 
-            Fame = 3000;
-            Karma = -3000;
+            Fame = 4000;
+            Karma = -4000;
 
             VirtualArmor = 40;
 
@@ -45,7 +45,7 @@ namespace Server.Mobiles
             ControlSlots = 1;
             MinTameSkill = 80.7;
 
-            PackItem(new SulfurousAsh(Utility.Random(4, 10)));
+            PackItem(new SulfurousAsh(Utility.Random(10, 20)));
             SetWeaponAbility(WeaponAbility.BleedAttack);
         }
 
@@ -66,7 +66,7 @@ namespace Server.Mobiles
 
         public override HideType HideType
         {
-            get { return HideType.Spined; }
+            get { return HideType.Horned; }
         }
 
         public override void GenerateLoot()

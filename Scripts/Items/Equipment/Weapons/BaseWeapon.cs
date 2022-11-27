@@ -3338,24 +3338,26 @@ namespace Server.Items
                 damage += (int)inc;
             }
 
-            double colarVento = ColarElemental.GetNivel(attacker, ElementoPvM.Vento);
-            double chancevento = 0.10d + (colarVento / 120d);
-            Shard.Debug("Chance de Critico: " + chancevento);
-            if (colarVento > 0 && Utility.RandomDouble() < chancevento)
+            if(!defender.Player)
             {
-                defender.PublicOverheadMessage(MessageType.Regular, 38, true, "* crit *");
-                damage *= 2;
-            }
+                double colarVento = ColarElemental.GetNivel(attacker, ElementoPvM.Vento);
+                double chancevento = 0.10d + (colarVento / 120d);
+                Shard.Debug("Chance de Critico: " + chancevento);
+                if (colarVento > 0 && Utility.RandomDouble() < chancevento)
+                {
+                    defender.PublicOverheadMessage(MessageType.Regular, 38, true, "* crit *");
+                    damage *= 2;
+                }
 
-            double colarRaio = ColarElemental.GetNivel(attacker, ElementoPvM.Raio);
-            double chanceraio = 0.10d + (colarRaio / 100d);
-            Shard.Debug("Chance Golpe Eletrico: " + chanceraio);
-            if (colarRaio > 0 && Utility.RandomDouble() < chanceraio)
-            {
-                DoLightning(attacker, defender);
-                attacker.OverheadMessage("* Golpe Eletrico *");
+                double colarRaio = ColarElemental.GetNivel(attacker, ElementoPvM.Raio);
+                double chanceraio = 0.10d + (colarRaio / 100d);
+                Shard.Debug("Chance Golpe Eletrico: " + chanceraio);
+                if (colarRaio > 0 && Utility.RandomDouble() < chanceraio)
+                {
+                    DoLightning(attacker, defender);
+                    attacker.OverheadMessage("* Golpe Eletrico *");
+                }
             }
-
 
             damageGiven = AOS.Damage(
                 defender,

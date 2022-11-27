@@ -2763,7 +2763,6 @@ namespace Server.Mobiles
                     var d = combatant.GetDirectionTo(m_Mobile);
 
                     d = (Direction)((int)d + Utility.RandomMinMax(-1, +1));
-
                     m_Mobile.Direction = d;
                     m_Mobile.Move(d);
                 }

@@ -118,7 +118,10 @@ namespace Server.Gumps
         {
             V = (int)Math.Pow(skill / 28, 8) / 17;
 
-            V /= 10;
+            if(Shard.RP)
+                V /= 5;
+            else
+                V /= 10;
 
             if (V <= 0)
                 V = 1;
