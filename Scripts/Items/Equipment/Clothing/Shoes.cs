@@ -447,6 +447,63 @@ namespace Server.Items
         }
     }
 
+
+    public class Sandalhadahumildade : BaseShoes
+    {
+        public override CraftResource DefaultResource {
+            get {
+                return CraftResource.RegularLeather;
+            }
+        }
+
+        [Constructable]
+        public Sandalhadahumildade()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public Sandalhadahumildade(int hue)
+            : base(0x170D, hue)
+        {
+            this.Weight = 1.0;
+            Hue = 2499;
+            Name = "Sandalha da Humildade";
+            LootType = LootType.Blessed;
+            Attributes.SpellDamage = 5;
+            Attributes.LowerManaCost = 10;
+        }
+
+        public Sandalhadahumildade(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override bool Dye(Mobile from, DyeTub sender)
+        {
+            if (Core.TOL)
+            {
+                return base.Dye(from, sender);
+            }
+
+            return false;
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    } // a
+
     [Alterable(typeof(DefTailoring), typeof(LeatherTalons))]
     [Flipable(0x2797, 0x27E2)]
     public class NinjaTabi : BaseShoes
