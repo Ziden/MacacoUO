@@ -9,9 +9,9 @@ namespace Server.Engines.Quests
         public PatienceQuest()
             : base()
         { 
-            this.AddObjective(new ObtainObjective(typeof(MiniatureMushroom), "miniature mushrooms", 20, 0xD16, 3600));		
+            this.AddObjective(new ObtainObjective(typeof(MiniatureMushroom), "cogumelos em miniatura", 20, 0xD16, 3600));		
 				
-            this.AddReward(new BaseReward(1074872)); // The opportunity to learn the ways of the Arcanist.
+            this.AddReward(new BaseReward(1074872)); // A oportunidade de aprender os caminhos do Arcanista.
         }
 
         public override QuestChain ChainID
@@ -28,7 +28,7 @@ namespace Server.Engines.Quests
                 return typeof(NeedsOfManyHeartwoodQuest);
             }
         }
-        /* Patience */
+        /* Paciência */
         public override object Title
         {
             get
@@ -36,13 +36,13 @@ namespace Server.Engines.Quests
                 return 1072753;
             }
         }
-        /* Learning to weave spells and control the forces of nature requires sacrifice, 
-        discipline, focus, and an unwavering dedication to Sosaria herself.  We do not 
-        teach the unworthy.  They do not comprehend the lessons nor the dedication 
-        required.  If you would walk the path of the Arcanist, then you must do as I 
-        require without hesitation or question.  Your first task is to gather miniature 
-        mushrooms ... 20 of them from the branches of our mighty home.  I give you one 
-        hour to complete the task. */
+        /* Aprender a tecer feitiços e controlar as forças da natureza exige sacrifício,
+          disciplina, foco e uma dedicação inabalável à própria Sosaria. Nós não
+          ensinar os indignos. Não compreendem as lições nem a dedicação
+          requeridos. Se você deseja trilhar o caminho do Arcanista, deve fazer o que eu
+          exigir sem hesitação ou pergunta. Sua primeira tarefa é reunir miniaturas
+          cogumelos ... 20 deles dos galhos de nossa poderosa casa. eu te dou um
+          hora para completar a tarefa. */
         public override object Description
         {
             get
@@ -50,7 +50,7 @@ namespace Server.Engines.Quests
                 return 1072762;
             }
         }
-        /* * nods* Not everyone has the temperment to undertake the way of the Arcanist. */
+        /* *acena com a cabeça* Nem todo mundo tem temperamento para seguir o caminho do Arcanista. */
         public override object Refuse
         {
             get
@@ -58,8 +58,8 @@ namespace Server.Engines.Quests
                 return 1072767;
             }
         }
-        /* The mushrooms I seek can be found growing here in The Heartwood. Seek them out 
-        and gather them.  You are running out of time. */
+        /* Os cogumelos que procuro podem ser encontrados crescendo aqui no Cerne da Floresta. Procure-os
+                e recolhê-los. Você está ficando sem tempo. */
         public override object Uncomplete
         {
             get
@@ -67,7 +67,7 @@ namespace Server.Engines.Quests
                 return 1072774;
             }
         }
-        /* Have you gathered the mushrooms? */
+        /* Você colheu os cogumelos? */
         public override object Complete
         {
             get
@@ -100,9 +100,9 @@ namespace Server.Engines.Quests
         public NeedsOfManyHeartwoodQuest()
             : base()
         { 
-            this.AddObjective(new ObtainObjective(typeof(Cotton), "bale of cotton", 10, 0xDF9));			
+            this.AddObjective(new ObtainObjective(typeof(Cotton), "fardo de algodão", 10, 0xDF9));			
 			
-            this.AddReward(new BaseReward(1074872)); // The opportunity to learn the ways of the Arcanist.
+            this.AddReward(new BaseReward(1074872)); // A oportunidade de aprender os caminhos do Arcanista.
         }
 
         public override QuestChain ChainID
@@ -119,7 +119,7 @@ namespace Server.Engines.Quests
                 return typeof(NeedsOfManyPartHeartwoodQuest);
             }
         }
-        /* Needs of the Many - The Heartwood */
+        /* Necessidades de Muitos - O Cerne */
         public override object Title
         {
             get
@@ -127,10 +127,10 @@ namespace Server.Engines.Quests
                 return 1072797;
             }
         }
-        /* The way of the Arcanist involves cooperation with others and a strong 
-        committment to the community of your people.  We have run low on the 
-        cotton we use to pack wounds and our people have need.  Bring 10 
-        bales of cotton to me. */
+        /* O caminho do Arcanista envolve a cooperação com os outros e um forte
+                compromisso com a comunidade do seu povo. Nós corremos baixo no
+                algodão que usamos para fechar feridas e nosso povo precisa. Traga 10
+                fardos de algodão para mim. */
         public override object Description
         {
             get
@@ -138,7 +138,7 @@ namespace Server.Engines.Quests
                 return 1072763;
             }
         }
-        /* You endanger your progress along the path with your unwillingness. */
+        /* Você põe em risco seu progresso ao longo do caminho com sua falta de vontade. */
         public override object Refuse
         {
             get
@@ -146,7 +146,7 @@ namespace Server.Engines.Quests
                 return 1072768;
             }
         }
-        /* I care not where you acquire the cotton, merely that you provide it. */
+        /* Não me importa onde você adquire o algodão, apenas que você o forneça. */
         public override object Uncomplete
         {
             get
@@ -154,7 +154,7 @@ namespace Server.Engines.Quests
                 return 1072775;
             }
         }
-        /* Well, where are the cotton bales? */
+        /* Bem, onde estão os fardos de algodão? */
         public override object Complete
         {
             get
@@ -187,9 +187,9 @@ namespace Server.Engines.Quests
         public NeedsOfManyPartHeartwoodQuest()
             : base()
         { 
-            this.AddObjective(new ObtainObjective(typeof(Board), "boards", 250, 0x1BD7));			
+            this.AddObjective(new ObtainObjective(typeof(Board), "Pranchas", 250, 0x1BD7));			
 			
-            this.AddReward(new BaseReward(1074872)); // The opportunity to learn the ways of the Arcanist.
+            this.AddReward(new BaseReward(1074872)); //A oportunidade de aprender os caminhos do Arcanista.
         }
 
         public override QuestChain ChainID
@@ -206,7 +206,7 @@ namespace Server.Engines.Quests
                 return typeof(MakingContributionHeartwoodQuest);
             }
         }
-        /* Needs of the Many - The Heartwood */
+        /* Necessidades de Muitos - O Cerne */
         public override object Title
         {
             get
@@ -214,7 +214,7 @@ namespace Server.Engines.Quests
                 return 1072797;
             }
         }
-        /* We must look to the defense of our people! Bring boards for new arrows. */
+        /* Devemos cuidar da defesa de nosso povo! Traga pranchas para novas flechas. */
         public override object Description
         {
             get
@@ -222,8 +222,8 @@ namespace Server.Engines.Quests
                 return 1072764;
             }
         }
-        /* The people have need of these items.  You are proving yourself inadequate 
-        to the demands of a member of this community. */
+        /* As pessoas precisam desses itens. Você está se mostrando inadequado
+                às demandas de um membro desta comunidade. */
         public override object Refuse
         {
             get
@@ -231,7 +231,7 @@ namespace Server.Engines.Quests
                 return 1072769;
             }
         }
-        /* The requirements are simple -- 250 boards. */
+        /* Os requisitos são simples -- 250 placas. */
         public override object Uncomplete
         {
             get
@@ -239,7 +239,7 @@ namespace Server.Engines.Quests
                 return 1072776;
             }
         }
-        /* Well, where are the boards? */
+        /* Bem, onde estão as placas? */
         public override object Complete
         {
             get
@@ -272,11 +272,11 @@ namespace Server.Engines.Quests
         public MakingContributionHeartwoodQuest()
             : base()
         { 
-            this.AddObjective(new ObtainObjective(typeof(SackFlour), "sack of flour", 1, 0x1039));
-            this.AddObjective(new ObtainObjective(typeof(JarHoney), "jar of honey", 10, 0x9EC));
-            this.AddObjective(new ObtainObjective(typeof(FishSteak), "fish steak", 20, 0x97B));		
+            this.AddObjective(new ObtainObjective(typeof(SackFlour), "saco de farinha", 1, 0x1039));
+            this.AddObjective(new ObtainObjective(typeof(JarHoney), "Pote de mel", 10, 0x9EC));
+            this.AddObjective(new ObtainObjective(typeof(FishSteak), "filé de peixe", 20, 0x97B));		
 				
-            this.AddReward(new BaseReward(1074872)); // The opportunity to learn the ways of the Arcanist.
+            this.AddReward(new BaseReward(1074872)); //A oportunidade de aprender os caminhos do Arcanista.
         }
 
         public override QuestChain ChainID
@@ -301,11 +301,11 @@ namespace Server.Engines.Quests
                 return 1072798;
             }
         }
-        /* With health and defense assured, we need look to the need of the community 
-        for food and drink.  We will feast on fish steaks, sweets, and wine.  You 
-        will supply the ingredients, the cooks will prepare the meal.  As a Arcanist 
-        relies upon others to build focus and lend their power to her workings, the 
-        community needs the effort of all to survive. */
+        /* Com saúde e defesa asseguradas, precisamos atender a necessidade da comunidade
+          para comida e bebida. Vamos nos banquetear com bifes de peixe, doces e vinho. Você
+          fornecerá os ingredientes, os cozinheiros prepararão a refeição. como arcanista
+          depende de outros para construir o foco e emprestar seu poder ao seu trabalho, o
+          comunidade precisa do esforço de todos para sobreviver. */
         public override object Description
         {
             get
@@ -313,7 +313,7 @@ namespace Server.Engines.Quests
                 return 1072765;
             }
         }
-        /* Do not falter now.  You have begun to show promise. */
+        /* Não vacile agora. Você começou a se mostrar promissor. */
         public override object Refuse
         {
             get
@@ -321,7 +321,7 @@ namespace Server.Engines.Quests
                 return 1072770;
             }
         }
-        /* Where are the items you've been tasked to supply for the feast? */
+        /* Onde estão os itens que você foi encarregado de fornecer para o banquete? */
         public override object Uncomplete
         {
             get
@@ -329,7 +329,7 @@ namespace Server.Engines.Quests
                 return 1072777;
             }
         }
-        /* Ah good, you're back.  We're eager for the feast. */
+        /* Que bom, você voltou. Estamos ansiosos pelo banquete. */
         public override object Complete
         {
             get
@@ -362,12 +362,12 @@ namespace Server.Engines.Quests
         public UnnaturalCreationsQuest()
             : base()
         { 
-            this.AddObjective(new SlayObjective(typeof(ExodusOverseer), "exodus overseers", 5));
-            this.AddObjective(new SlayObjective(typeof(ExodusMinion), "exodus minions", 2));
+            this.AddObjective(new SlayObjective(typeof(ExodusOverseer), "superintendentes de êxodo", 5));
+            this.AddObjective(new SlayObjective(typeof(ExodusMinion), "asseclas do êxodo", 2));
 			
-            this.AddReward(new BaseReward(typeof(ArcaneCircleScroll), 1071026)); // Arcane Circle			
-            this.AddReward(new BaseReward(typeof(GiftOfRenewalScroll), 1071027)); // Gift of Renewal
-            this.AddReward(new BaseReward(typeof(Spellbook), 1031600)); // Spellweaving Spellbook
+            this.AddReward(new BaseReward(typeof(ArcaneCircleScroll), 1071026)); // Círculo Arcano			
+            this.AddReward(new BaseReward(typeof(GiftOfRenewalScroll), 1071027)); // Presente de Renovação
+            this.AddReward(new BaseReward(typeof(Spellbook), 1031600)); // Livro de Feitiços
         }
 
         public override QuestChain ChainID
@@ -377,7 +377,7 @@ namespace Server.Engines.Quests
                 return QuestChain.Spellweaving;
             }
         }
-        /* Unnatural Creations */
+        /* Criações não naturais */
         public override object Title
         {
             get
@@ -385,11 +385,11 @@ namespace Server.Engines.Quests
                 return 1072758;
             }
         }
-        /* You have proven your desire to contribute to the community and serve the 
-        people.  Now you must demonstrate your willingness to defend Sosaria from 
-        the greatest blight that plagues her.  Unnatural creatures, brought to a 
-        sort of perverted life, despoil our fair world.  Destroy them -- 5 Exodus 
-        Overseers and 2 Exodus Minions. */
+        /* Você provou seu desejo de contribuir com a comunidade e servir
+                pessoas. Agora você deve demonstrar sua vontade de defender Sosaria de
+                a maior praga que a atormenta. Criaturas não naturais, levadas a um
+                tipo de vida pervertida, espoliar nosso mundo justo. Destrua-os - 5 Êxodo
+                Superintendentes e 2 lacaios do Êxodo. */
         public override object Description
         {
             get
@@ -397,8 +397,8 @@ namespace Server.Engines.Quests
                 return 1072780;
             }
         }
-        /* You must serve Sosaria with all your heart and strength.  
-        Your unwillingness does not reflect favorably upon you. */
+        /* Você deve servir Sosaria com todo o seu coração e força.
+                Sua falta de vontade não reflete favoravelmente sobre você. */
         public override object Refuse
         {
             get
@@ -406,7 +406,7 @@ namespace Server.Engines.Quests
                 return 1072771;
             }
         }
-        /* Every moment you procrastinate, these unnatural creatures damage Sosaria. */
+        /* A cada momento que você procrastina, essas criaturas não naturais danificam Sosaria. */
         public override object Uncomplete
         {
             get
@@ -414,7 +414,7 @@ namespace Server.Engines.Quests
                 return 1072779;
             }
         }
-        /* Well done!  Well done, indeed.  You are worthy to become an arcanist! */
+        /* Bem feito! Muito bem, de fato. Você é digno de se tornar um arcanista! */
         public override object Complete
         {
             get
