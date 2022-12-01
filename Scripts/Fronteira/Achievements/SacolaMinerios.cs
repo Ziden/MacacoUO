@@ -293,6 +293,29 @@ namespace Server.Ziden.Achievements
         }
     }
 
+    public class SacolaCristalTherathan : Bag
+    {
+        [Constructable]
+        public SacolaCristalTherathan()
+        {
+            this.AddItem(new CristalTherathan(50));
+            Name = "Sacola Therathan";
+            Hue = 1175;
+        }
+
+        public SacolaCristalTherathan(Serial s) : base(s) { }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+    }
+
     public class ScolaJoias : Bag
     {
         [Constructable]
