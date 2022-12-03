@@ -84,7 +84,7 @@ namespace Server.Engines.UOStore
 
         public static void Initialize()
         {
-            StoreCategory cat = StoreCategory.Featured;
+            StoreCategory cat = StoreCategory.Featured; // SEI
             //GERAL
             Register<AventalDaLuz>(new TextDefinition("Avental Da Luz"), "Roupas Especiais", 0x153b, 0, 0, 2000, cat);
             Register<BandanaDaluz>(new TextDefinition("Bandana  Da Luz"), "Roupas Especiais", 0x1540, 0, 0, 2000, cat);
