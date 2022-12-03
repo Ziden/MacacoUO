@@ -521,6 +521,8 @@
     <Compile Include="Fronteira\Talentos\TalentosGump.cs" />
     <Compile Include="Fronteira\Talentos\ValeTalento.cs" />
     <Compile Include="Fronteira\Talismans\TalismanMagico.cs" />
+    <Compile Include="Fronteira\ThanksgivingQuest.cs" />
+    <Compile Include="Fronteira\ThanksgivingTurkey.cs" />
     <Compile Include="Fronteira\TimedStatic.cs" />
     <Compile Include="Fronteira\TownHouses\Gumps\Error Reporting\Errors.cs" />
     <Compile Include="Fronteira\TownHouses\Gumps\Error Reporting\ErrorsGump.cs" />
