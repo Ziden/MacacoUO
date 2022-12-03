@@ -42,6 +42,8 @@ namespace Server.Items
             Content = ulong.MaxValue;
         }
 
+        public Fullbook(Serial s) : base(s) {  }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
