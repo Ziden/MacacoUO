@@ -90,7 +90,7 @@ namespace Server.Dueling
             if( _Loses.ContainsKey( numPerTeam ) )
                 _Loses[numPerTeam]++;
             else
-                _Wins.Add( numPerTeam, 1 );
+                _Loses[numPerTeam] = 1 ;
 
             if( _FastestLoses.ContainsKey( numPerTeam ))
                 if(_FastestLoses[numPerTeam].DuelTime.Seconds > duelInfo.DuelTime.Seconds)

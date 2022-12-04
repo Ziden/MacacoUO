@@ -31,7 +31,7 @@ namespace Server.Spells
 {
     public abstract class Spell : ISpell
     {
-        public static int RANGE = Shard.POL_STYLE ? 17 : 10;
+        public static int RANGE = Shard.POL_STYLE ? 12 : 10;
 
         public Mobile ManaToCaster;
 
