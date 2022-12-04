@@ -171,7 +171,7 @@ namespace Server.Misc
 
             var map = attacker.Map;
 
-            var bc = attacker as BaseCreature;
+            var atkCreature = attacker as BaseCreature;
             var bcTarget = damageable as BaseCreature;
             var targPlayer = damageable as PlayerMobile;
             var attackerPlayer = attacker as PlayerMobile;
@@ -180,11 +180,12 @@ namespace Server.Misc
                 targPlayer = bcTarget.GetMaster() as PlayerMobile;
 
 
-            if (attacker != null && !attacker.Player && !(bc != null && bc.GetMaster() != null && bc.GetMaster().IsPlayer()))
+            // if non player pet attacking
+            if (attacker != null && !attacker.Player && !(atkCreature != null && atkCreature.GetMaster() != null && atkCreature.GetMaster().IsPlayer()))
             {
-                if (targPlayer != null && ProtecaoRP(targPlayer) && bc != null && bc.GetMaster() != null && !bc.GetMaster().RP)
+                if (targPlayer != null && ProtecaoRP(targPlayer) && atkCreature != null && atkCreature.GetMaster() != null && !atkCreature.GetMaster().RP)
                     return false;
-
+                
                 if (!CheckAggressor(attacker.Aggressors, defender) && !CheckAggressed(attacker.Aggressed, defender) && defender is PlayerMobile &&
                     ((PlayerMobile)defender).IsResProtected())
                 {
@@ -243,7 +244,7 @@ namespace Server.Misc
             if (defender is BaseCreature && ((BaseCreature)defender).Summoned && ((BaseCreature)defender).SummonMaster != null)
                 defender = ((BaseCreature)defender).SummonMaster;
 
-            if (!attacker.Player && !(bc != null && bc.GetMaster() != null && bc.GetMaster().IsPlayer()))
+            if (!attacker.Player && !(atkCreature != null && atkCreature.GetMaster() != null && atkCreature.GetMaster().IsPlayer()))
             {                              /*
                 if (!CheckAggressor(from.Aggressors, target) && !CheckAggressed(from.Aggressed, target) && target is PlayerMobile &&
                     ((PlayerMobile)target).CheckYoungProtection(from))
