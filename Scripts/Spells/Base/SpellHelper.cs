@@ -1353,7 +1353,9 @@ namespace Server.Spells
         public static bool CheckReflect(int circle, ref IDamageable source, ref IDamageable defender, DamageType type = DamageType.Spell)
         {
             bool reflect = false;
-           
+
+            if (!(source is Mobile))
+                return false;
             /*
             if (Core.AOS && type >= DamageType.Spell)
             {

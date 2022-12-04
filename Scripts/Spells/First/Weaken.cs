@@ -68,7 +68,29 @@ namespace Server.Spells.First
             else if (CheckHSequence(m))
             {
                 SpellHelper.Turn(Caster, m);
-                SpellHelper.CheckReflect((int)Circle, Caster, ref m);
+                m.FixedParticles(0x3779, 10, 15, 5002, EffectLayer.Head);
+                m.PlaySound(0x1DF);
+
+
+                var wtf = m;
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref wtf))
+                {
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                    {
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new FeeblemindSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
+                    });
+                    return;
+                }
+
 
                 if (Mysticism.StoneFormSpell.CheckImmunity(m))
                 {
@@ -89,9 +111,6 @@ namespace Server.Spells.First
                         m.Spell.OnCasterHurt();
 
                     m.Paralyzed = false;
-
-                    m.FixedParticles(0x3779, 10, 15, 5002, EffectLayer.Head);
-                    m.PlaySound(0x1DF);
 
                     HarmfulSpell(m);
 

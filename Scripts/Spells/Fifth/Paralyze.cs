@@ -54,10 +54,31 @@ namespace Server.Spells.Fifth
             {
                 //SpellHelper.Turn(this.Caster, m);
 
-                // mais facil 
-                SpellHelper.CheckReflect((int)this.Circle, this.Caster, ref m);
+
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref m))
+                {
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                    {
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new ParalyzeSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
+                    });
+                    return;
+                }
+
 
                 double duration;
+
+                m.PlaySound(0x204);
+                //m.FixedEffect(0x376A, 6, 1);
+                Caster.MovingParticles(m, 0x374A, 8, 0, false, false, 9502, 0x374A, 0x204);
 
                 // Algorithm: ((20% of magery) + 7) seconds [- 50% if resisted]
                 duration = Utility.Random(6, 4);
@@ -83,10 +104,6 @@ namespace Server.Spells.Fifth
 
                 m.Paralyze(TimeSpan.FromSeconds(duration));
 
-
-                m.PlaySound(0x204);
-                //m.FixedEffect(0x376A, 6, 1);
-                Caster.MovingParticles(m, 0x374A, 8, 0, false, false, 9502, 0x374A, 0x204);
 
                 this.HarmfulSpell(m);
             }

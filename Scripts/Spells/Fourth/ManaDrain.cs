@@ -41,7 +41,27 @@ namespace Server.Spells.Fourth
             {
                 SpellHelper.Turn(this.Caster, m);
 
-                SpellHelper.CheckReflect((int)this.Circle, this.Caster, ref m);
+                m.FixedParticles(0x374A, 10, 15, 5032, EffectLayer.Head);
+                m.PlaySound(0x1F8);
+
+                var wtf = m;
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref wtf))
+                {
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                    {
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new ManaDrainSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
+                    });
+                    return;
+                }
 
                 if (m.Spell != null)
                     m.Spell.OnCasterHurt();
@@ -79,8 +99,6 @@ namespace Server.Spells.Fourth
                     else
                         m.Mana -= Utility.Random(1, m.Mana);
 
-                    m.FixedParticles(0x374A, 10, 15, 5032, EffectLayer.Head);
-                    m.PlaySound(0x1F8);
                 }
 
                 this.HarmfulSpell(m);

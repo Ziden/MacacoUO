@@ -47,13 +47,29 @@ namespace Server.Spells.Sixth
                 IDamageable source = Caster;
                 IDamageable target = m;
 
-                if (SpellHelper.CheckReflect((int)Circle, ref source, ref target))
+
+                // Do the effects
+                Caster.MovingParticles(m, 0x379F, 7, 0, false, true, 3043, 4043, 0x211);
+                Caster.PlaySound(0x20A);
+
+
+                var wtf = m;
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref wtf))
                 {
-                    Timer.DelayCall(TimeSpan.FromSeconds(.5), () =>
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
                     {
-                        source.MovingParticles(target, 0x379F, 7, 0, false, true, 3043, 4043, 0x211);
-                        source.PlaySound(0x20A);
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new EnergyBoltSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
                     });
+                    return;
                 }
 
                 double damage = 0;
@@ -84,11 +100,6 @@ namespace Server.Spells.Sixth
                     }
 
                 }
-
-
-                // Do the effects
-                Caster.MovingParticles(m, 0x379F, 7, 0, false, true, 3043, 4043, 0x211);
-                Caster.PlaySound(0x20A);
 
                 if (damage > 0)
                 {

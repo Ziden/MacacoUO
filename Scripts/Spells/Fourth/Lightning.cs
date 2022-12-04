@@ -50,7 +50,34 @@ namespace Server.Spells.Fourth
                 Mobile source = Caster;
                 // SpellHelper.Turn(Caster, m.Location);
 
-                SpellHelper.CheckReflect((int)Circle, ref source, ref m);
+                if (m is Mobile)
+                {
+                    Effects.SendBoltEffect(m, true, 0, false);
+                }
+                else
+                {
+                    Effects.SendBoltEffect(EffectMobile.Create(m.Location, m.Map, EffectMobile.DefaultDuration), true, 0, false);
+                }
+
+
+                var wtf = m;
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref wtf))
+                {
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                    {
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new LightningSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
+                    });
+                    return;
+                }
 
                 double damage = 0;
 
@@ -76,15 +103,6 @@ namespace Server.Spells.Fourth
                 {
                     var nivel = ColarElemental.GetNivel(Caster, ElementoPvM.Raio);
                     damage *= 1 + (nivel / 14);
-                }
-
-                if (m is Mobile)
-                {
-                    Effects.SendBoltEffect(m, true, 0, false);
-                }
-                else
-                {
-                    Effects.SendBoltEffect(EffectMobile.Create(m.Location, m.Map, EffectMobile.DefaultDuration), true, 0, false);
                 }
 
                 if (damage > 0)

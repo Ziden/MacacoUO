@@ -59,7 +59,7 @@ namespace Server.Spells.Fifth
                     int intel = Math.Min(200, Caster.Int);
 
                     int damage = (int)((Caster.Skills[SkillName.Magery].Value + intel) / 5) + Utility.RandomMinMax(2, 6);
-					
+
                     if (damage > 60)
                         damage = 60;
 
@@ -74,11 +74,34 @@ namespace Server.Spells.Fifth
 
                 //SpellHelper.Turn(from, target);
 
-                if(target != null)
-                    SpellHelper.CheckReflect((int)Circle, ref from, ref target);
+                from.FixedParticles(0x374A, 10, 15, 2038, EffectLayer.Head);
+
+                target.FixedParticles(0x374A, 10, 15, 5038, EffectLayer.Head);
+                target.PlaySound(0x213);
+
+                if (target != null)
+                {
+                    if (SpellHelper.CheckReflect((int)Circle, ref m, ref target))
+                    {
+                        Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                        {
+                            if (this.OriginalCaster == null)
+                            {
+                                this.OriginalCaster = Caster;
+                            }
+                            FinishSequence();
+                            var newSpell = new MindBlastSpell(m as Mobile, null);
+                            newSpell.PassSequence = true;
+                            newSpell.OriginalCaster = this.OriginalCaster;
+                            newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                            newSpell.Target(Caster);
+                        });
+                        return;
+                    }
+                }
 
                 double damage = GetDamageScalar(m, ElementoPvM.Escuridao) * ((Caster.Int - target.Int) / 4); //less damage
-                if(!m.Player)
+                if (!m.Player)
                     damage += ColarElemental.GetNivel(Caster, ElementoPvM.Escuridao) * (Caster.Int / 25);
 
                 if (m.Player && damage > 45)
@@ -89,11 +112,6 @@ namespace Server.Spells.Fifth
                     damage /= 2;
                     target.SendLocalizedMessage(501783); // You feel yourself resisting magical energy.
                 }
-
-                from.FixedParticles(0x374A, 10, 15, 2038, EffectLayer.Head);
-
-                target.FixedParticles(0x374A, 10, 15, 5038, EffectLayer.Head);
-                target.PlaySound(0x213);
 
                 SpellHelper.Damage(this, target, damage, 0, 0, 100, 0, 0, ElementoPvM.Escuridao);
             }

@@ -63,15 +63,6 @@ namespace Server.Spells.First
                 }
                 //SpellHelper.Turn(Caster, target);
 
-                if (SpellHelper.CheckReflect((int)Circle, ref source, ref target))
-                {
-                    Timer.DelayCall(TimeSpan.FromSeconds(.5), () =>
-                    {
-                        source.MovingParticles(target, 0x36E4, 5, 0, false, true, 3043, 4043, 0x211);
-                        source.PlaySound(0x1E5);
-                    });
-                }
-
                 double damage = 0;
 				
                 if (target is Mobile)
@@ -92,6 +83,24 @@ namespace Server.Spells.First
                 {
                     Caster.MovingParticles(d, 0x36E4, 5, 0, false, false, 3006, 0, 0);
                     Caster.PlaySound(0x1E5);
+
+                    if (SpellHelper.CheckReflect((int)Circle, ref source, ref target))
+                    {
+                        Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                        {
+                            if (this.OriginalCaster == null)
+                            {
+                                this.OriginalCaster = Caster;
+                            }
+                            FinishSequence();
+                            var newSpell = new MagicArrowSpell(d as Mobile, null);
+                            newSpell.PassSequence = true;
+                            newSpell.OriginalCaster = this.OriginalCaster;
+                            newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                            newSpell.Target(Caster);
+                        });
+                        return;
+                    }
 
                     SpellHelper.Damage(this, target, damage, 0, 100, 0, 0, 0, ElementoPvM.Luz);
                 }

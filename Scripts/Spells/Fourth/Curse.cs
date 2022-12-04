@@ -167,9 +167,6 @@ namespace Server.Spells.Fourth
             m.OverheadMessage("* amaldicoado *");
             m.Paralyzed = false;
 
-            m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
-            m.PlaySound(0x1E1);
-
             return true;
         }
 
@@ -183,7 +180,27 @@ namespace Server.Spells.Fourth
             {
                 SpellHelper.Turn(Caster, m);
 
-                SpellHelper.CheckReflect((int)Circle, Caster, ref m);
+                m.FixedParticles(0x374A, 10, 15, 5028, EffectLayer.Waist);
+                m.PlaySound(0x1E1);
+
+                var wtf = m;
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref wtf))
+                {
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                    {
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new CurseSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
+                    });
+                    return;
+                }
 
                 if (DoCurse(Caster, m, false))
                 {

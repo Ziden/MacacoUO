@@ -54,7 +54,34 @@ namespace Server.Spells.Seventh
             {
                 Mobile source = this.Caster;
 
-                SpellHelper.CheckReflect((int)this.Circle, ref source, ref m);
+                if (m != null)
+                {
+                    if (m != Caster)
+                        Caster.MovingParticles(m, 0x3709, 7, 10, true, true, 3043, 4019, 0x160, EffectLayer.LeftFoot);
+                    else
+                        m.FixedParticles(0x3709, 10, 30, 5052, EffectLayer.LeftFoot);
+                    m.PlaySound(0x208);
+                }
+
+                var wtf = m;
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref wtf))
+                {
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                    {
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new FlameStrikeSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
+                    });
+                    return;
+                }
+
 
                 double damage = 0;
 
@@ -81,14 +108,7 @@ namespace Server.Spells.Seventh
                     damage *= this.GetDamageScalar((Mobile)m, ElementoPvM.Fogo);
                 }
 
-                if (m != null)
-                {
-                    if(m!=Caster)
-                        Caster.MovingParticles(m, 0x3709, 7, 10, true, true, 3043, 4019, 0x160, EffectLayer.LeftFoot);
-                    else
-                        m.FixedParticles(0x3709, 10, 30, 5052, EffectLayer.LeftFoot);
-                    m.PlaySound(0x208);
-                }
+             
 
                 if (damage > 0)
                 {

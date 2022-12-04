@@ -49,12 +49,15 @@ namespace Server.Spells
         };
 
         public virtual int GetMinSkill { get { return 0; } }
+   
         private static readonly int[] m_ManaTable = new int[] { 4, 6, 9, 11, 14, 20, 40, 50 };
         private const double ChanceOffset = 20.0, ChanceLength = 100.0 / 7.0;
         public MagerySpell(Mobile caster, Item scroll, SpellInfo info)
             : base(caster, scroll, info)
         {
         }
+
+        public MagerySpell() { }
 
         public abstract SpellCircle Circle { get; }
         public override TimeSpan CastDelayBase

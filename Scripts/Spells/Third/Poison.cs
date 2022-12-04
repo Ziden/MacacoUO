@@ -40,7 +40,28 @@ namespace Server.Spells.Third
             {
                 SpellHelper.Turn(Caster, m);
 
-                SpellHelper.CheckReflect((int)Circle, Caster, ref m);
+                Caster.MovingParticles(m, 0x374A, 12, 10, false, false, 9502, 0x374A, 0x205);
+                m.PlaySound(0x205);
+
+                var wtf = m;
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref wtf))
+                {
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                    {
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new PoisonSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
+                    });
+                    return;
+                }
+
 
                 // Poison nao da disturb
                 //if (m.Spell != null)
@@ -134,8 +155,7 @@ namespace Server.Spells.Third
                     var result = m.ApplyPoison(Caster, p);
                     Shard.Debug("Poison Result: " + result.ToString(), m);
                 }
-                Caster.MovingParticles(m, 0x374A, 12, 10, false, false, 9502, 0x374A, 0x205);
-                m.PlaySound(0x205);
+            
                 HarmfulSpell(m);
 
                 if (Caster.Criminal && Caster.Region is GuardedRegion)

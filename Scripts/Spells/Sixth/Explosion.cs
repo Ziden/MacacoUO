@@ -59,8 +59,24 @@ namespace Server.Spells.Sixth
             {
                 Mobile attacker = Caster;
 
-                // SpellHelper.Turn(Caster, m);
-                SpellHelper.CheckReflect((int)Circle, Caster, ref m);
+                var wtf = m;
+                if (SpellHelper.CheckReflect((int)Circle, this.Caster, ref wtf))
+                {
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
+                    {
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new ExplosionSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
+                    });
+                    return;
+                }
 
                 InternalTimer t = new InternalTimer(this, attacker, m);
                 t.Start();

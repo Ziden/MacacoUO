@@ -32,12 +32,14 @@ namespace Server.Spells
     public abstract class Spell : ISpell
     {
         public static int RANGE = Shard.POL_STYLE ? 12 : 10;
+        public readonly static double SECONDS_REFLECT = 1;
+
 
         public Mobile ManaToCaster;
-
+        public Mobile OriginalCaster;
         public Mobile m_Caster;
         private readonly Item m_Scroll;
-        private readonly SpellInfo m_Info;
+        private SpellInfo m_Info;
         private SpellState m_State;
         private long m_StartCastTime;
         private object m_InstantTarget;
@@ -46,8 +48,8 @@ namespace Server.Spells
 
         public SpellState State { get { return m_State; } set { m_State = value; } }
 
-        public Mobile Caster { get { return m_Caster; } }
-        public SpellInfo Info { get { return m_Info; } }
+        public Mobile Caster { get { return m_Caster; } set { m_Caster = value; } }
+        public SpellInfo Info { get { return m_Info; } set { m_Info = value; } }
         public string Name { get { return m_Info.Name; } }
         public string Mantra { get { return m_Info.Mantra; } }
         public Type[] Reagents { get { return m_Info.Reagents; } }
@@ -205,11 +207,18 @@ namespace Server.Spells
             }
         }
 
+        public SpellInfo GetInfo() => m_Info;
+
         public Spell(Mobile caster, Item scroll, SpellInfo info)
         {
             m_Caster = caster;
             m_Scroll = scroll;
             m_Info = info;
+        }
+
+        public Spell()
+        {
+
         }
 
         public virtual int GetNewAosDamage(int bonus, int dice, int sides, IDamageable singleTarget)
@@ -1266,12 +1275,10 @@ namespace Server.Spells
                 m_Caster.SendMessage("Você não consegue conjurar magias enquanto segura uma pocao");
             }
             */
-            /*
             else if (CheckNextSpellTime && Core.TickCount - m_Caster.NextSpellTime < 0)
             {
-                m_Caster.SendMessage("Voce ainda nao pode usar outra magia"); // You have not yet recovered from casting a spell.
+                m_Caster.SendMessage("Aguarde para usar outra magia"); // You have not yet recovered from casting a spell.
             }
-            */
             else if (m_Caster is PlayerMobile && ((PlayerMobile)m_Caster).PeacedUntil > DateTime.UtcNow)
             {
                 m_Caster.SendMessage("Você não pode usar magias estando acalmado"); // You cannot cast a spell while calmed.
@@ -1464,7 +1471,7 @@ namespace Server.Spells
 
         public virtual TimeSpan GetDisturbRecovery()
         {
-            if (Core.AOS)
+            if (Core.AOS || Shard.POL_SPHERE)
             {
                 return TimeSpan.Zero;
             }
@@ -1586,8 +1593,6 @@ namespace Server.Spells
                 m_Caster.AddLastSpell(this.GetType());
                 m_Caster.Spell = null;
             }
-
-
         }
 
         public virtual int ComputeKarmaAward()
@@ -1595,8 +1600,14 @@ namespace Server.Spells
             return 0;
         }
 
+        public bool PassSequence = false;
+
         public virtual bool CheckSequence()
         {
+
+            if (PassSequence)
+                return true;
+
             int mana = AjustaMana(GetMana());
 
             if (m_Caster.Deleted || !m_Caster.Alive || m_Caster.Spell != this || m_State != SpellState.Sequencing)

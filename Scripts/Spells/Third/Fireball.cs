@@ -45,16 +45,28 @@ namespace Server.Spells.Third
                 IDamageable source = Caster;
                 IDamageable target = m;
 
+                double damage = 0;
+
+                Caster.MovingParticles(m, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160);
+                Caster.PlaySound(0x160);
+
                 if (SpellHelper.CheckReflect((int)Circle, ref source, ref target))
                 {
-                    Timer.DelayCall(TimeSpan.FromSeconds(.5), () =>
+                    Timer.DelayCall(TimeSpan.FromSeconds(Spell.SECONDS_REFLECT), () =>
                     {
-                        source.MovingParticles(target, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160);
-                        source.PlaySound(0x15E);
+                        if (this.OriginalCaster == null)
+                        {
+                            this.OriginalCaster = Caster;
+                        }
+                        FinishSequence();
+                        var newSpell = new FireballSpell(m as Mobile, null);
+                        newSpell.PassSequence = true;
+                        newSpell.OriginalCaster = this.OriginalCaster;
+                        newSpell.OriginalCaster.NextSpellTime = Core.TickCount + 2000;
+                        newSpell.Target(Caster);
                     });
+                    return;
                 }
-
-                double damage = 0;
 
                 if (Core.AOS)
                 {
@@ -74,10 +86,7 @@ namespace Server.Spells.Third
                 }
 
                 if (damage > 0)
-                {
-                    Caster.MovingParticles(m, 0x36D4, 7, 0, false, true, 9502, 4019, 0x160);
-                    Caster.PlaySound(0x160);
-
+                { 
                     SpellHelper.Damage(this, target, damage, 0, 100, 0, 0, 0, Items.ElementoPvM.Fogo);
                 }
             }
