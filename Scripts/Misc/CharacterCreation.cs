@@ -217,7 +217,7 @@ namespace Server.Misc
             {
                 newChar.MoveToWorld(WSHALL, Map.Malas);
             }
-            if (newChar.RP)
+            else if (newChar.RP)
             {
                 //InicioRP.InitializaPlayer(newChar as PlayerMobile);
             } else
