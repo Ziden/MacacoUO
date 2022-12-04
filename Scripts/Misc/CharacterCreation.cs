@@ -213,6 +213,10 @@ namespace Server.Misc
             }
 
             var city = args.City;
+            if(Shard.WARSHARD)
+            {
+                newChar.MoveToWorld(WSHALL, Map.Malas);
+            }
             if (newChar.RP)
             {
                 //InicioRP.InitializaPlayer(newChar as PlayerMobile);
