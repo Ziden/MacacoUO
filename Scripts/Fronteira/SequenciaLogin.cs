@@ -75,6 +75,14 @@ namespace Server.Fronteira
             if (CharacterCreation.Novos.Contains(e.Mobile))
             {
                 CharacterCreation.Novos.Remove(e.Mobile);
+
+                if (Shard.WARSHARD)
+                {
+                    pm.Profession = 1;
+                    pm.MoveToWorld(CharacterCreation.WSHALL, Map.Malas);
+                    return;
+                }
+
                 if (pm.RP && pm.Profession == 0)
                 {
                     InicioRP.InitializaPlayer(pm);
