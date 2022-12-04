@@ -22,6 +22,11 @@ namespace Server.Spells.Fourth
 
         public static double GetPoisonScalar(Poison p)
         {
+            if(Shard.POL_STYLE)
+            {
+                return 1;
+            }
+
             if (p == null)
                 return 1;
 
