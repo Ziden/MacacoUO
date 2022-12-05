@@ -25,6 +25,12 @@ namespace Server.Mobiles
 		{
 			var combatant = bc.Combatant;
 
+            // Skills de pets nao funfam em PvP
+            if(combatant is PlayerMobile && bc.GetMaster() is PlayerMobile)
+            {
+                return false;
+            }
+
 			if(combatant is Mobile)
 			{
                 var profile = PetTrainingHelper.GetAbilityProfile(bc);
@@ -69,7 +75,7 @@ namespace Server.Mobiles
                     (attacker.ControlMaster is PlayerMobile && attacker.ControlMaster.CanBeHarmful(defender)) &&
 					attacker.Alive && !attacker.IsDeadBondedPet && defender.InRange(attacker.Location, MaxRange) && 
 					defender.Map == attacker.Map && attacker.InLOS(defender) && !attacker.BardPacified &&
-                    (defender.Party == null || defender.Party != attacker.ControlMaster.Party);
+                    (defender.Party == null || defender.Party != attacker.ControlMaster.Party) && !(defender is PlayerMobile && attacker.ControlMaster is PlayerMobile);
 		}
 
         public bool CheckMana(Mobile m)
@@ -125,7 +131,7 @@ namespace Server.Mobiles
                     from.CanBeHarmful(to, false) &&
                     (to is BaseCreature || (from is BaseCreature && ((BaseCreature)from).Controlador != to)) &&
                     SpellHelper.ValidIndirectTarget(from, to) &&
-                    from.InLOS(to) && (!(to is PlayerMobile) || (from.HasAggressed(to) || from.HasAggressor(to)));
+                    from.InLOS(to) && !(to is PlayerMobile) && (from.HasAggressed(to) || from.HasAggressor(to));
         }
 
 		public List<Mobile> _Cooldown;
