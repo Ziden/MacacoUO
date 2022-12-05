@@ -25,21 +25,21 @@ namespace Server.Items
         {
             get
             {
-                return 5; //(Core.AOS ? 5 : 5);
+                return 10; //(Core.AOS ? 5 : 5);
             }
         }
         public override int MaxMana
         {
             get
             {
-                return 13; //(Core.AOS ? 20 : 20);
+                return 20; //(Core.AOS ? 20 : 20);
             }
         }
         public override double Delay
         {
             get
             {
-                return 10; //(Core.AOS ? 10.0 : 10.0);
+                return 30; //(Core.AOS ? 10.0 : 10.0);
             }
         }
         public override void Serialize(GenericWriter writer)

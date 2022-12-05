@@ -25,7 +25,7 @@ namespace Server.Items
         {
             get
             {
-                return 13; //(Core.AOS ? 18 : 18);
+                return 15; //(Core.AOS ? 18 : 18);
             }
         }
         public override int MaxMana
@@ -35,6 +35,7 @@ namespace Server.Items
                 return 45; //(Core.AOS ? 35 : 35);
             }
         }
+
         public override double Delay
         {
             get
@@ -42,6 +43,7 @@ namespace Server.Items
                 return 30;
             }
         }
+
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
