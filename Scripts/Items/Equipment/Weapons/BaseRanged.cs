@@ -132,8 +132,18 @@ namespace Server.Items
         {
             long nextShoot;
 
+            if(attacker.GetDistance(damageable) <= 2)
+            {
+                if(!attacker.IsCooldown("dicatiro"))
+                {
+                    attacker.SetCooldown("dicatiro", TimeSpan.FromDays(1));
+                    attacker.SendMessage(78, "[DICA] Voce esta muito proximo para atirar flechas no alvo");
+                }
+                return TimeSpan.FromSeconds(1);
+            }
+
             if (attacker is PlayerMobile)
-                nextShoot = ((PlayerMobile)attacker).NextMovementTime + 1000 - (attacker.Dex * 5);
+                nextShoot = ((PlayerMobile)attacker).NextMovementTime + 900 - (attacker.Dex * 5);
             else
                 nextShoot = attacker.LastMoveTime + attacker.ComputeMovementSpeed();
 
