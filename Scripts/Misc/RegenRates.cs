@@ -210,6 +210,14 @@ namespace Server.Misc
                 return Mobile.DefaultManaRate;
             }
 
+            if (from is PlayerMobile pl)
+            {
+                // tomou dano nos ultimos 8 segundos, regenera menos
+                if(pl.GetMillisSinceLastDamage() < 8000)
+                {
+                    rate *= 2;
+                }
+            }
             return TimeSpan.FromSeconds(rate);
         }
 
