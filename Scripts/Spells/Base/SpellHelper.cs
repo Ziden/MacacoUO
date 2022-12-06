@@ -1356,6 +1356,9 @@ namespace Server.Spells
 
             if (!(source is Mobile))
                 return false;
+
+            if (source == defender)
+                return false;
             /*
             if (Core.AOS && type >= DamageType.Spell)
             {
