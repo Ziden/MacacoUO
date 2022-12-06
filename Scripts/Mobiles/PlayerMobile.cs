@@ -176,6 +176,18 @@ namespace Server.Mobiles
             return Elementos.BonusPorNivel(Elementos.GetNivel(Elemento));
         }
 
+        public override bool Frozen { get => base.Frozen; set  {
+                base.Frozen = value;
+                if(value)
+                {
+                    var ctx = BandageContext.GetContext(this);
+                    if(ctx != null)
+                    {
+                        ctx.StopHeal();
+                        SendMessage("Voce parou de se curar");
+                    }
+                }
+            } }
 
         public EventCalendarAccount m_EventCalendarAccount = null;
 

@@ -2130,7 +2130,7 @@ namespace Server
         }
 
         [CommandProperty(AccessLevel.Decorator)]
-        public bool Frozen
+        public virtual bool Frozen
         {
             get { return m_Frozen; }
             set
@@ -2156,7 +2156,7 @@ namespace Server
             }
         }
 
-        public void Paralyze(TimeSpan duration)
+        public virtual void Paralyze(TimeSpan duration)
         {
             if (!m_Paralyzed)
             {
