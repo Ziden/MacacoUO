@@ -18,7 +18,7 @@ namespace Server.Items
         {
             get
             {
-                return Shard.RP ? 30 : 20;
+                return Shard.RP ? 60 : 40;
             }
         }
         public override int AccuracyBonus
