@@ -2546,9 +2546,9 @@ namespace Server.Mobiles
             get
             {
                 var bonus = 0;
-                if (Talentos.Tem(Talento.FisicoPerfeito))
+                if (RP && Talentos.Tem(Talento.FisicoPerfeito))
                     bonus = 40;
-                return Math.Max(10, base.StamMax + AosAttributes.GetValue(this, AosAttribute.BonusStam)) + bonus;
+                return Math.Max(10, (Shard.POL_STYLE ? StamPOL : base.ManaMax) + AosAttributes.GetValue(this, AosAttribute.BonusStam)) + bonus;
             }
         }
 
@@ -2558,14 +2558,17 @@ namespace Server.Mobiles
             get
             {
                 var bonus = 0;
-                if (Talentos.Tem(Talento.Sabedoria))
+                if (RP && Talentos.Tem(Talento.Sabedoria))
                     bonus = 40;
 
-                return base.ManaMax + AosAttributes.GetValue(this, AosAttribute.BonusMana) +
+                return (Shard.POL_STYLE ? ManaPOL : base.ManaMax) + AosAttributes.GetValue(this, AosAttribute.BonusMana) +
                        MasteryInfo.IntuitionBonus(this) +
                        UraliTranceTonic.GetManaBuff(this) + bonus;
             }
         }
+
+        private int ManaPOL => (RawInt * 3 + RawStr) / 4;
+        private int StamPOL => (RawDex * 3 + RawStr) / 4;
         #endregion
 
         #region Stat Getters/Setters
