@@ -78,7 +78,7 @@ namespace Server.Spells.Fifth
                 if (this.Caster.BeginAction(typeof(DefensiveSpell)))
                 {
                     int skills = (int)(this.Caster.Skills[SkillName.Magery].Value + this.Caster.Skills[SkillName.Inscribe].Value);
-                    var value = (int)(5 + (skills / 200) * 7.0) + Utility.Random(4) - 2;
+                    var value = (int)(3 + (skills / 200) * 7.0) + Utility.Random(4) - 2;
 
                     this.Caster.MagicDamageAbsorb = value;
                     this.Caster.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
