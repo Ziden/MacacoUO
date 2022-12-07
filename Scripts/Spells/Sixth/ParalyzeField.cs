@@ -84,7 +84,12 @@ namespace Server.Spells.Sixth
                 Field field = new Field();
 
                 if (SpellHelper.CheckField(pnt, Caster.Map))
-                    AddField(field, new InternalItem(itemID, pnt, Caster, Caster.Map, duration));
+                {
+                    Timer.DelayCall(TimeSpan.FromMilliseconds(100), () =>
+                    {
+                        AddField(field, new InternalItem(itemID, pnt, Caster, Caster.Map, duration));
+                    });
+                }  
 
                 for (int i = 1; i <= 2; ++i)
                 {
@@ -216,7 +221,7 @@ namespace Server.Spells.Sixth
 
                     double duration;
 
-                    duration = 2.0 + ((int)(m_Caster.Skills[SkillName.EvalInt].Value / 10) - (int)(m.Skills[SkillName.MagicResist].Value / 10));
+                    duration = 5.0 + ((int)(m_Caster.Skills[SkillName.EvalInt].Value / 10) - (int)(m.Skills[SkillName.MagicResist].Value / 10));
 
                     if (!m.Player)
                         duration *= 2;

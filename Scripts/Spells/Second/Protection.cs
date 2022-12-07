@@ -141,7 +141,7 @@ namespace Server.Spells.Second
                 {
                     if (this.Caster.BeginAction(typeof(ArchProtectionSpell)))
                     {
-                        int value = (int)(this.Caster.Skills[SkillName.Magery].Value + this.Caster.Skills[SkillName.Meditation].Value + this.Caster.Skills[SkillName.Inscribe].Value);
+                        int value = (int)(this.Caster.Skills[SkillName.Magery].Value + this.Caster.Skills[SkillName.Inscribe].Value * 2);
 
                         value /= 30;
 
