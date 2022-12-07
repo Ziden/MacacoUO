@@ -3987,10 +3987,6 @@ namespace Server.Mobiles
 
         public override bool OnDragLift(Item item)
         {
-            if (this.Paralyzed)
-            {
-                return false;
-            }
 
             if (item.RootParent != this && item.RootParent != this.Backpack)
             {
