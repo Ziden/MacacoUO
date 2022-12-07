@@ -1394,7 +1394,7 @@ namespace Server.Spells
                     var target = defender as Mobile;
 
                     var ini = target.MagicDamageAbsorb;
-                    target.MagicDamageAbsorb -= circle;
+                    target.MagicDamageAbsorb -= circle + 1;
 
                     // This order isn't very intuitive, but you have to nullify reflect before target gets switched
 
