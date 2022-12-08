@@ -4579,17 +4579,16 @@ namespace Server.Items
             if (Type == WeaponType.Axe)
             {
                 double lumberValue = attacker.Skills[SkillName.Lumberjacking].Value;
-                if (lumberValue > 100)
-                    lumberValue = (lumberValue / 5.0) / 100.0;
+                lumberValue = (lumberValue / 5.0) / 100.0;
                 if (lumberValue > 0.2)
                     lumberValue = 0.2;
 
                 modifiers += lumberValue;
 
-                //if (attacker.Skills[SkillName.Lumberjacking].Value >= 100.0)
-                // {
-                //     modifiers += 0.1;
-                // }
+                if (attacker.Skills[SkillName.Lumberjacking].Value >= 100.0)
+                {
+                     modifiers += 0.03;
+                }
             }
 
             // New quality bonus:
@@ -4624,10 +4623,10 @@ namespace Server.Items
                         mine = 0.2;
 
                     modifiers += mine;
-                    //if (attacker.Skills[SkillName.Mining].Value >= 100.0)
-                    //{
-                    //    modifiers += 0.1;
-                    //}
+                    if (attacker.Skills[SkillName.Mining].Value >= 100.0)
+                    {
+                        modifiers += 0.02;
+                    }
                 }
 
             }
