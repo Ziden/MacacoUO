@@ -125,7 +125,7 @@ namespace Server.Engines.UOStore
 
             cat = StoreCategory.Character;
             //PERSONAGEM
-            Register<CombatSkillBook>("Livro +5000 Exp", "Livro que garante instantaneamente 5000 EXP.</br>Nao funciona para elementos.", 0xEFA, 0, 0xA33, 1000, cat, ConstructLivro);
+            //Register<CombatSkillBook>("Livro +5000 Exp", "Livro que garante instantaneamente 5000 EXP.</br>Nao funciona para elementos.", 0xEFA, 0, 0xA33, 1000, cat, ConstructLivro);
             Register<StableSlotIncreaseToken>("+1 Slot Estabulo", "Aumenta um slot para deixar animais no estabulo", 0x2AAA, 0, 0, 2000, cat);
             Register<AbyssalHairDye>("Tinta para Cabelos", "Vermelho Abissal", 0, 0x9C7A, 0, 1000, cat);
             Register<SpecialHairDye>(new TextDefinition("Tinta para Cabelos"), "Verde Limao", 0, 0x9C78, 0, 1000, cat, ConstructHairDye); // Lemon Lime
@@ -159,6 +159,7 @@ namespace Server.Engines.UOStore
             cat = StoreCategory.Decorations;
             //Register<LargeChristmasTreeAddonDeed>(new TextDefinition("Arvore de Natal"), "item de decoração .", 0x0E58, 0, 0, 4000, cat);
             //Register<Christmas_TrainAddonDeed>(new TextDefinition("Trem Natalino"), "Apenas para Casas Maiores que 18x18.", 0x14EF, 0, 0, 6000, cat);
+            Register<GardenShedDeed>(new TextDefinition("Abrigo de jardim"), "é um item extraordinário que funciona como um complemento da casa, garantindo armazenamento extra em qualquer casa. .", 0x14EF, 0, 0, 4500, cat);
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
             Register<HildebrandtDragonRugDeed>(1157889, 1157890, 0, 0x9CD8, 0, 700, cat);
             Register<SmallWorldTreeRugAddonDeed>(1157206, 1157898, 0, 0x9CBA, 0, 300, cat);
@@ -198,8 +199,8 @@ namespace Server.Engines.UOStore
             cat = StoreCategory.Mounts;
             //MONTARIAS
             Register<EtherealHorse>(new TextDefinition("Cavalo Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x20DD, 0, 0, 2000, cat, CavaloEthy);
-            Register<EtherealOstard>(new TextDefinition("Ostard Magico [20/05/2022]"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um ostard magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2135, 0, 0, 7000, cat, OstardEthy);
-            Register<WindrunnerStatue>(new TextDefinition("Windrunner"), "Montaria. <br>Esta montaria vem Bound e pode ser ressada com Veterinary.<br>", 0x9ED5, 0, 0, 3000, cat, WindRunner);
+            Register<EtherealOstard>(new TextDefinition("Ostard Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um ostard magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2135, 0, 0, 7000, cat, OstardEthy);
+            Register<EtherealWindrunner>(new TextDefinition("Windrunner"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel.<br>", 0x9ED5, 0, 0, 10000, cat, WindRunner);
             Register<EtherealLlama>(new TextDefinition("Lhama Magica"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x20F6, 0, 0, 3000, cat);    
             Register<EtherealBeetle>(new TextDefinition("Barata Magica"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x260F, 0, 0, 3000, cat);
             Register<EtherealSwampDragon>(new TextDefinition("Dragão  do Pantano <b> Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2619, 0, 0, 5000, cat);
