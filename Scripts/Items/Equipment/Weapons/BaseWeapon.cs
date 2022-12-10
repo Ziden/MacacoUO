@@ -7310,7 +7310,7 @@ namespace Server.Items
                     tool.UsesRemaining -= 30;
                     if(tool != null)
                     {
-                        if (tool.UsesRemaining <= 0 || toolname.Contains("Mistica") == true)
+                        if (tool.UsesRemaining <= 0 || (toolname != null && toolname.Contains("Mistica") == true))
                         {
                             tool.Delete();
                             from.SendMessage("Sua ferramenta quebrou");
