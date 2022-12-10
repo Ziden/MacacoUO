@@ -7305,11 +7305,18 @@ namespace Server.Items
                         Slayer = BaseRunicTool.GetRandomSlayer();
                 }
                 this.HueRaridade = 1161;
-                tool.UsesRemaining -= 30;
-                if (tool.UsesRemaining <= 0 || toolname.Contains("Mistica") == true)
+                if(tool != null)
                 {
-                    tool.Delete();
-                    from.SendMessage("Sua ferramenta quebrou");
+                    tool.UsesRemaining -= 30;
+                    if(tool != null)
+                    {
+                        if (tool.UsesRemaining <= 0 || toolname.Contains("Mistica") == true)
+                        {
+                            tool.Delete();
+                            from.SendMessage("Sua ferramenta quebrou");
+                        }
+                    }
+                   
                 }
             }
 
