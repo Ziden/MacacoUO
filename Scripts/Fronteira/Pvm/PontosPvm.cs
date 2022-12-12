@@ -93,12 +93,6 @@ namespace Server.Ziden.Kills
             if (bc.NoKillAwards || bc.NoLootOnDeath)
                 return;
 
-            if (!(bc.Region is DungeonRegion))
-            {
-                dg = false;
-                pontos = Math.Ceiling(pontos / 2d);
-            }
-   
             if (pontos <= 0)
                 return;
 
