@@ -1734,21 +1734,20 @@ namespace Server.Engines.Craft
                 }
                 else if (res == CraftResource.Quartzo)
                 {
-                    chance -= 0.4;
+                    chance -= 0.3;
                 }
                 else if (res == CraftResource.Berilo)
                 {
-                    chance -= 0.6;
+                    chance -= 0.4;
                 }
                 else if (res == CraftResource.Vibranium)
                 {
-                    chance -= 0.7;
+                    chance -= 0.5;
                 }
                 else if (res == CraftResource.Adamantium)
                 {
-                    chance -= 0.9;
+                    chance -= 0.6;
                 }
-
                 else if (res == CraftResource.Pinho)
                 {
                     chance -= 0.1;
@@ -1763,15 +1762,15 @@ namespace Server.Engines.Craft
                 }
                 else if (res == CraftResource.Eucalipto)
                 {
-                    chance -= 0.5;
+                    chance -= 0.4;
                 }
                 else if (res == CraftResource.Carmesim)
                 {
-                    chance -= 0.6;
+                    chance -= 0.45;
                 }
                 else if (res == CraftResource.Gelo)
                 {
-                    chance -= 0.7;
+                    chance -= 0.5;
                 }
                 else if (res == CraftResource.CouroBarbed)
                 {
