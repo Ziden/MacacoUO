@@ -265,10 +265,10 @@ namespace Server.Mobiles
                 SorteiaItem(BaseEssencia.RandomEssencia(7));
                 SorteiaItem(ElementoUtils.GetRandomPedraSuperior(7));
             }
-            var wind = new Windrunner();
+            /*var wind = new Windrunner();
             wind.MoveToWorld(c.Location, c.Map);
             wind.OverheadMessage("* se transformou *");
-            wind.OverheadMessage("[2H Para Domar]");
+            wind.OverheadMessage("[2H Para Domar]");*/
             Timer.DelayCall(TimeSpan.FromHours(2), () =>
             {
                 if(this.Deleted || !this.Alive || this.ControlMaster != null || this.Map==Map.Internal)
