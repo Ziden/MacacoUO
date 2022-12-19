@@ -304,16 +304,16 @@ namespace Server.Items
             Map.Trammel,
             new[]
             {
-                new PMEntry(new Point3D(4467, 1283, 5), 1012003, "Moonglow"), // Moonglow
-				new PMEntry(new Point3D(1336, 1997, 5), 1012004, "Britain"), // Britain
-				new PMEntry(new Point3D(1499, 3771, 5), 1012005, "Jhelom"), // Jhelom
-                new PMEntry(new Point3D(771, 752, 5), 1012006, "Yew"), // Yew
-				new PMEntry(new Point3D(2701, 692, 5), 1012007, "Minoc"), // Minoc
-				new PMEntry(new Point3D(1828, 2948, -20), 1012008, "Trinsic"), // Trinsic
-				new PMEntry(new Point3D(643, 2067, 5), 1012009, "Skara Brae"), // Skara Brae
+                new PMEntry(new Point3D(4467, 1285, 2), 1012003, "Moonglow"), // Moonglow
+				new PMEntry(new Point3D(1336, 1999, 2), 1012004, "Britain"), // Britain
+				new PMEntry(new Point3D(1499, 3773, 2), 1012005, "Jhelom"), // Jhelom
+                new PMEntry(new Point3D(771, 754, 4), 1012006, "Yew"), // Yew
+				new PMEntry(new Point3D(2701, 694, 4), 1012007, "Minoc"), // Minoc
+				new PMEntry(new Point3D(1828, 2950, -23), 1012008, "Trinsic"), // Trinsic
+				new PMEntry(new Point3D(643, 2069, 4), 1012009, "Skara Brae"), // Skara Brae
 				/* Dynamic Z for Magincia to support both old and new maps. */
-				new PMEntry(new Point3D(3563, 2139, Map.Trammel.GetAverageZ(3563, 2139)), 1012010, "Magincia"), // (New) Magincia
-				new PMEntry(new Point3D(3450, 2677, 25), 1078098, "Haven") // New Haven
+				new PMEntry(new Point3D(3563, 2141, Map.Trammel.GetAverageZ(3563, 2139)), 1012010, "Magincia"), // (New) Magincia
+				new PMEntry(new Point3D(3450, 2679, 27), 1078098, "Haven") // New Haven
 			}, cost: 50);
 
         public static readonly PMList Felucca = new PMList(
@@ -784,7 +784,7 @@ namespace Server.Items
 
             m_Mobile.Combatant = null;
             m_Mobile.Warmode = false;
-            m_Mobile.Hidden = true;
+            m_Mobile.Hidden = false;
 
             m_Mobile.MoveToWorld(entry.Location, list.Map);
 
