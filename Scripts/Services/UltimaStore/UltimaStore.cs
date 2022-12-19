@@ -143,7 +143,7 @@ namespace Server.Engines.UOStore
             Register<SpecialHairDye>(new TextDefinition("Tinta para Cabelos"), "Preto do Nevoeiro", 0, 0x9C75, 0, 1000, cat, ConstructHairDye); // Dusk Black
             Register<GenderChangeToken>(new TextDefinition[] { "Trocar de Genero", 1156615 }, 1156642, 0x2AAA, 0, 0, 1000, cat);
             Register<NameChangeToken>(new TextDefinition[] { "Trocar de Nome", 1156615 }, 1156641, 0x2AAA, 0, 0, 1000, cat);
-            Register<PergaminhoSagradoSupremo>("Pergaminho de Item Pessoal (Newbie)", "Torna uma roupa um percence pessoal (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 2500, cat);
+            //Register<PergaminhoSagradoSupremo>("Pergaminho de Item Pessoal (Newbie)", "Torna uma roupa um percence pessoal (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 2500, cat);
             Register<TintaPreta>("Tinta Preta", "Balde de tinta preta.<br>Ma-ra-vi-lhosa com roupas sombrias.", 0xFAB, 0, TintaPreta.COR, 500, cat);
             Register<TintaBranca>("Tinta Branca", "Balde de tinta branca.<br>Divina cor para iluminados e praticantes da luz.", 0xFAB, 0, TintaBranca.COR, 500, cat);
 
