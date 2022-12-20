@@ -100,7 +100,7 @@ namespace Server.Mobiles
             SorteiaItem(new RecipeScroll((int)receita));
             var receita2 = DefCookingExp.Basicas[Utility.Random(DefCookingExp.Basicas.Length)];
             SorteiaItem(new RecipeScroll((int)receita2));
-            SorteiaItem(CookingLoader.GetSementeRandom());
+            //SorteiaItem(CookingLoader.GetSementeRandom()); // Esse item Esta dando crash não entendi muito bem 
             SorteiaItem(CookingLoader.GetSementeRandom());
             SorteiaItem(CookingLoader.GetSementeRandom());
         }
