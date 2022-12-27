@@ -784,7 +784,7 @@ namespace Server.Items
 
             m_Mobile.Combatant = null;
             m_Mobile.Warmode = false;
-            m_Mobile.Hidden = false;
+            m_Mobile.Hidden = true;
 
             m_Mobile.MoveToWorld(entry.Location, list.Map);
 
