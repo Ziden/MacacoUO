@@ -447,6 +447,115 @@ namespace Server.Items
         }
     }
 
+    public class Sandalhadahumildade : BaseShoes
+    {
+        public override CraftResource DefaultResource {
+            get {
+                return CraftResource.RegularLeather;
+            }
+        }
+
+        [Constructable]
+        public Sandalhadahumildade()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public Sandalhadahumildade(int hue)
+            : base(0x170D, hue)
+        {
+            Name = "Sandalias da Humildade";
+            Hue = 1153;
+            this.Weight = 1.0;
+            LootType = LootType.Blessed;
+        }
+
+        public Sandalhadahumildade(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override bool Dye(Mobile from, DyeTub sender)
+        {
+            if (Core.TOL)
+            {
+                return base.Dye(from, sender);
+            }
+
+            return false;
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+    public class SandaliasdaArrogancia : BaseShoes
+    {
+        public override CraftResource DefaultResource {
+            get {
+                return CraftResource.RegularLeather;
+            }
+        }
+
+        [Constructable]
+        public SandaliasdaArrogancia()
+            : this(0)
+        {
+        }
+
+        [Constructable]
+        public SandaliasdaArrogancia(int hue)
+            : base(0x170D, hue)
+        {
+            Name = "Sandalias da Arrogancia";
+            Hue = 1;
+            this.Weight = 1.0;
+            LootType = LootType.Blessed;
+        }
+
+        public SandaliasdaArrogancia(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override bool Dye(Mobile from, DyeTub sender)
+        {
+            if (Core.TOL)
+            {
+                return base.Dye(from, sender);
+            }
+
+            return false;
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+        }
+    }
+
+  
     [Alterable(typeof(DefTailoring), typeof(LeatherTalons))]
     [Flipable(0x2797, 0x27E2)]
     public class NinjaTabi : BaseShoes
