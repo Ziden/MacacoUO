@@ -259,7 +259,7 @@ namespace Server.Spells.Third
         {
             private readonly TeleportSpell m_Owner;
             public InternalTarget(TeleportSpell owner)
-                : base(10, true, TargetFlags.None)
+                : base(14, true, TargetFlags.None)
             {
                 this.m_Owner = owner;
             }
