@@ -86,6 +86,7 @@ namespace Server.Engines.UOStore
         {
             StoreCategory cat = StoreCategory.Featured; // SEI
             //GERAL
+            Register<Sandalhadahumildade>(new TextDefinition("Sandalha da Humildade"), "Roupas Especiais", 0x170D, 0, 0, 2000, cat);
             Register<AventalDaLuz>(new TextDefinition("Avental Da Luz"), "Roupas Especiais", 0x153b, 0, 0, 2000, cat);
             Register<BandanaDaluz>(new TextDefinition("Bandana  Da Luz"), "Roupas Especiais", 0x1540, 0, 0, 2000, cat);
             Register<RobeAnjoDaluz>(new TextDefinition("Robe Anjo Da Luz"), "Roupas Especiais", 0x1F03, 0, 0, 5000, cat);
@@ -157,8 +158,10 @@ namespace Server.Engines.UOStore
            
             //DECORAÇÃO
             cat = StoreCategory.Decorations;
-            //Register<LargeChristmasTreeAddonDeed>(new TextDefinition("Arvore de Natal"), "item de decoração .", 0x0E58, 0, 0, 4000, cat);
-            //Register<Christmas_TrainAddonDeed>(new TextDefinition("Trem Natalino"), "Apenas para Casas Maiores que 18x18.", 0x14EF, 0, 0, 6000, cat);
+            Register<ScaffoldingDeed>(new TextDefinition("Andaime 2 andares"), "item de decoração", 0x14EF, 0, 0, 1500, cat);
+            Register<HammockAddonDeed>(new TextDefinition("Rede de descanso"), "item de decoração", 0x14EF, 0, 0, 1000, cat);
+            Register<Gold_DiningSet_East_1AddonDeed>(new TextDefinition("Mesa de Luxo"), "item de decoração", 0x14EF, 0, 0, 3500, cat);
+            Register<GreyDrkFPSouth3AddonDeed>(new TextDefinition("Lareira virada a Sul"), "item de decoração", 0x14EF, 0, 0, 2500, cat);
             Register<GardenShedDeed>(new TextDefinition("Abrigo de jardim"), "é um item extraordinário que funciona como um complemento da casa, garantindo armazenamento extra em qualquer casa. .", 0x14EF, 0, 0, 4500, cat);
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
             Register<HildebrandtDragonRugDeed>(1157889, 1157890, 0, 0x9CD8, 0, 700, cat);
