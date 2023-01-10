@@ -60,7 +60,7 @@ namespace Server.Mobiles
             else if (m.Murderer)
             {
                 this.Say(501223); // You are not a decent and good person. I will not resurrect you.
-                return false;
+                return true;
             }
             else if (m.Karma < 0)
             {
