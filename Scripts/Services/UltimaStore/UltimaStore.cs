@@ -97,7 +97,8 @@ namespace Server.Engines.UOStore
             Register<SobretudodoCarrasco>(new TextDefinition("Sobretudo Do Carrasco"), "Sobretudo Especial<b> Pode ser pintado.", 0x2687, 0, 0, 5000, cat);
             Register<CharacterStatueMaker>("Estatua de Jogador", "Construa uma estatua do seu personagem.<br>Se eternalize !.", 0x32F0, 0, 0, 8000, cat);
             Register<PergaminhoPerdao>("Pergaminho do Perdao", "Remove 1 long count.", 0x1F35, 0, 55, 500, cat);
-            Register<SacolaCristais>("100 Cristais Elementais", "Sacola com 100 cristais elementais.", 16395, 0, 2611, 25000, cat);          
+            Register<SacolaCristais>("100 Cristais Elementais", "Sacola com 100 cristais elementais.", 16395, 0, 2611, 25000, cat);
+            Register<SacolaCristalTherathan>("50 Cristais Terathan", "Sacola com 50 Cristais Terathan.", 16395, 0, 2611, 12500, cat);
             Register<Spellbook>("Fullbook", "Fullbook.<br>Tem todas as magias.", 0x14F0, 0, 0, 5000, cat, ConstructSpellbook);
             Register<DoubleExpDeed>("PowerHour 2x Exp", "Ativa double exp para o shard todo por 1h.</ br > Todos vao te amar um pouco mais.", 0x14F0, 0, 256, 500, cat);
             Register<DoubleGoldDeed>("Power Hour 2x Gold", "Ativa double gold para o shard todo por 1h.</br>Todos vao te amar um pouco mais.", 0x14F0, 0, 54, 500, cat);
