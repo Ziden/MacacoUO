@@ -644,6 +644,89 @@ namespace Server.Mobiles
         }
     }
 
+    public class EtherealTarantulaFantasma : EtherealMount
+    {
+        public override int LabelNumber { get { return 1157081; } } // Tarantula Statuette
+
+        [Constructable]
+        public EtherealTarantulaFantasma()
+            : base(0x9DD6, 0x3ECA, 0x3ECA, DefaultEtherealHue)
+        {
+            Name = "Tarantula Fantasma";
+            StatueHue = 0;
+            TransparentMountedHue = 160546;
+            Transparent = true;
+        }
+
+
+        public EtherealTarantulaFantasma(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override bool Validate(Mobile from)
+        {
+            #region TOL
+            if (from.NetState != null && !from.NetState.SupportsExpansion(Expansion.ML))
+            {
+                from.SendLocalizedMessage(1156139); // * You must upgrade to the Time of Legends in order to use this. *                               
+                return false;
+            }
+            #endregion
+
+            return base.Validate(from);
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)1); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+
+            if (version == 0)
+            {
+                Transparent = false;
+            }
+        }
+    }
+
+    public class EtherealWindrunnerinfernal : EtherealMount
+    {
+        [Constructable]
+        public EtherealWindrunnerinfernal() : base(0x9ED5, 0x3ECC, 0x3ECC)
+        {
+            Name = "Lobo Infernal Magico";
+            StatueHue = 2901;
+            TransparentMountedHue = 2901;
+        }
+        public EtherealWindrunnerinfernal(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+
+        }
+    }
+
     public class EtherealWindrunner : EtherealMount
     {
         [Constructable]
@@ -838,6 +921,10 @@ namespace Server.Mobiles
 
             if (version == 0)
             {
+                Name = "Unicornio Mágico";
+                StatueHue = 1153;
+                TransparentMountedHue = 1153;
+                Transparent = false;
                 NonTransparentMountedID = 0x3EB4;
                 Transparent = true;
             }
