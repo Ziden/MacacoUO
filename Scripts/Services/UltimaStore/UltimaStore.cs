@@ -168,7 +168,6 @@ namespace Server.Engines.UOStore
             Register<ScaffoldingDeed>(new TextDefinition("Andaime 2 andares"), "item de decoração", 0x14EF, 0, 0, 1500, cat);
             Register<HammockAddonDeed>(new TextDefinition("Rede de descanso"), "item de decoração", 0x14EF, 0, 0, 1000, cat);
             Register<Gold_DiningSet_East_1AddonDeed>(new TextDefinition("Mesa de Luxo"), "item de decoração", 0x14EF, 0, 0, 3500, cat);
-            Register<GreyDrkFPSouth3AddonDeed>(new TextDefinition("Lareira virada a Sul"), "item de decoração", 0x14EF, 0, 0, 2500, cat);
             Register<GardenShedDeed>(new TextDefinition("Abrigo de jardim"), "é um item extraordinário que funciona como um complemento da casa, garantindo armazenamento extra em qualquer casa. .", 0x14EF, 0, 0, 4500, cat);
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
             Register<HildebrandtDragonRugDeed>(1157889, 1157890, 0, 0x9CD8, 0, 700, cat);
