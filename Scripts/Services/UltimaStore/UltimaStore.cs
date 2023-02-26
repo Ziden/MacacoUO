@@ -159,6 +159,12 @@ namespace Server.Engines.UOStore
            
             //DECORAÇÃO
             cat = StoreCategory.Decorations;
+            Register<SinkAddonDeed>(new TextDefinition("balcão de pia"), "Decoração.", 0x14EF, 0, 0, 3000, cat);
+            Register<pianomodern2AddonDeed>(new TextDefinition("Novo Piano"), "Decoração.", 0x14EF, 0, 0, 2000, cat);
+            Register<NewKitchenSouthAddonDeed>(new TextDefinition("Nova Cozinha"), "Decoração.", 0x14EF, 0, 0, 5000, cat);
+            Register<BronzePillarUOAddonDeed>(new TextDefinition("Pilar de Decoração"), "Decoração.", 0x14EF, 0, 0, 3000, cat);
+            Register<BlueCouchNorthAddonDeed>(new TextDefinition("Sofa de sala"), "Decoração.", 0x14EF, 0, 0, 6000, cat);
+            Register<BeerBarNAddonDeed>(new TextDefinition("Cervejaria"), "Decoração.", 0x14EF, 0, 0, 2000, cat);
             Register<ScaffoldingDeed>(new TextDefinition("Andaime 2 andares"), "item de decoração", 0x14EF, 0, 0, 1500, cat);
             Register<HammockAddonDeed>(new TextDefinition("Rede de descanso"), "item de decoração", 0x14EF, 0, 0, 1000, cat);
             Register<Gold_DiningSet_East_1AddonDeed>(new TextDefinition("Mesa de Luxo"), "item de decoração", 0x14EF, 0, 0, 3500, cat);
