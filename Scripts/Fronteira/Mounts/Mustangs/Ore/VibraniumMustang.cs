@@ -48,7 +48,7 @@ namespace Server.Ziden.Mounts.Mustangs.Ore
             Tamable = true;
             ControlSlots = 1;
             MinTameSkill = 90;
-            Hue = 2969;
+            Hue = 2733;
         }
 
         public VibraniumMustang(Serial serial)
