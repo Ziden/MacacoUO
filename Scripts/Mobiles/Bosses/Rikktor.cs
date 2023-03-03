@@ -267,7 +267,7 @@ namespace Server.Mobiles
             }
 
             var capa = new HumilityCloak();
-            capa.Hue = 2753;
+            capa.Hue = 1911;
             capa.Name = "[BOSS] Capa do Rikktor";
             SorteiaItem(capa);
 
