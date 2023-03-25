@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using Server.Commands;
+using Server.Items;
+
+namespace Server.Commands
+{
+    public class WipeItemCommand
+    {
+        public static void Initialize()
+        {
+            CommandSystem.Register("buscaritem", AccessLevel.GameMaster, new CommandEventHandler(WipeItem_OnCommand));
+        }
+
+        [Usage("buscaritem <nome do item>")]
+        [Description("Remove todos os itens com o nome especificado")]
+        public static void WipeItem_OnCommand(CommandEventArgs e)
+        {
+            string itemname = e.GetString(0);
+
+            List<Item> itemsToDelete = new List<Item>();
+
+            foreach (Item item in World.Items.Values)
+            {
+                if (item.GetType().Name.ToLowerInvariant().Contains(itemname.ToLowerInvariant()))
+                {
+                    itemsToDelete.Add(item);
+                }
+            }
+
+            for (int i = 0; i < itemsToDelete.Count; i++)
+            {
+                itemsToDelete[i].Delete();
+            }
+
+            e.Mobile.SendMessage("Foram removidos {0} items com o nome '{1}'.", itemsToDelete.Count, itemname);
+        }
+    }
+}
