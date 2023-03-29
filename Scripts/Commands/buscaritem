@@ -13,7 +13,7 @@ namespace Server.Commands
         }
 
         [Usage("buscaritem <nome do item>")]
-        [Description("Remove todos os itens com o nome especificado")]
+        [Description("Remover todos os itens com o nome especificado")]
         public static void WipeItem_OnCommand(CommandEventArgs e)
         {
             string itemname = e.GetString(0);
