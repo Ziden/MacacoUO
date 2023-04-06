@@ -202,7 +202,7 @@ namespace Server.Engines.Craft
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
             AddRecipe(index, (int)AlchemyRecipes.Dex);
 
-            index = AddCraft(typeof(AntiParaPotion), 1116349, "Pocao Anti Paralize", 60, 100, typeof(ZoogiFungus), "Fungo de Formiga", 5, "Voce precisa de 5 Fungos de Formiga");
+           // index = AddCraft(typeof(AntiParaPotion), 1116349, "Pocao Anti Paralize", 60, 100, typeof(ZoogiFungus), "Fungo de Formiga", 5, "Voce precisa de 5 Fungos de Formiga");
             AddRes(index, typeof(Bottle), 1044529, 1, 500315);
             AddRecipe(index, (int)AlchemyRecipes.AntiParalize);
 
