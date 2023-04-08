@@ -343,7 +343,7 @@ namespace Server.Items
                 new PMEntry(new Point3D(1527, 1340, -3), "1. Espiritualidade "),
                 new PMEntry(new Point3D(287, 1019, 0), "2. Humildade"),
                 new PMEntry(new Point3D(1215, 467, -13), "3. Compaixão "),
-                new PMEntry(new Point3D(258, 211, -42), "4. Valentia "),
+                new PMEntry(new Point3D(528, 211, -42), "4. Valentia "),
           }, cost: 100);
 
         public static readonly PMList Lugares = new PMList(
@@ -645,7 +645,7 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 330, 280, 9350); // 280: a largura do objeto 280: a altura do objeto
+            AddBackground(0, 0, 360, 280, 9350); // 280: a largura do objeto 280: a altura do objeto
 
             AddButton(10, 210, 30533, 30534, 1, GumpButtonType.Reply, 0);
             AddHtmlLocalized(45, 210, 140, 25, 1011036, false, false); // OKAY 30533
