@@ -19,7 +19,7 @@ namespace Server.Commands
         public static void CMD(CommandEventArgs arg)
         {
             var pl = arg.Mobile as PlayerMobile;
-            pl.LaunchBrowser("http://www.dragonicage.com/wiki");
+            pl.LaunchBrowser(" http://www.dragonicage.com/doku/doku.php?id=start");
         }
     }
 }
