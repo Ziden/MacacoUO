@@ -314,7 +314,7 @@ namespace Server.Items
 				/* Dynamic Z for Magincia to support both old and new maps. */
 				new PMEntry(new Point3D(3563, 2141, Map.Trammel.GetAverageZ(3563, 2139)), 1012010, "Magincia"), // (New) Magincia
 				new PMEntry(new Point3D(3450, 2679, 27), 1078098, "Haven") // New Haven
-			}, cost: 50);
+			}, cost: 100);
 
         public static readonly PMList Felucca = new PMList(
             1012001,
@@ -332,26 +332,23 @@ namespace Server.Items
 				/* Dynamic Z for Magincia to support both old and new maps. */
 				new PMEntry(new Point3D(3563, 2139, Map.Felucca.GetAverageZ(3563, 2139)), 1012010), // (New) Magincia
 				new PMEntry(new Point3D(2711, 2234, 0), 1019001) // Buccaneer's Den
-			}, cost: 50);
+			}, cost: 100);
 
         public static readonly PMList Dungeons = new PMList(
-          "Iniciante",
-          "Iniciante",
-          Map.Trammel,
+          "Ilshenar",
+          "Ilshenar",
+          Map.Ilshenar,
           new[]
           {
-                new PMEntry(new Point3D(4111, 439, 5), "1. Deceit"),
-                new PMEntry(new Point3D(731, 1448, 0), "2. Formigueiro Vermelho"),
-                new PMEntry(new Point3D(1462, 989, 0), "3. Formigueiro Preto"),
-                new PMEntry(new Point3D(1021, 1431, 0), "4. Caverna Orc"),
-                new PMEntry(new Point3D(514, 1561, 5), "5. Shame"),
-                new PMEntry(new Point3D(1999, 81, 4), "6. Caverna de Gelo"),
-                //new PMEntry(new Point3D(5237, 3866, 45), "4. Delucia"),
-          }, cost: 50);
+                new PMEntry(new Point3D(1527, 1340, -3), "1. Espiritualidade "),
+                new PMEntry(new Point3D(287, 1019, 0), "2. Humildade"),
+                new PMEntry(new Point3D(1215, 467, -13), "3. Compaixão "),
+                new PMEntry(new Point3D(258, 211, -42), "4. Valentia "),
+          }, cost: 100);
 
         public static readonly PMList Lugares = new PMList(
-          "Avancado",
-          "Avancado",
+          "Dungeons Avançadas",
+          "Dungeons Avançadas",
           Map.Trammel,
           new[]
           {
@@ -368,8 +365,8 @@ namespace Server.Items
           }, cost: 100);
 
         public static readonly PMList Pontos = new PMList(
-          "Especial",
-          "Especial",
+          "Especiais",
+          "Especiais",
           Map.Trammel,
           new[]
           {
@@ -648,7 +645,7 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 380, 280, 9300);
+            AddBackground(0, 0, 330, 280, 9350); // 280: a largura do objeto 280: a altura do objeto
 
             AddButton(10, 210, 30533, 30534, 1, GumpButtonType.Reply, 0);
             AddHtmlLocalized(45, 210, 140, 25, 1011036, false, false); // OKAY 30533
@@ -656,7 +653,8 @@ namespace Server.Items
             AddButton(10, 235, 30533, 30535, 0, GumpButtonType.Reply, 0);
             AddHtmlLocalized(45, 235, 140, 25, 1011012, false, false); // CANCEL  30533
 
-            AddHtmlLocalized(5, 5, 200, 20, 1012011, false, false); // Pick your destination:
+            AddHtmlLocalized(5, 5, 200, 20, "Escolha seu destino", false, false);
+
 
             for (var i = 0; i < checkLists.Length; ++i)
             {
