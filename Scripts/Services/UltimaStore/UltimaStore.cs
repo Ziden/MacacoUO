@@ -128,6 +128,7 @@ namespace Server.Engines.UOStore
             cat = StoreCategory.Character;
             //PERSONAGEM
             //Register<CombatSkillBook>("Livro +5000 Exp", "Livro que garante instantaneamente 5000 EXP.</br>Nao funciona para elementos.", 0xEFA, 0, 0xA33, 1000, cat, ConstructLivro);
+            Register<PergaminhoSkillcap>("Pergaminho de Skillcap", "Usar aumenta seu skillcap em + 1 <br> Limitado ate +20 ", 0x1F49, 0, 0, 2000, cat);
             Register<StableSlotIncreaseToken>("+1 Slot Estabulo", "Aumenta um slot para deixar animais no estabulo", 0x2AAA, 0, 0, 2000, cat);
             Register<AbyssalHairDye>("Tinta para Cabelos", "Vermelho Abissal", 0, 0x9C7A, 0, 1000, cat);
             Register<SpecialHairDye>(new TextDefinition("Tinta para Cabelos"), "Verde Limao", 0, 0x9C78, 0, 1000, cat, ConstructHairDye); // Lemon Lime
@@ -159,15 +160,6 @@ namespace Server.Engines.UOStore
            
             //DECORAÇÃO
             cat = StoreCategory.Decorations;
-            Register<SinkAddonDeed>(new TextDefinition("balcão de pia"), "Decoração.", 0x14EF, 0, 0, 3000, cat);
-            Register<pianomodern2AddonDeed>(new TextDefinition("Novo Piano"), "Decoração.", 0x14EF, 0, 0, 2000, cat);
-            Register<NewKitchenSouthAddonDeed>(new TextDefinition("Nova Cozinha"), "Decoração.", 0x14EF, 0, 0, 5000, cat);
-            Register<BronzePillarUOAddonDeed>(new TextDefinition("Pilar de Decoração"), "Decoração.", 0x14EF, 0, 0, 3000, cat);
-            Register<BlueCouchNorthAddonDeed>(new TextDefinition("Sofa de sala"), "Decoração.", 0x14EF, 0, 0, 6000, cat);
-            Register<BeerBarNAddonDeed>(new TextDefinition("Cervejaria"), "Decoração.", 0x14EF, 0, 0, 2000, cat);
-            Register<ScaffoldingDeed>(new TextDefinition("Andaime 2 andares"), "item de decoração", 0x14EF, 0, 0, 1500, cat);
-            Register<HammockAddonDeed>(new TextDefinition("Rede de descanso"), "item de decoração", 0x14EF, 0, 0, 1000, cat);
-            Register<Gold_DiningSet_East_1AddonDeed>(new TextDefinition("Mesa de Luxo"), "item de decoração", 0x14EF, 0, 0, 3500, cat);
             Register<GardenShedDeed>(new TextDefinition("Abrigo de jardim"), "é um item extraordinário que funciona como um complemento da casa, garantindo armazenamento extra em qualquer casa. .", 0x14EF, 0, 0, 4500, cat);
             Register<DecorativeBlackwidowDeed>(1157897, 1157898, 0, 0x9CD7, 0, 600, cat);
             Register<HildebrandtDragonRugDeed>(1157889, 1157890, 0, 0x9CD8, 0, 700, cat);
