@@ -569,7 +569,7 @@ namespace Server.Engines.Help
                     AddLabel(52, bottom - (buttons++ * 22), 2100, "Excluir página");
 
                     AddButton(18, bottom - (buttons * 22), 0xFB7, 0xFB9, 4, GumpButtonType.Reply, 0);
-                    AddLabel(52, bottom - (buttons++ * 22), 2100, "Manipular página");
+                    //AddLabel(52, bottom - (buttons++ * 22), 2100, "Manipular página");
                 }
                 else
                 {
