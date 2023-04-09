@@ -304,6 +304,7 @@ namespace Server.Items
             Map.Trammel,
             new[]
             {
+                new PMEntry(new Point3D(2455, 1213, 7), 1012003, "Cove"), // Cove
                 new PMEntry(new Point3D(4467, 1285, 2), 1012003, "Moonglow"), // Moonglow
 				new PMEntry(new Point3D(1336, 1999, 2), 1012004, "Britain"), // Britain
 				new PMEntry(new Point3D(1499, 3773, 2), 1012005, "Jhelom"), // Jhelom
@@ -314,7 +315,7 @@ namespace Server.Items
 				/* Dynamic Z for Magincia to support both old and new maps. */
 				new PMEntry(new Point3D(3563, 2141, Map.Trammel.GetAverageZ(3563, 2139)), 1012010, "Magincia"), // (New) Magincia
 				new PMEntry(new Point3D(3450, 2679, 27), 1078098, "Haven") // New Haven
-			}, cost: 100);
+            }, cost: 100);
 
         public static readonly PMList Felucca = new PMList(
             1012001,
@@ -340,10 +341,11 @@ namespace Server.Items
           Map.Ilshenar,
           new[]
           {
+                new PMEntry(new Point3D(828, 1203, -70), "4. Mistas City "),
                 new PMEntry(new Point3D(1527, 1340, -3), "1. Espiritualidade "),
                 new PMEntry(new Point3D(287, 1019, 0), "2. Humildade"),
                 new PMEntry(new Point3D(1215, 467, -13), "3. Compaixão "),
-                new PMEntry(new Point3D(528, 211, -42), "4. Valentia "),
+                new PMEntry(new Point3D(258, 211, -42), "4. Valentia "),
           }, cost: 100);
 
         public static readonly PMList Lugares = new PMList(
@@ -373,8 +375,7 @@ namespace Server.Items
               new PMEntry(new Point3D(747, 2162, 0), "Guilda Ranger"),
               new PMEntry(new Point3D(2711, 2234, 0), "Bucaneer's Den"), // Buccaneer's Den
               new PMEntry(new Point3D(5219, 3923, 39), "Delucia"),
-              new PMEntry(new Point3D(1383, 3815, 0), "Jhelom"),
-              //new PMEntry(new Point3D(827, 1203, -70), "Ilshenar"),
+              new PMEntry(new Point3D(4052, 563, 9), "Ice Island"),
           }, cost: 100);
 
         public static readonly PMList Ilshenar = new PMList(
@@ -645,7 +646,7 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 360, 280, 9350); // 280: a largura do objeto 280: a altura do objeto
+            AddBackground(0, 0, 330, 290, 9350); // 280: a largura do objeto 280: a altura do objeto
 
             AddButton(10, 210, 30533, 30534, 1, GumpButtonType.Reply, 0);
             AddHtmlLocalized(45, 210, 140, 25, 1011036, false, false); // OKAY 30533
