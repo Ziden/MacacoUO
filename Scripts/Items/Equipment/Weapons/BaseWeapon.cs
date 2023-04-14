@@ -3221,9 +3221,27 @@ namespace Server.Items
             if (attacker.Player && !defender.Player && !attacker.Poisoned && !BleedAttack.IsBleeding(attacker))
             {
                 var bonusCura = attacker.GetBonusElemento(ElementoPvM.Luz);
-                var cura = (damage / 2) * bonusCura;
+                var cura = (damage / 2) * bonusCura;               
+                
                 if (cura > 0)
                     attacker.Heal((int)cura);
+            }
+            else if (attacker.Player && !defender.Player && (attacker.Poisoned || BleedAttack.IsBleeding(attacker)))
+            {
+                var bonusCura = attacker.GetBonusElemento(ElementoPvM.Luz);
+                // Adiciona chance de curar veneno ou sangramento
+                var chanceCura = bonusCura / 10;
+                if (Utility.RandomDouble() <= chanceCura)
+                {
+                    if (attacker.Poisoned)
+                    {
+                        attacker.CurePoison(attacker);
+                    }
+                    if (BleedAttack.IsBleeding(attacker))
+                    {
+                        BleedAttack.EndBleed(attacker, true);
+                    }
+                }
             }
 
             if (blocked) // parried
