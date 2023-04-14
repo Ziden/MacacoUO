@@ -80,7 +80,7 @@ namespace Server.Items
             protected override void OnTarget(Mobile from, object targeted)
             {
                 IPoint3D p = null;
-                if(targeted.isMobile)
+                if(targeted is BaseCreature)
                 {
                     Mobile targetMobile = targeted as Mobile;
                     if(targetMobile == null)

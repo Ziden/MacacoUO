@@ -1549,6 +1549,8 @@ namespace Server.Mobiles
                         var pl = target as PlayerMobile;
                         if (pl != null && pl.Talisman is TalismanDragao)
                             damage *= 0.65;
+                        if (Controlled && pl !=null) // dá metade do Dano se for tamado e baforar player.
+                            damage *= 0.5;
                         AOS.Damage(target, (int)damage, DamageType.Spell, this);
                     }
                     else
@@ -7561,6 +7563,7 @@ namespace Server.Mobiles
             {
                 Timer.DelayCall(TimeSpan.FromSeconds(2), Delete);
             }
+            Timer.DelayCall(TimeSpan.FromMinutes(5), Delete); // mob é deletado 5 minutos após o all release.
         }
 
         public override void OnItemLifted(Mobile from, Item item)
