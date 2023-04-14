@@ -1,8 +1,8 @@
+using Server.Network;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using Server.Network;
 
 namespace Server.Accounting
 {
@@ -15,12 +15,12 @@ namespace Server.Accounting
             if (!Enabled)
                 return;
 
-            PacketHandlers.RegisterThrottler(0x80, new ThrottlePacketCallback(Throttle_Callback));
-            PacketHandlers.RegisterThrottler(0x91, new ThrottlePacketCallback(Throttle_Callback));
-            PacketHandlers.RegisterThrottler(0xCF, new ThrottlePacketCallback(Throttle_Callback));
+            PacketHandlers.RegisterThrottler(0x80, Throttle_Callback);
+            PacketHandlers.RegisterThrottler(0x91, Throttle_Callback);
+            PacketHandlers.RegisterThrottler(0xCF, Throttle_Callback);
         }
 
-        public static bool Throttle_Callback(NetState ns, out bool drop)
+        public static bool Throttle_Callback(byte packetID, NetState ns, out bool drop)
         {
             drop = false;
 
@@ -29,7 +29,7 @@ namespace Server.Accounting
             if (accessLog == null)
                 return true;
 
-            return (DateTime.UtcNow >= (accessLog.LastAccessTime + ComputeThrottle(accessLog.Counts)));
+            return DateTime.UtcNow >= accessLog.LastAccessTime + ComputeThrottle(accessLog.Counts);
         }
 
         public static InvalidAccountAccessLog FindAccessLog(NetState ns)
@@ -78,8 +78,9 @@ namespace Server.Accounting
                             accessLog.Counts);
                     }
                 }
-                catch
+                catch (Exception e)
                 {
+                    Console.WriteLine(e);
                 }
             }
         }
@@ -112,53 +113,29 @@ namespace Server.Accounting
         private int m_Counts;
         public InvalidAccountAccessLog(IPAddress address)
         {
-            this.m_Address = address;
-            this.RefreshAccessTime();
+            m_Address = address;
+            RefreshAccessTime();
         }
 
         public IPAddress Address
         {
-            get
-            {
-                return this.m_Address;
-            }
-            set
-            {
-                this.m_Address = value;
-            }
+            get => m_Address;
+            set => m_Address = value;
         }
         public DateTime LastAccessTime
         {
-            get
-            {
-                return this.m_LastAccessTime;
-            }
-            set
-            {
-                this.m_LastAccessTime = value;
-            }
+            get => m_LastAccessTime;
+            set => m_LastAccessTime = value;
         }
-        public bool HasExpired
-        {
-            get
-            {
-                return (DateTime.UtcNow >= (this.m_LastAccessTime + TimeSpan.FromHours(1.0)));
-            }
-        }
+        public bool HasExpired => DateTime.UtcNow >= m_LastAccessTime + TimeSpan.FromHours(1.0);
         public int Counts
         {
-            get
-            {
-                return this.m_Counts;
-            }
-            set
-            {
-                this.m_Counts = value;
-            }
+            get => m_Counts;
+            set => m_Counts = value;
         }
         public void RefreshAccessTime()
         {
-            this.m_LastAccessTime = DateTime.UtcNow;
+            m_LastAccessTime = DateTime.UtcNow;
         }
     }
 }
