@@ -7563,7 +7563,7 @@ namespace Server.Mobiles
             {
                 Timer.DelayCall(TimeSpan.FromSeconds(2), Delete);
             }
-            Timer.DelayCall(TimeSpan.FromMinutes(5), Delete); // mob é deletado 5 minutos após o all release.
+            Timer.DelayCall(TimeSpan.FromMinutes(0), Delete); // mob é deletado 5 minutos após o all release.
         }
 
         public override void OnItemLifted(Mobile from, Item item)
