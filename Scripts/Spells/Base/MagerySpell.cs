@@ -249,11 +249,17 @@ namespace Server.Spells
                     if (((PlayerMobile)Caster).Talentos.Tem(Talento.MentePerfurante))
                         resist -= 10;
                 }
+                if (target.Player && Caster.Player && resist > 100)
+                    resist = 100;
+                
 
                 var cap = resist / 5;
 
                 var magery = Caster.Skills[CastSkill].Value;
                 var circ = 1 + (double)circle;
+
+                if (Caster.Player && target.Player && magery > 100)
+                    magery = 100;
 
                 var chance = ((magery * 2) / 10 + circ * circ);
 

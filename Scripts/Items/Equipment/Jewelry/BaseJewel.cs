@@ -733,9 +733,8 @@ namespace Server.Items
             if (parent is Mobile)
             {
                 Mobile from = (Mobile)parent;
-
                 // Se nao for fechar 3 dnv
-                if (BaseJewel.GetNumberComboPieces(from, this) == 3)
+                if (BaseJewel.GetNumberComboPieces(from, this) == 3 && !(this is BaseNecklace))
                 {
                     var stat = this.SkillBonuses.Skill_1_Name;
                     m_AosSkillBonuses.Skill_1_Value += 7;
@@ -795,6 +794,7 @@ namespace Server.Items
                 Mobile from = (Mobile)parent;
 
                 var combos = BaseJewel.GetNumberComboPieces(from, this);
+
                 if (this.m_AosSkillBonuses.Skill_1_Value > 1)
                 {
                     m_AosSkillBonuses.Remove();
