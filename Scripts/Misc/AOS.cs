@@ -174,42 +174,24 @@ namespace Server
                     AttuneWeaponSpell.TryAbsorb(m, ref damage);
                 }
 
-                if (damageable is PlayerMobile && damageDealer is BaseCreature)
+                if(damageable is PlayerMobile && damageDealer is BaseCreature)
                 {
                     var from = damageable as Mobile;
-                    var nivel = ColarElemental.GetNivel(from, ElementoPvM.Luz);
-                    var chanceResist = nivel * 1.0 / 100;
-                    if (nivel > 0 && from.Hits > 50)
+                    var nivel = ColarElemental.GetNivel(damageable as Mobile, ElementoPvM.Luz);
+                    var chanceResist = nivel / 100;
+                    if(m.Hits > 50)
                     {
-                        chanceResist += nivel * 1.0 / 100;
+                        chanceResist += nivel / 100;
                     }
-
-                    if (chanceResist > 0 && Utility.RandomDouble() < chanceResist)
+                    if(chanceResist > 0 && Utility.RandomDouble() < chanceResist)
                     {
-                        var immunityDuration = nivel * 1.0 / 5; // calculate immunity duration
-                        if (immunityDuration < 0.1)
-                        {
-                            immunityDuration = 0;
-                        }
-
-                        if (from.BeginAction(typeof(PlayerMobile)))
-                        {
-                            Timer.DelayCall(TimeSpan.FromSeconds(immunityDuration), () => from.EndAction(typeof(PlayerMobile))); // start cooldown timer
-                            Effects.SendLocationParticles(EffectItem.Create(from.Location, from.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
-                            Effects.PlaySound(from.Location, from.Map, 0x243);
-                            from.SendMessage("Voce resistiu a morte e ganhou imunidade por " + immunityDuration + " seg");
-
-                            if (damage > from.Hits)
-                            {
-                                damage = from.Hits;
-                            }
-                        }
-                        else
-                        {
-                            from.SendMessage("Voce ainda esta imune a morte.");
-                        }
+                        keepAlive = true;
+                        Effects.SendLocationParticles(EffectItem.Create(from.Location, from.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
+                        Effects.PlaySound(from.Location, from.Map, 0x243);
+                        from.SendMessage("Voce resistiu a morte");
                     }
                 }
+
 
                 if (keepAlive && damage > m.Hits)
                 {

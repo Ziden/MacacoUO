@@ -68,8 +68,6 @@ namespace Server.Items
         private class PlantTarget : Target
         {
             private BasePlantable toPlant;
-
-
             public PlantTarget(BasePlantable toPlant) : base(6, true, TargetFlags.None)
             {
                 this.toPlant = toPlant;
@@ -79,20 +77,10 @@ namespace Server.Items
 
             protected override void OnTarget(Mobile from, object targeted)
             {
-                IPoint3D p = null;
-                if(targeted is BaseCreature)
-                {
-                    Mobile targetMobile = targeted as Mobile;
-                    if(targetMobile == null)
-                        return;
-                    p = targetMobile.Location;
-                }
-                else
-                {
-                    p = targeted as IPoint3D;
-                    if (p == null || from.Map == null)
-                        return;
-                }
+                IPoint3D p = targeted as IPoint3D;
+
+                if (p == null || from.Map == null)
+                    return;
 
                 if (p is IPoint3D)
                 {
@@ -131,7 +119,7 @@ namespace Server.Items
                         from.SendMessage("Voce apenas pode plantar isto em fazendas ou gramados");
                         return;
                     }
-                
+                  
 
                     var items = from.Map.GetItemsInRange(target.ToPoint3D(), 0);
                     bool r = false;
