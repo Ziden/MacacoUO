@@ -2863,7 +2863,7 @@ namespace Server.Mobiles
                 {
                     from.SendMessage("Voce acertou um golpe ventania que atordoou o inimigo");
                     this.OverheadMessage(" * stun *");
-                    from.SetCooldown("hitstun", TimeSpan.FromSeconds(4));
+                    from.SetCooldown("hitstun", TimeSpan.FromSeconds(4 - (colarVento-1) * 0.06)); //varia de 4s a 2s.
                     this.Freeze(TimeSpan.FromSeconds(1));
                 }
             }

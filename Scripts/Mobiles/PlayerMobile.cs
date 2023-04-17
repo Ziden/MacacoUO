@@ -7890,6 +7890,71 @@ namespace Server.Mobiles
         }
         #endregion
 
+        #region Player PvM
+        //Adds a new flag for PlayerKill protection when inside a dungeon
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool PvM
+        {
+            get { return GetFlag(PlayerFlag.PvM); }
+            set
+            {
+                SetFlag(PlayerFlag.PvM, value);
+                SendMessage("Agora você está imune a PvP dentro de Dungeons.");
+                InvalidateProperties();
+            }
+        }
+
+            public override string ApplyNameSuffix(string suffix)
+            {
+                if (PvM)
+                {
+                    if (suffix.Length == 0)
+                    {
+                        suffix = "(Jogador PvM)";
+                    }
+                    else
+                    {
+                        suffix = String.Concat(suffix, " (Jogador PvM)");
+                    }
+                }
+
+            #region Ethics
+            if (m_EthicPlayer != null)
+            {
+                if (suffix.Length == 0)
+                {
+                    suffix = m_EthicPlayer.Ethic.Definition.Adjunct.String;
+                }
+                else
+                {
+                    suffix = String.Concat(suffix, " ", m_EthicPlayer.Ethic.Definition.Adjunct.String);
+                }
+            }
+            #endregion
+
+            if (Core.ML && Map == Faction.Facet)
+            {
+                Faction faction = Faction.Find(this);
+
+                if (faction != null)
+                {
+                    string adjunct = String.Format("[{0}]", faction.Definition.Abbreviation);
+                    if (suffix.Length == 0)
+                    {
+                        suffix = adjunct;
+                    }
+                    else
+                    {
+                        suffix = String.Concat(suffix, " ", adjunct);
+                    }
+                }
+            }
+
+            return base.ApplyNameSuffix(suffix);
+        }
+        #end region
+
+
         #region Champion Titles
         [CommandProperty(AccessLevel.GameMaster)]
         public bool DisplayChampionTitle { get { return GetFlag(PlayerFlag.DisplayChampionTitle); } set { SetFlag(PlayerFlag.DisplayChampionTitle, value); } }
