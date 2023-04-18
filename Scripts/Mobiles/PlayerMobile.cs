@@ -98,6 +98,7 @@ namespace Server.Mobiles
         HasValiantStatReward = 0x20000000,
         RefuseTrades = 0x40000000,
         DisabledPvpWarning = 0x80000000,
+        PvM = 0x00030000,
     }
 
     [Flags]
@@ -7659,6 +7660,18 @@ namespace Server.Mobiles
                 }
             }
 
+            if (PvM)
+            {
+                if (suffix.Length == 0)
+                {
+                    suffix = "(Jogador PvM)";
+                }
+                else
+                {
+                    suffix = String.Concat(suffix, " (Jogador PvM)");
+                }
+            }
+
             #region Ethics
             if (m_EthicPlayer != null)
             {
@@ -7903,56 +7916,7 @@ namespace Server.Mobiles
                 InvalidateProperties();
             }
         }
-
-            public override string ApplyNameSuffix(string suffix)
-            {
-                if (PvM)
-                {
-                    if (suffix.Length == 0)
-                    {
-                        suffix = "(Jogador PvM)";
-                    }
-                    else
-                    {
-                        suffix = String.Concat(suffix, " (Jogador PvM)");
-                    }
-                }
-
-            #region Ethics
-            if (m_EthicPlayer != null)
-            {
-                if (suffix.Length == 0)
-                {
-                    suffix = m_EthicPlayer.Ethic.Definition.Adjunct.String;
-                }
-                else
-                {
-                    suffix = String.Concat(suffix, " ", m_EthicPlayer.Ethic.Definition.Adjunct.String);
-                }
-            }
-            #endregion
-
-            if (Core.ML && Map == Faction.Facet)
-            {
-                Faction faction = Faction.Find(this);
-
-                if (faction != null)
-                {
-                    string adjunct = String.Format("[{0}]", faction.Definition.Abbreviation);
-                    if (suffix.Length == 0)
-                    {
-                        suffix = adjunct;
-                    }
-                    else
-                    {
-                        suffix = String.Concat(suffix, " ", adjunct);
-                    }
-                }
-            }
-
-            return base.ApplyNameSuffix(suffix);
-        }
-        #end region
+        #endregion
 
 
         #region Champion Titles

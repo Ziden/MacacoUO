@@ -3226,11 +3226,11 @@ namespace Server.Items
                 if (cura > 0)
                     attacker.Heal((int)cura);
             }
-            else if (attacker.Player && !defender.Player && (attacker.Poisoned || BleedAttack.IsBleeding(attacker)))
+            if (attacker.Player && !defender.Player && (attacker.Poisoned || BleedAttack.IsBleeding(attacker)))
             {
                 var bonusCura = attacker.GetBonusElemento(ElementoPvM.Luz);
                 // Adiciona chance de curar veneno ou sangramento
-                var chanceCura = bonusCura / 10;
+                var chanceCura = bonusCura / 5;
                 if (Utility.RandomDouble() <= chanceCura)
                 {
                     if (attacker.Poisoned)

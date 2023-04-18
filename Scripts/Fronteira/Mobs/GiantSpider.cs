@@ -25,6 +25,16 @@ namespace Server.Mobiles
             { }
         }
 
+        //public override void OnDamage(int amount, Mobile from, bool willKill)
+        //{
+        //    base.OnDamage(amount, from, willKill);
+        //    if (preso != null)
+        //    {
+        //        preso.SendMessage("A teia arrebentou e voce foi solto.");
+        //        preso.PlayHurtSound();
+        //        this.Delete();
+        //    }
+        //}
         public override void OnDoubleClick(Mobile from)
         {
             if(from!=preso)
