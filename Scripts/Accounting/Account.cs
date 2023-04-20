@@ -489,6 +489,16 @@ namespace Server.Accounting
 			}
 		}
 
+		[CommandProperty(AccessLevel.Administrator)]
+		public bool HasPvMTag
+		{
+			get { return GetFlag(2); }
+			set
+			{
+				SetFlag(2, value);
+			}
+		}
+
         [CommandProperty(AccessLevel.Administrator)]
         public bool RP
         {

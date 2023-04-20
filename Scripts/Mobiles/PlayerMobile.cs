@@ -98,6 +98,7 @@ namespace Server.Mobiles
         HasValiantStatReward = 0x20000000,
         RefuseTrades = 0x40000000,
         DisabledPvpWarning = 0x80000000,
+        HasPvMTag = 0x00030000,
     }
 
     [Flags]
@@ -7477,7 +7478,7 @@ namespace Server.Mobiles
             return (running ? RunFoot : WalkFoot);
         }
 
-        public static bool MovementThrottle_Callback(byte packetID, NetState ns, out bool drop)
+        public static bool MovementThrottle_Callback(NetState ns, out bool drop)
         {
             drop = false;
 
@@ -7656,6 +7657,18 @@ namespace Server.Mobiles
                 else
                 {
                     suffix = String.Concat(suffix, " (Novato)");
+                }
+            }
+
+            if (HasPvMTag)
+            {
+                if (suffix.Length == 0)
+                {
+                    suffix = "(Jogador PvM)";
+                }
+                else
+                {
+                    suffix = String.Concat(suffix, " (Jogador PvM)");
                 }
             }
 
@@ -7889,6 +7902,22 @@ namespace Server.Mobiles
             }
         }
         #endregion
+
+        #region Player PvM
+        //Adds a new flag for PlayerKill protection when inside a dungeon
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool HasPvMTag
+        {
+            get { return GetFlag(PlayerFlag.HasPvMTag); }
+            set
+            {
+                SetFlag(PlayerFlag.HasPvMTag, value);
+                SendMessage("Agora você está imune a PvP dentro de Dungeons.");
+                InvalidateProperties();
+            }
+        }
+        #endregion
+
 
         #region Champion Titles
         [CommandProperty(AccessLevel.GameMaster)]
