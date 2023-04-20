@@ -72,13 +72,91 @@ namespace Server.Commands
             Register("ReplaceBankers", AccessLevel.Administrator, new CommandEventHandler(ReplaceBankers_OnCommand));
 
             Register("SpeedBoost", AccessLevel.Counselor, new CommandEventHandler(SpeedBoost_OnCommand));
+            
+            //Register("PvMTag", AccessLevel.Player, new CommandEventHandler(PvMTag_OnCommand));
+            //Register("AddPvMTag", AccessLevel.GameMaster, new CommandEventHandler(AddPvMTag_OnCommand));
         }
 
         public static void Register(string command, AccessLevel access, CommandEventHandler handler)
         {
             CommandSystem.Register(command, access, handler);
         }
+/*
+        [Usage("PvMTag")]
+        [Description("Adiciona tag PvM por 100k por hora.")]
+        public static void PvMTag_OnCommand(CommandEventArgs e)
+        {
+            PlayerMobile player = e.Mobile as PlayerMobile;
 
+            if (player == null || player.Deleted || !player.Alive)
+                return;
+
+            if (player.HasPvMTag)
+            {
+                player.SendMessage("Você já tem uma tag PvM ativa.");
+                return;
+            }
+
+            if (player.Gold < 100000)
+            {
+                player.SendMessage("Você não tem saldo para ativar a Tag (100k).");
+                return;
+            }
+
+            player.HasPvMTag = true;
+            player.SendMessage("Tag PvM ativada por 1h.");
+
+            Timer.DelayCall(TimeSpan.FromHours(1), () =>
+            {
+                player.HasPvMTag = false;
+                player.SendMessage("Sua Tag PvM acabou.");
+            });
+
+            player.PlaySound(0x5C3);
+            player.Gold -= 100000;
+        }
+
+        [Usage("AddPvMTag")]
+        [Description("Adiciona tag PvM a um jogador.")]
+        public static void AddPvMTag_OnCommand(CommandEventArgs e)
+        {
+            Mobile from = e.Mobile;
+            string[] args = e.Arguments;
+
+            if (args.Length == 0)
+            {
+                from.SendMessage("Uso: AddPvMTag <player name>");
+                return;
+            }
+
+            Mobile to = from.FindByName(args[0]);
+
+            if (to == null)
+            {
+                from.SendMessage("Jogador não encontrado.");
+                return;
+            }
+
+            if (!(to is PlayerMobile))
+            {
+                from.SendMessage("Comando só pode ser usado em jogador.");
+                return;
+            }
+
+            to.HasPvMTag = true;
+            player.SendMessage("Ativada tag PvM por 1h no jogador [0].", to);
+
+            Timer.DelayCall(TimeSpan.FromHours(1), () =>
+            {
+                to.HasPvMTag = false;
+                to.SendMessage("Your PvM tag has expired.");
+            });
+
+            player.PlaySound(0x5C3);
+
+        }
+
+*/
         [Usage("Where")]
         [Description("Diz ao jogador que comanda suas coordenadas, região e faceta.")]
         public static void Where_OnCommand(CommandEventArgs e)
