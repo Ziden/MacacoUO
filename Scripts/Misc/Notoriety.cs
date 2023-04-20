@@ -222,7 +222,12 @@ namespace Server.Misc
                     }
                     */
                 }
-                if (targ.PvM && targ.Region is DungeonRegion)
+                if (targ.HasPvMTag && targ.Region is DungeonRegion)
+                {
+                    attackerPlayer.SendMessage("Voce nao pode atacar jogador com status PvM dentro de dungeon.");
+                    return false;
+                }
+                if (attackerPlayer.HasPvMTag && attackerPlayer.Region is DungeonRegion)
                 {
                     attackerPlayer.SendMessage("Voce nao pode atacar jogador com status PvM dentro de dungeon.");
                     return false;

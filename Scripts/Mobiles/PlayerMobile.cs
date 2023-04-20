@@ -98,7 +98,7 @@ namespace Server.Mobiles
         HasValiantStatReward = 0x20000000,
         RefuseTrades = 0x40000000,
         DisabledPvpWarning = 0x80000000,
-        PvM = 0x00030000,
+        HasPvMTag = 0x00030000,
     }
 
     [Flags]
@@ -7660,7 +7660,7 @@ namespace Server.Mobiles
                 }
             }
 
-            if (PvM)
+            if (HasPvMTag)
             {
                 if (suffix.Length == 0)
                 {
@@ -7906,12 +7906,12 @@ namespace Server.Mobiles
         #region Player PvM
         //Adds a new flag for PlayerKill protection when inside a dungeon
         [CommandProperty(AccessLevel.GameMaster)]
-        public bool PvM
+        public bool HasPvMTag
         {
-            get { return GetFlag(PlayerFlag.PvM); }
+            get { return GetFlag(PlayerFlag.HasPvMTag); }
             set
             {
-                SetFlag(PlayerFlag.PvM, value);
+                SetFlag(PlayerFlag.HasPvMTag, value);
                 SendMessage("Agora você está imune a PvP dentro de Dungeons.");
                 InvalidateProperties();
             }

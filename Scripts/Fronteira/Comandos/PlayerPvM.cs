@@ -33,7 +33,7 @@ namespace Server.Commands
             {
                 if (target is PlayerMobile)
                 {
-                    target.PvM = true;
+                    target.HasPvMTag = true;
                 }
                 else
                 {

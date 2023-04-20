@@ -490,7 +490,7 @@ namespace Server.Accounting
 		}
 
 		[CommandProperty(AccessLevel.Administrator)]
-		public bool PvM
+		public bool HasPvMTag
 		{
 			get { return GetFlag(2); }
 			set
