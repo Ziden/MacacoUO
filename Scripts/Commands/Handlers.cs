@@ -74,7 +74,7 @@ namespace Server.Commands
             Register("SpeedBoost", AccessLevel.Counselor, new CommandEventHandler(SpeedBoost_OnCommand));
             
             //Register("PvMTag", AccessLevel.Player, new CommandEventHandler(PvMTag_OnCommand));
-            //Register("AddPvMTag", AccessLevel.GameMaster, new CommandEventHandler(AddPvMTag_OnCommand));
+            Register("AddPvMTag", AccessLevel.GameMaster, new CommandEventHandler(AddPvMTag_OnCommand));
         }
 
         public static void Register(string command, AccessLevel access, CommandEventHandler handler)
