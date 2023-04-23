@@ -128,7 +128,7 @@ namespace Server.Mobiles
             SorteiaItem(new StoneStatueDeed());
             SorteiaItem(new WarriorStatueEastDeed());
             SorteiaItem(new HalloweenSpiderForestAddonDeed());
-            DistribuiItem(new Web());
+            //DistribuiItem(new Web());
             if (Utility.RandomBool())
             {
                 var s = new MinersSatchel();
