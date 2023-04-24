@@ -82,8 +82,11 @@ namespace Server.Commands
             CommandSystem.Register(command, access, handler);
         }
 
+        public static Dictionary<int, DateTime> PvMTagCooldown = new Dictionary<int, DateTime>();
+        public static Dictionary<int, int> PvMTagUseCount = new Dictionary<int, int>(); // nova variável criada para a contagem
+
         [Usage("PvMTag")]
-        [Description("Adiciona tag PvM por 100k por hora.")]
+        [Description("Adiciona tag PvM por 150k por 2 horas.")]
         public static void PvMTag_OnCommand(CommandEventArgs e)
         {
             PlayerMobile player = e.Mobile as PlayerMobile;
@@ -97,23 +100,63 @@ namespace Server.Commands
                 return;
             }
 
-            if (!Banker.Withdraw(player, 100000))
+            if (player.AccessLevel >= AccessLevel.VIP)
             {
-                player.SendMessage("Voce precisa de 100.000 moedas de ouro no banco para isto");
+                // VIPs podem usar o comando 3x por dia
+                DateTime lastUse;
+                PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
+                var now = DateTime.UtcNow;
+
+                if (lastUse > now.AddHours(-24))
+                {          
+                    int count;
+                    PvMTagUseCount.TryGetValue(player.Serial, out count); // obtém a contagem do jogador
+
+                    if (count >= 3) // verifica se o jogador já usou o comando 3 vezes hoje
+                    {
+                        player.SendMessage("Você já usou esse comando 3 vezes hoje. Espere 24 horas antes de usar novamente.");
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                // PLayers normais apenas 1 vez
+                DateTime lastUse;
+                PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
+
+                var now = DateTime.UtcNow;
+                if (lastUse > now.AddHours(-24))        
+                {            
+                    player.SendMessage("Você já usou esse comando recentemente. Espere 24 horas antes de usar novamente.");
+                    return;
+                }
+            }
+
+            if (!Banker.Withdraw(player, 150000))
+            {
+                player.SendMessage("Voce precisa de 150.000 moedas de ouro no banco para isto");
                 return;
             }
 
             player.HasPvMTag = true;
-            player.SendMessage("Tag PvM ativada por 1h.");
+            player.SendMessage("Tag PvM ativada por 2h.");
 
-            Timer.DelayCall(TimeSpan.FromHours(1), () =>
+            Timer.DelayCall(TimeSpan.FromHours(2), () =>
             {
                 player.HasPvMTag = false;
                 player.SendMessage("Sua Tag PvM acabou.");
             });
 
             player.PlaySound(0x5C3);
+            PvMTagCooldown[player.Serial] = DateTime.UtcNow;
+
+            int useCount;
+            PvMTagUseCount.TryGetValue(player.Serial, out useCount); // obtém a contagem do jogador
+            PvMTagUseCount[player.Serial] = useCount + 1; // incrementa a contagem do jogador
         }
+
+
 
         [Usage("AddPvMTag")]
         [Description("Adiciona tag PvM a um jogador.")]
@@ -129,11 +172,11 @@ namespace Server.Commands
             {
                 PlayerMobile targ = obj as PlayerMobile;
                 targ.HasPvMTag = true;
-                from.SendMessage("Ativada tag PvM por 1h no jogador [0].", targ);
-                Timer.DelayCall(TimeSpan.FromHours(1), () =>
+                from.SendMessage("Ativada tag PvM por 2h no jogador {0}.", targ);
+                Timer.DelayCall(TimeSpan.FromHours(2), () =>
                 {
                     targ.HasPvMTag = false;
-                    targ.SendMessage("Your PvM tag has expired.");
+                    targ.SendMessage("Sua Tag PvM acabou.");
                 });
                 targ.PlaySound(0x5C3);
             }
