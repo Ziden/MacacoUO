@@ -73,7 +73,7 @@ namespace Server.Commands
 
             Register("SpeedBoost", AccessLevel.Counselor, new CommandEventHandler(SpeedBoost_OnCommand));
             
-            //Register("PvMTag", AccessLevel.Player, new CommandEventHandler(PvMTag_OnCommand));
+            Register("PvMTag", AccessLevel.Player, new CommandEventHandler(PvMTag_OnCommand));
             Register("AddPvMTag", AccessLevel.GameMaster, new CommandEventHandler(AddPvMTag_OnCommand));
         }
 
@@ -97,6 +97,12 @@ namespace Server.Commands
             if (player.HasPvMTag)
             {
                 player.SendMessage("Você já tem uma tag PvM ativa.");
+                return;
+            }
+
+            if (SpellHelper.CheckCombat(player))
+            {
+                player.SendMessage("Voce não pode usar esse comando em combate!");
                 return;
             }
 
@@ -133,9 +139,15 @@ namespace Server.Commands
                 }
             }
 
+            var gump = new PvMTagConfirmGump(player);
+            player.SendGump(gump);
+        }
+
+        private static void ActivatePvMTag(PlayerMobile player)
+        {
             if (!Banker.Withdraw(player, 150000))
             {
-                player.SendMessage("Voce precisa de 150.000 moedas de ouro no banco para isto");
+                player.SendMessage("Voce precisa de 150.000 moedas de ouro no banco para isto, saldo insuficiente.");
                 return;
             }
 
@@ -155,8 +167,43 @@ namespace Server.Commands
             PvMTagUseCount.TryGetValue(player.Serial, out useCount); // obtém a contagem do jogador
             PvMTagUseCount[player.Serial] = useCount + 1; // incrementa a contagem do jogador
         }
+        private class PvMTagConfirmGump : Gump
+        {
+            private readonly PlayerMobile _player;
 
+            public PvMTagConfirmGump(PlayerMobile player) : base(40, 40)
+            {
+                _player = player;
 
+                Closable = false;
+                Disposable = true;
+                Dragable = true;
+                Resizable = false;
+
+                AddPage(0);
+
+                AddBackground(0, 0, 304, 126, 9270);
+
+                AddLabel(50, 30, 0x34, "Tag PvM será ativada por 2h ao custo de 150k, deseja ativar?");
+                AddButton(73, 70, 4005, 4006, 1, GumpButtonType.Reply, 0);
+                AddButton(177, 70, 4005, 4006, 0, GumpButtonType.Reply, 0);
+                AddLabel(100, 70, 0x34, "Sim");
+                AddLabel(204, 70, 0x34, "Não");
+            }
+
+            public override void OnResponse(NetState sender, RelayInfo info)
+            {
+                if (info.ButtonID == 1)
+                {
+                    // Activate PvMTag if player clicked "Yes"
+                    ActivatePvMTag(_player);
+                }
+                else
+                {
+                    _player.SendMessage("Comando cancelado.");
+                }
+            }
+        }
 
         [Usage("AddPvMTag")]
         [Description("Adiciona tag PvM a um jogador.")]

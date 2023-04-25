@@ -3961,7 +3961,7 @@ namespace Server.Items
 
             foreach (var m in list)
             {
-                if (!(m is PlayerMobile))
+                if (!(m is PlayerMobile) && !(((BaseCreature)m).Controlled && ((BaseCreature)m).ControlMaster is PlayerMobile))
                 {
                     ++count;
                     from.DoHarmful(m, true);

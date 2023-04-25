@@ -1,6 +1,7 @@
 using Server.Targeting;
 using System;
 using Server.Engines.Craft;
+using Server.Mobiles;
 
 namespace Server.Items.Functional.Pergaminhos
 {
@@ -453,6 +454,74 @@ namespace Server.Items.Functional.Pergaminhos
             list.Add("tornando-o pertence pessoal");
         }
 
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+        }
+    }
+
+    public class PergaminhoPvM : PergaminhoSagrado
+    {
+        [Constructable]
+        public PergaminhoPvM()
+            : base()
+        {
+            this.Hue = 1777;
+            this.Name = "Pergaminho PvM";
+            this.Weight = 1.0;
+        }
+
+        public PergaminhoPvM(int itemID)
+           : base(itemID)
+        {
+            this.Hue = 1777;
+            this.Name = "Pergaminho PvM";
+        }
+
+        public PergaminhoPvM(Serial serial)
+            : base(serial)
+        {
+
+        } 
+
+        public override void OnDoubleClick(Mobile from)
+        {
+            PergaminhoPvM scroll = this;
+            PlayerMobile player = from as PlayerMobile;
+
+            if (scroll.Deleted)
+                return;
+
+            if (player.HasPvMTag)
+                player.SendMessage("Você já tem uma tag PvM ativa.");
+
+            if (Server.Spells.SpellHelper.CheckCombat(player))
+            {
+                player.SendMessage("Voce não pode usar esse comando em combate!");
+                return;
+            }
+
+            player.HasPvMTag = true;
+            player.SendMessage("Tag PvM ativada por 2h.");
+            scroll.Consume();
+            Timer.DelayCall(TimeSpan.FromHours(2), () =>
+            {
+                player.HasPvMTag = false;
+                player.SendMessage("Sua Tag PvM acabou.");
+            });
+            player.PlaySound(0x5C3);
+        }
+    
+
+        public override void AddNameProperties(ObjectPropertyList list)
+        {
+            list.Add("Ativa Tag PvM por 2 horas");
+        }
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
