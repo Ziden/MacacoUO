@@ -120,7 +120,8 @@ namespace Server.Commands
 
                     if (count >= 3) // verifica se o jogador já usou o comando 3 vezes hoje
                     {
-                        player.SendMessage("Você já usou esse comando 3 vezes hoje. Espere 24 horas antes de usar novamente.");
+                        TimeSpan cooldownRemaining = lastUse.AddHours(24) - now;
+                        player.SendMessage("Você já usou esse comando recentemente. Por favor, espere até {0} ({1} horas e {2}  minutos) antes de usar novamente.", lastUse.AddHours(24), (int)cooldownRemaining.TotalHours, (int)cooldownRemaining.Minutes);
                         return;
                     }
                 }
@@ -134,7 +135,8 @@ namespace Server.Commands
                 var now = DateTime.UtcNow;
                 if (lastUse > now.AddHours(-24))        
                 {            
-                    player.SendMessage("Você já usou esse comando recentemente. Espere 24 horas antes de usar novamente.");
+                    TimeSpan cooldownRemaining = lastUse.AddHours(24) - now;
+                    player.SendMessage("Você já usou esse comando recentemente. Por favor, espere até {0} ({1} horas e {2}  minutos) antes de usar novamente.", lastUse.AddHours(24), (int)cooldownRemaining.TotalHours, (int)cooldownRemaining.Minutes);
                     return;
                 }
             }
