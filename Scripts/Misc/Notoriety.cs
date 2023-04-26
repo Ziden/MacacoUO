@@ -175,6 +175,8 @@ namespace Server.Misc
             var bcTarget = damageable as BaseCreature;
             var targPlayer = damageable as PlayerMobile;
             var attackerPlayer = attacker as PlayerMobile;
+            var defCreature = defender as BaseCreature;
+            var defPlayer = defender as PlayerMobile;
 
             if (bcTarget != null && bcTarget.GetMaster() is PlayerMobile)
                 targPlayer = bcTarget.GetMaster() as PlayerMobile;
@@ -234,11 +236,19 @@ namespace Server.Misc
                 }
             }
 
+            // PvP com pet
             if (attacker.Player && defender is BaseCreature)
             {
                 var master = ((BaseCreature)defender).ControlMaster;
+                var masterPlayer = master as PlayerMobile;
                 if (!attacker.RP && master != null && master.RP && ProtecaoRP(master as PlayerMobile))
                     return false;
+
+                if ((attackerPlayer.HasPvMTag || masterPlayer.HasPvMTag) && attackerPlayer.Region is DungeonRegion)
+                {
+                    attackerPlayer.SendMessage("Voce nao pode atacar jogador com status PvM dentro de dungeon.");
+                    return false;
+                }
 
                 if (attacker.IsYoung() && master is PlayerMobile)
                     return false;
