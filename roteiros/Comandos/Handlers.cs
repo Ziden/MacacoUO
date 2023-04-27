@@ -58,7 +58,7 @@ namespace Server.Commands
             Register("BC", AccessLevel.GameMaster, new CommandEventHandler(BroadcastMessage_OnCommand));
             Register("B", AccessLevel.GameMaster, new CommandEventHandler(BroadcastMessage_OnCommand));
 
-            Register("Bank", AccessLevel.GameMaster, new CommandEventHandler(Bank_OnCommand));// teste
+            Register("Bank", AccessLevel.GameMaster, new CommandEventHandler(Bank_OnCommand));
 
             Register("Echo", AccessLevel.Counselor, new CommandEventHandler(Echo_OnCommand));
 
