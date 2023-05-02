@@ -130,8 +130,8 @@ namespace Server.Mobiles
             if (Utility.RandomDouble() < 0.15)
                 SorteiaItem(new ParoxysmusSwampDragonStatuette());
 				
-            if (Utility.RandomDouble() < 0.15)
-                SorteiaItem(new ScepterOfTheChief());
+            //if (Utility.RandomDouble() < 0.15)
+            //    SorteiaItem(new ScepterOfTheChief());
         }
 
         public override int GetDeathSound()

@@ -370,7 +370,7 @@ namespace Server.Mobiles
             DistribuiItem(new CristalDoPoder() { Amount = 15 });
             this.SorteiaItem(new AutomatonActuator());
             this.SorteiaItem(Decos.RandomDeco(this));
-            this.SorteiaItem(Decos.RandomDeco(this));
+            //this.SorteiaItem(Decos.RandomDeco(this));
             for (var x = 0; x < 10; x++)
             {
                 SorteiaItem(ElementoUtils.GetRandomPedraSuperior(5));

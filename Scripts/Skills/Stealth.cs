@@ -136,10 +136,10 @@ namespace Server.SkillHandlers
 
                     m.IsStealthing = true;
 
-                    m.SendMessage("Voce esta andando sorrateiramente"); // You begin to move quietly.
+                    m.SendMessage("Voce esta andando sorrateiramente, pode dar {0} passos.", steps+1); // You begin to move quietly.
 
                     BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.HidingAndOrStealth, 1044107, 1075655));
-                    return TimeSpan.FromSeconds(10.0);
+                    return TimeSpan.FromSeconds(20.0);
                 }
                 else
                 {
@@ -149,7 +149,7 @@ namespace Server.SkillHandlers
                 }
             }
 
-            return TimeSpan.FromSeconds(10.0);
+            return TimeSpan.FromSeconds(20.0);
         }
     }
 }

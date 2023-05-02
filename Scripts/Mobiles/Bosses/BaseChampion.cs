@@ -19,8 +19,8 @@ namespace Server.Mobiles
             : base(aiType, mode, 18, 1, 0.1, 0.2)
         {
             AddItem(Decos.RandomDeco(this));
-            AddItem(Decos.RandomDeco(this));
-            AddItem(Decos.RandomDeco(this));
+            //AddItem(Decos.RandomDeco(this));
+            //AddItem(Decos.RandomDeco(this));
 
             AddItem(new Item(0x12D9)); // estatua
         }

@@ -76,10 +76,11 @@ namespace Server.Mobiles
 
             DistribuiItem(Carnage.GetRandomPS(105));
             GolemMecanico.JorraOuro(this.Location, this.Map, 150);
-            var bola = new ElementalBall();
-            bola.LootType = LootType.Regular;
-            bola.Cargas = 100;
-            SorteiaItem(bola);
+            //var bola = new ElementalBall();
+            //bola.LootType = LootType.Regular;
+            //bola.Cargas = 100;
+            //SorteiaItem(bola);
+            SorteiaItem(new ZoogiFungus(25));
             DistribuiItem(Decos.RandomDeco(this));
             var b = new BraceleteDoPoder();
             SorteiaItem(b);
@@ -113,7 +114,7 @@ namespace Server.Mobiles
                 martelo.Resource = CraftResource.Dourado;
                 SorteiaItem(martelo);
             }
-            var pots = new HealPotion(10);
+            var pots = new GreaterHealPotion(10);
             DistribuiItem(pots);
             return base.OnBeforeDeath();
         }

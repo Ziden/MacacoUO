@@ -164,7 +164,7 @@ namespace Server.Spells.Sixth
                             {
                                
                                 from.MovingParticles(m, 0x3779, 10, 0, false, false, 9502, 4019, 0x160);
-                                if(from.RP && from.TemTalento(Fronteira.Talentos.Talento.Dispel))
+                                if((from.RP && from.TemTalento(Fronteira.Talentos.Talento.Dispel)) || (m == from))
                                 {
                                     EvilOmenSpell.TryEndEffect(m);
                                     StrangleSpell.RemoveCurse(m);

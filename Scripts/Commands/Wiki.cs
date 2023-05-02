@@ -25,7 +25,7 @@ namespace Server.Commands
         [Usage("wiki")]
         private static void OnAction(CommandEventArgs e)
         {
-            e.Mobile.LaunchBrowser("http://www.dragonicage.com/wiki");
+            e.Mobile.LaunchBrowser("http://www.dragonicage.com/doku");
         }
     }
 }
