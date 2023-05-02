@@ -229,6 +229,7 @@ namespace Server.Spells
                 if (target.Player && !Caster.Player)
                 {
                     resist += (int)(resist * Caster.GetBonusElemento(ElementoPvM.Agua));
+                    resist += (int)(resist * Caster.GetBonusElemento(ElementoPvM.Luz));
                     resist += ColarElemental.GetNivel(Caster, ElementoPvM.Agua);
                     resist += ColarElemental.GetNivel(Caster, ElementoPvM.Escuridao) * 2;
 
