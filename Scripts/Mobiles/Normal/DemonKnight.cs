@@ -280,7 +280,7 @@ namespace Server.Mobiles
             int top = 0;
             Item blood = null;
 
-            DistribuiItem(Decos.RandomDeco(this));
+            //DistribuiItem(Decos.RandomDeco(this));
             SorteiaItem(new SoulForgeDeed());
 
             foreach (Mobile m in rights.Select(x => x.m_Mobile).Distinct().Take(3))

@@ -79,7 +79,7 @@ namespace Server.Mobiles
             DistribuiItem(new PergaminhoCarregamento());
             SorteiaItem(new DragonTurtleFountainAddonDeed());
             DistribuiItem(Decos.RandomDecoRara(this));
-            DistribuiItem(Decos.RandomDecoRara(this));
+            //DistribuiItem(Decos.RandomDecoRara(this));
             DistribuiItem(Decos.RandomDeco(this));
             DistribuiItem(new Gold(20000));
             DistribuiItem(new CristalTherathan(10));

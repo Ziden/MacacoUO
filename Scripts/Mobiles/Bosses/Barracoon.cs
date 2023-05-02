@@ -230,7 +230,7 @@ namespace Server.Mobiles
             DistribuiItem(new DirtPatch());
             SorteiaItem(new GrapeVine());
             SorteiaItem(new WhiteHangingLantern());
-            DistribuiItem(Decos.RandomDecoRara(this));
+            //DistribuiItem(Decos.RandomDecoRara(this));
             SorteiaItem(Decos.RandomDecoRara(this));
 
             DistribuiItem(new FragmentosAntigos());
