@@ -135,7 +135,7 @@ namespace Server.Spells
 
             if (target != null)
             {
-                if (RunedSashOfWarding.IsUnderEffects(target, WardingEffect.SpellDamage))
+                if (RunedSashOfWarding.IsUnderEffects(target, WardingEffect.SpellDamage) && !(caster is PlayerMobile))
                     sdiBonus -= 10;
 
                 sdiBonus -= Block.GetSpellReduction(target);

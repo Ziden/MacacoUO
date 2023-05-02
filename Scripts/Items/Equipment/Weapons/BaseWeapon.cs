@@ -3166,7 +3166,7 @@ namespace Server.Items
                     percentageBonus -= 47;
             }
 
-            if (RunedSashOfWarding.IsUnderEffects(defender, WardingEffect.WeaponDamage))
+            if (RunedSashOfWarding.IsUnderEffects(defender, WardingEffect.WeaponDamage) && !(attacker is PlayerMobile))
                 percentageBonus -= 10;
             #endregion
 
