@@ -513,7 +513,7 @@ namespace Server.Engines.Points
             Entries[typeof(ClawsOfTheBerserker)] = 5000.0;
             Entries[typeof(DeathsHead)] = 5000.0;
             Entries[typeof(DefenderOfTheMagus)] = 5000.0;
-            Entries[typeof(DemonBridleRing)] = 5000.0;
+            //Entries[typeof(DemonBridleRing)] = 5000.0;
             Entries[typeof(DemonHuntersStandard)] = 5000.0;
             Entries[typeof(DragonHideShield)] = 5000.0;
             Entries[typeof(DragonJadeEarrings)] = 5000.0;
