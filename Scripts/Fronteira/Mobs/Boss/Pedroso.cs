@@ -143,9 +143,9 @@ namespace Server.Mobiles
 
             if (Utility.RandomBool())
             {
-                var bola = new ElementalBall(500);
-                bola.LootType = LootType.Regular;
-                SorteiaItem(bola);
+                //var bola = new ElementalBall(500);
+                //bola.LootType = LootType.Regular;
+                SorteiaItem(new AdamantiumIngot(40));
             }
 
             if (Utility.RandomBool())
