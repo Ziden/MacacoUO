@@ -6939,8 +6939,8 @@ namespace Server.Mobiles
 
                     else if (AllowedStealthSteps-- < 0)
                     {
-                        Stealth.OnUse(this);
-                        //RevealingAction(false);
+                        //Stealth.OnUse(this);
+                        RevealingAction(false);
                     }
                 }
                 else
