@@ -244,7 +244,7 @@ namespace Server.Misc
                 if (!attacker.RP && master != null && master.RP && ProtecaoRP(master as PlayerMobile))
                     return false;
 
-                if ((attackerPlayer.HasPvMTag || masterPlayer.HasPvMTag) && attackerPlayer.Region is DungeonRegion)
+                if ((attackerPlayer.HasPvMTag) && master != null && (attackerPlayer.Region is DungeonRegion))
                 {
                     attackerPlayer.SendMessage("Voce nao pode atacar jogador com status PvM dentro de dungeon.");
                     return false;

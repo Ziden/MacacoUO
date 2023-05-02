@@ -4389,6 +4389,20 @@ namespace Server.Mobiles
                 }
             }
 
+            if(Frozen || Paralyzed)
+            {
+                var teias = this.FindItemsInRange(this.Map, 0);
+                foreach(var teia in teias)
+                {
+                    if(teia is Teia)
+                    {
+                        Frozen = false;
+                        SendMessage("Voce escapou da teia");
+                        OverheadMessage("* escapou *");
+                    }
+                }
+            }
+
             if (!Core.AOS)
             {
                 disruptThreshold = 0;
