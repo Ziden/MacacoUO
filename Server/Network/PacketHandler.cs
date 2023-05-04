@@ -29,4 +29,4 @@ namespace Server.Network
 
 		public bool Ingame { get { return m_Ingame; } }
 	}
-}
+} 
