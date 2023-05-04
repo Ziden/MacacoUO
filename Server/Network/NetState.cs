@@ -1381,4 +1381,4 @@ namespace Server.Network
             return String.Compare(m_ToString, other.m_ToString, StringComparison.Ordinal);
         }
     }
-}
+} 
