@@ -16,7 +16,7 @@ namespace Server.Mobiles
         public override double DisturbChance { get { return 0.1; } }
 
         [Constructable]
-        public Dragon() : base(AIType.AI_Mage, FightMode.Closest, 10, 1, 0.05, 0.1)
+        public Dragon() : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
             Body = Utility.RandomList(12, 59);
             Name = "Dragao";
