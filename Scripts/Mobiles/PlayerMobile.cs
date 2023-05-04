@@ -6600,10 +6600,6 @@ namespace Server.Mobiles
                 // Nao ve mobs em dg
                 if (!m.Player)
                     return !(Region is DungeonRegion);
-                
-                // Ve healer
-                if (m is BaseHealer)
-                    return true;
 
                 // Soh ve players da sua guilda ou party
                 return m.Player && ((Party != null && Party == m.Party) || (Guild != null && Guild == m.Guild));
