@@ -6594,7 +6594,7 @@ namespace Server.Mobiles
 
             if (m != this && !m.VisivelPraOutrosPlayers)
                 return false;
-
+            /*
             if (!Alive && m != this)
             {
                 // Nao ve mobs em dg
@@ -6603,6 +6603,13 @@ namespace Server.Mobiles
 
                 // Soh ve players da sua guilda ou party
                 return m.Player && ((Party != null && Party == m.Party) || (Guild != null && Guild == m.Guild));
+            }
+            */
+
+            if (!Alive && m != this)
+            {
+                // Jogadores mortos só podem ver a si mesmos, membros da party, guilda ou criaturas BaseHealer
+                return (m is BaseHealer) || m.IsControlledBy(this) || (m.Player && ((Party != null && Party == m.Party) || (Guild != null && Guild == m.Guild)));
             }
 
             if (m is BaseCreature)

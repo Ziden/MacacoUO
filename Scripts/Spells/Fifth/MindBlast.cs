@@ -100,9 +100,13 @@ namespace Server.Spells.Fifth
                     }
                 }
 
-                double damage = GetDamageScalar(m, ElementoPvM.Escuridao) * ((Caster.Int - target.Int) / 2); //less damage
+                double damage = GetDamageScalar(m) * ((Caster.Int - target.Int) / 2);
+
                 if (!m.Player)
+                {
+                    damage = GetDamageScalar(m, ElementoPvM.Escuridao) * ((Caster.Int - target.Int) / 2); //less damage                    
                     damage += ColarElemental.GetNivel(Caster, ElementoPvM.Escuridao) * (Caster.Int / 25);
+                }
 
                 if (m.Player && damage > 45)
                     damage = 45;
