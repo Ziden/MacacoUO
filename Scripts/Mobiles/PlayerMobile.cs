@@ -170,6 +170,7 @@ namespace Server.Mobiles
             }
         }
 
+        public DateTime ImortalidadeExpira;
         public override double GetBonusElemento(ElementoPvM elemento)
         {
             if (elemento != Elemento)

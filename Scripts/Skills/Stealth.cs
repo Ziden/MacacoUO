@@ -127,7 +127,17 @@ namespace Server.SkillHandlers
                 }
                 else if (m.CheckSkillMult(SkillName.Stealth, -20.0 + (armorRating * 2), 100 + (armorRating * 2)))
                 {
-                    int steps = (int)(m.Skills[SkillName.Stealth].Value / (Core.AOS ? 5.0 : 10.0));
+                    //int steps = (int)(m.Skills[SkillName.Stealth].Value / (Core.AOS ? 5.0 : 10.0));
+                    //Limita a 120 de skill, para fins de calculo de passos.
+                    int steps = (int)(Math.Min(m.Skills[SkillName.Stealth].Value, 120) / (Core.AOS ? 5.0 : 10.0));
+                    if (m.Skills[SkillName.Stealth].Value > 100)
+                        steps += 2;
+                    if (m.Skills[SkillName.Stealth].Value > 110)
+                        steps += 4;
+                    if (m.Skills[SkillName.Stealth].Value >= 120)
+                        steps += 4;
+                    
+
 
                     if (steps < 1)
                         steps = 1;
@@ -139,7 +149,7 @@ namespace Server.SkillHandlers
                     m.SendMessage("Voce esta andando sorrateiramente, pode dar {0} passos.", steps+1); // You begin to move quietly.
 
                     BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.HidingAndOrStealth, 1044107, 1075655));
-                    return TimeSpan.FromSeconds(20.0);
+                    return TimeSpan.FromSeconds(15.0);
                 }
                 else
                 {
@@ -149,7 +159,7 @@ namespace Server.SkillHandlers
                 }
             }
 
-            return TimeSpan.FromSeconds(20.0);
+            return TimeSpan.FromSeconds(15.0);
         }
     }
 }
