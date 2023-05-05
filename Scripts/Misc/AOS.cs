@@ -174,29 +174,48 @@ namespace Server
                     AttuneWeaponSpell.TryAbsorb(m, ref damage);
                 }
 
-                if(damageable is PlayerMobile && damageDealer is BaseCreature)
+                if (damageable is PlayerMobile && damageDealer is BaseCreature)
                 {
                     var from = damageable as Mobile;
-                    var nivel = ColarElemental.GetNivel(damageable as Mobile, ElementoPvM.Luz);
-                    var chanceResist = nivel / 100;
-                    if(m.Hits > 50)
+                    var player = from as PlayerMobile;
+                    var nivel = ColarElemental.GetNivel(player, ElementoPvM.Luz);
+                    var chanceResist = (double) nivel / 100d;
+
+                    if (player.Hits > 50)
                     {
-                        chanceResist += nivel / 100;
+                        chanceResist += (double) nivel / 100d;
                     }
-                    if(chanceResist > 0 && Utility.RandomDouble() < chanceResist)
+                    if (chanceResist >= 1)
+                        chanceResist = 0.99;
+
+                    double chance = Utility.RandomDouble();
+
+                    // Adiciona a condição de verificação para a imortalidade temporária
+                    if (DateTime.UtcNow < player.ImortalidadeExpira)
+                    {
+                        keepAlive = true;
+                    }
+                    else if (chanceResist > 0 && chance < chanceResist)
                     {
                         keepAlive = true;
                         Effects.SendLocationParticles(EffectItem.Create(from.Location, from.Map, EffectItem.DefaultDuration), 0, 0, 0, 0, 0, 5060, 0);
                         Effects.PlaySound(from.Location, from.Map, 0x243);
-                        from.SendMessage("Voce resistiu a morte");
+                        // Ative a imortalidade temporária por X segundos
+                        int segundosDeImortalidade = (int)Math.Round(nivel * 0.2);
+                        player.ImortalidadeExpira = DateTime.UtcNow.AddSeconds(segundosDeImortalidade);
+                        player.SendMessage("Voce resistiu a morte e está imune a morte por {0} segundos.", segundosDeImortalidade);
+                        Timer.DelayCall(TimeSpan.FromSeconds(segundosDeImortalidade), () =>
+                        {
+                            player.SendMessage("Sua imunidade acabou");
+                        });
                     }
                 }
 
-
                 if (keepAlive && damage > m.Hits)
                 {
-                    damage = m.Hits;
+                    damage = m.Hits - 1;
                 }
+
 
                 if(Shard.DebugEnabled)
                     Shard.Debug("Dano Base: " + damage, m);

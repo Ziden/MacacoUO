@@ -354,7 +354,10 @@ namespace Server.Mobiles
             if (m != null)
             {
                 DoHarmful(m);
-                AOS.Damage(m, this, Utility.RandomMinMax(100, 150), 0, 100, 0, 0, 0);
+                if (m is PlayerMobile)
+                    AOS.Damage(m, this, Utility.RandomMinMax(60, 90), 100, 0, 0, 0, 0);
+                else
+                    AOS.Damage(m, this, Utility.RandomMinMax(100, 150), 0, 100, 0, 0, 0);
 
                 if (Utility.RandomBool())
                 {
