@@ -64,8 +64,8 @@ namespace Server.Fronteira.Weeklies
 
             // Fire
             new KillComboDia [] {
-                 new KillComboDia("Aranha do Gelo", typeof(LavaLizard), 25),
-                 new KillComboDia("Elemental da Neve", typeof(LavaSerpent), 10),
+                 new KillComboDia("Lagarto de fogo", typeof(LavaLizard), 25),
+                 new KillComboDia("Serpente de Lava", typeof(LavaSerpent), 10),
             },
 
             // Shame
