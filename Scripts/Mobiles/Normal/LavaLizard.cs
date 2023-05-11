@@ -11,7 +11,7 @@ namespace Server.Mobiles
         public LavaLizard()
             : base(AIType.AI_Melee, FightMode.Closest, 10, 1, 0.2, 0.4)
         {
-            Name = "lagarto de fogo";
+            Name = "Lagarto de fogo";
             Body = 0xCE;
             Hue = Utility.RandomList(0x647, 0x650, 0x659, 0x662, 0x66B, 0x674);
             BaseSoundID = 0x5A;

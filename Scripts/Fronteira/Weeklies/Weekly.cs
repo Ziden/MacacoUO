@@ -60,8 +60,8 @@ namespace Server.Fronteira.Weeklies
 
             // Fire
             new KillCombo [] {
-                 new KillCombo("Aranha do Gelo", typeof(LavaLizard), 200),
-                 new KillCombo("Elemental da Neve", typeof(LavaSerpent), 200),
+                 new KillCombo("Lagarto de fogo", typeof(LavaLizard), 200),
+                 new KillCombo("Serpente de Lava", typeof(LavaSerpent), 200),
             },
 
             // Shame
