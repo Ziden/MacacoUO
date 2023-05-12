@@ -12,6 +12,7 @@ using Server.Network;
 using Server.Spells;
 using Server.Targeting;
 using Server.Targets;
+using Server.Engines.PartySystem;
 
 namespace Server.Commands
 {
@@ -156,6 +157,14 @@ namespace Server.Commands
             player.HasPvMTag = true;
             player.SendMessage("Tag PvM ativada por 2h.");
 
+            var party = Party.Get(player);
+
+            if (party != null)
+            {
+                party.Remove(player);
+                player.SendMessage("Você saiu da sua party atual devido à ativação da Tag Jogador PvM.");
+            }
+
             Timer.DelayCall(TimeSpan.FromHours(2), () =>
             {
                 player.HasPvMTag = false;
@@ -186,7 +195,8 @@ namespace Server.Commands
 
                 AddBackground(0, 0, 304, 126, 9270);
 
-                AddLabel(50, 30, 0x34, "Tag PvM será ativada por 2h ao custo de 150k, deseja ativar?");
+                AddLabel(50, 30, 0x34, "Tag PvM será ativada por 2h ao custo de 150k."); 
+                AddLabel(50, 50, 0x34, "Deseja ativar?");
                 AddButton(73, 70, 4005, 4006, 1, GumpButtonType.Reply, 0);
                 AddButton(177, 70, 4005, 4006, 0, GumpButtonType.Reply, 0);
                 AddLabel(100, 70, 0x34, "Sim");

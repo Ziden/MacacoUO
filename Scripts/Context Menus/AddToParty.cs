@@ -1,5 +1,6 @@
 using System;
 using Server.Engines.PartySystem;
+using Server.Mobiles;
 
 namespace Server.ContextMenus
 {
@@ -18,6 +19,8 @@ namespace Server.ContextMenus
         { 
             Party p = Party.Get(this.m_From);
             Party mp = Party.Get(this.m_Target);
+            PlayerMobile f = m_From as PlayerMobile;
+            PlayerMobile t = m_Target as PlayerMobile;
 
             if (this.m_From == this.m_Target)
                 this.m_From.SendLocalizedMessage(1005439); // You cannot add yourself to a party.
@@ -31,6 +34,8 @@ namespace Server.ContextMenus
                 this.m_From.SendLocalizedMessage(1005440); // This person is already in your party!
             else if (mp != null)
                 this.m_From.SendLocalizedMessage(1005441); // This person is already in a party!
+            else if (f.HasPvMTag != t.HasPvMTag)
+                this.m_From.SendMessage("Você só pode adicionar membros com tag Joador PvM à sua party.");
             else
                 Party.Invite(this.m_From, this.m_Target);
         }
