@@ -128,6 +128,7 @@ namespace Server.Engines.UOStore
             cat = StoreCategory.Character;
             //PERSONAGEM
             //Register<CombatSkillBook>("Livro +5000 Exp", "Livro que garante instantaneamente 5000 EXP.</br>Nao funciona para elementos.", 0xEFA, 0, 0xA33, 1000, cat, ConstructLivro);
+            Register<PergElfo>("Pergaminho Racial", "Troque agora mesmo a raça do seu personagem! Torne-se um incrível Elfo com este pergaminho.", 0x1F35, 0, 0, 4000, cat);
             Register<PergaminhoSkillcap>("Pergaminho de Skillcap", "Usar aumenta seu skillcap em + 1 <br> Limitado ate +20 ", 0x1F49, 0, 0, 1000, cat);
             Register<StableSlotIncreaseToken>("+1 Slot Estabulo", "Aumenta um slot para deixar animais no estabulo", 0x2AAA, 0, 0, 2000, cat);
             Register<AbyssalHairDye>("Tinta para Cabelos", "Vermelho Abissal", 0, 0x9C7A, 0, 1000, cat);
