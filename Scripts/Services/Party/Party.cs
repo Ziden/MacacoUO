@@ -5,6 +5,7 @@ using Server.Factions;
 using Server.Gumps;
 using Server.Network;
 using Server.Targeting;
+using Server.Mobiles;
 
 namespace Server.Engines.PartySystem
 {
@@ -169,11 +170,19 @@ namespace Server.Engines.PartySystem
         {
             Faction ourFaction = Faction.Find(from);
             Faction theirFaction = Faction.Find(target);
+            PlayerMobile f = from as PlayerMobile;
+            PlayerMobile t = target as PlayerMobile;
 
             if (ourFaction != null && theirFaction != null && ourFaction != theirFaction)
             {
                 from.SendMessage("Voce nao pode convidar de outras factions"); // You cannot have players from opposing factions in the same party!
                 target.SendMessage("Voce nao pode convidar de outras factions"); // The party cannot have members from opposing factions.
+                return;
+            }
+
+            if (f.HasPvMTag != t.HasPvMTag)
+            {
+                from.SendMessage("Você só pode adicionar membros com a mesma tag Jogador PvM à sua party por estar com a tag ativada.");
                 return;
             }
 
