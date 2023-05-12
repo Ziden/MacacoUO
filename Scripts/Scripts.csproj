@@ -295,6 +295,7 @@
     <Compile Include="Fronteira\Items\KegGigante.cs" />
     <Compile Include="Fronteira\Items\MailboxGatinho.cs" />
     <Compile Include="Fronteira\Items\PergaminhoSkillcap.cs" />
+    <Compile Include="Fronteira\Items\PergElfo.cs" />
     <Compile Include="Fronteira\Items\PowerScrollNovo.cs" />
     <Compile Include="Fronteira\Items\SecretChest.cs" />
     <Compile Include="Fronteira\Mobs\Boss\SenhorDasSombras.cs" />

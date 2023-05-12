@@ -341,11 +341,11 @@ namespace Server.Items
           Map.Ilshenar,
           new[]
           {
-                new PMEntry(new Point3D(828, 1203, -70), "4. Mistas City "),
-                new PMEntry(new Point3D(1527, 1340, -3), "1. Espiritualidade "),
-                new PMEntry(new Point3D(287, 1019, 0), "2. Humildade"),
-                new PMEntry(new Point3D(1215, 467, -13), "3. Compaixão "),
-                new PMEntry(new Point3D(528, 211, -42), "4. Valentia "),
+                new PMEntry(new Point3D(828, 1203, -70), "1. Mistas City "),
+                new PMEntry(new Point3D(1527, 1340, -3), "2. Espiritualidade "),
+                new PMEntry(new Point3D(287, 1019, 0), "3. Humildade"),
+                new PMEntry(new Point3D(1215, 467, -13), "4. Compaixão "),
+                new PMEntry(new Point3D(528, 211, -42), "5. Valentia "),
           }, cost: 100);
 
         public static readonly PMList Lugares = new PMList(
@@ -360,9 +360,10 @@ namespace Server.Items
               new PMEntry(new Point3D(2924, 3409, 6), "4. Caverna de Fogo"),
               new PMEntry(new Point3D(3785,1109, 21), "5. Caverna de Cristal"),
               new PMEntry(new Point3D(1482, 1474, 0), "6. Castelo Blackthorn"),
-              new PMEntry(new Point3D(1176, 2637, 5), "7. Destard"),
-              new PMEntry(new Point3D(4191, 3269, 0), "8. Submundo"),
-              new PMEntry(new Point3D(5237, 3866, 45), "9. Terras Perdidas"),
+              new PMEntry(new Point3D(6430, 2678, 0), "7. Castelo Blackthorn Dentro (PK)"),
+              new PMEntry(new Point3D(1176, 2637, 5), "8. Destard"),
+              new PMEntry(new Point3D(4191, 3269, 0), "9. Submundo"),
+              new PMEntry(new Point3D(5237, 3866, 45), "10. Terras Perdidas"),
              //    new PMEntry(new Point3D(2494, 927, 0), "1. Covetous"),
           }, cost: 100);
 

@@ -2855,7 +2855,7 @@ namespace Server.Mobiles
                     //Shard.Debug("Bonus elemento PvM Terra na defesa: " + damage);
                 }
             }
-
+            /*
             if (from != null && from.Player)
             {
                 var colarVento = ColarElemental.GetNivel(from, ElementoPvM.Vento);
@@ -2867,6 +2867,33 @@ namespace Server.Mobiles
                     this.Freeze(TimeSpan.FromSeconds(1));
                 }
             }
+            */
+            // Alterar Colar vento para dar DoubleStrike
+            if (from != null && from.Player)
+            {
+                var colarVento = ColarElemental.GetNivel(from, ElementoPvM.Vento);
+                if (!from.IsCooldown("hitds") && colarVento > 0 && Utility.RandomDouble() < 0.1 + colarVento / 100d)
+                {
+                    from.SendMessage("Voce acertou um golpe ventania atacando duas vezes!");
+                    this.OverheadMessage(" * double strike *");
+                    from.SetCooldown("hitds", TimeSpan.FromSeconds(2 - (colarVento-1) * 0.06)); //varia de 2s a 1s.
+                    int currentStamina = from.Stam;
+                    // Ativar a habilidade DoubleStrike sem gastar stamina
+                    BaseWeapon weapon = from.Weapon as BaseWeapon;
+                    if (weapon != null)
+                    {
+                        DoubleStrike doubleStrike = new DoubleStrike();
+                        if (doubleStrike.Validate(from))
+                        {
+                            doubleStrike.OnHit(from, this, 0);
+                        }
+                    }
+
+                    // Salvar a stamina atual e definir a stamina para o valor antes de usar DoubleStrike
+                    from.Stam = currentStamina;
+                }
+            }
+
 
             if (m_TempDamageAbsorb > 0 && VialofArmorEssence.UnderInfluence(this))
                 damage -= damage / m_TempDamageAbsorb;

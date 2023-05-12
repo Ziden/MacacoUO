@@ -53,7 +53,8 @@ namespace Server.Items
             m_IngredientTable.Add(new IngredientDropEntry(typeof(SkeletalDragonRenowned), true, .5, ImbuingGems));
             m_IngredientTable.Add(new IngredientDropEntry(typeof(TikitaviRenowned), true, .5, ImbuingGems));
             m_IngredientTable.Add(new IngredientDropEntry(typeof(VitaviRenowned), true, .5, ImbuingGems));
-
+            
+            /* Desabilita drops de itens não utilizados no server
             //Bottle of Ichor/Spider Carapace
             m_IngredientTable.Add(new IngredientDropEntry(typeof(TrapdoorSpider), true, .05, typeof(SpiderCarapace)));
             m_IngredientTable.Add(new IngredientDropEntry(typeof(WolfSpider), true, .15, typeof(BottleIchor)));
@@ -149,6 +150,7 @@ namespace Server.Items
             m_IngredientTable.Add(new IngredientDropEntry(typeof(BaseCreature), false, "Lands of the Lich", .05, typeof(EssenciaLuz)));
             m_IngredientTable.Add(new IngredientDropEntry(typeof(BaseCreature), false, "Secret Garden", .05, typeof(EssenciaEscuridao)));
             m_IngredientTable.Add(new IngredientDropEntry(typeof(BaseCreature), false, "Skeletal Dragon", .05, typeof(EssencePersistence)));
+            */
         }
 
         public static void OnCreatureDeath(CreatureDeathEventArgs e)

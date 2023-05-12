@@ -276,8 +276,8 @@ namespace Server.Spells
 
         public static bool CheckField(Point3D p, Map map)
         {
-            //if (Shard.POL_STYLE)
-            //    return true;
+            if (Shard.POL_STYLE)
+                return true;
 
             if (map == null)
                 return false;
