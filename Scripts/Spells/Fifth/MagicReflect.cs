@@ -78,15 +78,15 @@ namespace Server.Spells.Fifth
                 if (this.Caster.BeginAction(typeof(DefensiveSpell)))
                 {
                     int skills = (int)(this.Caster.Skills[SkillName.Magery].Value + this.Caster.Skills[SkillName.Inscribe].Value);
-                    var value = (int)(3 + (skills / 200) * 7.0) + Utility.Random(4) - 2;
+                    double value = (1 + (skills / 200.0) * 9.0) + Utility.Random(2) - 1;
 
-                    this.Caster.MagicDamageAbsorb = value;
+                    this.Caster.MagicDamageAbsorb = (int)value;
                     this.Caster.FixedParticles(0x375A, 10, 15, 5037, EffectLayer.Waist);
                     this.Caster.PlaySound(0x1E9);
                     //this.Caster.LocalOverheadMessage(MessageType.Regular, 0, false, "MRPower )
 
                     //this.Caster.PrivateOverheadMessage("MR Power: " + value * 10 + "%");
-                    this.Caster.SendMessage("Você tem " + value + " círculos de reflexão mágica.");
+                    this.Caster.SendMessage("Você tem " + (int)value + " círculos de reflexão mágica.");
                 }
                 else
                 {

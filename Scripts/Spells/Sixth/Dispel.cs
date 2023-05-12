@@ -187,6 +187,7 @@ namespace Server.Spells.Sixth
                                     BuffInfo.RemoveBuff(m, BuffIcon.MassCurse);
                                     m.RemoveStatMod("Holy Bless");
                                     var dissipado = false;
+                                    m.MagicDamageAbsorb = 0;
                                     if (MagicReflectSpell.EndReflect(m))
                                         m.OverheadMessage("* dissipado Magic Reflect *");
                                     if (ProtectionSpell.EndProtection(m))
