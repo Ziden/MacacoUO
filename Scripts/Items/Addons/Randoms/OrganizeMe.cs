@@ -99,7 +99,7 @@ namespace Server.Commands
                         else
                             weaponPouch = item as OrganizePouch;
                     }
-                    if (item.Name == "Moedas")
+                    if (item.Name == "Moedas")//
                     {
                         if (currencyPouch != null)
                         {
