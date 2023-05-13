@@ -8743,15 +8743,14 @@ namespace Server
             }
 
             // TODO: Pets
-            if (!Region.AllowHarmful(this, target))
+            if ( /*m_Player &&*/ !Region.AllowHarmful(this, target))
             //(target.m_Player || target.Body.IsHuman) && !Region.AllowHarmful( this, target )  )
             {
-                if (this.Region.Name.Contains("Volcano"))
-                    return true;
                 if (message || AccessLevel > AccessLevel.Counselor)
                 {
                     SendMessage("Voce nao pode fazer nenhuma acao maligna aqui"); // You can not perform negative acts on your target.
                 }
+
                 return false;
             }
 
