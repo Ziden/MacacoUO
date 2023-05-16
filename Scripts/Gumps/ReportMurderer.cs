@@ -54,6 +54,8 @@ namespace Server.Gumps
                             ai.CanReportMurder = false;
                         }
                     }
+                    if (m.Region is Server.Engines.ArenaSystem.ArenaRegion)
+                        ai.CanReportMurder = false;
                 }
                 if (ai.Attacker.Player && (DateTime.UtcNow - ai.LastCombatTime) < TimeSpan.FromSeconds(30.0) && !toGive.Contains(ai.Attacker))
                     toGive.Add(ai.Attacker);
