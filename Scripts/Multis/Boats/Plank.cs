@@ -284,7 +284,7 @@ namespace Server.Items
 			if ( m_Boat == null )
 				return;
 
-			if ( from.InRange( GetWorldLocation(), 8 ) )
+			if ( from.InRange( GetWorldLocation(), 12 ) )
 			{
 				if ( m_Boat.Contains( from ) )
 				{

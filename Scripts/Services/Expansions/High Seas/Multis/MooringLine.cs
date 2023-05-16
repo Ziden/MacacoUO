@@ -29,7 +29,7 @@ namespace Server.Items
 
             BaseBoat boat = BaseBoat.FindBoatAt(from, from.Map);
 
-            int range = boat != null && boat == this.Boat ? 3 : 8;
+            int range = boat != null && boat == this.Boat ? 3 : 12;
             bool canMove = false;
 
             if (m_Boat != null)
@@ -54,8 +54,8 @@ namespace Server.Items
 
             if (!from.InRange(this.Location, range))
                 from.SendLocalizedMessage(500295); //You are too far away to do that.
-            else if (!from.InLOS(this.Location))
-                from.SendLocalizedMessage(500950); //You cannot see that.
+            //else if (!from.InLOS(this.Location))
+            //    from.SendLocalizedMessage(500950); //You cannot see that.
             else if (m_Boat.IsMoving || m_Boat.IsTurning)
                 from.SendLocalizedMessage(1116611); //You can't use that while the ship is moving!
             else if (BaseBoat.IsDriving(from))
