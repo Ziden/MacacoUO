@@ -17,13 +17,11 @@ namespace Server.Commands
             CommandSystem.Register("organizar", AccessLevel.Player, OrganizeMe_OnCommand);
         }
 
-        //This command will not move spellbooks, runebooks, blessed items.
         [Usage("organizar")]
         [Description("Organiza as porra tudo na mochila")]
         private static void OrganizeMe_OnCommand(CommandEventArgs arg)
         {
             OrganizePouch weaponPouch = null;
-            OrganizePouch jewelPouch = null;
             OrganizePouch currencyPouch = null;
             OrganizePouch resourcePouch = null;
             OrganizePouch toolPouch = null;
@@ -59,6 +57,11 @@ namespace Server.Commands
 
             var backpackitems = new List<Item>(bp.Items);
             var subcontaineritems = new List<Item>();
+
+            OrganizePouch GetExistingPouch(Mobile mobile, string pouchName)
+            {
+                return mobile.Backpack.FindItemsByType<OrganizePouch>().FirstOrDefault(pouch => pouch.Name == pouchName);
+            }
 
             foreach (var item in new List<BaseContainer>(backpackitems.OfType<BaseContainer>()))
             {
@@ -138,45 +141,22 @@ namespace Server.Commands
                         else
                             miscPouch = item as OrganizePouch;
                     }
-
-                    // Skip all the items in the pouches since they should already be organized
                     continue;
                 }
-
-                // Add all the subcontainer items, but dont go all the way to comeplete depth
                 subcontaineritems.AddRange(item.Items);
             }
 
             backpackitems.AddRange(subcontaineritems);
 
-            if (weaponPouch == null)
-            {
-                weaponPouch = new OrganizePouch { Name = "Equips", Hue = 92 };
-            }
-            if (jewelPouch == null)
-            {
-                jewelPouch = new OrganizePouch { Name = "Joias", Hue = 62 };
-            }
-            if (currencyPouch == null)
-            {
-                currencyPouch = new OrganizePouch { Name = "Moedas", Hue = 42 };
-            }
-            if (resourcePouch == null)
-            {
-                resourcePouch = new OrganizePouch { Name = "Recursos", Hue = 32 };
-            }
-            if (toolPouch == null)
-            {
-                toolPouch = new OrganizePouch { Name = "Ferramentas", Hue = 22 };
-            }
-            if (miscPouch == null)
-            {
-                miscPouch = new OrganizePouch { Name = "Misc" };
-            }
+            weaponPouch = GetExistingPouch(from, "Equips") ?? new OrganizePouch { Name = "Equips", Hue = 92 };
+            currencyPouch = GetExistingPouch(from, "Moedas") ?? new OrganizePouch { Name = "Moedas", Hue = 42 };
+            resourcePouch = GetExistingPouch(from, "Recursos") ?? new OrganizePouch { Name = "Recursos", Hue = 32 };
+            toolPouch = GetExistingPouch(from, "Ferramentas") ?? new OrganizePouch { Name = "Ferramentas", Hue = 22 };
+            miscPouch = GetExistingPouch(from, "Misc") ?? new OrganizePouch { Name = "Misc" };
+
             var pouches = new List<OrganizePouch>
             {
                 weaponPouch,
-                jewelPouch,
                 currencyPouch,
                 resourcePouch,
                 toolPouch,
@@ -196,15 +176,21 @@ namespace Server.Commands
                             item.Movable &&
                             item.LootType != LootType.Blessed))
             {
-                // Lets not add the pouches to themselves
                 if (item is OrganizePouch)
                 {
                     continue;
                 }
 
-                if (item is BaseWeapon || item is BaseArmor || item is BaseClothing || item is BaseJewel)
+                if (item is BaseWeapon || item is BaseArmor || item is BaseClothing )
                 {
                     weaponPouch.TryDropItem(from, item, false);
+                }
+                else if (item is BaseJewel)
+                {
+                    from.Backpack.DropItem(item);
+                    item.X = potX;
+                    item.Y = potY;
+                    potX += 40;
                 }
                 else if (item is BasePotion)
                 {
@@ -253,9 +239,6 @@ namespace Server.Commands
                 {
                     continue;
                 }
-
-                // AddToBackpack doesnt do anything if the item is already in the backpack
-                // calls DropItem internally
 
                 if (!from.Backpack.Items.Contains(pouch))
                 {

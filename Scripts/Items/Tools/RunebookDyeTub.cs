@@ -121,11 +121,18 @@ namespace Server.Items
         {
             Name = "Tubo de Tintas de Livros de Magia";
             this.LootType = LootType.Blessed;
+            this.charges = 1;
         }
 
         public SpellbookDyeTub(Serial serial)
             : base(serial)
         {
+        }
+
+        public override void AddNameProperties(ObjectPropertyList list)
+        {
+            base.AddNameProperties(list);
+            list.Add("Adicione uma cor antes de usar!");
         }
 
         public override bool AllowDyables

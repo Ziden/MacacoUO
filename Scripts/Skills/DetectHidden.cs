@@ -101,7 +101,7 @@ namespace Server.SkillHandlers
                                 ss += 50;
                             }
 
-                            if (src.AccessLevel >= trg.AccessLevel && (ss >= ts) && Utility.RandomDouble() > shadow)
+                            if (trg.AccessLevel < AccessLevel.Counselor && (ss >= ts) && Utility.RandomDouble() > shadow)
                             {
                                 if ((trg is ShadowKnight && (trg.X != p.X || trg.Y != p.Y)) ||
                                      (!CanDetect(src, trg)))

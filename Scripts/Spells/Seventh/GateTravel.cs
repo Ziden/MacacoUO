@@ -115,12 +115,13 @@ namespace Server.Spells.Seventh
 
                     InternalItem firstGate = new InternalItem(loc, map);
                     firstGate.MoveToWorld(Caster.Location, Caster.Map);
-                    CheckHue(firstGate);
+                    CheckHue(firstGate, loc, map);  // Verifique e defina a cor do primeiro portal
+
                     Effects.PlaySound(loc, map, 0x20E);
 
                     InternalItem secondGate = new InternalItem(Caster.Location, Caster.Map);
                     secondGate.MoveToWorld(loc, map);
-                    CheckHue(secondGate);
+                    CheckHue(secondGate, Caster.Location, Caster.Map);  // Verifique e defina a cor do segundo portal
                     firstGate.LinkedGate = secondGate;
                     secondGate.LinkedGate = firstGate;
 
@@ -136,11 +137,17 @@ namespace Server.Spells.Seventh
             FinishSequence();
         }
 
-        public static void CheckHue(Item item)
+        public static void CheckHue(Item item, Point3D loc, Map map)
         {
-            var region = item.GetRegion();
-            if (region == null || !(region is GuardedRegion))
-                item.Hue = 38;
+            var region = Region.Find(loc, map);
+            if (region != null && region is GuardedRegion)
+            {
+                item.Hue = 3; // azul
+            }
+            else
+            {
+                item.Hue = 38; // vermelho
+            }
         }
 
         private bool GateExistsAt(Map map, Point3D loc)

@@ -16,7 +16,7 @@ namespace Server.Items
         {
             Name = "Peixe";
             this.Stackable = true;
-            this.Weight = 1.0;
+            this.Weight = 0.1;
             this.Amount = amount;
         }
 

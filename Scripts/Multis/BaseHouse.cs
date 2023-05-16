@@ -2037,7 +2037,7 @@ namespace Server.Multis
 
         public void AddDoor(BaseDoor door, int xoff, int yoff, int zoff)
         {
-            //door.Locked = true;
+            door.Locked = true;
 
             door.MoveToWorld(new Point3D(xoff + X, yoff + Y, zoff + Z), Map);
             m_Doors.Add(door);
@@ -4471,6 +4471,9 @@ namespace Server.Multis
                 return false;
 
             if (IsOwner(m) || m_CoOwners.Contains(m))
+                return true;
+
+            if (IsSameAccount(m_Owner, m))
                 return true;
 
             foreach (Mobile mob in m_CoOwners)

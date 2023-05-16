@@ -105,7 +105,7 @@ namespace Server.Items
             : base(closedID, openedID, openedSound, closedSound, offset)
         {
             m_Facing = facing;
-            m_Level = SecureLevel.Anyone;
+            m_Level = SecureLevel.Friends;
         }
 
         public BaseHouseDoor(Serial serial)

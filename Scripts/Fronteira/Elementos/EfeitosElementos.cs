@@ -139,7 +139,7 @@ namespace Server.Fronteira.Elementos
                 case ElementoPvM.Vento:
                     efeitos = new string[] {
                         "Chance Critico",       //
-                        "Chance Stun"           //
+                        "Chance Golpe Duplo"           //
                     };
                     break;
                 default:
