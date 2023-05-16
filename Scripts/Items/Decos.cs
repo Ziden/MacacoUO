@@ -138,10 +138,13 @@ namespace Server.Items
                 }
                 return Decos._RandomDecoRara();
             }
-
-            if (Utility.RandomDouble() > 0.1)
-                return new ValeDecoracaoComum() { QuemDropou = bc == null ? "" : bc.Name ?? bc.GetType().Name };
-            return new ValeDecoracaoRara() { QuemDropou = bc == null ? "" : bc.Name ?? bc.GetType().Name };
+            if (Utility.RandomDouble() > 0.5)
+            {
+                if (Utility.RandomDouble() > 0.1)
+                    return new ValeDecoracaoComum() { QuemDropou = bc == null ? "" : bc.Name ?? bc.GetType().Name };
+                return new ValeDecoracaoRara() { QuemDropou = bc == null ? "" : bc.Name ?? bc.GetType().Name };
+            }
+            return new Gold(3000);
         }
 
         public static Item _RandomDecoRara()

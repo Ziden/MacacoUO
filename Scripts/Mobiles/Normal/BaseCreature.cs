@@ -4960,7 +4960,7 @@ namespace Server.Mobiles
             m.Delete();
         }
 
-        public virtual bool DeleteOnRelease { get { return m_bSummoned; } }
+        public virtual bool DeleteOnRelease { get { return true; } }
 
         public virtual void OnGaveMeleeAttack(Mobile defender)
         {
@@ -7590,7 +7590,6 @@ namespace Server.Mobiles
             {
                 Timer.DelayCall(TimeSpan.FromSeconds(2), Delete);
             }
-            Timer.DelayCall(TimeSpan.FromMinutes(0), Delete); // mob é deletado 5 minutos após o all release.
         }
 
         public override void OnItemLifted(Mobile from, Item item)
@@ -7819,7 +7818,7 @@ namespace Server.Mobiles
 
                 if (this.m_Paragon)
                 {
-                    c.DropItem(new RelicFragment((int)Math.Round(this.HitsMax / 500d)));
+                    c.DropItem(new RelicFragment((int)Math.Round(this.HitsMax / 500d) + (int)Math.Round(this.PontosPvm / 5d)));
                 }
 
                 LootingRights = null;

@@ -111,6 +111,16 @@ namespace Server.Items
         }
         #endregion
 
+        public virtual void AddWeaponProperties(ObjectPropertyList list)
+        {
+            int bonusDamage = GetdDamageBonusSoPraMostrarProClient();
+            int minDamage = MinDamage + bonusDamage;
+            int maxDamage = MaxDamage + bonusDamage;
+            list.Add("Durabilidade: {0}/{1}", HitPoints, MaxHitPoints); // Adiciona a durabilidade da arma
+            list.Add("Dano: {0}-{1}", minDamage, maxDamage); // Adiciona a faixa de dano da arma
+            list.Add("Velocidade: {0}", Speed); // Adiciona a velocidade da arma
+            // ... adicione quaisquer outras propriedades que você deseja aqui ...
+        }
         private string m_EngravedText;
 
         [CommandProperty(AccessLevel.GameMaster)]
@@ -6357,6 +6367,8 @@ namespace Server.Items
 
             if (RP)
                 list.AddTwoValues("Item", "RP");
+
+            AddWeaponProperties(list);
 
             #region Factions
             FactionEquipment.AddFactionProperties(this, list);

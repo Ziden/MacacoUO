@@ -227,13 +227,13 @@ namespace Server.Items
                 switch (level)
                 {
                     case 1:
-                        cont.RequiredSkill = 5;
+                        cont.RequiredSkill = 15;
                         break;
                     case 2:
-                        cont.RequiredSkill = 20;
+                        cont.RequiredSkill = 30;
                         break;
                     case 3:
-                        cont.RequiredSkill = 50;
+                        cont.RequiredSkill = 60;
                         break;
                     case 4:
                         cont.RequiredSkill = 70;
@@ -245,12 +245,12 @@ namespace Server.Items
                         cont.RequiredSkill = 90;
                         break;
                     case 7:
-                        cont.RequiredSkill = 100;
+                        cont.RequiredSkill = 95;
                         break;
                 }
 
-                cont.LockLevel = cont.RequiredSkill - 10;
-                cont.MaxLockLevel = cont.RequiredSkill + 40;
+                cont.LockLevel = cont.RequiredSkill;
+                cont.MaxLockLevel = cont.RequiredSkill + 5;
 
                 #region Gold
                 cont.DropItem(new Gold(isSos ? level * 10000 : level * 5000));
