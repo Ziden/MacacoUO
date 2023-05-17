@@ -375,29 +375,20 @@ namespace Server.Items.Functional.Pergaminhos
 
     public class PergaminhoSagradoSupremoPvM : PergaminhoSagrado
     {
-
-        [CommandProperty(AccessLevel.GameMaster)]
-        public int Dias { get; set; }
-
         [Constructable]
-        public PergaminhoSagradoSupremoPvM()
-            : base()
+        public PergaminhoSagradoSupremoPvM() : base()
         {
-            this.Dias = 30 * 6;
             this.Hue = 356;
             this.Name = "Pergaminho Sagrado Supremo PvM";
         }
 
-        public PergaminhoSagradoSupremoPvM(int itemID)
-           : base(itemID)
+        public PergaminhoSagradoSupremoPvM(int itemID) : base(itemID)
         {
-            this.Dias = 30 * 6;
             this.Hue = 356;
             this.Name = "Pergaminho Sagrado Supremo PvM";
         }
 
-        public PergaminhoSagradoSupremoPvM(Serial serial)
-            : base(serial)
+        public PergaminhoSagradoSupremoPvM(Serial serial) : base(serial)
         {
 
         }
@@ -412,6 +403,7 @@ namespace Server.Items.Functional.Pergaminhos
         {
             private Mobile from;
             private PergaminhoSagrado scroll;
+
             public InternalTarget(Mobile from, PergaminhoSagrado scroll) : base(1, false, TargetFlags.None)
             {
                 this.from = from;
@@ -426,32 +418,32 @@ namespace Server.Items.Functional.Pergaminhos
                 if (targeted is BaseJewel || targeted is BaseTalisman)
                 {
                     var item = (Item)targeted;
-                    if (item.LootType == LootType.Blessed)
+                    if ((item.LootType & LootType.Blessed) != 0)
                     {
-                        item.PrivateMessage("Este item ja esta abencoado", from);
+                        item.PrivateMessage("Este item já está abençoado", from);
                     }
                     else
                     {
-                        item.LootType = LootType.Blessed;
+                        item.LootType |= LootType.Blessed;
                         from.FixedEffect(0x37C4, 87, 2000, 4, 3);
                         from.FixedParticles(0x376A, 9, 32, 5030, EffectLayer.Waist);
                         from.PlaySound(0x202);
-                        item.PrivateMessage("* Abencoado *", from);
-                        from.SendMessage("Voce embrulha o item no pergaminho, desfazendo o pergaminho e abencoando o item");
+                        item.PrivateMessage("* Abençoado *", from);
+                        from.SendMessage("Você embrulha o item no pergaminho, desfazendo o pergaminho e abençoando o item");
                         scroll.Consume();
                     }
                 }
                 else
                 {
-                    from.SendMessage("Voce apenas pode usar isto em acessorios PvM");
+                    from.SendMessage("Você só pode usar isso em acessórios PvM");
                 }
             }
         }
 
         public override void AddNameProperties(ObjectPropertyList list)
         {
-            list.Add("Abencoa um acessorio PvM para sempre");
-            list.Add("tornando-o pertence pessoal");
+            list.Add("Este item é abençoado");
+            list.Add("e é de propriedade pessoal");
         }
 
         public override void Serialize(GenericWriter writer)
