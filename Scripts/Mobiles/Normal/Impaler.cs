@@ -132,7 +132,7 @@ namespace Server.Mobiles
             {
                 joia.Name += " [DOOM]";
             }
-            joia.Attributes.WeaponSpeed = 3;
+            joia.Attributes.WeaponSpeed = 0;
             SorteiaItem(joia);
             GolemMecanico.JorraOuro(c.Location, c.Map, 350);
         }
