@@ -375,22 +375,29 @@ namespace Server.Items.Functional.Pergaminhos
 
     public class PergaminhoSagradoSupremoPvM : PergaminhoSagrado
     {
+        [CommandProperty(AccessLevel.GameMaster)]
+        public bool IsEternalBlessed { get; set; }
+
         [Constructable]
-        public PergaminhoSagradoSupremoPvM() : base()
+        public PergaminhoSagradoSupremoPvM()
+            : base()
         {
+            this.IsEternalBlessed = true;
             this.Hue = 356;
             this.Name = "Pergaminho Sagrado Supremo PvM";
         }
 
-        public PergaminhoSagradoSupremoPvM(int itemID) : base(itemID)
+        public PergaminhoSagradoSupremoPvM(int itemID)
+            : base(itemID)
         {
+            this.IsEternalBlessed = true;
             this.Hue = 356;
             this.Name = "Pergaminho Sagrado Supremo PvM";
         }
 
-        public PergaminhoSagradoSupremoPvM(Serial serial) : base(serial)
+        public PergaminhoSagradoSupremoPvM(Serial serial)
+            : base(serial)
         {
-
         }
 
         public override void OnDoubleClick(Mobile from)
@@ -402,9 +409,10 @@ namespace Server.Items.Functional.Pergaminhos
         public class InternalTarget : Target
         {
             private Mobile from;
-            private PergaminhoSagrado scroll;
+            private PergaminhoSagradoSupremoPvM scroll;
 
-            public InternalTarget(Mobile from, PergaminhoSagrado scroll) : base(1, false, TargetFlags.None)
+            public InternalTarget(Mobile from, PergaminhoSagradoSupremoPvM scroll)
+                : base(1, false, TargetFlags.None)
             {
                 this.from = from;
                 this.scroll = scroll;
@@ -418,13 +426,14 @@ namespace Server.Items.Functional.Pergaminhos
                 if (targeted is BaseJewel || targeted is BaseTalisman)
                 {
                     var item = (Item)targeted;
-                    if ((item.LootType & LootType.Blessed) != 0)
+                    if (item.LootType == LootType.Blessed)
                     {
                         item.PrivateMessage("Este item já está abençoado", from);
                     }
                     else
                     {
-                        item.LootType |= LootType.Blessed;
+                        item.LootType = LootType.Blessed;
+                        item.LootType |= LootType.Blessed; // Adiciona a flag Newbied ao item
                         from.FixedEffect(0x37C4, 87, 2000, 4, 3);
                         from.FixedParticles(0x376A, 9, 32, 5030, EffectLayer.Waist);
                         from.PlaySound(0x202);
@@ -435,27 +444,36 @@ namespace Server.Items.Functional.Pergaminhos
                 }
                 else
                 {
-                    from.SendMessage("Você só pode usar isso em acessórios PvM");
+                    from.SendMessage("Você só pode usar isto em acessórios PvM");
                 }
             }
         }
 
         public override void AddNameProperties(ObjectPropertyList list)
         {
-            list.Add("Este item é abençoado");
-            list.Add("e é de propriedade pessoal");
+            list.Add("Abençoa um acessório PvM permanentemente");
+            list.Add("Torna-o pessoal e exibe 'Newbie'");
         }
 
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
+            writer.Write((int)0); // Version
+
+            writer.Write(IsEternalBlessed);
         }
 
         public override void Deserialize(GenericReader reader)
         {
             base.Deserialize(reader);
+            int version = reader.ReadInt();
+
+            IsEternalBlessed = reader.ReadBool();
         }
     }
+
+
+
 
     public class PergaminhoPvM : PergaminhoSagrado
     {
