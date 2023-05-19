@@ -18,9 +18,9 @@ namespace Server.Items
             : base()
         {
             Hue = 0x481;			
-            Slayer = SlayerName.Exorcismo;		
+            /*Slayer = SlayerName.Exorcismo;		
             WeaponAttributes.HitDispel = 100;
-            WeaponAttributes.HitLeechMana = 100;
+            WeaponAttributes.HitLeechMana = 100;*/
         }
 
         public ScepterOfTheChief(Serial serial)
