@@ -11,13 +11,13 @@ namespace Server.Items
         public DemonBridleRing()
         {
             Hue = 39;		
-            Attributes.CastRecovery = 2;
+           /* Attributes.CastRecovery = 2;
             Attributes.Resistence = 1;	
             Attributes.RegenHits = 1;
             Attributes.RegenMana = 1;
             Attributes.DefendChance = 10;
             Attributes.LowerManaCost = 4;
-            Resistances.Fire = 5;
+            Resistances.Fire = 5;*/
         }
 
         public DemonBridleRing(Serial serial)
