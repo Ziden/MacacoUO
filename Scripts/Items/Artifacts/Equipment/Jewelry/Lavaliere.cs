@@ -11,11 +11,11 @@ namespace Server.Items
         public Lavaliere()
         {
             Hue = 39;		
-            AbsorptionAttributes.EaterKinetic = 20;
+            /*AbsorptionAttributes.EaterKinetic = 20;
             Attributes.DefendChance = 10;
             Resistances.Physical = 15;
             Attributes.LowerManaCost = 10;
-            Attributes.LowerRegCost = 20;
+            Attributes.LowerRegCost = 20;*/
         }
 
         public Lavaliere(Serial serial)
@@ -37,3 +37,4 @@ namespace Server.Items
         }
     }
 }
+
