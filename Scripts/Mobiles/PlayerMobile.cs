@@ -154,6 +154,7 @@ namespace Server.Mobiles
         [CommandProperty(AccessLevel.GameMaster)]
         public int PassoWispGuia { get; set; }
 
+        public DateTime LastTauntCommand { get; set; }
         private ElementoPvM _e;
 
         [CommandProperty(AccessLevel.GameMaster)]

@@ -54,7 +54,7 @@ namespace Server.Mobiles
         public Windrunner(string name)
             : base(name, 1410, 16076, AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4)
         {
-            BaseSoundID = 0xA8;
+            BaseSoundID = 0x229;
 
             SetStr(400);
             SetDex(125);
