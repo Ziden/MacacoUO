@@ -42,7 +42,7 @@ namespace Server.Items
 
         // starting the item itself
         [Constructable]
-        public Hearthstone() : base(0x3197)
+        public Hearthstone() : base(0x1ED2)
         {
             Weight = 1.0;
             Name = "hearthstone";
@@ -124,14 +124,14 @@ namespace Server.Items
                     m.Freeze(TimeSpan.FromSeconds(6));
                     hearth = Timer.DelayCall(TimeSpan.FromSeconds(6), new TimerCallback(HearthTeleport));
                     m.SendMessage("Voce esta retornando para casa em 6 segundos.");
-                    m.FixedEffect(0x375A, 10, 15);
+                    m.FixedEffect(0x1ED2, 10, 15);
                     m.PlaySound(0x1E7);
                     m.OverheadMessage("* retornando *");
                 } else
                 {
                     if (from.Region is GuardedRegion || from.Region is NoGuardCity || from.Region is NoHousingRegion)  // see if they are in an "inn" zone and mark if they are
                     {
-                        from.FixedEffect(0x375A, 10, 15);
+                        from.FixedEffect(0x1ED2, 10, 15);
                         from.PlaySound(0x1E7);
                         this.home = from.Location;
                         this.map = from.Map;
@@ -190,6 +190,22 @@ namespace Server.Items
                 return true;
             }
 
+        }
+
+        public static void Initialize()
+        {
+            EventSink.ServerStarted += new ServerStartedEventHandler(OnServerStarted);
+        }
+
+        private static void OnServerStarted()
+        {
+            foreach (Item item in World.Items.Values)
+            {
+                if (item is Hearthstone && item.ItemID == 0x3197)
+                {
+                    item.ItemID = 0x1ED2;
+                }
+            }
         }
 
         public Hearthstone(Serial serial) : base(serial)

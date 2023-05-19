@@ -2876,6 +2876,8 @@ namespace Server.Items
             {
                 list.AddTwoValues(Gump.Cor("Escrito", "orange"), Gump.Cor(Utility.FixHtml(_EngravedText), "orange"));
             }
+
+
         }
 
         public override bool AllowEquipedCast(Mobile from)
@@ -2994,7 +2996,11 @@ namespace Server.Items
                 {
                     list.Add("Novo");
                 }
+                list.Add("Durabilidade: {0}/{1}", HitPoints, MaxHitPoints);
             }
+
+            if (OldDexBonus != 0)
+                list.Add("Modificador de dex: {0}", OldDexBonus);
 
             if (m_GorgonLenseCharges > 0)
                 list.AddTwoValues("Cargas Gorgon", m_GorgonLenseCharges); //Gorgon Lens Charges: ~1_val~         
