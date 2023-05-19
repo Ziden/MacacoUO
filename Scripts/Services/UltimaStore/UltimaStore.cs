@@ -127,7 +127,7 @@ namespace Server.Engines.UOStore
 
             cat = StoreCategory.Character;
             //PERSONAGEM
-            //Register<PergaminhoSagradoSupremoPvM>("Pergaminho Supremo PvM (Newbie)", "Torna uma as Joia um percence pessoal (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 10000, cat);
+            Register<PergaminhoSagradoSupremoPvM>("Pergaminho Supremo PvM (Newbie)", "Torna uma as Joia um percence pessoal (newbie) para sempre.</br>Esta roupa nao sera perdida quando morrer e nao pode ser destruida exceto por acido.", 0x14F0, 0, 0, 10000, cat);
             //Register<CombatSkillBook>("Livro +5000 Exp", "Livro que garante instantaneamente 5000 EXP.</br>Nao funciona para elementos.", 0xEFA, 0, 0xA33, 1000, cat, ConstructLivro);
             Register<PergElfo>("Pergaminho Racial", "Troque agora mesmo a raça do seu personagem! Torne-se um incrível Elfo com este pergaminho.", 0x1F35, 0, 0, 4000, cat);
             //Register<SpellbookDyeTub>("Tinta de Livro de Magia", "Permite pintar livros de magia", 0xFAB, 0, 0, 500, cat);
