@@ -31,7 +31,7 @@ namespace Server.TournamentSystem
             EventSink.WorldLoad += OnLoad;
         }
 
-        public static string FilePath = Path.Combine("Saves/Customs", "PvPTournamentSystem.bin");
+        public static string FilePath = Path.Combine("Saves", "PvPTournamentSystem.bin");
         public static bool Configured { get { return PVPTournamentSystem.SystemList.Count > 0; } }
 
         public static void OnSave(WorldSaveEventArgs e)
