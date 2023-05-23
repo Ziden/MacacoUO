@@ -124,7 +124,7 @@ namespace Server.TournamentSystem
         public PrizeChest Chest { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
-        public TeamsBoard TeamsBoard { get; set; }
+       // public TeamsBoard TeamsBoard { get; set; }
 
         [CommandProperty(AccessLevel.GameMaster)]
         public ArenaBell Bell { get; set; }
