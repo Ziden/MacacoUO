@@ -319,6 +319,7 @@
     <Compile Include="Fronteira\Comandos\Limpeza.cs" />
     <Compile Include="Fronteira\Comandos\NerfSpawners.cs" />
     <Compile Include="Fronteira\Comandos\Salvar.cs" />
+    <Compile Include="Fronteira\Comandos\taunt.cs" />
     <Compile Include="Fronteira\Comandos\CoresRaras.cs" />
     <Compile Include="Fronteira\Comandos\Seer.cs" />
     <Compile Include="Fronteira\Comandos\dp.cs" />
@@ -1118,6 +1119,7 @@
     <Compile Include="Fronteira\Comandos\DebugItems.cs" />
     <Compile Include="Fronteira\Comandos\VerPets.cs" />
     <Compile Include="Fronteira\Comandos\WipaPratinhas.cs" />
+    <Compile Include="Fronteira\Comandos\resgataitens.cs" />
     <Compile Include="Fronteira\Comandos\VoltaYoung.cs" />
     <Compile Include="Fronteira\ControleRazor.cs" />
     <Compile Include="Fronteira\Cooking\Exporters\Exporter.cs" />

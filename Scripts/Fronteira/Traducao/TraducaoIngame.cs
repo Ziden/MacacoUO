@@ -12,6 +12,7 @@ namespace Server.Ziden.Traducao
         public static void Initialize()
         {
             CommandSystem.Register("traduzir", AccessLevel.Counselor, OnAction);
+            CommandSystem.Register("atualizarTraducoes", AccessLevel.Administrator, OnUpdateTranslations);
         }
 
         public static void Configure()
@@ -26,6 +27,31 @@ namespace Server.Ziden.Traducao
             if (Mobiles.ContainsKey(e.Mobile.GetType().Name))
             {
                 e.Mobile.Name = Mobiles[e.Mobile.GetType().Name].ToLower();
+            }
+        }
+
+        private static void OnUpdateTranslations(CommandEventArgs e)
+        {
+            UpdateAllItems();
+            UpdateAllMobiles();
+        }
+
+        private static void UpdateAllItems()
+        {
+            foreach (Item item in World.Items.Values)
+            {
+                UpdateNomeItem(item);
+            }
+        }
+
+        private static void UpdateAllMobiles()
+        {
+            foreach (Mobile mob in World.Mobiles.Values)
+            {
+                if (mob is BaseCreature && Mobiles.ContainsKey(mob.GetType().Name))
+                {
+                    mob.Name = Mobiles[mob.GetType().Name].ToLower();
+                }
             }
         }
 

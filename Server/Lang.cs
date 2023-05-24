@@ -324,7 +324,7 @@ namespace Server
                 case "SackOfSugar": return "Saco de Açúcar";
                 case "WakuChicken": return "Frango Assado";
                 case "FoodEngraver": return "Gravador de Comidas";
-                case "GreaterHealPotion": return "Poção de Heal Maior";
+                case "GreaterHealPotion": return "Poção de Vida Maior";
                 case "GreaterStrengthPotion": return "Poção de Força Maior";
                 case "FruitBowl": return "Tigela de Frutas";
                 case "Banana": return "Banana";
@@ -365,6 +365,15 @@ namespace Server
                 case "AutumnDragonfishStea": return "Filé de Peixe Dragão de Outono";
                 case "SpiderCrabPie": return "Torta de Carangueijo-aranha";
                 case "SpiderCrabMeat": return "Caranguejo-aranha";
+                case "SpidersSilk": return "Spider Silk";
+                case "GraveDust": return "Grave Dust";
+                case "MandrakeRoot": return "Mandrake Root";
+                case "Bloodmoss": return "Blood Moss";
+                case "SulfurousAsh": return "Sulfurous Ash";
+                case "BatWing": return "Bat Wing";
+                case "DaemonBlood": return "Daemon Blood";
+                case "PigIron": return "Pig Iron";
+                case "NoxCrystal": return "Nox Crystal";
                 case "Lettuce": return "Alface";
                 case "YellowtailBarracudaPie": return "Torta de Barracuda de Rabo Amarela";
                 case "YellowtailBarracudaSteak": return "Filé de Barracuda de Rabo Amarela";
@@ -1110,7 +1119,7 @@ namespace Server
                 case "PlantClippings": return "Cortes de Plantas";
                 case "Log": return "Madeira";
                 case "DriedOnions": return "Cebola em Pó";
-                case "Garlic": return "Alho";
+                case "Garlic": return "Garlic";
                 case "Ginseng": return "Ginseng";
                 case "TanGinger": return "Gengibre";
                 case "ChocolateMix": return "Mistura de Chocolate";
@@ -1415,7 +1424,7 @@ namespace Server
                 case "ArcanicRuneStone": return "Pedra Rúnica Arcana";
                 case "CrystalShards": return "Fragmentos de Cristal";
                 case "VoidOrb": return "Orbe do Vazio";
-                case "BlackPearl": return "Pérola Negra";
+                case "BlackPearl": return "Black Pearl";
                 case "AdvancedTrainingDummySouthDeed": return "Escritura de Manequim de Treinamento Avançado Sul";
                 case "TrainingDummySouthDeed": return "Escritura de Manequim de Treinamento Sul";
                 case "PlateChest": return "Peitoral de Metal";

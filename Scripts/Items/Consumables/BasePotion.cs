@@ -146,6 +146,12 @@ namespace Server.Items
             if (!this.Movable)
                 return;
 
+            if (this is AntiParaPotion && ((Mobile)from).MagicDamageAbsorb > 0)
+            {
+                from.SendMessage("Você não pode tomar essa poção enquanto estiver sob o efeito do MagicReflect.");
+                return;
+            }
+
             if (from.Paralyzed)
             {
                 if(!(this is AntiParaPotion))
@@ -203,7 +209,29 @@ namespace Server.Items
                     }
 
                     // DELAY GLOBAL DAS POTIONS, 10 segundos
-                    Timer.DelayCall(TimeSpan.FromSeconds(10), () => from.EndAction(tipoCooldown));
+                    // Timer.DelayCall(TimeSpan.FromSeconds(10), () => from.EndAction(tipoCooldown));
+
+                    TimeSpan delay;
+
+                    // verificando o tipo de poção
+                    if (this is LesserHealPotion || this is LesserManaPotion)
+                    {
+                        delay = TimeSpan.FromSeconds(10);
+                    }
+                    else if (this is HealPotion || this is ManaPotion)
+                    {
+                        delay = TimeSpan.FromSeconds(15);
+                    }
+                    else if (this is GreaterHealPotion || this is GreaterManaPotion)
+                    {
+                        delay = TimeSpan.FromSeconds(22);
+                    }
+                    else
+                    {
+                        delay = TimeSpan.FromSeconds(10); // valor padrão para outras
+                    }
+
+                    Timer.DelayCall(delay, () => from.EndAction(tipoCooldown));
 
                     if (this is BaseExplosionPotion && this.Amount > 1)
                     {
