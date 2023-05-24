@@ -44,7 +44,7 @@ namespace Server.Items
         {
             get
             {
-                return 10.0;
+                return 22.0;
             }
         }
 

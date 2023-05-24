@@ -222,6 +222,10 @@ namespace Server.Items
                     {
                         delay = TimeSpan.FromSeconds(15);
                     }
+                    else if (this is AntiParaPotion)
+                    {
+                        delay = TimeSpan.FromSeconds(20);
+                    }
                     else if (this is GreaterHealPotion || this is GreaterManaPotion)
                     {
                         delay = TimeSpan.FromSeconds(22);
