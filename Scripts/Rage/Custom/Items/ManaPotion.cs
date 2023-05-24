@@ -33,7 +33,7 @@ namespace Server.Items
         {
             get
             {
-                return 30; //(Core.AOS ? 10.0 : 10.0);
+                return 15; //(Core.AOS ? 10.0 : 10.0);
             }
         }
         public override void Serialize(GenericWriter writer)

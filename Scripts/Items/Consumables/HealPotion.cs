@@ -35,7 +35,7 @@ namespace Server.Items
         {
             get
             {
-                return (Core.AOS ? 8.0 : 10.0);
+                return (Core.AOS ? 8.0 : 15.0);
             }
         }
         public override void Serialize(GenericWriter writer)
