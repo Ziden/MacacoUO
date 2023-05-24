@@ -1,6 +1,7 @@
 using Server;
 using Server.Items;
 using System;
+using Server.Mobiles;
 
 public class AntiParaPotion : BasePotion
 {
@@ -41,13 +42,15 @@ public class AntiParaPotion : BasePotion
 
     public override void Drink(Mobile m)
     {
-        m.PotAntiPara = DateTime.UtcNow + TimeSpan.FromSeconds(10);
+        PlayDrinkEffect(m);
+        m.PotAntiPara = DateTime.UtcNow + TimeSpan.FromSeconds(20);
         BuffInfo.AddBuff(m, new BuffInfo(BuffIcon.AnticipateHit, 1114057, "Anti-Paralyze"));
-        m.SendMessage("Voce agora esta mais resistente a paralizia por 10 segundos");
-        Timer.DelayCall(TimeSpan.FromSeconds(10), () =>
+        m.SendMessage("Voce agora esta mais resistente a paralizia por 20 segundos");
+        Timer.DelayCall(TimeSpan.FromSeconds(20), () =>
         {
             BuffInfo.RemoveBuff(m, BuffIcon.AnticipateHit);
         });
+        Consume();
 
         /*
         Timer.DelayCall(TimeSpan.FromSeconds(1.8), () =>

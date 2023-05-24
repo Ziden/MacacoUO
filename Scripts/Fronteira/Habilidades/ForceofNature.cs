@@ -129,7 +129,7 @@ namespace Server.Items
                 {
                     int damage = Utility.RandomMinMax(15, 35);
 
-                    AOS.Damage(m_Target, m_From, damage, false, 0, 0, 0, 0, 0, 0, 100, false, false, false);
+                    AOS.Damage(m_Target, m_From, damage, false, 100, 0, 0, 0, 0, 0, 0, false, false, false);
                 }
             }
         }
