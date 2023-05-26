@@ -329,6 +329,12 @@ namespace Server.Items
 
         public void StopHeal()
         {
+            PlayerMobile player = m_Healer as PlayerMobile;
+            if (player != null && player.IsBanding)
+            {
+                player.IsBanding = false;
+                player.SendMessage("Maos desocupadas!");
+            }
             m_Table.Remove(m_Healer);
 
             if (m_Timer != null)
@@ -924,6 +930,13 @@ namespace Server.Items
                 if (healer.NetState != null && healer.NetState.IsEnhancedClient)
                 {
                     healer.NetState.Send(new BandageTimerPacket((int)delay.TotalSeconds));
+                }
+
+                PlayerMobile player = healer as PlayerMobile;
+                if (player != null)
+                {
+                    player.IsBanding = true;
+                    player.SendMessage("Maos ocupadas!");
                 }
 
                 return context;

@@ -4,6 +4,7 @@ using Server.Commands;
 using Server.Engines.Craft;
 using Server.Fronteira.Talentos;
 using VitaNex.Modules.AutoPvP;
+using Server.Mobiles;
 
 namespace Server.Items
 {
@@ -146,6 +147,13 @@ namespace Server.Items
             if (!this.Movable)
                 return;
 
+            PlayerMobile player = from as PlayerMobile;
+            if (player != null && player.IsBanding)
+            {
+                player.SendMessage("Você não pode tomar poções enquanto estiver usando bandagens.");
+                return;
+            }
+
             if (this is AntiParaPotion && ((Mobile)from).MagicDamageAbsorb > 0)
             {
                 from.SendMessage("Você não pode tomar essa poção enquanto estiver sob o efeito do MagicReflect.");
@@ -209,11 +217,11 @@ namespace Server.Items
                     }
 
                     // DELAY GLOBAL DAS POTIONS, 10 segundos
-                    // Timer.DelayCall(TimeSpan.FromSeconds(10), () => from.EndAction(tipoCooldown));
-
+                    //Timer.DelayCall(TimeSpan.FromSeconds(10), () => from.EndAction(tipoCooldown));
                     TimeSpan delay;
 
                     // verificando o tipo de poção
+                    /*
                     if (this is LesserHealPotion || this is LesserManaPotion)
                     {
                         delay = TimeSpan.FromSeconds(10);
@@ -229,6 +237,10 @@ namespace Server.Items
                     else if (this is GreaterHealPotion || this is GreaterManaPotion)
                     {
                         delay = TimeSpan.FromSeconds(22);
+                    }*/
+                    if (this is AntiParaPotion)
+                    {
+                        delay = TimeSpan.FromSeconds(20);
                     }
                     else
                     {
@@ -311,6 +323,7 @@ namespace Server.Items
         {
             m.RevealingAction();
             m.PlaySound(0x031);
+            m.FixedEffect(0x3740, 5, 5);
 
             if (!(m.Region is PvPRegion))
                 m.AddToBackpack(new Bottle());

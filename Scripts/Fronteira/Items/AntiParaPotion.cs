@@ -5,14 +5,6 @@ using Server.Mobiles;
 
 public class AntiParaPotion : BasePotion
 {
-    public override double Delay
-    {
-        get
-        {
-            return 10.0;
-        }
-    }
-
     [Constructable]
     public AntiParaPotion(): base(0x5748, PotionEffect.AntiParalize)
     {
@@ -24,6 +16,14 @@ public class AntiParaPotion : BasePotion
     public AntiParaPotion(Serial serial)
         : base(serial)
     {
+    }
+
+    public override double Delay
+    {
+        get
+        {
+            return 20.0;
+        }
     }
 
     public override void Serialize(GenericWriter writer)

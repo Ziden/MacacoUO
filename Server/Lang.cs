@@ -732,7 +732,7 @@ namespace Server
                 case "FukiyaDarts": return "Dardos de sopro";
                 case "GemMiningBook": return "Livro para mineração de gemas de qualidade";
                 case "GlassblowingBook": return "Livro de sopro de vidro";
-                case "Gold": return "Ouro";
+                case "Gold": return "Moedas de Ouro";
                 case "GoldFoil": return "Folha de ouro";
                 case "GorgonLens": return "Olhos da Gorgon";
                 case "GreenThorns": return "Espinho verde";
