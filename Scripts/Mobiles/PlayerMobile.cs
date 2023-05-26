@@ -274,6 +274,8 @@ namespace Server.Mobiles
 
         private Dictionary<string, DateTime> cooldowns = new Dictionary<string, DateTime>();
 
+        public bool IsBanding { get; set; }
+
         public void SetCooldown(string name, TimeSpan span)
         {
             if (cooldowns.ContainsKey(name))

@@ -32,7 +32,7 @@ namespace Server.Spells
     public abstract class Spell : ISpell
     {
         public static int RANGE = Shard.POL_STYLE ? 15 : 10;
-        public readonly static double SECONDS_REFLECT = 1;
+        public readonly static double SECONDS_REFLECT = 0;
 
 
         public Mobile ManaToCaster;
@@ -1236,6 +1236,8 @@ namespace Server.Spells
 
             if (!this.ValidateCast(m_Caster))
                 return false;
+            
+            PlayerMobile player = m_Caster as PlayerMobile;
 
             if (!m_Caster.CheckAlive())
             {
@@ -1286,6 +1288,11 @@ namespace Server.Spells
             else if (m_Caster.Spell != null)
             {
                 m_Caster.SendMessage("Voce ja esta conjurando uma magia");
+            }
+            else if (player != null && player.IsBanding)
+            {
+                player.SendMessage("Você não pode conjurar magias enquanto estiver usando bandagens.");
+                return false;
             }
             else if (m_Caster.Mana >= AjustaMana(GetMana()))
             {
