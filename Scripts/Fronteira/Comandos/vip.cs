@@ -39,7 +39,7 @@ namespace MeuNamespace
                 {
                     Mobile from = sender.Mobile;
                     from.SendMessage("Acesso ao conteúdo VIP concedido!");
-                    from.MoveToWorld(new Point3D(6363, 2572, 0), Map.Trammel);
+                    from.MoveToWorld(new Point3D(6173, 22, 0), Map.Felucca);
                 }
             }
         }
