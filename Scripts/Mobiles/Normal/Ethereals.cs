@@ -644,6 +644,36 @@ namespace Server.Mobiles
         }
     }
 
+    public class EtherealUnicornio : EtherealMount
+    {
+        [Constructable]
+        public EtherealUnicornio() : base(0x20DD, 0x3EAA, 0x3EA0)
+        {
+            Name = "Unicórnio Mágico";
+            StatueHue = 2040;
+            TransparentMountedHue = 2046;
+        }
+        public EtherealUnicornio(Serial serial)
+            : base(serial)
+        {
+        }
+
+        public override void Serialize(GenericWriter writer)
+        {
+            base.Serialize(writer);
+
+            writer.Write((int)0); // version
+        }
+
+        public override void Deserialize(GenericReader reader)
+        {
+            base.Deserialize(reader);
+
+            int version = reader.ReadInt();
+
+        }
+    }
+
     public class EtherealTarantulaFantasma : EtherealMount
     {
         public override int LabelNumber { get { return 1157081; } } // Tarantula Statuette
