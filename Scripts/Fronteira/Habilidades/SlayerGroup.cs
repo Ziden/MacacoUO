@@ -786,5 +786,57 @@ namespace Server.Items
         {
             return Groups[Utility.Random(Groups.Length)].Super.Name;
         }
+
+        public static Tuple<string, string> GetSlayerForCreature(BaseCreature creature)
+        {
+            //Console.WriteLine($"Verificando criatura: {creature.GetType().Name}, tipo: {creature.GetType()}");
+
+            foreach (SlayerEntry entry in m_TotalEntries)
+            {
+                if (entry != null)
+                {
+                    //Console.WriteLine($"Verificando entry: {entry.Name}");
+
+                    if (entry.Types != null)
+                    {
+                        foreach (Type t in entry.Types)
+                        {
+                            //Console.WriteLine($"Tipo em entry: {t.Name}");
+
+                            if (t == creature.GetType())
+                            {
+                                //Console.WriteLine("Match encontrado!");
+
+                                string slayer = entry.Name.ToString();
+                                string superSlayer = entry.Group.Super.Name.ToString();
+
+                                //Console.WriteLine($"Criatura {creature.GetType().Name} tem slayer: {slayer} e super slayer: {superSlayer}");
+
+                                return new Tuple<string, string>(slayer, superSlayer);
+
+                            }
+                        }
+                    }
+                }
+            }
+            //Console.WriteLine($"Nenhum slayer encontrado para a criatura: {creature.GetType().Name}");
+            return new Tuple<string, string>(null, null);
+        }
+
+        public static Tuple<string, string> GetCachedSlayerInfo(BaseCreature creature)
+        {
+            if (creature.SlayerInfo != null)
+            {
+                // SlayerInfo já está preenchido, retorna o valor armazenado
+                return creature.SlayerInfo;
+            }
+            else
+            {
+                // Chama o método GetSlayerForCreature para obter o slayer e o super slayer
+                Tuple<string, string> slayerInfo = GetSlayerForCreature(creature);
+                creature.SlayerInfo = slayerInfo; // Armazena o valor retornado no campo SlayerInfo
+                return slayerInfo;
+            }
+        }        
     }
 }

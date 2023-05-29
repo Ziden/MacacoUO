@@ -209,7 +209,7 @@ namespace Server.Misc
 
             // Formuleta simplona de up
             var gc = GC_INICIAL + (gcBonus * 4);
-            Shard.Debug("GC INICIAL: " + gc);
+            //Shard.Debug("GC INICIAL: " + gc);
             if(skillDifficulty==SkillInfo.HARD)
             {
                 gc -= 0.05;
@@ -263,8 +263,8 @@ namespace Server.Misc
 
         public static bool CheckSkill(Mobile from, Skill skill, object amObj, double chance, double mult)
         {
-            if (Shard.DebugEnabled)
-                Shard.Debug("Check skill " + skill.SkillName+" mult=" +mult, from);
+            //if (Shard.DebugEnabled)
+            //    Shard.Debug("Check skill " + skill.SkillName+" mult=" +mult, from);
 
             if (from.Skills.Cap == 0)
                 return false;
@@ -322,8 +322,8 @@ namespace Server.Misc
                 gc -= 1;
             }
 
-            if(Shard.DebugEnabled)
-                Shard.Debug("MULT: " + mult + " GC BONUS " + gcBonus+" GC "+gc);
+            //if(Shard.DebugEnabled)
+            //    Shard.Debug("MULT: " + mult + " GC BONUS " + gcBonus+" GC "+gc);
 
             if (AllowGain(from, skill, amObj))
             {

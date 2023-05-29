@@ -93,7 +93,7 @@ namespace Server.Misc
 
             var regen = TimeSpan.FromSeconds(1.0 / (0.15 * (2 + bonus)));
 
-            Shard.Debug("Stam regen: " + regen.TotalSeconds + " Bonus " + bonus, from);
+            //Shard.Debug("Stam regen: " + regen.TotalSeconds + " Bonus " + bonus, from);
 
             return regen;
         }
@@ -193,9 +193,10 @@ namespace Server.Misc
                 else if (CheckTransform(from, typeof(LichFormSpell)))
                     rate -= 0.35;
 
-                if (from is PlayerMobile)
-                    Shard.Debug("Meditation Rate: " + rate, from);
-                else if (from is BaseCreature)
+                //if (from is PlayerMobile)
+                    //Shard.Debug("Meditation Rate: " + rate, from);
+                //else 
+                if (from is BaseCreature)
                     rate -= ((BaseCreature)from).DefaultManaRegen / 10;
 
 

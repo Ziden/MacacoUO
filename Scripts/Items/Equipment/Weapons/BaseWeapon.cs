@@ -4490,9 +4490,17 @@ namespace Server.Items
                         bonus += 16;
                         break;
                     case CraftResource.Carmesim:
-                        bonus += 18;
+                        if (this is BaseStaff)
+                            bonus += 9;
+                        else
+                            bonus += 18;
                         break;
                     case CraftResource.Gelo:
+                        if (this is BaseStaff)
+                            bonus += 20;
+                        else
+                            bonus += 10;
+                        break;
                     case CraftResource.Adamantium:
                         bonus += 20;
                         break;
