@@ -417,6 +417,14 @@ namespace Server.Mobiles
         }
         #endregion
 
+        private Tuple<string, string> m_SlayerInfo;
+
+        public Tuple<string, string> SlayerInfo
+        {
+            get { return m_SlayerInfo; }
+            set { m_SlayerInfo = value; }
+        }
+
         public virtual Spell ChooseSpell()
         {
             return null;
@@ -7007,6 +7015,19 @@ namespace Server.Mobiles
 
             if (IsAmbusher)
                 list.Add(1155480); // Ambusher
+
+
+            Tuple<string, string> slayerInfo = SlayerGroup.GetCachedSlayerInfo(this);
+
+            if (slayerInfo.Item1 != null)
+            {
+                list.Add($"Slayer: {slayerInfo.Item1}");
+            }
+
+            if (slayerInfo.Item2 != null && slayerInfo.Item1 != slayerInfo.Item2)
+            {
+                list.Add($"Super Slayer: {slayerInfo.Item2}");
+            }
         }
 
         public bool IsPacifico()

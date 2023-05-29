@@ -40,7 +40,7 @@ namespace Server.Items
         {
             get
             {
-                return 30;
+                return 22;
             }
         }
 

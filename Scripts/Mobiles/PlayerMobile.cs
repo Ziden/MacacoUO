@@ -2356,8 +2356,8 @@ namespace Server.Mobiles
             if ((this.Criminal || this.Murderer) && this.Region is GuardedRegion)
             {
                 var region = this.Region as GuardedRegion;
-                if (region.IsGuardCandidate(this))
-                    region.MakeGuard(this);
+                //if (region.IsGuardCandidate(this))
+                //    region.MakeGuard(this);
             }
         }
 
