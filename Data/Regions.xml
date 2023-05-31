@@ -1411,6 +1411,7 @@
         <logoutDelay active="false" />
       </region>
     </region>
+
     <region type="TownRegion" name="New Haven">
       <rune name="New Haven City" />
       <rect x="3423" y="2480" width="111" height="143" />
@@ -1462,6 +1463,7 @@
         <rect x="3464" y="2488" width="16" height="11" />
       </region>
     </region>
+
     <region type="NoGuardCity" priority="50" name="Trinsic">
       <rect x="1856" y="2636" width="75" height="28" />
       <rect x="1816" y="2664" width="283" height="231" />
@@ -1868,11 +1870,11 @@
     <region type="ExploringDeepCreaturesRegion" name="Mercutio The Unsavory">
       <rect x="2580" y="1112" width="8" height="13" />
     </region>
-    <region type="DungeonRegion" priority="50" name="BlackthornDungeon">
+    <region type="BlackthornDungeon" priority="50" name="BlackthornDungeon">
       <rect x="6151" y="2301" width="413" height="539" />
       <go x="6430" y="2678" z="0" />
       <entrance x="6430" y="2678" />
-      <music name="Dungeon2" />
+      <music name="Dungeon9" />
     </region>
     <region type="BlackthornCastle" priority="51" name="Blackthorn Castle">
       <rect x="1503" y="1377" width="79" height="120" />
@@ -1929,6 +1931,9 @@
     </region>
     <region type="DungeonRegion" priority="50" name="Orc Cave">
       <go x="5137" y="2015" z="0" />
+      <rect x1="5281" y1="1283" x2="5373" y2="1386" />
+      <rect x1="5267" y1="1955" x2="5364" y2="2046" />
+      <rect x1="5127" y1="1941" x2="5164" y2="2024" />
       <entrance x="1014" y="1434" />
       <music name="Dungeon9" />
       <region type="ExploringDeepCreaturesRegion" name="Orc Engineer">
