@@ -164,7 +164,7 @@ namespace MeuNamespace
             {
                 for (int i = 0; i < count; i++)
                 {
-                    mobile.AddToBackpack(new ResurrectTokens());
+                    mobile.AddToBackpack(new ResurrectToken());
                 }
 
                 mobile.SendMessage($"Você recebeu {count} Resurrect Tokens.");
