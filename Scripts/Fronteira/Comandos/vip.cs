@@ -131,7 +131,7 @@ namespace MeuNamespace
                 if (from.AccessLevel >= AccessLevel.GameMaster)
                 {
                     //AddButton(160, 110, 4011, 4012, BrindeButtonID, GumpButtonType.Reply, 0);
-                    //AddLabel(200, 110, 0, "Resgatar Brinde");
+                   // AddLabel(200, 110, 0, "Resgatar Brinde do Mês");
                 }
             }
 
@@ -164,10 +164,10 @@ namespace MeuNamespace
             {
                 for (int i = 0; i < count; i++)
                 {
-                    mobile.AddToBackpack(new bag());
+                    mobile.AddToBackpack(new Bag());
                 }
 
-                mobile.SendMessage($"Você recebeu {count} Resurrect Tokens.");
+                mobile.SendMessage($"Você recebeu {count} ResurrectTokens.");
             }
 
             private bool CanRedeemBrinde(Mobile mobile)
