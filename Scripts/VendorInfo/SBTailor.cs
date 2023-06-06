@@ -66,7 +66,7 @@ namespace Server.Mobiles
                 Add(new GenericBuyInfo(typeof(Bandana), 6, 20, 0x1540, Utility.RandomDyedHue()));
                 Add(new GenericBuyInfo(typeof(SkullCap), 7, 20, 0x1544, Utility.RandomDyedHue()));
 
-                Add(new GenericBuyInfo(typeof(BoltOfCloth), 20, 1, 0xf95, 0, true));
+                Add(new GenericBuyInfo(typeof(BoltOfCloth), 70, 1, 0xf95, 0, true));
                 Add(new GenericBuyInfo(typeof(CottonSeeds), 15, 40, 0x0F24, 0, true));
                 //Add(new GenericBuyInfo(typeof(BoltOfOilCloth), 40, 40, 0xf95, 2001, true));
 
