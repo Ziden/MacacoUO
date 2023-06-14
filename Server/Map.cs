@@ -3170,7 +3170,7 @@ namespace Server
 
         public bool LineOfSight(object from, object dest)
         {
-            if (from == dest || (from is Mobile && ((Mobile)from).AccessLevel > AccessLevel.Player))
+            if (from == dest || (from is Mobile && ((Mobile)from).AccessLevel > AccessLevel.VIP))
             {
                 return true;
             }
@@ -3185,7 +3185,7 @@ namespace Server
 
         public bool LineOfSight(Mobile from, Point3D target)
         {
-            if (from.AccessLevel > AccessLevel.Player)
+            if (from.AccessLevel > AccessLevel.VIP)
             {
                 return true;
             }
@@ -3199,7 +3199,7 @@ namespace Server
 
         public bool LineOfSight(Mobile from, Mobile to)
         {
-            if (from == to || from.AccessLevel > AccessLevel.Player)
+            if (from == to || from.AccessLevel > AccessLevel.VIP)
             {
                 return true;
             }
