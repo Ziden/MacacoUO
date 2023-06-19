@@ -304,17 +304,18 @@ namespace Server.Items
             Map.Trammel,
             new[]
             {
-                new PMEntry(new Point3D(2455, 1213, 7), 1012003, "Cove"), // Cove
+                new PMEntry(new Point3D(1336, 1999, 2), 1012004, "Britain"), // Britain
+                new PMEntry(new Point3D(2711, 2234, 0), "Bucaneer's Den"), // Buccaneer's Den
+                new PMEntry(new Point3D(2455, 1215, 5), 1012003, "Cove"), // Cove
+                new PMEntry(new Point3D(5237, 3868, 47), "Terras Perdidas"), //Delucia
+                new PMEntry(new Point3D(3450, 2679, 27), 1078098, "Haven"), // New Haven
+                new PMEntry(new Point3D(1499, 3773, 2), 1012005, "Jhelom"), // Jhelom
+                new PMEntry(new Point3D(3563, 2141, Map.Trammel.GetAverageZ(3563, 2139)), 1012010, "Magincia"), // (New) Magincia
+                new PMEntry(new Point3D(2701, 694, 4), 1012007, "Minoc"), // Minoc
                 new PMEntry(new Point3D(4467, 1285, 2), 1012003, "Moonglow"), // Moonglow
-				new PMEntry(new Point3D(1336, 1999, 2), 1012004, "Britain"), // Britain
-				new PMEntry(new Point3D(1499, 3773, 2), 1012005, "Jhelom"), // Jhelom
-                new PMEntry(new Point3D(771, 754, 4), 1012006, "Yew"), // Yew
-				new PMEntry(new Point3D(2701, 694, 4), 1012007, "Minoc"), // Minoc
-				new PMEntry(new Point3D(1828, 2950, -23), 1012008, "Trinsic"), // Trinsic
-				new PMEntry(new Point3D(643, 2069, 4), 1012009, "Skara Brae"), // Skara Brae
-				/* Dynamic Z for Magincia to support both old and new maps. */
-				new PMEntry(new Point3D(3563, 2141, Map.Trammel.GetAverageZ(3563, 2139)), 1012010, "Magincia"), // (New) Magincia
-				new PMEntry(new Point3D(3450, 2679, 27), 1078098, "Haven") // New Haven
+                new PMEntry(new Point3D(643, 2069, 4), 1012009, "Skara Brae"), // Skara Brae
+                new PMEntry(new Point3D(1828, 2950, -23), 1012008, "Trinsic"), // Trinsic
+                new PMEntry(new Point3D(771, 754, 4), 1012006, "Yew") // Yew
             }, cost: 100);
 
         public static readonly PMList Felucca = new PMList(
@@ -335,49 +336,55 @@ namespace Server.Items
 				new PMEntry(new Point3D(2711, 2234, 0), 1019001) // Buccaneer's Den
 			}, cost: 100);
 
-        public static readonly PMList Dungeons = new PMList(
+/*        public static readonly PMList Dungeons = new PMList(
           "Ilshenar",
           "Ilshenar",
-          Map.Ilshenar,
+          Map.Trammel,
           new[]
           {
-                new PMEntry(new Point3D(828, 1203, -70), "1. Mistas City "),
-                new PMEntry(new Point3D(1527, 1340, -3), "2. Espiritualidade "),
-                new PMEntry(new Point3D(287, 1019, 0), "3. Humildade"),
-                new PMEntry(new Point3D(1215, 467, -13), "4. Compaixão "),
-                new PMEntry(new Point3D(528, 211, -42), "5. Valentia "),
-          }, cost: 100);
-
+              new PMEntry(new Point3D(3785,1109, 21), "5. Caverna de Cristal"),
+              new PMEntry(new Point3D(2924, 3409, 6), "4. Caverna de Fogo"),
+              new PMEntry(new Point3D(1298, 1081, 5), "2. Despise"),
+              new PMEntry(new Point3D(1176, 2637, 5), "8. Destard"),
+              new PMEntry(new Point3D(4721, 3817, 5), "1. Hyloth"),
+              new PMEntry(new Point3D(4191, 3269, 0), "9. Submundo"),
+              new PMEntry(new Point3D(2043, 227, 14), "3. Wrong"),
+              new PMEntry(new Point3D(5451, 3096, -31), "9. Terathan/Paroxymus"),
+          }, cost: 800);
+*/
         public static readonly PMList Lugares = new PMList(
           "Dungeons Avançadas",
           "Dungeons Avançadas",
           Map.Trammel,
           new[]
           {
-              new PMEntry(new Point3D(4721, 3817, 5), "1. Hyloth"),
-              new PMEntry(new Point3D(1298, 1081, 5), "2. Despise"),
-              new PMEntry(new Point3D(2043, 227, 14), "3. Wrong"),
-              new PMEntry(new Point3D(2924, 3409, 6), "4. Caverna de Fogo"),
-              new PMEntry(new Point3D(3785,1109, 21), "5. Caverna de Cristal"),
-              new PMEntry(new Point3D(1482, 1474, 0), "6. Castelo Blackthorn"),
-              new PMEntry(new Point3D(6430, 2678, 0), "7. Castelo Blackthorn Dentro (PK)"),
-              new PMEntry(new Point3D(1176, 2637, 5), "8. Destard"),
-              new PMEntry(new Point3D(4191, 3269, 0), "9. Submundo"),
-              new PMEntry(new Point3D(5237, 3866, 45), "10. Terras Perdidas"),
-             //    new PMEntry(new Point3D(2494, 927, 0), "1. Covetous"),
-          }, cost: 100);
+              new PMEntry(new Point3D(3785,1109, 21), "1. Caverna de Cristal"),
+              new PMEntry(new Point3D(2924, 3409, 6), "2. Caverna de Fogo"),
+              new PMEntry(new Point3D(1298, 1081, 5), "3. Despise"),
+              new PMEntry(new Point3D(1176, 2637, 5), "4. Destard"),
+              new PMEntry(new Point3D(4721, 3817, 5), "5. Hyloth"),
+              new PMEntry(new Point3D(4191, 3269, 0), "6. Submundo"),
+              new PMEntry(new Point3D(2043, 227, 14), "7. Wrong"),
+              new PMEntry(new Point3D(5451, 3096, -31), "8. Terathan/Paroxymus"),
+              new PMEntry(new Point3D(6013, 3778, 21), "9.  Kaldun"),
+          }, cost: 300);
 
         public static readonly PMList Pontos = new PMList(
-          "Especiais",
-          "Especiais",
-          Map.Trammel,
+          "Dungeons Superiores",
+          "Dungeons Superiores",
+          Map.Ilshenar,
           new[]
-          {
-              new PMEntry(new Point3D(747, 2162, 0), "Guilda Ranger"),
-              new PMEntry(new Point3D(2711, 2234, 0), "Bucaneer's Den"), // Buccaneer's Den
-              new PMEntry(new Point3D(5219, 3923, 39), "Delucia"),
-              new PMEntry(new Point3D(4052, 563, 9), "Ice Island"),
-          }, cost: 100);
+          { 
+              new PMEntry(new Point3D(940, 504, -30), "Ancient Lair"),
+              new PMEntry(new Point3D(1747, 1228, -1), "Blood "),
+              new PMEntry(new Point3D(835, 777, -80), "Exodus"),
+              new PMEntry(new Point3D(1788, 573, 70), "Rock "),
+              new PMEntry(new Point3D(548, 462, -53), "Sorceres"),
+              new PMEntry(new Point3D(1420, 912, -15), "Spectre"),
+              new PMEntry(new Point3D(651, 1302, -58), "Wisp"),
+              new PMEntry(new Point3D(957, 640, -80), "Templo de Seth"),
+              new PMEntry(new Point3D(1039, 587, -80), "Twisted "),
+           }, cost: 500);
 
         public static readonly PMList Ilshenar = new PMList(
             1012002,
@@ -426,10 +433,10 @@ namespace Server.Items
                 new PMEntry(new Point3D(850, 3525, -38), 1113603), // Royal City
 			});
 
-        public static readonly PMList[] UORLists = { Trammel, Dungeons, Lugares, Pontos };
-        public static readonly PMList[] UORListsYoung = { Trammel, Dungeons, Lugares, Pontos };
-        public static readonly PMList[] LBRLists = { Trammel, Dungeons, Lugares, Pontos };
-        public static readonly PMList[] LBRListsYoung = { Trammel, Dungeons, Lugares, Pontos };
+        public static readonly PMList[] UORLists = { Trammel, /*Dungeons,*/ Lugares, Pontos };
+        public static readonly PMList[] UORListsYoung = { Trammel, /*Dungeons,*/ Lugares, Pontos };
+        public static readonly PMList[] LBRLists = { Trammel, /*Dungeons,*/ Lugares, Pontos };
+        public static readonly PMList[] LBRListsYoung = { Trammel, /*Dungeons,*/ Lugares, Pontos };
         public static readonly PMList[] AOSLists = { Trammel, Felucca, Ilshenar, Malas };
         public static readonly PMList[] AOSListsYoung = { Trammel, Ilshenar, Malas };
         public static readonly PMList[] SELists = { Trammel, Felucca, Ilshenar, Malas, Tokuno };
@@ -647,7 +654,7 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 360, 280, 9350); // 280: a largura do objeto 280: a altura do objeto
+            AddBackground(0, 0, 400, 400, 9350); // 280: a largura do objeto 280: a altura do objeto
 
             AddButton(10, 210, 30533, 30534, 1, GumpButtonType.Reply, 0);
             AddHtmlLocalized(45, 210, 140, 25, 1011036, false, false); // OKAY 30533
@@ -674,6 +681,8 @@ namespace Server.Items
                     AddHtml(30, 35 + (i * 25), 150, 20, "Dungeons", false, false);
                 */
                 AddHtml(30, 35 + (i * 25), 150, 20, checkLists[i].Number, false, false);
+
+                AddHtmlLocalized(5, 5, 200, 20, "Dragonic Shard", false, false);
             }
 
 
@@ -755,7 +764,7 @@ namespace Server.Items
             */
             else if (SpellHelper.CheckCombat(m_Mobile))
             {
-                m_Mobile.SendLocalizedMessage(1005564, "", 0x22); // Wouldst thou flee during the heat of battle??
+                m_Mobile.SendLocalizedMessage(1005564, "", 0x22); // Você fugiria durante o calor da batalha??
                 return;
             }
             else if (m_Mobile.Spell != null)
