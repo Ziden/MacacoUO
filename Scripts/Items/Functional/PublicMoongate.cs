@@ -682,7 +682,6 @@ namespace Server.Items
                 */
                 AddHtml(30, 35 + (i * 25), 150, 20, checkLists[i].Number, false, false);
 
-                AddHtmlLocalized(5, 5, 200, 20, "Dragonic Shard", false, false);
             }
 
 
