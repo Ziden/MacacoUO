@@ -107,8 +107,7 @@ namespace MeuNamespace
                 Point3D initialLocation = PlayerInitialLocations[from];
 
                 // Retornar à localização inicial ao deslogar
-                from.MoveToWorld(initialLocation, from.Map);
-
+                from.MoveToWorld(new Point3D(349, 15, -1), Map.Malas);
                 // Remover o jogador da lista para evitar contagens e localizações incorretas
                 PlayerUsageCount.Remove(from);
                 PlayerInitialLocations.Remove(from);
@@ -123,7 +122,8 @@ namespace MeuNamespace
             public VIPGump(Mobile from) : base(10, 10)
             {
                 AddPage(0);
-                AddBackground(0, 0, 300, 200, 5054);
+                AddBackground(0, 0, 300, 200, 40000);
+                AddHtml(30, 20, 240, 80, "Seja bem-vindo à DG VIP! Deseja acessar agora?", true, true);
                 AddHtml(30, 20, 240, 80, "Seja bem-vindo à DG VIP! Deseja acessar agora?", true, true);
                 AddButton(60, 110, 1209, 1210, 1, GumpButtonType.Reply, 0);
                 AddLabel(100, 110, 0, "Entrar");
@@ -141,7 +141,7 @@ namespace MeuNamespace
                 {
                     Mobile from = sender.Mobile;
                     from.SendMessage("Acesso ao conteúdo VIP concedido!");
-                    from.MoveToWorld(new Point3D(6173, 22, 0), Map.Felucca);
+                    from.MoveToWorld(new Point3D(349, 15, -1), Map.Malas);
                 }
                 else if (info.ButtonID == BrindeButtonID)
                 {
