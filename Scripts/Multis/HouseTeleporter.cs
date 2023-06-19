@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 using Server.ContextMenus;
 using Server.Gumps;
 using Server.Multis;
@@ -16,10 +15,7 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public BaseHouse House
         {
-            get
-            {
-                return BaseHouse.FindHouseAt(this);
-            }
+            get { return BaseHouse.FindHouseAt(this); }
         }
 
         [Constructable]
@@ -32,9 +28,7 @@ namespace Server.Items
             : base(itemID)
         {
             Movable = false;
-
             m_Level = SecureLevel.Anyone;
-
             m_Target = target;
         }
 
@@ -46,27 +40,17 @@ namespace Server.Items
         [CommandProperty(AccessLevel.GameMaster)]
         public Item Target
         {
-            get
-            {
-                return m_Target;
-            }
-            set
-            {
-                m_Target = value;
-            }
+            get { return m_Target; }
+            set { m_Target = value; }
         }
+
         [CommandProperty(AccessLevel.GameMaster)]
         public SecureLevel Level
         {
-            get
-            {
-                return m_Level;
-            }
-            set
-            {
-                m_Level = value;
-            }
+            get { return m_Level; }
+            set { m_Level = value; }
         }
+
         public virtual bool CheckAccess(Mobile m)
         {
             BaseHouse house = BaseHouse.FindHouseAt(this);
@@ -89,6 +73,19 @@ namespace Server.Items
                 return false;
             }
 
+            if (m_Target != null && m_Target is HouseTeleporter)
+            {
+                HouseTeleporter targetTeleporter = (HouseTeleporter)m_Target;
+
+                BaseHouse targetHouse = BaseHouse.FindHouseAt(targetTeleporter);
+
+                if (targetHouse != null && targetHouse != house)
+                {
+                    m.SendMessage("Você só pode usar esse teleportador dentro da mesma casa.");
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -101,9 +98,9 @@ namespace Server.Items
 
             if (m.InCombat())
             {
-                m.SendMessage("Voce esta em combate");
+                m.SendMessage("Você está em combate.");
                 return true;
-            }     
+            }
 
             if (m_Target != null && !m_Target.Deleted)
             {
