@@ -28,7 +28,7 @@ namespace Server.Scripts.Commands
     {
         public static void Initialize()
         {		
-            CommandSystem.Register("e", AccessLevel.Player, new CommandEventHandler(Emote_OnCommand));
+            CommandSystem.Register("e", AccessLevel.Owner, new CommandEventHandler(Emote_OnCommand));
         }
 
         [Usage("<sound>")]
