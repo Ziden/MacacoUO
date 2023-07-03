@@ -13,6 +13,7 @@ using Server.Spells;
 using Server.Targeting;
 using Server.Targets;
 using Server.Engines.PartySystem;
+using Newtonsoft.Json;
 
 namespace Server.Commands
 {
@@ -76,6 +77,7 @@ namespace Server.Commands
             
             Register("PvMTag", AccessLevel.Player, new CommandEventHandler(PvMTag_OnCommand));
             Register("AddPvMTag", AccessLevel.GameMaster, new CommandEventHandler(AddPvMTag_OnCommand));
+            EventSink.ServerStarted += new ServerStartedEventHandler(ResetPvMTags);
         }
 
         public static void Register(string command, AccessLevel access, CommandEventHandler handler)
@@ -83,8 +85,7 @@ namespace Server.Commands
             CommandSystem.Register(command, access, handler);
         }
 
-        public static Dictionary<int, DateTime> PvMTagCooldown = new Dictionary<int, DateTime>();
-        public static Dictionary<int, int> PvMTagUseCount = new Dictionary<int, int>(); // nova variável criada para a contagem
+        
 
         [Usage("PvMTag")]
         [Description("Adiciona tag PvM por 150k por 2 horas.")]
@@ -111,13 +112,18 @@ namespace Server.Commands
             {
                 // VIPs podem usar o comando 3x por dia
                 DateTime lastUse;
-                PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
+                PlayerMobile.PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
                 var now = DateTime.UtcNow;
 
                 if (lastUse > now.AddHours(-24))
                 {          
                     int count;
-                    PvMTagUseCount.TryGetValue(player.Serial, out count); // obtém a contagem do jogador
+                    PlayerMobile.PvMTagUseCount.TryGetValue(player.Serial, out count); // obtém a contagem do jogador
+
+                    if (lastUse < now.AddHours(-24))
+                    {
+                        PlayerMobile.PvMTagUseCount[player.Serial] = 0; // Reset the count if a day has passed since the last use
+                    }
 
                     if (count >= 3) // verifica se o jogador já usou o comando 3 vezes hoje
                     {
@@ -131,14 +137,18 @@ namespace Server.Commands
             {
                 // PLayers normais apenas 1 vez
                 DateTime lastUse;
-                PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
+                PlayerMobile.PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
 
                 var now = DateTime.UtcNow;
                 if (lastUse > now.AddHours(-24))        
                 {            
                     TimeSpan cooldownRemaining = lastUse.AddHours(24) - now;
-                    player.SendMessage("Você já usou esse comando recentemente. Por favor, espere até {0} ({1} horas e {2}  minutos) antes de usar novamente.", lastUse.AddHours(24), (int)cooldownRemaining.TotalHours, (int)cooldownRemaining.Minutes);
+                    player.SendMessage("Você já usou esse comando recentemente. Por favor, espere até {0} ({1} horas e {2}  minutos) antes de usar novamente.", lastUse, (int)cooldownRemaining.TotalHours, (int)cooldownRemaining.Minutes);
                     return;
+                }
+                if (lastUse < now.AddHours(-24))
+                {
+                    PlayerMobile.PvMTagUseCount[player.Serial] = 0; // Reset the count if a day has passed since the last use
                 }
             }
 
@@ -172,12 +182,13 @@ namespace Server.Commands
             });
 
             player.PlaySound(0x5C3);
-            PvMTagCooldown[player.Serial] = DateTime.UtcNow;
+            PlayerMobile.PvMTagCooldown[player.Serial] = DateTime.UtcNow;
 
             int useCount;
-            PvMTagUseCount.TryGetValue(player.Serial, out useCount); // obtém a contagem do jogador
-            PvMTagUseCount[player.Serial] = useCount + 1; // incrementa a contagem do jogador
+            PlayerMobile.PvMTagUseCount.TryGetValue(player.Serial, out useCount); // obtém a contagem do jogador
+            PlayerMobile.PvMTagUseCount[player.Serial] = useCount + 1; // incrementa a contagem do jogador
         }
+        
         private class PvMTagConfirmGump : Gump
         {
             private readonly PlayerMobile _player;
@@ -246,6 +257,41 @@ namespace Server.Commands
             }
         }
 
+        public static void ResetPvMTags()
+        {
+            List<PlayerMobile> players = new List<PlayerMobile>();
+
+            foreach (Mobile mobile in World.Mobiles.Values)
+            {
+                if (mobile is PlayerMobile player)
+                {
+                    players.Add(player);
+                }
+            }
+
+            foreach (PlayerMobile player in players)
+            {
+                DateTime lastUse;
+                PlayerMobile.PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
+                Console.WriteLine($"Ultimo uso de {player.Name} foi em {lastUse}");
+
+                var now = DateTime.UtcNow;
+                if (lastUse > now.AddHours(-24))
+                {
+                    //player.HasPvMTag = true;
+                    Console.WriteLine($"Mantido tagpvm de {player.Name}");
+                    Timer.DelayCall(TimeSpan.FromHours(2), () =>
+                    {
+                        player.HasPvMTag = false;
+                    });
+                }
+                else if (player.HasPvMTag == true)
+                {
+                    player.HasPvMTag = false;
+                    Console.WriteLine($"Retirado tagpvm de {player.Name}");
+                }
+            }
+        }
 
         [Usage("Where")]
         [Description("Diz ao jogador que comanda suas coordenadas, região e faceta.")]
