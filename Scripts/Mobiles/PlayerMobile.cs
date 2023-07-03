@@ -1,4 +1,3 @@
-
 #region References
 using System;
 using System.Collections;
@@ -208,6 +207,12 @@ namespace Server.Mobiles
 
         [CommandProperty(AccessLevel.GameMaster)]
         public ElementoData Elementos { get { return _elemento; } set { _elemento = value; } }
+
+        public static Dictionary<int, DateTime> PvMTagCooldown = new Dictionary<int, DateTime>();
+        public static Dictionary<int, DateTime> PvMTagScrollCooldown = new Dictionary<int, DateTime>();
+        public static Dictionary<int, int> PvMTagUseCount { get; set; } = new Dictionary<int, int>();
+
+
 
         [CommandProperty(AccessLevel.GameMaster)]
         public PatenteRP PatenteRP
@@ -5823,6 +5828,38 @@ namespace Server.Mobiles
             int version = reader.ReadInt();
             switch (version)
             {
+                
+                case 56:
+                    // Desserializa PvMTagCooldown
+                    int count = reader.ReadInt();
+                    PvMTagCooldown = new Dictionary<int, DateTime>(count);
+                    for (int i = 0; i < count; i++)
+                    {
+                        int key = reader.ReadInt();
+                        DateTime value = reader.ReadDateTime();
+                        PvMTagCooldown[key] = value;
+                    }
+
+                    // Desserializa PvMTagScrollCooldown
+                    count = reader.ReadInt();
+                    PvMTagScrollCooldown = new Dictionary<int, DateTime>(count);
+                    for (int i = 0; i < count; i++)
+                    {
+                        int key = reader.ReadInt();
+                        DateTime value = reader.ReadDateTime();
+                        PvMTagScrollCooldown[key] = value;
+                    }
+
+                    // Desserializa PvMTagUseCount
+                    count = reader.ReadInt();
+                    PvMTagUseCount = new Dictionary<int, int>(count);
+                    for (int i = 0; i < count; i++)
+                    {
+                        int key = reader.ReadInt();
+                        int value = reader.ReadInt();
+                        PvMTagUseCount[key] = value;
+                    }
+                    goto case 55;
                 case 55:
                     m_EventCalendarAccount = reader.ReadItem() as EventCalendarAccount;
                     goto case 54;
@@ -6049,13 +6086,13 @@ namespace Server.Mobiles
                             m_Quest.From = this;
                         }
 
-                        int count = reader.ReadEncodedInt();
+                        int ct = reader.ReadEncodedInt();
 
-                        if (count > 0)
+                        if (ct > 0)
                         {
                             m_DoneQuests = new List<QuestRestartInfo>();
 
-                            for (int i = 0; i < count; ++i)
+                            for (int i = 0; i < ct; ++i)
                             {
                                 Type questType = QuestSerializer.ReadType(QuestSystem.QuestTypes, reader);
                                 DateTime restartTime;
@@ -6339,7 +6376,31 @@ namespace Server.Mobiles
             CheckKillDecay();
             CheckAtrophies(this);
             base.Serialize(writer);
-            writer.Write(55); // version
+            writer.Write(56); // version
+            // Serializa PvMTagCooldown
+            writer.Write(PvMTagCooldown.Count);
+            foreach (KeyValuePair<int, DateTime> kvp in PvMTagCooldown)
+            {
+                writer.Write(kvp.Key);
+                writer.Write(kvp.Value);
+            }
+
+            // Serializa PvMTagScrollCooldown
+            writer.Write(PvMTagScrollCooldown.Count);
+            foreach (KeyValuePair<int, DateTime> kvp in PvMTagScrollCooldown)
+            {
+                writer.Write(kvp.Key);
+                writer.Write(kvp.Value);
+            }
+
+            // Serializa PvMTagUseCount
+            writer.Write(PvMTagUseCount.Count);
+            foreach (KeyValuePair<int, int> kvp in PvMTagUseCount)
+            {
+                writer.Write(kvp.Key);
+                writer.Write(kvp.Value);
+            }
+            
             writer.Write(m_EventCalendarAccount);
             writer.Write(BonusPeso);
             writer.Write(PassoWispGuia);
@@ -6368,7 +6429,6 @@ namespace Server.Mobiles
             }
 
             writer.Write(_BlessedItem);
-
             writer.Write((int)m_ExploringTheDeepQuest);
 
             // Version 31/32 Titles
