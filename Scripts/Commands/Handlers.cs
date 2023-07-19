@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Server.Commands.Generic;
 using Server.Gumps;
-//using Server.Items;
+using Server.Items;
 using Server.Menus.ItemLists;
 using Server.Menus.Questions;
 using Server.Mobiles;
@@ -13,7 +13,7 @@ using Server.Spells;
 using Server.Targeting;
 using Server.Targets;
 using Server.Engines.PartySystem;
-//using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace Server.Commands
 {
@@ -75,9 +75,9 @@ namespace Server.Commands
 
             Register("SpeedBoost", AccessLevel.Counselor, new CommandEventHandler(SpeedBoost_OnCommand));
             
-            Register("PvMTag", AccessLevel.Player, new CommandEventHandler(PvMTag_OnCommand));
-            Register("AddPvMTag", AccessLevel.GameMaster, new CommandEventHandler(AddPvMTag_OnCommand));
-            EventSink.ServerStarted += new ServerStartedEventHandler(ResetPvMTags);
+            //Register("PvMTag", AccessLevel.Player, new CommandEventHandler(PvMTag_OnCommand));
+            //Register("AddPvMTag", AccessLevel.GameMaster, new CommandEventHandler(AddPvMTag_OnCommand));
+            //EventSink.ServerStarted += new ServerStartedEventHandler(ResetPvMTags);
         }
 
         public static void Register(string command, AccessLevel access, CommandEventHandler handler)
@@ -86,7 +86,7 @@ namespace Server.Commands
         }
 
         
-
+/*
         [Usage("PvMTag")]
         [Description("Adiciona tag PvM por 150k por 2 horas.")]
         public static void PvMTag_OnCommand(CommandEventArgs e)
@@ -292,7 +292,7 @@ namespace Server.Commands
                 }
             }
         }
-
+*/
         [Usage("Where")]
         [Description("Diz ao jogador que comanda suas coordenadas, região e faceta.")]
         public static void Where_OnCommand(CommandEventArgs e)
