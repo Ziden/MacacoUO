@@ -391,13 +391,10 @@ namespace Server.Items
             m_Gate = gate;
 
             AddPage(0);
-            AddBackground(20, 32, 301, 119, 9200);
-            AddItem(34, 38, 3948);
-            AddHtml(104, 44, 200, 64, @"Voce tem certeza que deseja entrar no portal ?", (bool)false, (bool)false);
-            AddItem(18, 103, 3245);
-            AddItem(55, 103, 3247);
-            AddButton(245, 119, 247, 248, 1, GumpButtonType.Reply, 0);
-            AddButton(103, 118, 242, 242, 0, GumpButtonType.Reply, 0);
+            AddBackground(20, 32, 190, 90, 3500);
+            AddHtml(40, 44, 200, 64, @"Deseja entrar no portal?", (bool)false, (bool)false);
+            AddButton(140, 80, 30534, 30534, 1, GumpButtonType.Reply, 0); // ok
+            AddButton(60, 80, 30535, 30535, 0, GumpButtonType.Reply, 0); //cancelar
 
         }
 
