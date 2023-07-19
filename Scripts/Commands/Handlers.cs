@@ -751,7 +751,7 @@ namespace Server.Commands
                 }
                 catch (Exception ex)
                 {
-                    Diagnostics.ExceptionLogging.LogException(ex);
+                    //Diagnostics.ExceptionLogging.LogException(ex);
                 }
 
                 from.SendMessage("Region name not found");
