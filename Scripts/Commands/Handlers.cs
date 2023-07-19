@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 using Server.Commands.Generic;
 using Server.Gumps;
 using Server.Items;
@@ -12,8 +8,10 @@ using Server.Network;
 using Server.Spells;
 using Server.Targeting;
 using Server.Targets;
-using Server.Engines.PartySystem;
-using Newtonsoft.Json;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
 
 namespace Server.Commands
 {
@@ -21,63 +19,59 @@ namespace Server.Commands
     {
         public static void Initialize()
         {
-            CommandSystem.Prefix = ".";
+            CommandSystem.Prefix = "[";
 
-            Register("Go", AccessLevel.Counselor, new CommandEventHandler(Go_OnCommand));
+            Register("Go", AccessLevel.Counselor, Go_OnCommand);
 
-            Register("DropHolding", AccessLevel.Counselor, new CommandEventHandler(DropHolding_OnCommand));
+            Register("DropHolding", AccessLevel.Counselor, DropHolding_OnCommand);
 
-            Register("GetFollowers", AccessLevel.GameMaster, new CommandEventHandler(GetFollowers_OnCommand));
+            Register("GetFollowers", AccessLevel.GameMaster, GetFollowers_OnCommand);
 
-            Register("ClearFacet", AccessLevel.Administrator, new CommandEventHandler(ClearFacet_OnCommand));
+            Register("ClearFacet", AccessLevel.Administrator, ClearFacet_OnCommand);
 
-            Register("Where", AccessLevel.Player, new CommandEventHandler(Where_OnCommand));
+            Register("Where", AccessLevel.Counselor, Where_OnCommand);
 
-            Register("AutoPageNotify", AccessLevel.Counselor, new CommandEventHandler(APN_OnCommand));
-            Register("APN", AccessLevel.Counselor, new CommandEventHandler(APN_OnCommand));
+            Register("AutoPageNotify", AccessLevel.Counselor, APN_OnCommand);
+            Register("APN", AccessLevel.Counselor, APN_OnCommand);
 
-            Register("Animate", AccessLevel.GameMaster, new CommandEventHandler(Animate_OnCommand));
+            Register("Animate", AccessLevel.GameMaster, Animate_OnCommand);
 
-            Register("Cast", AccessLevel.Counselor, new CommandEventHandler(Cast_OnCommand));
+            Register("Cast", AccessLevel.Counselor, Cast_OnCommand);
 
-            Register("Stuck", AccessLevel.Counselor, new CommandEventHandler(Stuck_OnCommand));
+            Register("Stuck", AccessLevel.Counselor, Stuck_OnCommand);
 
-            Register("Help", AccessLevel.Player, new CommandEventHandler(Help_OnCommand));
+            Register("Help", AccessLevel.Player, Help_OnCommand);
 
-            Register("Save", AccessLevel.Administrator, new CommandEventHandler(Save_OnCommand));
-            Register("BackgroundSave", AccessLevel.Administrator, new CommandEventHandler(BackgroundSave_OnCommand));
-            Register("BGSave", AccessLevel.Administrator, new CommandEventHandler(BackgroundSave_OnCommand));
-            Register("SaveBG", AccessLevel.Administrator, new CommandEventHandler(BackgroundSave_OnCommand));
+            Register("Save", AccessLevel.Administrator, Save_OnCommand);
+            Register("BackgroundSave", AccessLevel.Administrator, BackgroundSave_OnCommand);
+            Register("BGSave", AccessLevel.Administrator, BackgroundSave_OnCommand);
+            Register("SaveBG", AccessLevel.Administrator, BackgroundSave_OnCommand);
 
-            Register("Move", AccessLevel.GameMaster, new CommandEventHandler(Move_OnCommand));
-            Register("Client", AccessLevel.Counselor, new CommandEventHandler(Client_OnCommand));
+            Register("Move", AccessLevel.GameMaster, Move_OnCommand);
+            Register("Client", AccessLevel.Counselor, Client_OnCommand);
 
-            Register("SMsg", AccessLevel.Counselor, new CommandEventHandler(StaffMessage_OnCommand));
-            Register("SM", AccessLevel.Counselor, new CommandEventHandler(StaffMessage_OnCommand));
-            Register("S", AccessLevel.Counselor, new CommandEventHandler(StaffMessage_OnCommand));
+            Register("SMsg", AccessLevel.Counselor, StaffMessage_OnCommand);
+            Register("SM", AccessLevel.Counselor, StaffMessage_OnCommand);
+            Register("S", AccessLevel.Counselor, StaffMessage_OnCommand);
 
-            Register("BCast", AccessLevel.GameMaster, new CommandEventHandler(BroadcastMessage_OnCommand));
-            Register("BC", AccessLevel.GameMaster, new CommandEventHandler(BroadcastMessage_OnCommand));
-            Register("B", AccessLevel.GameMaster, new CommandEventHandler(BroadcastMessage_OnCommand));
+            Register("BCast", AccessLevel.GameMaster, BroadcastMessage_OnCommand);
+            Register("BC", AccessLevel.GameMaster, BroadcastMessage_OnCommand);
+            Register("B", AccessLevel.GameMaster, BroadcastMessage_OnCommand);
 
-            Register("Bank", AccessLevel.GameMaster, new CommandEventHandler(Bank_OnCommand));
+            Register("Bank", AccessLevel.GameMaster, Bank_OnCommand);
 
-            Register("Echo", AccessLevel.Counselor, new CommandEventHandler(Echo_OnCommand));
+            Register("Echo", AccessLevel.Counselor, Echo_OnCommand);
 
-            Register("Sound", AccessLevel.GameMaster, new CommandEventHandler(Sound_OnCommand));
+            Register("Sound", AccessLevel.GameMaster, Sound_OnCommand);
 
-            Register("ViewEquip", AccessLevel.GameMaster, new CommandEventHandler(ViewEquip_OnCommand));
+            Register("ViewEquip", AccessLevel.GameMaster, ViewEquip_OnCommand);
 
-            Register("Light", AccessLevel.Counselor, new CommandEventHandler(Light_OnCommand));
-            Register("Stats", AccessLevel.Counselor, new CommandEventHandler(Stats_OnCommand));
+            Register("Light", AccessLevel.Counselor, Light_OnCommand);
+            Register("Stats", AccessLevel.Counselor, Stats_OnCommand);
 
-            Register("ReplaceBankers", AccessLevel.Administrator, new CommandEventHandler(ReplaceBankers_OnCommand));
+            Register("ReplaceBankers", AccessLevel.Administrator, ReplaceBankers_OnCommand);
 
-            Register("SpeedBoost", AccessLevel.Counselor, new CommandEventHandler(SpeedBoost_OnCommand));
-            
-            //Register("PvMTag", AccessLevel.Player, new CommandEventHandler(PvMTag_OnCommand));
-            //Register("AddPvMTag", AccessLevel.GameMaster, new CommandEventHandler(AddPvMTag_OnCommand));
-            //EventSink.ServerStarted += new ServerStartedEventHandler(ResetPvMTags);
+            Register("SpeedBoost", AccessLevel.Counselor, SpeedBoost_OnCommand);
         }
 
         public static void Register(string command, AccessLevel access, CommandEventHandler handler)
@@ -85,222 +79,14 @@ namespace Server.Commands
             CommandSystem.Register(command, access, handler);
         }
 
-        
-/*
-        [Usage("PvMTag")]
-        [Description("Adiciona tag PvM por 150k por 2 horas.")]
-        public static void PvMTag_OnCommand(CommandEventArgs e)
-        {
-            PlayerMobile player = e.Mobile as PlayerMobile;
-
-            if (player == null || player.Deleted || !player.Alive)
-                return;
-
-            if (player.HasPvMTag)
-            {
-                player.SendMessage("Você já tem uma tag PvM ativa.");
-                return;
-            }
-
-            if (SpellHelper.CheckCombat(player))
-            {
-                player.SendMessage("Voce não pode usar esse comando em combate!");
-                return;
-            }
-
-            if (player.AccessLevel >= AccessLevel.VIP)
-            {
-                // VIPs podem usar o comando 3x por dia
-                DateTime lastUse;
-                PlayerMobile.PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
-                var now = DateTime.UtcNow;
-
-                if (lastUse > now.AddHours(-24))
-                {          
-                    int count;
-                    PlayerMobile.PvMTagUseCount.TryGetValue(player.Serial, out count); // obtém a contagem do jogador
-
-                    if (lastUse < now.AddHours(-24))
-                    {
-                        PlayerMobile.PvMTagUseCount[player.Serial] = 0; // Reset the count if a day has passed since the last use
-                    }
-
-                    if (count >= 3) // verifica se o jogador já usou o comando 3 vezes hoje
-                    {
-                        TimeSpan cooldownRemaining = lastUse.AddHours(24) - now;
-                        player.SendMessage("Você já usou esse comando recentemente. Por favor, espere até {0} ({1} horas e {2}  minutos) antes de usar novamente.", lastUse.AddHours(24), (int)cooldownRemaining.TotalHours, (int)cooldownRemaining.Minutes);
-                        return;
-                    }
-                }
-            }
-            else
-            {
-                // PLayers normais apenas 1 vez
-                DateTime lastUse;
-                PlayerMobile.PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
-
-                var now = DateTime.UtcNow;
-                if (lastUse > now.AddHours(-24))        
-                {            
-                    TimeSpan cooldownRemaining = lastUse.AddHours(24) - now;
-                    player.SendMessage("Você já usou esse comando recentemente. Por favor, espere até {0} ({1} horas e {2}  minutos) antes de usar novamente.", lastUse, (int)cooldownRemaining.TotalHours, (int)cooldownRemaining.Minutes);
-                    return;
-                }
-                if (lastUse < now.AddHours(-24))
-                {
-                    PlayerMobile.PvMTagUseCount[player.Serial] = 0; // Reset the count if a day has passed since the last use
-                }
-            }
-
-            var gump = new PvMTagConfirmGump(player);
-            player.SendGump(gump);
-        }
-
-        private static void ActivatePvMTag(PlayerMobile player)
-        {
-            if (!Banker.Withdraw(player, 150000))
-            {
-                player.SendMessage("Voce precisa de 150.000 moedas de ouro no banco para isto, saldo insuficiente.");
-                return;
-            }
-
-            player.HasPvMTag = true;
-            player.SendMessage("Tag PvM ativada por 2h.");
-
-            var party = Party.Get(player);
-
-            if (party != null)
-            {
-                party.Remove(player);
-                player.SendMessage("Você saiu da sua party atual devido à ativação da Tag Jogador PvM.");
-            }
-
-            Timer.DelayCall(TimeSpan.FromHours(2), () =>
-            {
-                player.HasPvMTag = false;
-                player.SendMessage("Sua Tag PvM acabou.");
-            });
-
-            player.PlaySound(0x5C3);
-            PlayerMobile.PvMTagCooldown[player.Serial] = DateTime.UtcNow;
-
-            int useCount;
-            PlayerMobile.PvMTagUseCount.TryGetValue(player.Serial, out useCount); // obtém a contagem do jogador
-            PlayerMobile.PvMTagUseCount[player.Serial] = useCount + 1; // incrementa a contagem do jogador
-        }
-        
-        private class PvMTagConfirmGump : Gump
-        {
-            private readonly PlayerMobile _player;
-
-            public PvMTagConfirmGump(PlayerMobile player) : base(40, 40)
-            {
-                _player = player;
-
-                Closable = false;
-                Disposable = true;
-                Dragable = true;
-                Resizable = false;
-
-                AddPage(0);
-
-                AddBackground(0, 0, 304, 126, 9270);
-
-                AddLabel(50, 30, 0x34, "Tag PvM será ativada por 2h ao custo de 150k."); 
-                AddLabel(50, 50, 0x34, "Deseja ativar?");
-                AddButton(73, 70, 4005, 4006, 1, GumpButtonType.Reply, 0);
-                AddButton(177, 70, 4005, 4006, 0, GumpButtonType.Reply, 0);
-                AddLabel(100, 70, 0x34, "Sim");
-                AddLabel(204, 70, 0x34, "Não");
-            }
-
-            public override void OnResponse(NetState sender, RelayInfo info)
-            {
-                if (info.ButtonID == 1)
-                {
-                    // Activate PvMTag if player clicked "Yes"
-                    ActivatePvMTag(_player);
-                }
-                else
-                {
-                    _player.SendMessage("Comando cancelado.");
-                }
-            }
-        }
-
-        [Usage("AddPvMTag")]
-        [Description("Adiciona tag PvM a um jogador.")]
-        public static void AddPvMTag_OnCommand(CommandEventArgs e)
-        {
-            e.Mobile.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(AddPvMTag_OnTarget));
-            e.Mobile.SendMessage("Selecione o jogador que deseja adicionar a tag PvM");
-        }
-
-        public static void AddPvMTag_OnTarget(Mobile from, object obj)
-        {
-            if (obj is Mobile && ((Mobile)obj).Player)
-            {
-                PlayerMobile targ = obj as PlayerMobile;
-                targ.HasPvMTag = true;
-                from.SendMessage("Ativada tag PvM por 2h no jogador {0}.", targ);
-                Timer.DelayCall(TimeSpan.FromHours(2), () =>
-                {
-                    targ.HasPvMTag = false;
-                    targ.SendMessage("Sua Tag PvM acabou.");
-                });
-                targ.PlaySound(0x5C3);
-            }
-            else
-            {
-                from.SendMessage("Jogador não encontrado.");
-                return;
-            }
-        }
-
-        public static void ResetPvMTags()
-        {
-            List<PlayerMobile> players = new List<PlayerMobile>();
-
-            foreach (Mobile mobile in World.Mobiles.Values)
-            {
-                if (mobile is PlayerMobile player)
-                {
-                    players.Add(player);
-                }
-            }
-
-            foreach (PlayerMobile player in players)
-            {
-                DateTime lastUse;
-                PlayerMobile.PvMTagCooldown.TryGetValue(player.Serial, out lastUse);
-                Console.WriteLine($"Ultimo uso de {player.Name} foi em {lastUse}");
-
-                var now = DateTime.UtcNow;
-                if (lastUse > now.AddHours(-24))
-                {
-                    //player.HasPvMTag = true;
-                    Console.WriteLine($"Mantido tagpvm de {player.Name}");
-                    Timer.DelayCall(TimeSpan.FromHours(2), () =>
-                    {
-                        player.HasPvMTag = false;
-                    });
-                }
-                else if (player.HasPvMTag == true)
-                {
-                    player.HasPvMTag = false;
-                    Console.WriteLine($"Retirado tagpvm de {player.Name}");
-                }
-            }
-        }
-*/
         [Usage("Where")]
-        [Description("Diz ao jogador que comanda suas coordenadas, região e faceta.")]
+        [Description("Tells the commanding player his coordinates, region, and facet.")]
         public static void Where_OnCommand(CommandEventArgs e)
         {
             Mobile from = e.Mobile;
             Map map = from.Map;
 
-            from.SendMessage("Voce esta em {0} {1} {2} in {3}.", from.X, from.Y, from.Z, map);
+            from.SendMessage("You are at {0} {1} {2} in {3}.", from.X, from.Y, from.Z, map);
 
             if (map != null)
             {
@@ -319,17 +105,17 @@ namespace Server.Commands
                         reg = reg.Parent;
                     }
 
-                    from.SendMessage("Sua regiao e {0}.", builder.ToString());
+                    from.SendMessage("Your region is {0}.", builder.ToString());
                 }
             }
         }
 
         [Usage("DropHolding")]
-        [Description("Descarta o item, se houver, que o jogador alvo está segurando. O item é colocado em sua mochila ou, se estiver cheia, a seus pés.")]
+        [Description("Drops the item, if any, that a targeted player is holding. The item is placed into their backpack, or if that's full, at their feet.")]
         public static void DropHolding_OnCommand(CommandEventArgs e)
         {
-            e.Mobile.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(DropHolding_OnTarget));
-            e.Mobile.SendMessage("Mire no jogador para largar o que está segurando");
+            e.Mobile.BeginTarget(-1, false, TargetFlags.None, DropHolding_OnTarget);
+            e.Mobile.SendMessage("Target the player to drop what they are holding.");
         }
 
         public static void DropHolding_OnTarget(Mobile from, object obj)
@@ -341,7 +127,7 @@ namespace Server.Commands
 
                 if (held == null)
                 {
-                    from.SendMessage("Eles não estão segurando nada.");
+                    from.SendMessage("They are not holding anything.");
                 }
                 else
                 {
@@ -352,18 +138,18 @@ namespace Server.Commands
                         if (pe == null || pe.Handler != from)
                         {
                             if (pe == null)
-                                from.SendMessage("Você só pode usar este comando em alguém que o chamou.");
+                                from.SendMessage("You may only use this command on someone who has paged you.");
                             else
-                                from.SendMessage("Você só pode usar este comando se estiver lidando com sua página de ajuda.");
+                                from.SendMessage("You may only use this command if you are handling their help page.");
 
                             return;
                         }
                     }
 
                     if (targ.AddToBackpack(held))
-                        from.SendMessage("O item que eles seguravam foi colocado em sua mochila.");
+                        from.SendMessage("The item they were holding has been placed into their backpack.");
                     else
-                        from.SendMessage("O item que seguravam foi colocado a seus pés.");
+                        from.SendMessage("The item they were holding has been placed at their feet.");
 
                     held.ClearBounce();
 
@@ -372,8 +158,8 @@ namespace Server.Commands
             }
             else
             {
-                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(DropHolding_OnTarget));
-                from.SendMessage("Isso não é um jogador. Tente novamente.");
+                from.BeginTarget(-1, false, TargetFlags.None, DropHolding_OnTarget);
+                from.SendMessage("That is not a player. Try again.");
             }
         }
 
@@ -392,23 +178,23 @@ namespace Server.Commands
 
                 NetState.Resume();
 
-                from.SendMessage("Você excluiu {0} objeto{1}.", list.Count, list.Count == 1 ? "" : "s");
+                from.SendMessage("You have deleted {0} object{1}.", list.Count, list.Count == 1 ? "" : "s");
             }
             else
             {
-                from.SendMessage("Você optou por não excluir esses objetos.");
+                from.SendMessage("You have chosen not to delete those objects.");
             }
         }
 
         [Usage("ClearFacet")]
-        [Description("Exclui todos os itens e celulares em sua faceta. Jogadores e seus inventários não serão excluídos.")]
+        [Description("Deletes all items and mobiles in your facet. Players and their inventory will not be deleted.")]
         public static void ClearFacet_OnCommand(CommandEventArgs e)
         {
             Map map = e.Mobile.Map;
 
             if (map == null || map == Map.Internal)
             {
-                e.Mobile.SendMessage("Você não pode executar esse comando aqui.");
+                e.Mobile.SendMessage("You may not run that command here.");
                 return;
             }
 
@@ -428,22 +214,22 @@ namespace Server.Commands
 
                 e.Mobile.SendGump(
                     new WarningGump(1060635, 30720,
-                        String.Format("Você está prestes a deletar {0} object{1} desta faceta.  Você realmente deseja continuar?",
+                        string.Format("You are about to delete {0} object{1} from this facet.  Do you really wish to continue?",
                             list.Count, list.Count == 1 ? "" : "s"),
-                        0xFFC000, 360, 260, new WarningGumpCallback(DeleteList_Callback), list));
+                        0xFFC000, 360, 260, DeleteList_Callback, list));
             }
             else
             {
-                e.Mobile.SendMessage("Não foram encontrados objetos para excluir.");
+                e.Mobile.SendMessage("There were no objects found to delete.");
             }
         }
 
         [Usage("GetFollowers")]
-        [Description("Teleporta todos os animais de estimação de um jogador selecionado para sua localização.")]
+        [Description("Teleports all pets of a targeted player to your location.")]
         public static void GetFollowers_OnCommand(CommandEventArgs e)
         {
-            e.Mobile.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(GetFollowers_OnTarget));
-            e.Mobile.SendMessage("Escolha um jogador para pegar seus animais de estimação.");
+            e.Mobile.BeginTarget(-1, false, TargetFlags.None, GetFollowers_OnTarget);
+            e.Mobile.SendMessage("Target a player to get their pets.");
         }
 
         public static void GetFollowers_OnTarget(Mobile from, object obj)
@@ -455,13 +241,13 @@ namespace Server.Commands
 
                 if (pets.Count > 0)
                 {
-                    CommandLogging.WriteLine(from, "{0} {1} obtendo todos os seguidores de {2}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(master));
+                    CommandLogging.WriteLine(from, "{0} {1} getting all followers of {2}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(master));
 
-                    from.SendMessage("Esse jogador tem {0} pet{1}.", pets.Count, pets.Count != 1 ? "s" : "");
+                    from.SendMessage("That player has {0} pet{1}.", pets.Count, pets.Count != 1 ? "s" : "");
 
                     for (int i = 0; i < pets.Count; ++i)
                     {
-                        Mobile pet = (Mobile)pets[i];
+                        Mobile pet = pets[i];
 
                         if (pet is IMount)
                             ((IMount)pet).Rider = null; // make sure it's dismounted
@@ -471,7 +257,7 @@ namespace Server.Commands
                 }
                 else
                 {
-                    from.SendMessage("Nenhum animal de estimação foi encontrado para aquele jogador.");
+                    from.SendMessage("There were no pets found for that player.");
                 }
             }
             else if (obj is Mobile && ((Mobile)obj).Player)
@@ -494,7 +280,7 @@ namespace Server.Commands
                 {
                     CommandLogging.WriteLine(from, "{0} {1} getting all followers of {2}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(master));
 
-                    from.SendMessage("Esse jogador tem {0} pet{1}.", pets.Count, pets.Count != 1 ? "s" : "");
+                    from.SendMessage("That player has {0} pet{1}.", pets.Count, pets.Count != 1 ? "s" : "");
 
                     for (int i = 0; i < pets.Count; ++i)
                     {
@@ -508,13 +294,13 @@ namespace Server.Commands
                 }
                 else
                 {
-                    from.SendMessage("Nenhum animal de estimação foi encontrado para aquele jogador.");
+                    from.SendMessage("There were no pets found for that player.");
                 }
             }
             else
             {
-                from.BeginTarget(-1, false, TargetFlags.None, new TargetCallback(GetFollowers_OnTarget));
-                from.SendMessage("Isso não é um jogador. Tente novamente.");
+                from.BeginTarget(-1, false, TargetFlags.None, GetFollowers_OnTarget);
+                from.SendMessage("That is not a player. Try again.");
             }
         }
 
@@ -541,7 +327,7 @@ namespace Server.Commands
                             Spawner spawner = (Spawner)item;
 
                             for (int i = 0; !hasBankerSpawner && i < spawner.SpawnObjects.Count; ++i)
-                                hasBankerSpawner = Insensitive.Equals((string)spawner.SpawnObjects[i].SpawnName, "banker");
+                                hasBankerSpawner = Insensitive.Equals(spawner.SpawnObjects[i].SpawnName, "banker");
 
                             if (hasBankerSpawner)
                                 break;
@@ -559,14 +345,14 @@ namespace Server.Commands
         }
 
         [Usage("ViewEquip")]
-        [Description("Lista o equipamento de um celular-alvo. Da lista, você pode mover, excluir ou abrir adereços.")]
+        [Description("Lists equipment of a targeted mobile. From the list you can move, delete, or open props.")]
         public static void ViewEquip_OnCommand(CommandEventArgs e)
         {
             e.Mobile.Target = new ViewEqTarget();
         }
 
         [Usage("Sound <index> [toAll=true]")]
-        [Description("Toca um som para jogadores a até 12 peças de você. O argumento (toAll) especifica para todos ou apenas para aqueles que podem ver você.")]
+        [Description("Plays a sound to players within 12 tiles of you. The (toAll) argument specifies to everyone, or just those who can see you.")]
         public static void Sound_OnCommand(CommandEventArgs e)
         {
             if (e.Length == 1)
@@ -574,11 +360,11 @@ namespace Server.Commands
             else if (e.Length == 2)
                 PlaySound(e.Mobile, e.GetInt32(0), e.GetBoolean(1));
             else
-                e.Mobile.SendMessage("Formato: Som <index> [toAll]");
+                e.Mobile.SendMessage("Format: Sound <index> [toAll]");
         }
 
         [Usage("Echo <text>")]
-        [Description("Retransmite (texto) como uma mensagem do sistema.")]
+        [Description("Relays (text) as a system message.")]
         public static void Echo_OnCommand(CommandEventArgs e)
         {
             string toEcho = e.ArgString.Trim();
@@ -590,14 +376,14 @@ namespace Server.Commands
         }
 
         [Usage("Bank")]
-        [Description("Abre a caixa do banco de um determinado alvo.")]
+        [Description("Opens the bank box of a given target.")]
         public static void Bank_OnCommand(CommandEventArgs e)
         {
             e.Mobile.Target = new BankTarget();
         }
 
         [Usage("Help")]
-        [Description("Lista todos os comandos disponíveis.")]
+        [Description("Lists all available commands.")]
         public static void Help_OnCommand(CommandEventArgs e)
         {
             Mobile m = e.Mobile;
@@ -638,40 +424,40 @@ namespace Server.Commands
 
         [Usage("SMsg <text>")]
         [Aliases("S", "SM")]
-        [Description("Transmite uma mensagem para toda a equipe online.")]
+        [Description("Broadcasts a message to all online staff.")]
         public static void StaffMessage_OnCommand(CommandEventArgs e)
         {
-            BroadcastMessage(AccessLevel.Counselor, e.Mobile.SpeechHue, String.Format("[{0}] {1}", e.Mobile.Name, e.ArgString));
+            BroadcastMessage(AccessLevel.Counselor, e.Mobile.SpeechHue, string.Format("[{0}] {1}", e.Mobile.Name, e.ArgString));
         }
 
         [Usage("BCast <text>")]
         [Aliases("B", "BC")]
-        [Description("Transmite uma mensagem para todos online.")]
+        [Description("Broadcasts a message to everyone online.")]
         public static void BroadcastMessage_OnCommand(CommandEventArgs e)
         {
-            BroadcastMessage(AccessLevel.Player, 0x482, String.Format("Staff message from {0}:", e.Mobile.Name));
+            BroadcastMessage(AccessLevel.Player, 0x482, string.Format("Staff message from {0}:", e.Mobile.Name));
             BroadcastMessage(AccessLevel.Player, 0x482, e.ArgString);
         }
 
-        public static void BroadcastMessage(AccessLevel ac, int hue, string message) 
-        { 
+        public static void BroadcastMessage(AccessLevel ac, int hue, string message)
+        {
             World.Broadcast(hue, false, ac, message);
         }
 
         [Usage("AutoPageNotify")]
         [Aliases("APN")]
-        [Description("Alterna seu status de notificação de página automática.")]
+        [Description("Toggles your auto-page-notify status.")]
         public static void APN_OnCommand(CommandEventArgs e)
         {
             Mobile m = e.Mobile;
 
             m.AutoPageNotify = !m.AutoPageNotify;
 
-            m.SendMessage("Sua notificação de página automática foi desativada {0}.", m.AutoPageNotify ? "on" : "off");
+            m.SendMessage("Your auto-page-notify has been turned {0}.", m.AutoPageNotify ? "on" : "off");
         }
 
         [Usage("Animate <action> <frameCount> <repeatCount> <forward> <repeat> <delay>")]
-        [Description("Faz seu personagem fazer uma animação específica.")]
+        [Description("Makes your character do a specified animation.")]
         public static void Animate_OnCommand(CommandEventArgs e)
         {
             if (e.Length == 6)
@@ -685,7 +471,7 @@ namespace Server.Commands
         }
 
         [Usage("Cast <name>")]
-        [Description("Lança um feitiço pelo nome.")]
+        [Description("Casts a spell by name.")]
         public static void Cast_OnCommand(CommandEventArgs e)
         {
             if (e.Length == 1)
@@ -698,39 +484,39 @@ namespace Server.Commands
                 if (spell != null)
                     spell.Cast();
                 else
-                    e.Mobile.SendMessage("Esse feitiço não foi encontrado.");
+                    e.Mobile.SendMessage("That spell was not found.");
             }
             else
             {
-                e.Mobile.SendMessage("Formato: Elenco <nome>");
+                e.Mobile.SendMessage("Format: Cast <name>");
             }
         }
 
         [Usage("Stuck")]
-        [Description("Abre um menu de cidades, usado para teletransportar celulares presos.")]
+        [Description("Opens a menu of towns, used for teleporting stuck mobiles.")]
         public static void Stuck_OnCommand(CommandEventArgs e)
         {
             e.Mobile.Target = new StuckMenuTarget();
         }
 
         [Usage("Light <level>")]
-        [Description("Defina o seu nível de luz local.")]
+        [Description("Set your local lightlevel.")]
         public static void Light_OnCommand(CommandEventArgs e)
         {
             e.Mobile.LightLevel = e.GetInt32(0);
         }
 
         [Usage("Stats")]
-        [Description("Veja algumas estatísticas sobre o servidor.")]
+        [Description("View some stats about the server.")]
         public static void Stats_OnCommand(CommandEventArgs e)
         {
-            e.Mobile.SendMessage("Conexões abertas: {0}", Network.NetState.Instances.Count);
+            e.Mobile.SendMessage("Open Connections: {0}", NetState.Instances.Count);
             e.Mobile.SendMessage("Mobiles: {0}", World.Mobiles.Count);
             e.Mobile.SendMessage("Items: {0}", World.Items.Count);
         }
 
         [Usage("SpeedBoost [true|false]")]
-        [Description("Ativa um aumento de velocidade para o invocador. Desative com parâmetros.")]
+        [Description("Enables a speed boost for the invoker.  Disable with paramaters.")]
         private static void SpeedBoost_OnCommand(CommandEventArgs e)
         {
             Mobile from = e.Mobile;
@@ -740,17 +526,17 @@ namespace Server.Commands
                 if (e.Length == 1 && !e.GetBoolean(0))
                 {
                     from.Send(SpeedControl.Disable);
-                    from.SendMessage("O aumento de velocidade foi desativado.");
+                    from.SendMessage("Speed boost has been disabled.");
                 }
                 else
                 {
                     from.Send(SpeedControl.MountSpeed);
-                    from.SendMessage("O aumento de velocidade foi ativado.");
+                    from.SendMessage("Speed boost has been enabled.");
                 }
             }
             else
             {
-                from.SendMessage("Formato: SpeedBoost [true | false]");
+                from.SendMessage("Format: SpeedBoost [true|false]");
             }
         }
 
@@ -777,21 +563,21 @@ namespace Server.Commands
         }
 
         [Usage("Client")]
-        [Description("Abre o menu do cliente gump para um determinado jogador.")]
+        [Description("Opens the client gump menu for a given player.")]
         private static void Client_OnCommand(CommandEventArgs e)
         {
             e.Mobile.Target = new ClientTarget();
         }
 
         [Usage("Move")]
-        [Description("Reposiciona um item de destino ou dispositivo móvel.")]
+        [Description("Repositions a targeted item or mobile.")]
         private static void Move_OnCommand(CommandEventArgs e)
         {
             e.Mobile.Target = new PickMoveTarget();
         }
 
         [Usage("Save")]
-        [Description("Salva o mundo.")]
+        [Description("Saves the world.")]
         private static void Save_OnCommand(CommandEventArgs e)
         {
             Misc.AutoSave.Save();
@@ -799,7 +585,7 @@ namespace Server.Commands
 
         [Usage("BackgroundSave")]
         [Aliases("BGSave", "SaveBG")]
-        [Description("Salva o mundo, gravando no disco em segundo plano")]
+        [Description("Saves the world, writing to the disk in the background")]
         private static void BackgroundSave_OnCommand(CommandEventArgs e)
         {
             Misc.AutoSave.Save(true);
@@ -859,17 +645,17 @@ namespace Server.Commands
 
                         if (owner != null && (owner.Map != null && owner.Map != Map.Internal) && !BaseCommand.IsAccessible(from, owner) /* !from.CanSee( owner )*/)
                         {
-                            from.SendMessage("Você não pode ir para o que você não pode ver.");
+                            from.SendMessage("You can not go to what you can not see.");
                             return;
                         }
                         else if (owner != null && (owner.Map == null || owner.Map == Map.Internal) && owner.Hidden && owner.AccessLevel >= from.AccessLevel)
                         {
-                            from.SendMessage("Você não pode ir para o que você não pode ver.");
+                            from.SendMessage("You can not go to what you can not see.");
                             return;
                         }
                         else if (!FixMap(ref map, ref loc, item))
                         {
-                            from.SendMessage("Esse é um item interno e você não pode acessá-lo.");
+                            from.SendMessage("That is an internal item and you cannot go to it.");
                             return;
                         }
 
@@ -888,17 +674,17 @@ namespace Server.Commands
 
                         if (owner != null && (owner.Map != null && owner.Map != Map.Internal) && !BaseCommand.IsAccessible(from, owner) /* !from.CanSee( owner )*/)
                         {
-                            from.SendMessage("Você não pode ir para o que você não pode ver.");
+                            from.SendMessage("You can not go to what you can not see.");
                             return;
                         }
                         else if (owner != null && (owner.Map == null || owner.Map == Map.Internal) && owner.Hidden && owner.AccessLevel >= from.AccessLevel)
                         {
-                            from.SendMessage("Você não pode ir para o que você não pode ver.");
+                            from.SendMessage("You can not go to what you can not see.");
                             return;
                         }
                         else if (!FixMap(ref map, ref loc, m))
                         {
-                            from.SendMessage("Esse é um celular interno e você não pode acessá-lo.");
+                            from.SendMessage("That is an internal mobile and you cannot go to it.");
                             return;
                         }
 
@@ -956,18 +742,19 @@ namespace Server.Commands
                         }
 
                         if (ser != 0)
-                            from.SendMessage("Nenhum objeto com esse serial foi encontrado.");
+                            from.SendMessage("No object with that serial was found.");
                         else
-                            from.SendMessage("Nenhuma região com esse nome foi encontrada.");
+                            from.SendMessage("No region with that name was found.");
 
                         return;
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Diagnostics.ExceptionLogging.LogException(ex);
                 }
 
-                from.SendMessage("Nome da região não encontrado");
+                from.SendMessage("Region name not found");
             }
             else if (e.Length == 2 || e.Length == 3)
             {
@@ -989,7 +776,7 @@ namespace Server.Commands
                     }
                     catch
                     {
-                        from.SendMessage("Nome da região não encontrado.");
+                        from.SendMessage("Region name not found.");
                     }
                 }
             }
@@ -1004,7 +791,7 @@ namespace Server.Commands
                     if (p != Point3D.Zero)
                         from.Location = p;
                     else
-                        from.SendMessage("A pesquisa reversa de Sextant falhou.");
+                        from.SendMessage("Sextant reverse lookup failed.");
                 }
             }
             else
@@ -1024,7 +811,7 @@ namespace Server.Commands
             {
                 if (!BaseCommand.IsAccessible(from, targeted))
                 {
-                    from.SendMessage("Isso não é acessível.");
+                    from.SendMessage("That is not accessible.");
                     return;
                 }
 
@@ -1040,7 +827,7 @@ namespace Server.Commands
                 {
                     Item item = m.Items[i];
 
-                    entries[i] = new ItemListEntry(String.Format("{0}: {1}", item.Layer, item.GetType().Name), item.ItemID, item.Hue);
+                    entries[i] = new ItemListEntry(string.Format("{0}: {1}", item.Layer, item.GetType().Name), item.ItemID, item.Hue);
                 }
 
                 return entries;
@@ -1052,18 +839,18 @@ namespace Server.Commands
                 public EquipMenu(Mobile from, Mobile m, ItemListEntry[] entries)
                     : base("Equipment", entries)
                 {
-                    this.m_Mobile = m;
+                    m_Mobile = m;
 
                     CommandLogging.WriteLine(from, "{0} {1} viewing equipment of {2}", from.AccessLevel, CommandLogging.Format(from), CommandLogging.Format(m));
                 }
 
                 public override void OnResponse(NetState state, int index)
                 {
-                    if (index >= 0 && index < this.m_Mobile.Items.Count)
+                    if (index >= 0 && index < m_Mobile.Items.Count)
                     {
-                        Item item = this.m_Mobile.Items[index];
+                        Item item = m_Mobile.Items[index];
 
-                        state.Mobile.SendMenu(new EquipDetailsMenu(this.m_Mobile, item));
+                        state.Mobile.SendMenu(new EquipDetailsMenu(m_Mobile, item));
                     }
                 }
 
@@ -1072,33 +859,33 @@ namespace Server.Commands
                     private readonly Mobile m_Mobile;
                     private readonly Item m_Item;
                     public EquipDetailsMenu(Mobile m, Item item)
-                        : base(String.Format("{0}: {1}", item.Layer, item.GetType().Name), new string[] { "Move", "Delete", "Props" })
+                        : base(string.Format("{0}: {1}", item.Layer, item.GetType().Name), new string[] { "Move", "Delete", "Props" })
                     {
-                        this.m_Mobile = m;
-                        this.m_Item = item;
+                        m_Mobile = m;
+                        m_Item = item;
                     }
 
                     public override void OnCancel(NetState state)
                     {
-                        state.Mobile.SendMenu(new EquipMenu(state.Mobile, this.m_Mobile, ViewEqTarget.GetEquip(this.m_Mobile)));
+                        state.Mobile.SendMenu(new EquipMenu(state.Mobile, m_Mobile, GetEquip(m_Mobile)));
                     }
 
                     public override void OnResponse(NetState state, int index)
                     {
                         if (index == 0)
                         {
-                            CommandLogging.WriteLine(state.Mobile, "{0} {1} moving equipment item {2} of {3}", state.Mobile.AccessLevel, CommandLogging.Format(state.Mobile), CommandLogging.Format(this.m_Item), CommandLogging.Format(this.m_Mobile));
-                            state.Mobile.Target = new MoveTarget(this.m_Item);
+                            CommandLogging.WriteLine(state.Mobile, "{0} {1} moving equipment item {2} of {3}", state.Mobile.AccessLevel, CommandLogging.Format(state.Mobile), CommandLogging.Format(m_Item), CommandLogging.Format(m_Mobile));
+                            state.Mobile.Target = new MoveTarget(m_Item);
                         }
                         else if (index == 1)
                         {
-                            CommandLogging.WriteLine(state.Mobile, "{0} {1} deleting equipment item {2} of {3}", state.Mobile.AccessLevel, CommandLogging.Format(state.Mobile), CommandLogging.Format(this.m_Item), CommandLogging.Format(this.m_Mobile));
-                            this.m_Item.Delete();
+                            CommandLogging.WriteLine(state.Mobile, "{0} {1} deleting equipment item {2} of {3}", state.Mobile.AccessLevel, CommandLogging.Format(state.Mobile), CommandLogging.Format(m_Item), CommandLogging.Format(m_Mobile));
+                            m_Item.Delete();
                         }
                         else if (index == 2)
                         {
-                            CommandLogging.WriteLine(state.Mobile, "{0} {1} opening properties for equipment item {2} of {3}", state.Mobile.AccessLevel, CommandLogging.Format(state.Mobile), CommandLogging.Format(this.m_Item), CommandLogging.Format(this.m_Mobile));
-                            state.Mobile.SendGump(new PropertiesGump(state.Mobile, this.m_Item));
+                            CommandLogging.WriteLine(state.Mobile, "{0} {1} opening properties for equipment item {2} of {3}", state.Mobile.AccessLevel, CommandLogging.Format(state.Mobile), CommandLogging.Format(m_Item), CommandLogging.Format(m_Mobile));
+                            state.Mobile.SendGump(new PropertiesGump(state.Mobile, m_Item));
                         }
                     }
                 }
@@ -1131,7 +918,7 @@ namespace Server.Commands
                     }
                     else
                     {
-                        from.SendMessage("Eles não têm caixa bancária.");
+                        from.SendMessage("They have no bank box.");
                     }
                 }
             }
@@ -1216,7 +1003,7 @@ namespace Server.Commands
                 if (targeted is Mobile)
                 {
                     if (((Mobile)targeted).AccessLevel >= from.AccessLevel && targeted != from)
-                        from.SendMessage("Você não pode fazer isso com alguém com nível de acesso superior ao seu!");
+                        from.SendMessage("You can't do that to someone with higher Accesslevel than you!");
                     else
                         from.SendGump(new StuckMenu(from, (Mobile)targeted, false));
                 }
