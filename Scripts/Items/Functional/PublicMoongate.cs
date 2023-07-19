@@ -353,38 +353,48 @@ namespace Server.Items
           }, cost: 800);
 */
         public static readonly PMList Lugares = new PMList(
-          "Dungeons Avançadas",
-          "Dungeons Avançadas",
+          "DG´s Avançadas",
+          "DG´s Avançadas",
           Map.Trammel,
           new[]
           {
-              new PMEntry(new Point3D(3785,1109, 21), "1. Caverna de Cristal"),
-              new PMEntry(new Point3D(2924, 3409, 6), "2. Caverna de Fogo"),
-              new PMEntry(new Point3D(1298, 1081, 5), "3. Despise"),
-              new PMEntry(new Point3D(1176, 2637, 5), "4. Destard"),
-              new PMEntry(new Point3D(4721, 3817, 5), "5. Hyloth"),
-              new PMEntry(new Point3D(4191, 3269, 0), "6. Submundo"),
-              new PMEntry(new Point3D(2043, 227, 14), "7. Wrong"),
-              new PMEntry(new Point3D(5451, 3096, -31), "8. Terathan/Paroxymus"),
-              new PMEntry(new Point3D(6013, 3778, 21), "9.  Kaldun"),
+              new PMEntry(new Point3D(586,1643, -5), "Blinghted Grove"), //adicionei
+              new PMEntry(new Point3D(3785,1109, 21), "Caverna Cristal"),
+              new PMEntry(new Point3D(5451, 3096, -31), "Caverna Terathan"), //adicionei
+              new PMEntry(new Point3D(1298, 1081, 5), "Despise"),
+              new PMEntry(new Point3D(1176, 2637, 5), "Destard"),
+              new PMEntry(new Point3D(2924, 3409, 6), "Fire"),
+              new PMEntry(new Point3D(4721, 3817, 5), "Hyloth"),
+              new PMEntry(new Point3D(4596, 3577, 75), "Inferno"), // adicionei
+              new PMEntry(new Point3D(6013, 3778, 21), "Kaldun"),
+              new PMEntry(new Point3D(4191, 3269, 0), "Submundo"),
+              new PMEntry(new Point3D(5451, 3096, -31), "Terathan Keep"),
+              new PMEntry(new Point3D(2043, 227, 14), "Wrong"),
+              
+              
           }, cost: 300);
 
         public static readonly PMList Pontos = new PMList(
-          "Dungeons Superiores",
-          "Dungeons Superiores",
+          "DG´s Superiores",
+          "DG´s Superiores",
           Map.Ilshenar,
           new[]
           { 
               new PMEntry(new Point3D(940, 504, -30), "Ancient Lair"),
               new PMEntry(new Point3D(1747, 1228, -1), "Blood "),
               new PMEntry(new Point3D(835, 777, -80), "Exodus"),
+              new PMEntry(new Point3D(576, 1151, -103), "Hydra"),//adicionei
               new PMEntry(new Point3D(1788, 573, 70), "Rock "),
+              new PMEntry(new Point3D(664, 681, -38), "Ratos Brancos"),//adicionei
+              new PMEntry(new Point3D(1032, 1154, -24), "Rat Cave"),//adicionei
               new PMEntry(new Point3D(548, 462, -53), "Sorceres"),
               new PMEntry(new Point3D(1420, 912, -15), "Spectre"),
-              new PMEntry(new Point3D(651, 1302, -58), "Wisp"),
               new PMEntry(new Point3D(957, 640, -80), "Templo de Seth"),
               new PMEntry(new Point3D(1039, 587, -80), "Twisted "),
-           }, cost: 500);
+              new PMEntry(new Point3D(651, 1302, -58), "Wisp"),
+              
+              
+           }, cost: 500); // valor 
 
         public static readonly PMList Ilshenar = new PMList(
             1012002,
@@ -654,15 +664,15 @@ namespace Server.Items
 
             AddPage(0);
 
-            AddBackground(0, 0, 400, 400, 9350); // 280: a largura do objeto 280: a altura do objeto
+            AddBackground(0, 0, 290, 360, 3500); //  a largura do objeto / a altura do objeto
 
-            AddButton(10, 210, 30533, 30534, 1, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(45, 210, 140, 25, 1011036, false, false); // OKAY 30533
+            AddButton(20, 205, 30534, 30534, 1, GumpButtonType.Reply, 0);
+            AddHtmlLocalized(55, 205, 140, 25, 1011036, false, false); // OKAY 30533
 
-            AddButton(10, 235, 30533, 30535, 0, GumpButtonType.Reply, 0);
-            AddHtmlLocalized(45, 235, 140, 25, 1011012, false, false); // CANCEL  30533
+            AddButton(20, 225, 30535, 30535, 0, GumpButtonType.Reply, 0);
+            AddHtmlLocalized(55, 225, 140, 25, 1011012, false, false); // CANCEL  30533
 
-            AddHtmlLocalized(5, 5, 200, 20, "Escolha seu destino", false, false);
+            AddHtmlLocalized(20, 12, 200, 20, "Qual destino?:", false, false); // item 1 - move esquerda/direita, item 2 - sobe/desce 
 
 
             for (var i = 0; i < checkLists.Length; ++i)
@@ -672,7 +682,7 @@ namespace Server.Items
                     continue;
                 }
 
-                AddButton(10, 35 + (i * 25), 2117, 2118, 0, GumpButtonType.Page, Array.IndexOf(m_Lists, checkLists[i]) + 1);
+                AddButton(20, 45 + (i * 25), 9026, 9027, 0, GumpButtonType.Page, Array.IndexOf(m_Lists, checkLists[i]) + 1); // botao cidades antes era 2117 e 2118 i* significa espacamento de linhas
 
                 /*
                 if (i == 0)
@@ -680,7 +690,7 @@ namespace Server.Items
                 else
                     AddHtml(30, 35 + (i * 25), 150, 20, "Dungeons", false, false);
                 */
-                AddHtml(30, 35 + (i * 25), 150, 20, checkLists[i].Number, false, false);
+                AddHtml(45, 45 + (i * 25), 150, 20, checkLists[i].Number, false, false); // 45 movimenta as cidades pro lado e 35 pra cima e pra baixo
 
             }
 
@@ -817,29 +827,30 @@ namespace Server.Items
 
             AddPage(index + 1);
 
-            AddButton(10, 35 + (offset * 25), 2117, 2118, 0, GumpButtonType.Page, index + 1);
+            AddButton(20, 45 + (offset * 25), 9026, 9027, 0, GumpButtonType.Page, index + 1); // tem que mudar o botao cidades tambem aqui antes era 2117 e 2118
             //AddHtmlLocalized(30, 35 + (offset * 25), 150, 20, list.SelNumber, false, false);
 
             var entries = list.Entries;
 
             for (var i = 0; i < entries.Length; ++i)
             {
-                AddRadio(200, 35 + (i * 25), 210, 211, false, (index * 100) + i);
+                AddRadio(145, 45 + (i * 25), 9026, 9027, false, (index * 100) + i); // botoes de marcar a cidade
                 if (entries[i].Number == 1113603)
                 {
-                    AddHtml(225, 35 + (i * 25), 150, 20, "Cidade Real", false, false);
+                    AddHtml(170, 45 + (i * 25), 150, 20, "Cidade Real", false, false); // 185 localizacao do nome das cidades
                 }
                 else
                 {
-                    AddHtml(225, 35 + (i * 25), 150, 20, entries[i].Desc, false, false);
+                    AddHtml(170, 45 + (i * 25), 150, 20, entries[i].Desc, false, false); // 185 localizacao do nome das cidades
                 }
 
             }
 
             if (list.Cost > 0)
             {
-                AddHtml(30, 35 + (4 * 25), 150, 20, "Custo: " + list.Cost + " moedas", false, false);
-                AddItem(30, 35 + (5 * 25), 3823);
+                AddHtml(20, 30 + (4 * 25), 150, 20, "Custo: " + list.Cost + " moedas", false, false);
+                AddItem(20, 30 + (5 * 25), 3823);
+                
             }
 
         }
