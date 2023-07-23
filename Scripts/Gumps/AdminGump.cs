@@ -74,13 +74,13 @@ namespace Server.Gumps
 
         public void AddSelectedButton(int x, int y, int buttonID, string text, bool isSelection)
         {
-            this.AddButton(x, y - 1, isSelection ? 4006 : 4005, 4007, buttonID, GumpButtonType.Reply, 0);
-            this.AddHtml(x + 35, y, 200, 20, this.Color(text, isSelection ? SelectedColor32 : LabelColor32), false, false);
+            this.AddButton(x, y - 1, isSelection ? 30534 : 30533, 30535, buttonID, GumpButtonType.Reply, 0);
+            this.AddHtml(x + 35, y, 200, 30, this.Color(text, isSelection ? SelectedColor32 : LabelColor32), false, false);
         }
 
         public void AddButtonLabeled(int x, int y, int buttonID, string text)
         {
-            this.AddButton(x, y - 1, 4005, 4007, buttonID, GumpButtonType.Reply, 0);
+            this.AddButton(x, y - 1, 30533, 30535, buttonID, GumpButtonType.Reply, 0);
             this.AddHtml(x + 35, y, 240, 20, this.Color(text, LabelColor32), false, false);
         }
 
@@ -207,7 +207,7 @@ namespace Server.Gumps
 
             this.AddPage(0);
 
-            this.AddBackground(0, 0, 420, 440, 5054);
+            this.AddBackground(0, 0, 420, 440, 40000);
 
             this.AddBlackAlpha(10, 10, 170, 100);
             this.AddBlackAlpha(190, 10, 220, 100);
@@ -284,9 +284,9 @@ namespace Server.Gumps
                         catch{ str = "(unable to retrieve)"; }
 
                         AddLabel( 20, 330, LabelHue, "Process Time:" );
-                        AddLabel( 250, 330, LabelHue, str );*/
+                        AddLabel( 250, 330, LabelHue, str );
 
-                        /*try{ str = Core.Process.PriorityClass.ToString(); }
+                        try{ str = Core.Process.PriorityClass.ToString(); }
                         catch{ str = "(unable to retrieve)"; }
 
                         AddLabel( 20, 350, LabelHue, "Process Priority:" );
