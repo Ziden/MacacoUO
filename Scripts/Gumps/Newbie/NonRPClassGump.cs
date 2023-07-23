@@ -207,11 +207,11 @@ namespace Server.Gumps
                             PackItem(from, dupe);
                         }
 
-                        var xpbook = new CombatSkillBook();
+                       /* var xpbook = new CombatSkillBook();
                         xpbook.Exp = 4000;
                         xpbook.BoundTo = from.RawName;
                         xpbook.InvalidateProperties();
-                        PackItem(from, xpbook);
+                        PackItem(from, xpbook);*/
 
                         foreach (var item in k.equips)
                         {
