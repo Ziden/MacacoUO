@@ -175,18 +175,18 @@ namespace Server.Items
             switch (from.AccessLevel)
             {
                 case AccessLevel.Owner:
-                    this.Name = "The Owner Robe";
+                    this.Name = "Developer Robe Staff";
                     this.Hue = this._OwnerHue;
                     break;
                 case AccessLevel.CoOwner:
-                    this.Name = "A Co-Owner Robe";
+                    this.Name = "Owner Robe Staff";
                     break;
                 case AccessLevel.Administrator:
-                    this.Name = "An Administrator Robe";
+                    this.Name = "Administrator Robe Staff";
                     this.Hue = this._AdminHue;
                     break;
                 case AccessLevel.Developer:
-                    this.Name = "a Developer robe";
+                    this.Name = "Developer Robe";
                     this.Hue = this._DeveloperHue;
                     break;
                 case AccessLevel.Seer:
@@ -194,11 +194,11 @@ namespace Server.Items
                     this.Hue = this._SeerHue;
                     break;
                 case AccessLevel.GameMaster:
-                    this.Name = "a GameMaster Robe";
+                    this.Name = "GameMaster Robe Staff";
                     this.Hue = this._GamemasterHue;
                     break;
                 case AccessLevel.Counselor:
-                    this.Name = "a Counselor Robe";
+                    this.Name = "Conselheiro Robe Staff";
                     this.Hue = this._CounselorHue;
                     break;
                 default:
