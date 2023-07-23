@@ -1,4 +1,4 @@
-
+using System;
 using Server.Network;
 using Server.Mobiles;
 using Server.Misc.Custom;
@@ -8,6 +8,8 @@ namespace Server.Gumps
 {
     public class AnuncioGump : Gump
     {
+        private static readonly TimeSpan CloseDelay = TimeSpan.FromSeconds(60); // Defina o tempo de fechamento em segundos
+
         public static void Texto(string msg)
         {
             foreach (Mobile pl in NetState.GetOnlinePlayerMobiles())
@@ -35,12 +37,25 @@ namespace Server.Gumps
             AddButton(502, 30 + y, 30535, 30535, 0, GumpButtonType.Reply, 0);
             AddItem(-6, 29 + y, 3636);
             from.Anuncios++;
+
+            // Configurar o temporizador para fechar o Gump após 10 segundos
+            Timer.DelayCall(CloseDelay, () => CloseGump(from));
         }
 
         public override void OnResponse(NetState sender, RelayInfo info)
         {
             var from = sender.Mobile as PlayerMobile;
-            from.Anuncios--;
+            CloseGump(from);
+        }
+
+        private void CloseGump(PlayerMobile player)
+        {
+            // Certifique-se de que o jogador ainda tem este Gump aberto antes de fechá-lo
+            if (player.HasGump(typeof(AnuncioGump)))
+            {
+                player.CloseGump(typeof(AnuncioGump));
+                player.Anuncios--;
+            }
         }
     }
 }
