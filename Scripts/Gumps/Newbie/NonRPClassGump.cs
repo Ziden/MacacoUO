@@ -185,10 +185,10 @@ namespace Server.Gumps
                         from.Thirst = 20;
                         var hue = StarterKits.GetNoobColor();
 
-                        var ball = new ElementalBall();
+                        /*var ball = new ElementalBall();
                         ball.BoundTo = from.RawName;
                         ball.InvalidateProperties();
-                        PackItem(from, ball);
+                        PackItem(from, ball);*/
 
                         foreach (var item in k.items)
                         {
