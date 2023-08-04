@@ -214,7 +214,7 @@ namespace Server.Regions
 			}
 		}
 
-        /*public override bool AllowHarmful(Mobile from, IDamageable target)
+        public override bool AllowHarmful(Mobile from, IDamageable target)
         {
             if(from != null && target != null)
             {
@@ -225,7 +225,7 @@ namespace Server.Regions
                 }
             }
             return base.AllowHarmful(from, target);
-        }*/
+        }
 
         /*
 		public override void OnGotBeneficialAction(Mobile helper, Mobile helped)
@@ -687,8 +687,8 @@ namespace Server.Regions
 
         public override void OnAggressed(Mobile aggressor, Mobile aggressed, bool criminal)
         {
-            //if (aggressor is PlayerMobile)
-            //    return;
+            if (aggressor is PlayerMobile)
+                return;
 
             base.OnAggressed(aggressor, aggressed, criminal);
 
@@ -698,7 +698,7 @@ namespace Server.Regions
             }
         }
 
-        /*ublic override bool AllowHarmful(Mobile from, IDamageable target)
+        public override bool AllowHarmful(Mobile from, IDamageable target)
         {
             if (from != null && target != null)
             {
@@ -709,8 +709,8 @@ namespace Server.Regions
                 }
             }
             return base.AllowHarmful(from, target);
-        }*/
-        
+        }
+
         /*
 		public override void OnGotBeneficialAction(Mobile helper, Mobile helped)
 		{
