@@ -1243,7 +1243,7 @@ namespace Server
 				Region region = null;
 				try
 				{
-					//region = (Region)Activator.CreateInstance(type, new object[] {xmlReg, map, parent});
+					region = (Region)Activator.CreateInstance(type, new object[] {xmlReg, map, parent});
 				}
 				catch (Exception ex)
 				{
