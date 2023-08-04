@@ -562,7 +562,7 @@ namespace Server.Gumps
             this.AddLabel(35, 76, 200, "Ice");
             this.AddLabel(35, 101, 200, "Khaldun");
             this.AddLabel(35, 126, 200, "Lost Lands");
-            this.AddLabel(35, 151, 200, "Orc Caves");
+            //this.AddLabel(35, 151, 200, "Orc Caves");
             this.AddLabel(35, 176, 200, "Outdoors");
             this.AddLabel(35, 201, 200, "Painted Caves");
             this.AddLabel(35, 226, 200, "Palace of Paroxysmus");
