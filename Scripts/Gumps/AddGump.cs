@@ -25,7 +25,7 @@ namespace Server.Gumps
 
             this.AddPage(0);
 
-            this.AddBackground(0, 0, 420, 280, 5054);
+            this.AddBackground(0, 0, 420, 280, 40000); // Define o Fundo do Gump do comando .addmenu
 
             this.AddImageTiled(10, 10, 400, 20, 2624);
             this.AddAlphaRegion(10, 10, 400, 20);
@@ -53,7 +53,7 @@ namespace Server.Gumps
             }
             else
             {
-                this.AddLabel(15, 44, 0x480, explicitSearch ? "Nothing matched your search terms." : "No results to display.");
+                this.AddLabel(15, 44, 0x480, explicitSearch ? "Nada foi encontrado." : "Nenhum resultado para exibir.");
             }
 
             this.AddImageTiled(10, 250, 400, 20, 2624);
@@ -113,7 +113,7 @@ namespace Server.Gumps
 
                         if (match.Length < 3)
                         {
-                            from.SendMessage("Invalid search string.");
+                            from.SendMessage("String de pesquisa inválida.");
                             from.SendGump(new AddGump(from, match, this.m_Page, this.m_SearchResults, false));
                         }
                         else
@@ -143,7 +143,7 @@ namespace Server.Gumps
 
                         if (index >= 0 && index < this.m_SearchResults.Length)
                         {
-                            from.SendMessage("Where do you wish to place this object? <ESC> to cancel.");
+                            from.SendMessage("Onde você deseja colocar este objeto? <ESC> para cancelar.");
                             from.Target = new InternalTarget(this.m_SearchResults[index], this.m_SearchResults, this.m_SearchString, this.m_Page);
                         }
 
@@ -153,7 +153,7 @@ namespace Server.Gumps
         }
 
         [Usage("AddMenu [searchString]")]
-        [Description("Opens an add menu, with an optional initial search string. This menu allows you to search for Items or Mobiles and add them interactively.")]
+        [Description("Abre um menu de adição, com uma string de pesquisa inicial opcional. Este menu permite pesquisar itens ou celulares e adicioná-los interativamente.")]
         private static void AddMenu_OnCommand(CommandEventArgs e)
         {
             string val = e.ArgString.Trim();
