@@ -104,6 +104,7 @@ namespace Server.Items
 
             Hue = BaseArmor.HueElemento(Elemento);
             Nivel = 1;
+            LootType = LootType.Blessed;
         }
 
         public override void OnDoubleClick(Mobile from)
