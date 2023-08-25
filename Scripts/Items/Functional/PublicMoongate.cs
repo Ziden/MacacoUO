@@ -360,7 +360,7 @@ namespace Server.Items
           {
               new PMEntry(new Point3D(586,1643, -5), "Blinghted Grove"), //adicionei
               new PMEntry(new Point3D(3785,1109, 21), "Caverna Cristal"),
-              new PMEntry(new Point3D(5451, 3096, -31), "Caverna Terathan"), //adicionei
+              new PMEntry(new Point3D(3358, 572, 0), "Caverna Terathan"), //adicionei
               new PMEntry(new Point3D(1298, 1081, 5), "Despise"),
               new PMEntry(new Point3D(1176, 2637, 5), "Destard"),
               new PMEntry(new Point3D(2924, 3409, 6), "Fire"),
