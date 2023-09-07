@@ -52,18 +52,19 @@ namespace Server.Menus.Questions
                 new Point3D(738, 3486, -19)
             }, Map.TerMur),
             */
-            new StuckMenuEntry("Haven", new Point3D[]
+            new StuckMenuEntry(" Haven", new Point3D[]
             {
               CharacterCreation.HAVEN,
 
             }, Map.Trammel),
-            /*
-            new StuckMenuEntry("Cabo da Tormenta", new Point3D[]
-            {
-              new Point3D(994, 1915, 0),
+            
+            new StuckMenuEntry(" Buccaneer's Den( Cidade Pk).", new Point3D[]
 
-            }, Map.Felucca)
-            */
+            {
+              new Point3D(2721, 2185, 0),
+
+            }, Map.Trammel)
+            
         };
 
         private readonly Mobile m_Mobile;
@@ -82,9 +83,9 @@ namespace Server.Menus.Questions
             Dragable = false;
             Disposable = false;
 
-            AddBackground(0, 0, 270, 320, 2600);
+            AddBackground(0, 0, 270, 320, 39925);
 
-            AddHtml(50, 20, 250, 35, "Escolha uma cidade", false, false); // Chose a town:
+            AddHtml(50, 20, 250, 35, "Escolha uma cidade", 30720, false, false); // <CENTER>WARNING</CENTER>
 
             StuckMenuEntry[] entries = m_TerMurEntries;
 
@@ -95,11 +96,11 @@ namespace Server.Menus.Questions
 
                 StuckMenuEntry entry = entries[i];
 
-                AddButton(50, 55 + 35 * i, 208, 209, i + 1, GumpButtonType.Reply, 0);
+                AddButton(50, 55 + 35 * i, 30533, 30534, i + 1, GumpButtonType.Reply, 0);
                 AddHtml(75, 55 + 35 * i, 335, 40, entry.Name, false, false);
             }
 
-            AddButton(55, 263, 4005, 4007, 0, GumpButtonType.Reply, 0);
+            AddButton(55, 263, 30533, 30535, 0, GumpButtonType.Reply, 0);
             AddHtmlLocalized(90, 265, 200, 35, 1011012, false, false); // CANCEL
         }
 
