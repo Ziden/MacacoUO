@@ -1,4 +1,3 @@
-
 using System;
 using Server.Gumps;
 using Server.Misc;
@@ -58,11 +57,10 @@ namespace Server.Items
             TimeSpan timetouse = ((this.lastused + Server.Items.Hearthstone.delay) - DateTime.Now);
             string lisths;
 
- 
-            if(this.map != null && this.i_home != Point3D.Zero)
+            if (this.map != null && this.i_home != Point3D.Zero)
             {
                 var region = Region.Find(this.i_home, this.map);
-                if(region != null && region.Name != null)
+                if (region != null && region.Name != null)
                 {
                     list.Add("Salva em " + region.Name);
                 }
@@ -103,9 +101,9 @@ namespace Server.Items
                 return;
             }
 
-            if(Shard.RP)
+            if (Shard.RP)
             {
-                if(from.Region is DungeonRegion)
+                if (from.Region is DungeonRegion)
                 {
                     from.SendMessage("Voce nao pode usar isto em dungeons");
                     return;
@@ -115,7 +113,7 @@ namespace Server.Items
             from.RevealingAction();
             from.SendGump(new GumpOpcoes("Hearthstone", (opt) =>
             {
-                if(opt==0)
+                if (opt == 0)
                 {
                     if (!CheckHearth(m, i)) // execute common method for failure checks
                     {
@@ -127,23 +125,8 @@ namespace Server.Items
                     m.FixedEffect(0x1ED2, 10, 15);
                     m.PlaySound(0x1E7);
                     m.OverheadMessage("* retornando *");
-                } else
-                {
-                    if (from.Region is GuardedRegion || from.Region is NoGuardCity || from.Region is NoHousingRegion)  // see if they are in an "inn" zone and mark if they are
-                    {
-                        from.FixedEffect(0x1ED2, 10, 15);
-                        from.PlaySound(0x1E7);
-                        this.home = from.Location;
-                        this.map = from.Map;
-                        from.OverheadMessage("* salvou *");
-                        this.lastused = DateTime.Now - TimeSpan.FromMinutes(19);
-                        return;
-                    } else
-                    {
-                        from.SendMessage("Voce precisa estar em algum local seguro para salvar sua pedra");
-                    }
                 }
-            }, 0x3197, 0, "Retornar", "Salvar"));
+            }, 0x3197, 0, "Retornar"));
         }
 
         private void HearthTeleport()  // the teleporting method
@@ -152,7 +135,7 @@ namespace Server.Items
             {
                 BaseCreature.TeleportPets(m, home, map);
                 m.MoveToWorld(home, map);
-              
+
                 m.FixedEffect(0x375A, 10, 15);
                 m.PlaySound(0x1E7);
                 this.lastused = DateTime.Now;
@@ -177,7 +160,7 @@ namespace Server.Items
             {
                 var diff = (this.lastused + Server.Items.Hearthstone.delay) - DateTime.Now;
 
-                m.SendMessage("Aguarde "+diff.TotalSeconds+" segundos");
+                m.SendMessage("Aguarde " + diff.TotalSeconds + " segundos");
                 return false;
             }
             else if (Server.Spells.SpellHelper.CheckCombat(m)) // use a spell system check to make sure they are not in combat
