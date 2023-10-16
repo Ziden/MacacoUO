@@ -202,6 +202,8 @@ namespace Server.Engines.UOStore
 
             cat = StoreCategory.Mounts;
             //MONTARIAS
+            Register<EtherealOstardArtico>(new TextDefinition("Ostard Artico Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um ostard magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2136, 0, 0, 15000, cat, EtherealOstardArtico);
+            Register<EtherealWindrunnerinfernal>(new TextDefinition("Lobo Infernal Mágico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x9ED5, 0, 0, 15000, cat, EtherealWindrunnerinfernal);
             Register<EtherealCuSidhe>(new TextDefinition("CuSidhe Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2D96, 0, 0, 15000, cat);
             Register<EtherealLasher>(new TextDefinition("lLasher Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x9E35, 0, 0, 15000, cat);
             Register<EtherealKirin>(new TextDefinition("Kirin Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x25A0, 0, 0, 15000, cat);
@@ -210,7 +212,6 @@ namespace Server.Engines.UOStore
             Register<EtherealUnicorn>(new TextDefinition("Unicorn Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x25CE, 0, 0, 15000, cat);
             Register<EtherealTiger>(new TextDefinition("Tiger Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x9844, 0, 0, 15000, cat);
             Register<EtherealHorse>(new TextDefinition("Cavalo Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x20DD, 0, 0, 2000, cat, CavaloEthy);
-            Register<EtherealUnicornio>(new TextDefinition("Unicórnio Mágico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x20DD, 0, 0, 15000, cat, CavaloEthy);
             Register<EtherealOstard>(new TextDefinition("Ostard Magico"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um ostard magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x2135, 0, 0, 7000, cat, OstardEthy);
             Register<EtherealWindrunner>(new TextDefinition("Windrunner"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel.<br>", 0x9ED5, 0, 0, 10000, cat, WindRunner);
             Register<EtherealLlama>(new TextDefinition("Lhama Magica"), "Item pertence pessoal que nao se perde ao morrer. <br>Pode ser usado a qualquer momento para invocar um cavalo magico.<br>Pode ser usado para sempre.<br>Nao consome slots de animais<br>Intransferivel", 0x20F6, 0, 0, 3000, cat);    
@@ -581,14 +582,14 @@ namespace Server.Engines.UOStore
 
             if (Configuration.CurrencyImpl == CurrencyType.None)
             {
-                // The promo code redemption system is currently unavailable. Please try again later.
+                // O sistema de resgate de códigos promocionais não está disponível no momento. Por favor, tente novamente mais tarde.
                 user.SendLocalizedMessage(1062904);
                 return;
             }
 
             if (!user.NetState.UltimaStore)
             {
-                user.SendMessage("You must update Ultima Online in order to use the in game store.");
+                user.SendMessage("Você deve atualizar o Ultima Online para usar a loja do jogo.");
                 return;
             }
 
@@ -607,6 +608,23 @@ namespace Server.Engines.UOStore
         }
 
         #region Constructors
+
+                public static Item EtherealWindrunnerinfernal(Mobile m, StoreEntry entry)
+        {
+            var Windrunner= new EtherealWindrunnerinfernal();
+            Windrunner.Transparent = false;
+            Windrunner.BoundTo = m.RawName;
+            return Windrunner;
+        }
+
+        public static Item EtherealOstardArtico(Mobile m, StoreEntry entry)
+        {
+            var Ostard= new EtherealOstardArtico();
+            Ostard.Transparent = false;
+            Ostard.BoundTo = m.RawName;
+            return Ostard;
+        }
+
         public static Item CavaloEthy(Mobile m, StoreEntry entry)
         {
             var cavalo = new EtherealHorse();
@@ -884,7 +902,7 @@ namespace Server.Engines.UOStore
                         {
                             if (item is IPromotionalToken && ((IPromotionalToken)item).ItemName != null)
                             {
-                                // A token has been placed in your backpack. Double-click it to redeem your ~1_PROMO~.
+                                // Um token foi colocado em sua mochila. Clique duas vezes nele para resgatar sua ~1_PROMO~.
                                 m.SendLocalizedMessage(1075248, ((IPromotionalToken)item).ItemName.ToString());
                             }
                             else if (item.LabelNumber > 0 || item.Name != null)
