@@ -101,7 +101,7 @@ namespace Server.Engines.Doom
 
         public void OnTick()
         {
-            if (NextRoll < DateTime.UtcNow /*&& (Spawn == null || !Spawn.Alive)*/ && this.GetEnumeratedMobiles().OfType<PlayerMobile>().Where(p => p.Alive).Count() > 0)
+            if (NextRoll < DateTime.UtcNow /*&& (Spawn == null || !Spawn.Alive)1 && this.GetEnumeratedMobiles().OfType<PlayerMobile>().Where(p => p.Alive).Count() > 0)
             {
                 DoRoll();
                 NextRoll = DateTime.UtcNow + RollDelay;
