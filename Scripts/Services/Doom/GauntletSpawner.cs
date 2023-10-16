@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -512,7 +512,7 @@ namespace Server.Engines.Doom
 
 			WeakEntityCollection.Add("doom", dealer);
 
-	        /* Begin outfit */
+	        // Begin outfit 
 
 	        var ic = dealer.Items.Count;
 
@@ -541,7 +541,7 @@ namespace Server.Engines.Doom
             dealer.AddItem(new LanternOfSouls());
 
             dealer.AddItem(new Sandals(0x482));
-            /* End outfit */
+            // End outfit 
 
             dealer.MoveToWorld(p, Map.Malas);
 
@@ -559,7 +559,7 @@ namespace Server.Engines.Doom
             e.Mobile.SendMessage("Gerando doom");
 			WeakEntityCollection.Delete("doom");
 
-            /* Begin healer room */
+            // Begin healer room 
             CreatePricedHealer(5000, 387, 400);
             CreateTeleporter(390, 407, 394, 405);
 
@@ -573,9 +573,9 @@ namespace Server.Engines.Doom
                 healerDoor.Link.Locked = true;
                 healerDoor.Link.KeyValue = Key.RandomValue();
             }
-            /* End healer room */
+            /* End healer room 
 
-            /* Begin supply room */
+            // Begin supply room 
             CreateMorphItem(433, 371, 0x29F, 0x116, 3, 0x44E);
             CreateMorphItem(433, 372, 0x29F, 0x115, 3, 0x44E);
 
@@ -600,9 +600,9 @@ namespace Server.Engines.Doom
 					WeakEntityCollection.Add("doom", item);
 	            }
             }
-            /* End supply room */
+            // End supply room 
 
-            /* Begin gauntlet cycle */
+            // Begin gauntlet cycle 
             CreateTeleporter(471, 428, 474, 428);
             CreateTeleporter(462, 494, 462, 498);
             CreateTeleporter(403, 502, 399, 506);
@@ -624,9 +624,9 @@ namespace Server.Engines.Doom
             sp6.Sequence = sp1;
 
             sp1.State = GauntletSpawnerState.InProgress;
-            /* End gauntlet cycle */
+            /* End gauntlet cycle 
 
-            /* Begin exit gate */
+            // Begin exit gate 
 	        var p = new Point3D(433, 326, 4);
 
             ConfirmationMoongate gate;
@@ -653,7 +653,7 @@ namespace Server.Engines.Doom
 	        gate.MoveToWorld(p, Map.Malas);
 
 			WeakEntityCollection.Add("doom", gate);
-            /* End exit gate */
+            // End exit gate 
         }
 
         public virtual void CreateRegion()
@@ -963,3 +963,4 @@ namespace Server.Engines.Doom
         }
     }
 }
+*/
