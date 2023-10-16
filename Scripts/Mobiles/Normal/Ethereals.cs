@@ -734,7 +734,7 @@ namespace Server.Mobiles
         {
             Name = "Lobo Infernal Magico";
             StatueHue = 2901;
-            TransparentMountedHue = 2901;
+            NonTransparentMountedHue = 2901;
         }
         public EtherealWindrunnerinfernal(Serial serial)
             : base(serial)
@@ -858,23 +858,23 @@ namespace Server.Mobiles
         }
     }
 
-    public class EtherealOstardFantasma : EtherealMount
+    public class EtherealOstardArtico : EtherealMount
     {
         [Constructable]
-        public EtherealOstardFantasma()
-            : base(0x2137, 0x3EA5, 0x3EA5)
+        public EtherealOstardArtico()
+            : base(0x2136, 0x3EA4, 0x3EA4)
         {
-            Name = "Ostard Magico";
+            Name = "Ostard Artico Magico";
             this.Transparent = false;
         }
 
-        public EtherealOstardFantasma(Serial serial)
+        public EtherealOstardArtico(Serial serial)
             : base(serial)
         {
             this.Transparent = false;
         }
 
-        public override string DefaultName { get { return "Ostard Magico"; } }
+        public override string DefaultName { get { return "Ostard Artico Magico"; } }
         public override void Serialize(GenericWriter writer)
         {
             base.Serialize(writer);
@@ -890,11 +890,11 @@ namespace Server.Mobiles
 
             if (version == 0)
             {
-                NonTransparentMountedID = 0x3EA5;
+                NonTransparentMountedID = 0x3EA4;
                 Transparent = true;
             }
         }
-    } // Arrumar
+    } 
 
     public class EtherealRidgeback : EtherealMount
     {
