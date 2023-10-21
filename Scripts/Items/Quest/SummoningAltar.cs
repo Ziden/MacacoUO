@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using Server.Items;
 using Server.Mobiles;
 
@@ -62,4 +62,4 @@ namespace Server.Engines.Quests.Doom
             this.CheckDaemon();
         }
     }
-}*/
+}
