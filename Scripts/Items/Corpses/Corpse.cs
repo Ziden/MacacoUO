@@ -1470,7 +1470,7 @@ namespace Server.Items
                             return;
                         }
                     }
-                    else if (qs is TheSummoningQuest)
+                  /*  else if (qs is TheSummoningQuest)
                     {
                         VanquishDaemonObjective obj = qs.FindObjective(typeof(VanquishDaemonObjective)) as VanquishDaemonObjective;
 
@@ -1491,7 +1491,7 @@ namespace Server.Items
                                 player.SendLocalizedMessage(1050023); // You find a golden skull, but your backpack is too full to carry it.
                             }
                         }
-                    }
+                    }*/
                 }
                 #endregion
 
