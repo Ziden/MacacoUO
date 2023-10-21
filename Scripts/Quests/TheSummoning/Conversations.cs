@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using Server.Mobiles;
 
 namespace Server.Engines.Quests.Doom
@@ -22,7 +22,7 @@ namespace Server.Engines.Quests.Doom
                 * Daemon bones can be collected via various means throughout
                 * Dungeon Doom.<BR><BR>
                 * 
-                * Good luck.
+                * Good luck.*/
                 
                 return 1050027;
             }
@@ -55,4 +55,4 @@ namespace Server.Engines.Quests.Doom
             
         }
     }
-*/
+
