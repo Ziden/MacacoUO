@@ -7289,11 +7289,11 @@ namespace Server.Mobiles
 
             if (!Summoned && !NoKillAwards && !m_HasGeneratedLoot && !m_NoLootOnDeath)
             {
-                m_HasGeneratedLoot = true;
+                m_HasGeneratedLoot = false;
                 GenerateLoot(false);
             }
 
-            /*if (!NoKillAwards && Region.IsPartOf("Doom"))
+            if (!NoKillAwards && Region.IsPartOf("Doom"))
             {
                 int bones = TheSummoningQuest.GetDaemonBonesFor(this);
 
@@ -7301,7 +7301,7 @@ namespace Server.Mobiles
                 {
                     PackItem(new DaemonBone(bones));
                 }
-            }*/
+            }
 
             if (IsAnimatedDead)
             {
