@@ -28,7 +28,7 @@ namespace Server.Engines.Quests.Doom
                 return 1000;
             }
         }
-        /*public override void OnComplete()
+        public override void OnComplete()
         {
             Victoria victoria = ((TheSummoningQuest)this.System).Victoria;
 
@@ -56,7 +56,7 @@ namespace Server.Engines.Quests.Doom
                     ((TheSummoningQuest)this.System).WaitForSummon = true;
                 }
             }
-        }*/
+        }
 
         public override void RenderMessage(BaseQuestGump gump)
         {
@@ -123,7 +123,7 @@ namespace Server.Engines.Quests.Doom
                 this.Complete();
         }
 
-       /* public override void OnComplete()
+        public override void OnComplete()
         {
             Victoria victoria = ((TheSummoningQuest)this.System).Victoria;
 
@@ -175,7 +175,7 @@ namespace Server.Engines.Quests.Doom
                         this.m_CorpseWithSkull = this.m_Daemon.Corpse as Corpse;
                 }
             }
-        }*/
+        }
 
         public override void ChildDeserialize(GenericReader reader)
         {
