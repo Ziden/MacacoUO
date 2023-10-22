@@ -15,7 +15,7 @@ namespace Server.Engines.Quests
     {
         public static readonly Type[] QuestTypes = new Type[]
         {
-            //typeof(Doom.TheSummoningQuest),
+            typeof(Doom.TheSummoningQuest),
             typeof(Necro.DarkTidesQuest),
             typeof(Haven.UzeraanTurmoilQuest),
             typeof(Collector.CollectorQuest),
