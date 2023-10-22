@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections.Generic;
 using Server.Items;
 using Server.Mobiles;
@@ -291,4 +291,3 @@ namespace Server.Engines.Doom
         }
     }
 }
-*/
