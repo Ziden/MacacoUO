@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using Server.Items;
 using Server.Mobiles;
 
@@ -86,7 +86,7 @@ namespace Server.Engines.Quests.Doom
                 * slay to claim your prize.<BR><BR>
                 * 
                 * Do you accept?
-                *
+                */
                 return 1050020;
             }
         }
@@ -187,4 +187,4 @@ namespace Server.Engines.Quests.Doom
             writer.Write((bool)this.m_WaitForSummon);
         }
     }
-}*/
+}
