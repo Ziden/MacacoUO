@@ -1,23 +1,14 @@
 using System;
 using Server.Mobiles;
+
 namespace Server.Engines.Quests.Doom
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -23,7 +23,7 @@ public override object Message
-  
 {
     public class AcceptConversation : QuestConversation
     {
         public AcceptConversation()
         {
         }
+
         public override object Message
         {
             get
@@ -36,27 +27,18 @@ namespace Server.Engines.Quests.Doom
                 return 1050027;
             }
         }
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -46,44 +46,13 @@ public override object Message
-  
         public override void OnRead()
         {
             this.System.AddObjective(new CollectBonesObjective());
         }
     }
+
     public class VanquishDaemonConversation : QuestConversation
     {
         public VanquishDaemonConversation()
         {
         }
+
         public override object Message
         {
             get
