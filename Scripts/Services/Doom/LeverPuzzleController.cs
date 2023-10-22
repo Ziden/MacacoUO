@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using System.Collections.Generic;
 using Server.Commands;
 using Server.Mobiles;
@@ -8,7 +8,7 @@ using Server.Spells;
 /*
 this is From me to you, Under no terms, Conditions...   K?  to apply you
 just simply Unpatch/delete, Stick these in, Same location.. Restart
-
+*/
 namespace Server.Engines.Doom
 {
     public class LeverPuzzleController : Item
@@ -19,42 +19,42 @@ namespace Server.Engines.Doom
             "Uma pedra muito rapida atinge sua cabeca!", // 1
             "OUCH!"							// 2
         };
-        /* font&hue for above msgs. index matches 
+        /* font&hue for above msgs. index matches */
         public static int[][] MsgParams = 
         {
             new int[] { 0x66d, 3 },
             new int[] { 0x66d, 3 },
             new int[] { 0x34, 3 }
         };
-        /* World data for items Aqui
+        /* World data for items */
         public static int[][] TA = 
         {
             new int[] { 316, 64, 5 },
-            /* 3D Coords for levers "Aqui"/ new int[] { 323, 58, 5 },
+            /* 3D Coords for levers */ new int[] { 323, 58, 5 },
             new int[] { 332, 63, 5 },
             new int[] { 323, 71, 5 },
             new int[] { 324, 64 },
-            /* 2D Coords for standing regions Aqui new int[] { 316, 65 },
+            /* 2D Coords for standing regions */ new int[] { 316, 65 },
             new int[] { 324, 58 },
             new int[] { 332, 64 },
             new int[] { 323, 72 },
             new int[] { 468, 92, -1 }, new int[] { 0x181D, 0x482 },
-            /* 3D coord, itemid+hue for L.R. teles / new int[] { 469, 92, -1 }, new int[] { 0x1821, 0x3fd },
+            /* 3D coord, itemid+hue for L.R. teles */ new int[] { 469, 92, -1 }, new int[] { 0x1821, 0x3fd },
             new int[] { 470, 92, -1 }, new int[] { 0x1825, 0x66d },
             new int[] { 319, 70, 18 }, new int[] { 0x12d8 },
-            // 3D coord, itemid for statues  new int[] { 329, 60, 18 }, new int[] { 0x12d9 },
+            /* 3D coord, itemid for statues */ new int[] { 329, 60, 18 }, new int[] { 0x12d9 },
             new int[] { 469, 96, 6 }
-        /* 3D Coords for Fake Box / };
-        /* CLILOC data for statue "correct souls" messages 
+        /* 3D Coords for Fake Box */ };
+        /* CLILOC data for statue "correct souls" messages */
         public static int[] Statue_Msg = { 1050009, 1050007, 1050008, 1050008 };
-        /* Exit & Enter locations for the lamp room 
+        /* Exit & Enter locations for the lamp room */
         public static Point3D lr_Exit = new Point3D(353, 172, -1);
         public static Point3D lr_Enter = new Point3D(467, 96, -1);
-        /* "Center" location in puzzle 
+        /* "Center" location in puzzle */
         public static Point3D lp_Center = new Point3D(324, 64, -1);
-        /* Lamp Room Area /
+        /* Lamp Room Area */
         public static Rectangle2D lr_Rect = new Rectangle2D(465, 92, 10, 10);
-        /* Lamp Room area Poison message data 
+        /* Lamp Room area Poison message data */
         public static int[][] PA = 
         {
             new int[] { 0, 0, 0xA6 },
@@ -73,7 +73,7 @@ namespace Server.Engines.Doom
             Poison.Lethal,
             Poison.Lethal
         };
-        /* SOUNDS 
+        /* SOUNDS */
         private static readonly int[] fs = { 0x144, 0x154 };
         private static readonly int[] ms = { 0x144, 0x14B };
         private static readonly int[] fs2 = { 0x13F, 0x154 };
@@ -101,7 +101,7 @@ namespace Server.Engines.Doom
             installed = true;
             int i = 0;
 
-            this.m_Levers = new List<Item>();	/* codes are 0x1 shifted left x # of bits, easily handled here / Aqui
+            this.m_Levers = new List<Item>();	/* codes are 0x1 shifted left x # of bits, easily handled here */
             for (; i < 4; i++)
                 this.m_Levers.Add(AddLeverPuzzlePart(TA[i], new LeverPuzzleLever((ushort)(1 << i), this)));
 
@@ -177,7 +177,7 @@ namespace Server.Engines.Doom
         }
         public bool CircleComplete
         {
-            get	/* OSI: all 5 must be occupied Aqui
+            get	/* OSI: all 5 must be occupied */
             {
                 for (int i = 0; i < 5; i++)
                 {
@@ -326,7 +326,7 @@ namespace Server.Engines.Doom
             player.Send(new AsciiMessage(Serial.MinusOne, 0xFFFF, MessageType.Label, MsgParams[index][0], MsgParams[index][1], null, Msgs[index]));
         }
 
-        /* I cant find any better way to send "speech" using fonts other than default Aqui
+        /* I cant find any better way to send "speech" using fonts other than default */
         public static void POHMessage(Mobile from, int index) 
         {
             Packet p = new AsciiMessage(from.Serial, from.Body, MessageType.Regular, MsgParams[index][0], MsgParams[index][1], from.Name, Msgs[index]);
@@ -458,7 +458,7 @@ namespace Server.Engines.Doom
 
             this.KillTimers();
 
-            /* if one bit in each of the four nibbles is set, this is false Aqui
+            /* if one bit in each of the four nibbles is set, this is false */
 
             if ((this.TheirKey = (ushort)(code | (this.TheirKey <<= 4))) < 0x0FFF)
             {
@@ -490,7 +490,7 @@ namespace Server.Engines.Doom
                 }
                 else
                 {
-                    for (int i = 0; i < 16; i++)  /* Count matching SET bits, ie correct codes Aqui
+                    for (int i = 0; i < 16; i++)  /* Count matching SET bits, ie correct codes */
                     {
                         if ((((this.MyKey >> i) & 1) == 1) && (((this.TheirKey >> i) & 1) == 1))
                         {
@@ -513,15 +513,14 @@ namespace Server.Engines.Doom
             this.ResetLevers();
         }
 
-        public virtual void GenKey() /* Shuffle & build key Aqui
-
+        public virtual void GenKey() /* Shuffle & build key */
         {
             UInt16 tmp;
             int n, i;
             ushort[] CA = { 1, 2, 4, 8 };
             for (i = 0; i < 4; i++)
             {
-                n = (((n = Utility.Random(0, 3)) == i) ? n & ~i : n); /* if(i==n) { return pointless; } Aqui
+                n = (((n = Utility.Random(0, 3)) == i) ? n & ~i : n); /* if(i==n) { return pointless; } */
                 tmp = CA[i];
                 CA[i] = CA[n];
                 CA[n] = tmp;
@@ -607,7 +606,7 @@ namespace Server.Engines.Doom
                 else
                 {
                     this.Count++;
-                    if (this.Count == 1) /* TODO consolidate Aqui
+                    if (this.Count == 1) /* TODO consolidate */
                     { 
                         this.m_Player.Paralyze(TimeSpan.FromSeconds(2));
                         Effects.SendTargetEffect(this.m_Player, 0x11B7, 20, 10);
@@ -760,4 +759,3 @@ namespace Server.Engines.Doom
         }
     }
 }
-*/
