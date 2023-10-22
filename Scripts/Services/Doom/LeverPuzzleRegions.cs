@@ -1,4 +1,4 @@
-/*using System;
+using System;
 using Server.Mobiles;
 using Server.Regions;
 
@@ -75,7 +75,7 @@ namespace Server.Engines.Doom
             }
         }
 
-        public override bool OnSkillUse(Mobile m, int Skill) 
+        public override bool OnSkillUse(Mobile m, int Skill) /* just in case */
         {
             if ((this.Controller.Successful == null) || (m.IsStaff() && m != this.Controller.Successful))
             {
@@ -118,4 +118,4 @@ namespace Server.Engines.Doom
                 this.m_Occupant = null;
         }
     }
-}*/
+}
