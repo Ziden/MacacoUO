@@ -75,13 +75,13 @@ namespace Server.Mobiles
             DistribuiItem(new CristalDoPoder() { Amount = 5 });
             DistribuiItem(new FragmentosAntigos());
             SorteiaItem(Decos.RandomDeco(this));
-            var joia = Loot.RandomJewelry();
-            if (joia.Name != null)
-            {
-                joia.Name += " [DOOM]";
-            }
-            joia.Attributes.LowerManaCost = 7;
-            SorteiaItem(joia);
+            //var joia = Loot.RandomJewelry();
+            //if (joia.Name != null)
+            //{
+            //    joia.Name += " [DOOM]";
+            //}
+            //joia.Attributes.LowerManaCost = 7;
+            //SorteiaItem(joia);
             GolemMecanico.JorraOuro(c.Location, c.Map, 350);
         }
 
