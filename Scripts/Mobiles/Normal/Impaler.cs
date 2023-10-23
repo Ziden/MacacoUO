@@ -128,12 +128,12 @@ namespace Server.Mobiles
             DistribuiItem(new FragmentosAntigos());
             SorteiaItem(Decos.RandomDeco(this));
             var joia = Loot.RandomJewelry();
-            if (joia.Name != null)
+            /*if (joia.Name != null)
             {
                 joia.Name += " [DOOM]";
             }
             joia.Attributes.WeaponSpeed = 0;
-            SorteiaItem(joia);
+            SorteiaItem(joia);*/
             GolemMecanico.JorraOuro(c.Location, c.Map, 350);
         }
 
