@@ -52,13 +52,13 @@ namespace Server.Mobiles
             DistribuiItem(new CristalDoPoder() { Amount = 5 });
             DistribuiItem(new FragmentosAntigos());
             SorteiaItem(Decos.RandomDeco(this));
-            var joia = Loot.RandomJewelry();
+            /*var joia = Loot.RandomJewelry();
             if (joia.Name != null)
             {
                 joia.Name += " [DOOM]";
             }
             joia.Attributes.SpellDamage = 5;
-            SorteiaItem(joia);
+            SorteiaItem(joia);*/
             GolemMecanico.JorraOuro(c.Location, c.Map, 350);
         }
 
