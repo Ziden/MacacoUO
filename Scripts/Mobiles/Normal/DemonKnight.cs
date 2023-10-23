@@ -311,7 +311,7 @@ namespace Server.Mobiles
             }
 
             SorteiaItem(Decos.RandomDeco(this));
-            var joia = Loot.RandomJewelry();
+           /* var joia = Loot.RandomJewelry();
             if (joia.Name != null)
             {
                 joia.Name += " [DOOM]";
@@ -321,7 +321,7 @@ namespace Server.Mobiles
             joia.Attributes.WeaponDamage = 10;
             joia.Attributes.WeaponSkillDamage = 10;
             joia.Hue = TintaPreta.COR;
-            SorteiaItem(joia);
+            SorteiaItem(joia);*/
             GolemMecanico.JorraOuro(c.Location, c.Map, 350);
             base.OnDeath(c);
         }
