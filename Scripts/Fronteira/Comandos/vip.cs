@@ -107,7 +107,7 @@ namespace MeuNamespace
                 Point3D initialLocation = PlayerInitialLocations[from];
 
                 // Retornar à localização inicial ao deslogar
-                from.MoveToWorld(new Point3D(349, 15, -1), Map.Malas);
+                from.MoveToWorld(new Point3D(435, 254, -2), Map.Malas);
                 // Remover o jogador da lista para evitar contagens e localizações incorretas
                 PlayerUsageCount.Remove(from);
                 PlayerInitialLocations.Remove(from);
