@@ -141,7 +141,7 @@ namespace MeuNamespace
                 {
                     Mobile from = sender.Mobile;
                     from.SendMessage("Acesso ao conteúdo VIP concedido!");
-                    from.MoveToWorld(new Point3D(349, 15, -1), Map.Malas);
+                    from.MoveToWorld(new Point3D(435, 254, -2), Map.Malas);
                 }
                 else if (info.ButtonID == BrindeButtonID)
                 {
