@@ -32,8 +32,8 @@ namespace Server.Ziden.RecompensaLogin
             Rewards.Add(new CollectionItem(typeof(CristalDoPoder), 0x1053, "Cristal do Poder", 1151, 1));
             Rewards.Add(new CollectionItem(typeof(BagOfSending), 0xE76, "Sacola de Envio para Banco", 55, 100));
 
-            Rewards.Add(new CollectionItem(typeof(SpellbookPreto), 0xEFA, "Livro de Magias Negro", TintaPreta.COR, 100));
-            Rewards.Add(new CollectionItem(typeof(SpellbookBranco), 0xEFA, "Livro de Magias Negro", TintaBranca.COR, 100));
+            //Rewards.Add(new CollectionItem(typeof(SpellbookPreto), 0xEFA, "Livro de Magias Negro", TintaPreta.COR, 100));
+            //Rewards.Add(new CollectionItem(typeof(SpellbookBranco), 0xEFA, "Livro de Magias Negro", TintaBranca.COR, 100));
 
             Rewards.Add(new CollectionItem(typeof(SkillBook), 0xEFA, "Livro Cientifico</br>Upa uma skill de 0.1 a 0.5", 0, 300));
 
